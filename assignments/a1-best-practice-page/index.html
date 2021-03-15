@@ -13,6 +13,7 @@
         --lightTeal: #66b2b2;
         --lightTeal2: #b2d8d8;
       }
+
       html {
         box-sizing: border-box;
       }
@@ -129,7 +130,7 @@
         height: 100vh;
         background-color: var(--lightTeal);
         text-align: center;
-        border: 30px solid var(--darkTeal);
+        border: 15px solid var(--darkTeal);
         border-radius: 200px;
       }
 
@@ -151,6 +152,12 @@
 
       header a:hover {
         color: var(--lightTeal2);
+      }
+
+      @media only screen and (min-width: 992px) {
+        header .container {
+          border: 30px solid var(--darkTeal);
+        }
       }
     </style>
   </head>
