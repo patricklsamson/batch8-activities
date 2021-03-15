@@ -1,6 +1,7 @@
 .container {
   height: 500px;
   background-color: #66b2b2;
+  text-align: center;
 }
 
 .table {
@@ -12,4 +13,9 @@
 .valign {
   display: table-cell;
   vertical-align: middle;
+}
+
+h1 {
+  font-family: "arial", sans-serif;
+  font-size: 2.5rem;
 }
