@@ -1,0 +1,10 @@
+.table {
+  display: table;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.valign {
+  display: table-cell;
+  vertical-align: middle;
+}
