@@ -16,7 +16,7 @@ header h1 {
   font-weight: 700;
 }
 
-header h1 span {
+header h1:hover span {
   visibility: hidden;
   -webkit-transition: opacity 0.5s;
   -o-transition: opacity 0.5s;
@@ -25,13 +25,32 @@ header h1 span {
   opacity: 0;
 }
 
-header h1:hover span {
+header h1:hover + h2 {
   visibility: visible;
   -webkit-transition: opacity 0.5s;
   -o-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   transition: opacity 0.5s;
   opacity: 1;
+}
+
+header h1 span {
+  visibility: visible;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+
+header h2 {
+  font-size: 50px;
+  visibility: hidden;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  opacity: 0;
 }
 
 header p {
@@ -76,7 +95,8 @@ header a:hover {
     border-radius: 100px;
   }
 
-  header h1 {
+  header h1,
+  header h2 {
     font-size: 30px;
   }
 }
