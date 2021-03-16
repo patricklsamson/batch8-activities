@@ -1,13 +1,10 @@
 header {
-  height: 100vh;
   background-color: var(--lightTeal);
   text-align: center;
   border: 30px solid var(--darkTeal);
-  border-radius: 200px;
-}
-
-header .container {
-  height: 100%;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
 }
 
 header input {
@@ -67,6 +64,16 @@ header a:hover {
   color: var(--lightTeal2);
 }
 
+@media only screen and (min-width: 992px) {
+  header {
+    height: 100vh;
+  }
+
+  header .container {
+    height: 100%;
+  }
+}
+
 @media only screen and (max-width: 1399px) {
   header {
     border-width: 15px;
@@ -85,13 +92,13 @@ header a:hover {
 
 @media only screen and (max-width: 767px) {
   header {
-    border-radius: 150px;
+    border-radius: 75px;
   }
 }
 
 @media only screen and (max-width: 481px) {
   header {
-    border-radius: 100px;
+    border-radius: 50px;
   }
 
   header h1,
