@@ -1,4 +1,4 @@
-header .container {
+header {
   height: 100vh;
   background-color: var(--lightTeal);
   text-align: center;
@@ -34,19 +34,19 @@ header a:hover {
 }
 
 @media only screen and (max-width: 991px) {
-  header .container {
+  header {
     border: 15px solid var(--darkTeal);
   }
 }
 
 @media only screen and (max-width: 767px) {
-  header .container {
+  header {
     border-radius: 150px;
   }
 }
 
 @media only screen and (max-width: 481px) {
-  header .container {
+  header {
     border-radius: 100px;
   }
 
