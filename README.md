@@ -4,4 +4,4 @@
 
 Table of Contents:
 
-* [Best Practice Page](/a1-best-practice-page)
+* [Best Practice Page](/a1-best-practice-page/index.html)
