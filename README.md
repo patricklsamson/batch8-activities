@@ -5,4 +5,4 @@
 Table of Contents:
 
 * [Best Practice Page](/a1-best-practice-page/index.html)
-* [HTML Email](/a1-html-email/index.html)
+* [HTML Email](/a2-html-email/index.html)
