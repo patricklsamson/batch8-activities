@@ -10,6 +10,19 @@ header .container {
   height: 100%;
 }
 
+header input {
+  display: none;
+}
+
+header input:checked ~ header h2 {
+  visibility: visible;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 1;
+}
+
 header h1 {
   cursor: pointer;
 }
@@ -21,43 +34,12 @@ header h2 {
   font-weight: 700;
 }
 
-header h1:hover {
-  margin-left: -30.55px;
-}
-
-header h1:hover span {
-  visibility: hidden;
-  -webkit-transition: opacity 0.5s;
-  -o-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  transition: opacity 0.5s;
-  opacity: 0;
-}
-
-header h1:hover + h2 {
-  visibility: visible;
-  -webkit-transition: opacity 0.5s;
-  -o-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  transition: opacity 0.5s;
-  opacity: 1;
-}
-
-header h1 span {
-  visibility: visible;
-  -webkit-transition: opacity 0.5s;
-  -o-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  transition: opacity 0.5s;
-  opacity: 1;
-}
-
 header h2 {
   visibility: hidden;
-  -webkit-transition: opacity 0.5s;
-  -o-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  transition: opacity 0.5s;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
   opacity: 0;
 }
 
@@ -106,9 +88,5 @@ header a:hover {
   header h1,
   header h2 {
     font-size: 30px;
-  }
-
-  header h1:hover {
-    margin-left: -18.33px;
   }
 }
