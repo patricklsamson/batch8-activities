@@ -10,7 +10,8 @@ header .container {
   height: 100%;
 }
 
-header h1 {
+header h1,
+header h2 {
   font-size: 50px;
   color: var(--darkTeal);
   font-weight: 700;
@@ -44,7 +45,6 @@ header h1 span {
 }
 
 header h2 {
-  font-size: 50px;
   visibility: hidden;
   -webkit-transition: opacity 0.5s;
   -o-transition: opacity 0.5s;
