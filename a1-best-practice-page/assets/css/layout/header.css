@@ -1,9 +1,12 @@
 header {
-  height: 100vh;
   background-color: var(--lightTeal);
   text-align: center;
   border: 30px solid var(--darkTeal);
   border-radius: 200px;
+}
+
+header .container {
+  height: 100vh;
 }
 
 header h1 {
