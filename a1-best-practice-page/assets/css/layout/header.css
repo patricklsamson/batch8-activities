@@ -4,7 +4,6 @@ header .container {
   text-align: center;
   border: 30px solid var(--darkTeal);
   border-radius: 200px;
-  padding: 0 15px;
 }
 
 header h1 {
