@@ -10,11 +10,19 @@ header .container {
   height: 100%;
 }
 
+header h1 {
+  cursor: pointer;
+}
+
 header h1,
 header h2 {
   font-size: 50px;
   color: var(--darkTeal);
   font-weight: 700;
+}
+
+header h1:hover {
+  margin-left: -30.55px;
 }
 
 header h1:hover span {
@@ -98,5 +106,9 @@ header a:hover {
   header h1,
   header h2 {
     font-size: 30px;
+  }
+
+  header h1:hover {
+    margin-left: -18.33px;
   }
 }
