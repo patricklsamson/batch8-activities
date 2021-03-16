@@ -23,6 +23,19 @@ header input:checked ~ h2 {
   opacity: 1;
 }
 
+header label {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+header label img {
+  width: 30px;
+  height: 30px;
+}
+
 header h1,
 header h2 {
   font-size: 50px;
