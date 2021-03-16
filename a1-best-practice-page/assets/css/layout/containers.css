@@ -8,30 +8,30 @@
 @media only screen and (min-width: 576px) {
   .container {
     padding: 0;
-    max-width: 547px;
+    max-width: calc(576px * 0.9);
   }
 }
 
 @media only screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: calc(768px * 0.9);
   }
 }
 
 @media only screen and (min-width: 992px) {
   .container {
-    max-width: 942px;
+    max-width: calc(992px * 0.9);
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: calc(1200px * 0.9);
   }
 }
 
 @media only screen and (min-width: 1400px) {
   .container {
-    max-width: 1330px;
+    max-width: calc(1440px * 0.9);
   }
 }
