@@ -2,6 +2,8 @@
 
 ## Compilation of Activities for Avion School
 
+### Presented to you by: Patrick Samson
+
 Table of Contents:
 
 * [Best Practice Page](/a1-best-practice-page/index.html)
