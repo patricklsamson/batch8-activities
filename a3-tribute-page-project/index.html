@@ -7,9 +7,109 @@
     <meta name="author" content="Patrick Samson" />
     <title>Tribute Page Project</title>
     <style>
-      body {
-        font-family: "arial", sans-serif;
+      html {
+        box-sizing: border-box;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
         line-height: 1.5;
+        font-family: "arial", sans-serif;
+      }
+
+      body {
+        overflow-x: hidden;
       }
 
       h1,
@@ -121,8 +221,29 @@
         }
       }
 
+      #main {
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-image: url(assets/img/world-wide-web-map-1024x575.jpg);
+      }
+
+      #main .wrap-overlay {
+        background-color: rgba(52, 58, 64, 0.9);
+        padding: 15px 0;
+      }
+
       #title {
         text-align: center;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #f8f9fa;
+        padding-bottom: 5px;
+        border-bottom: 10px double #f8f9fa;
       }
 
       #img-div {
@@ -152,12 +273,17 @@
         text-align: justify;
       }
 
+      .p-content {
+        color: #fff;
+        margin: 10px 0;
+      }
+
       #tribute-link {
-        color: #6c757d;
+        color: #a9a9a9;
       }
 
       #tribute-link:hover {
-        color: #343a40;
+        color: #6c757d;
       }
 
       @media only screen and (min-width: 992px) {
@@ -168,13 +294,13 @@
 
       @media only screen and (max-width: 767px) {
         #img-caption {
-          top: -6px;
+          top: 5px;
         }
       }
 
       @media only screen and (max-width: 480px) {
         #img-caption {
-          top: -10px;
+          top: 2px;
           padding: 2px;
           -webkit-border-radius: 10px;
           -moz-border-radius: 10px;
@@ -184,22 +310,26 @@
     </style>
   </head>
   <body>
-    <main id="main" class="container">
-      <h1 id="title">Timothy John Berners-Lee</h1>
+    <main id="main">
+      <div class="wrap-overlay">
+        <div class="container">
+          <h1 id="title">Timothy John Berners-Lee</h1>
 
-      <div id="img-div">
-        <img src="assets/img/tim_berners-lee.jpg" alt="timothy" id="image" />
-        <p id="img-caption">Inventor of <abbr title="World Wide Web">WWW</abbr> and Director of <abbr title="World Wide Web Consortium">W3C</abbr></p>
+          <div id="img-div">
+            <img src="assets/img/tim_berners-lee.jpg" alt="timothy" id="image" />
+            <p id="img-caption">Inventor of <abbr title="World Wide Web">WWW</abbr> and Director of <abbr title="World Wide Web Consortium">W3C</abbr></p>
+          </div>
+
+          <p id="tribute-info" class="p-content">Timothy John <q>Tim</q> Berners-Lee also known as <q>TimBL</q>, is a British computer scientist and academic who invented the World Wide Web and one of Time Magazine’s ‘100 Most Important People of the 20th Century’. His visionary and innovative work has transformed almost every aspect of our lives.</p>
+
+          <p class="p-content">
+            Having invented the Web in 1989 while working at CERN and subsequently working to ensure it was made freely available to all, Berners-Lee is now dedicated to enhancing and protecting the web’s future. He is a Founding Director of the World Wide Web Foundation, which seeks to ensure the web serves humanity by establishing it as a global public good and a basic right. He is also Director of the World Wide Web Consortium, a global web standards organisation he founded in 1994 to lead the web to its full potential. In 2012 he co-founded the Open Data Institute (ODI) which advocates for Open Data in the UK and globally. Sir Tim has advised a number of governments and corporations on ongoing digital strategies. A graduate of Oxford University, Sir Tim presently holds academic posts
+            at the Massachusetts Institute of Technology at CSAIL (Computer Science and Artificial Intelligence Lab), (USA) and the University of Oxford (UK).
+          </p>
+
+          <p class="p-content">Wanted to know more about Tim Berners-Lee? Click <a href="https://webfoundation.org/about/sir-tim-berners-lee/" id="tribute-link" target="_blank">here</a> for more info.</p>
+        </div>
       </div>
-
-      <p id="tribute-info">Timothy John <q>Tim</q> Berners-Lee also known as <q>TimBL</q>, is a British computer scientist and academic who invented the World Wide Web and one of Time Magazine’s ‘100 Most Important People of the 20th Century’. His visionary and innovative work has transformed almost every aspect of our lives.</p>
-
-      <p>
-        Having invented the Web in 1989 while working at CERN and subsequently working to ensure it was made freely available to all, Berners-Lee is now dedicated to enhancing and protecting the web’s future. He is a Founding Director of the World Wide Web Foundation, which seeks to ensure the web serves humanity by establishing it as a global public good and a basic right. He is also Director of the World Wide Web Consortium, a global web standards organisation he founded in 1994 to lead the web to its full potential. In 2012 he co-founded the Open Data Institute (ODI) which advocates for Open Data in the UK and globally. Sir Tim has advised a number of governments and corporations on ongoing digital strategies. A graduate of Oxford University, Sir Tim presently holds academic posts at
-        the Massachusetts Institute of Technology at CSAIL (Computer Science and Artificial Intelligence Lab), (USA) and the University of Oxford (UK).
-      </p>
-
-      <p>Wanted to know more about Tim Berners-Lee? Click <a href="https://webfoundation.org/about/sir-tim-berners-lee/" id="tribute-link" target="_blank">here</a> for more info.</p>
     </main>
   </body>
 </html>
