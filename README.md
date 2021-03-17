@@ -1,8 +1,6 @@
-# batch8-activities
+# Avion School batch8-activities Compilation
 
-## Compilation of Activities for Avion School
-
-### Presented to you by: Patrick Samson
+## Presented to you by: Patrick Samson
 
 Table of Contents:
 
