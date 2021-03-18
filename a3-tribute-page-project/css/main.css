@@ -24,11 +24,10 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 100%;
 }
 
 #image {
-  width: inherit;
+  width: 100%;
 }
 
 #img-caption {
