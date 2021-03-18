@@ -1,0 +1,13 @@
+:root {
+  --dTeal: #004c4c;
+  --dTeal2: #006666;
+  --teal: #008080;
+  --lTeal: #66b2b2;
+  --lTeal2: #b2d8d8;
+  --dGray: #6c757d;
+  --dGray-05: rgba(52, 58, 64, 0.5);
+  --dGray-09: rgba(52, 58, 64, 0.9);
+  --white: #f8f9fa;
+  --gray: #d3d3d3;
+  --gray2: #a9a9a9;
+}
