@@ -11,7 +11,6 @@
 }
 
 #title {
-  text-align: center;
   font-weight: 700;
   margin-bottom: 15px;
   color: var(--white);
@@ -20,9 +19,6 @@
 }
 
 #img-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
 }
 
@@ -39,10 +35,6 @@
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-}
-
-#tribute-info {
-  text-align: justify;
 }
 
 .p-content {

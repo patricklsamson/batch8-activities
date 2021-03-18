@@ -2,7 +2,6 @@
 
 header {
   background-color: var(--lTeal);
-  text-align: center;
   border: 30px solid var(--dTeal);
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
