@@ -10,6 +10,14 @@ main {
   background-color: var(--dGray-05);
 }
 
+.wrap-overlay.fluid {
+  height: 100vh;
+}
+
+.wrap-overlay.fluid .cont {
+  height: 100%;
+}
+
 #survey-form {
   padding: 10px;
   background-color: rgba(0, 137, 171, 0.8);
@@ -31,8 +39,6 @@ main {
 }
 
 #title span {
-  font-family: inherit;
-  line-height: inherit;
   color: #fff;
 }
 
@@ -118,4 +124,10 @@ textarea {
   .wrap-text {
     margin-bottom: 15px;
   }
+}
+
+.h-results {
+  font-family: "Friz", serif;
+  font-weight: 900;
+  color: #fec009;
 }
