@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+main {
+  padding: 30px 0;
+}
+
+#survey-form {
+  padding: 10px;
+}
+
+#name,
+#email,
+#number,
+#dropdown {
+  width: 260px;
+}
+
+.wrap-champs {
+  height: 192px;
+}
+
+@media only screen and (min-width: 768px) {
+  .cont > .grid > [class*="gcol"]:first-child {
+    height: 878px;
+  }
+}
