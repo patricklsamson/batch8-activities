@@ -36,7 +36,7 @@
                 <input type="email" id="email" placeholder="example@mail.com" required /><br />
 
                 <label for="number" id="number-label">Contact No.:</label><br />
-                <input type="tel" id="number" placeholder="Enter your Mobile / Landline" maxlength="15" required /><br />
+                <input type="tel" id="number" placeholder="Enter your Mobile / Landline" maxlength="15" onkeypress="return numOnly(event)" required /><br />
 
                 <label for="dropdown" id="rank-label">Rank:</label><br />
                 <select name="rank" id="dropdown">
