@@ -78,7 +78,8 @@ main {
   border-radius: 15px;
 }
 
-#submit:hover {
+#submit:hover,
+#submit:active {
   border: 10px solid #fff;
   color: #fec009;
   padding: 5px 10px;
@@ -129,5 +130,14 @@ textarea {
 .h-results {
   font-family: "Friz", serif;
   font-weight: 900;
+  color: #fec009;
+}
+
+.h-results a {
+  color: rgba(254, 192, 9, 0.5);
+}
+
+.h-results a:hover,
+.h-results a:active {
   color: #fec009;
 }
