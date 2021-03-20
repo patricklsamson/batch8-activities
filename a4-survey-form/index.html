@@ -8,16 +8,20 @@
     <title>Survey Form</title>
     <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" size="32x32" />
     <link rel="stylesheet" href="../assets/css/index.min.css" />
-    <link rel="stylesheet" href="css/main.min.css" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
   </head>
   <body>
     <main>
       <div class="cont">
         <div class="grid">
           <div class="gcol-md-6 gcol-12">
-            <h1 id="title">League of Legends: Wild Rift Tournament</h1>
+            <div class="tbl">
+              <div class="valign talign">
+                <h1 id="title">League of Legends: Wild Rift Champion Update Requests</h1>
 
-            <p id="description"></p>
+                <p id="description">This survey serves as a notable opinion of all Summoners to improve the game.</p>
+              </div>
+            </div>
           </div>
 
           <div class="gcol-md-6 gcol-12">
@@ -37,9 +41,15 @@
                 <option value="challenger">Challenger</option>
                 <option value="grandmaster">Grandmaster</option>
                 <option value="master">Master</option>
+                <option value="diamond">Diamond</option>
+                <option value="platinum">Platinum</option>
+                <option value="gold">Gold</option>
+                <option value="silver">Silver</option>
+                <option value="bronze">Bronze</option>
+                <option value="iron">Iron</option>
               </select>
 
-              <p>Role:</p>
+              <p>Preferred role:</p>
 
               <input type="radio" id="top" name="roles" value="top" checked />
               <label for="top" id="roles-label">Top</label>
@@ -56,7 +66,7 @@
               <input type="radio" id="support" name="roles" value="support" />
               <label for="support" id="roles-label">Support</label>
 
-              <p>Champions you are able to use:</p>
+              <p>Champions you want to be updated:</p>
 
               <div class="wrap-champs">
                 <div id="top-champs">
@@ -283,8 +293,11 @@
                 </div>
               </div>
 
-              <p>You did not find your champion? List them down below.</p>
-              <textarea name="" id="" cols="30" rows="10"></textarea><br />
+              <label for="requests" id="requests-label">List down your requests here:</label><br />
+              <textarea name="requests" id="requests" cols="35" rows="10"></textarea><br />
+
+              <label for="missing-champs" id="missing-champs-label">Did not find your champion on your preferred role? List them down below including your requests and/or optimization of the champion for that role.</label><br />
+              <textarea name="missing-champs" id="missing-champs" cols="35" rows="10"></textarea><br />
 
               <button id="submit" type="submit">Submit</button>
             </form>
@@ -293,63 +306,7 @@
       </div>
     </main>
 
-    <script>
-      window.onload = function () {
-        document.getElementById("jungle-champs").style.display = "none";
-        document.getElementById("middle-champs").style.display = "none";
-        document.getElementById("adc-champs").style.display = "none";
-        document.getElementById("support-champs").style.display = "none";
-      };
-
-      document.getElementById("top").addEventListener("click", function () {
-        if (document.getElementById("top").checked) {
-          document.getElementById("top-champs").style.display = "block";
-          document.getElementById("jungle-champs").style.display = "none";
-          document.getElementById("middle-champs").style.display = "none";
-          document.getElementById("adc-champs").style.display = "none";
-          document.getElementById("support-champs").style.display = "none";
-        }
-      });
-
-      document.getElementById("jungle").addEventListener("click", function () {
-        if (document.getElementById("jungle").checked) {
-          document.getElementById("top-champs").style.display = "none";
-          document.getElementById("jungle-champs").style.display = "block";
-          document.getElementById("middle-champs").style.display = "none";
-          document.getElementById("adc-champs").style.display = "none";
-          document.getElementById("support-champs").style.display = "none";
-        }
-      });
-
-      document.getElementById("middle").addEventListener("click", function () {
-        if (document.getElementById("middle").checked) {
-          document.getElementById("top-champs").style.display = "none";
-          document.getElementById("jungle-champs").style.display = "none";
-          document.getElementById("middle-champs").style.display = "block";
-          document.getElementById("adc-champs").style.display = "none";
-          document.getElementById("support-champs").style.display = "none";
-        }
-      });
-
-      document.getElementById("adc").addEventListener("click", function () {
-        if (document.getElementById("adc").checked) {
-          document.getElementById("top-champs").style.display = "none";
-          document.getElementById("jungle-champs").style.display = "none";
-          document.getElementById("middle-champs").style.display = "none";
-          document.getElementById("adc-champs").style.display = "block";
-          document.getElementById("support-champs").style.display = "none";
-        }
-      });
-
-      document.getElementById("support").addEventListener("click", function () {
-        if (document.getElementById("support").checked) {
-          document.getElementById("top-champs").style.display = "none";
-          document.getElementById("jungle-champs").style.display = "none";
-          document.getElementById("middle-champs").style.display = "none";
-          document.getElementById("adc-champs").style.display = "none";
-          document.getElementById("support-champs").style.display = "block";
-        }
-      });
-    </script>
+    <script src="../assets/js/utility.prod.js" defer></script>
+    <script src="assets/js/main.prod.js" defer></script>
   </body>
 </html>
