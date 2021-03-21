@@ -10,10 +10,6 @@ main {
   background-color: var(--dGray-05);
 }
 
-.wrap-overlay.fluid {
-  height: 100vh;
-}
-
 .wrap-overlay.fluid .cont {
   height: 100%;
 }
@@ -98,7 +94,7 @@ textarea {
   font-family: "Friz", serif;
   font-weight: 900;
   color: #fec009;
-  font-size: 40px;
+  font-size: 25px;
 }
 
 .p-results a {
@@ -108,12 +104,6 @@ textarea {
 .p-results a:hover,
 .p-results a:active {
   color: #fec009;
-}
-
-@media only screen and (max-width: 480px) {
-  .p-results {
-    font-size: 25px;
-  }
 }
 
 @media only screen and (min-width: 481px) {
@@ -135,11 +125,19 @@ textarea {
 }
 
 @media only screen and (min-width: 992px) {
+  .wrap-overlay.fluid {
+    height: 100vh;
+  }
+
   #survey-form {
     padding: 35px;
     -webkit-border-radius: 35px;
     -moz-border-radius: 35px;
     border-radius: 35px;
+  }
+
+  .p-results {
+    font-size: 40px;
   }
 }
 
