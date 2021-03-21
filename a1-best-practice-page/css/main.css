@@ -65,11 +65,13 @@ header a:hover {
   color: var(--lTeal2);
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 481px) {
   header {
     height: 100vh;
   }
+}
 
+@media only screen and (min-width: 992px) {
   header .cont {
     height: 100%;
   }
