@@ -75,7 +75,8 @@ summary,
 time,
 mark,
 audio,
-video {
+video,
+main {
   font: inherit;
 }
 
