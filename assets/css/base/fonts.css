@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Friz Quadrata";
-  src: url("FrizQua-ReguOS.eot");
-  src: url("FrizQua-ReguOS.eot?#iefix") format("embedded-opentype"), url("FrizQua-ReguOS.woff2") format("woff2"), url("FrizQua-ReguOS.woff") format("woff"), url("FrizQua-ReguOS.ttf") format("truetype"), url("FrizQua-ReguOS.svg#FrizQua-ReguOS") format("svg");
+  src: url("../fonts/FrizQua-ReguOS.eot");
+  src: url("../fonts/FrizQua-ReguOS.eot?#iefix") format("embedded-opentype"), url("../fonts/FrizQua-ReguOS.woff2") format("woff2"), url("../fonts/FrizQua-ReguOS.woff") format("woff"), url("../fonts/FrizQua-ReguOS.ttf") format("truetype"), url("../fonts/FrizQua-ReguOS.svg#FrizQua-ReguOS") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -9,8 +9,8 @@
 
 @font-face {
   font-family: "Friz Quadrata";
-  src: url("FrizQua-ReguItalOS.eot");
-  src: url("FrizQua-ReguItalOS.eot?#iefix") format("embedded-opentype"), url("FrizQua-ReguItalOS.woff2") format("woff2"), url("FrizQua-ReguItalOS.woff") format("woff"), url("FrizQua-ReguItalOS.ttf") format("truetype"), url("FrizQua-ReguItalOS.svg#FrizQua-ReguItalOS") format("svg");
+  src: url("../fonts/FrizQua-ReguItalOS.eot");
+  src: url("../fonts/FrizQua-ReguItalOS.eot?#iefix") format("embedded-opentype"), url("../fonts/FrizQua-ReguItalOS.woff2") format("woff2"), url("../fonts/FrizQua-ReguItalOS.woff") format("woff"), url("../fonts/FrizQua-ReguItalOS.ttf") format("truetype"), url("../fonts/FrizQua-ReguItalOS.svg#FrizQua-ReguItalOS") format("svg");
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -18,8 +18,8 @@
 
 @font-face {
   font-family: "Friz Quadrata Std";
-  src: url("FrizQuadrataStd.eot");
-  src: url("FrizQuadrataStd.eot?#iefix") format("embedded-opentype"), url("FrizQuadrataStd.woff2") format("woff2"), url("FrizQuadrataStd.woff") format("woff"), url("FrizQuadrataStd.ttf") format("truetype"), url("FrizQuadrataStd.svg#FrizQuadrataStd") format("svg");
+  src: url("../fonts/FrizQuadrataStd.eot");
+  src: url("../fonts/FrizQuadrataStd.eot?#iefix") format("embedded-opentype"), url("../fonts/FrizQuadrataStd.woff2") format("woff2"), url("../fonts/FrizQuadrataStd.woff") format("woff"), url("../fonts/FrizQuadrataStd.ttf") format("truetype"), url("../fonts/FrizQuadrataStd.svg#FrizQuadrataStd") format("svg");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -27,8 +27,8 @@
 
 @font-face {
   font-family: "Friz";
-  src: url("FrizQuadrataBold.eot");
-  src: url("FrizQuadrataBold.eot?#iefix") format("embedded-opentype"), url("FrizQuadrataBold.woff2") format("woff2"), url("FrizQuadrataBold.woff") format("woff"), url("FrizQuadrataBold.ttf") format("truetype"), url("FrizQuadrataBold.svg#FrizQuadrataBold") format("svg");
+  src: url("../fonts/FrizQuadrataBold.eot");
+  src: url("../fonts/FrizQuadrataBold.eot?#iefix") format("embedded-opentype"), url("../fonts/FrizQuadrataBold.woff2") format("woff2"), url("../fonts/FrizQuadrataBold.woff") format("woff"), url("../fonts/FrizQuadrataBold.ttf") format("truetype"), url("../fonts/FrizQuadrataBold.svg#FrizQuadrataBold") format("svg");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
