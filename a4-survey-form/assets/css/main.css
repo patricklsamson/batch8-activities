@@ -94,15 +94,43 @@ textarea {
   margin-bottom: 15px;
 }
 
-@media only screen and (min-width: 768px) {
-  .cont > .grid > [class*="gcol"]:first-child {
-    height: 1100px;
+.p-results {
+  font-family: "Friz", serif;
+  font-weight: 900;
+  color: #fec009;
+  font-size: 40px;
+}
+
+.p-results a {
+  color: rgba(254, 192, 9, 0.5);
+}
+
+.p-results a:hover,
+.p-results a:active {
+  color: #fec009;
+}
+
+@media only screen and (max-width: 480px) {
+  .p-results {
+    font-size: 25px;
   }
 }
 
 @media only screen and (min-width: 481px) {
   #survey-form {
     padding: 15px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .wrap-text {
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .cont > .grid > [class*="gcol"]:first-child {
+    height: 1100px;
   }
 }
 
@@ -119,25 +147,4 @@ textarea {
   #survey-form {
     padding: 50px;
   }
-}
-
-@media only screen and (max-width: 767px) {
-  .wrap-text {
-    margin-bottom: 15px;
-  }
-}
-
-.h-results {
-  font-family: "Friz", serif;
-  font-weight: 900;
-  color: #fec009;
-}
-
-.h-results a {
-  color: rgba(254, 192, 9, 0.5);
-}
-
-.h-results a:hover,
-.h-results a:active {
-  color: #fec009;
 }
