@@ -86,10 +86,10 @@ h1,
   line-height: 1.2;
   font-size: 2.5rem;
 }
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 992px) {
   h1,
   .h1 {
-    font-size: calc(2.5rem + 1.5vw);
+    font-size: calc(2.5rem + 1vw);
   }
 }
 
@@ -99,10 +99,10 @@ h2,
   line-height: 1.2;
   font-size: 2.25rem;
 }
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 992px) {
   h2,
   .h2 {
-    font-size: calc(2.25rem + 1.25vw);
+    font-size: calc(2.25rem + 0.9vw);
   }
 }
 
@@ -112,10 +112,10 @@ h3,
   line-height: 1.2;
   font-size: 2rem;
 }
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 992px) {
   h3,
   .h3 {
-    font-size: calc(2rem + 1vw);
+    font-size: calc(2rem + 0.8vw);
   }
 }
 
@@ -125,10 +125,10 @@ h4,
   line-height: 1.2;
   font-size: 1.75rem;
 }
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 992px) {
   h4,
   .h4 {
-    font-size: calc(1.75rem + 0.75vw);
+    font-size: calc(1.75rem + 0.7vw);
   }
 }
 
@@ -138,10 +138,10 @@ h5,
   line-height: 1.2;
   font-size: 1.5rem;
 }
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 992px) {
   h5,
   .h5 {
-    font-size: calc(1.5rem + 0.5vw);
+    font-size: calc(1.5rem + 0.6vw);
   }
 }
 
@@ -151,10 +151,10 @@ h6,
   line-height: 1.2;
   font-size: 1.25rem;
 }
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 992px) {
   h6,
   .h6 {
-    font-size: calc(1.25rem + 0.25vw);
+    font-size: calc(1.25rem + 0.5vw);
   }
 }
 
