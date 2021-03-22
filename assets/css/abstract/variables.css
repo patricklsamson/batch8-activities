@@ -10,4 +10,12 @@
   --white: #f8f9fa;
   --gray: #d3d3d3;
   --gray2: #a9a9a9;
+  --lBlue: #70a4cb;
+  --lBlue2: #90c7f0;
+  --lBlue3: #d4e4fd;
+  --blue-08: rgba(0, 137, 171, 0.8);
+  --dBlue: #035064;
+  --dBlue-08: rgba(3, 80, 100, 0.8);
+  --gold: #fec009;
+  --gold-05: rgba(254, 192, 9, 0.5);
 }
