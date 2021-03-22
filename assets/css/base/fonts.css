@@ -33,3 +33,12 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Colors Of Autumn";
+  src: url("../fonts/ColorsOfAutumn.eot");
+  src: url("../fonts/ColorsOfAutumn.eot?#iefix") format("embedded-opentype"), url("../fonts/ColorsOfAutumn.woff2") format("woff2"), url("../fonts/ColorsOfAutumn.woff") format("woff"), url("../fonts/ColorsOfAutumn.ttf") format("truetype"), url("../fonts/ColorsOfAutumn.svg#ColorsOfAutumn") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
