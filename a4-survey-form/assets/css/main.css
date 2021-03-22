@@ -16,14 +16,14 @@ main {
 
 #survey-form {
   padding: 10px;
-  background-color: rgba(0, 137, 171, 0.8);
+  background-color: var(--blue-08);
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
   border-radius: 25px;
 }
 
 .wrap-text {
-  background-color: rgba(3, 80, 100, 0.8);
+  background-color: var(--dBlue-08);
   padding: 20px;
 }
 
@@ -31,7 +31,7 @@ main {
   margin-bottom: 25px;
   font-family: "Friz", serif;
   font-weight: 900;
-  color: #fec009;
+  color: var(--gold);
 }
 
 #title span {
@@ -64,7 +64,7 @@ main {
   cursor: pointer;
   padding: 10px 15px;
   border: 5px solid #fff;
-  background-color: #035064;
+  background-color: var(--dBlue);
   color: #fff;
   font-family: "Friz", serif;
   font-weight: 700;
@@ -77,7 +77,7 @@ main {
 #submit:hover,
 #submit:active {
   border: 10px solid #fff;
-  color: #fec009;
+  color: var(--gold);
   padding: 5px 10px;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -93,28 +93,22 @@ textarea {
 .p-results {
   font-family: "Friz", serif;
   font-weight: 900;
-  color: #fec009;
+  color: var(--gold);
   font-size: 25px;
 }
 
 .p-results a {
-  color: rgba(254, 192, 9, 0.5);
+  color: var(--gold-05);
 }
 
 .p-results a:hover,
 .p-results a:active {
-  color: #fec009;
+  color: var(--gold);
 }
 
 @media only screen and (min-width: 481px) {
   #survey-form {
     padding: 15px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .wrap-text {
-    margin-bottom: 15px;
   }
 }
 
@@ -144,5 +138,11 @@ textarea {
 @media only screen and (min-width: 1200px) {
   #survey-form {
     padding: 50px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .wrap-text {
+    margin-bottom: 15px;
   }
 }
