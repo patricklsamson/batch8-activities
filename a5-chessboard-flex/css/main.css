@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 .cont {
-  height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
