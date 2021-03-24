@@ -78,6 +78,10 @@ main {
   font-family: "Friz", serif;
   text-align: center;
   color: var(--gold);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .chess-inner h1 span {
