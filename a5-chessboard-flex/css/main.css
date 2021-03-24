@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+main {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(var(--dBlue)), to(var(--lBlue2)));
+  background-image: -webkit-linear-gradient(top left, var(--dBlue), var(--lBlue2));
+  background-image: -moz-linear-gradient(top left, var(--dBlue), var(--lBlue2));
+  background-image: -o-linear-gradient(top left, var(--dBlue), var(--lBlue2));
+  background-image: linear-gradient(to bottom right, var(--dBlue), var(--lBlue2));
+}
+
 .cont {
   min-height: 100vh;
   display: -webkit-box;
