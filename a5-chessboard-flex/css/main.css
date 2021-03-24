@@ -23,6 +23,66 @@
 
 .chess-inner {
   width: 100%;
+  position: relative;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.3;
+  }
+}
+
+@-moz-keyframes fade {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.3;
+  }
+}
+
+@-o-keyframes fade {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.3;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.3;
+  }
+}
+
+.chess-inner h1 {
+  position: absolute;
+  font-family: "Friz", serif;
+  text-align: center;
+  top: 50%;
+  margin-top: -74px;
+  color: var(--gold);
+  -webkit-animation: fade 4s;
+  -moz-animation: fade 4s;
+  -o-animation: fade 4s;
+  animation: fade 4s;
+  opacity: 0.3;
+}
+
+.chess-inner h1 span {
+  font-family: "Colors Of Autumn", cursive;
+  color: var(--lBlue4);
 }
 
 .chess-row {
