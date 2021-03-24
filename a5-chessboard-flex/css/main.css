@@ -86,6 +86,18 @@ main {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-animation: fade 4s;
+  -moz-animation: fade 4s;
+  -o-animation: fade 4s;
+  animation: fade 4s;
+  opacity: 0.3;
 }
 
 .chess-inner h1 span {
@@ -148,23 +160,6 @@ img {
   height: 90%;
 }
 
-@media only screen and (min-width: 576px) {
-  .chess-inner h1 {
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    -webkit-animation: fade 4s;
-    -moz-animation: fade 4s;
-    -o-animation: fade 4s;
-    animation: fade 4s;
-    opacity: 0.3;
-  }
-}
-
 @media only screen and (max-width: 1199px) {
   .chess-outer {
     width: 100%;
@@ -186,6 +181,10 @@ img {
     padding: 25px;
   }
 
+  .chess-inner h1 {
+    font-size: 30px;
+  }
+
   .chess-square {
     height: 58px;
   }
@@ -198,7 +197,6 @@ img {
   }
 
   .chess-inner h1 {
-    margin-bottom: 15px;
     padding: 0 15px;
   }
 
@@ -214,6 +212,10 @@ img {
 
   .chess-inner h1 {
     font-size: 25px;
+  }
+
+  .chess-row:nth-child(5) {
+    border-bottom: 2px solid var(--lBlue);
   }
 
   .chess-square {
