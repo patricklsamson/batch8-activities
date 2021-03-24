@@ -44,7 +44,7 @@ main {
   }
 
   to {
-    opacity: 0.3;
+    opacity: 0.4;
   }
 }
 
@@ -54,7 +54,7 @@ main {
   }
 
   to {
-    opacity: 0.3;
+    opacity: 0.4;
   }
 }
 
@@ -64,7 +64,7 @@ main {
   }
 
   to {
-    opacity: 0.3;
+    opacity: 0.4;
   }
 }
 
@@ -74,7 +74,7 @@ main {
   }
 
   to {
-    opacity: 0.3;
+    opacity: 0.4;
   }
 }
 
@@ -97,7 +97,7 @@ main {
   -moz-animation: fade 4s;
   -o-animation: fade 4s;
   animation: fade 4s;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 .chess-inner h1 span {
