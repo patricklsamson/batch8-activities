@@ -8,6 +8,10 @@ main {
   background-image: linear-gradient(to bottom right, var(--dBlue), var(--lBlue2));
 }
 
+.wrap-overlay {
+  background: var(--dGray-03);
+}
+
 .cont {
   min-height: 100vh;
   display: -webkit-box;
