@@ -35,7 +35,9 @@ main {
 }
 
 #title span {
-  color: #fff;
+  font-family: "Colors Of Autumn", cursive;
+  color: var(--lBlue4);
+  font-weight: normal;
 }
 
 #name,
@@ -112,13 +114,11 @@ textarea {
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .cont > .grid > [class*="gcol"]:first-child {
     height: 1100px;
   }
-}
 
-@media only screen and (min-width: 992px) {
   .wrap-overlay.fluid {
     height: 100vh;
   }
@@ -141,7 +141,7 @@ textarea {
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 991px) {
   .wrap-text {
     margin-bottom: 15px;
   }
