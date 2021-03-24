@@ -67,17 +67,9 @@
 }
 
 .chess-inner h1 {
-  position: absolute;
   font-family: "Friz", serif;
   text-align: center;
-  top: 50%;
-  margin-top: -74px;
   color: var(--gold);
-  -webkit-animation: fade 4s;
-  -moz-animation: fade 4s;
-  -o-animation: fade 4s;
-  animation: fade 4s;
-  opacity: 0.3;
 }
 
 .chess-inner h1 span {
@@ -104,7 +96,7 @@
   flex-direction: row-reverse;
 }
 
-.chess-row:nth-child(4) {
+.chess-row:nth-child(5) {
   border-bottom: 5px solid var(--lBlue);
 }
 
@@ -140,6 +132,23 @@ img {
   height: 90%;
 }
 
+@media only screen and (min-width: 576px) {
+  .chess-inner h1 {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-animation: fade 4s;
+    -moz-animation: fade 4s;
+    -o-animation: fade 4s;
+    animation: fade 4s;
+    opacity: 0.3;
+  }
+}
+
 @media only screen and (max-width: 1199px) {
   .chess-outer {
     width: 100%;
@@ -172,6 +181,11 @@ img {
     width: 441px;
   }
 
+  .chess-inner h1 {
+    margin-bottom: 15px;
+    padding: 0 15px;
+  }
+
   .chess-square {
     height: 52px;
   }
@@ -180,6 +194,10 @@ img {
 @media only screen and (max-width: 480px) {
   .chess-outer {
     width: 385px;
+  }
+
+  .chess-inner h1 {
+    font-size: 25px;
   }
 
   .chess-square {
@@ -192,6 +210,10 @@ img {
     width: 335px;
   }
 
+  .chess-inner h1 {
+    font-size: 20px;
+  }
+
   .chess-square {
     height: 38px;
   }
@@ -200,6 +222,10 @@ img {
 @media only screen and (max-width: 375px) {
   .chess-outer {
     width: 280px;
+  }
+
+  .chess-inner h1 {
+    font-size: 16px;
   }
 
   .chess-square {
