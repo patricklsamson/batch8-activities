@@ -53,6 +53,26 @@ main {
   cursor: pointer;
 }
 
+#top:checked ~ .wrap-champs #top-champs {
+  display: block;
+}
+
+#jungle:checked ~ .wrap-champs #jungle-champs {
+  display: block;
+}
+
+#middle:checked ~ .wrap-champs #middle-champs {
+  display: block;
+}
+
+#adc:checked ~ .wrap-champs #adc-champs {
+  display: block;
+}
+
+#support:checked ~ .wrap-champs #support-champs {
+  display: block;
+}
+
 #support {
   margin-bottom: 15px;
 }
@@ -60,6 +80,14 @@ main {
 .wrap-champs {
   height: 192px;
   margin-bottom: 10px;
+}
+
+#top-champs,
+#jungle-champs,
+#middle-champs,
+#adc-champs,
+#support-champs {
+  display: none;
 }
 
 #submit {
