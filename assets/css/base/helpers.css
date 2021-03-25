@@ -143,6 +143,14 @@
   text-align: justify;
 }
 
+.mt-em {
+  margin-top: 0.5em;
+}
+
+.mb-em {
+  margin-bottom: 0.5em;
+}
+
 .xbul {
   list-style: none;
 }
