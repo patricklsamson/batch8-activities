@@ -11,11 +11,11 @@ main {
 }
 
 .wrap-overlay.fluid {
-  min-height: 100vh;
+  padding: 0;
 }
 
-.wrap-overlay.fluid .cont {
-  height: 100%;
+.wrap-overlay.fluid .tbl {
+  min-height: 100vh;
 }
 
 #survey-form {
@@ -139,15 +139,9 @@ textarea {
   color: var(--gold);
 }
 
-@media only screen and (min-width: 576px) {
-  .wrap-overlay.fluid {
-    height: 100vh;
-  }
-}
-
 @media only screen and (min-width: 992px) {
   .cont > .grid > [class*="gcol"]:first-child {
-    height: 1100px;
+    height: 1011px;
   }
 }
 
