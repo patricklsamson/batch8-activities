@@ -10,12 +10,16 @@ main {
   background-color: var(--dGray-05);
 }
 
+.wrap-overlay.fluid {
+  min-height: 100vh;
+}
+
 .wrap-overlay.fluid .cont {
   height: 100%;
 }
 
 #survey-form {
-  padding: 10px;
+  padding: 50px;
   background-color: var(--blue-08);
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
@@ -25,6 +29,9 @@ main {
 .wrap-text {
   background-color: var(--dBlue-08);
   padding: 20px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
 }
 
 #title {
@@ -71,10 +78,6 @@ main {
 
 #support:checked ~ .wrap-champs #support-champs {
   display: block;
-}
-
-#support {
-  margin-bottom: 15px;
 }
 
 .wrap-champs {
@@ -136,9 +139,9 @@ textarea {
   color: var(--gold);
 }
 
-@media only screen and (min-width: 481px) {
-  #survey-form {
-    padding: 15px;
+@media only screen and (min-width: 576px) {
+  .wrap-overlay.fluid {
+    height: 100vh;
   }
 }
 
@@ -146,11 +149,15 @@ textarea {
   .cont > .grid > [class*="gcol"]:first-child {
     height: 1100px;
   }
+}
 
-  .wrap-overlay.fluid {
-    height: 100vh;
+@media only screen and (min-width: 1200px) {
+  .p-results {
+    font-size: 40px;
   }
+}
 
+@media only screen and (max-width: 1199px) {
   #survey-form {
     padding: 35px;
     -webkit-border-radius: 35px;
@@ -158,19 +165,21 @@ textarea {
     border-radius: 35px;
   }
 
-  .p-results {
-    font-size: 40px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  #survey-form {
-    padding: 50px;
+  .wrap-text {
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
   }
 }
 
 @media only screen and (max-width: 991px) {
   .wrap-text {
     margin-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #survery-form {
+    padding: 20px;
   }
 }
