@@ -83,7 +83,13 @@ time,
 mark,
 audio,
 video,
-main {
+main,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
   border: 0;
@@ -107,36 +113,17 @@ body {
   overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
 a {
   color: #6c757d;
   text-decoration: none;
 }
-@media only screen and (min-width: 992px) {
-  a:hover {
-    color: #343a40;
-    text-decoration: none;
-  }
-}
-@media only screen and (max-width: 991px) {
-  a:active {
-    color: #343a40;
-    text-decoration: none;
-  }
+a:hover {
+  color: #343a40;
+  text-decoration: none;
 }
 
-input[type*=radio],
-input[type*=checkbox],
+input[type*="radio"],
+input[type*="checkbox"],
 select {
   cursor: pointer;
 }
