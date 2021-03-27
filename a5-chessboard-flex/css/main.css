@@ -12,7 +12,7 @@ main {
   background: var(--dGray-03);
 }
 
-.cont {
+.cont-fl {
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -28,7 +28,7 @@ main {
 
 .chess-board {
   margin: 0 auto;
-  border: 3vw solid var(--lBlue);
+  border: 3vmin solid var(--lBlue);
   position: relative;
 }
 
@@ -73,7 +73,7 @@ main {
 }
 
 .chess-board h1 {
-  font-size: 3vw;
+  font-size: 5vmin;
   font-family: "Friz", serif;
   text-align: center;
   color: var(--gold);
@@ -120,12 +120,12 @@ main {
 }
 
 .chess-row:nth-child(5) {
-  border-bottom: 0.3vw solid var(--lBlue);
+  border-bottom: 0.6vmin solid var(--lBlue);
 }
 
 .chess-square {
-  width: 5vw;
-  height: 5vw;
+  width: 10vmin;
+  height: 10vmin;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
