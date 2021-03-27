@@ -26,13 +26,9 @@ main {
   align-items: center;
 }
 
-.chess-outer {
-  padding: 50px;
+.chess-board {
   margin: 0 auto;
-  background: var(--lBlue);
-}
-
-.chess-inner {
+  border: 3vw solid var(--lBlue);
   position: relative;
 }
 
@@ -76,7 +72,7 @@ main {
   }
 }
 
-.chess-inner h1 {
+.chess-board h1 {
   font-size: 3vw;
   font-family: "Friz", serif;
   text-align: center;
@@ -99,7 +95,7 @@ main {
   opacity: 0.4;
 }
 
-.chess-inner h1 span {
+.chess-board h1 span {
   font-family: "Colors Of Autumn", cursive;
   color: var(--lBlue4);
 }
@@ -124,7 +120,7 @@ main {
 }
 
 .chess-row:nth-child(5) {
-  border-bottom: 5px solid var(--lBlue);
+  border-bottom: 0.3vw solid var(--lBlue);
 }
 
 .chess-square {
@@ -157,42 +153,4 @@ main {
 
 img {
   height: 90%;
-}
-
-@media only screen and (max-width: 1399px) {
-  .chess-inner h1 {
-    font-size: 4vw;
-  }
-
-  .chess-square {
-    width: 7vw;
-    height: 7vw;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .chess-outer {
-    padding: 25px;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  .chess-outer {
-    padding: 15px;
-  }
-
-  .chess-inner h1 {
-    font-size: 5vw;
-  }
-
-  .chess-square {
-    width: 9vw;
-    height: 9vw;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .chess-row:nth-child(5) {
-    border-bottom: 2px solid var(--lBlue);
-  }
 }
