@@ -9,3 +9,4 @@ Table of Contents:
 1. [Tribute Page Project](/a3-tribute-page-project/index.html)
 1. [Survey Form](/a4-survey-form/index.html)
 1. [Chessboard (Flex)](/a5-chessboard-flex/index.html)
+1. [Chessboard (Grid)](/a6-chessboard-grid/index.html)
