@@ -184,6 +184,10 @@ main {
 .chess-square img {
   cursor: pointer;
   height: 90%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .chess-square input {
