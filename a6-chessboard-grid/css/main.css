@@ -18,10 +18,26 @@ main {
 }
 
 .cont-fl h1 {
-  display: inline-block;
   font-size: 6vmin;
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
   color: #a4abbd;
+}
+
+.cont-fl h1.txtfx {
+  text-shadow: 0 0.2vmin 1vmin rgba(0, 0, 0, 0.5);
+}
+
+.cont-fl h1 span:first-child {
+  color: #14406f;
+}
+
+.cont-fl h1 span:nth-child(2) {
+  color: #6b283b;
+}
+
+.cont-fl p {
+  font-family: "American Captain", sans-serif;
+  font-size: 2.5vmin;
 }
 
 .cont-fl #tooltip {
@@ -38,9 +54,10 @@ main {
 }
 
 .cont-fl .valign > label {
-  position: relative;
+  position: absolute;
+  top: 8vmin;
+  right: 60vmin;
   z-index: 3;
-  margin-left: 1em;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
