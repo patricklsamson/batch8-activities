@@ -20,6 +20,12 @@ div,
 span,
 object,
 iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 p,
 blockquote,
 pre,
@@ -82,13 +88,7 @@ time,
 mark,
 audio,
 video,
-main,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+main {
   margin: 0;
   padding: 0;
   border: 0;
@@ -123,6 +123,8 @@ a:hover {
 
 input[type*="radio"],
 input[type*="checkbox"],
+input[type*="radio"] + label,
+input[type*="checkbox"] + label,
 select {
   cursor: pointer;
 }
