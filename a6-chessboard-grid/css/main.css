@@ -38,6 +38,9 @@ main {
 .cont-fl p {
   font-family: "American Captain", sans-serif;
   font-size: 2.5vmin;
+  display: inline-block;
+  position: relative;
+  left: 2vmin;
 }
 
 .cont-fl #tooltip {
@@ -54,15 +57,15 @@ main {
 }
 
 .cont-fl .valign > label {
-  position: absolute;
-  top: 8vmin;
-  right: 60vmin;
+  position: relative;
   z-index: 3;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
+  left: 32vmin;
 }
 
 #tooltip-icon {
