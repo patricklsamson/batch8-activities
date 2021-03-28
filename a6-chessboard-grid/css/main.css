@@ -14,6 +14,9 @@ main {
 
 .cont-fl {
   position: relative;
+}
+
+.cont-fl .tbl {
   min-height: 100vh;
 }
 
@@ -130,8 +133,9 @@ main {
 
 .tooltips img {
   height: 6vmin;
-  vertical-align: bottom;
+  vertical-align: middle;
   margin-right: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .chess-board {
