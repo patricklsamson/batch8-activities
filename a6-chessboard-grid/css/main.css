@@ -209,3 +209,12 @@ img {
   top: 10vmin;
   z-index: 1;
 }
+
+#falcon-pos:checked ~ label {
+  top: 10vmin;
+  left: 20vmin;
+}
+
+#black-widow-pos:checked ~ label {
+  right: 20vmin;
+}
