@@ -183,6 +183,12 @@ textarea {
   }
 }
 
+@media only screen and (max-width: 575px) {
+  #survey-form {
+    padding: 25px;
+  }
+}
+
 @media only screen and (max-width: 480px) {
   #survery-form {
     padding: 20px;
