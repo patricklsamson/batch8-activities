@@ -200,3 +200,21 @@ main {
   margin-top: 20vmin;
   z-index: 1;
 }
+
+#black-panther-pos:checked ~ label {
+  margin-bottom: 20vmin;
+}
+
+#cap-america-pos:checked ~ label {
+  margin-top: 20vmin;
+}
+
+#spiderman-g2-pos:checked ~ label {
+  margin-bottom: 40vmin;
+}
+
+#hawkeye-h7-pos:checked ~ label {
+  margin-top: 20vmin;
+  margin-right: 20vmin;
+  z-index: 1;
+}
