@@ -62,7 +62,6 @@ main {
 .cont-fl .valign > label {
   position: relative;
   z-index: 3;
-  cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -222,12 +221,26 @@ main {
   transition: 0.5s;
 }
 
+#falcon-pos:checked ~ label {
+  margin-top: 20vmin;
+  margin-left: 40vmin;
+}
+
+#black-widow-pos:checked ~ label {
+  margin-right: 40vmin;
+}
+
 #ant-man-pos:checked ~ label {
   margin-top: 140vmin;
 }
 
 #iron-man-pos:checked ~ label {
   margin-right: 20vmin;
+}
+
+#winter-soldier-pos:checked ~ label {
+  margin-top: 20vmin;
+  margin-left: 20vmin;
 }
 
 #vision-pos:checked ~ label {
@@ -238,13 +251,4 @@ main {
 #scarlet-witch-pos:checked ~ label {
   margin-top: 20vmin;
   z-index: 1;
-}
-
-#falcon-pos:checked ~ label {
-  margin-top: 20vmin;
-  margin-left: 40vmin;
-}
-
-#black-widow-pos:checked ~ label {
-  margin-right: 40vmin;
 }
