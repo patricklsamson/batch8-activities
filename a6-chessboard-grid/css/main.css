@@ -89,7 +89,7 @@ main {
 .cont-fl .tooltips {
   background: #a4abbd;
   padding: 0.2em;
-  width: 97vmin;
+  width: 90vmin;
   font-family: "American Captain", sans-serif;
   font-size: 4vmin;
   display: -webkit-box;
@@ -129,6 +129,7 @@ main {
 
 .tooltips p {
   margin-bottom: 0.5em;
+  font-size: 3.5vmin;
 }
 
 .tooltips img {
