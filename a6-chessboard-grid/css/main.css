@@ -180,8 +180,8 @@ img {
   -moz-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: inherit;
-  height: inherit;
+  width: 10vmin;
+  height: 10vmin;
 }
 
 .chess-square input {
