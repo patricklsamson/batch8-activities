@@ -122,6 +122,7 @@ main {
 .chess-board {
   width: 86vmin;
   border: 3vmin solid #343a40;
+  background: #343a40;
   margin: 0 auto;
 }
 
