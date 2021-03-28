@@ -15,7 +15,9 @@
     <main>
       <div class="cont-fl tbl talign">
         <div class="valign">
-          <h1 class="txtfx">Civil War Chess</h1>
+          <h1 class="txtfx"><span>Civil</span> War <span>Chess</span></h1>
+
+          <p class="mb-em"><q>Divided we fall</q></p>
 
           <input type="checkbox" id="tooltip" />
           <label for="tooltip"><img src="../assets/img/tooltip.png" alt="tooltip" id="tooltip-icon" /></label>
@@ -23,35 +25,35 @@
           <div class="wrap-overlay flex">
             <div class="tooltips talign lft">
               <fieldset>
-                <legend>Team Captain America</legend>
+                <legend>Team Captain America - TC</legend>
 
-                <p><img src="../assets/img/cap-america.png" alt="king-blk" /> = Captain America = King</p>
+                <p><img src="../assets/img/cap-america.png" alt="king-tc" /> = Captain America = King</p>
 
-                <p><img src="../assets/img/scarlet-witch.png" alt="queen-blk" /> = Scarlet Witch = Queen</p>
+                <p><img src="../assets/img/scarlet-witch.png" alt="queen-tc" /> = Scarlet Witch = Queen</p>
 
-                <p><img src="../assets/img/winter-soldier.png" alt="bishop-blk" /> = Winter Soldier = Bishop</p>
+                <p><img src="../assets/img/winter-soldier.png" alt="bishop-tc" /> = Winter Soldier = Bishop</p>
 
-                <p><img src="../assets/img/falcon.png" alt="knight-blk" /> = Falcon = Knight</p>
+                <p><img src="../assets/img/falcon.png" alt="knight-tc" /> = Falcon = Knight</p>
 
-                <p><img src="../assets/img/ant-man.png" alt="rook-blk" /> = Ant-Man = Rook</p>
+                <p><img src="../assets/img/ant-man.png" alt="rook-tc" /> = Ant-Man = Rook</p>
 
-                <p><img src="../assets/img/hawkeye.png" alt="pawn-blk" /> = Hawkeye = Pawn</p>
+                <p><img src="../assets/img/hawkeye.png" alt="pawn-tc" /> = Hawkeye = Pawn</p>
               </fieldset>
 
               <fieldset>
-                <legend>Team Iron Man</legend>
+                <legend>Team Iron Man - TI</legend>
 
-                <p><img src="../assets/img/iron-man.png" alt="king" /> = Iron Man = King</p>
+                <p><img src="../assets/img/iron-man.png" alt="king-ti" /> = Iron Man = King</p>
 
-                <p><img src="../assets/img/black-widow.png" alt="queen" /> = Black Widow = Queen</p>
+                <p><img src="../assets/img/black-widow.png" alt="queen-ti" /> = Black Widow = Queen</p>
 
-                <p><img src="../assets/img/war-machine.png" alt="bishop" /> = War Machine = Bishop</p>
+                <p><img src="../assets/img/war-machine.png" alt="bishop-ti" /> = War Machine = Bishop</p>
 
-                <p><img src="../assets/img/vision.png" alt="knight" /> = Vision = Knight</p>
+                <p><img src="../assets/img/vision.png" alt="knight-ti" /> = Vision = Knight</p>
 
-                <p><img src="../assets/img/black-panther.png" alt="rook" /> = Black Panther = Rook</p>
+                <p><img src="../assets/img/black-panther.png" alt="rook-ti" /> = Black Panther = Rook</p>
 
-                <p><img src="../assets/img/spiderman.png" alt="pawn" /> = Spiderman = Pawn</p>
+                <p><img src="../assets/img/spiderman.png" alt="pawn-ti" /> = Spiderman = Pawn</p>
               </fieldset>
             </div>
           </div>
@@ -59,17 +61,17 @@
           <div class="chess-board">
             <div class="chess-row">
               <div class="chess-square">
-                <input type="checkbox" id="ant-man-pos" /><label for="ant-man-pos"><img src="../assets/img/ant-man.png" alt="rook-blk" id="ant-man" /></label>
+                <input type="checkbox" id="ant-man-pos" /><label for="ant-man-pos"><img src="../assets/img/ant-man.png" alt="rook-tc" id="ant-man" title="TC - Rook" /></label>
               </div>
               <div class="chess-square"></div>
               <div class="chess-square"></div>
               <div class="chess-square"></div>
               <div class="chess-square">
-                <input type="checkbox" id="scarlet-witch-pos" /><label for="scarlet-witch-pos"><img src="../assets/img/scarlet-witch.png" alt="queen-blk" /></label>
+                <input type="checkbox" id="scarlet-witch-pos" /><label for="scarlet-witch-pos"><img src="../assets/img/scarlet-witch.png" alt="queen-tc" title="TC - Queen" /></label>
               </div>
               <div class="chess-square"></div>
               <div class="chess-square"></div>
-              <div class="chess-square"><img src="../assets/img/cap-america.png" alt="king-blk" /></div>
+              <div class="chess-square"><img src="../assets/img/cap-america.png" alt="king-tc" title="TC - King" /></div>
             </div>
 
             <div class="chess-row">
@@ -78,8 +80,8 @@
               <div class="chess-square"></div>
               <div class="chess-square"></div>
               <div class="chess-square"></div>
-              <div class="chess-square"><img src="../assets/img/black-panther.png" alt="rook" /></div>
-              <div class="chess-square"><img src="../assets/img/winter-soldier.png" alt="bishop-blk" /></div>
+              <div class="chess-square"><img src="../assets/img/black-panther.png" alt="rook-ti" title="TI - Rook" /></div>
+              <div class="chess-square"><img src="../assets/img/winter-soldier.png" alt="bishop-tc" title="TC - Bishop" /></div>
               <div class="chess-square"></div>
             </div>
 
@@ -87,10 +89,10 @@
               <div class="chess-square"></div>
               <div class="chess-square"></div>
               <div class="chess-square"></div>
-              <div class="chess-square"><img src="../assets/img/hawkeye.png" alt="pawn-blk" /></div>
+              <div class="chess-square"><img src="../assets/img/hawkeye.png" alt="pawn-tc" title="TC - Pawn" /></div>
               <div class="chess-square"></div>
               <div class="chess-square"></div>
-              <div class="chess-square"><img src="../assets/img/hawkeye.png" alt="pawn-blk" /></div>
+              <div class="chess-square"><img src="../assets/img/hawkeye.png" alt="pawn-tc" title="TC - Pawn" /></div>
               <div class="chess-square"></div>
             </div>
 
@@ -99,55 +101,55 @@
               <div class="chess-square"></div>
               <div class="chess-square"></div>
               <div class="chess-square">
-                <input type="checkbox" id="vision-pos" /><label for="vision-pos"><img src="../assets/img/vision.png" alt="knight" /></label>
+                <input type="checkbox" id="vision-pos" /><label for="vision-pos"><img src="../assets/img/vision.png" alt="knight-ti" title="TI - Knight" /></label>
               </div>
               <div class="chess-square"></div>
               <div class="chess-square"></div>
               <div class="chess-square"></div>
-              <div class="chess-square"><img src="../assets/img/hawkeye.png" alt="pawn-blk" /></div>
+              <div class="chess-square"><img src="../assets/img/hawkeye.png" alt="pawn-tc" title="TC - Pawn" /></div>
             </div>
 
             <div class="chess-row">
               <div class="chess-square"></div>
-              <div class="chess-square"><img src="../assets/img/spiderman.png" alt="pawn" /></div>
+              <div class="chess-square"><img src="../assets/img/spiderman.png" alt="pawn-ti" title="TI - Pawn" /></div>
               <div class="chess-square"></div>
-              <div class="chess-square"><img src="../assets/img/hawkeye.png" alt="pawn-blk" /></div>
-              <div class="chess-square"><img src="../assets/img/spiderman.png" alt="pawn" /></div>
-              <div class="chess-square"></div>
-              <div class="chess-square"></div>
-              <div class="chess-square"></div>
-            </div>
-
-            <div class="chess-row">
-              <div class="chess-square"></div>
-              <div class="chess-square">
-                <input type="checkbox" id="falcon-pos" /><label for="falcon-pos"><img src="../assets/img/falcon.png" alt="knight-blk" /></label>
-              </div>
-              <div class="chess-square"></div>
-              <div class="chess-square"><img src="../assets/img/war-machine.png" alt="bishop" /></div>
+              <div class="chess-square"><img src="../assets/img/hawkeye.png" alt="pawn-tc" title="TC - Pawn" /></div>
+              <div class="chess-square"><img src="../assets/img/spiderman.png" alt="pawn-ti" title="TI - Pawn" /></div>
               <div class="chess-square"></div>
               <div class="chess-square"></div>
-              <div class="chess-square"></div>
-              <div class="chess-square"><img src="../assets/img/spiderman.png" alt="pawn" /></div>
-            </div>
-
-            <div class="chess-row">
-              <div class="chess-square"></div>
-              <div class="chess-square"><img src="../assets/img/spiderman.png" alt="pawn" /></div>
-              <div class="chess-square"></div>
-              <div class="chess-square"></div>
-              <div class="chess-square"></div>
-              <div class="chess-square">
-                <input type="checkbox" id="black-widow-pos" /><label for="black-widow-pos"><img src="../assets/img/black-widow.png" alt="queen" /></label>
-              </div>
-              <div class="chess-square"><img src="../assets/img/spiderman.png" alt="pawn" /></div>
               <div class="chess-square"></div>
             </div>
 
             <div class="chess-row">
               <div class="chess-square"></div>
               <div class="chess-square">
-                <input type="checkbox" id="iron-man-pos" /><label for="iron-man-pos"><img src="../assets/img/iron-man.png" alt="king" id="iron-man" /></label>
+                <input type="checkbox" id="falcon-pos" /><label for="falcon-pos"><img src="../assets/img/falcon.png" alt="knight-tc" title="TC - Knight" /></label>
+              </div>
+              <div class="chess-square"></div>
+              <div class="chess-square"><img src="../assets/img/war-machine.png" alt="bishop-ti" title="TI - Bishop" /></div>
+              <div class="chess-square"></div>
+              <div class="chess-square"></div>
+              <div class="chess-square"></div>
+              <div class="chess-square"><img src="../assets/img/spiderman.png" alt="pawn-ti" title="TI - Pawn" /></div>
+            </div>
+
+            <div class="chess-row">
+              <div class="chess-square"></div>
+              <div class="chess-square"><img src="../assets/img/spiderman.png" alt="pawn-ti" title="TI - Pawn" /></div>
+              <div class="chess-square"></div>
+              <div class="chess-square"></div>
+              <div class="chess-square"></div>
+              <div class="chess-square">
+                <input type="checkbox" id="black-widow-pos" /><label for="black-widow-pos"><img src="../assets/img/black-widow.png" alt="queen-ti" title="TI - Queen" /></label>
+              </div>
+              <div class="chess-square"><img src="../assets/img/spiderman.png" alt="pawn-ti" title="TI - Pawn" /></div>
+              <div class="chess-square"></div>
+            </div>
+
+            <div class="chess-row">
+              <div class="chess-square"></div>
+              <div class="chess-square">
+                <input type="checkbox" id="iron-man-pos" /><label for="iron-man-pos"><img src="../assets/img/iron-man.png" alt="king-ti" id="iron-man" title="TI - King" /></label>
               </div>
               <div class="chess-square"></div>
               <div class="chess-square"></div>
