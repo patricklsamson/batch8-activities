@@ -38,7 +38,7 @@ main {
   color: #6b283b;
 }
 
-.cont-fl p {
+.cont-fl .valign > p {
   font-family: "American Captain", sans-serif;
   font-size: 2.5vmin;
   display: inline-block;
@@ -140,7 +140,7 @@ main {
 
 .chess-board {
   width: 86vmin;
-  border: 3vmin solid #bea5a9;
+  border: 3vmin solid #343a40;
   margin: 0 auto;
 }
 
