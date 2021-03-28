@@ -158,13 +158,15 @@ main {
 
 .chess-square img {
   cursor: pointer;
-}
-
-img {
   height: 90%;
 }
 
+.chess-square input {
+  display: none;
+}
+
 .chess-square label {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -184,37 +186,36 @@ img {
   height: 10vmin;
 }
 
-.chess-square input {
-  display: none;
-}
-
-.chess-square label {
-  position: relative;
+.chess-square input:checked ~ label {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
 }
 
 #ant-man-pos:checked ~ label {
-  top: 70vmin;
+  margin-top: 140vmin;
 }
 
 #iron-man-pos:checked ~ label {
-  right: 10vmin;
+  margin-right: 20vmin;
 }
 
 #vision-pos:checked ~ label {
-  left: 10vmin;
-  bottom: 20vmin;
+  margin-left: 20vmin;
+  margin-bottom: 40vmin;
 }
 
 #scarlet-witch-pos:checked ~ label {
-  top: 10vmin;
+  margin-top: 20vmin;
   z-index: 1;
 }
 
 #falcon-pos:checked ~ label {
-  top: 10vmin;
-  left: 20vmin;
+  margin-top: 20vmin;
+  margin-left: 40vmin;
 }
 
 #black-widow-pos:checked ~ label {
-  right: 20vmin;
+  margin-right: 40vmin;
 }
