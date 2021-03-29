@@ -18,7 +18,42 @@
           <div class="valign">
             <h1><span>Civil</span> War <span>Chess</span></h1>
 
-            <p class="mb-em"><q>Divided we fall</q></p>
+            <input type="checkbox" id="story" />
+            <label for="story">Story</label>
+
+            <div class="story wrap-overlay flex">
+              <div class="story-inner">
+                <fieldset>
+                  <legend class="talign tlft">Moves of Chess Pieces Based on Story</legend>
+
+                  <p><span class="tc">Falcon (B3)</span> attacked <span class="ti">War Machine (D2)</span></p>
+
+                  <p><span class="ti">Black Widow (F2)</span> avenged War Machine and attacked <span class="tc">Falcon(D2)</span></p>
+
+                  <p><span class="tc">Ant-Man (A8)</span> challenged Iron Man and moved to <span class="tc">A1</span> due to rivalry</p>
+
+                  <p><span class="ti">Iron Man (B1)</span> attacked <span class="tc">Ant-Man (A1)</span></p>
+
+                  <p><span class="tc">Hawkeye (D4)</span> tried to persuade <span class="ti">Black Widow (D2)</span> to side with them</p>
+
+                  <p><span class="ti">Vision (D5)</span> chased after <span class="tc">Scarlet Witch (E8)</span></p>
+
+                  <p><span class="tc">Scarlet Witch (E8)</span> angered, then attacked <span class="ti">Vision (E7)</span></p>
+
+                  <p><span class="ti">Black Panther (F7)</span> avenged his and Iron Man's father, attacked <span class="tc">Winter Soldier (G7)</span></p>
+
+                  <p><span class="tc">Captain America (H8)</span> avenged Winter Soldier and attacked <span class="ti">Black Panther(G7)</span></p>
+
+                  <p>For the first time, <span class="ti">Spiderman(G2)</span> appeared in an Avengers Movie, got excited and moved to <span class="ti">G4</span></p>
+
+                  <p><span class="tc">Hawkeye (H5)</span> broke Spiderman's excitement and attacked him at <span class="tc">G4</span></p>
+
+                  <a href="story.html" target="_blank">Open story on a new tab</a>
+                </fieldset>
+              </div>
+            </div>
+
+            <p class="quote mb-em"><q>Divided we fall</q></p>
 
             <input type="checkbox" id="tooltip" />
             <label for="tooltip"><img src="../assets/img/tooltip.png" alt="tooltip" id="tooltip-icon" /></label>
@@ -62,6 +97,7 @@
             <div class="chess-board">
               <div class="chess-row">
                 <div class="chess-square flex">
+                  <p class="left-pos">8</p>
                   <input type="checkbox" id="ant-man-pos" /><label for="ant-man-pos" class="flex"><img src="../assets/img/ant-man.png" alt="ant-man-logo" id="ant-man" title="TC - Rook" /></label>
                 </div>
                 <div class="chess-square flex"></div>
@@ -78,7 +114,7 @@
               </div>
 
               <div class="chess-row">
-                <div class="chess-square flex"></div>
+                <div class="chess-square flex"><p class="left-pos">7</p></div>
                 <div class="chess-square flex"></div>
                 <div class="chess-square flex"></div>
                 <div class="chess-square flex"></div>
@@ -91,7 +127,7 @@
               </div>
 
               <div class="chess-row">
-                <div class="chess-square flex"></div>
+                <div class="chess-square flex"><p class="left-pos">6</p></div>
                 <div class="chess-square flex"></div>
                 <div class="chess-square flex"></div>
                 <div class="chess-square flex"><img src="../assets/img/hawkeye.png" alt="hawkeye-logo" title="TC - Pawn" /></div>
@@ -102,7 +138,7 @@
               </div>
 
               <div class="chess-row">
-                <div class="chess-square flex"></div>
+                <div class="chess-square flex"><p class="left-pos">5</p></div>
                 <div class="chess-square flex"></div>
                 <div class="chess-square flex"></div>
                 <div class="chess-square flex">
@@ -117,7 +153,7 @@
               </div>
 
               <div class="chess-row">
-                <div class="chess-square flex"></div>
+                <div class="chess-square flex"><p class="left-pos">4</p></div>
                 <div class="chess-square flex"><img src="../assets/img/spiderman.png" alt="spiderman-logo" title="TI - Pawn" /></div>
                 <div class="chess-square flex"></div>
                 <div class="chess-square flex">
@@ -130,7 +166,7 @@
               </div>
 
               <div class="chess-row">
-                <div class="chess-square flex"></div>
+                <div class="chess-square flex"><p class="left-pos">3</p></div>
                 <div class="chess-square flex">
                   <input type="checkbox" id="falcon-pos" /><label for="falcon-pos" class="flex"><img src="../assets/img/falcon.png" alt="falcon-logo" title="TC - Knight" /></label>
                 </div>
@@ -143,7 +179,7 @@
               </div>
 
               <div class="chess-row">
-                <div class="chess-square flex"></div>
+                <div class="chess-square flex"><p class="left-pos">2</p></div>
                 <div class="chess-square flex"><img src="../assets/img/spiderman.png" alt="spiderman-logo" title="TI - Pawn" /></div>
                 <div class="chess-square flex"></div>
                 <div class="chess-square flex"><img src="../assets/img/war-machine.png" alt="war-machine-logo" title="TI - Bishop" /></div>
@@ -158,16 +194,20 @@
               </div>
 
               <div class="chess-row">
-                <div class="chess-square flex"></div>
                 <div class="chess-square flex">
+                  <p class="left-pos">1</p>
+                  <p class="bottom-pos">a</p>
+                </div>
+                <div class="chess-square flex">
+                  <p class="bottom-pos">b</p>
                   <input type="checkbox" id="iron-man-pos" /><label for="iron-man-pos" class="flex"><img src="../assets/img/iron-man.png" alt="iron-man-logo" id="iron-man" title="TI - King" /></label>
                 </div>
-                <div class="chess-square flex"></div>
-                <div class="chess-square flex"></div>
-                <div class="chess-square flex"></div>
-                <div class="chess-square flex"></div>
-                <div class="chess-square flex"></div>
-                <div class="chess-square flex"></div>
+                <div class="chess-square flex"><p class="bottom-pos">c</p></div>
+                <div class="chess-square flex"><p class="bottom-pos">d</p></div>
+                <div class="chess-square flex"><p class="bottom-pos">e</p></div>
+                <div class="chess-square flex"><p class="bottom-pos">f</p></div>
+                <div class="chess-square flex"><p class="bottom-pos">g</p></div>
+                <div class="chess-square flex"><p class="bottom-pos">h</p></div>
               </div>
             </div>
           </div>
