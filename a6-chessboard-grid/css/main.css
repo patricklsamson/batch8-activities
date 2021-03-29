@@ -38,18 +38,84 @@ main {
   color: #6b283b;
 }
 
-.cont-fl .valign > p {
+.cont-fl .quote {
   font-family: "American Captain", sans-serif;
   font-size: 2.5vmin;
   display: inline-block;
   position: relative;
-  left: 2vmin;
+  right: 0.5vmin;
 }
 
+.cont-fl .valign > label:nth-child(3) {
+  position: relative;
+  z-index: 4;
+  right: 30vmin;
+  font-family: "American Captain", sans-serif;
+  font-size: 2.5vmin;
+}
+
+.cont-fl #story,
 .cont-fl #tooltip {
   display: none;
 }
 
+.cont-fl #story:checked ~ label[for*="story"] {
+  color: #a4abbd;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+@media not all and (pointer: coarse) {
+  .cont-fl #story:hover ~ label[for*="story"] {
+    color: #a4abbd;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
+.cont-fl #story:checked ~ label[for*="tooltip"] {
+  z-index: 1;
+}
+
+@media not all and (pointer: coarse) {
+  .cont-fl #story:hover ~ label[for*="tooltip"] {
+    z-index: 1;
+  }
+}
+
+.cont-fl #tooltip:checked ~ label[for*="tooltip"] img {
+  background: #a4abbd;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+@media not all and (pointer: coarse) {
+  .cont-fl #tooltip:hover ~ label[for*="tooltip"] img {
+    background: #a4abbd;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
+.cont-fl #tooltip:checked ~ .wrap-overlay {
+  z-index: 5;
+}
+
+@media not all and (pointer: coarse) {
+  .cont-fl #tooltip:hover ~ .wrap-overlay {
+    z-index: 5;
+  }
+}
+
+.cont-fl #story:checked ~ .story,
 .cont-fl #tooltip:checked ~ .wrap-overlay {
   visibility: visible;
   -webkit-transition: 0.5s;
@@ -59,15 +125,30 @@ main {
   opacity: 1;
 }
 
-.cont-fl .valign > label {
+@media not all and (pointer: coarse) {
+  .cont-fl #story:hover ~ .story,
+  .cont-fl #tooltip:hover ~ .wrap-overlay {
+    visibility: visible;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+    opacity: 1;
+  }
+}
+
+.cont-fl .valign > label:nth-child(7) {
   position: relative;
-  z-index: 3;
+  z-index: 6;
   vertical-align: middle;
-  left: 32vmin;
+  left: 30vmin;
 }
 
 #tooltip-icon {
   height: 4vmin;
+  -webkit-border-radius: 2vmin;
+  -moz-border-radius: 2vmin;
+  border-radius: 2vmin;
 }
 
 .cont-fl .wrap-overlay {
@@ -81,14 +162,28 @@ main {
   z-index: 2;
 }
 
+.cont-fl .story .story-inner,
 .cont-fl .tooltips {
   background: #a4abbd;
-  padding: 0.2em;
-  width: 90vmin;
+  padding: 2vmin;
+  width: 91vmin;
   font-family: "American Captain", sans-serif;
   font-size: 4vmin;
 }
 
+.cont-fl .story .story-inner {
+  width: 105vmin;
+  font-size: 3vmin;
+  position: relative;
+  top: 5vmin;
+}
+
+.cont-fl .story .story-inner p {
+  margin-bottom: 0.5em;
+  text-align: left;
+}
+
+.cont-fl .story .story-inner fieldset,
 .tooltips fieldset {
   border-width: 0.3vmin;
   -webkit-margin-start: 0.2vmin;
@@ -99,10 +194,12 @@ main {
   margin-inline-end: 0.2vmin;
 }
 
+span.tc,
 .tooltips fieldset:first-child {
   color: #14406f;
 }
 
+span.ti,
 .tooltips fieldset:nth-child(2) {
   color: #6b283b;
 }
@@ -144,6 +241,31 @@ main {
   background: #14406f;
 }
 
+.chess-square {
+  position: relative;
+}
+
+.chess-square p {
+  color: #a4abbd;
+  font-family: "American Captain", sans-serif;
+  font-size: 3vmin;
+  width: 2vmin;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.chess-square .left-pos {
+  position: absolute;
+  right: 10.6vmin;
+}
+
+.chess-square .bottom-pos {
+  position: absolute;
+  top: 9.25vmin;
+}
+
 .chess-square img {
   cursor: pointer;
   height: 90%;
@@ -168,6 +290,7 @@ main {
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
   transition: 0.5s;
+  z-index: 1;
 }
 
 #falcon-pos:checked ~ label {
@@ -198,7 +321,7 @@ main {
 
 #scarlet-witch-pos:checked ~ label {
   margin-top: 20vmin;
-  z-index: 1;
+  z-index: 2;
 }
 
 #black-panther-pos:checked ~ label {
@@ -208,7 +331,7 @@ main {
 #cap-america-pos:checked ~ label {
   margin-top: 20vmin;
   margin-right: 20vmin;
-  z-index: 1;
+  z-index: 2;
 }
 
 #spiderman-g2-pos:checked ~ label {
@@ -218,5 +341,9 @@ main {
 #hawkeye-h7-pos:checked ~ label {
   margin-top: 20vmin;
   margin-right: 20vmin;
-  z-index: 1;
+  z-index: 2;
+}
+
+.story-main .story .story-inner {
+  top: 2vmin;
 }
