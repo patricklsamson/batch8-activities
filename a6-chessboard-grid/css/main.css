@@ -188,8 +188,8 @@ main {
 }
 
 #winter-soldier-pos:checked ~ label {
-  margin-top: 20vmin;
-  margin-left: 20vmin;
+  margin-bottom: 20vmin;
+  margin-right: 20vmin;
 }
 
 #vision-pos:checked ~ label {
@@ -204,6 +204,7 @@ main {
 
 #black-panther-pos:checked ~ label {
   margin-bottom: 20vmin;
+  z-index: 1;
 }
 
 #cap-america-pos:checked ~ label {
@@ -218,9 +219,4 @@ main {
   margin-top: 20vmin;
   margin-right: 20vmin;
   z-index: 1;
-}
-
-#war-machine-pos:checked ~ label {
-  margin-bottom: 60vmin;
-  margin-right: 60vmin;
 }
