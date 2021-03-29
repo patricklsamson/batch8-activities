@@ -1,5 +1,5 @@
 # Welcome to Patrick's GitHub Page!
-
+***
 The following are the activities completed throughout the duration of the Web Development Bootcamp with Avion School.
 
 ## Table of Contents:
