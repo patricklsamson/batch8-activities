@@ -1,8 +1,6 @@
-# Avion School batch8-activities Compilation
+The following are the activities completed throughout the duration of the Web Development Bootcamp with Avion School.
 
-## Presented to you by: Patrick Samson
-
-Table of Contents:
+# Batch 8 Activities:
 
 1. [x] [Best Practice Page](/a1-best-practice-page/index.html)
 1. [x] [HTML Email](/a2-html-email/index.html)
