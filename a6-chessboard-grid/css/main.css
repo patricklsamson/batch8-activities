@@ -187,9 +187,8 @@ main {
   margin-right: 20vmin;
 }
 
-#winter-soldier-pos:checked ~ label {
-  margin-bottom: 20vmin;
-  margin-right: 20vmin;
+#hawkeye-g7-pos:checked ~ label {
+  margin-top: 20vmin;
 }
 
 #vision-pos:checked ~ label {
@@ -203,12 +202,13 @@ main {
 }
 
 #black-panther-pos:checked ~ label {
-  margin-bottom: 20vmin;
-  z-index: 1;
+  margin-left: 20vmin;
 }
 
 #cap-america-pos:checked ~ label {
   margin-top: 20vmin;
+  margin-right: 20vmin;
+  z-index: 1;
 }
 
 #spiderman-g2-pos:checked ~ label {
