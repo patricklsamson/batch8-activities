@@ -109,7 +109,7 @@ main {
 }
 
 .cont-fl .story-inner,
-.cont-fl .tooltips {
+.cont-fl .tooltips-inner {
   background: #a4abbd;
   padding: 2vmin;
   width: 91vmin;
@@ -124,12 +124,12 @@ main {
   top: 5vmin;
 }
 
-.story-inner p {
+.story p {
   margin-bottom: 0.5em;
   text-align: left;
 }
 
-.story-inner fieldset,
+.story fieldset,
 .tooltips fieldset {
   border-width: 0.3vmin;
   -webkit-margin-start: 0.2vmin;
