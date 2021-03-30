@@ -34,22 +34,6 @@ main {
   color: #6b283b;
 }
 
-.cont-fl .quote {
-  font-family: "American Captain", sans-serif;
-  font-size: 2.5vmin;
-  display: inline-block;
-  position: relative;
-  right: 0.5vmin;
-}
-
-.cont-fl label[for="story"] {
-  position: relative;
-  z-index: 4;
-  right: 30vmin;
-  font-family: "American Captain", sans-serif;
-  font-size: 2.5vmin;
-}
-
 .cont-fl #story,
 .cont-fl #tooltip {
   display: none;
@@ -83,36 +67,8 @@ main {
   }
 }
 
-.cont-fl #tooltip:checked ~ label[for="tooltip"] img {
-  background: #a4abbd;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
-}
-
-@media not all and (pointer: coarse) {
-  .cont-fl #tooltip:hover ~ label[for="tooltip"] img {
-    background: #a4abbd;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    -moz-transition: 0.5s;
-    transition: 0.5s;
-  }
-}
-
-.cont-fl #tooltip:checked ~ .wrap-overlay {
-  z-index: 5;
-}
-
-@media not all and (pointer: coarse) {
-  .cont-fl #tooltip:hover ~ .wrap-overlay {
-    z-index: 5;
-  }
-}
-
 .cont-fl #story:checked ~ .story,
-.cont-fl #tooltip:checked ~ .wrap-overlay {
+.cont-fl #tooltip:checked ~ .tooltips {
   visibility: visible;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -123,7 +79,7 @@ main {
 
 @media not all and (pointer: coarse) {
   .cont-fl #story:hover ~ .story,
-  .cont-fl #tooltip:hover ~ .wrap-overlay {
+  .cont-fl #tooltip:hover ~ .tooltips {
     visibility: visible;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
@@ -133,18 +89,12 @@ main {
   }
 }
 
-.cont-fl label[for="tooltip"] {
+.cont-fl label[for="story"] {
   position: relative;
-  z-index: 6;
-  vertical-align: middle;
-  left: 30vmin;
-}
-
-#tooltip-icon {
-  height: 4vmin;
-  -webkit-border-radius: 2vmin;
-  -moz-border-radius: 2vmin;
-  border-radius: 2vmin;
+  z-index: 4;
+  right: 30vmin;
+  font-family: "American Captain", sans-serif;
+  font-size: 2.5vmin;
 }
 
 .cont-fl .wrap-overlay {
@@ -198,6 +148,56 @@ span.tc,
 span.ti,
 .tooltips fieldset:nth-child(2) {
   color: #6b283b;
+}
+
+.cont-fl .quote {
+  font-family: "American Captain", sans-serif;
+  font-size: 2.5vmin;
+  display: inline-block;
+  position: relative;
+  right: 0.5vmin;
+}
+
+.cont-fl #tooltip:checked ~ label[for="tooltip"] img {
+  background: #a4abbd;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+@media not all and (pointer: coarse) {
+  .cont-fl #tooltip:hover ~ label[for="tooltip"] img {
+    background: #a4abbd;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
+.cont-fl #tooltip:checked ~ .tooltips {
+  z-index: 5;
+}
+
+@media not all and (pointer: coarse) {
+  .cont-fl #tooltip:hover ~ .tooltips {
+    z-index: 5;
+  }
+}
+
+.cont-fl label[for="tooltip"] {
+  position: relative;
+  z-index: 6;
+  vertical-align: middle;
+  left: 30vmin;
+}
+
+#tooltip-icon {
+  height: 4vmin;
+  -webkit-border-radius: 2vmin;
+  -moz-border-radius: 2vmin;
+  border-radius: 2vmin;
 }
 
 .tooltips p {
