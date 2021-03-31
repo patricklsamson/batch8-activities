@@ -6,11 +6,11 @@ html {
 
 main {
   position: relative;
-  background-image: -webkit-gradient(linear, left top, right top, from(#14406f), color-stop(var(--dGray)), to(#6b283b));
-  background-image: -webkit-linear-gradient(left, #14406f, var(--dGray), #6b283b);
-  background-image: -moz-linear-gradient(left, #14406f, var(--dGray), #6b283b);
-  background-image: -o-linear-gradient(left, #14406f, var(--dGray), #6b283b);
-  background-image: linear-gradient(to right, #14406f, var(--dGray), #6b283b);
+  background-image: -webkit-gradient(linear, left top, right top, from(var(--dBlue2)), color-stop(var(--dGray)), to(var(--dRed)));
+  background-image: -webkit-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
+  background-image: -moz-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
+  background-image: -o-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
+  background-image: linear-gradient(to right, var(--dBlue2), var(--dGray), var(--dRed));
 }
 
 main .tbl {
@@ -20,15 +20,15 @@ main .tbl {
 main h1 {
   font-size: 6vmin;
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
-  color: #a4abbd;
+  color: var(--gray3);
 }
 
 main h1 span:first-child {
-  color: #14406f;
+  color: var(--dBlue2);
 }
 
 main h1 span:nth-child(2) {
-  color: #6b283b;
+  color: var(--dRed);
 }
 
 main #story,
@@ -37,7 +37,7 @@ main #tooltip {
 }
 
 main #story:checked ~ label[for="story"] {
-  color: #a4abbd;
+  color: var(--gray3);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -46,7 +46,7 @@ main #story:checked ~ label[for="story"] {
 
 @media not all and (pointer: coarse) {
   main #story:hover ~ label[for="story"] {
-    color: #a4abbd;
+    color: var(--gray3);
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     -moz-transition: 0.5s;
@@ -107,7 +107,7 @@ main .wrap-overlay {
 
 main .story-inner,
 main .tooltips-inner {
-  background: #a4abbd;
+  background: var(--gray3);
   padding: 2vmin;
   width: 91vmin;
   font-family: "American Captain", sans-serif;
@@ -143,12 +143,12 @@ main .story-inner {
 
 span.tc,
 .tooltips fieldset:first-child {
-  color: #14406f;
+  color: var(--dBlue2);
 }
 
 span.ti,
 .tooltips fieldset:nth-child(2) {
-  color: #6b283b;
+  color: var(--dRed);
 }
 
 main .quote {
@@ -160,7 +160,7 @@ main .quote {
 }
 
 main #tooltip:checked ~ label[for="tooltip"] img {
-  background: #a4abbd;
+  background: var(--gray3);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -169,7 +169,7 @@ main #tooltip:checked ~ label[for="tooltip"] img {
 
 @media not all and (pointer: coarse) {
   main #tooltip:hover ~ label[for="tooltip"] img {
-    background: #a4abbd;
+    background: var(--gray3);
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     -moz-transition: 0.5s;
@@ -215,8 +215,8 @@ main label[for="tooltip"] {
 
 .chess-board {
   width: 86vmin;
-  border: 3vmin solid #343a40;
-  background: #343a40;
+  border: 3vmin solid var(--dGray2);
+  background: var(--dGray2);
   margin: 0 auto;
 }
 
@@ -230,12 +230,12 @@ main label[for="tooltip"] {
 
 .chess-row:nth-child(odd) .chess-square:nth-child(odd),
 .chess-row:nth-child(even) .chess-square:nth-child(even) {
-  background: #a4abbd;
+  background: var(--gray3);
 }
 
 .chess-row:nth-child(odd) .chess-square:nth-child(even),
 .chess-row:nth-child(even) .chess-square:nth-child(odd) {
-  background: #14406f;
+  background: var(--dBlue2);
 }
 
 .chess-square {
@@ -243,7 +243,7 @@ main label[for="tooltip"] {
 }
 
 .chess-square p {
-  color: #a4abbd;
+  color: var(--gray3);
   font-family: "American Captain", sans-serif;
   font-size: 3vmin;
   width: 2vmin;
