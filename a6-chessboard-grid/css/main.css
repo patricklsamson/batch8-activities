@@ -12,34 +12,34 @@ main {
   background-image: linear-gradient(to right, #14406f, var(--dGray), #6b283b);
 }
 
-.cont-fl {
+main {
   position: relative;
 }
 
-.cont-fl .tbl {
+main .tbl {
   min-height: 100vh;
 }
 
-.cont-fl h1 {
+main h1 {
   font-size: 6vmin;
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
   color: #a4abbd;
 }
 
-.cont-fl h1 span:first-child {
+main h1 span:first-child {
   color: #14406f;
 }
 
-.cont-fl h1 span:nth-child(2) {
+main h1 span:nth-child(2) {
   color: #6b283b;
 }
 
-.cont-fl #story,
-.cont-fl #tooltip {
+main #story,
+main #tooltip {
   display: none;
 }
 
-.cont-fl #story:checked ~ label[for="story"] {
+main #story:checked ~ label[for="story"] {
   color: #a4abbd;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -48,7 +48,7 @@ main {
 }
 
 @media not all and (pointer: coarse) {
-  .cont-fl #story:hover ~ label[for="story"] {
+  main #story:hover ~ label[for="story"] {
     color: #a4abbd;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
@@ -57,18 +57,18 @@ main {
   }
 }
 
-.cont-fl #story:checked ~ label[for="tooltip"] {
+main #story:checked ~ label[for="tooltip"] {
   z-index: 1;
 }
 
 @media not all and (pointer: coarse) {
-  .cont-fl #story:hover ~ label[for="tooltip"] {
+  main #story:hover ~ label[for="tooltip"] {
     z-index: 1;
   }
 }
 
-.cont-fl #story:checked ~ .story,
-.cont-fl #tooltip:checked ~ .tooltips {
+main #story:checked ~ .story,
+main #tooltip:checked ~ .tooltips {
   visibility: visible;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -78,8 +78,8 @@ main {
 }
 
 @media not all and (pointer: coarse) {
-  .cont-fl #story:hover ~ .story,
-  .cont-fl #tooltip:hover ~ .tooltips {
+  main #story:hover ~ .story,
+  main #tooltip:hover ~ .tooltips {
     visibility: visible;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
@@ -89,7 +89,7 @@ main {
   }
 }
 
-.cont-fl label[for="story"] {
+main label[for="story"] {
   position: relative;
   z-index: 4;
   right: 30vmin;
@@ -97,7 +97,7 @@ main {
   font-size: 2.5vmin;
 }
 
-.cont-fl .wrap-overlay {
+main .wrap-overlay {
   position: absolute;
   visibility: hidden;
   opacity: 0;
@@ -108,8 +108,8 @@ main {
   z-index: 3;
 }
 
-.cont-fl .story-inner,
-.cont-fl .tooltips-inner {
+main .story-inner,
+main .tooltips-inner {
   background: #a4abbd;
   padding: 2vmin;
   width: 91vmin;
@@ -117,11 +117,15 @@ main {
   font-size: 4vmin;
 }
 
-.cont-fl .story-inner {
+main .story-inner {
   width: 105vmin;
   font-size: 3vmin;
   position: relative;
   top: 5vmin;
+}
+
+.story-main .story-inner {
+  top: 2vmin;
 }
 
 .story p {
@@ -150,7 +154,7 @@ span.ti,
   color: #6b283b;
 }
 
-.cont-fl .quote {
+main .quote {
   font-family: "American Captain", sans-serif;
   font-size: 2.5vmin;
   display: inline-block;
@@ -158,7 +162,7 @@ span.ti,
   right: 0.5vmin;
 }
 
-.cont-fl #tooltip:checked ~ label[for="tooltip"] img {
+main #tooltip:checked ~ label[for="tooltip"] img {
   background: #a4abbd;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -167,7 +171,7 @@ span.ti,
 }
 
 @media not all and (pointer: coarse) {
-  .cont-fl #tooltip:hover ~ label[for="tooltip"] img {
+  main #tooltip:hover ~ label[for="tooltip"] img {
     background: #a4abbd;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
@@ -176,17 +180,17 @@ span.ti,
   }
 }
 
-.cont-fl #tooltip:checked ~ .tooltips {
+main #tooltip:checked ~ .tooltips {
   z-index: 5;
 }
 
 @media not all and (pointer: coarse) {
-  .cont-fl #tooltip:hover ~ .tooltips {
+  main #tooltip:hover ~ .tooltips {
     z-index: 5;
   }
 }
 
-.cont-fl label[for="tooltip"] {
+main label[for="tooltip"] {
   position: relative;
   z-index: 6;
   vertical-align: middle;
@@ -386,8 +390,4 @@ label[for="hawkeye-h7-pos"] {
   top: 10vmin;
   right: 10vmin;
   z-index: 2;
-}
-
-.story-main .story-inner {
-  top: 2vmin;
 }
