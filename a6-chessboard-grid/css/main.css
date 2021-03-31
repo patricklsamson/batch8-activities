@@ -31,8 +31,7 @@ h1 span:nth-child(2) {
   color: var(--dRed);
 }
 
-#story,
-#tooltip {
+input {
   display: none;
 }
 
@@ -270,10 +269,6 @@ label[for="tooltip"] {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.chess-square input {
-  display: none;
 }
 
 .chess-square label {
