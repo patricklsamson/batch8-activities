@@ -13,30 +13,30 @@ main {
   background-image: linear-gradient(to right, var(--dBlue2), var(--dGray), var(--dRed));
 }
 
-main .tbl {
+.tbl {
   min-height: 100vh;
 }
 
-main h1 {
+h1 {
   font-size: 6vmin;
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
   color: var(--gray3);
 }
 
-main h1 span:first-child {
+h1 span:first-child {
   color: var(--dBlue2);
 }
 
-main h1 span:nth-child(2) {
+h1 span:nth-child(2) {
   color: var(--dRed);
 }
 
-main #story,
-main #tooltip {
+#story,
+#tooltip {
   display: none;
 }
 
-main #story:checked ~ label[for="story"] {
+#story:checked ~ label[for="story"] {
   color: var(--gray3);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -45,7 +45,7 @@ main #story:checked ~ label[for="story"] {
 }
 
 @media not all and (pointer: coarse) {
-  main #story:hover ~ label[for="story"] {
+  #story:hover ~ label[for="story"] {
     color: var(--gray3);
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
@@ -54,18 +54,18 @@ main #story:checked ~ label[for="story"] {
   }
 }
 
-main #story:checked ~ label[for="tooltip"] {
+#story:checked ~ label[for="tooltip"] {
   z-index: 1;
 }
 
 @media not all and (pointer: coarse) {
-  main #story:hover ~ label[for="tooltip"] {
+  #story:hover ~ label[for="tooltip"] {
     z-index: 1;
   }
 }
 
-main #story:checked ~ .story,
-main #tooltip:checked ~ .tooltips {
+#story:checked ~ .story,
+#tooltip:checked ~ .tooltips {
   visibility: visible;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -75,8 +75,8 @@ main #tooltip:checked ~ .tooltips {
 }
 
 @media not all and (pointer: coarse) {
-  main #story:hover ~ .story,
-  main #tooltip:hover ~ .tooltips {
+  #story:hover ~ .story,
+  #tooltip:hover ~ .tooltips {
     visibility: visible;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
@@ -86,7 +86,7 @@ main #tooltip:checked ~ .tooltips {
   }
 }
 
-main label[for="story"] {
+label[for="story"] {
   position: relative;
   z-index: 4;
   right: 30vmin;
@@ -94,7 +94,7 @@ main label[for="story"] {
   font-size: 2.5vmin;
 }
 
-main .wrap-overlay {
+.wrap-overlay {
   position: absolute;
   visibility: hidden;
   opacity: 0;
@@ -105,8 +105,8 @@ main .wrap-overlay {
   z-index: 3;
 }
 
-main .story-inner,
-main .tooltips-inner {
+.story-inner,
+.tooltips-inner {
   background: var(--gray3);
   padding: 2vmin;
   width: 91vmin;
@@ -114,7 +114,7 @@ main .tooltips-inner {
   font-size: 4vmin;
 }
 
-main .story-inner {
+.story-inner {
   width: 105vmin;
   font-size: 3vmin;
   position: relative;
@@ -141,17 +141,17 @@ main .story-inner {
   margin-inline-end: 0.2vmin;
 }
 
-span.tc,
+.tc,
 .tooltips fieldset:first-child {
   color: var(--dBlue2);
 }
 
-span.ti,
+.ti,
 .tooltips fieldset:nth-child(2) {
   color: var(--dRed);
 }
 
-main .quote {
+.quote {
   font-family: "American Captain", sans-serif;
   font-size: 2.5vmin;
   display: inline-block;
@@ -159,7 +159,7 @@ main .quote {
   right: 0.5vmin;
 }
 
-main #tooltip:checked ~ label[for="tooltip"] img {
+#tooltip:checked ~ label[for="tooltip"] img {
   background: var(--gray3);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -168,7 +168,7 @@ main #tooltip:checked ~ label[for="tooltip"] img {
 }
 
 @media not all and (pointer: coarse) {
-  main #tooltip:hover ~ label[for="tooltip"] img {
+  #tooltip:hover ~ label[for="tooltip"] img {
     background: var(--gray3);
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
@@ -177,17 +177,17 @@ main #tooltip:checked ~ label[for="tooltip"] img {
   }
 }
 
-main #tooltip:checked ~ .tooltips {
+#tooltip:checked ~ .tooltips {
   z-index: 5;
 }
 
 @media not all and (pointer: coarse) {
-  main #tooltip:hover ~ .tooltips {
+  #tooltip:hover ~ .tooltips {
     z-index: 5;
   }
 }
 
-main label[for="tooltip"] {
+label[for="tooltip"] {
   position: relative;
   z-index: 6;
   vertical-align: middle;
