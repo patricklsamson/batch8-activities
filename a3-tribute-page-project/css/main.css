@@ -50,6 +50,18 @@
   color: var(--dGray);
 }
 
+@media only screen and (min-width: 992px) {
+  #img-caption {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  #main .wrap-overlay {
+    min-height: 100vh;
+  }
+}
+
 @media only screen and (max-width: 480px) {
   #image {
     width: 100%;
@@ -67,11 +79,5 @@
 @media only screen and (max-width: 767px) {
   #img-caption {
     top: 5px;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  #img-caption {
-    font-size: 20px;
   }
 }
