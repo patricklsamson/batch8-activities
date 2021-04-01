@@ -11,31 +11,31 @@
 @media only screen and (min-width: 576px) {
   .cont {
     padding: 0;
-    max-width: calc(576px * 0.9);
+    max-width: calc(576px * 0.95);
   }
 }
 
 @media only screen and (min-width: 768px) {
   .cont {
-    max-width: calc(768px * 0.9);
+    max-width: calc(768px * 0.95);
   }
 }
 
 @media only screen and (min-width: 992px) {
   .cont {
-    max-width: calc(992px * 0.9);
+    max-width: calc(992px * 0.95);
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .cont {
-    max-width: calc(1200px * 0.9);
+    max-width: calc(1200px * 0.95);
   }
 }
 
 @media only screen and (min-width: 1400px) {
   .cont {
-    max-width: calc(1400px * 0.9);
+    max-width: calc(1400px * 0.95);
   }
 }
 
