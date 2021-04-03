@@ -12,7 +12,7 @@ main {
   background: var(--dGray-03);
 }
 
-.cont-fl {
+.flex {
   min-height: 100vh;
 }
 
