@@ -1,10 +1,6 @@
-.cont,
-.cont-fl {
+.cont {
   width: 100%;
   margin: 0 auto;
-}
-
-.cont {
   padding: 1.25rem;
 }
 
