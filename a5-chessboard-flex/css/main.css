@@ -10,9 +10,6 @@ main {
 
 .wrap-overlay {
   background: var(--dGray-03);
-}
-
-.flex {
   min-height: 100vh;
 }
 
