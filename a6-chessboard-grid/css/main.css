@@ -395,10 +395,10 @@ label[for="hawkeye-h7-pos"] {
   background-image: -moz-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
   background-image: -o-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
   background-image: linear-gradient(to right, var(--dBlue2), var(--dGray), var(--dRed));
-  -webkit-animation: fade 4s forwards;
-  -moz-animation: fade 4s forwards;
-  -o-animation: fade 4s forwards;
-  animation: fade 4s forwards;
+  -webkit-animation: fade 8s forwards;
+  -moz-animation: fade 8s forwards;
+  -o-animation: fade 8s forwards;
+  animation: fade 8s forwards;
 }
 
 @-webkit-keyframes fade {
@@ -474,10 +474,10 @@ label[for="hawkeye-h7-pos"] {
   position: absolute;
   font-size: 10vmin;
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
-  -webkit-animation: loading 3s linear forwards;
-  -moz-animation: loading 3s linear forwards;
-  -o-animation: loading 3s linear forwards;
-  animation: loading 3s linear forwards;
+  -webkit-animation: loading 7s linear forwards;
+  -moz-animation: loading 7s linear forwards;
+  -o-animation: loading 7s linear forwards;
+  animation: loading 7s linear forwards;
 }
 
 @media all and (pointer: coarse) {
@@ -632,10 +632,10 @@ label[for="hawkeye-h7-pos"] {
   border-radius: 50%;
   width: 50vmin;
   height: 50vmin;
-  -webkit-animation: spin 4s linear;
-  -moz-animation: spin 4s linear;
-  -o-animation: spin 4s linear;
-  animation: spin 4s linear;
+  -webkit-animation: spin 8s linear;
+  -moz-animation: spin 8s linear;
+  -o-animation: spin 8s linear;
+  animation: spin 8s linear;
 }
 
 @-webkit-keyframes spin {
