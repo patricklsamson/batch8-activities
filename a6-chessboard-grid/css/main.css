@@ -385,6 +385,22 @@ label[for="hawkeye-h7-pos"] {
   z-index: 2;
 }
 
+.wrap-loader {
+  position: absolute;
+  min-height: 100vh;
+  width: 100vw;
+  z-index: 99;
+  background-image: -webkit-gradient(linear, left top, right top, from(var(--dBlue2)), color-stop(var(--dGray)), to(var(--dRed)));
+  background-image: -webkit-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
+  background-image: -moz-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
+  background-image: -o-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
+  background-image: linear-gradient(to right, var(--dBlue2), var(--dGray), var(--dRed));
+  -webkit-animation: fade 4s forwards;
+  -moz-animation: fade 4s forwards;
+  -o-animation: fade 4s forwards;
+  animation: fade 4s forwards;
+}
+
 @-webkit-keyframes fade {
   0% {
     visibility: visible;
@@ -450,6 +466,23 @@ label[for="hawkeye-h7-pos"] {
   100% {
     visibility: hidden;
     opacity: 0;
+  }
+}
+
+.wrap-loader:before {
+  content: "0%";
+  position: absolute;
+  font-size: 10vmin;
+  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
+  -webkit-animation: loading 3s linear forwards;
+  -moz-animation: loading 3s linear forwards;
+  -o-animation: loading 3s linear forwards;
+  animation: loading 3s linear forwards;
+}
+
+@media all and (pointer: coarse) {
+  .wrap-loader:before {
+    display: none;
   }
 }
 
@@ -589,6 +622,22 @@ label[for="hawkeye-h7-pos"] {
   }
 }
 
+.loader {
+  position: relative;
+  border: 2vmin solid var(--gray3);
+  border-top: 2vmin solid var(--dBlue2);
+  border-bottom: 2vmin solid var(--dRed);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 50vmin;
+  height: 50vmin;
+  -webkit-animation: spin 4s linear;
+  -moz-animation: spin 4s linear;
+  -o-animation: spin 4s linear;
+  animation: spin 4s linear;
+}
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -639,47 +688,4 @@ label[for="hawkeye-h7-pos"] {
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-}
-
-.wrap-loader {
-  position: absolute;
-  min-height: 100vh;
-  width: 100vw;
-  z-index: 99;
-  background-image: -webkit-gradient(linear, left top, right top, from(var(--dBlue2)), color-stop(var(--dGray)), to(var(--dRed)));
-  background-image: -webkit-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
-  background-image: -moz-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
-  background-image: -o-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
-  background-image: linear-gradient(to right, var(--dBlue2), var(--dGray), var(--dRed));
-  -webkit-animation: fade 4s forwards;
-  -moz-animation: fade 4s forwards;
-  -o-animation: fade 4s forwards;
-  animation: fade 4s forwards;
-}
-
-.wrap-loader:before {
-  content: "0%";
-  position: absolute;
-  font-size: 10vmin;
-  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
-  -webkit-animation: loading 3s linear forwards;
-  -moz-animation: loading 3s linear forwards;
-  -o-animation: loading 3s linear forwards;
-  animation: loading 3s linear forwards;
-}
-
-.loader {
-  position: relative;
-  border: 2vmin solid var(--gray3);
-  border-top: 2vmin solid var(--dBlue2);
-  border-bottom: 2vmin solid var(--dRed);
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  width: 50vmin;
-  height: 50vmin;
-  -webkit-animation: spin 4s linear;
-  -moz-animation: spin 4s linear;
-  -o-animation: spin 4s linear;
-  animation: spin 4s linear;
 }
