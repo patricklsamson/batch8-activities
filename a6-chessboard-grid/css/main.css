@@ -519,12 +519,17 @@ label[for="story"] {
 
 .newgame-main .story-inner {
   top: 0;
-  width: 65vmin;
+  width: 80vmin;
+  font-size: 3.5vmin;
 }
 
 .story legend {
   font-family: var(--iron);
   font-size: 3.5vmin;
+}
+
+.newgame-main .story legend {
+  font-size: 4.5vmin;
 }
 
 .story p {
@@ -605,7 +610,7 @@ label[for="tooltip"] {
 
 .tooltips-inner {
   width: 91vmin;
-  font-size: 4vmin;
+  font-size: 3.5vmin;
 }
 
 .tooltips legend {
@@ -615,7 +620,6 @@ label[for="tooltip"] {
 
 .tooltips p {
   margin-bottom: 0.5em;
-  font-size: 3.5vmin;
 }
 
 .tooltips img {
