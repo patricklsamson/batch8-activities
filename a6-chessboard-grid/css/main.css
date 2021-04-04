@@ -646,23 +646,21 @@ label[for="hawkeye-h7-pos"] {
   background-image: -moz-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
   background-image: -o-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
   background-image: linear-gradient(to right, var(--dBlue2), var(--dGray), var(--dRed));
-  visibility: hidden;
-  opacity: 0;
-  -webkit-animation: fade 4s;
-  -moz-animation: fade 4s;
-  -o-animation: fade 4s;
-  animation: fade 4s;
+  -webkit-animation: fade 4s forwards;
+  -moz-animation: fade 4s forwards;
+  -o-animation: fade 4s forwards;
+  animation: fade 4s forwards;
 }
 
 .wrap-loader:before {
-  content: "100%";
+  content: "0%";
   position: absolute;
   font-size: 10vmin;
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
-  -webkit-animation: loading 3s linear;
-  -moz-animation: loading 3s linear;
-  -o-animation: loading 3s linear;
-  animation: loading 3s linear;
+  -webkit-animation: loading 3s linear forwards;
+  -moz-animation: loading 3s linear forwards;
+  -o-animation: loading 3s linear forwards;
+  animation: loading 3s linear forwards;
 }
 
 .loader {
