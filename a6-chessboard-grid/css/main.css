@@ -524,6 +524,10 @@ label[for="story"] {
   font-size: 4vmin;
 }
 
+fieldset legend {
+  font-family: var(--iron);
+}
+
 .story-inner {
   width: 105vmin;
   font-size: 3vmin;
