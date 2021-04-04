@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Patrick Samson" />
+    <title>Chessboard (Grid)</title>
+    <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" size="32x32" />
+    <link rel="icon" href="../assets/img/favicon-16x16.png" type="image/png" size="16x16" />
+    <link rel="stylesheet" href="../assets/css/index.min.css" />
+    <link rel="stylesheet" href="css/main.min.css" />
+  </head>
+  <body>
+    <main class="newgame-main">
+      <div class="wrap-loader flex">
+        <div class="loader"></div>
+      </div>
+
+      <div class="tbl talign">
+        <div class="valign">
+          <h1><span>Civil</span> War <span>Chess</span></h1>
+
+          <input type="checkbox" id="story" />
+          <label for="story">Hint</label>
+
+          <div class="story wrap-overlay flex">
+            <div class="story-inner">
+              <fieldset>
+                <legend class="talign tlft">Movable pieces to showcase bishop moves</legend>
+
+                <ol>
+                  <li><span class="ti">Spiderman (D2)</span></li>
+                  <li><span class="tc">Hawkeye (E7)</span></li>
+                  <li><span class="ti">War Machine (C1)</span></li>
+                  <li><span class="tc">Winter Soldier (G8)</span></li>
+                </ol>
+              </fieldset>
+            </div>
+          </div>
+
+          <p class="quote mb-em"><q>Divided we fall</q></p>
+
+          <input type="checkbox" id="tooltip" />
+          <label for="tooltip"><img src="../assets/img/tooltip.png" alt="tooltip" id="tooltip-icon" /></label>
+
+          <div class="tooltips wrap-overlay flex">
+            <div class="tooltips-inner flex talign tlft">
+              <fieldset>
+                <legend>Team Captain America - TC</legend>
+
+                <p><img src="../assets/img/cap-america.png" alt="cap-america-logo" /> = Captain America = King</p>
+
+                <p><img src="../assets/img/scarlet-witch.png" alt="scarlet-witch-logo" /> = Scarlet Witch = Queen</p>
+
+                <p><img src="../assets/img/winter-soldier.png" alt="winter-soldier-logo" /> = Winter Soldier = Bishop</p>
+
+                <p><img src="../assets/img/falcon.png" alt="falcon-logo" /> = Falcon = Knight</p>
+
+                <p><img src="../assets/img/ant-man.png" alt="ant-man-logo" /> = Ant-Man = Rook</p>
+
+                <p><img src="../assets/img/hawkeye.png" alt="hawkeye-logo" /> = Hawkeye = Pawn</p>
+              </fieldset>
+
+              <fieldset>
+                <legend>Team Iron Man - TI</legend>
+
+                <p><img src="../assets/img/iron-man.png" alt="iron-man-logo" /> = Iron Man = King</p>
+
+                <p><img src="../assets/img/black-widow.png" alt="black-widow-logo" /> = Black Widow = Queen</p>
+
+                <p><img src="../assets/img/war-machine.png" alt="war-machine-logo" /> = War Machine = Bishop</p>
+
+                <p><img src="../assets/img/vision.png" alt="vision-logo" /> = Vision = Knight</p>
+
+                <p><img src="../assets/img/black-panther.png" alt="black-panther-logo" /> = Black Panther = Rook</p>
+
+                <p><img src="../assets/img/spiderman.png" alt="spiderman-logo" /> = Spiderman = Pawn</p>
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="chess-board">
+            <div class="chess-row">
+              <div class="chess-square flex">
+                <p class="left-pos">8</p>
+                <img src="../assets/img/ant-man.png" alt="ant-man-logo" title="TC - Rook" />
+              </div>
+              <div class="chess-square flex"><img src="../assets/img/falcon.png" alt="falcon-logo" title="TC - Knight" /></div>
+              <div class="chess-square flex"><img src="../assets/img/winter-soldier.png" alt="winter-soldier-logo" title="TC - Bishop" /></div>
+              <div class="chess-square flex"><img src="../assets/img/scarlet-witch.png" alt="scarlet-witch-logo" title="TC - Queen" /></div>
+              <div class="chess-square flex"><img src="../assets/img/cap-america.png" alt="cap-america-logo" title="TC - King" /></div>
+              <div class="chess-square flex">
+                <input type="checkbox" id="winter-soldier-g8-pos" />
+                <label for="winter-soldier-g8-pos" class="flex">
+                  <img src="../assets/img/winter-soldier.png" alt="winter-soldier-logo" title="TC - Bishop" />
+                </label>
+              </div>
+              <div class="chess-square flex"><img src="../assets/img/falcon.png" alt="falcon-logo" title="TC - Knight" /></div>
+              <div class="chess-square flex"><img src="../assets/img/ant-man.png" alt="ant-man-logo" title="TC - Rook" /></div>
+            </div>
+
+            <div class="chess-row">
+              <div class="chess-square flex">
+                <p class="left-pos">7</p>
+                <img src="../assets/img/hawkeye.png" alt="hawkeye-logo" title="TC - Pawn" />
+              </div>
+              <div class="chess-square flex"><img src="../assets/img/hawkeye.png" alt="hawkeye-logo" title="TC - Pawn" /></div>
+              <div class="chess-square flex"><img src="../assets/img/hawkeye.png" alt="hawkeye-logo" title="TC - Pawn" /></div>
+              <div class="chess-square flex"><img src="../assets/img/hawkeye.png" alt="hawkeye-logo" title="TC - Pawn" /></div>
+              <div class="chess-square flex">
+                <input type="checkbox" id="hawkeye-e7-pos-new" />
+                <label for="hawkeye-e7-pos-new" class="flex">
+                  <img src="../assets/img/hawkeye.png" alt="hawkeye-logo" title="TC - Pawn" />
+                </label>
+              </div>
+              <div class="chess-square flex"><img src="../assets/img/hawkeye.png" alt="hawkeye-logo" title="TC - Pawn" /></div>
+              <div class="chess-square flex"><img src="../assets/img/hawkeye.png" alt="hawkeye-logo" title="TC - Pawn" /></div>
+              <div class="chess-square flex"><img src="../assets/img/hawkeye.png" alt="hawkeye-logo" title="TC - Pawn" /></div>
+            </div>
+
+            <div class="chess-row">
+              <div class="chess-square flex"><p class="left-pos">6</p></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+            </div>
+
+            <div class="chess-row">
+              <div class="chess-square flex"><p class="left-pos">5</p></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+            </div>
+
+            <div class="chess-row">
+              <div class="chess-square flex"><p class="left-pos">4</p></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+            </div>
+
+            <div class="chess-row">
+              <div class="chess-square flex"><p class="left-pos">3</p></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+              <div class="chess-square flex"></div>
+            </div>
+
+            <div class="chess-row">
+              <div class="chess-square flex">
+                <p class="left-pos">2</p>
+                <img src="../assets/img/spiderman.png" alt="spiderman-logo" title="TI - Pawn" />
+              </div>
+              <div class="chess-square flex"><img src="../assets/img/spiderman.png" alt="spiderman-logo" title="TI - Pawn" /></div>
+              <div class="chess-square flex"><img src="../assets/img/spiderman.png" alt="spiderman-logo" title="TI - Pawn" /></div>
+              <div class="chess-square flex">
+                <input type="checkbox" id="spiderman-d2-pos" />
+                <label for="spiderman-d2-pos" class="flex">
+                  <img src="../assets/img/spiderman.png" alt="spiderman-logo" title="TI - Pawn" />
+                </label>
+              </div>
+              <div class="chess-square flex"><img src="../assets/img/spiderman.png" alt="spiderman-logo" title="TI - Pawn" /></div>
+              <div class="chess-square flex"><img src="../assets/img/spiderman.png" alt="spiderman-logo" title="TI - Pawn" /></div>
+              <div class="chess-square flex"><img src="../assets/img/spiderman.png" alt="spiderman-logo" title="TI - Pawn" /></div>
+              <div class="chess-square flex"><img src="../assets/img/spiderman.png" alt="spiderman-logo" title="TI - Pawn" /></div>
+            </div>
+
+            <div class="chess-row">
+              <div class="chess-square flex">
+                <p class="left-pos">1</p>
+                <p class="bottom-pos">a</p>
+                <img src="../assets/img/black-panther.png" alt="black-panther-logo" title="TI - Rook" />
+              </div>
+              <div class="chess-square flex">
+                <p class="bottom-pos">b</p>
+                <img src="../assets/img/vision.png" alt="vision-logo" title="TI - Knight" />
+              </div>
+              <div class="chess-square flex">
+                <p class="bottom-pos">c</p>
+                <input type="checkbox" id="war-machine-c1-pos" />
+                <label for="war-machine-c1-pos" class="flex">
+                  <img src="../assets/img/war-machine.png" alt="war-machine-logo" title="TI - Bishop" />
+                </label>
+              </div>
+              <div class="chess-square flex">
+                <p class="bottom-pos">d</p>
+                <img src="../assets/img/black-widow.png" alt="black-widow-logo" title="TI - Queen" />
+              </div>
+              <div class="chess-square flex">
+                <p class="bottom-pos">e</p>
+                <img src="../assets/img/iron-man.png" alt="iron-man-logo" title="TI - King" />
+              </div>
+              <div class="chess-square flex">
+                <p class="bottom-pos">f</p>
+                <img src="../assets/img/war-machine.png" alt="war-machine-logo" title="TI - Bishop" />
+              </div>
+              <div class="chess-square flex">
+                <p class="bottom-pos">g</p>
+                <img src="../assets/img/vision.png" alt="vision-logo" title="TI - Knight" />
+              </div>
+              <div class="chess-square flex">
+                <p class="bottom-pos">h</p>
+                <img src="../assets/img/black-panther.png" alt="black-panther-logo" title="TI - Rook" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
