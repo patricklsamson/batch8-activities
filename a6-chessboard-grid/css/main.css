@@ -395,10 +395,10 @@ label[for="hawkeye-h7-pos"] {
   background-image: -moz-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
   background-image: -o-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
   background-image: linear-gradient(to right, var(--dBlue2), var(--dGray), var(--dRed));
-  -webkit-animation: fade 8s forwards;
-  -moz-animation: fade 8s forwards;
-  -o-animation: fade 8s forwards;
-  animation: fade 8s forwards;
+  -webkit-animation: fade 6s forwards;
+  -moz-animation: fade 6s forwards;
+  -o-animation: fade 6s forwards;
+  animation: fade 6s forwards;
 }
 
 @-webkit-keyframes fade {
@@ -470,20 +470,14 @@ label[for="hawkeye-h7-pos"] {
 }
 
 .wrap-loader:before {
-  content: "0%";
+  content: "";
   position: absolute;
   font-size: 10vmin;
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
-  -webkit-animation: loading 7s linear forwards;
-  -moz-animation: loading 7s linear forwards;
-  -o-animation: loading 7s linear forwards;
-  animation: loading 7s linear forwards;
-}
-
-@media all and (pointer: coarse) {
-  .wrap-loader:before {
-    display: none;
-  }
+  -webkit-animation: loading 5s linear forwards;
+  -moz-animation: loading 5s linear forwards;
+  -o-animation: loading 5s linear forwards;
+  animation: loading 5s linear forwards;
 }
 
 @-webkit-keyframes loading {
@@ -632,10 +626,10 @@ label[for="hawkeye-h7-pos"] {
   border-radius: 50%;
   width: 50vmin;
   height: 50vmin;
-  -webkit-animation: spin 8s linear;
-  -moz-animation: spin 8s linear;
-  -o-animation: spin 8s linear;
-  animation: spin 8s linear;
+  -webkit-animation: spin 6s linear;
+  -moz-animation: spin 6s linear;
+  -o-animation: spin 6s linear;
+  animation: spin 6s linear;
 }
 
 @-webkit-keyframes spin {
