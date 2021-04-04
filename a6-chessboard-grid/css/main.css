@@ -519,14 +519,7 @@ label[for="story"] {
 .tooltips-inner {
   background: var(--gray3);
   padding: 2vmin;
-  width: 91vmin;
   font-family: var(--amcap);
-  font-size: 4vmin;
-}
-
-fieldset legend {
-  font-family: var(--iron);
-  font-size: 3.5vmin;
 }
 
 .story-inner {
@@ -538,6 +531,10 @@ fieldset legend {
 
 .story-main .story-inner {
   top: 2vmin;
+}
+
+.story legend {
+  font-size: 3.5vmin;
 }
 
 .story p {
@@ -614,6 +611,15 @@ label[for="tooltip"] {
   -webkit-border-radius: 2vmin;
   -moz-border-radius: 2vmin;
   border-radius: 2vmin;
+}
+
+.tooltips-inner {
+  width: 91vmin;
+  font-size: 4vmin;
+}
+
+.tooltips legend {
+  font-size: 4.5vmin;
 }
 
 .tooltips p {
