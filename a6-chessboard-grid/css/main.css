@@ -534,6 +534,7 @@ label[for="story"] {
 }
 
 .story legend {
+  font-family: var(--iron);
   font-size: 3.5vmin;
 }
 
@@ -619,6 +620,7 @@ label[for="tooltip"] {
 }
 
 .tooltips legend {
+  font-family: var(--iron);
   font-size: 4.5vmin;
 }
 
