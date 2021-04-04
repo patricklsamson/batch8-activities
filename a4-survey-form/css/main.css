@@ -112,10 +112,10 @@ main {
   border: 10px solid #fff;
   color: var(--gold);
   padding: 5px 10px;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  -moz-transition: 0.25s;
+  transition: 0.25s;
 }
 
 textarea {
