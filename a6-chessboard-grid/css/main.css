@@ -470,7 +470,7 @@ label[for="hawkeye-h7-pos"] {
 }
 
 .wrap-loader:before {
-  content: "";
+  content: "Loading...";
   position: absolute;
   font-size: 10vmin;
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
