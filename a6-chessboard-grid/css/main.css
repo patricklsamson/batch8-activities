@@ -533,6 +533,11 @@ label[for="story"] {
   top: 2vmin;
 }
 
+.newgame-main .story-inner {
+  top: 0;
+  width: 65vmin;
+}
+
 .story legend {
   font-family: var(--iron);
   font-size: 3.5vmin;
@@ -688,11 +693,19 @@ label[for="tooltip"] {
 
 .chess-square img {
   cursor: pointer;
-  height: 90%;
+  height: 80%;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.chess-square img:hover {
+  height: 90%;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  -moz-transition: 0.25s;
+  transition: 0.25s;
 }
 
 .chess-square label {
@@ -807,4 +820,48 @@ label[for="hawkeye-h7-pos"] {
   top: 10vmin;
   right: 10vmin;
   z-index: 2;
+}
+
+ol {
+  margin-left: 2vmin;
+}
+
+li {
+  text-align: left;
+}
+
+label[for="spiderman-d2-pos"] {
+  bottom: 0;
+}
+
+#spiderman-d2-pos:checked ~ label {
+  bottom: 10vmin;
+}
+
+label[for="hawkeye-e7-pos-new"] {
+  top: 0;
+}
+
+#hawkeye-e7-pos-new:checked ~ label {
+  top: 20vmin;
+}
+
+label[for="war-machine-c1-pos"] {
+  left: 0;
+  bottom: 0;
+}
+
+#war-machine-c1-pos:checked ~ label {
+  left: 40vmin;
+  bottom: 40vmin;
+}
+
+label[for="winter-soldier-g8-pos"] {
+  top: 0;
+  right: 0;
+}
+
+#winter-soldier-g8-pos:checked ~ label {
+  top: 50vmin;
+  right: 50vmin;
 }
