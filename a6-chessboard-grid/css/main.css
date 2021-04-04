@@ -65,6 +65,7 @@ main {
 .wrap-sure {
   position: absolute;
   display: none;
+  width: 62vmin;
   top: -3vmin;
   left: 50%;
   -webkit-transform: translateX(-50%);
