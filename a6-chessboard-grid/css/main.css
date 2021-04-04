@@ -526,6 +526,7 @@ label[for="story"] {
 
 fieldset legend {
   font-family: var(--iron);
+  font-size: 3.5vmin;
 }
 
 .story-inner {
