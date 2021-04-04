@@ -14,20 +14,20 @@ main {
 }
 
 .wrap-continue {
-  font-family: "American Captain", sans-serif;
+  font-family: var(--amcap);
   font-size: 3vmin;
   position: relative;
 }
 
 .continue,
 .sure {
-  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
+  font-family: var(--iron);
   font-size: 7vmin;
 }
 
 .btn-yes,
 .btn-no {
-  font-family: "American Captain", sans-serif;
+  font-family: var(--amcap);
   font-size: 4vmin;
   padding: 0.5vmin 3vmin;
   -webkit-border-radius: 1.5vmin;
@@ -85,7 +85,7 @@ main {
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
-  background: #bea5a9;
+  background: var(--lRed);
   padding: 2vmin 14vmin;
   -webkit-border-radius: 2vmin;
   -moz-border-radius: 2vmin;
@@ -181,7 +181,7 @@ main {
   content: "Loading...";
   position: absolute;
   font-size: 10vmin;
-  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
+  font-family: var(--iron);
   -webkit-animation: loading 6s linear forwards;
   -moz-animation: loading 6s linear forwards;
   -o-animation: loading 6s linear forwards;
@@ -430,7 +430,7 @@ main {
 
 h1 {
   font-size: 6vmin;
-  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
+  font-family: var(--iron);
   color: var(--gray3);
 }
 
@@ -500,7 +500,7 @@ label[for="story"] {
   position: relative;
   z-index: 4;
   right: 30vmin;
-  font-family: "American Captain", sans-serif;
+  font-family: var(--amcap);
   font-size: 2.5vmin;
 }
 
@@ -520,7 +520,7 @@ label[for="story"] {
   background: var(--gray3);
   padding: 2vmin;
   width: 91vmin;
-  font-family: "American Captain", sans-serif;
+  font-family: var(--amcap);
   font-size: 4vmin;
 }
 
@@ -562,7 +562,7 @@ label[for="story"] {
 }
 
 .quote {
-  font-family: "American Captain", sans-serif;
+  font-family: var(--amcap);
   font-size: 2.5vmin;
   display: inline-block;
   position: relative;
@@ -654,7 +654,7 @@ label[for="tooltip"] {
 
 .chess-square p {
   color: var(--gray3);
-  font-family: "American Captain", sans-serif;
+  font-family: var(--amcap);
   font-size: 3vmin;
   width: 2vmin;
   -webkit-user-select: none;
