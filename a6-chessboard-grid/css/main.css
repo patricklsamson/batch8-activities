@@ -383,3 +383,300 @@ label[for="hawkeye-h7-pos"] {
   right: 10vmin;
   z-index: 2;
 }
+
+@-webkit-keyframes fade {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  85% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+  }
+}
+
+@-moz-keyframes fade {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  85% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+  }
+}
+
+@-o-keyframes fade {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  85% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+  }
+}
+
+@keyframes fade {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  85% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes loading {
+  0% {
+    content: "0%";
+  }
+
+  23% {
+    content: "23%";
+  }
+
+  37% {
+    content: "37%";
+  }
+
+  51% {
+    content: "51%";
+  }
+
+  68% {
+    content: "68%";
+  }
+
+  79% {
+    content: "79%";
+  }
+
+  85% {
+    content: "85%";
+  }
+
+  100% {
+    content: "100%";
+  }
+}
+
+@-moz-keyframes loading {
+  0% {
+    content: "0%";
+  }
+
+  23% {
+    content: "23%";
+  }
+
+  37% {
+    content: "37%";
+  }
+
+  51% {
+    content: "51%";
+  }
+
+  68% {
+    content: "68%";
+  }
+
+  79% {
+    content: "79%";
+  }
+
+  85% {
+    content: "85%";
+  }
+
+  100% {
+    content: "100%";
+  }
+}
+
+@-o-keyframes loading {
+  0% {
+    content: "0%";
+  }
+
+  23% {
+    content: "23%";
+  }
+
+  37% {
+    content: "37%";
+  }
+
+  51% {
+    content: "51%";
+  }
+
+  68% {
+    content: "68%";
+  }
+
+  79% {
+    content: "79%";
+  }
+
+  85% {
+    content: "85%";
+  }
+
+  100% {
+    content: "100%";
+  }
+}
+
+@keyframes loading {
+  0% {
+    content: "0%";
+  }
+
+  23% {
+    content: "23%";
+  }
+
+  37% {
+    content: "37%";
+  }
+
+  51% {
+    content: "51%";
+  }
+
+  68% {
+    content: "68%";
+  }
+
+  79% {
+    content: "79%";
+  }
+
+  85% {
+    content: "85%";
+  }
+
+  100% {
+    content: "100%";
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes spin {
+  0% {
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.wrap-loader {
+  position: absolute;
+  min-height: 100vh;
+  width: 100vw;
+  z-index: 99;
+  background-image: -webkit-gradient(linear, left top, right top, from(var(--dBlue2)), color-stop(var(--dGray)), to(var(--dRed)));
+  background-image: -webkit-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
+  background-image: -moz-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
+  background-image: -o-linear-gradient(left, var(--dBlue2), var(--dGray), var(--dRed));
+  background-image: linear-gradient(to right, var(--dBlue2), var(--dGray), var(--dRed));
+  visibility: hidden;
+  opacity: 0;
+  -webkit-animation: fade 4s;
+  -moz-animation: fade 4s;
+  -o-animation: fade 4s;
+  animation: fade 4s;
+}
+
+.wrap-loader:before {
+  content: "100%";
+  position: absolute;
+  font-size: 10vmin;
+  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
+  -webkit-animation: loading 3s linear;
+  -moz-animation: loading 3s linear;
+  -o-animation: loading 3s linear;
+  animation: loading 3s linear;
+}
+
+.loader {
+  position: relative;
+  border: 2vmin solid var(--gray3);
+  border-top: 2vmin solid var(--dBlue2);
+  border-bottom: 2vmin solid var(--dRed);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 50vmin;
+  height: 50vmin;
+  -webkit-animation: spin 4s linear;
+  -moz-animation: spin 4s linear;
+  -o-animation: spin 4s linear;
+  animation: spin 4s linear;
+}
