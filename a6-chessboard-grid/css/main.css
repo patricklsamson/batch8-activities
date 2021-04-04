@@ -48,14 +48,26 @@ main {
 .btn-yes:hover,
 .btn-no:hover {
   background: var(--gray3);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .btn-yes:hover {
   color: var(--dBlue2);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .btn-no:hover {
   color: var(--dRed);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
 }
 
 #no:checked ~ .wrap-sure {
