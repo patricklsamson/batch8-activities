@@ -22,6 +22,29 @@ main {
   position: relative;
 }
 
+.chess-board h1 {
+  font-size: 5vmin;
+  font-family: "Friz", serif;
+  text-align: center;
+  color: var(--gold);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-animation: fade 4s;
+  -moz-animation: fade 4s;
+  -o-animation: fade 4s;
+  animation: fade 4s;
+  opacity: 0.4;
+}
+
 @-webkit-keyframes fade {
   from {
     opacity: 1;
@@ -60,29 +83,6 @@ main {
   to {
     opacity: 0.4;
   }
-}
-
-.chess-board h1 {
-  font-size: 5vmin;
-  font-family: "Friz", serif;
-  text-align: center;
-  color: var(--gold);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-animation: fade 4s;
-  -moz-animation: fade 4s;
-  -o-animation: fade 4s;
-  animation: fade 4s;
-  opacity: 0.4;
 }
 
 .chess-board h1 span {
