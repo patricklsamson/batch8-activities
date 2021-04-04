@@ -509,8 +509,16 @@ label[for="hawkeye-h7-pos"] {
     content: "85%";
   }
 
-  100% {
+  90% {
     content: "100%";
+  }
+
+  95% {
+    content: "Loaded!";
+  }
+
+  100% {
+    content: "Loaded!";
   }
 }
 
@@ -543,8 +551,16 @@ label[for="hawkeye-h7-pos"] {
     content: "85%";
   }
 
-  100% {
+  90% {
     content: "100%";
+  }
+
+  95% {
+    content: "Loaded!";
+  }
+
+  100% {
+    content: "Loaded!";
   }
 }
 
@@ -577,8 +593,16 @@ label[for="hawkeye-h7-pos"] {
     content: "85%";
   }
 
-  100% {
+  90% {
     content: "100%";
+  }
+
+  95% {
+    content: "Loaded!";
+  }
+
+  100% {
+    content: "Loaded!";
   }
 }
 
@@ -611,8 +635,16 @@ label[for="hawkeye-h7-pos"] {
     content: "85%";
   }
 
-  100% {
+  90% {
     content: "100%";
+  }
+
+  95% {
+    content: "Loaded!";
+  }
+
+  100% {
+    content: "Loaded!";
   }
 }
 
