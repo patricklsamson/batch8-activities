@@ -34,15 +34,14 @@ main {
   -moz-border-radius: 1.5vmin;
   border-radius: 1.5vmin;
   color: var(--gray3);
+  margin: 0 2vmin;
 }
 
 .btn-yes {
-  margin-right: 2vmin;
   background: var(--dBlue2);
 }
 
 .btn-no {
-  margin-left: 2vmin;
   background: var(--dRed);
 }
 
