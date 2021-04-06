@@ -6,7 +6,7 @@
 }
 
 #main .wrap-overlay {
-  background-color: var(--dGray-09);
+  background-color: rgba(52, 58, 64, 0.5);
   padding: 15px 0;
   min-height: 100vh;
 }
@@ -14,9 +14,9 @@
 #title {
   font-weight: 700;
   margin-bottom: 15px;
-  color: var(--white);
+  color: #f8f9fa;
   padding-bottom: 5px;
-  border-bottom: 10px double var(--white);
+  border-bottom: 10px double #f8f9fa;
 }
 
 #img-div {
@@ -32,8 +32,8 @@
   top: 10px;
   left: 50%;
   margin-left: -148px;
-  color: var(--gray);
-  background-color: var(--dGray-05);
+  color: #d3d3d3;
+  background-color: rgba(52, 58, 64, 0.5);
   padding: 10px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -46,11 +46,11 @@
 }
 
 #tribute-link {
-  color: var(--gray2);
+  color: #a9a9a9;
 }
 
 #tribute-link:hover {
-  color: var(--dGray);
+  color: #6c757d;
 }
 
 @media only screen and (min-width: 992px) {
