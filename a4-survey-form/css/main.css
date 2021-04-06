@@ -7,7 +7,7 @@ main {
 
 .wrap-overlay {
   padding: 30px 0;
-  background-color: var(--dGray-05);
+  background-color: rgba(52, 58, 64, 0.5);
   min-height: 100vh;
 }
 
@@ -21,14 +21,14 @@ main {
 
 #survey-form {
   padding: 50px;
-  background-color: var(--blue-08);
+  background-color: rgba(0, 137, 171, 0.8);
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
   border-radius: 25px;
 }
 
 .wrap-text {
-  background-color: var(--dBlue-08);
+  background-color: rgba(3, 80, 100, 0.8);
   padding: 20px;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
@@ -37,13 +37,13 @@ main {
 
 #title {
   margin-bottom: 25px;
-  font-family: var(--frizBold);
-  color: var(--gold);
+  font-family: "Friz", serif;
+  color: #fec009;
 }
 
 #title span {
-  font-family: var(--coa);
-  color: var(--lBlue4);
+  font-family: "Colors Of Autumn", cursive;
+  color: #00d5ff;
   font-weight: normal;
 }
 
@@ -96,9 +96,9 @@ main {
 #submit {
   padding: 10px 15px;
   border: 5px solid #fff;
-  background-color: var(--dBlue);
+  background-color: #035064;
   color: #fff;
-  font-family: var(--frizBold);
+  font-family: "Friz", serif;
   font-size: 30px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -108,7 +108,7 @@ main {
 #submit:hover,
 #submit:active {
   border: 10px solid #fff;
-  color: var(--gold);
+  color: #fec009;
   padding: 5px 10px;
   -webkit-transition: 0.25s;
   -o-transition: 0.25s;
@@ -122,19 +122,19 @@ textarea {
 }
 
 .p-results {
-  font-family: var(--frizBold);
+  font-family: "Friz", serif;
   font-weight: 900;
-  color: var(--gold);
+  color: #fec009;
   font-size: 25px;
 }
 
 .p-results a {
-  color: var(--gold-05);
+  color: rgba(254, 192, 9, 0.5);
 }
 
 .p-results a:hover,
 .p-results a:active {
-  color: var(--gold);
+  color: #fec009;
 }
 
 @media only screen and (min-width: 992px) {
