@@ -69,3 +69,93 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "TT Squares Condensed";
+  src: url("../fonts/TTSquaresCondensed-BlackItalic.eot");
+  src: url("../fonts/TTSquaresCondensed-BlackItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/TTSquaresCondensed-BlackItalic.woff2") format("woff2"), url("../fonts/TTSquaresCondensed-BlackItalic.woff") format("woff"), url("../fonts/TTSquaresCondensed-BlackItalic.ttf") format("truetype"), url("../fonts/TTSquaresCondensed-BlackItalic.svg#TTSquaresCondensed-BlackItalic") format("svg");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Squares Condensed";
+  src: url("../fonts/TTSquaresCondensed-Black.eot");
+  src: url("../fonts/TTSquaresCondensed-Black.eot?#iefix") format("embedded-opentype"), url("../fonts/TTSquaresCondensed-Black.woff2") format("woff2"), url("../fonts/TTSquaresCondensed-Black.woff") format("woff"), url("../fonts/TTSquaresCondensed-Black.ttf") format("truetype"), url("../fonts/TTSquaresCondensed-Black.svg#TTSquaresCondensed-Black") format("svg");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Squares Condensed";
+  src: url("../fonts/TTSquaresCondensed-Bold.eot");
+  src: url("../fonts/TTSquaresCondensed-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/TTSquaresCondensed-Bold.woff2") format("woff2"), url("../fonts/TTSquaresCondensed-Bold.woff") format("woff"), url("../fonts/TTSquaresCondensed-Bold.ttf") format("truetype"), url("../fonts/TTSquaresCondensed-Bold.svg#TTSquaresCondensed-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Squares Condensed";
+  src: url("../fonts/TTSquaresCondensed-BoldItalic.eot");
+  src: url("../fonts/TTSquaresCondensed-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/TTSquaresCondensed-BoldItalic.woff2") format("woff2"), url("../fonts/TTSquaresCondensed-BoldItalic.woff") format("woff"), url("../fonts/TTSquaresCondensed-BoldItalic.ttf") format("truetype"), url("../fonts/TTSquaresCondensed-BoldItalic.svg#TTSquaresCondensed-BoldItalic") format("svg");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Squares Condensed";
+  src: url("../fonts/TTSquaresCondensed-LightItalic.eot");
+  src: url("../fonts/TTSquaresCondensed-LightItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/TTSquaresCondensed-LightItalic.woff2") format("woff2"), url("../fonts/TTSquaresCondensed-LightItalic.woff") format("woff"), url("../fonts/TTSquaresCondensed-LightItalic.ttf") format("truetype"), url("../fonts/TTSquaresCondensed-LightItalic.svg#TTSquaresCondensed-LightItalic") format("svg");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Squares Condensed";
+  src: url("../fonts/TTSquaresCondensed-Light.eot");
+  src: url("../fonts/TTSquaresCondensed-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/TTSquaresCondensed-Light.woff2") format("woff2"), url("../fonts/TTSquaresCondensed-Light.woff") format("woff"), url("../fonts/TTSquaresCondensed-Light.ttf") format("truetype"), url("../fonts/TTSquaresCondensed-Light.svg#TTSquaresCondensed-Light") format("svg");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Squares Condensed";
+  src: url("../fonts/TTSquaresCondensed-Italic.eot");
+  src: url("../fonts/TTSquaresCondensed-Italic.eot?#iefix") format("embedded-opentype"), url("../fonts/TTSquaresCondensed-Italic.woff2") format("woff2"), url("../fonts/TTSquaresCondensed-Italic.woff") format("woff"), url("../fonts/TTSquaresCondensed-Italic.ttf") format("truetype"), url("../fonts/TTSquaresCondensed-Italic.svg#TTSquaresCondensed-Italic") format("svg");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Squares Condensed";
+  src: url("../fonts/TTSquaresCondensed-ThinItalic.eot");
+  src: url("../fonts/TTSquaresCondensed-ThinItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/TTSquaresCondensed-ThinItalic.woff2") format("woff2"), url("../fonts/TTSquaresCondensed-ThinItalic.woff") format("woff"), url("../fonts/TTSquaresCondensed-ThinItalic.ttf") format("truetype"), url("../fonts/TTSquaresCondensed-ThinItalic.svg#TTSquaresCondensed-ThinItalic") format("svg");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Squares Condensed";
+  src: url("../fonts/TTSquaresCondensed-Thin.eot");
+  src: url("../fonts/TTSquaresCondensed-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/TTSquaresCondensed-Thin.woff2") format("woff2"), url("../fonts/TTSquaresCondensed-Thin.woff") format("woff"), url("../fonts/TTSquaresCondensed-Thin.ttf") format("truetype"), url("../fonts/TTSquaresCondensed-Thin.svg#TTSquaresCondensed-Thin") format("svg");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Squares Condensed";
+  src: url("../fonts/TTSquaresCondensed-Regular.eot");
+  src: url("../fonts/TTSquaresCondensed-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/TTSquaresCondensed-Regular.woff2") format("woff2"), url("../fonts/TTSquaresCondensed-Regular.woff") format("woff"), url("../fonts/TTSquaresCondensed-Regular.ttf") format("truetype"), url("../fonts/TTSquaresCondensed-Regular.svg#TTSquaresCondensed-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
