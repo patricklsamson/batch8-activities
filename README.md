@@ -1,5 +1,7 @@
 # Welcome to Patrick's GitHub Page!
-***
+
+---
+
 This page is intended for presenting to you all the activities I completed throughout the duration of the Web Development Bootcamp with Avion School.
 
 ## Table of Contents:
@@ -10,3 +12,4 @@ This page is intended for presenting to you all the activities I completed throu
 1. [Survey Form](/a4-survey-form/index.html)
 1. [Chessboard (Flex)](/a5-chessboard-flex/index.html)
 1. [Chessboard (Grid)](/a6-chessboard-grid/index.html)
+1. [Product Landing Page](/a7-product-landing-page/index.html)
