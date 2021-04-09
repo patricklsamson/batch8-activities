@@ -17,10 +17,6 @@
 #nav-toggle:checked ~ #navcoll {
   visibility: visible;
   opacity: 1;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
 }
 
 #nav-toggle:checked ~ #nav-toggle-icon span {
@@ -109,6 +105,10 @@
     text-align: center;
     background: #000;
     border-top: 0.1px solid #343a40;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
   }
 
   nav .menu-container {
