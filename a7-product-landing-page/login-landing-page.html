@@ -315,14 +315,6 @@
         matchHeights(".mh2");
         matchHeights(".mh3");
 
-        addEvent($$("signup-btn"), "click", function () {
-          tClass(document.body, "modal-open");
-        });
-
-        addEvent($$("login-btn"), "click", function () {
-          tClass(document.body, "modal-open");
-        });
-
         for (var i = 0; i < $a(".nav-link").length; i++) {
           addEvent($a(".nav-link")[i], "click", function () {
             $$("nav-toggle").checked = false;
