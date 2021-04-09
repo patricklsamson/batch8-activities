@@ -147,3 +147,13 @@
 .txtfx {
   text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
+
+.modal-open {
+  overflow: hidden;
+}
+
+@media not all and (pointer: coarse) {
+  .modal-open {
+    padding-right: 16px;
+  }
+}
