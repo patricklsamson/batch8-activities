@@ -9,7 +9,7 @@
     <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" size="32x32" />
     <link rel="icon" href="../assets/img/favicon-16x16.png" type="image/png" size="16x16" />
     <link rel="stylesheet" href="../assets/css/index.min.css" />
-    <link rel="stylesheet" href="css/main.min.css" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
   </head>
   <body class="animate">
     <!-- FAIR USE -->
@@ -320,25 +320,6 @@
     </footer>
 
     <script src="../assets/js/utility.prod.js"></script>
-    <script>
-      docReady(function () {
-        matchHeights(".mh");
-        matchHeights(".mh2");
-        matchHeights(".mh3");
-
-        for (var i = 0; i < $a(".nav-link").length; i++) {
-          addEvent($a(".nav-link")[i], "click", function () {
-            $$("nav-toggle").checked = false;
-          });
-        }
-
-        var carousel = new caro({
-          autoplay: {
-            on: true,
-            interval: 5000,
-          },
-        });
-      });
-    </script>
+    <script src="assets/js/main.prod.js"></script>
   </body>
 </html>
