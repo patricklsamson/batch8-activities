@@ -64,10 +64,6 @@ label[for="login"]:before {
 #login:checked ~ .wrap-login {
   visibility: visible;
   opacity: 1;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
 }
 
 #signup:checked ~ label[for="signup"],
@@ -85,6 +81,10 @@ label[for="login"]:before {
 .wrap-login {
   visibility: hidden;
   opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
   position: fixed;
   top: 0;
   left: 0;
@@ -122,10 +122,6 @@ label[for="login"]:before {
 #user:checked ~ .wrap-user {
   visibility: visible;
   opacity: 1;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
 }
 
 header .user {
@@ -133,28 +129,28 @@ header .user {
   border: 2px solid #6c757d;
   border-radius: 50%;
   cursor: pointer;
-}
-
-label[for="user"]:hover .user {
-  border: 2px solid #00aecd;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
   transition: 0.5s;
+}
+
+label[for="user"]:hover .user {
+  border: 2px solid #00aecd;
 }
 
 label[for="user"] span {
   position: relative;
   bottom: 18px;
   padding-left: 8px;
-}
-
-label[for="user"]:hover span {
-  color: #00aecd;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
   transition: 0.5s;
+}
+
+label[for="user"]:hover span {
+  color: #00aecd;
 }
 
 header .wrap-user {
