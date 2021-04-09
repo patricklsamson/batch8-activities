@@ -186,6 +186,38 @@
     margin: 0 auto;
   }
 
+  .far-cry .bar:nth-of-type(1) {
+    padding-top: 141%;
+  }
+
+  .far-cry .bar:nth-of-type(2) {
+    padding-top: 196%;
+  }
+
+  .far-cry .bar:nth-of-type(3) {
+    padding-top: 206%;
+  }
+
+  .far-cry .bar:nth-of-type(4) {
+    padding-top: 246%;
+  }
+
+  .tomb-raider .bar:nth-of-type(1) {
+    padding-top: 86%;
+  }
+
+  .tomb-raider .bar:nth-of-type(2) {
+    padding-top: 131%;
+  }
+
+  .tomb-raider .bar:nth-of-type(3) {
+    padding-top: 146%;
+  }
+
+  .tomb-raider .bar:nth-of-type(4) {
+    padding-top: 166%;
+  }
+
   .acer-new:before,
   .acer-old:before {
     width: 100px;
