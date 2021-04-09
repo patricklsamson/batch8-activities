@@ -119,7 +119,7 @@
       <div class="wrap-banner flex fbot">
         <h1 class="title txtfx"><strong>PREDATOR</strong> <span>TRITON</span> 500</h1>
         <h4 class="caption txtfx">FORGED THIN. LEAN AND MEAN.</h4>
-        <a href="#features" class="btn-white">Watch NOW</a>
+        <a href="#watch" class="btn-white">Watch NOW</a>
       </div>
     </section>
 
@@ -147,6 +147,8 @@
         </div>
       </div>
     </section>
+
+    <div id="watch" class="wrap-pagelink"></div>
 
     <section class="sec-video img">
       <div class="wrap-overlay">
@@ -359,10 +361,12 @@
 
         addEvent($$("signup-btn"), "click", function () {
           tClass(document.body, "modal-open");
+          rClass(document.body, "animate");
         });
 
         addEvent($$("login-btn"), "click", function () {
           tClass(document.body, "modal-open");
+          rClass(document.body, "animate");
         });
 
         for (var i = 0; i < $a(".nav-link").length; i++) {
