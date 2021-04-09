@@ -23,6 +23,7 @@
   -ms-flex-direction: column;
   flex-direction: column;
   height: 100%;
+  padding: 20px 0;
 }
 
 .sec-banner .title,
