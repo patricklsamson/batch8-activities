@@ -1,0 +1,15 @@
+.btn-white {
+  border: 2px solid #f8f9fa;
+  color: #f8f9fa;
+  background: #000;
+}
+
+.btn-white:hover,
+.btn-white:hover:before {
+  border-color: #00c3ca;
+  color: #00aecd;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
