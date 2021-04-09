@@ -1,0 +1,229 @@
+.sec-banner {
+  background-image: url(../../assets/img/triton-banner.jpg);
+}
+
+@media only screen and (min-width: 992px) {
+  .sec-banner {
+    background-attachment: fixed;
+  }
+
+  .sec-banner .wrap-banner {
+    min-height: calc(100vh - 108px);
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .sec-banner {
+    height: 435px;
+  }
+}
+
+.sec-banner .wrap-banner {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sec-banner .title,
+.sec-banner .caption,
+.sec-banner .btn-white {
+  position: relative;
+}
+
+.sec-banner .title {
+  bottom: 30px;
+  opacity: 0;
+  -webkit-animation: pop-down 0.6s linear 0.6s forwards;
+  -moz-animation: pop-down 0.6s linear 0.6s forwards;
+  -o-animation: pop-down 0.6s linear 0.6s forwards;
+  animation: pop-down 0.6s linear 0.6s forwards;
+}
+
+@-webkit-keyframes pop-down {
+  0% {
+    bottom: 30px;
+    opacity: 0;
+  }
+
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes pop-down {
+  0% {
+    bottom: 30px;
+    opacity: 0;
+  }
+
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@-o-keyframes pop-down {
+  0% {
+    bottom: 30px;
+    opacity: 0;
+  }
+
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes pop-down {
+  0% {
+    bottom: 30px;
+    opacity: 0;
+  }
+
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+.sec-banner .title,
+.sec-banner .caption {
+  padding-right: 15px;
+}
+
+.sec-banner h1 strong {
+  font-weight: 700;
+}
+
+.sec-banner h1 span {
+  color: #00aecd;
+}
+
+.sec-banner .caption {
+  left: 40vw;
+  opacity: 0;
+  -webkit-animation: pop-left 0.15s linear 1s forwards;
+  -moz-animation: pop-left 0.15s linear 1s forwards;
+  -o-animation: pop-left 0.15s linear 1s forwards;
+  animation: pop-left 0.15s linear 1s forwards;
+}
+
+@-webkit-keyframes pop-left {
+  0% {
+    left: 40vw;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes pop-left {
+  0% {
+    left: 40vw;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@-o-keyframes pop-left {
+  0% {
+    left: 40vw;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes pop-left {
+  0% {
+    left: 40vw;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+.sec-banner a {
+  padding: 10px 20px;
+  font-size: 20px;
+  margin-top: 15px;
+  margin-right: 15%;
+  background: rgba(0, 0, 0, 0.2);
+  top: 40px;
+  opacity: 0;
+  -webkit-animation: pop-up 0.3s linear 1.2s forwards;
+  -moz-animation: pop-up 0.3s linear 1.2s forwards;
+  -o-animation: pop-up 0.3s linear 1.2s forwards;
+  animation: pop-up 0.3s linear 1.2s forwards;
+}
+
+@-webkit-keyframes pop-up {
+  0% {
+    top: 40px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes pop-up {
+  0% {
+    top: 40px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@-o-keyframes pop-up {
+  0% {
+    top: 40px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes pop-up {
+  0% {
+    top: 40px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.sec-banner a:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
