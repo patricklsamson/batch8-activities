@@ -78,6 +78,11 @@
   -o-background-size: cover;
   background-size: cover;
 }
+@media only screen and (min-width: 992px) {
+  .img.prlax {
+    background-attachment: fixed;
+  }
+}
 .img.con {
   -webkit-background-size: contain;
   -moz-background-size: contain;
