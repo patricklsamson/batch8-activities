@@ -6,15 +6,13 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
+.sec-carousel .tbl {
+  padding: 20px 0;
+}
+
 @media only screen and (min-width: 992px) {
   .sec-carousel .tbl {
     min-height: calc(100vh - 329px);
-  }
-}
-
-@media only screen and (max-width: 991px) {
-  .sec-carousel .tbl {
-    padding: 20px 0;
   }
 }
 
