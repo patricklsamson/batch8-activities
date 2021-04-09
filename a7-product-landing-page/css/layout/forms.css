@@ -1,0 +1,19 @@
+form {
+  padding: 25px;
+  background: #000;
+  color: #f8f9fa;
+  border: 2px solid #f8f9fa;
+}
+
+form input {
+  width: 100%;
+  margin: 10px auto;
+}
+
+form .btn-white {
+  width: 115px;
+  height: 45px;
+  display: block;
+  font-family: "TT Squares Condensed", sans-serif;
+  font-size: 20px;
+}
