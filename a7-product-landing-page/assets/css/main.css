@@ -11,6 +11,7 @@
  * Layout
  *--------------------------------------------------*/
 
+@import "layout/loader.css";
 @import "layout/containers.css";
 @import "layout/navbar.css";
 @import "layout/header.css";
@@ -21,7 +22,6 @@
  * Components
  *--------------------------------------------------*/
 
-@import "components/loader.css";
 @import "components/carousel.css";
 @import "components/button.css";
 
