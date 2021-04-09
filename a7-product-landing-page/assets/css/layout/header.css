@@ -170,7 +170,7 @@ header .wrap-user {
   z-index: 5;
   background: #6c757d;
   padding: 15px;
-  padding-left: 40px;
+  padding-left: 60px;
 }
 
 @media only screen and (max-width: 480px) {
