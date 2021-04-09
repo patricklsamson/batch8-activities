@@ -1,0 +1,17 @@
+.sec-features {
+  padding: 44px 0;
+}
+
+@media only screen and (max-width: 480px) {
+  .sec-features [class*="gcol"] {
+    margin-top: 10px;
+  }
+}
+
+.sec-features sup {
+  font-size: 0.5em;
+}
+
+.sec-features h5 {
+  color: #00aecd;
+}
