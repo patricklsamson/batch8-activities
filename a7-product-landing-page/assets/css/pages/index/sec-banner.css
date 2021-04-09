@@ -3,10 +3,6 @@
 }
 
 @media only screen and (min-width: 992px) {
-  .sec-banner {
-    background-attachment: fixed;
-  }
-
   .sec-banner .wrap-banner {
     min-height: calc(100vh - 108px);
   }
