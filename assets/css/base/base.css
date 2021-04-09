@@ -122,17 +122,18 @@ a:hover {
   text-decoration: none;
 }
 
-input[type*="radio"],
-input[type*="checkbox"],
-input[type*="radio"] + label,
-input[type*="checkbox"] + label,
+input[type="radio"],
+input[type="checkbox"],
+input[type="radio"] + label,
+input[type="checkbox"] + label,
+input[type="submit"],
 select,
 button {
   cursor: pointer;
 }
 
-input[type*="radio"] + label,
-input[type*="checkbox"] + label,
+input[type="radio"] + label,
+input[type="checkbox"] + label,
 img {
   -webkit-user-select: none;
   -moz-user-select: none;
