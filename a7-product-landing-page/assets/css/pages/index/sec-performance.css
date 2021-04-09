@@ -12,10 +12,6 @@
 }
 
 @media only screen and (min-width: 992px) {
-  .sec-performance {
-    background-attachment: fixed;
-  }
-
   .sec-performance .cont {
     min-height: calc(100vh - 339px);
   }
