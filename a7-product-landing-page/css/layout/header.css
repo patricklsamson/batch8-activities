@@ -119,9 +119,75 @@ label[for="login"]:before {
   }
 }
 
+#user:checked ~ .wrap-user {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
 header .user {
   height: 50px;
   border: 2px solid #6c757d;
   border-radius: 50%;
   cursor: pointer;
+}
+
+label[for="user"]:hover .user {
+  border: 2px solid #00aecd;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+label[for="user"] span {
+  position: relative;
+  bottom: 18px;
+  padding-left: 8px;
+}
+
+label[for="user"]:hover span {
+  color: #00aecd;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+header .wrap-user {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  top: 63px;
+  right: 0;
+  z-index: 5;
+  background: #6c757d;
+  padding: 15px;
+  padding-left: 40px;
+}
+
+@media only screen and (max-width: 480px) {
+  header .user {
+    height: 40px;
+  }
+
+  label[for="user"] span {
+    bottom: 15px;
+    padding-left: 5px;
+  }
+
+  header .wrap-user {
+    top: 52px;
+  }
+}
+
+.wrap-user li {
+  margin: 5px 0;
 }
