@@ -6,6 +6,10 @@ function docReady(callback) {
   });
 }
 
+function body(id) {
+  return document.body.id == id;
+}
+
 function $$(element) {
   return document.getElementById(element);
 }
