@@ -7,6 +7,11 @@ docReady(function () {
     if (!e.target.closest("#header")) {
       $$("user").checked = false;
     }
+
+    if (!e.target.closest("#footer")) {
+      $$("about").checked = false;
+      $$("triton").checked = false;
+    }
   };
 
   window.onscroll = function () {
@@ -26,6 +31,14 @@ docReady(function () {
       on: true,
       interval: 5000,
     },
+  });
+
+  addEvent($$("about-btn"), "click", function () {
+    $$("triton").checked = false;
+  });
+
+  addEvent($$("triton-btn"), "click", function () {
+    $$("about").checked = false;
   });
 
   addEvent($$("signup-btn"), "click", function () {
