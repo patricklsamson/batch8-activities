@@ -1,0 +1,21 @@
+html {
+  background-color: #343a40;
+  color: #f8f9fa;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: #f8f9fa;
+}
+
+a:hover {
+  color: #00aecd;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
