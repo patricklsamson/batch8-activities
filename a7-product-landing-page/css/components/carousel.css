@@ -1,0 +1,155 @@
+.sec-carousel {
+  background-image: url(../../assets/img/triton-top.jpg);
+}
+
+.sec-carousel .wrap-overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (min-width: 992px) {
+  .sec-carousel {
+    background-attachment: fixed;
+  }
+
+  .sec-carousel .tbl {
+    min-height: calc(100vh - 329px);
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .sec-carousel .tbl {
+    padding: 20px 0;
+  }
+}
+
+.caro-cont {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #f8f9fa;
+}
+
+.caro-cont .caro {
+  position: relative;
+  overflow: hidden;
+}
+
+.caro-cont .caro .caro-inner {
+  position: absolute;
+  zoom: 1;
+}
+
+.caro-cont .caro .caro-inner:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: ".";
+  clear: both;
+  height: 0;
+}
+
+.caro-cont .caro .caro-inner .slide {
+  float: left;
+}
+
+.caro-cont .caro .caro-inner .slide * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  cursor: grab;
+}
+
+.caro-cont .caro .caro-inner .slide *:active {
+  cursor: grabbing;
+}
+
+.caro-cont .review {
+  margin: 30px;
+}
+
+@media only screen and (max-width: 480px) {
+  .caro-cont .review {
+    margin: 10px;
+  }
+}
+
+.caro-cont .caro-nav {
+  text-align: center;
+}
+
+.caro-cont .caro-nav button.caro-prev,
+.caro-cont .caro-nav button.caro-next {
+  display: inline-block;
+}
+
+.caro-cont .caro-nav button.caro-prev div,
+.caro-cont .caro-nav button.caro-next div {
+  width: 0;
+  height: 0;
+  border-width: 15px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.caro-cont button {
+  background: transparent;
+  border: none;
+  margin: 0 10px;
+}
+
+.caro-cont .caro-nav button.caro-prev div {
+  border-right-color: #f8f9fa;
+}
+
+.caro-cont button.caro-prev div:hover {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  border-right-color: #00aecd;
+}
+
+.caro-cont .caro-nav button.caro-next div {
+  border-left-color: #f8f9fa;
+}
+
+.caro-cont button.caro-next div:hover {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  border-left-color: #00aecd;
+}
+
+.caro-cont .caro-dots {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+
+.caro-cont .caro-dots span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #00aecd;
+  margin: 0 5px;
+  opacity: 0.5;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.caro-cont .caro-dots span:hover,
+.caro-cont .caro-dots span.active {
+  opacity: 1;
+}
+
+.sec-carousel h5 {
+  color: #00aecd;
+}
