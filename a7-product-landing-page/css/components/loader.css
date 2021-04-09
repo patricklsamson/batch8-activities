@@ -7,68 +7,57 @@
 
 @-webkit-keyframes hidden {
   0% {
-    overflow: hidden;
-    padding-right: 16px;
+    overflow-y: hidden;
   }
 
   99% {
-    overflow: hidden;
-    padding-right: 16px;
+    overflow-y: hidden;
   }
 
   100% {
-    overflow-x: hidden;
-    padding-right: 0;
+    overflow-y: unset;
   }
 }
 
 @-moz-keyframes hidden {
   0% {
-    overflow: hidden;
-    padding-right: 16px;
+    overflow-y: hidden;
   }
 
   99% {
-    overflow: hidden;
-    padding-right: 16px;
+    overflow-y: hidden;
   }
 
   100% {
-    overflow-x: hidden;
-    padding-right: 0;
+    overflow-y: unset;
   }
 }
 
 @-o-keyframes hidden {
   0% {
-    overflow: hidden;
-    padding-right: 16px;
+    overflow-y: hidden;
   }
 
   99% {
-    overflow: hidden;
-    padding-right: 16px;
+    overflow-y: hidden;
   }
 
   100% {
-    overflow-x: hidden;
-    padding-right: 0;
+    overflow-y: unset;
   }
 }
 
 @keyframes hidden {
   0% {
-    overflow: hidden;
-    padding-right: 16px;
+    overflow-y: hidden;
   }
 
   99% {
-    overflow: hidden;
-    padding-right: 16px;
+    overflow-y: hidden;
   }
 
   100% {
-    overflow-x: hidden;
+    overflow-y: unset;
     padding-right: 0;
   }
 }
@@ -77,7 +66,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 6;
   -webkit-animation: index 0.6s linear forwards;
   -moz-animation: index 0.6s linear forwards;
@@ -102,6 +91,7 @@
 
   100% {
     z-index: -1;
+    visibility: none;
   }
 }
 
@@ -122,6 +112,7 @@
 
   100% {
     z-index: -1;
+    visibility: none;
   }
 }
 
@@ -142,6 +133,7 @@
 
   100% {
     z-index: -1;
+    visibility: none;
   }
 }
 
@@ -162,6 +154,7 @@
 
   100% {
     z-index: -1;
+    visibility: none;
   }
 }
 
