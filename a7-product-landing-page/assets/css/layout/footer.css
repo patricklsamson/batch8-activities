@@ -94,6 +94,14 @@ footer label:after {
   transition: 0.5s;
 }
 
+.about,
+.triton {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
 footer .talign {
   border-top: 0.1px solid #6c757d;
   background: #000;
