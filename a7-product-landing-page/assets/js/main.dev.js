@@ -5,6 +5,18 @@ docReady(function () {
   matchHeights(".mh2");
   matchHeights(".mh3");
 
+  window.onclick = function (e) {
+    if (!e.target.closest("#header")) {
+      $$("user").checked = false;
+    }
+  };
+
+  window.onscroll = function () {
+    if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
+      $$("user").checked = false;
+    }
+  };
+
   for (var i = 0; i < $a(".nav-link").length; i++) {
     addEvent($a(".nav-link")[i], "click", function () {
       $$("nav-toggle").checked = false;
