@@ -289,7 +289,7 @@ caro = function () {
         self.startX = touch.clientX;
         self.startY = touch.clientY;
         addEvents(self.sliderInner, "mousemove touchmove", swipeMove);
-        addEvents($s("body"), "mouseup touchend", swipeEnd);
+        addEvents(document.body, "mouseup touchend", swipeEnd);
       }
     }
 
