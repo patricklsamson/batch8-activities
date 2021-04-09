@@ -4,18 +4,23 @@ docReady(function () {
   matchHeights(".mh3");
 
   window.onclick = function (e) {
-    if (!e.target.closest("#header")) {
-      $$("user").checked = false;
+    if (!e.target.closest("#nav-bar")) {
+      $$("nav-toggle").checked = false;
     }
 
     if (!e.target.closest("#footer")) {
       $$("about").checked = false;
       $$("triton").checked = false;
     }
+
+    if (!e.target.closest("#header")) {
+      $$("user").checked = false;
+    }
   };
 
   window.onscroll = function () {
     if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
+      $$("nav-toggle").checked = false;
       $$("user").checked = false;
     }
   };
