@@ -1,5 +1,5 @@
 .sec-video {
-  background-image: url(../../assets/img/triton-fans.jpg);
+  background-image: url(../../../assets/img/triton-fans.jpg);
 }
 
 .sec-video .wrap-overlay {
@@ -20,7 +20,7 @@
   position: absolute;
   width: 75vh;
   height: 75vh;
-  background-image: url(../../assets/img/triton-laptop.png);
+  background-image: url(../../../assets/img/triton-laptop.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
