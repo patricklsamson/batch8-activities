@@ -1,0 +1,16 @@
+@media only screen and (max-width: 991px) {
+  nav .wrap-navcoll {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+nav ul {
+  list-style: none;
+}
+
+@media only screen and (min-width: 992px) {
+  nav ul > li {
+    display: inline-block;
+  }
+}
