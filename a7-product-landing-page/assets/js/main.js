@@ -3,20 +3,26 @@ docReady(function () {
   matchHeights(".mh2");
   matchHeights(".mh3");
 
-  window.onclick = function (e) {
-    if (body("body-login")) {
-      $$("user").checked = false;
-    }
+  if (body("body-login")) {
+    addEvent(document.body, "click", function (e) {
+      if (!$$("header").contains(e.target)) {
+        $$("user").checked = false;
+      }
+    });
+  }
 
-    if (!e.target.closest("#nav-bar")) {
+  addEvent(document.body, "click", function (e) {
+    if (!$$("nav-bar").contains(e.target)) {
       $$("nav-toggle").checked = false;
     }
+  });
 
-    if (!e.target.closest("#footer")) {
+  addEvent(document.body, "click", function (e) {
+    if (!$$("footer").contains(e.target)) {
       $$("about").checked = false;
       $$("triton").checked = false;
     }
-  };
+  });
 
   window.onscroll = function () {
     if (body("body-login")) {
