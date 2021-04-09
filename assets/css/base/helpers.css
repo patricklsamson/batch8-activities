@@ -149,7 +149,7 @@
 }
 
 .modal-open {
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 @media not all and (pointer: coarse) {
