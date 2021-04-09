@@ -1,0 +1,100 @@
+footer {
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 992px) {
+  footer .cont {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  footer label {
+    display: none;
+  }
+
+  footer li {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  footer .cont {
+    text-align: center;
+  }
+
+  footer .cont p {
+    display: none;
+  }
+
+  footer .grid [class*="gcol"] {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  footer ul {
+    height: 0;
+    background: #6c757d;
+    margin-top: 15px;
+  }
+
+  footer li {
+    visibility: hidden;
+    opacity: 0;
+    padding: 10px 0;
+  }
+}
+
+footer label:after {
+  content: "+";
+  float: right;
+  font-size: 20px;
+  position: relative;
+  bottom: 4px;
+}
+
+#about:checked ~ label[for="about"],
+#triton:checked ~ label[for="triton"] {
+  color: #00aecd;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#about:checked ~ label[for="about"]:after,
+#triton:checked ~ label[for="triton"]:after {
+  color: #00aecd;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#about:checked ~ .about,
+#triton:checked ~ .triton {
+  height: 88px;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  -moz-transition: 0.25s;
+  transition: 0.25s;
+}
+
+#about:checked ~ .about li,
+#triton:checked ~ .triton li {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+footer .talign {
+  border-top: 0.1px solid #6c757d;
+  background: #000;
+}
