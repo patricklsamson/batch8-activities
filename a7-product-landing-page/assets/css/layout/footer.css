@@ -35,6 +35,10 @@ footer {
     height: 0;
     background: #6c757d;
     margin-top: 15px;
+    -webkit-transition: 0.25s;
+    -o-transition: 0.25s;
+    -moz-transition: 0.25s;
+    transition: 0.25s;
   }
 
   footer li {
@@ -78,24 +82,12 @@ footer label:after {
 #about:checked ~ .about,
 #triton:checked ~ .triton {
   height: 88px;
-  -webkit-transition: 0.25s;
-  -o-transition: 0.25s;
-  -moz-transition: 0.25s;
-  transition: 0.25s;
 }
 
 #about:checked ~ .about li,
 #triton:checked ~ .triton li {
   visibility: visible;
   opacity: 1;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.about,
-.triton {
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
