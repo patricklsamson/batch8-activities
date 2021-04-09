@@ -49,10 +49,10 @@
                         <label for="password">Password</label><br />
                         <input type="password" id="password" required /><br />
 
-                        <label for="confirm-pw">Confirm Password</label><br />
+                        <label for="confirm-pw">Confirm Password</label><span id="confirm-msg"></span><br />
                         <input type="password" id="confirm-pw" required /><br />
 
-                        <input type="submit" id="submit" value="SIGN UP" class="btn-white" />
+                        <input type="submit" id="submit" value="SIGN UP" class="btn-white" disabled />
                       </form>
                     </div>
                   </div>
@@ -367,6 +367,26 @@
         addEvent($$("login-btn"), "click", function () {
           tClass(document.body, "modal-open");
           rClass(document.body, "animate");
+        });
+
+        addEvent($$("password"), "keyup", function () {
+          if ($$("confirm-pw").value == $$("password").value) {
+            $$("submit").disabled = false;
+          } else {
+            $$("submit").disable = true;
+          }
+        });
+
+        addEvent($$("confirm-pw"), "keyup", function () {
+          if ($$("confirm-pw").value == $$("password").value) {
+            $$("submit").disabled = false;
+            $$("confirm-msg").style.color = "green";
+            $$("confirm-msg").innerHTML = " MATCH";
+          } else {
+            $$("submit").disable = true;
+            $$("confirm-msg").style.color = "red";
+            $$("confirm-msg").innerHTML = " NOT MATCH";
+          }
         });
 
         for (var i = 0; i < $a(".nav-link").length; i++) {
