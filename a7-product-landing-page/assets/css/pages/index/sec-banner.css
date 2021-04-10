@@ -1,9 +1,9 @@
 .sec-banner {
   background-image: url(../../../assets/img/triton-banner.jpg);
-  -webkit-animation: bg-change 5s ease-in-out 1s infinite;
-  -moz-animation: bg-change 5s ease-in-out 1s infinite;
-  -o-animation: bg-change 5s ease-in-out 1s infinite;
-  animation: bg-change 5s ease-in-out 1s infinite;
+  -webkit-animation: bg-change 6s ease-in-out 1s infinite;
+  -moz-animation: bg-change 6s ease-in-out 1s infinite;
+  -o-animation: bg-change 6s ease-in-out 1s infinite;
+  animation: bg-change 6s ease-in-out 1s infinite;
 }
 
 @-webkit-keyframes bg-change {
