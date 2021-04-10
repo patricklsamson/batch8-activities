@@ -14,7 +14,29 @@
   color: #00aecd;
 }
 
+nav .wrap-navcoll {
+  height: 0;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  -moz-transition: 0.25s;
+  transition: 0.25s;
+}
+
+nav ul {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
 #nav-toggle:checked ~ #navcoll {
+  visibility: visible;
+  height: calc(100vh - 28px);
+}
+
+#nav-toggle:checked ~ #navcoll ul {
   visibility: visible;
   opacity: 1;
 }
