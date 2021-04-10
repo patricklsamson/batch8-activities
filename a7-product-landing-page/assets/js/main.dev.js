@@ -13,6 +13,11 @@ docReady(function () {
     });
   }
 
+  addEvent(document.body, "click", function (e) {
+    if (!$$("nav-bar").contains(e.target || e.srcElement)) {
+      $$("nav-toggle").checked = false;
+    }
+  });
   addEvent(window, "scroll", function () {
     if (body("body-login")) {
       if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
@@ -74,20 +79,31 @@ docReady(function () {
     }
   });
   addEvent($$("about-btn"), "click", function () {
+    $$("service").checked = false;
     $$("triton").checked = false;
+    $$("helios").checked = false;
+  });
+  addEvent($$("service-btn"), "click", function () {
+    $$("about").checked = false;
+    $$("triton").checked = false;
+    $$("helios").checked = false;
   });
   addEvent($$("triton-btn"), "click", function () {
     $$("about").checked = false;
+    $$("service").checked = false;
+    $$("helios").checked = false;
   });
-  addEvent(document.body, "click", function (e) {
-    if (!$$("nav-bar").contains(e.target || e.srcElement)) {
-      $$("nav-toggle").checked = false;
-    }
+  addEvent($$("helios-btn"), "click", function () {
+    $$("about").checked = false;
+    $$("service").checked = false;
+    $$("triton").checked = false;
   });
   addEvent(document.body, "click", function (e) {
     if (!$$("footer").contains(e.target || e.srcElement)) {
       $$("about").checked = false;
+      $$("service").checked = false;
       $$("triton").checked = false;
+      $$("helios").checked = false;
     }
   });
 });
