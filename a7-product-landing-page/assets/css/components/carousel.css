@@ -12,7 +12,7 @@
 
 @media only screen and (min-width: 992px) {
   .sec-carousel .tbl {
-    min-height: calc(100vh - 329px);
+    min-height: calc(100vh - 197px);
   }
 }
 
