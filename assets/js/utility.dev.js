@@ -132,15 +132,6 @@ function matchHeights(element) {
   for (i = 0; i < items.length; i++) {
     items[i].style.height = maxHeight + "px";
   }
-
-  resize = setTimeout(function () {
-    addEvent(window, "resize", function () {
-      for (i = 0; i < items.length; i++) {
-        items[i].style.height = maxHeight + "px";
-      }
-    });
-  }, 250);
-  clearTimeout(resize);
 }
 
 var caro = window.caro || {};
