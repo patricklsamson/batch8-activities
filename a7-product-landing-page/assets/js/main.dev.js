@@ -7,7 +7,7 @@ docReady(function () {
 
   if (body("body-login")) {
     addEvent(document.body, "click", function (e) {
-      if (!$$("header").contains(e.target)) {
+      if (!$$("header").contains(e.target || e.srcElement)) {
         $$("user").checked = false;
       }
     });
@@ -80,12 +80,12 @@ docReady(function () {
     $$("about").checked = false;
   });
   addEvent(document.body, "click", function (e) {
-    if (!$$("nav-bar").contains(e.target)) {
+    if (!$$("nav-bar").contains(e.target || e.srcElement)) {
       $$("nav-toggle").checked = false;
     }
   });
   addEvent(document.body, "click", function (e) {
-    if (!$$("footer").contains(e.target)) {
+    if (!$$("footer").contains(e.target || e.srcElement)) {
       $$("about").checked = false;
       $$("triton").checked = false;
     }
