@@ -16,7 +16,7 @@
 
 #nav-toggle:checked ~ #navcoll {
   visibility: visible;
-  height: calc(100vh - 28px);
+  height: calc(100vh - 34px);
 }
 
 #nav-toggle:checked ~ #navcoll ul {
@@ -104,7 +104,7 @@
   nav #navcoll.wrap-navcoll {
     position: absolute;
     left: 0;
-    top: 29px;
+    top: 34px;
     width: 100vw;
     text-align: center;
     background: #000;
