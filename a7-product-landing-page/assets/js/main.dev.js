@@ -5,31 +5,6 @@ docReady(function () {
   matchHeights(".mh2");
   matchHeights(".mh3");
 
-  if (body("body-login")) {
-    addEvent(document.body, "click", function (e) {
-      if (!$$("header").contains(e.target || e.srcElement)) {
-        $$("user").checked = false;
-      }
-    });
-  }
-
-  addEvent(document.body, "click", function (e) {
-    if (!$$("nav-bar").contains(e.target || e.srcElement)) {
-      $$("nav-toggle").checked = false;
-    }
-  });
-  addEvent(window, "scroll", function () {
-    if (body("body-login")) {
-      if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
-        $$("user").checked = false;
-      }
-    }
-
-    if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
-      $$("nav-toggle").checked = false;
-    }
-  });
-
   if (body("index")) {
     addEvent($$("signup-btn"), "click", function () {
       tClass(document.body, "modal-open");
@@ -66,6 +41,38 @@ docReady(function () {
     });
   }
 
+  if (body("body-login")) {
+    addEvent(document.body, "click", function (e) {
+      if (!$$("header").contains(e.target || e.srcElement)) {
+        $$("user").checked = false;
+      }
+    });
+  }
+
+  addEvent(window, "scroll", function () {
+    if (body("body-login")) {
+      if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
+        $$("user").checked = false;
+      }
+    }
+
+    if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
+      $$("nav-toggle").checked = false;
+    }
+  });
+  addEvent(document.body, "click", function (e) {
+    if (!$$("nav-bar").contains(e.target || e.srcElement)) {
+      $$("nav-toggle").checked = false;
+    }
+
+    if (!$$("footer").contains(e.target || e.srcElement)) {
+      $$("about").checked = false;
+      $$("service").checked = false;
+      $$("triton").checked = false;
+      $$("helios").checked = false;
+    }
+  });
+
   for (var i = 0; i < $a(".nav-link").length; i++) {
     addEvent($a(".nav-link")[i], "click", function () {
       $$("nav-toggle").checked = false;
@@ -97,13 +104,5 @@ docReady(function () {
     $$("about").checked = false;
     $$("service").checked = false;
     $$("triton").checked = false;
-  });
-  addEvent(document.body, "click", function (e) {
-    if (!$$("footer").contains(e.target || e.srcElement)) {
-      $$("about").checked = false;
-      $$("service").checked = false;
-      $$("triton").checked = false;
-      $$("helios").checked = false;
-    }
   });
 });
