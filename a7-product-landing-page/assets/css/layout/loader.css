@@ -7,58 +7,57 @@
 
 @-webkit-keyframes hidden {
   0% {
-    overflow-y: hidden;
+    position: fixed;
   }
 
   99% {
-    overflow-y: hidden;
+    position: fixed;
   }
 
   100% {
-    overflow-y: unset;
+    position: unset;
   }
 }
 
 @-moz-keyframes hidden {
   0% {
-    overflow-y: hidden;
+    position: fixed;
   }
 
   99% {
-    overflow-y: hidden;
+    position: fixed;
   }
 
   100% {
-    overflow-y: unset;
+    position: unset;
   }
 }
 
 @-o-keyframes hidden {
   0% {
-    overflow-y: hidden;
+    position: fixed;
   }
 
   99% {
-    overflow-y: hidden;
+    position: fixed;
   }
 
   100% {
-    overflow-y: unset;
+    position: unset;
   }
 }
 
 @keyframes hidden {
   0% {
-    overflow-y: hidden;
+    position: fixed;
   }
 
   99% {
-    overflow-y: hidden;
+    position: fixed;
   }
 
   100% {
-    overflow-y: unset;
-    padding-right: 0;
+    position: unset;
   }
 }
 
