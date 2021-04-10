@@ -61,7 +61,9 @@ footer label:after {
 }
 
 #about:checked ~ label[for="about"],
-#triton:checked ~ label[for="triton"] {
+#service:checked ~ label[for="service"],
+#triton:checked ~ label[for="triton"],
+#helios:checked ~ label[for="helios"] {
   color: #00aecd;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -70,7 +72,9 @@ footer label:after {
 }
 
 #about:checked ~ label[for="about"]:after,
-#triton:checked ~ label[for="triton"]:after {
+#service:checked ~ label[for="service"]:after,
+#triton:checked ~ label[for="triton"]:after,
+#helios:checked ~ label[for="helios"]:after {
   color: #00aecd;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -84,12 +88,19 @@ footer label:after {
 }
 
 #about:checked ~ .about,
-#triton:checked ~ .triton {
+#service:checked ~ .service {
+  height: 132px;
+}
+
+#triton:checked ~ .triton,
+#helios:checked ~ .helios {
   height: 88px;
 }
 
 #about:checked ~ .about li,
-#triton:checked ~ .triton li {
+#service:checked ~ .service li,
+#triton:checked ~ .triton li,
+#helios:checked ~ .helios li {
   visibility: visible;
   opacity: 1;
   -webkit-transition: 0.5s;
