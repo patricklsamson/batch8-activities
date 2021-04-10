@@ -95,11 +95,11 @@ input:checked ~ ul {
 }
 
 #about:checked ~ .about,
-#service:checked ~ .service {
+#service:checked ~ .service,
+#triton:checked ~ .triton {
   height: 132px;
 }
 
-#triton:checked ~ .triton,
 #helios:checked ~ .helios {
   height: 88px;
 }
