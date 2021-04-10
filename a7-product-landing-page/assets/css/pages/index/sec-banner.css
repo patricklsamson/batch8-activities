@@ -11,12 +11,20 @@
     background-image: url(../../../assets/img/triton-banner.jpg);
   }
 
-  50% {
+  33% {
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  51% {
+  34% {
     background-image: url(../../../assets/img/predator-wallpaper.jpg);
+  }
+
+  67% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  68% {
+    background-image: url(../../../assets/img/predator-blue.jpg);
   }
 
   100% {
@@ -29,12 +37,20 @@
     background-image: url(../../../assets/img/triton-banner.jpg);
   }
 
-  50% {
+  33% {
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  51% {
+  34% {
     background-image: url(../../../assets/img/predator-wallpaper.jpg);
+  }
+
+  67% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  68% {
+    background-image: url(../../../assets/img/predator-blue.jpg);
   }
 
   100% {
@@ -47,12 +63,20 @@
     background-image: url(../../../assets/img/triton-banner.jpg);
   }
 
-  50% {
+  33% {
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  51% {
+  34% {
     background-image: url(../../../assets/img/predator-wallpaper.jpg);
+  }
+
+  67% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  68% {
+    background-image: url(../../../assets/img/predator-blue.jpg);
   }
 
   100% {
@@ -65,12 +89,20 @@
     background-image: url(../../../assets/img/triton-banner.jpg);
   }
 
-  50% {
+  33% {
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  51% {
+  34% {
     background-image: url(../../../assets/img/predator-wallpaper.jpg);
+  }
+
+  67% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  68% {
+    background-image: url(../../../assets/img/predator-blue.jpg);
   }
 
   100% {
