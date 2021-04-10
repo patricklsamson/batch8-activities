@@ -170,7 +170,7 @@ caro = function () {
     }
 
     addEvent(self.def.dotsWrapper, "click", function (e) {
-      if (e.target && e.target.nodeName == "SPAN") {
+      if (e.target && e.target.nodeName == "SPAN" || e.srcElement && e.srcElement.nodeName == "SPAN") {
         self.curSlide = e.target.getAttribute("data-slide");
         self.gotoSlide();
       }
@@ -314,6 +314,7 @@ caro = function () {
       }
 
       self.sliderInner.style.left = self.curLeft + self.moveX - self.startX + "px";
+      return false;
     }
 
     function swipeEnd(e) {
