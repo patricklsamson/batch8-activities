@@ -13,18 +13,6 @@ docReady(function () {
     });
   }
 
-  addEvent(document.body, "click", function (e) {
-    if (!$$("nav-bar").contains(e.target)) {
-      $$("nav-toggle").checked = false;
-    }
-  });
-  addEvent(document.body, "click", function (e) {
-    if (!$$("footer").contains(e.target)) {
-      $$("about").checked = false;
-      $$("triton").checked = false;
-    }
-  });
-
   window.onscroll = function () {
     if (body("body-login")) {
       if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
@@ -90,5 +78,16 @@ docReady(function () {
   });
   addEvent($$("triton-btn"), "click", function () {
     $$("about").checked = false;
+  });
+  addEvent(document.body, "click", function (e) {
+    if (!$$("nav-bar").contains(e.target)) {
+      $$("nav-toggle").checked = false;
+    }
+  });
+  addEvent(document.body, "click", function (e) {
+    if (!$$("footer").contains(e.target)) {
+      $$("about").checked = false;
+      $$("triton").checked = false;
+    }
   });
 });
