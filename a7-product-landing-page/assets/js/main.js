@@ -1,4 +1,8 @@
 docReady(function () {
+  matchHeights(".mh");
+  matchHeights(".mh2");
+  matchHeights(".mh3");
+
   if (body("body-login")) {
     addEvent(document.body, "click", function (e) {
       if (!$$("header").contains(e.target || e.srcElement)) {
@@ -7,7 +11,7 @@ docReady(function () {
     });
   }
 
-  window.onscroll = function () {
+  addEvent(window, "scroll", function () {
     if (body("body-login")) {
       if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
         $$("user").checked = false;
@@ -17,7 +21,7 @@ docReady(function () {
     if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
       $$("nav-toggle").checked = false;
     }
-  };
+  });
 
   if (body("index")) {
     addEvent($$("signup-btn"), "click", function () {
@@ -91,8 +95,4 @@ docReady(function () {
       $$("triton").checked = false;
     }
   });
-
-  matchHeights(".mh");
-  matchHeights(".mh2");
-  matchHeights(".mh3");
 });
