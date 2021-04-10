@@ -35,10 +35,12 @@ footer {
     padding-bottom: 15px;
   }
 
+  footer .grid [class*="gcol"]:nth-child(1n + 2) {
+    border-top: 1px solid #6c757d;
+  }
+
   footer ul {
     height: 0;
-    background: #6c757d;
-    margin-top: 15px;
     -webkit-transition: 0.25s;
     -o-transition: 0.25s;
     -moz-transition: 0.25s;
@@ -58,6 +60,11 @@ footer label:after {
   font-size: 20px;
   position: relative;
   bottom: 4px;
+}
+
+input:checked ~ ul {
+  margin-top: 15px;
+  background: #6c757d;
 }
 
 #about:checked ~ label[for="about"],
