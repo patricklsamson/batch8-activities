@@ -1,7 +1,6 @@
 @media only screen and (max-width: 991px) {
   nav .wrap-navcoll {
     visibility: hidden;
-    opacity: 0;
   }
 }
 
