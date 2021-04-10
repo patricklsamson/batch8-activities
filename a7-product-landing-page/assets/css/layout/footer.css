@@ -96,12 +96,12 @@ input:checked ~ ul {
 
 #about:checked ~ .about,
 #service:checked ~ .service,
-#triton:checked ~ .triton {
+#helios:checked ~ .helios {
   height: 132px;
 }
 
-#helios:checked ~ .helios {
-  height: 88px;
+#triton:checked ~ .triton {
+  height: 176px;
 }
 
 #about:checked ~ .about li,
