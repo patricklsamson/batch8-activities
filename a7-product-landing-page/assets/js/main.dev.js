@@ -1,10 +1,6 @@
 "use strict";
 
 docReady(function () {
-  matchHeights(".mh");
-  matchHeights(".mh2");
-  matchHeights(".mh3");
-
   if (body("body-login")) {
     addEvent(document.body, "click", function (e) {
       if (!$$("header").contains(e.target || e.srcElement)) {
@@ -90,4 +86,7 @@ docReady(function () {
       $$("triton").checked = false;
     }
   });
+  matchHeights(".mh");
+  matchHeights(".mh2");
+  matchHeights(".mh3");
 });
