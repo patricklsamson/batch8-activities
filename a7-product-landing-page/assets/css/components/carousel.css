@@ -44,7 +44,7 @@
   float: left;
 }
 
-.caro-cont .caro .caro-inner .slide * {
+.caro-cont .caro .caro-inner .slide {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -54,7 +54,7 @@
   cursor: grab;
 }
 
-.caro-cont .caro .caro-inner .slide *:active {
+.caro-cont .caro .caro-inner .slide:active {
   cursor: grabbing;
 }
 
