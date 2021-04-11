@@ -7,17 +7,17 @@ form {
 
 form input {
   width: 100%;
-  margin: 10px auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-form #submit:disabled {
-  opacity: 0.2;
-}
-
-form .btn-white {
+#submit,
+#log-submit {
   width: 115px;
   height: 45px;
-  display: block;
-  font-family: "TT Squares Condensed", sans-serif;
   font-size: 20px;
+}
+
+#submit:disabled {
+  opacity: 0.2;
 }
