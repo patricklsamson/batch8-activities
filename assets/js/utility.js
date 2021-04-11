@@ -383,23 +383,6 @@ caro = (function () {
       removeEvents(self.sliderInner, "mousemove touchmove", swipeMove);
       removeEvents($s("body"), "mouseup touchend", swipeEnd);
     }
-
-    if (self.def.autoplay.on) {
-      setInterval(function () {
-        if (!hClass(self.def.target, "isAnimating")) {
-          if (self.curSlide == self.totalSlides) {
-            self.curSlide = 0;
-            self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
-          }
-
-          self.curSlide++;
-
-          setTimeout(function () {
-            self.gotoSlide();
-          }, 20);
-        }
-      }, self.def.autoplay.interval);
-    }
   };
 
   caro.prototype.initArrows = function () {
@@ -447,6 +430,23 @@ caro = (function () {
         },
         false
       );
+    }
+
+    if (self.def.autoplay.on) {
+      setInterval(function () {
+        if (!hClass(self.def.target, "isAnimating")) {
+          if (self.curSlide == self.totalSlides) {
+            self.curSlide = 0;
+            self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
+          }
+
+          self.curSlide++;
+
+          setTimeout(function () {
+            self.gotoSlide();
+          }, 20);
+        }
+      }, self.def.autoplay.interval);
     }
   };
 
