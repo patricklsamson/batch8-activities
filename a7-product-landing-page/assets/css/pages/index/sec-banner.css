@@ -90,7 +90,7 @@
 }
 
 @media only screen and (max-width: 991px) {
-  .sec-banner {
+  .sec-banner .wrap-banner {
     height: 500px;
   }
 }
@@ -103,7 +103,6 @@
   -moz-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  height: 100%;
   padding: 20px 0;
 }
 
@@ -168,11 +167,6 @@
     bottom: 0;
     opacity: 1;
   }
-}
-
-.sec-banner .title,
-.sec-banner .caption {
-  padding-right: 15px;
 }
 
 .sec-banner h1 strong {
