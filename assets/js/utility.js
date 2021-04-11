@@ -23,31 +23,31 @@ function $a(element) {
   return document.querySelectorAll(element);
 }
 
-function addEvent(element, event, fn, useCapture) {
+function addEvent(element, event, fn) {
   if (element.addEventListener) {
-    element.addEventListener(event, fn) || element.addEventListener(event, fn, useCapture);
+    element.addEventListener(event, fn, false);
   } else if (element.attachEvent) {
-    element.attachEvent(event, fn) || element.attachEvent(event, fn, useCapture);
+    element.attachEvent(event, fn);
   }
 }
 
-function removeEvent(element, event, fn, useCapture) {
+function removeEvent(element, event, fn) {
   if (element.removeEventListener) {
-    element.removeEventListener(event, fn) || element.removeEventListener(event, fn, useCapture);
+    element.removeEventListener(event, fn, false);
   } else if (element.detachEvent) {
-    element.detachEvent(event, fn) || element.detachEvent(event, fn, useCapture);
+    element.detachEvent(event, fn);
   }
 }
 
 function addEvents(element, events, fn) {
   events.split(" ").forEach(function (e) {
-    return addEvent(element, e, fn, false);
+    return addEvent(element, e, fn);
   });
 }
 
 function removeEvents(element, events, fn) {
   events.split(" ").forEach(function (e) {
-    return removeEvent(element, e, fn, false);
+    return removeEvent(element, e, fn);
   });
 }
 
@@ -178,17 +178,12 @@ caro = (function () {
       self.def.dotsWrapper.appendChild(dot);
     }
 
-    addEvent(
-      self.def.dotsWrapper,
-      "click",
-      function (e) {
-        if ((e.target && e.target.nodeName == "SPAN") || (e.srcElement && e.srcElement.nodeName == "SPAN")) {
-          self.curSlide = e.target.getAttribute("data-slide");
-          self.gotoSlide();
-        }
-      },
-      false
-    );
+    addEvent(self.def.dotsWrapper, "click", function (e) {
+      if ((e.target && e.target.nodeName == "SPAN") || (e.srcElement && e.srcElement.nodeName == "SPAN")) {
+        self.curSlide = e.target.getAttribute("data-slide");
+        self.gotoSlide();
+      }
+    });
   };
 
   caro.prototype.getCurLeft = function () {
@@ -266,8 +261,7 @@ caro = (function () {
       "resize",
       on_resize(function () {
         self.updateSliderDimension();
-      }),
-      false
+      })
     );
 
     var nowHTML = self.def.target.innerHTML;
@@ -389,47 +383,37 @@ caro = (function () {
     var self = this;
 
     if (self.def.arrowLeft != "") {
-      addEvent(
-        self.def.arrowLeft,
-        "click",
-        function () {
-          if (!hClass(self.def.target, "isAnimating")) {
-            if (self.curSlide == 1) {
-              self.curSlide = self.totalSlides + 1;
-              self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
-            }
-
-            self.curSlide--;
-
-            setTimeout(function () {
-              self.gotoSlide();
-            }, 20);
+      addEvent(self.def.arrowLeft, "click", function () {
+        if (!hClass(self.def.target, "isAnimating")) {
+          if (self.curSlide == 1) {
+            self.curSlide = self.totalSlides + 1;
+            self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
           }
-        },
-        false
-      );
+
+          self.curSlide--;
+
+          setTimeout(function () {
+            self.gotoSlide();
+          }, 20);
+        }
+      });
     }
 
     if (self.def.arrowRight != "") {
-      addEvent(
-        self.def.arrowRight,
-        "click",
-        function () {
-          if (!hClass(self.def.target, "isAnimating")) {
-            if (self.curSlide == self.totalSlides) {
-              self.curSlide = 0;
-              self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
-            }
-
-            self.curSlide++;
-
-            setTimeout(function () {
-              self.gotoSlide();
-            }, 20);
+      addEvent(self.def.arrowRight, "click", function () {
+        if (!hClass(self.def.target, "isAnimating")) {
+          if (self.curSlide == self.totalSlides) {
+            self.curSlide = 0;
+            self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
           }
-        },
-        false
-      );
+
+          self.curSlide++;
+
+          setTimeout(function () {
+            self.gotoSlide();
+          }, 20);
+        }
+      });
     }
 
     if (self.def.autoplay.on) {
