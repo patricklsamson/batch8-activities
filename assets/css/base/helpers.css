@@ -127,6 +127,18 @@
   text-align: justify;
 }
 
+.balign {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.balign.blft {
+  margin-right: auto;
+}
+.balign.brgt {
+  margin-left: auto;
+}
+
 .mt-em {
   margin-top: 0.5em;
 }
