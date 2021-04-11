@@ -43,7 +43,7 @@ docReady(function () {
 
   if (body("body-login")) {
     addEvent(document.body, "click", function (e) {
-      if (!$$("header").contains(e.target || e.srcElement)) {
+      if (!e.target.closest("#header") || !$$("header").contains(e.target || e.srcElement)) {
         $$("user").checked = false;
       }
     });
@@ -51,30 +51,30 @@ docReady(function () {
 
   addEvent(window, "scroll", function () {
     if (body("body-login")) {
-      if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
+      if (window.pageYOffset >= 0 || document.documentElement.scrollTop >= 0) {
         $$("user").checked = false;
       }
     }
 
-    if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
+    if (window.pageYOffset >= 0 || document.documentElement.scrollTop >= 0) {
       $$("nav-toggle").checked = false;
     }
 
-    if (window.pageYOffset >= $$("header").offsetHeight) {
+    if (document.body.scrollTop >= $$("header").offsetTop || document.documentElement.scrollTop >= $$("header").offsetTop) {
       $s(".menu-container").style.marginTop = "0";
     }
   });
   addEvent($$("nav-toggle"), "click", function () {
-    if (window.pageYOffset <= $$("header").offsetHeight) {
+    if (window.pageYOffset <= $$("header").offsetTop || document.documentElement.scrollTop <= $$("header").offsetTop) {
       $s(".menu-container").style.marginTop = "-" + $$("header").offsetHeight + "px";
     }
   });
   addEvent(document.body, "click", function (e) {
-    if (!$$("nav-bar").contains(e.target || e.srcElement)) {
+    if (!e.target.closest("#nav-bar") || !$$("nav-bar").contains(e.target || e.srcElement)) {
       $$("nav-toggle").checked = false;
     }
 
-    if (!$$("footer").contains(e.target || e.srcElement)) {
+    if (!e.target.closest("#footer") || !$$("footer").contains(e.target || e.srcElement)) {
       $$("about").checked = false;
       $$("service").checked = false;
       $$("triton").checked = false;
