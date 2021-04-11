@@ -23,19 +23,19 @@ function $a(element) {
   return document.querySelectorAll(element);
 }
 
-function addEvent(element, event, fn) {
+function addEvent(element, event, fn, useCapture) {
   if (element.addEventListener) {
-    element.addEventListener(event, fn);
+    element.addEventListener(event, fn) || element.addEventListener(event, fn, useCapture);
   } else if (element.attachEvent) {
-    element.attachEvent(event, fn);
+    element.attachEvent(event, fn) || element.attachEvent(event, fn, useCapture);
   }
 }
 
-function removeEvent(element, event, fn) {
+function removeEvent(element, event, fn, useCapture) {
   if (element.removeEventListener) {
-    element.removeEventListener(event, fn);
+    element.removeEventListener(event, fn) || element.removeEventListener(event, fn, useCapture);
   } else if (element.detachEvent) {
-    element.detachEvent(event, fn);
+    element.detachEvent(event, fn) || element.detachEvent(event, fn, useCapture);
   }
 }
 
