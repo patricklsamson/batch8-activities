@@ -426,7 +426,7 @@ caro = (function () {
 
           setTimeout(function () {
             self.gotoSlide();
-          }, 20);
+          }, 500);
         }
       }, self.def.autoplay.interval);
     }
