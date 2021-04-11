@@ -1,11 +1,6 @@
 .grid {
-  margin: 0 -5px;
+  margin: 0 -10px;
   zoom: 1;
-}
-@media only screen and (min-width: 576px) {
-  .grid {
-    margin: 0 -10px;
-  }
 }
 .grid:after {
   visibility: hidden;
@@ -25,12 +20,7 @@
   float: left;
   position: relative;
   width: 100%;
-  padding: 0 5px;
-}
-@media only screen and (min-width: 576px) {
-  .grid [class*="gcol-"] {
-    padding: 0 10px;
-  }
+  padding: 0 10px;
 }
 .grid .gcol-1 {
   max-width: 8.3333333333%;
