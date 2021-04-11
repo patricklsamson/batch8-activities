@@ -14,6 +14,7 @@ docReady(function () {
       $$("password").value = "";
       $$("confirm-pw").value = "";
       $$("confirm-msg").innerHTML = "";
+      $$("submit").disabled = true;
     });
     addEvent($$("login-btn"), "click", function () {
       tClass(document.body, "modal-open");
