@@ -60,6 +60,16 @@ docReady(function () {
     if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
       $$("nav-toggle").checked = false;
     }
+
+    if (window.pageYOffset >= $$("header").offsetHeight) {
+      $s(".menu-container").style.marginTop = "0";
+    }
+  });
+
+  addEvent($$("nav-toggle"), "click", function () {
+    if (window.pageYOffset <= $$("header").offsetHeight) {
+      $s(".menu-container").style.marginTop = "-" + $$("header").offsetHeight + "px";
+    }
   });
 
   addEvent(document.body, "click", function (e) {
