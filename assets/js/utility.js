@@ -373,7 +373,7 @@ caro = (function () {
       self.isAnimating = false;
       rClass(self.def.target, "isAnimating");
       removeEvents(self.sliderInner, "mousemove touchmove", swipeMove);
-      removeEvents($s("body"), "mouseup touchend", swipeEnd);
+      removeEvents(document.body, "mouseup touchend", swipeEnd);
     }
   };
 
