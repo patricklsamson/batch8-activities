@@ -16,7 +16,7 @@
 
 #nav-toggle:checked ~ #navcoll {
   visibility: visible;
-  height: calc(100vh - 34px);
+  height: calc(100vh - 44px);
 }
 
 #nav-toggle:checked ~ #navcoll ul {
@@ -43,7 +43,7 @@
 }
 
 #nav-toggle:checked ~ #nav-toggle-icon span:after {
-  top: 3px;
+  top: 5px;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
@@ -67,8 +67,8 @@
 #nav-toggle-icon span:after {
   display: block;
   background: #f8f9fa;
-  width: 20px;
-  height: 3px;
+  width: 32px;
+  height: 4px;
 }
 
 #nav-toggle-icon span:before,
@@ -79,11 +79,11 @@
 }
 
 #nav-toggle-icon span:before {
-  top: 6px;
+  top: 9px;
 }
 
 #nav-toggle-icon span:after {
-  top: 9px;
+  top: 14px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -101,10 +101,19 @@
 }
 
 @media only screen and (max-width: 991px) {
+  .sec-sticky .grid [class*="gcol"]:first-child {
+    margin: 5px 0;
+  }
+
+  .sec-sticky .grid [class*="gcol"]:nth-child(2) {
+    position: unset;
+    margin-top: 2.5px;
+  }
+
   nav #navcoll.wrap-navcoll {
     position: absolute;
     left: 0;
-    top: 34px;
+    top: 44px;
     width: 100vw;
     text-align: center;
     background: #000;
