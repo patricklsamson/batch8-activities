@@ -27,10 +27,12 @@ docReady(function () {
         $$("submit").disabled = false;
         $$("confirm-msg").style.color = "green";
         $$("confirm-msg").innerHTML = " MATCH";
-      } else {
+      } else if ($$("password").value != $$("confirm-pw").value) {
         $$("submit").disabled = true;
         $$("confirm-msg").style.color = "red";
         $$("confirm-msg").innerHTML = " NOT MATCH";
+      } else if (this.value.length == 0) {
+        $$("confirm-msg").innerHTML = " ";
       }
     });
 
@@ -39,10 +41,12 @@ docReady(function () {
         $$("submit").disabled = false;
         $$("confirm-msg").style.color = "green";
         $$("confirm-msg").innerHTML = " MATCH";
-      } else {
+      } else if ($$("confirm-pw").value != $$("password").value) {
         $$("submit").disabled = true;
         $$("confirm-msg").style.color = "red";
         $$("confirm-msg").innerHTML = " NOT MATCH";
+      } else if (this.value.length == 0) {
+        $$("confirm-msg").innerHTML = " ";
       }
     });
   }
