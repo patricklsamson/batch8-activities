@@ -380,19 +380,17 @@ caro = function () {
       });
     }
 
-    if (self.def.autoplay.on) {
+    if (self.def.autoplay.on && !hClass(self.def.target, "isAnimating")) {
       setInterval(function () {
-        if (!hClass(self.def.target, "isAnimating")) {
-          if (self.curSlide == self.totalSlides) {
-            self.curSlide = 0;
-            self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
-          }
-
-          self.curSlide++;
-          setTimeout(function () {
-            self.gotoSlide();
-          }, 20);
+        if (self.curSlide == self.totalSlides) {
+          self.curSlide = 0;
+          self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
         }
+
+        self.curSlide++;
+        setTimeout(function () {
+          self.gotoSlide();
+        }, 20);
       }, self.def.autoplay.interval);
     }
   };
