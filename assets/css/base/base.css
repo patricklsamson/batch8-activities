@@ -141,10 +141,14 @@ img {
   user-select: none;
 }
 
-button {
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
   margin: 0;
   padding: 0;
   outline: 0;
+  -webkit-appearance: button;
 }
 
 table {
