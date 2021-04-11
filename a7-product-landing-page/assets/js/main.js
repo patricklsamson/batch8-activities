@@ -23,20 +23,24 @@ docReady(function () {
     });
 
     addEvent($$("password"), "keyup", function () {
-      if ($$("confirm-pw").value == $$("password").value) {
-        $$("submit").disabled = false;
-      } else {
-        $$("submit").disable = true;
-      }
-    });
-
-    addEvent($$("confirm-pw"), "keyup", function () {
-      if ($$("confirm-pw").value == $$("password").value) {
+      if ($$("password").value == $$("confirm-pw").value && this.value.length != 0) {
         $$("submit").disabled = false;
         $$("confirm-msg").style.color = "green";
         $$("confirm-msg").innerHTML = " MATCH";
       } else {
-        $$("submit").disable = true;
+        $$("submit").disabled = true;
+        $$("confirm-msg").style.color = "red";
+        $$("confirm-msg").innerHTML = " NOT MATCH";
+      }
+    });
+
+    addEvent($$("confirm-pw"), "keyup", function () {
+      if ($$("confirm-pw").value == $$("password").value && this.value.length != 0) {
+        $$("submit").disabled = false;
+        $$("confirm-msg").style.color = "green";
+        $$("confirm-msg").innerHTML = " MATCH";
+      } else {
+        $$("submit").disabled = true;
         $$("confirm-msg").style.color = "red";
         $$("confirm-msg").innerHTML = " NOT MATCH";
       }
