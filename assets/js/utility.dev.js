@@ -317,8 +317,7 @@ caro = function () {
       return false;
     }
 
-    function swipeEnd(e) {
-      var touch = e;
+    function swipeEnd() {
       self.getCurLeft();
       if (Math.abs(self.moveX - self.startX) === 0) return;
       self.stayAtCur = Math.abs(self.moveX - self.startX) < 40 || typeof self.moveX === "undefined" ? true : false;
