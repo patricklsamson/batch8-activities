@@ -22,31 +22,31 @@ function $a(element) {
   return document.querySelectorAll(element);
 }
 
-function addEvent(element, event, fn, useCapture) {
+function addEvent(element, event, fn) {
   if (element.addEventListener) {
-    element.addEventListener(event, fn) || element.addEventListener(event, fn, useCapture);
+    element.addEventListener(event, fn, false);
   } else if (element.attachEvent) {
-    element.attachEvent(event, fn) || element.attachEvent(event, fn, useCapture);
+    element.attachEvent(event, fn);
   }
 }
 
-function removeEvent(element, event, fn, useCapture) {
+function removeEvent(element, event, fn) {
   if (element.removeEventListener) {
-    element.removeEventListener(event, fn) || element.removeEventListener(event, fn, useCapture);
+    element.removeEventListener(event, fn, false);
   } else if (element.detachEvent) {
-    element.detachEvent(event, fn) || element.detachEvent(event, fn, useCapture);
+    element.detachEvent(event, fn);
   }
 }
 
 function addEvents(element, events, fn) {
   events.split(" ").forEach(function (e) {
-    return addEvent(element, e, fn, false);
+    return addEvent(element, e, fn);
   });
 }
 
 function removeEvents(element, events, fn) {
   events.split(" ").forEach(function (e) {
-    return removeEvent(element, e, fn, false);
+    return removeEvent(element, e, fn);
   });
 }
 
@@ -174,7 +174,7 @@ caro = function () {
         self.curSlide = e.target.getAttribute("data-slide");
         self.gotoSlide();
       }
-    }, false);
+    });
   };
 
   caro.prototype.getCurLeft = function () {
@@ -245,7 +245,7 @@ caro = function () {
 
     addEvent(window, "resize", on_resize(function () {
       self.updateSliderDimension();
-    }), false);
+    }));
     var nowHTML = self.def.target.innerHTML;
     self.def.target.innerHTML = '<div class="caro-inner">' + nowHTML + "</div>";
     self.allSlides = 0;
@@ -362,7 +362,7 @@ caro = function () {
             self.gotoSlide();
           }, 20);
         }
-      }, false);
+      });
     }
 
     if (self.def.arrowRight != "") {
@@ -378,7 +378,7 @@ caro = function () {
             self.gotoSlide();
           }, 20);
         }
-      }, false);
+      });
     }
 
     if (self.def.autoplay.on) {
