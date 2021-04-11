@@ -78,7 +78,8 @@ h4,
 h5,
 h6,
 fieldset,
-button {
+button,
+input {
   font: inherit;
 }
 
