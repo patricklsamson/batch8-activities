@@ -139,11 +139,19 @@
   margin-left: auto;
 }
 
-.mt-em {
+.mt-025 {
+  margin-top: 0.25em;
+}
+
+.mb-025 {
+  margin-bottom: 0.25em;
+}
+
+.mt-05 {
   margin-top: 0.5em;
 }
 
-.mb-em {
+.mb-05 {
   margin-bottom: 0.5em;
 }
 
