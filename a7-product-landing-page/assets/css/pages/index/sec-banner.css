@@ -1,85 +1,80 @@
 .sec-banner {
   background-image: url(../../../assets/img/triton-banner.jpg);
+  -webkit-animation: bg-change 8s ease-in-out 1s infinite;
+  -moz-animation: bg-change 8s ease-in-out 1s infinite;
+  -o-animation: bg-change 8s ease-in-out 1s infinite;
+  animation: bg-change 8s ease-in-out 1s infinite;
 }
 
-@media only screen and (min-width: 992px) {
-  .sec-banner {
-    -webkit-animation: bg-change 8s ease-in-out 1s infinite;
-    -moz-animation: bg-change 8s ease-in-out 1s infinite;
-    -o-animation: bg-change 8s ease-in-out 1s infinite;
-    animation: bg-change 8s ease-in-out 1s infinite;
+@-webkit-keyframes bg-change {
+  0% {
+    background-image: url(../../../assets/img/triton-banner.jpg);
   }
 
-  @-webkit-keyframes bg-change {
-    0% {
-      background-image: url(../../../assets/img/triton-banner.jpg);
-    }
-
-    50% {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    51% {
-      background-image: url(../../../assets/img/predator-wallpaper.jpg);
-    }
-
-    100% {
-      background-color: rgba(0, 0, 0, 1);
-    }
+  50% {
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
-  @-moz-keyframes bg-change {
-    0% {
-      background-image: url(../../../assets/img/triton-banner.jpg);
-    }
-
-    50% {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    51% {
-      background-image: url(../../../assets/img/predator-wallpaper.jpg);
-    }
-
-    100% {
-      background-color: rgba(0, 0, 0, 1);
-    }
+  51% {
+    background-image: url(../../../assets/img/predator-wallpaper.jpg);
   }
 
-  @-o-keyframes bg-change {
-    0% {
-      background-image: url(../../../assets/img/triton-banner.jpg);
-    }
+  100% {
+    background-color: rgba(0, 0, 0, 1);
+  }
+}
 
-    50% {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    51% {
-      background-image: url(../../../assets/img/predator-wallpaper.jpg);
-    }
-
-    100% {
-      background-color: rgba(0, 0, 0, 1);
-    }
+@-moz-keyframes bg-change {
+  0% {
+    background-image: url(../../../assets/img/triton-banner.jpg);
   }
 
-  @keyframes bg-change {
-    0% {
-      background-image: url(../../../assets/img/triton-banner.jpg);
-    }
+  50% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 
-    50% {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
+  51% {
+    background-image: url(../../../assets/img/predator-wallpaper.jpg);
+  }
 
-    51% {
-      background-image: url(../../../assets/img/predator-wallpaper.jpg);
-    }
+  100% {
+    background-color: rgba(0, 0, 0, 1);
+  }
+}
 
-    100% {
-      background-color: rgba(0, 0, 0, 1);
-    }
+@-o-keyframes bg-change {
+  0% {
+    background-image: url(../../../assets/img/triton-banner.jpg);
+  }
+
+  50% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  51% {
+    background-image: url(../../../assets/img/predator-wallpaper.jpg);
+  }
+
+  100% {
+    background-color: rgba(0, 0, 0, 1);
+  }
+}
+
+@keyframes bg-change {
+  0% {
+    background-image: url(../../../assets/img/triton-banner.jpg);
+  }
+
+  50% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  51% {
+    background-image: url(../../../assets/img/predator-wallpaper.jpg);
+  }
+
+  100% {
+    background-color: rgba(0, 0, 0, 1);
   }
 }
 
