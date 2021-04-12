@@ -29,8 +29,6 @@ docReady(function () {
         $$("confirm-msg").innerHTML = " MATCH";
       } else if ($$("password").value != $$("confirm-pw").value) {
         $$("submit").disabled = true;
-        $$("confirm-msg").style.color = "red";
-        $$("confirm-msg").innerHTML = " NOT MATCH";
       } else if (this.value.length == 0) {
         $$("confirm-msg").innerHTML = " ";
       }
