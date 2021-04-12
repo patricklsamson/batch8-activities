@@ -13,7 +13,7 @@ docReady(function () {
       $$("email").value = "";
       $$("password").value = "";
       $$("confirm-pw").value = "";
-      $$("confirm-msg").innerHTML = "";
+      $$("confirm-msg").style.display = "none";
       $$("submit").disabled = true;
     });
     addEvent($$("login-btn"), "click", function () {
