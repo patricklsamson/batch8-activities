@@ -25,38 +25,34 @@ docReady(function () {
     addEvent($$("password"), "keyup", function () {
       if (this.value == $$("confirm-pw").value && this.value.length != 0) {
         $$("submit").disabled = false;
-        $$("confirm-msg").style.color = "green";
-        $$("confirm-msg").innerHTML = " ✔";
+        $$("confirm-msg").style.display = "initial";
+        addAtt($$("confirm-msg"), "src", "../assets/img/check.png");
       } else if (this.value != $$("confirm-pw").value && $$("confirm-pw").value.length >= 1) {
         $$("submit").disabled = true;
-        $$("confirm-msg").style.color = "red";
-        $$("confirm-msg").innerHTML = " ❌";
+        $$("confirm-msg").style.display = "initial";
+        addAtt($$("confirm-msg"), "src", "../assets/img/cross.png");
       } else if (this.value.length == 0) {
-        $$("confirm-msg").innerHTML = " ";
+        $$("confirm-msg").style.display = "none";
       }
     });
     addEvent($$("confirm-pw"), "keyup", function () {
       if (this.value == $$("password").value && this.value.length != 0) {
         $$("submit").disabled = false;
-        $$("confirm-msg").style.color = "green";
-        $$("confirm-msg").innerHTML = " ✔";
+        $$("confirm-msg").style.display = "initial";
+        addAtt($$("confirm-msg"), "src", "../assets/img/check.png");
       } else if (this.value != $$("password").value && $$("password").value.length >= 1) {
         $$("submit").disabled = true;
-        $$("confirm-msg").style.color = "red";
-        $$("confirm-msg").innerHTML = " ❌";
+        $$("confirm-msg").style.display = "initial";
+        addAtt($$("confirm-msg"), "src", "../assets/img/cross.png");
       } else if (this.value.length == 0) {
-        $$("confirm-msg").innerHTML = " ";
+        $$("confirm-msg").style.display = "none";
       }
     });
     addEvent($$("reveal"), "click", function () {
-      tClass(this, "revealed");
-
-      if (hClass(this, "revealed")) {
-        $$("log-password").type = "text";
-        $$("reveal-btn").style.opacity = " 1";
+      if ($$("reveal").checked) {
+        addAtt($$("log-password"), "type", "text");
       } else {
-        $$("log-password").type = "password";
-        $$("reveal-btn").style.opacity = " 0.5";
+        addAtt($$("log-password"), "type", "password");
       }
     });
   }
