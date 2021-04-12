@@ -27,7 +27,7 @@ docReady(function () {
         $$("submit").disabled = false;
         $$("confirm-msg").style.color = "green";
         $$("confirm-msg").innerHTML = " ✔";
-      } else if ((this.value != $$("confirm-pw").value && this.value.length <= 0) || this.value.length <= $$("confirm-pw").value.length) {
+      } else if (this.value != $$("confirm-pw").value && $$("confirm-pw").value.length >= 1) {
         $$("submit").disabled = true;
         $$("confirm-msg").style.color = "red";
         $$("confirm-msg").innerHTML = " ❌";
@@ -41,7 +41,7 @@ docReady(function () {
         $$("submit").disabled = false;
         $$("confirm-msg").style.color = "green";
         $$("confirm-msg").innerHTML = " ✔";
-      } else if (this.value != $$("password").value) {
+      } else if (this.value != $$("password").value && $$("password").value.length >= 1) {
         $$("submit").disabled = true;
         $$("confirm-msg").style.color = "red";
         $$("confirm-msg").innerHTML = " ❌";
