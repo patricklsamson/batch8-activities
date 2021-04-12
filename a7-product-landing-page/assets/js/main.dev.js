@@ -21,6 +21,14 @@ docReady(function () {
       rClass(document.body, "animate");
       $$("log-email").value = "";
       $$("log-password").value = "";
+
+      if ($$("reveal").checked) {
+        $$("reveal").checked = false;
+      }
+
+      if ($$("remember").checked) {
+        $$("remember").checked = false;
+      }
     });
     addEvent($$("password"), "keyup", function () {
       if (this.value == $$("confirm-pw").value && this.value.length != 0) {
