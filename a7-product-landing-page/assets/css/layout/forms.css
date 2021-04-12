@@ -6,9 +6,21 @@ form {
 }
 
 form input {
-  width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+form a {
+  float: right;
+  margin-top: 5px;
+}
+
+#reveal-btn {
+  opacity: 0.5;
+}
+
+#remember {
+  display: initial;
 }
 
 #submit,
