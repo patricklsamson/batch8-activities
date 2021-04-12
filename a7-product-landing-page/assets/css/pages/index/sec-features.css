@@ -8,10 +8,11 @@
   }
 }
 
-.sec-features sup {
-  font-size: 0.5em;
-}
-
+.sec-features h2 span,
 .sec-features h5 {
   color: #00aecd;
+}
+
+.sec-features sup {
+  font-size: 0.5em;
 }
