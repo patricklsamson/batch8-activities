@@ -4,11 +4,11 @@ html {
   scroll-behavior: smooth;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 1rem;
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
@@ -17,14 +17,14 @@ body::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px #f8f9fa;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #00aecd;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
 
-body::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: #00c3ca;
 }
 
