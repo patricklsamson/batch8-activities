@@ -142,9 +142,11 @@ button,
 input[type="radio"] + label,
 input[type="checkbox"] + label,
 img {
+  -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  -khtml-user-select: none;
   user-select: none;
 }
 
