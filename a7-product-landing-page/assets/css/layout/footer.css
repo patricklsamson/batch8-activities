@@ -65,6 +65,10 @@ footer label:after {
   font-size: 30px;
   position: relative;
   bottom: 12px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
 }
 
 input:checked ~ ul {
@@ -77,10 +81,6 @@ input:checked ~ ul {
 #triton:checked ~ label[for="triton"],
 #helios:checked ~ label[for="helios"] {
   color: #00aecd;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
 }
 
 #about:checked ~ label[for="about"]:after,
@@ -93,10 +93,6 @@ input:checked ~ ul {
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
 }
 
 #about:checked ~ .about,
