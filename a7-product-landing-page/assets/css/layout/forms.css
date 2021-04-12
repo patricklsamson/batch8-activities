@@ -12,7 +12,13 @@ form input {
 
 form a {
   float: right;
-  margin-top: 5px;
+  margin: 5px 0 10px;
+}
+
+@media only screen and (max-width: 480px) {
+  form a {
+    float: left;
+  }
 }
 
 #reveal-btn {
