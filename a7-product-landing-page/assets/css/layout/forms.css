@@ -10,6 +10,10 @@ form input {
   margin-bottom: 10px;
 }
 
+form img {
+  width: 14px;
+}
+
 form a {
   float: right;
   margin: 5px 0 10px;
@@ -21,8 +25,25 @@ form a {
   }
 }
 
+#confirm-msg {
+  display: none;
+}
+
+#reveal:checked ~ #reveal-btn #reveal-icon {
+  background-image: url(../../../assets/img/eye-open.png);
+}
+
 #reveal-btn {
-  opacity: 0.5;
+  position: relative;
+}
+
+#reveal-icon {
+  position: absolute;
+  display: inline-block;
+  background-image: url(../../../assets/img/eye-close.png);
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
 }
 
 #remember {
