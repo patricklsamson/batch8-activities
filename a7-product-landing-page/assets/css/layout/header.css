@@ -23,11 +23,15 @@ header .brand {
 
 @media only screen and (max-width: 480px) {
   header .brand {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   #header-img {
     height: 35px;
+  }
+
+  .brand span {
+    bottom: 10px;
   }
 }
 
