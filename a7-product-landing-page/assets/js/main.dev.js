@@ -23,22 +23,24 @@ docReady(function () {
       $$("log-password").value = "";
     });
     addEvent($$("password"), "keyup", function () {
-      if ($$("password").value == $$("confirm-pw").value && this.value.length != 0) {
+      if (this.value == $$("confirm-pw").value && this.value.length != 0) {
         $$("submit").disabled = false;
         $$("confirm-msg").style.color = "green";
         $$("confirm-msg").innerHTML = " ✔";
-      } else if ($$("password").value != $$("confirm-pw").value) {
+      } else if (this.value != $$("confirm-pw").value && this.value.length <= 0 || this.value.length <= $$("confirm-pw").value.length) {
         $$("submit").disabled = true;
+        $$("confirm-msg").style.color = "red";
+        $$("confirm-msg").innerHTML = " ❌";
       } else if (this.value.length == 0) {
         $$("confirm-msg").innerHTML = " ";
       }
     });
     addEvent($$("confirm-pw"), "keyup", function () {
-      if ($$("confirm-pw").value == $$("password").value && this.value.length != 0) {
+      if (this.value == $$("password").value && this.value.length != 0) {
         $$("submit").disabled = false;
         $$("confirm-msg").style.color = "green";
         $$("confirm-msg").innerHTML = " ✔";
-      } else if ($$("confirm-pw").value != $$("password").value) {
+      } else if (this.value != $$("password").value) {
         $$("submit").disabled = true;
         $$("confirm-msg").style.color = "red";
         $$("confirm-msg").innerHTML = " ❌";
