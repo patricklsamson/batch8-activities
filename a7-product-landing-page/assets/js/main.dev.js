@@ -46,6 +46,17 @@ docReady(function () {
         $$("confirm-msg").innerHTML = " ";
       }
     });
+    addEvent($$("reveal"), "click", function () {
+      tClass(this, "revealed");
+
+      if (hClass(this, "revealed")) {
+        $$("log-password").type = "text";
+        $$("reveal-btn").style.opacity = " 1";
+      } else {
+        $$("log-password").type = "password";
+        $$("reveal-btn").style.opacity = " 0.5";
+      }
+    });
   }
 
   if (body("body-login")) {
