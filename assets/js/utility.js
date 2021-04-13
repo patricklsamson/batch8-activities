@@ -41,13 +41,13 @@ function remove_event(element, event, fn) {
 
 function add_events(element, events, fn) {
   events.split(" ").forEach(function (e) {
-    return addEvent(element, e, fn);
+    return add_event(element, e, fn);
   });
 }
 
 function remove_events(element, events, fn) {
   events.split(" ").forEach(function (e) {
-    return removeEvent(element, e, fn);
+    return remove_event(element, e, fn);
   });
 }
 
