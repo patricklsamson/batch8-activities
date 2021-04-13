@@ -1,114 +1,114 @@
 "use strict";
 
-docReady(function () {
-  matchHeights(".mh");
-  matchHeights(".mh2");
-  matchHeights(".mh3");
+doc_ready(function () {
+  match_height(".mh");
+  match_height(".mh2");
+  match_height(".mh3");
 
   if (body("index")) {
-    addEvent($$("signup-btn"), "click", function () {
-      tClass(document.body, "modal-open");
-      rClass(document.body, "animate");
-      $$("name").value = "";
-      $$("email").value = "";
-      $$("password").value = "";
-      $$("confirm-pw").value = "";
-      $$("confirm-msg").style.display = "none";
-      $$("submit").disabled = true;
+    add_event(id("signup-btn"), "click", function () {
+      toggle_class(document.body, "modal-open");
+      remove_class(document.body, "animate");
+      id("name").value = "";
+      id("email").value = "";
+      id("password").value = "";
+      id("confirm-pw").value = "";
+      id("confirm-msg").style.display = "none";
+      id("submit").disabled = true;
     });
-    addEvent($$("login-btn"), "click", function () {
-      tClass(document.body, "modal-open");
-      rClass(document.body, "animate");
-      $$("log-email").value = "";
-      $$("log-password").value = "";
+    add_event(id("login-btn"), "click", function () {
+      toggle_class(document.body, "modal-open");
+      remove_class(document.body, "animate");
+      id("log-email").value = "";
+      id("log-password").value = "";
 
-      if ($$("reveal").checked) {
-        $$("reveal").checked = false;
+      if (id("reveal").checked) {
+        id("reveal").checked = false;
       }
 
-      if ($$("remember").checked) {
-        $$("remember").checked = false;
+      if (id("remember").checked) {
+        id("remember").checked = false;
       }
     });
-    addEvent($$("password"), "keyup", function () {
-      if (this.value == $$("confirm-pw").value && this.value.length != 0) {
-        $$("submit").disabled = false;
-        $$("confirm-msg").style.display = "initial";
-        addAtt($$("confirm-msg"), "src", "../assets/img/check.png");
-      } else if (this.value != $$("confirm-pw").value && $$("confirm-pw").value.length >= 1) {
-        $$("submit").disabled = true;
-        $$("confirm-msg").style.display = "initial";
-        addAtt($$("confirm-msg"), "src", "../assets/img/cross.png");
+    add_event(id("password"), "keyup", function () {
+      if (this.value == id("confirm-pw").value && this.value.length != 0) {
+        id("submit").disabled = false;
+        id("confirm-msg").style.display = "initial";
+        add_att(id("confirm-msg"), "src", "../assets/img/check.png");
+      } else if (this.value != id("confirm-pw").value && id("confirm-pw").value.length >= 1) {
+        id("submit").disabled = true;
+        id("confirm-msg").style.display = "initial";
+        add_att(id("confirm-msg"), "src", "../assets/img/cross.png");
       } else if (this.value.length == 0) {
-        $$("confirm-msg").style.display = "none";
+        id("confirm-msg").style.display = "none";
       }
     });
-    addEvent($$("confirm-pw"), "keyup", function () {
-      if (this.value == $$("password").value && this.value.length != 0) {
-        $$("submit").disabled = false;
-        $$("confirm-msg").style.display = "initial";
-        addAtt($$("confirm-msg"), "src", "../assets/img/check.png");
-      } else if (this.value != $$("password").value && $$("password").value.length >= 1) {
-        $$("submit").disabled = true;
-        $$("confirm-msg").style.display = "initial";
-        addAtt($$("confirm-msg"), "src", "../assets/img/cross.png");
+    add_event(id("confirm-pw"), "keyup", function () {
+      if (this.value == id("password").value && this.value.length != 0) {
+        id("submit").disabled = false;
+        id("confirm-msg").style.display = "initial";
+        add_att(id("confirm-msg"), "src", "../assets/img/check.png");
+      } else if (this.value != id("password").value && id("password").value.length >= 1) {
+        id("submit").disabled = true;
+        id("confirm-msg").style.display = "initial";
+        add_att(id("confirm-msg"), "src", "../assets/img/cross.png");
       } else if (this.value.length == 0) {
-        $$("confirm-msg").style.display = "none";
+        id("confirm-msg").style.display = "none";
       }
     });
-    addEvent($$("reveal"), "click", function () {
-      if ($$("reveal").checked) {
-        addAtt($$("log-password"), "type", "text");
+    add_event(id("reveal"), "click", function () {
+      if (id("reveal").checked) {
+        add_att(id("log-password"), "type", "text");
       } else {
-        addAtt($$("log-password"), "type", "password");
+        add_att(id("log-password"), "type", "password");
       }
     });
   }
 
   if (body("body-login")) {
-    addEvent(document.body, "click", function (e) {
-      if (!e.target.closest("#header") || !$$("header").contains(e.target || e.srcElement)) {
-        $$("user").checked = false;
+    add_event(document.body, "click", function (e) {
+      if (!e.target.closest("#header") || !id("header").contains(e.target || e.srcElement)) {
+        id("user").checked = false;
       }
     });
   }
 
-  addEvent(window, "scroll", function () {
+  add_event(window, "scroll", function () {
     if (body("body-login")) {
       if (window.pageYOffset >= 0 || document.documentElement.scrollTop >= 0) {
-        $$("user").checked = false;
+        id("user").checked = false;
       }
     }
 
     if (window.pageYOffset >= 0 || document.documentElement.scrollTop >= 0) {
-      $$("nav-toggle").checked = false;
+      id("nav-toggle").checked = false;
     }
 
-    if (document.body.scrollTop >= $$("header").offsetTop || document.documentElement.scrollTop >= $$("header").offsetTop) {
-      $s(".menu-container").style.marginTop = "0";
+    if (document.body.scrollTop >= id("header").offsetTop || document.documentElement.scrollTop >= id("header").offsetTop) {
+      qs(".menu-container").style.marginTop = "0";
     }
   });
-  addEvent($$("nav-toggle"), "click", function () {
-    if (window.pageYOffset <= $$("header").offsetTop || document.documentElement.scrollTop <= $$("header").offsetTop) {
-      $s(".menu-container").style.marginTop = "-" + $$("header").offsetHeight + "px";
+  add_event(id("nav-toggle"), "click", function () {
+    if (window.pageYOffset <= id("header").offsetTop || document.documentElement.scrollTop <= id("header").offsetTop) {
+      qs(".menu-container").style.marginTop = "-" + id("header").offsetHeight + "px";
     }
   });
-  addEvent(document.body, "click", function (e) {
-    if (!e.target.closest("#nav-bar") || !$$("nav-bar").contains(e.target || e.srcElement)) {
-      $$("nav-toggle").checked = false;
+  add_event(document.body, "click", function (e) {
+    if (!e.target.closest("#nav-bar") || !id("nav-bar").contains(e.target || e.srcElement)) {
+      id("nav-toggle").checked = false;
     }
 
-    if (!e.target.closest("#footer") || !$$("footer").contains(e.target || e.srcElement)) {
-      $$("about").checked = false;
-      $$("service").checked = false;
-      $$("triton").checked = false;
-      $$("helios").checked = false;
+    if (!e.target.closest("#footer") || !id("footer").contains(e.target || e.srcElement)) {
+      id("about").checked = false;
+      id("service").checked = false;
+      id("triton").checked = false;
+      id("helios").checked = false;
     }
   });
 
-  for (var i = 0; i < $a(".nav-link").length; i++) {
-    addEvent($a(".nav-link")[i], "click", function () {
-      $$("nav-toggle").checked = false;
+  for (var i = 0; i < qsa(".nav-link").length; i++) {
+    add_event(qsa(".nav-link")[i], "click", function () {
+      id("nav-toggle").checked = false;
     });
   }
 
@@ -118,24 +118,24 @@ docReady(function () {
       interval: 5000
     }
   });
-  addEvent($$("about-btn"), "click", function () {
-    $$("service").checked = false;
-    $$("triton").checked = false;
-    $$("helios").checked = false;
+  add_event(id("about-btn"), "click", function () {
+    id("service").checked = false;
+    id("triton").checked = false;
+    id("helios").checked = false;
   });
-  addEvent($$("service-btn"), "click", function () {
-    $$("about").checked = false;
-    $$("triton").checked = false;
-    $$("helios").checked = false;
+  add_event(id("service-btn"), "click", function () {
+    id("about").checked = false;
+    id("triton").checked = false;
+    id("helios").checked = false;
   });
-  addEvent($$("triton-btn"), "click", function () {
-    $$("about").checked = false;
-    $$("service").checked = false;
-    $$("helios").checked = false;
+  add_event(id("triton-btn"), "click", function () {
+    id("about").checked = false;
+    id("service").checked = false;
+    id("helios").checked = false;
   });
-  addEvent($$("helios-btn"), "click", function () {
-    $$("about").checked = false;
-    $$("service").checked = false;
-    $$("triton").checked = false;
+  add_event(id("helios-btn"), "click", function () {
+    id("about").checked = false;
+    id("service").checked = false;
+    id("triton").checked = false;
   });
 });
