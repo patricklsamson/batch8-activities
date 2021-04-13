@@ -440,7 +440,7 @@ caro = (function () {
 
           setTimeout(function () {
             self.gotoSlide();
-          }, 500);
+          }, 20);
         }
       }, self.def.autoplay.interval);
     }
