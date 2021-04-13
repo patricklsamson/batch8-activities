@@ -1,4 +1,4 @@
-function docReady(callback) {
+function doc_ready(callback) {
   if (document.readyState != "loading") callback();
   else if (document.addEventListener) document.addEventListener("DOMContentLoaded", callback);
   else
@@ -11,19 +11,19 @@ function body(id) {
   return document.body.id == id;
 }
 
-function $$(element) {
+function id(element) {
   return document.getElementById(element);
 }
 
-function $s(element) {
+function qs(element) {
   return document.querySelector(element);
 }
 
-function $a(element) {
+function qsa(element) {
   return document.querySelectorAll(element);
 }
 
-function addEvent(element, event, fn) {
+function add_event(element, event, fn) {
   if (element.addEventListener) {
     element.addEventListener(event, fn, false);
   } else if (element.attachEvent) {
@@ -31,7 +31,7 @@ function addEvent(element, event, fn) {
   }
 }
 
-function removeEvent(element, event, fn) {
+function remove_event(element, event, fn) {
   if (element.removeEventListener) {
     element.removeEventListener(event, fn, false);
   } else if (element.detachEvent) {
@@ -39,19 +39,19 @@ function removeEvent(element, event, fn) {
   }
 }
 
-function addEvents(element, events, fn) {
+function add_events(element, events, fn) {
   events.split(" ").forEach(function (e) {
     return addEvent(element, e, fn);
   });
 }
 
-function removeEvents(element, events, fn) {
+function remove_events(element, events, fn) {
   events.split(" ").forEach(function (e) {
     return removeEvent(element, e, fn);
   });
 }
 
-function addAtt(element, attribute, val) {
+function add_att(element, attribute, val) {
   if (element.setAttribute) {
     element.setAttribute(attribute, val);
   } else {
@@ -61,11 +61,11 @@ function addAtt(element, attribute, val) {
   }
 }
 
-function hClass(element, className) {
+function has_class(element, className) {
   return element.classList ? element.classList.contains(className) : new RegExp("(^| )" + className + "( |$)", "gi").test(element.className);
 }
 
-function aClass(element, className) {
+function add_class(element, className) {
   if (element.classList) {
     element.classList.add(className);
   } else {
@@ -73,7 +73,7 @@ function aClass(element, className) {
   }
 }
 
-function rClass(element, className) {
+function remove_class(element, className) {
   if (element.classList) {
     element.classList.remove(className);
   } else {
@@ -81,7 +81,7 @@ function rClass(element, className) {
   }
 }
 
-function tClass(element, className) {
+function toggle_class(element, className) {
   if (element.classList) {
     element.classList.toggle(className);
   } else {
@@ -96,15 +96,15 @@ function tClass(element, className) {
   }
 }
 
-function dataSet(element, value) {
-  if (element.dataset.value) {
+function dataset(element, value) {
+  if (element.dataset) {
     return element.dataset.value;
   } else {
     return element.getAttribute("data-" + value);
   }
 }
 
-function extendObj(obj, addons) {
+function extend_obj(obj, addons) {
   if (typeof addons !== "undefined") {
     for (var prop in obj) {
       if (addons[prop] != undefined) {
@@ -114,15 +114,15 @@ function extendObj(obj, addons) {
   }
 }
 
-function numOnly(e) {
+function num_only(e) {
   var charCode = e.which ? e.which : event.keyCode;
 
   return !(charCode > 31 && (charCode < 48 || charCode > 57));
 }
 
-function matchHeights(element) {
+function match_height(element) {
   var i = 0;
-  var items = $a(element);
+  var items = qsa(element);
   var itemsHeight = [];
 
   console.log(items);
@@ -139,6 +139,20 @@ function matchHeights(element) {
   }
 }
 
+function match_media(media, match, unmatch) {
+  var mq = window.matchMedia(media),
+    match,
+    unmatch;
+
+  add_event(mq, "change", function () {
+    if (mq.matches) {
+      match();
+    } else {
+      unmatch();
+    }
+  });
+}
+
 var caro = window.caro || {};
 
 caro = (function () {
@@ -146,10 +160,10 @@ caro = (function () {
     var self = this;
 
     self.def = {
-      target: $s(".caro"),
-      dotsWrapper: $s(".caro-dots"),
-      arrowLeft: $s(".caro-prev"),
-      arrowRight: $s(".caro-next"),
+      target: qs(".caro"),
+      dotsWrapper: qs(".caro-dots"),
+      arrowLeft: qs(".caro-prev"),
+      arrowRight: qs(".caro-next"),
       autoplay: {
         on: false,
         interval: 5000,
@@ -163,7 +177,7 @@ caro = (function () {
       afterChangeSlide: function afterChangeSlide() {},
     };
 
-    extendObj(self.def, settings);
+    extend_obj(self.def, settings);
 
     self.init();
   };
@@ -174,11 +188,11 @@ caro = (function () {
     for (var i = 0; i < self.totalSlides; i++) {
       var dot = document.createElement("span");
 
-      addAtt(dot, "data-slide", i + 1);
+      add_att(dot, "data-slide", i + 1);
       self.def.dotsWrapper.appendChild(dot);
     }
 
-    addEvent(self.def.dotsWrapper, "click", function (e) {
+    add_event(self.def.dotsWrapper, "click", function (e) {
       if ((e.target && e.target.nodeName == "SPAN") || (e.srcElement && e.srcElement.nodeName == "SPAN")) {
         self.curSlide = e.target.getAttribute("data-slide");
         self.gotoSlide();
@@ -198,11 +212,11 @@ caro = (function () {
     self.sliderInner.style.transition = "left " + self.def.transition.speed / 1000 + "s " + self.def.transition.easing;
     self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
 
-    aClass(self.def.target, "isAnimating");
+    add_class(self.def.target, "isAnimating");
 
     setTimeout(function () {
       self.sliderInner.style.transition = "";
-      rClass(self.def.target, "isAnimating");
+      remove_class(self.def.target, "isAnimating");
     }, self.def.transition.speed);
 
     self.setDot();
@@ -245,7 +259,7 @@ caro = (function () {
 
       if (img) {
         img.onload = loadHandler;
-        img.src = dataSet(img, "src");
+        img.src = dataset(img, "src");
         img.style.display = "block";
 
         if (img.complete) {
@@ -256,7 +270,7 @@ caro = (function () {
       }
     }
 
-    addEvent(
+    add_event(
       window,
       "resize",
       on_resize(function () {
@@ -296,7 +310,7 @@ caro = (function () {
     self.initArrows();
 
     if (self.def.swipe) {
-      addEvents(self.sliderInner, "mousedown touchstart", startSwipe);
+      add_events(self.sliderInner, "mousedown touchstart", startSwipe);
     }
 
     self.isAnimating = false;
@@ -314,8 +328,8 @@ caro = (function () {
         self.startX = touch.clientX;
         self.startY = touch.clientY;
 
-        addEvents(self.sliderInner, "mousemove touchmove", swipeMove);
-        addEvents(document.body, "mouseup touchend", swipeEnd);
+        add_events(self.sliderInner, "mousemove touchmove", swipeMove);
+        add_events(document.body, "mouseup touchend", swipeEnd);
       }
     }
 
@@ -332,7 +346,7 @@ caro = (function () {
       if (Math.abs(self.moveX - self.startX) < 40) return;
 
       self.isAnimating = true;
-      aClass(self.def.target, "isAnimating");
+      add_class(self.def.target, "isAnimating");
       e.preventDefault();
 
       if (self.curLeft + self.moveX - self.startX > 0 && self.curLeft == 0) {
@@ -371,9 +385,9 @@ caro = (function () {
       delete self.moveY;
 
       self.isAnimating = false;
-      rClass(self.def.target, "isAnimating");
-      removeEvents(self.sliderInner, "mousemove touchmove", swipeMove);
-      removeEvents(document.body, "mouseup touchend", swipeEnd);
+      remove_class(self.def.target, "isAnimating");
+      remove_events(self.sliderInner, "mousemove touchmove", swipeMove);
+      remove_events(document.body, "mouseup touchend", swipeEnd);
     }
   };
 
@@ -381,8 +395,8 @@ caro = (function () {
     var self = this;
 
     if (self.def.arrowLeft != "") {
-      addEvent(self.def.arrowLeft, "click", function () {
-        if (!hClass(self.def.target, "isAnimating")) {
+      add_event(self.def.arrowLeft, "click", function () {
+        if (!has_class(self.def.target, "isAnimating")) {
           if (self.curSlide == 1) {
             self.curSlide = self.totalSlides + 1;
             self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
@@ -398,8 +412,8 @@ caro = (function () {
     }
 
     if (self.def.arrowRight != "") {
-      addEvent(self.def.arrowRight, "click", function () {
-        if (!hClass(self.def.target, "isAnimating")) {
+      add_event(self.def.arrowRight, "click", function () {
+        if (!has_class(self.def.target, "isAnimating")) {
           if (self.curSlide == self.totalSlides) {
             self.curSlide = 0;
             self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
@@ -416,7 +430,7 @@ caro = (function () {
 
     if (self.def.autoplay.on) {
       setInterval(function () {
-        if (!hClass(self.def.target, "isAnimating")) {
+        if (!has_class(self.def.target, "isAnimating")) {
           if (self.curSlide == self.totalSlides) {
             self.curSlide = 0;
             self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
@@ -437,7 +451,7 @@ caro = (function () {
     var tardot = self.curSlide - 1;
 
     for (var j = 0; j < self.totalSlides; j++) {
-      rClass(self.def.dotsWrapper.querySelectorAll("span")[j], "active");
+      remove_class(self.def.dotsWrapper.querySelectorAll("span")[j], "active");
     }
 
     if (self.curSlide - 1 < 0) {
@@ -446,7 +460,7 @@ caro = (function () {
       tardot = 0;
     }
 
-    aClass(self.def.dotsWrapper.querySelectorAll("span")[tardot], "active");
+    add_class(self.def.dotsWrapper.querySelectorAll("span")[tardot], "active");
   };
 
   caro.prototype.updateSliderDimension = function () {
@@ -470,3 +484,46 @@ caro = (function () {
 
   return caro;
 })();
+
+function ssbox() {
+  var selected = qs(".selected"),
+    searchBox = qs(".search-box input"),
+    optionsContainer = qs(".options-container"),
+    optionsList = qsa(".option");
+
+  add_event(selected, "click", function () {
+    toggle_class(this, "active");
+
+    searchBox.value = "";
+    filterList("");
+
+    if (has_class(this, "active")) {
+      searchBox.focus();
+    }
+  });
+
+  optionsList.forEach(function (o) {
+    add_event(o, "click", function () {
+      selected.innerHTML = o.querySelector("label").innerHTML;
+      remove_class(selected, "active");
+    });
+  });
+
+  add_event(searchBox, "keyup", function (e) {
+    filterList(e.target.value || e.srcElement.value);
+  });
+
+  var filterList = function (searchTerm) {
+    searchTerm = searchTerm.toLowerCase();
+
+    optionsList.forEach(function (option) {
+      var label = option.querySelector("label").innerHTML.toLowerCase();
+
+      if (label.indexOf(searchTerm) != -1) {
+        option.style.display = "block";
+      } else {
+        option.style.display = "none";
+      }
+    });
+  };
+}
