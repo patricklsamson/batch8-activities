@@ -67,7 +67,11 @@ function add_att(element, attribute, val) {
 }
 
 function has_class(element, className) {
-  return element.classList ? element.classList.contains(className) : new RegExp("(^| )" + className + "( |$)", "gi").test(element.className);
+  if (element.classList) {
+    return element.classList.contains(className);
+  } else {
+    return new RegExp("(^| )" + className + "( |$)", "gi").test(element.className);
+  }
 }
 
 function add_class(element, className) {
