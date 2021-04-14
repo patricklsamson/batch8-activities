@@ -96,24 +96,6 @@ function toggle_class(element, className) {
   }
 }
 
-function dataset(element, value) {
-  if (element.dataset) {
-    return element.dataset.value;
-  } else {
-    return element.getAttribute("data-" + value);
-  }
-}
-
-function extend_obj(obj, addons) {
-  if (typeof addons !== "undefined") {
-    for (var prop in obj) {
-      if (addons[prop] != undefined) {
-        obj[prop] = addons[prop];
-      }
-    }
-  }
-}
-
 function num_only(e) {
   var charCode = e.which ? e.which : event.keyCode;
 
@@ -151,6 +133,24 @@ function match_media(media, match, unmatch) {
       unmatch();
     }
   });
+}
+
+function dataset(element, value) {
+  if (element.dataset) {
+    return element.dataset.value;
+  } else {
+    return element.getAttribute("data-" + value);
+  }
+}
+
+function extend_obj(obj, addons) {
+  if (typeof addons !== "undefined") {
+    for (var prop in obj) {
+      if (addons[prop] != undefined) {
+        obj[prop] = addons[prop];
+      }
+    }
+  }
 }
 
 var caro = window.caro || {};
