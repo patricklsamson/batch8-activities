@@ -107,9 +107,6 @@ function match_height(element) {
   var items = qsa(element);
   var itemsHeight = [];
 
-  console.log(items);
-  console.log(itemsHeight);
-
   for (i = 0; i < items.length; i++) {
     itemsHeight.push(items[i].offsetHeight);
   }
