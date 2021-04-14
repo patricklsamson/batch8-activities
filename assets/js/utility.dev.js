@@ -22,15 +22,15 @@ function qsa(element) {
   return document.querySelectorAll(element);
 }
 
-function add_event(element, event, fn) {
+function add_event(element, e, fn) {
   if (element.addEventListener) {
-    element.addEventListener(event, fn, false);
+    element.addEventListener(e, fn, false);
   } else if (element.attachEvent) {
-    element.attachEvent(event, fn);
+    element.attachEvent(e, fn);
   }
 }
 
-function remove_event(element, event, fn) {
+function remove_event(element, e, fn) {
   if (element.removeEventListener) {
     element.removeEventListener(event, fn, false);
   } else if (element.detachEvent) {
@@ -114,17 +114,27 @@ function match_height(element) {
   }
 }
 
-function match_media(media, match, unmatch) {
-  var mq = window.matchMedia(media),
-      match,
-      unmatch;
-  add_event(mq, "change", function () {
-    if (mq.matches) {
+function match_media(media, oldMedia, match, unmatch) {
+  if (window.matchMedia) {
+    var mq = window.matchMedia(media),
+        match,
+        unmatch;
+    add_event(mq, "change", function () {
+      if (mq.matches) {
+        match();
+      } else {
+        unmatch();
+      }
+    });
+  } else {
+    var match, unmatch;
+
+    if (screen.width >= oldMedia) {
       match();
     } else {
       unmatch();
     }
-  });
+  }
 }
 
 function dataset(element, value) {
