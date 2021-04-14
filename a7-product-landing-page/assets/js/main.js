@@ -28,6 +28,10 @@ doc_ready(function () {
       if (id("remember").checked) {
         id("remember").checked = false;
       }
+
+      if (has_class(document.body, "modal-open")) {
+        alert("Check out our latest offers and products after logging in!");
+      }
     });
 
     add_event(id("password"), "keyup", function () {
