@@ -104,9 +104,9 @@ function toggle_class(element, className) {
 }
 
 function num_only(e) {
-  var charCode = e.which ? e.which : e.keyCode;
+  var char = e.which || e.keyCode;
 
-  return !(charCode > 31 && (charCode < 48 || charCode > 57));
+  return !(char > 31 && (char < 48 || char > 57));
 }
 
 function match_height(element) {
