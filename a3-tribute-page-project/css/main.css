@@ -6,7 +6,7 @@
 }
 
 #main .wrap-overlay {
-  background-color: rgba(52, 58, 64, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 15px 0;
   min-height: 100vh;
 }
