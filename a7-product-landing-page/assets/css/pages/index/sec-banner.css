@@ -35,7 +35,12 @@
     opacity: 0;
   }
 
-  50% {
+  45% {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  55% {
     z-index: 1;
     opacity: 1;
   }
@@ -52,7 +57,12 @@
     opacity: 0;
   }
 
-  50% {
+  45% {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  55% {
     z-index: 1;
     opacity: 1;
   }
@@ -69,7 +79,12 @@
     opacity: 0;
   }
 
-  50% {
+  45% {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  55% {
     z-index: 1;
     opacity: 1;
   }
@@ -86,7 +101,12 @@
     opacity: 0;
   }
 
-  50% {
+  45% {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  55% {
     z-index: 1;
     opacity: 1;
   }
