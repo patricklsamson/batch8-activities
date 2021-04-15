@@ -523,6 +523,10 @@ label[for="story"] {
   font-size: 3.5vmin;
 }
 
+legend {
+  padding: 0 0.5vh;
+}
+
 .story legend {
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
   font-size: 3.5vmin;
