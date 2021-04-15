@@ -29,8 +29,9 @@ doc_ready(function () {
         id("remember").checked = false;
       }
 
-      if (has_class(document.body, "modal-open")) {
+      if (has_class(this, "once")) {
         alert("Check out our latest offers and products after logging in!");
+        remove_class(this, "once");
       }
     });
 
