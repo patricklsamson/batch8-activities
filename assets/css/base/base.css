@@ -17,83 +17,24 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 body,
-div,
-span,
-object,
-iframe,
+dl,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strong,
-sub,
-sup,
-var,
-b,
-u,
-i,
-dl,
-dt,
-dd,
 ol,
-ul,
-li,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video,
-main {
+p,
+pre,
+ul {
   margin: 0;
   padding: 0;
-  border: 0;
 }
 
 article,
@@ -103,53 +44,23 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
-menu,
+main,
 nav,
 section,
-main {
+summary {
   display: block;
 }
 
-body {
-  overflow-x: hidden;
-}
-
-a {
-  color: #6c757d;
-  text-decoration: none;
-}
-a:hover {
-  color: #343a40;
-  text-decoration: none;
-}
-
-[type="text"],
-[type="email"],
-[type="password"] {
-  width: 100%;
-}
-
-input[type="radio"],
+button,
+[role="button"],
 input[type="checkbox"],
-input[type="radio"] + label,
 input[type="checkbox"] + label,
+input[type="radio"],
+input[type="radio"] + label,
 input[type="submit"],
 select,
-button,
-[role="button"] {
+summary {
   cursor: pointer;
-}
-
-input[type="radio"] + label,
-input[type="checkbox"] + label,
-img {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -khtml-user-select: none;
-  user-select: none;
 }
 
 button,
@@ -161,10 +72,29 @@ button,
   appearance: button;
 }
 
-button {
-  margin: 0;
-  padding: 0;
-  outline: 0;
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+
+[type="email"],
+[type="password"],
+[type="text"] {
+  width: 100%;
+}
+
+a {
+  color: #6c757d;
+  text-decoration: none;
+}
+a:hover {
+  color: #343a40;
+  text-decoration: none;
 }
 
 table {
