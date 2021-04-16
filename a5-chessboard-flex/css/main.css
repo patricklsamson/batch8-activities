@@ -12,7 +12,7 @@ main {
   background: rgba(52, 58, 64, 0.3);
 }
 
-.wrap-overlay > .tbl {
+.wrap-overlay .table {
   min-height: 100vh;
 }
 
