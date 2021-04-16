@@ -18,33 +18,35 @@
     </main>
 
     <script>
-      var avionStats = {
-        victor: {
+      var avion = {
+        ceo: {
+          name: "Victor",
           mass: 78,
           height: 1.7,
           bmi: function () {
-            return "Victor's BMI is " + this.mass / Math.pow(this.height, 2) + ".";
+            return this.name + "'s BMI is " + this.mass / Math.pow(this.height, 2) + ".";
           },
         },
-        john: {
+        coo: {
+          name: "John",
           mass: 87,
           height: 1.8,
           bmi: function () {
-            return "John's BMI is " + this.mass / Math.pow(this.height, 2) + ".";
+            return this.name + "'s BMI is " + this.mass / Math.pow(this.height, 2) + ".";
           },
         },
         higherBmi: function () {
-          if (this.victor.bmi() > this.john.bmi()) {
-            return "Victor's BMI is higher than John's.";
+          if (this.ceo.bmi() > this.coo.bmi()) {
+            return this.ceo.name + "'s BMI is higher than " + this.coo.name + "'s.";
           } else {
-            return "Victor's BMI is lower than John's.";
+            return this.ceo.name + "'s BMI is lower than " + this.coo.name + "'s.";
           }
         },
       };
 
-      console.log(avionStats.victor.bmi());
-      console.log(avionStats.john.bmi());
-      console.log(avionStats.higherBmi());
+      console.log(avion.ceo.bmi());
+      console.log(avion.coo.bmi());
+      console.log(avion.higherBmi());
     </script>
   </body>
 </html>
