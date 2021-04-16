@@ -176,9 +176,3 @@
   position: fixed;
   width: 100%;
 }
-
-@media not all and (pointer: coarse) {
-  .modal-open {
-    padding-right: 16px;
-  }
-}
