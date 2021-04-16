@@ -60,8 +60,8 @@ label[for="login"]:before {
   z-index: 3;
 }
 
-.wrap-signup .tbl,
-.wrap-login .tbl {
+.wrap-signup .table,
+.wrap-login .table {
   width: 360px;
   min-height: 100vh;
 }
@@ -80,8 +80,8 @@ label[for="login"]:before {
     padding: 0 7px 5px;
   }
 
-  .wrap-signup .tbl,
-  .wrap-login .tbl {
+  .wrap-signup .table,
+  .wrap-login .table {
     width: 275px;
   }
 }
