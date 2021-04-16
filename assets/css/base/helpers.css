@@ -44,29 +44,29 @@
   justify-content: flex-end;
 }
 
-.tbl {
+.table {
   display: table;
   table-layout: fixed;
   width: 100%;
   height: 100%;
   margin: 0 auto;
 }
-.tbl.lft {
+.table.lft {
   margin-left: 0;
   margin-right: auto;
 }
-.tbl.rgt {
+.table.rgt {
   margin-left: auto;
   margin-right: 0;
 }
-.tbl .valign {
+.table .valign {
   display: table-cell;
   vertical-align: middle;
 }
-.tbl .valign.top {
+.table .valign.top {
   vertical-align: top;
 }
-.tbl .valign.bot {
+.table .valign.bot {
   vertical-align: bottom;
 }
 
