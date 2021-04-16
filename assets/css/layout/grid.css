@@ -10,10 +10,10 @@
   clear: both;
   height: 0;
 }
-.grid.ng {
+.grid.xgut {
   margin: 0;
 }
-.grid.ng [class*="gcol-"] {
+.grid.xgut > [class*=gcol-] {
   padding: 0;
 }
 .grid [class*="gcol-"] {
