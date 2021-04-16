@@ -46,7 +46,11 @@
 
 .table {
   display: table;
+  height: 100%;
   margin: 0 auto;
+}
+.table.tfluid {
+  width: 100%;
 }
 .table.lft {
   margin-left: 0;
