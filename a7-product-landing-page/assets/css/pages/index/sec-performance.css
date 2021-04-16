@@ -50,10 +50,9 @@
 .sec-performance .grid-cont {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 60px 60px 60px 60px 60px;
-  grid-template-columns: repeat(5, 60px);
-  -ms-grid-rows: 50px 50px 50px 50px 50px 50px 50px 50px;
-  grid-template-rows: repeat(8, 50px);
+  -ms-grid-rows: (50px) [8];
+  -ms-grid-columns: (60px) [5];
+  grid-template: repeat(8, 50px) / repeat(5, 60px);
   grid-column-gap: 15px;
   column-gap: 15px;
 }
