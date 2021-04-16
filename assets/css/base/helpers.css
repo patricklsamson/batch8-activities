@@ -50,10 +50,8 @@
 }
 .table.lft {
   margin-left: 0;
-  margin-right: auto;
 }
 .table.rgt {
-  margin-left: auto;
   margin-right: 0;
 }
 .table .valign {
