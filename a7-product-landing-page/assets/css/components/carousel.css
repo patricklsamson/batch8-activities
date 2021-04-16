@@ -6,12 +6,12 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.sec-carousel .tbl {
+.sec-carousel .table {
   padding: 20px 0;
 }
 
 @media only screen and (min-width: 992px) {
-  .sec-carousel .tbl {
+  .sec-carousel .table {
     min-height: calc(100vh - 197px);
   }
 }
