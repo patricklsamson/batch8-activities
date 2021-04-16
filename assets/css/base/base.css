@@ -97,6 +97,10 @@ a:hover {
   text-decoration: none;
 }
 
+blockquote {
+  margin: 0 40px;
+}
+
 table {
   table-layout: fixed;
   border-collapse: collapse;
