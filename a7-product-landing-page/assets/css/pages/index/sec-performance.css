@@ -55,6 +55,7 @@
   -ms-grid-rows: 50px 50px 50px 50px 50px 50px 50px 50px;
   grid-template-rows: repeat(8, 50px);
   grid-column-gap: 15px;
+  column-gap: 15px;
 }
 
 .grid-cont .bar {
