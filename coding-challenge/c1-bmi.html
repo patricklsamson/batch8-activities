@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Patrick Samson" />
+    <title>BMI</title>
+    <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" size="32x32" />
+    <link rel="icon" href="../assets/img/favicon-16x16.png" type="image/png" size="16x16" />
+  </head>
+  <body>
+    <script>
+      var victor = {
+        mass: 78,
+        height: 1.7,
+        bmi: function () {
+          return "Victor's BMI is " + this.mass / Math.pow(this.height, 2) + ".";
+        },
+      };
+
+      var john = {
+        mass: 87,
+        height: 1.8,
+        bmi: function () {
+          return "John's BMI is " + this.mass / Math.pow(this.height, 2) + ".";
+        },
+      };
+
+      function higher_bmi() {
+        if (victor.bmi() > john.bmi()) {
+          return "Victor's BMI is higher than John's.";
+        } else {
+          return "Victor's BMI is lower than John's.";
+        }
+      }
+
+      console.log(victor.bmi());
+      console.log(john.bmi());
+      console.log(higher_bmi());
+    </script>
+  </body>
+</html>
