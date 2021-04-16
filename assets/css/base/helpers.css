@@ -132,10 +132,10 @@
   margin-right: auto;
 }
 .balign.blft {
-  margin-right: auto;
+  margin-left: 0;
 }
 .balign.brgt {
-  margin-left: auto;
+  margin-right: 0;
 }
 
 .mt-025 {
