@@ -50,15 +50,13 @@
   width: 100%;
   margin: 0 auto;
 }
-.table.ctr {
+.table.ctr, .table.lft, .table.rgt {
   width: auto;
 }
 .table.lft {
-  width: auto;
   margin-left: 0;
 }
 .table.rgt {
-  width: auto;
   margin-right: 0;
 }
 .table .valign {
