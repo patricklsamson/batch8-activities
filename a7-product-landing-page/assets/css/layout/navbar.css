@@ -106,7 +106,6 @@
   }
 
   .sec-sticky .grid [class*="gcol"]:nth-child(2) {
-    position: unset;
     margin-top: 2.5px;
   }
 
