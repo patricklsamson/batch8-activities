@@ -16,11 +16,14 @@
 .grid.xgut > [class*=gcol-] {
   padding: 0;
 }
-.grid [class*="gcol-"] {
+.grid [class*=gcol-] {
   float: left;
-  position: relative;
   width: 100%;
   padding: 0 10px;
+}
+.grid [class*=push-],
+.grid [class*=pull-] {
+  position: relative;
 }
 .grid .gcol-1 {
   max-width: 8.3333333333%;
