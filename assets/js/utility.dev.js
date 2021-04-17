@@ -38,9 +38,9 @@ function add_event(element, e, fn) {
 
 function remove_event(element, e, fn) {
   if (element.removeEventListener) {
-    element.removeEventListener(event, fn, false);
+    element.removeEventListener(e, fn, false);
   } else if (element.detachEvent) {
-    element.detachEvent(event, fn);
+    element.detachEvent(e, fn);
   }
 }
 
