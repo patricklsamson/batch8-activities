@@ -47,15 +47,18 @@
 .table {
   display: table;
   height: 100%;
+  width: 100%;
   margin: 0 auto;
 }
-.table.tfluid {
-  width: 100%;
+.table.ctr {
+  width: auto;
 }
 .table.lft {
+  width: auto;
   margin-left: 0;
 }
 .table.rgt {
+  width: auto;
   margin-right: 0;
 }
 .table .valign {
