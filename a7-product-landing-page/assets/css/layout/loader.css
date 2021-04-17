@@ -15,7 +15,7 @@
   }
 
   100% {
-    position: unset;
+    position: static;
   }
 }
 
@@ -29,7 +29,7 @@
   }
 
   100% {
-    position: unset;
+    position: static;
   }
 }
 
@@ -43,7 +43,7 @@
   }
 
   100% {
-    position: unset;
+    position: static;
   }
 }
 
@@ -57,7 +57,7 @@
   }
 
   100% {
-    position: unset;
+    position: static;
   }
 }
 
