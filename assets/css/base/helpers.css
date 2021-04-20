@@ -4,6 +4,13 @@
   display: -moz-box;
   display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
   -webkit-box-direction: normal;
