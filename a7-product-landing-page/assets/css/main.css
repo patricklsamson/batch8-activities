@@ -8,20 +8,15 @@
 @import "base/typography.css";
 
 /**
- * Layout
- *--------------------------------------------------*/
-
-@import "layout/loader.css";
-@import "layout/containers.css";
-@import "layout/navbar.css";
-@import "layout/header.css";
-@import "layout/footer.css";
-@import "layout/forms.css";
-
-/**
  * Components
  *--------------------------------------------------*/
 
+@import "components/loader.css";
+@import "components/containers.css";
+@import "components/navbar.css";
+@import "components/header.css";
+@import "components/footer.css";
+@import "components/forms.css";
 @import "components/carousel.css";
 @import "components/button.css";
 
@@ -29,10 +24,12 @@
  * Pages
  *--------------------------------------------------*/
 
+/* Index */
 @import "pages/index/sec-banner.css";
 @import "pages/index/sec-features.css";
 @import "pages/index/sec-video.css";
 @import "pages/index/sec-performance.css";
 @import "pages/index/sec-reviews.css";
 
+/* Signup Landing Page */
 @import "pages/signup-landing-page/sec-main.css";
