@@ -10,9 +10,9 @@
 @import "base/helpers.css";
 
 /**
- * Layout
+ * Components
  *--------------------------------------------------*/
 
-@import "layout/containers.css";
-@import "layout/grid.css";
-@import "layout/navbar.css";
+@import "components/containers.css";
+@import "components/grid.css";
+@import "components/navbar.css";
