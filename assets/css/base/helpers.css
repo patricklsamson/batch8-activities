@@ -122,9 +122,15 @@
   vertical-align: bottom;
 }
 
-.img,
-.img:before,
-.img:after {
+.img {
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.img:before, .img:after {
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;
@@ -133,58 +139,68 @@
   background-size: cover;
 }
 @media only screen and (min-width: 992px) {
-  .img.prlax,
-  .img:before.prlax,
-  .img:after.prlax {
+  .img.prlax {
     background-attachment: fixed;
   }
 }
-.img.con,
-.img:before.con,
-.img:after.con {
+.img.con {
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
-.img.itop,
-.img:before.itop,
-.img:after.itop {
+.img.con:before, .img.con:after {
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+.img.itop {
   background-position: top;
 }
-.img.ibot,
-.img:before.ibot,
-.img:after.ibot {
+.img.itop:before, .img.itop:after {
+  background-position: top;
+}
+.img.ibot {
   background-position: bottom;
 }
-.img.ilft,
-.img:before.ilft,
-.img:after.ilft {
+.img.ibot:before, .img.ibot:after {
+  background-position: bottom;
+}
+.img.ilft {
   background-position: left;
 }
-.img.irgt,
-.img:before.irgt,
-.img:after.irgt {
+.img.ilft:before, .img.ilft:after {
+  background-position: left;
+}
+.img.irgt {
   background-position: right;
 }
-.img.ilt,
-.img:before.ilt,
-.img:after.ilt {
+.img.irgt:before, .img.irgt:after {
+  background-position: right;
+}
+.img.ilt {
   background-position: left top;
 }
-.img.irt,
-.img:before.irt,
-.img:after.irt {
+.img.ilt:before, .img.ilt:after {
+  background-position: left top;
+}
+.img.irt {
   background-position: right top;
 }
-.img.ilb,
-.img:before.ilb,
-.img:after.ilb {
+.img.irt:before, .img.irt:after {
+  background-position: right top;
+}
+.img.ilb {
   background-position: left bottom;
 }
-.img.irb,
-.img:before.irb,
-.img:after.irb {
+.img.ilb:before, .img.ilb:after {
+  background-position: left bottom;
+}
+.img.irb {
+  background-position: right bottom;
+}
+.img.irb:before, .img.irb:after {
   background-position: right bottom;
 }
 
