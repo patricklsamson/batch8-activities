@@ -6,6 +6,7 @@
 
 nav ul {
   list-style: none;
+  padding: 0;
 }
 
 @media only screen and (min-width: 992px) {
