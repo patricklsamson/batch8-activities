@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+html {
+  font-size: 2vmin;
+}
+
+main {
+  background: #343a40;
+}
+
+.cont {
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+#tooltip {
+  color: #f8f9fa;
+}
+
+.btn-prev,
+.btn-next {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn-prev.show,
+.btn-next.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.board {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (15vmin) [3];
+  -ms-grid-columns: (15vmin) [3];
+  grid-template: repeat(3, 15vmin) / repeat(3, 15vmin);
+  grid-gap: 2vmin;
+  gap: 2vmin;
+  width: 49.2vmin;
+  margin: 0 auto;
+}
+
+.box {
+  background: #f8f9fa;
+  cursor: pointer;
+  position: relative;
+}
+
+.board.x .empty:hover:before,
+.board.o .empty:hover:before {
+  opacity: 0.5;
+}
+
+.board.x .empty:hover:before,
+.board.o .empty:hover:before,
+.box.x:before,
+.box.o:before {
+  font-size: 12vmin;
+  position: absolute;
+}
+
+.board.x .empty:hover:before,
+.box.x:before {
+  content: "X";
+}
+
+.board.o .empty:hover:before,
+.box.o:before {
+  content: "O";
+}
