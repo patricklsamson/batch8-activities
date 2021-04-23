@@ -26,6 +26,10 @@ function qsa(element) {
   return document.querySelectorAll(element);
 }
 
+function create_el(element) {
+  return document.createElement(element);
+}
+
 function add_event(element, e, fn) {
   if (element.addEventListener) {
     element.addEventListener(e, fn, false);
