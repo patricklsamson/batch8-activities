@@ -1,0 +1,112 @@
+header {
+  position: relative;
+  background: #4c515d;
+}
+
+header .grid {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#logo {
+  margin: 5px 0;
+  width: 50px;
+  vertical-align: middle;
+}
+
+#time,
+#date {
+  font-weight: 600;
+}
+
+#date {
+  font-size: 20px;
+}
+
+#modal {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  min-height: calc(100vh - 70px);
+  width: 100%;
+  left: 0;
+  background: #343a40;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#name {
+  font-size: 40px;
+}
+
+@media only screen and (max-width: 767px) {
+  header .grid > [class*="gcol-"] {
+    padding-bottom: 5px;
+  }
+
+  header [class*="gcol-"]:nth-child(3) {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    border-top: 1px solid #f8f9fa;
+  }
+
+  #time,
+  #date {
+    font-size: 25px;
+  }
+
+  #modal {
+    min-height: calc(100vh - 130px);
+  }
+}
+
+#modal.show {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+}
+
+#modal .wrap-modal {
+  width: 340px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 480px) {
+  #modal .wrap-modal {
+    width: 280px;
+  }
+}
+
+#submit {
+  position: relative;
+  font-size: 30px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#submit:before {
+  content: ".";
+  font-size: 0;
+  position: absolute;
+  top: 32px;
+  width: 125%;
+  height: 20px;
+  background-image: url(../../../assets/img/line-white.png);
+}
+
+html.light #submit:before {
+  background-image: url(../../../assets/img/line-black.png);
+}
+
+#submit:disabled {
+  opacity: 0;
+}
