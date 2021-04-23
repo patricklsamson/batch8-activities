@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/**
+ * Base
+ *--------------------------------------------------*/
+
+@import "base/base.css";
+@import "base/typography.css";
+
+/**
+ * Components
+ *--------------------------------------------------*/
+
+@import "components/header.css";
+@import "components/footer.css";
+@import "components/button.css";
+
+/**
+ * Pages
+ *--------------------------------------------------*/
+
+/* Index */
+@import "pages/index/sec-banner.css";
+@import "pages/index/sec-main.css";
