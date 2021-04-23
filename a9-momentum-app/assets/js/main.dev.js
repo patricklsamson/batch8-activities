@@ -48,6 +48,13 @@ doc_ready(function () {
   add_event(id("light"), "click", function () {
     toggle_class(document.documentElement, "light");
   });
+  add_event(window, "scroll", function () {
+    if (window.pageYOffset > id("header").offsetTop || document.documentElement.scrollTop > id("header").offsetTop) {
+      add_class(id("header"), "sticky");
+    } else {
+      remove_class(id("header"), "sticky");
+    }
+  });
   add_event(window, "click", function (e) {
     if ((e.target.id || e.srcElement.id) != id("name") && has_class(id("modal"), "show")) {
       id("name").focus();
