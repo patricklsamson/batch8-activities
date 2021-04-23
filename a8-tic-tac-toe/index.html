@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Patrick Samson" />
+    <title>Tic Tac Toe</title>
+    <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" size="32x32" />
+    <link rel="icon" href="../assets/img/favicon-16x16.png" type="image/png" size="16x16" />
+    <link rel="stylesheet" href="../assets/css/index.min.css" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+  </head>
+  <body>
+    <main>
+      <div class="cont flex">
+        <p id="tooltip" class="h2 mb-025"></p>
+
+        <button id="reset-btn" class="btn-reset">Reset</button>
+
+        <div id="btn-wrap" class="wrap-btn mt-05 mb-05">
+          <button id="prev-btn" class="btn-prev">Previous</button>
+          <button id="next-btn" class="btn-next">Next</button>
+        </div>
+
+        <div id="tboard" class="board">
+          <div class="box empty flex" data-row="0" data-col="0"></div>
+          <div class="box empty flex" data-row="0" data-col="1"></div>
+          <div class="box empty flex" data-row="0" data-col="2"></div>
+          <div class="box empty flex" data-row="1" data-col="0"></div>
+          <div class="box empty flex" data-row="1" data-col="1"></div>
+          <div class="box empty flex" data-row="1" data-col="2"></div>
+          <div class="box empty flex" data-row="2" data-col="0"></div>
+          <div class="box empty flex" data-row="2" data-col="1"></div>
+          <div class="box empty flex" data-row="2" data-col="2"></div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../assets/js/utility.prod.js"></script>
+    <script src="assets/js/main.prod.js"></script>
+  </body>
+</html>
