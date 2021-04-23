@@ -25,10 +25,10 @@ main li {
   user-select: none;
 }
 
-main textarea,
-main li,
-main input,
-main p {
+html.light main textarea,
+html.light main li,
+html.light main input,
+html.light main p {
   font-weight: 700;
 }
 
