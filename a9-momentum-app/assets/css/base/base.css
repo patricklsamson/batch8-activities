@@ -1,0 +1,74 @@
+html {
+  background-color: #343a40;
+  color: #f8f9fa;
+  font-size: 20px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+html.light {
+  background-color: #f8f9fa !important;
+}
+
+html.light header,
+html.light header .cont:first-child {
+  background-color: #d3d3d3 !important;
+}
+
+html.light .wrap-overlay {
+  background-color: #f8f9fa !important;
+}
+
+html.light,
+html.light section,
+html.light div,
+html.light input,
+html.light button,
+html.light {
+  color: #000 !important;
+  border-color: #000 !important;
+}
+
+html.light .wrap-quotes {
+  background-image: url(../../../assets/img/skies.jpg) !important;
+}
+
+html.light ::-ms-input-placeholder {
+  color: #000 !important;
+}
+
+html.light :-ms-input-placeholder {
+  color: #000 !important;
+}
+
+html.light ::placeholder {
+  color: #000 !important;
+}
+
+::-ms-input-placeholder {
+  color: #f8f9fa;
+}
+
+:-ms-input-placeholder {
+  color: #f8f9fa;
+}
+
+::placeholder {
+  color: #f8f9fa;
+}
+
+input {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #f8f9fa;
+  background: transparent;
+  color: #f8f9fa;
+  padding-bottom: 5px;
+}
+
+input:-internal-autofill-selected,
+input:-internal-autofill-previewed {
+  background-color: transparent !important;
+}
