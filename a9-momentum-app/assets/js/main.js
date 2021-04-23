@@ -12,7 +12,7 @@ doc_ready(() => {
     date = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate(),
     todo = [],
     quotes = ["Every morning is a beautiful morning.", "Shine like the afternoon sun and let people be inspired for all the great things you do.", "Evenings are life's way of saying that you are closer to your dreams."],
-    quotesCounter = 0;
+    quotesCounter = -1;
 
   let clock = () => {
     if (today.getHours() < 12) {
