@@ -103,6 +103,11 @@ blockquote {
   margin: 0 40px;
 }
 
+ol,
+ul {
+  padding-left: 40px;
+}
+
 table {
   table-layout: fixed;
   border-collapse: collapse;
