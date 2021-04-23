@@ -1,7 +1,6 @@
 html {
   background-color: #343a40;
   color: #f8f9fa;
-  font-size: 25px;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -13,7 +12,8 @@ html.light {
 }
 
 html.light header,
-html.light header .cont:first-child {
+html.light header .cont:first-child,
+html.light footer {
   background-color: #d3d3d3 !important;
 }
 
@@ -45,6 +45,10 @@ html.light :-ms-input-placeholder {
 
 html.light ::placeholder {
   color: #000 !important;
+}
+
+body {
+  font-size: 25px;
 }
 
 ::-ms-input-placeholder {
