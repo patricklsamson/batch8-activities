@@ -14,13 +14,14 @@ header .grid {
   vertical-align: middle;
 }
 
+header p span {
+  position: relative;
+  top: 5px;
+}
+
 #time,
 #date {
   font-weight: 600;
-}
-
-#date {
-  font-size: 20px;
 }
 
 #modal {
