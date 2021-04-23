@@ -25,6 +25,14 @@ main li {
   user-select: none;
 }
 
+main textarea,
+main label,
+main li,
+main input,
+main p {
+  font-weight: 700;
+}
+
 main li::marker {
   color: red;
 }
