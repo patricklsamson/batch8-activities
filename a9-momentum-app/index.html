@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Momentum App</title>
+    <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" size="32x32" />
+    <link rel="icon" href="../assets/img/favicon-16x16.png" type="image/png" size="16x16" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/index.min.css" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+  </head>
+  <body class="modal-open">
+    <header>
+      <div class="cont">
+        <div class="grid">
+          <div class="gcol-md-4 gcol-9 mh flex flft">
+            <p class="h6"><img src="../assets/img/logo-opt.png" alt="logo" id="logo" /> <span>Momentum App</span></p>
+          </div>
+
+          <div class="gcol-md-4 md-push-4 gcol-3 mh flex">
+            <button id="light" class="btn-white"><i class="fas fa-adjust fa-2x"></i></button>
+          </div>
+
+          <div id="time-wrap" class="gcol-md-4 md-pull-4 gcol-12 mh flex">
+            <div class="gcol-md-12 gcol-6 talign">
+              <time id="time" class="h6"></time>
+            </div>
+
+            <div class="gcol-md-12 gcol-6 talign">
+              <time id="date"></time>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cont">
+        <div id="modal" class="wrap-overlay flex show">
+          <div class="wrap-modal talign">
+            <label for="name" class="h2">Who are you?</label><br />
+            <input type="text" id="name" class="mt-025 mb-025 talign" autocomplete="off" /><br />
+
+            <button id="submit" class="btn-white img" disabled>Proceed</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="sec-banner">
+      <div class="cont talign">
+        <p class="h1 mt-025">Good <span id="greetings"></span>, <span id="user"></span>!</p>
+        <button id="change" class="btn-white">Change</button>
+
+        <div class="wrap-quotes flex mt-05 img">
+          <p class="h2"><q id="quotes"></q></p>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <div class="cont">
+        <div class="grid">
+          <div class="gcol-md-6 gcol-12">
+            <h4 class="mb-025">Main Focus:</h4>
+
+            <textarea name="focus" id="focus" class="mb-05" rows="2" placeholder="✎ Write your main focus here..."></textarea>
+
+            <label for="to-do" class="h4">To-Do List:</label>
+            <input type="text" id="add-to-do" class="mt-05" placeholder="✎ Add To-Do..." /><button id="add-to-do-btn" class="btn-white img con balign brgt">Add</button>
+
+            <ul id="to-do-list"></ul>
+          </div>
+
+          <div class="gcol-md-6 gcol-12">
+            <h4 class="mb-025">Quotes:</h4>
+
+            <div id="added-quotes-wrap"></div>
+
+            <input type="text" id="add-quote" placeholder="✎ Omit quotation marks..." />
+            <button id="add-quote-btn" class="btn-white img con balign brgt">Add</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="../assets/js/utility.prod.js"></script>
+    <script src="assets/js/main.prod.js"></script>
+  </body>
+</html>
