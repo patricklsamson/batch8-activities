@@ -155,9 +155,5 @@ doc_ready(function () {
       id("add-quote").value = "";
       addedQuote();
     }
-  }); // const test = document.createElement("p");
-  // document.getElementById("to-do-list").appendChild(test);
-  // test.innerText = "Don't be lazy!";
-  // test.style.color = "red";
-  // test.style.fontWeight = "900";
+  });
 });
