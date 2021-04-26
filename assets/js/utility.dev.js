@@ -32,6 +32,10 @@ function create_el(element) {
   return document.createElement(element);
 }
 
+function inner(str) {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/\'/g, "&#39;").replace(/\//g, "&#x2F;");
+}
+
 function add_event(element, e, fn) {
   if (element.addEventListener) {
     element.addEventListener(e, fn, false);
