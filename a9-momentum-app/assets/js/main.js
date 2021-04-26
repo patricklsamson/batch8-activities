@@ -96,7 +96,7 @@ doc_ready(() => {
   });
 
   let addedToDo = () => {
-    let element = create_el("li");
+    const element = create_el("li");
 
     id("to-do-list").appendChild(element);
     element.innerHTML += inner(todo[todo.length - 1]);
@@ -137,7 +137,7 @@ doc_ready(() => {
 
   let listQuotes = () => {
     for (i = 0; i < quotes.length; i++) {
-      let element = create_el("p");
+      const element = create_el("p");
 
       add_class(element, "mb-05");
       id("added-quotes-wrap").appendChild(element);
@@ -148,7 +148,7 @@ doc_ready(() => {
   listQuotes();
 
   let addedQuote = () => {
-    let element = create_el("p");
+    const element = create_el("p");
 
     add_class(element, "mb-05");
     id("added-quotes-wrap").appendChild(element);
@@ -170,4 +170,10 @@ doc_ready(() => {
       addedQuote();
     }
   });
+
+  // const test = document.createElement("p");
+  // document.getElementById("to-do-list").appendChild(test);
+  // test.innerText = "Don't be lazy!";
+  // test.style.color = "red";
+  // test.style.fontWeight = "900";
 });
