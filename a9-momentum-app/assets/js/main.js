@@ -1,15 +1,16 @@
 doc_ready(() => {
   match_height(".mh");
 
-  let today = new Date(),
+  const today = new Date(),
     twelveHours = today.getHours() % 12 ? today.getHours() % 12 : 12,
     hours = twelveHours < 10 ? `0${twelveHours}` : twelveHours,
     minutes = today.getMinutes() < 10 ? `0${today.getMinutes()}` : today.getMinutes(),
     ampm = today.getHours() >= 12 ? " PM" : " AM",
-    i,
     months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
     monthsNum = today.getMonth() < 10 ? `0${today.getMonth() + 1}` : today.getMonth() + 1,
-    date = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate(),
+    date = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
+
+  let i,
     todo = [],
     quotes = ["Every morning is a beautiful morning.", "Shine like the afternoon sun and let people be inspired for all the great things you do.", "Evenings are life's way of saying that you are closer to your dreams."],
     quotesCounter = -1;
@@ -64,7 +65,7 @@ doc_ready(() => {
   });
 
   add_event(id("name"), "keyup", () => {
-    id("user").innerHTML = `${id("name").value.substring(0, 1).toUpperCase()}${id("name").value.substring(1).toLowerCase()}`;
+    id("user").innerHTML = inner(id("name").value.substring(0, 1).toUpperCase() + id("name").value.substring(1).toLowerCase());
 
     if (id("name").value.length != 0) {
       id("submit").disabled = false;
@@ -94,11 +95,11 @@ doc_ready(() => {
     }, 500);
   });
 
-  let toDoList = () => {
+  let addedToDo = () => {
     let element = create_el("li");
 
     id("to-do-list").appendChild(element);
-    element.innerHTML += todo[todo.length - 1];
+    element.innerHTML += inner(todo[todo.length - 1]);
 
     add_event(element, "click", () => {
       toggle_class(element, "done");
@@ -109,7 +110,7 @@ doc_ready(() => {
     if ((e.which || e.keyCode) == 13 && id("add-to-do").value.length != 0) {
       todo.push(id("add-to-do").value.substring(0, 1).toUpperCase() + id("add-to-do").value.substring(1).toLowerCase());
       id("add-to-do").value = "";
-      toDoList();
+      addedToDo();
     }
   });
 
@@ -117,7 +118,7 @@ doc_ready(() => {
     if (id("add-to-do").value.length != 0) {
       todo.push(id("add-to-do").value.substring(0, 1).toUpperCase() + id("add-to-do").value.substring(1).toLowerCase());
       id("add-to-do").value = "";
-      toDoList();
+      addedToDo();
     }
   });
 
@@ -128,7 +129,7 @@ doc_ready(() => {
       quotesCounter = 0;
     }
 
-    id("quotes").innerHTML = quotes[quotesCounter];
+    id("quotes").innerHTML = inner(quotes[quotesCounter]);
   };
 
   showQuotes();
@@ -140,7 +141,7 @@ doc_ready(() => {
 
       add_class(element, "mb-05");
       id("added-quotes-wrap").appendChild(element);
-      element.innerHTML += quotes[i];
+      element.innerHTML += inner(quotes[i]);
     }
   };
 
@@ -151,7 +152,7 @@ doc_ready(() => {
 
     add_class(element, "mb-05");
     id("added-quotes-wrap").appendChild(element);
-    element.innerHTML += quotes[quotes.length - 1];
+    element.innerHTML += inner(quotes[quotes.length - 1]);
   };
 
   add_event(id("add-quote"), "keypress", (e) => {
