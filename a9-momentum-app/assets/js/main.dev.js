@@ -69,25 +69,30 @@ doc_ready(function () {
       id("submit").disabled = true;
     }
   });
+
+  var modalOpen = function modalOpen() {
+    toggle_class(id("modal"), "show");
+    toggle_class(document.body, "modal-open");
+  };
+
   add_event(id("name"), "keypress", function (e) {
     if ((e.which || e.keyCode) == 13 && id("name").value.length != 0) {
-      toggle_class(id("modal"), "show");
-      toggle_class(document.body, "modal-open");
+      modalOpen();
     }
   });
   add_event(id("submit"), "click", function () {
-    toggle_class(id("modal"), "show");
-    toggle_class(document.body, "modal-open");
+    modalOpen();
   });
   add_event(id("change"), "click", function () {
-    toggle_class(id("modal"), "show");
-    toggle_class(document.body, "modal-open");
+    modalOpen();
     setTimeout(function () {
       id("name").focus();
     }, 500);
   });
 
   var addedToDo = function addedToDo() {
+    todo.push(id("add-to-do").value.substring(0, 1).toUpperCase() + id("add-to-do").value.substring(1).toLowerCase());
+    id("add-to-do").value = "";
     var element = create_el("li");
     id("to-do-list").appendChild(element);
     element.innerHTML += inner(todo[todo.length - 1]);
@@ -96,17 +101,13 @@ doc_ready(function () {
     });
   };
 
-  add_event(id("add-to-do"), "keypress", function (e) {
+  add_events(id("add-to-do"), "keypress", function (e) {
     if ((e.which || e.keyCode) == 13 && id("add-to-do").value.length != 0) {
-      todo.push(id("add-to-do").value.substring(0, 1).toUpperCase() + id("add-to-do").value.substring(1).toLowerCase());
-      id("add-to-do").value = "";
       addedToDo();
     }
   });
   add_event(id("add-to-do-btn"), "click", function () {
     if (id("add-to-do").value.length != 0) {
-      todo.push(id("add-to-do").value.substring(0, 1).toUpperCase() + id("add-to-do").value.substring(1).toLowerCase());
-      id("add-to-do").value = "";
       addedToDo();
     }
   });
