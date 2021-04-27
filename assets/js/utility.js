@@ -38,7 +38,7 @@ function add_event(element, e, fn) {
   if (element.addEventListener) {
     element.addEventListener(e, fn, false);
   } else if (element.attachEvent) {
-    element.attachEvent(e, fn);
+    element.attachEvent("on" + e, fn);
   }
 }
 
@@ -46,7 +46,7 @@ function remove_event(element, e, fn) {
   if (element.removeEventListener) {
     element.removeEventListener(e, fn, false);
   } else if (element.detachEvent) {
-    element.detachEvent(e, fn);
+    element.detachEvent("on" + e, fn);
   }
 }
 
@@ -135,20 +135,19 @@ function match_height(element) {
 
 function match_media(media, oldMedia, match, unmatch) {
   if (window.matchMedia) {
-    var mq = window.matchMedia(media),
-      match,
-      unmatch;
+    var mq = window.matchMedia(media);
 
-    add_event(mq, "change", function () {
-      if (mq.matches) {
+    function matcher(param) {
+      if (param.matches) {
         match();
       } else {
         unmatch();
       }
-    });
-  } else {
-    var match, unmatch;
+    }
 
+    matcher(mq);
+    add_event(mq, "change", matcher);
+  } else {
     if (screen.width >= oldMedia) {
       match();
     } else {
