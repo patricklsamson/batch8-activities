@@ -27,16 +27,16 @@
       //   console.log(question1, question2, question3);
       // }
 
+      const questions = [
+          ["What does HTML stand for?", "1) Hyper Text Markup Language", "2) Hey Too Much Layout", "3) How To Make Lasagna"],
+          ["What does CSS stand for?", "1) Cats Sour Sauce", "2) Cascading Style Sheets", "3) Center Style Solution"],
+          ["What year did JavaScript first appeared?", "1) 2000", "2) 1999", "3) 1995"],
+        ],
+        answers = ["1) Hyper Text Markup Language", "2) Cascading Style Sheets", "3) 1995"];
+
+      let i;
+
       const startQuiz = () => {
-        const questions = [
-            ["What does HTML stand for?", "1) Hyper Text Markup Language", "2) Hey Too Much Layout", "3) How To Make Lasagna"],
-            ["What does CSS stand for?", "1) Cats Sour Sauce", "2) Cascading Style Sheets", "3) Center Style Solution"],
-            ["What year did JavaScript first appeared?", "1) 2000", "2) 1999", "3) 1995"],
-          ],
-          answers = ["1) Hyper Text Markup Language", "2) Cascading Style Sheets", "3) 1995"];
-
-        let i;
-
         for (i = 0; i < questions.length; i++) {
           let entry = prompt(questions[i]);
 
