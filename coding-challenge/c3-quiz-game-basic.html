@@ -38,8 +38,14 @@
         let i;
 
         for (i = 0; i < questions.length; i++) {
-          prompt(questions[i]);
-          alert(`Correct Answer is: ${answers[i]}`);
+          let entry = prompt(questions[i]);
+
+          if (entry == answers.indexOf(answers[i]) + 1) {
+            alert("You are correct!");
+          } else {
+            alert(`You are wrong! The correct Answer is: ${answers[i]}`);
+          }
+
           console.log(`The correct answer for ${questions[i]} is ${answers[i]}`);
         }
       };
