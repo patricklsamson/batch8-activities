@@ -21,3 +21,4 @@ This page is intended for presenting to you all the activities I completed throu
 1. [BMI](/coding-challenge/c1-bmi.html)
 1. [Playing Cards - In Progress](/coding-challenge/c2-playing-cards.html)
 1. [Quiz Game (Basic)](/coding-challenge/c3-quiz-game-basic.html)
+1. [Quiz Game (Expert)](/coding-challenge/c4-quiz-game-expert.html)
