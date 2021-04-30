@@ -6,14 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Patrick Samson" />
     <title>Quiz Game (Basic)</title>
-    <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" size="32x32" />
-    <link rel="icon" href="../assets/img/favicon-16x16.png" type="image/png" size="16x16" />
+    <link
+      rel="icon"
+      href="../assets/img/favicon-32x32.png"
+      type="image/png"
+      size="32x32"
+    />
+    <link
+      rel="icon"
+      href="../assets/img/favicon-16x16.png"
+      type="image/png"
+      size="16x16"
+    />
     <link rel="stylesheet" href="../assets/css/index.min.css" />
   </head>
   <body>
     <main>
       <div class="cont talign">
-        <p class="h2 mt-05">Check the "Console" tab in your browser's inspector.</p>
+        <p class="h2 mt-05">
+          Check the "Console" tab in your browser's inspector.
+        </p>
       </div>
     </main>
 
@@ -28,11 +40,30 @@
       // }
 
       const questions = [
-          ["What does HTML stand for?", "1) Hyper Text Markup Language", "2) Hey Too Much Layout", "3) How To Make Lasagna"],
-          ["What does CSS stand for?", "1) Cats Sour Sauce", "2) Cascading Style Sheets", "3) Center Style Solution"],
-          ["What year did JavaScript first appeared?", "1) 2000", "2) 1999", "3) 1995"],
+          [
+            "What does HTML stand for?",
+            "1) Hyper Text Markup Language",
+            "2) Hey Too Much Layout",
+            "3) How To Make Lasagna",
+          ],
+          [
+            "What does CSS stand for?",
+            "1) Cats Sour Sauce",
+            "2) Cascading Style Sheets",
+            "3) Center Style Solution",
+          ],
+          [
+            "What year did JavaScript first appeared?",
+            "1) 2000",
+            "2) 1999",
+            "3) 1995",
+          ],
         ],
-        answers = ["1) Hyper Text Markup Language", "2) Cascading Style Sheets", "3) 1995"];
+        answers = [
+          "1) Hyper Text Markup Language",
+          "2) Cascading Style Sheets",
+          "3) 1995",
+        ];
 
       let i;
 
@@ -46,7 +77,9 @@
             alert(`You are wrong! The correct answer is: ${answers[i]}`);
           }
 
-          console.log(`The correct answer for ${questions[i]} is ${answers[i]}`);
+          console.log(
+            `The correct answer for ${questions[i]} is ${answers[i]}`
+          );
         }
       };
 
