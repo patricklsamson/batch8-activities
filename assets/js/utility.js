@@ -31,7 +31,13 @@ function create_el(element) {
 }
 
 function inner(str) {
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/\'/g, "&#39;").replace(/\//g, "&#x2F;");
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/\'/g, "&#39;")
+    .replace(/\//g, "&#x2F;");
 }
 
 function add_event(element, e, fn) {
@@ -76,7 +82,9 @@ function has_class(element, className) {
   if (element.classList) {
     return element.classList.contains(className);
   } else {
-    return new RegExp("(^| )" + className + "( |$)", "gi").test(element.className);
+    return new RegExp("(^| )" + className + "( |$)", "gi").test(
+      element.className
+    );
   }
 }
 
@@ -92,7 +100,10 @@ function remove_class(element, className) {
   if (element.classList) {
     element.classList.remove(className);
   } else {
-    element.className = element.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " ");
+    element.className = element.className.replace(
+      new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"),
+      " "
+    );
   }
 }
 
@@ -214,7 +225,10 @@ caro = (function () {
     }
 
     add_event(self.def.dotsWrapper, "click", function (e) {
-      if ((e.target && e.target.nodeName == "SPAN") || (e.srcElement && e.srcElement.nodeName == "SPAN")) {
+      if (
+        (e.target && e.target.nodeName == "SPAN") ||
+        (e.srcElement && e.srcElement.nodeName == "SPAN")
+      ) {
         self.curSlide = e.target.getAttribute("data-slide");
         self.gotoSlide();
       }
@@ -230,7 +244,11 @@ caro = (function () {
   caro.prototype.gotoSlide = function () {
     var self = this;
 
-    self.sliderInner.style.transition = "left " + self.def.transition.speed / 1000 + "s " + self.def.transition.easing;
+    self.sliderInner.style.transition =
+      "left " +
+      self.def.transition.speed / 1000 +
+      "s " +
+      self.def.transition.easing;
     self.sliderInner.style.left = -self.curSlide * self.slideW + "px";
 
     add_class(self.def.target, "isAnimating");
@@ -243,7 +261,8 @@ caro = (function () {
     self.setDot();
 
     if (self.def.autoHeight) {
-      self.def.target.style.height = self.allSlides[self.curSlide].offsetHeight + "px";
+      self.def.target.style.height =
+        self.allSlides[self.curSlide].offsetHeight + "px";
     }
 
     self.def.afterChangeSlide(self);
@@ -310,10 +329,14 @@ caro = (function () {
     self.sliderInner = self.def.target.querySelector(".caro-inner");
     self.loadedCnt = 0;
 
-    var cloneFirst = self.def.target.querySelectorAll(".slide")[0].cloneNode(true);
+    var cloneFirst = self.def.target
+      .querySelectorAll(".slide")[0]
+      .cloneNode(true);
     self.sliderInner.appendChild(cloneFirst);
 
-    var cloneLast = self.def.target.querySelectorAll(".slide")[self.totalSlides - 1].cloneNode(true);
+    var cloneLast = self.def.target
+      .querySelectorAll(".slide")
+      [self.totalSlides - 1].cloneNode(true);
     self.sliderInner.insertBefore(cloneLast, self.sliderInner.firstChild);
 
     self.curSlide++;
@@ -372,10 +395,14 @@ caro = (function () {
 
       if (self.curLeft + self.moveX - self.startX > 0 && self.curLeft == 0) {
         self.curLeft = -self.totalSlides * self.slideW;
-      } else if (self.curLeft + self.moveX - self.startX < -(self.totalSlides + 1) * self.slideW) {
+      } else if (
+        self.curLeft + self.moveX - self.startX <
+        -(self.totalSlides + 1) * self.slideW
+      ) {
         self.curLeft = -self.slideW;
       }
-      self.sliderInner.style.left = self.curLeft + self.moveX - self.startX + "px";
+      self.sliderInner.style.left =
+        self.curLeft + self.moveX - self.startX + "px";
 
       return false;
     }
@@ -385,7 +412,11 @@ caro = (function () {
 
       if (Math.abs(self.moveX - self.startX) === 0) return;
 
-      self.stayAtCur = Math.abs(self.moveX - self.startX) < 40 || typeof self.moveX === "undefined" ? true : false;
+      self.stayAtCur =
+        Math.abs(self.moveX - self.startX) < 40 ||
+        typeof self.moveX === "undefined"
+          ? true
+          : false;
       self.dir = self.startX < self.moveX ? "left" : "right";
 
       if (self.stayAtCur) {
@@ -487,11 +518,14 @@ caro = (function () {
   caro.prototype.updateSliderDimension = function () {
     var self = this;
 
-    self.slideW = parseInt(self.def.target.querySelectorAll(".slide")[0].offsetWidth);
+    self.slideW = parseInt(
+      self.def.target.querySelectorAll(".slide")[0].offsetWidth
+    );
     self.sliderInner.style.left = -self.slideW * self.curSlide + "px";
 
     if (self.def.autoHeight) {
-      self.def.target.style.height = self.allSlides[self.curSlide].offsetHeight + "px";
+      self.def.target.style.height =
+        self.allSlides[self.curSlide].offsetHeight + "px";
     } else {
       for (var i = 0; i < self.totalSlides + 2; i++) {
         if (self.allSlides[i].offsetHeight > self.def.target.offsetHeight) {
