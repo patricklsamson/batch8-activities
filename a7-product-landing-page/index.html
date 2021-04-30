@@ -7,14 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Patrick Samson" />
     <title>Product Landing Page</title>
-    <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" size="32x32" />
-    <link rel="icon" href="../assets/img/favicon-16x16.png" type="image/png" size="16x16" />
+    <link
+      rel="icon"
+      href="../assets/img/favicon-32x32.png"
+      type="image/png"
+      size="32x32"
+    />
+    <link
+      rel="icon"
+      href="../assets/img/favicon-16x16.png"
+      type="image/png"
+      size="16x16"
+    />
     <link rel="stylesheet" href="../assets/css/index.min.css" />
     <link rel="stylesheet" href="assets/css/main.min.css" />
   </head>
   <body id="index" class="animate">
     <section class="sec-loader">
-      <div class="top flex fbot"><img src="../assets/img/predator.png" alt="predator-logo" /></div>
+      <div class="top flex fbot">
+        <img src="../assets/img/predator.png" alt="predator-logo" />
+      </div>
       <div class="bot"></div>
     </section>
 
@@ -24,7 +36,16 @@
           <div class="gcol-lg-6 gcol-5 mh">
             <div class="table">
               <div class="valign">
-                <a href="https://www.acer.com/ac/en/PH/content/predator-home" class="brand"><img src="../assets/img/predator.png" alt="predator-logo" id="header-img" /> <span>PREDATOR</span></a>
+                <a
+                  href="https://www.acer.com/ac/en/PH/content/predator-home"
+                  class="brand"
+                  ><img
+                    src="../assets/img/predator.png"
+                    alt="predator-logo"
+                    id="header-img"
+                  />
+                  <span>PREDATOR</span></a
+                >
               </div>
             </div>
           </div>
@@ -33,49 +54,96 @@
             <div class="table">
               <div class="valign">
                 <input type="checkbox" id="signup" />
-                <label for="signup" id="signup-btn" class="btn-white">SIGN UP</label>
+                <label for="signup" id="signup-btn" class="btn-white"
+                  >SIGN UP</label
+                >
 
                 <div class="wrap-signup">
                   <div class="table">
                     <div class="valign">
-                      <form action="signup-landing-page.html" method="get" id="form" class="talign tlft">
+                      <form
+                        action="signup-landing-page.html"
+                        method="get"
+                        id="form"
+                        class="talign tlft"
+                      >
                         <label for="name">Name</label><br />
-                        <input type="text" id="name" placeholder="Full Name" required /><br />
+                        <input
+                          type="text"
+                          id="name"
+                          placeholder="Full Name"
+                          required
+                        /><br />
 
                         <label for="email">Email</label><br />
-                        <input type="email" id="email" placeholder="example@mail.com" required /><br />
+                        <input
+                          type="email"
+                          id="email"
+                          placeholder="example@mail.com"
+                          required
+                        /><br />
 
                         <label for="password">Password</label><br />
                         <input type="password" id="password" required /><br />
 
-                        <label for="confirm-pw">Confirm Password</label> <img src="" alt="match" id="confirm-msg" /><br />
+                        <label for="confirm-pw">Confirm Password</label>
+                        <img src="" alt="match" id="confirm-msg" /><br />
                         <input type="password" id="confirm-pw" required /><br />
 
-                        <input type="submit" id="submit" value="SIGN UP" class="btn-white balign" disabled />
+                        <input
+                          type="submit"
+                          id="submit"
+                          value="SIGN UP"
+                          class="btn-white balign"
+                          disabled
+                        />
                       </form>
                     </div>
                   </div>
                 </div>
 
                 <input type="checkbox" id="login" />
-                <label for="login" id="login-btn" class="btn-white once">LOG IN</label>
+                <label for="login" id="login-btn" class="btn-white once"
+                  >LOG IN</label
+                >
 
                 <div class="wrap-login">
                   <div class="table">
                     <div class="valign">
-                      <form action="login-landing-page.html" method="get" class="talign tlft">
+                      <form
+                        action="login-landing-page.html"
+                        method="get"
+                        class="talign tlft"
+                      >
                         <label for="log-email">Email</label><br />
                         <input type="email" id="log-email" required /><br />
 
-                        <label for="log-password">Password</label><input type="checkbox" id="reveal" /><label for="reveal" id="reveal-btn"> <div id="reveal-icon" class="img"></div></label><br />
-                        <input type="password" id="log-password" required /><br />
+                        <label for="log-password">Password</label
+                        ><input type="checkbox" id="reveal" /><label
+                          for="reveal"
+                          id="reveal-btn"
+                        >
+                          <div id="reveal-icon" class="img"></div></label
+                        ><br />
+                        <input
+                          type="password"
+                          id="log-password"
+                          required
+                        /><br />
 
                         <label for="remember">Remember Me?</label>
                         <input type="checkbox" id="remember" />
 
-                        <a href="https://account.acer.com/sso/reset">Forgot Password?</a>
+                        <a href="https://account.acer.com/sso/reset"
+                          >Forgot Password?</a
+                        >
 
-                        <input type="submit" value="LOG IN" id="log-submit" class="btn-white balign" />
+                        <input
+                          type="submit"
+                          value="LOG IN"
+                          id="log-submit"
+                          class="btn-white balign"
+                        />
                       </form>
                     </div>
                   </div>
@@ -108,7 +176,9 @@
                   <ul>
                     <li><a href="#header" class="nav-link">HOME</a></li>
                     <li><a href="#features" class="nav-link">FEATURES</a></li>
-                    <li><a href="#performance" class="nav-link">PERFORMANCE</a></li>
+                    <li>
+                      <a href="#performance" class="nav-link">PERFORMANCE</a>
+                    </li>
                     <li><a href="#reviews" class="nav-link">REVIEWS</a></li>
                   </ul>
                 </div>
@@ -125,7 +195,9 @@
 
       <div class="cont-fl">
         <div class="wrap-banner flex frgt">
-          <h1 class="title txtfx"><strong>PREDATOR</strong> <span>TRITON</span> 500</h1>
+          <h1 class="title txtfx">
+            <strong>PREDATOR</strong> <span>TRITON</span> 500
+          </h1>
           <h4 class="caption txtfx">FORGED THIN. LEAN AND MEAN.</h4>
           <a href="#watch" class="btn-white">Watch NOW</a>
         </div>
@@ -134,9 +206,17 @@
 
     <section id="features" class="sec-features">
       <div class="cont">
-        <h2 class="talign mb-025"><span>FORGED</span> TO THE <span>CORE</span></h2>
+        <h2 class="talign mb-025">
+          <span>FORGED</span> TO THE <span>CORE</span>
+        </h2>
 
-        <p class="talign tjust mb-05">Covered in abyssal black metal<sup>3</sup>, the Triton 500 was designed with a purpose – to allow you to game, whenever, wherever, as you please. And when the LED-lit Predator-emblazoned cover flares into life, it will act as a reminder that this isn’t your typical gaming laptop.</p>
+        <p class="talign tjust mb-05">
+          Covered in abyssal black metal<sup>3</sup>, the Triton 500 was
+          designed with a purpose – to allow you to game, whenever, wherever, as
+          you please. And when the LED-lit Predator-emblazoned cover flares into
+          life, it will act as a reminder that this isn’t your typical gaming
+          laptop.
+        </p>
 
         <div class="grid talign">
           <div class="gcol-xs-4 gcol-12">
@@ -163,7 +243,16 @@
       <div class="wrap-overlay">
         <div class="cont">
           <div class="wrap-laptop">
-            <iframe width="1280" height="720" src="https://www.youtube.com/embed/F9sYRq9wbZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="video"></iframe>
+            <iframe
+              width="1280"
+              height="720"
+              src="https://www.youtube.com/embed/F9sYRq9wbZQ"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              id="video"
+            ></iframe>
           </div>
         </div>
       </div>
@@ -171,9 +260,17 @@
 
     <section id="performance" class="sec-features">
       <div class="cont">
-        <h2 class="talign mb-025">WHERE <span>COMES</span> THE <span>POWER</span></h2>
+        <h2 class="talign mb-025">
+          WHERE <span>COMES</span> THE <span>POWER</span>
+        </h2>
 
-        <p class="talign tjust mb-05">Residing within the metallic shell is the a 10<sup>th</sup> Gen Intel<sup>®</sup> Core™ i7 Mobile Processor<sup>1</sup>, cutting edge GeForce<sup>®</sup> RTX 2080 SUPER™ Max-Q<sup>1</sup>, up to 32GB of DDR4 memory at 2933MHz and ultra-fast PCIe NVMe storage. The result is a laptop ready to take on any challenge set before it.</p>
+        <p class="talign tjust mb-05">
+          Residing within the metallic shell is the a 10<sup>th</sup> Gen
+          Intel<sup>®</sup> Core™ i7 Mobile Processor<sup>1</sup>, cutting edge
+          GeForce<sup>®</sup> RTX 2080 SUPER™ Max-Q<sup>1</sup>, up to 32GB of
+          DDR4 memory at 2933MHz and ultra-fast PCIe NVMe storage. The result is
+          a laptop ready to take on any challenge set before it.
+        </p>
 
         <div class="grid talign">
           <div class="gcol-md-3 gcol-xs-6 gcol-12">
@@ -262,7 +359,13 @@
     <section id="reviews" class="sec-reviews">
       <div class="cont talign">
         <h2>REVIEWS</h2>
-        <img src="../assets/img/star.png" alt="white-star" /><img src="../assets/img/star.png" alt="white-star" /><img src="../assets/img/star.png" alt="white-star" /><img src="../assets/img/star.png" alt="white-star" /><img src="../assets/img/star.png" alt="white-star" />
+        <img src="../assets/img/star.png" alt="white-star" /><img
+          src="../assets/img/star.png"
+          alt="white-star"
+        /><img src="../assets/img/star.png" alt="white-star" /><img
+          src="../assets/img/star.png"
+          alt="white-star"
+        /><img src="../assets/img/star.png" alt="white-star" />
       </div>
     </section>
 
@@ -279,7 +382,18 @@
 
                       <p>⭐⭐⭐⭐⭐</p>
 
-                      <p>Acer has come a long way and this is testament to the progress they are making. This thing is super slim like Razer Blade thin. The chasis that holds all the components (Mobo etc) is just a 1/2" and it sits at 3/4" with the lid closed.. then about 14" by 10" in dimensions. That said I cannot believe the power this thing has packed into it. On Firestrike I'm averaging 15,400 after a few OC adjustments which puts it above the average Firestrike benchmark for the 2070 Max Q (on notebook check).</p>
+                      <p>
+                        Acer has come a long way and this is testament to the
+                        progress they are making. This thing is super slim like
+                        Razer Blade thin. The chasis that holds all the
+                        components (Mobo etc) is just a 1/2" and it sits at 3/4"
+                        with the lid closed.. then about 14" by 10" in
+                        dimensions. That said I cannot believe the power this
+                        thing has packed into it. On Firestrike I'm averaging
+                        15,400 after a few OC adjustments which puts it above
+                        the average Firestrike benchmark for the 2070 Max Q (on
+                        notebook check).
+                      </p>
                     </div>
                   </div>
 
@@ -289,7 +403,16 @@
 
                       <p>⭐⭐⭐⭐⭐</p>
 
-                      <p>The laptop is amazing! It’s my first gaming laptop I’ve purchased and it is exactly what I wanted! Thin, good battery life, games well and looks stunning! I’m terms of fans, the laptop is the loudest I’ve heard, but that’s not a down side! The laptop keeps very cool even when overclocking cpu and gpu. Very important not to block vents though! I saw my temperature increase by 10 degrees if accidentally blocked the vents on the bottom.</p>
+                      <p>
+                        The laptop is amazing! It’s my first gaming laptop I’ve
+                        purchased and it is exactly what I wanted! Thin, good
+                        battery life, games well and looks stunning! I’m terms
+                        of fans, the laptop is the loudest I’ve heard, but
+                        that’s not a down side! The laptop keeps very cool even
+                        when overclocking cpu and gpu. Very important not to
+                        block vents though! I saw my temperature increase by 10
+                        degrees if accidentally blocked the vents on the bottom.
+                      </p>
                     </div>
                   </div>
 
@@ -299,7 +422,18 @@
 
                       <p>⭐⭐⭐⭐</p>
 
-                      <p>Having read and researched for several weeks, I took a flier and decided to purchase an Acer laptop. In the past, Acer has – at least in my circles – had both a less-than-sterling reputation, and one as a “bargain basement brand.” However, over the last few generations of Acer laptops, it’s been clear that their quality has been improving significantly. So, when the initial reviews for the Predator Triton 500 came out, I sat up and took notice. This laptop proves that Acer is no longer the “Blu of laptops.”</p>
+                      <p>
+                        Having read and researched for several weeks, I took a
+                        flier and decided to purchase an Acer laptop. In the
+                        past, Acer has – at least in my circles – had both a
+                        less-than-sterling reputation, and one as a “bargain
+                        basement brand.” However, over the last few generations
+                        of Acer laptops, it’s been clear that their quality has
+                        been improving significantly. So, when the initial
+                        reviews for the Predator Triton 500 came out, I sat up
+                        and took notice. This laptop proves that Acer is no
+                        longer the “Blu of laptops.”
+                      </p>
                     </div>
                   </div>
 
@@ -309,7 +443,14 @@
 
                       <p>⭐⭐⭐⭐</p>
 
-                      <p>Personally I think I made the right choice at this point, keeping the Acer is a good decision for me. It has more yeses than nos in my check list. It looks good enough to make me feel mature when going to work with it and it's fun enough to... well have fun. It's the perfect companion to my Gaming desktop.</p>
+                      <p>
+                        Personally I think I made the right choice at this
+                        point, keeping the Acer is a good decision for me. It
+                        has more yeses than nos in my check list. It looks good
+                        enough to make me feel mature when going to work with it
+                        and it's fun enough to... well have fun. It's the
+                        perfect companion to my Gaming desktop.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -337,9 +478,23 @@
             <label for="about" id="about-btn">ABOUT</label>
 
             <ul class="about xbul">
-              <li><a href="https://www.acer.com/ac/en/PH/content/predator-articles">Articles</a></li>
-              <li><a href="https://www.acer.com/ac/en/PH/content/predator-brand-story">Brand</a></li>
-              <li><a href="https://www.acer.com/ac/en/PH/content/contacts">Contact</a></li>
+              <li>
+                <a
+                  href="https://www.acer.com/ac/en/PH/content/predator-articles"
+                  >Articles</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.acer.com/ac/en/PH/content/predator-brand-story"
+                  >Brand</a
+                >
+              </li>
+              <li>
+                <a href="https://www.acer.com/ac/en/PH/content/contacts"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
 
@@ -350,9 +505,21 @@
             <label for="service" id="service-btn">SERVICE</label>
 
             <ul class="service xbul">
-              <li><a href="https://community.acer.com/en/categories/predator">Community</a></li>
-              <li><a href="https://www.acer.com/ac/en/PH/content/drivers">Drivers and Manuals</a></li>
-              <li><a href="https://www.acer.com/ac/en/PH/content/ask-acer">FAQ & Answers</a></li>
+              <li>
+                <a href="https://community.acer.com/en/categories/predator"
+                  >Community</a
+                >
+              </li>
+              <li>
+                <a href="https://www.acer.com/ac/en/PH/content/drivers"
+                  >Drivers and Manuals</a
+                >
+              </li>
+              <li>
+                <a href="https://www.acer.com/ac/en/PH/content/ask-acer"
+                  >FAQ & Answers</a
+                >
+              </li>
             </ul>
           </div>
 
@@ -363,10 +530,30 @@
             <label for="triton" id="triton-btn">TRITON</label>
 
             <ul class="triton xbul">
-              <li><a href="https://www.acer.com/ac/en/US/content/predator-series/predatortriton300">Predator Triton 300</a></li>
-              <li><a href="https://www.acer.com/ac/en/PH/content/predator-series/predatortriton500">Predator Triton 500</a></li>
-              <li><a href="https://www.acer.com/ac/en/PH/content/predator-series/predatortriton700">Predator Triton 700</a></li>
-              <li><a href="https://www.acer.com/ac/en/PH/content/predator-series/predatortriton900">Predator Triton 900</a></li>
+              <li>
+                <a
+                  href="https://www.acer.com/ac/en/US/content/predator-series/predatortriton300"
+                  >Predator Triton 300</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.acer.com/ac/en/PH/content/predator-series/predatortriton500"
+                  >Predator Triton 500</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.acer.com/ac/en/PH/content/predator-series/predatortriton700"
+                  >Predator Triton 700</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.acer.com/ac/en/PH/content/predator-series/predatortriton900"
+                  >Predator Triton 900</a
+                >
+              </li>
             </ul>
           </div>
 
@@ -377,9 +564,24 @@
             <label for="helios" id="helios-btn">HELIOS</label>
 
             <ul class="helios xbul">
-              <li><a href="https://www.acer.com/ac/en/PH/content/predator-series/predatorhelios300">Predator Helios 300</a></li>
-              <li><a href="https://www.acer.com/ac/en/PH/content/predator-series/predatorhelios500">Predator Helios 500</a></li>
-              <li><a href="https://www.acer.com/ac/en/PH/content/predator-series/predatorhelios700">Predator Helios 700</a></li>
+              <li>
+                <a
+                  href="https://www.acer.com/ac/en/PH/content/predator-series/predatorhelios300"
+                  >Predator Helios 300</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.acer.com/ac/en/PH/content/predator-series/predatorhelios500"
+                  >Predator Helios 500</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.acer.com/ac/en/PH/content/predator-series/predatorhelios700"
+                  >Predator Helios 700</a
+                >
+              </li>
             </ul>
           </div>
         </div>
