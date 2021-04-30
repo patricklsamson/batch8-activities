@@ -57,7 +57,12 @@ doc_ready(() => {
         id("tooltip").innerHTML = "X's turn.";
       }
 
-      moves[counter] = [counter, mark, box.dataset.row || box.getAttribute("data-row"), box.dataset.col || box.getAttribute("data-col")];
+      moves[counter] = [
+        counter,
+        mark,
+        box.dataset.row || box.getAttribute("data-row"),
+        box.dataset.col || box.getAttribute("data-col"),
+      ];
       counter++;
 
       for (let row = 0; row < board.length; row++) {
@@ -139,7 +144,16 @@ doc_ready(() => {
 
     if (counter >= 0) {
       add_class(id("next-btn"), "show");
-      remove_class(qs("[data-row='" + moves[counter][2] + "'][data-col='" + moves[counter][3] + "']"), moves[counter][1]);
+      remove_class(
+        qs(
+          "[data-row='" +
+            moves[counter][2] +
+            "'][data-col='" +
+            moves[counter][3] +
+            "']"
+        ),
+        moves[counter][1]
+      );
 
       if (counter === 0) {
         remove_class(id("prev-btn"), "show");
@@ -156,7 +170,16 @@ doc_ready(() => {
 
     if (counter < moves.length) {
       add_class(id("prev-btn"), "show");
-      add_class(qs("[data-row='" + moves[counter][2] + "'][data-col='" + moves[counter][3] + "']"), moves[counter][1]);
+      add_class(
+        qs(
+          "[data-row='" +
+            moves[counter][2] +
+            "'][data-col='" +
+            moves[counter][3] +
+            "']"
+        ),
+        moves[counter][1]
+      );
 
       if (counter === moves.length - 1) {
         remove_class(id("next-btn"), "show");
