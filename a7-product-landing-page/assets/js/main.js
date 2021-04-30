@@ -40,7 +40,10 @@ doc_ready(function () {
         id("submit").disabled = false;
         id("confirm-msg").style.display = "initial";
         add_att(id("confirm-msg"), "src", "../assets/img/check.png");
-      } else if (this.value != id("confirm-pw").value && id("confirm-pw").value.length >= 1) {
+      } else if (
+        this.value != id("confirm-pw").value &&
+        id("confirm-pw").value.length >= 1
+      ) {
         id("submit").disabled = true;
         id("confirm-msg").style.display = "initial";
         add_att(id("confirm-msg"), "src", "../assets/img/cross.png");
@@ -54,7 +57,10 @@ doc_ready(function () {
         id("submit").disabled = false;
         id("confirm-msg").style.display = "initial";
         add_att(id("confirm-msg"), "src", "../assets/img/check.png");
-      } else if (this.value != id("password").value && id("password").value.length >= 1) {
+      } else if (
+        this.value != id("password").value &&
+        id("password").value.length >= 1
+      ) {
         id("submit").disabled = true;
         id("confirm-msg").style.display = "initial";
         add_att(id("confirm-msg"), "src", "../assets/img/cross.png");
@@ -74,7 +80,10 @@ doc_ready(function () {
 
   if (body("body-login")) {
     add_event(document.body, "click", function (e) {
-      if (!e.target.closest("#header") || !id("header").contains(e.target || e.srcElement)) {
+      if (
+        !e.target.closest("#header") ||
+        !id("header").contains(e.target || e.srcElement)
+      ) {
         id("user").checked = false;
       }
     });
@@ -91,23 +100,36 @@ doc_ready(function () {
       id("nav-toggle").checked = false;
     }
 
-    if (document.body.scrollTop >= id("header").offsetTop || document.documentElement.scrollTop >= id("header").offsetTop) {
+    if (
+      document.body.scrollTop >= id("header").offsetTop ||
+      document.documentElement.scrollTop >= id("header").offsetTop
+    ) {
       qs(".menu-container").style.marginTop = "0";
     }
   });
 
   add_event(id("nav-toggle"), "click", function () {
-    if (window.pageYOffset <= id("header").offsetTop || document.documentElement.scrollTop <= id("header").offsetTop) {
-      qs(".menu-container").style.marginTop = "-" + id("header").offsetHeight + "px";
+    if (
+      window.pageYOffset <= id("header").offsetTop ||
+      document.documentElement.scrollTop <= id("header").offsetTop
+    ) {
+      qs(".menu-container").style.marginTop =
+        "-" + id("header").offsetHeight + "px";
     }
   });
 
   add_event(document.body, "click", function (e) {
-    if (!e.target.closest("#nav-bar") || !id("nav-bar").contains(e.target || e.srcElement)) {
+    if (
+      !e.target.closest("#nav-bar") ||
+      !id("nav-bar").contains(e.target || e.srcElement)
+    ) {
       id("nav-toggle").checked = false;
     }
 
-    if (!e.target.closest("#footer") || !id("footer").contains(e.target || e.srcElement)) {
+    if (
+      !e.target.closest("#footer") ||
+      !id("footer").contains(e.target || e.srcElement)
+    ) {
       id("about").checked = false;
       id("service").checked = false;
       id("triton").checked = false;
