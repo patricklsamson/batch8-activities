@@ -6,14 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Patrick Samson" />
     <title>Playing Cards</title>
-    <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" size="32x32" />
-    <link rel="icon" href="../assets/img/favicon-16x16.png" type="image/png" size="16x16" />
+    <link
+      rel="icon"
+      href="../assets/img/favicon-32x32.png"
+      type="image/png"
+      size="32x32"
+    />
+    <link
+      rel="icon"
+      href="../assets/img/favicon-16x16.png"
+      type="image/png"
+      size="16x16"
+    />
     <link rel="stylesheet" href="../assets/css/index.min.css" />
   </head>
   <body>
     <main>
       <div class="cont talign">
-        <p class="h2 mt-05 mb-05">Check the "Console" tab in your browser's inspector.</p>
+        <p class="h2 mt-05 mb-05">
+          Check the "Console" tab in your browser's inspector.
+        </p>
         <button id="deal-btn">Deal a Card!</button>
         <button id="deal-five-btn">Deal Five Cards!</button>
         <button id="reset-btn">Reset</button>
@@ -62,7 +74,10 @@
       const arrangeCards = () => {
         for (suitsCounter = 0; suitsCounter < suits.length; suitsCounter++) {
           for (valueCounter = 0; valueCounter < value.length; valueCounter++) {
-            deck.push({ value: value[valueCounter], suit: suits[suitsCounter] });
+            deck.push({
+              value: value[valueCounter],
+              suit: suits[suitsCounter],
+            });
           }
         }
 
@@ -83,36 +98,58 @@
         }
 
         for (i = 0; i < shuffledDeck.length; i++) {
-          shuffledDeckDisplay.push(shuffledDeck[i].value.symbol + shuffledDeck[i].suit.symbol);
+          shuffledDeckDisplay.push(
+            shuffledDeck[i].value.symbol + shuffledDeck[i].suit.symbol
+          );
         }
 
         console.log("Shuffled Cards", shuffledDeckDisplay);
 
         for (valueCounter = 0; valueCounter < value.length; valueCounter++) {
           for (suitsCounter = 0; suitsCounter < suits.length; suitsCounter++) {
-            arrangedValueDescend.push({ value: value[valueCounter].symbol, suit: suits[suitsCounter].symbol });
+            arrangedValueDescend.push({
+              value: value[valueCounter].symbol,
+              suit: suits[suitsCounter].symbol,
+            });
           }
         }
 
         for (i = 0; i < arrangedValueDescend.length; i++) {
-          arrangedValueDescendDisplay.push(arrangedValueDescend[i].value + arrangedValueDescend[i].suit);
+          arrangedValueDescendDisplay.push(
+            arrangedValueDescend[i].value + arrangedValueDescend[i].suit
+          );
         }
 
-        console.log("Arranged Value - Descending Order", arrangedValueDescendDisplay);
+        console.log(
+          "Arranged Value - Descending Order",
+          arrangedValueDescendDisplay
+        );
 
         const valueReverse = value.reverse();
 
-        for (valueCounter = 0; valueCounter < valueReverse.length; valueCounter++) {
+        for (
+          valueCounter = 0;
+          valueCounter < valueReverse.length;
+          valueCounter++
+        ) {
           for (suitsCounter = 0; suitsCounter < suits.length; suitsCounter++) {
-            arrangedValueAscend.push({ value: valueReverse[valueCounter].symbol, suit: suits[suitsCounter].symbol });
+            arrangedValueAscend.push({
+              value: valueReverse[valueCounter].symbol,
+              suit: suits[suitsCounter].symbol,
+            });
           }
         }
 
         for (i = 0; i < arrangedValueAscend.length; i++) {
-          arrangedValueAscendDisplay.push(arrangedValueAscend[i].value + arrangedValueAscend[i].suit);
+          arrangedValueAscendDisplay.push(
+            arrangedValueAscend[i].value + arrangedValueAscend[i].suit
+          );
         }
 
-        console.log("Arranged Value - Ascending Order", arrangedValueAscendDisplay);
+        console.log(
+          "Arranged Value - Ascending Order",
+          arrangedValueAscendDisplay
+        );
 
         for (suitsCounter = 0; suitsCounter < suits.length; suitsCounter++) {
           for (i = value.length - 1; i > -1; i--) {
@@ -122,16 +159,26 @@
             value[i] = value[j];
             value[j] = temp;
 
-            arrangedSuit.push({ value: value[i].symbol, suit: suits[suitsCounter].symbol });
+            arrangedSuit.push({
+              value: value[i].symbol,
+              suit: suits[suitsCounter].symbol,
+            });
           }
         }
 
         for (i = 0; i < arrangedSuit.length; i++) {
-          arrangedSuitDisplay.push(arrangedSuit[i].value + arrangedSuit[i].suit);
+          arrangedSuitDisplay.push(
+            arrangedSuit[i].value + arrangedSuit[i].suit
+          );
         }
 
-        console.log("Arranged Suit - Diamonds ♢, Hearts ♡, Spades ♠, Clubs ♣", arrangedSuitDisplay);
-        console.log(`Number of Cards: ${shuffledDeck.length} \n Deal a card or five cards for poker now!`);
+        console.log(
+          "Arranged Suit - Diamonds ♢, Hearts ♡, Spades ♠, Clubs ♣",
+          arrangedSuitDisplay
+        );
+        console.log(
+          `Number of Cards: ${shuffledDeck.length} \n Deal a card or five cards for poker now!`
+        );
       };
 
       arrangeCards();
@@ -140,7 +187,11 @@
         "click",
         () => {
           if (shuffledDeck.length != 0) {
-            console.log(`Number of Cards: ${shuffledDeck.length - 1} \n Dealt Card: ${shuffledDeck[shuffledDeck.length - 1].value.name} of ${shuffledDeck[shuffledDeck.length - 1].suit.name}`);
+            console.log(
+              `Number of Cards: ${shuffledDeck.length - 1} \n Dealt Card: ${
+                shuffledDeck[shuffledDeck.length - 1].value.name
+              } of ${shuffledDeck[shuffledDeck.length - 1].suit.name}`
+            );
             shuffledDeck.splice(shuffledDeck.length - 1, 1);
           }
         },
@@ -157,30 +208,149 @@
               card4 = shuffledDeck[shuffledDeck.length - 4],
               card5 = shuffledDeck[shuffledDeck.length - 5];
 
-            console.log(`Number of Cards: ${shuffledDeck.length - 5} \n Dealt Cards: ${card1.value.name} of ${card1.suit.name}, ${card2.value.name} of ${card2.suit.name}, ${card3.value.name} of ${card3.suit.name}, ${card4.value.name} of ${card4.suit.name}, ${card5.value.name} of ${card5.suit.name}`);
+            console.log(
+              `Number of Cards: ${shuffledDeck.length - 5} \n Dealt Cards: ${
+                card1.value.name
+              } of ${card1.suit.name}, ${card2.value.name} of ${
+                card2.suit.name
+              }, ${card3.value.name} of ${card3.suit.name}, ${
+                card4.value.name
+              } of ${card4.suit.name}, ${card5.value.name} of ${
+                card5.suit.name
+              }`
+            );
             shuffledDeck.splice(shuffledDeck.length - 5, 5);
 
-            pokerSuit.push(card1.suit.checker, card2.suit.checker, card3.suit.checker, card4.suit.checker, card5.suit.checker);
+            pokerSuit.push(
+              card1.suit.checker,
+              card2.suit.checker,
+              card3.suit.checker,
+              card4.suit.checker,
+              card5.suit.checker
+            );
             pokerSuit.sort();
 
-            pokerValue.push(card1.value.checker, card2.value.checker, card3.value.checker, card4.value.checker, card5.value.checker);
+            pokerValue.push(
+              card1.value.checker,
+              card2.value.checker,
+              card3.value.checker,
+              card4.value.checker,
+              card5.value.checker
+            );
             pokerValue.sort();
 
-            if (pokerSuit[0] == pokerSuit[1] && pokerSuit[1] == pokerSuit[2] && pokerSuit[2] == pokerSuit[3] && pokerSuit[3] == pokerSuit[4] && pokerValue[0] == pokerValue[1] - 1 && pokerValue[1] == pokerValue[2] - 1 && pokerValue[2] == pokerValue[3] - 1 && pokerValue[3] == pokerValue[4] - 1) {
+            if (
+              pokerSuit[0] == pokerSuit[1] &&
+              pokerSuit[1] == pokerSuit[2] &&
+              pokerSuit[2] == pokerSuit[3] &&
+              pokerSuit[3] == pokerSuit[4] &&
+              pokerValue[0] == pokerValue[1] - 1 &&
+              pokerValue[1] == pokerValue[2] - 1 &&
+              pokerValue[2] == pokerValue[3] - 1 &&
+              pokerValue[3] == pokerValue[4] - 1
+            ) {
               console.log("Straight Flush!");
-            } else if ((pokerValue[0] == pokerValue[1] && pokerValue[1] == pokerValue[2] && pokerValue[2] == pokerValue[3] && (pokerValue[0] && pokerValue[1] && pokerValue[2] && pokerValue[3]) != pokerValue[4]) || (pokerValue[1] == pokerValue[2] && pokerValue[2] == pokerValue[3] && pokerValue[3] == pokerValue[4] && (pokerValue[1] && pokerValue[2] && pokerValue[3] && pokerValue[4]) != pokerValue[0])) {
+            } else if (
+              (pokerValue[0] == pokerValue[1] &&
+                pokerValue[1] == pokerValue[2] &&
+                pokerValue[2] == pokerValue[3] &&
+                (pokerValue[0] &&
+                  pokerValue[1] &&
+                  pokerValue[2] &&
+                  pokerValue[3]) != pokerValue[4]) ||
+              (pokerValue[1] == pokerValue[2] &&
+                pokerValue[2] == pokerValue[3] &&
+                pokerValue[3] == pokerValue[4] &&
+                (pokerValue[1] &&
+                  pokerValue[2] &&
+                  pokerValue[3] &&
+                  pokerValue[4]) != pokerValue[0])
+            ) {
               console.log("Four of a Kind!");
-            } else if ((pokerValue[0] == pokerValue[1] && pokerValue[1] == pokerValue[2] && pokerValue[3] == pokerValue[4] && (pokerValue[0] && pokerValue[1] && pokerValue[2]) != (pokerValue[3] && pokerValue[4])) || (pokerValue[2] == pokerValue[3] && pokerValue[3] == pokerValue[4] && pokerValue[0] == pokerValue[1] && (pokerValue[2] && pokerValue[3] && pokerValue[4]) != (pokerValue[0] && pokerValue[1]))) {
+            } else if (
+              (pokerValue[0] == pokerValue[1] &&
+                pokerValue[1] == pokerValue[2] &&
+                pokerValue[3] == pokerValue[4] &&
+                (pokerValue[0] && pokerValue[1] && pokerValue[2]) !=
+                  (pokerValue[3] && pokerValue[4])) ||
+              (pokerValue[2] == pokerValue[3] &&
+                pokerValue[3] == pokerValue[4] &&
+                pokerValue[0] == pokerValue[1] &&
+                (pokerValue[2] && pokerValue[3] && pokerValue[4]) !=
+                  (pokerValue[0] && pokerValue[1]))
+            ) {
               console.log("Full House!");
-            } else if (pokerSuit[0] && pokerSuit[0] == pokerSuit[1] && pokerSuit[1] == pokerSuit[2] && pokerSuit[2] == pokerSuit[3] && pokerSuit[3] == pokerSuit[4]) {
+            } else if (
+              pokerSuit[0] &&
+              pokerSuit[0] == pokerSuit[1] &&
+              pokerSuit[1] == pokerSuit[2] &&
+              pokerSuit[2] == pokerSuit[3] &&
+              pokerSuit[3] == pokerSuit[4]
+            ) {
               console.log("Flush!");
-            } else if (pokerValue[0] == pokerValue[1] - 1 && pokerValue[1] == pokerValue[2] - 1 && pokerValue[2] == pokerValue[3] - 1 && pokerValue[3] == pokerValue[4] - 1) {
+            } else if (
+              pokerValue[0] == pokerValue[1] - 1 &&
+              pokerValue[1] == pokerValue[2] - 1 &&
+              pokerValue[2] == pokerValue[3] - 1 &&
+              pokerValue[3] == pokerValue[4] - 1
+            ) {
               console.log("Straight!");
-            } else if ((pokerValue[0] == pokerValue[1] && pokerValue[1] == pokerValue[2] && pokerValue[3] != pokerValue[4] && (pokerValue[0] || pokerValue[1] || pokerValue[2]) != (pokerValue[3] || pokerValue[4])) || (pokerValue[2] == pokerValue[3] && pokerValue[3] == pokerValue[4] && pokerValue[0] != pokerValue[1] && (pokerValue[2] || pokerValue[3] || pokerValue[4]) != (pokerValue[0] || pokerValue[1]))) {
+            } else if (
+              (pokerValue[0] == pokerValue[1] &&
+                pokerValue[1] == pokerValue[2] &&
+                pokerValue[3] != pokerValue[4] &&
+                (pokerValue[0] || pokerValue[1] || pokerValue[2]) !=
+                  (pokerValue[3] || pokerValue[4])) ||
+              (pokerValue[2] == pokerValue[3] &&
+                pokerValue[3] == pokerValue[4] &&
+                pokerValue[0] != pokerValue[1] &&
+                (pokerValue[2] || pokerValue[3] || pokerValue[4]) !=
+                  (pokerValue[0] || pokerValue[1]))
+            ) {
               console.log("Three of a Kind!");
-            } else if ((pokerValue[0] == pokerValue[1] && pokerValue[2] == pokerValue[3] && (pokerValue[0] && pokerValue[1]) != (pokerValue[2] && pokerValue[3]) && ((pokerValue[0] && pokerValue[1]) || (pokerValue[2] && pokerValue[3])) != pokerValue[4]) || (pokerValue[1] == pokerValue[2] && pokerValue[3] == pokerValue[4] && (pokerValue[1] && pokerValue[2]) != (pokerValue[3] && pokerValue[4]) && ((pokerValue[1] && pokerValue[2]) || (pokerValue[3] && pokerValue[4])) != pokerValue[0]) || (pokerValue[0] == pokerValue[1] && pokerValue[3] == pokerValue[4] && (pokerValue[0] && pokerValue[1]) != (pokerValue[3] && pokerValue[4]) && ((pokerValue[0] && pokerValue[1]) || (pokerValue[3] && pokerValue[4])) != pokerValue[2])) {
+            } else if (
+              (pokerValue[0] == pokerValue[1] &&
+                pokerValue[2] == pokerValue[3] &&
+                (pokerValue[0] && pokerValue[1]) !=
+                  (pokerValue[2] && pokerValue[3]) &&
+                ((pokerValue[0] && pokerValue[1]) ||
+                  (pokerValue[2] && pokerValue[3])) != pokerValue[4]) ||
+              (pokerValue[1] == pokerValue[2] &&
+                pokerValue[3] == pokerValue[4] &&
+                (pokerValue[1] && pokerValue[2]) !=
+                  (pokerValue[3] && pokerValue[4]) &&
+                ((pokerValue[1] && pokerValue[2]) ||
+                  (pokerValue[3] && pokerValue[4])) != pokerValue[0]) ||
+              (pokerValue[0] == pokerValue[1] &&
+                pokerValue[3] == pokerValue[4] &&
+                (pokerValue[0] && pokerValue[1]) !=
+                  (pokerValue[3] && pokerValue[4]) &&
+                ((pokerValue[0] && pokerValue[1]) ||
+                  (pokerValue[3] && pokerValue[4])) != pokerValue[2])
+            ) {
               console.log("Two Pair!");
-            } else if ((pokerValue[0] == pokerValue[1] && pokerValue[2] != pokerValue[3] && pokerValue[3] != pokerValue[4] && (pokerValue[0] && pokerValue[1]) != (pokerValue[2] && pokerValue[3] && pokerValue[4])) || (pokerValue[1] == pokerValue[2] && pokerValue[0] != pokerValue[3] && pokerValue[3] != pokerValue[4] && (pokerValue[1] && pokerValue[2]) != (pokerValue[0] && pokerValue[3] && pokerValue[4])) || (pokerValue[2] == pokerValue[3] && pokerValue[0] != pokerValue[1] && pokerValue[1] != pokerValue[4] && (pokerValue[2] && pokerValue[3]) != (pokerValue[0] && pokerValue[1] && pokerValue[4])) || (pokerValue[3] == pokerValue[4] && pokerValue[0] != pokerValue[1] && pokerValue[1] != pokerValue[2] && (pokerValue[3] && pokerValue[4]) != (pokerValue[0] && pokerValue[1] && pokerValue[2]))) {
+            } else if (
+              (pokerValue[0] == pokerValue[1] &&
+                pokerValue[2] != pokerValue[3] &&
+                pokerValue[3] != pokerValue[4] &&
+                (pokerValue[0] && pokerValue[1]) !=
+                  (pokerValue[2] && pokerValue[3] && pokerValue[4])) ||
+              (pokerValue[1] == pokerValue[2] &&
+                pokerValue[0] != pokerValue[3] &&
+                pokerValue[3] != pokerValue[4] &&
+                (pokerValue[1] && pokerValue[2]) !=
+                  (pokerValue[0] && pokerValue[3] && pokerValue[4])) ||
+              (pokerValue[2] == pokerValue[3] &&
+                pokerValue[0] != pokerValue[1] &&
+                pokerValue[1] != pokerValue[4] &&
+                (pokerValue[2] && pokerValue[3]) !=
+                  (pokerValue[0] && pokerValue[1] && pokerValue[4])) ||
+              (pokerValue[3] == pokerValue[4] &&
+                pokerValue[0] != pokerValue[1] &&
+                pokerValue[1] != pokerValue[2] &&
+                (pokerValue[3] && pokerValue[4]) !=
+                  (pokerValue[0] && pokerValue[1] && pokerValue[2]))
+            ) {
               console.log("One Pair!");
             } else {
               console.log("High Card!");
