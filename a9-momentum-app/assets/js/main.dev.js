@@ -12,8 +12,7 @@ doc_ready(function () {
       date = today.getDate() < 10 ? "0".concat(today.getDate()) : today.getDate();
   var i,
       todo = [],
-      quotes = ["Every morning is a beautiful morning.", "Shine like the afternoon sun and let people be inspired for all the great things you do.", "Evenings are life's way of saying that you are closer to your dreams."],
-      quotesCounter = -1;
+      quotes = ["Every morning is a beautiful morning.", "Shine like the afternoon sun and let people be inspired for all the great things you do.", "Evenings are life's way of saying that you are closer to your dreams."]; // quotesCounter = -1;
 
   var clock = function clock() {
     if (today.getHours() < 12) {
@@ -47,14 +46,17 @@ doc_ready(function () {
   });
   add_event(id("light"), "click", function () {
     toggle_class(document.documentElement, "light");
-  });
-  add_event(window, "scroll", function () {
-    if (window.pageYOffset > id("header").offsetTop || document.documentElement.scrollTop > id("header").offsetTop) {
-      add_class(id("header"), "sticky");
-    } else {
-      remove_class(id("header"), "sticky");
-    }
-  });
+  }); // add_event(window, "scroll", () => {
+  //   if (
+  //     window.pageYOffset > id("header").offsetTop ||
+  //     document.documentElement.scrollTop > id("header").offsetTop
+  //   ) {
+  //     add_class(id("header"), "sticky");
+  //   } else {
+  //     remove_class(id("header"), "sticky");
+  //   }
+  // });
+
   add_event(window, "click", function (e) {
     if ((e.target.id || e.srcElement.id) != id("name") && has_class(id("modal"), "show")) {
       id("name").focus();
@@ -93,11 +95,19 @@ doc_ready(function () {
   var addedToDo = function addedToDo() {
     todo.push(id("add-to-do").value.substring(0, 1).toUpperCase() + id("add-to-do").value.substring(1).toLowerCase());
     id("add-to-do").value = "";
-    var element = create_el("li");
+    var element = create_el("li"),
+        remove = create_el("i");
     id("to-do-list").appendChild(element);
-    element.innerHTML += inner(todo[todo.length - 1]);
+    element.innerHTML = inner(todo[todo.length - 1]);
+    add_class(remove, "fas");
+    add_class(remove, "fa-minus-circle");
+    remove.style["float"] = "right";
+    element.appendChild(remove);
     add_event(element, "click", function () {
       toggle_class(element, "done");
+    });
+    add_event(remove, "click", function () {
+      element.style.display = "none";
     });
   };
 
@@ -110,51 +120,98 @@ doc_ready(function () {
     if (id("add-to-do").value.length != 0) {
       addedToDo();
     }
-  });
+  }); // const showQuotes = () => {
+  //   quotesCounter++;
+  //   if (quotesCounter == quotes.length) {
+  //     quotesCounter = 0;
+  //   }
+  //   id("quotes").innerHTML = inner(quotes[quotesCounter]);
+  // };
+  // showQuotes();
+  // setInterval(showQuotes, 5000);
+  // const listQuotes = () => {
+  //   for (i = 0; i < quotes.length; i++) {
+  //     const element = create_el("p");
+  //     add_class(element, "mb-05");
+  //     id("added-quotes-wrap").appendChild(element);
+  //     element.innerHTML += inner(quotes[i]);
+  //   }
+  // };
+  // listQuotes();
 
-  var showQuotes = function showQuotes() {
-    quotesCounter++;
+  var displayQuotes = function displayQuotes() {
+    var rand = Math.floor(Math.random() * quotes.length);
 
-    if (quotesCounter == quotes.length) {
-      quotesCounter = 0;
+    if (quotes[rand] != "") {
+      id("quotes").innerHTML = quotes[rand];
     }
-
-    id("quotes").innerHTML = inner(quotes[quotesCounter]);
   };
 
-  showQuotes();
-  setInterval(showQuotes, 5000);
+  displayQuotes();
+  setInterval(displayQuotes, 500);
 
-  var listQuotes = function listQuotes() {
-    for (i = 0; i < quotes.length; i++) {
-      var element = create_el("p");
+  var defaultQuotes = function defaultQuotes() {
+    var _loop = function _loop() {
+      var element = create_el("p"),
+          remove = create_el("i");
       add_class(element, "mb-05");
       id("added-quotes-wrap").appendChild(element);
-      element.innerHTML += inner(quotes[i]);
+      element.innerHTML = inner(quotes[i]);
+      remove.id = quotes.indexOf(quotes[i]);
+      add_class(remove, "fas");
+      add_class(remove, "fa-minus-circle");
+      remove.style.cursor = "pointer";
+      remove.style["float"] = "right";
+      element.appendChild(remove);
+      add_event(remove, "click", function () {
+        quotes.splice(this.id, 1, "");
+        element.style.display = "none";
+        console.log(quotes);
+      });
+    };
+
+    for (i = 0; i < quotes.length; i++) {
+      _loop();
     }
   };
 
-  listQuotes();
+  defaultQuotes();
 
   var addedQuote = function addedQuote() {
-    var element = create_el("p");
+    quotes.push(id("add-quote").value.substring(0, 1).toUpperCase() + id("add-quote").value.substring(1).toLowerCase());
+    id("add-quote").value = "";
+    var element = create_el("p"),
+        remove = create_el("i");
     add_class(element, "mb-05");
     id("added-quotes-wrap").appendChild(element);
-    element.innerHTML += inner(quotes[quotes.length - 1]);
+    element.innerHTML = inner(quotes[quotes.length - 1]);
+
+    for (i = 0; i < quotes.length; i++) {
+      remove.id = quotes.indexOf(quotes[i]);
+    }
+
+    add_class(remove, "fas");
+    add_class(remove, "fa-minus-circle");
+    remove.style.cursor = "pointer";
+    remove.style["float"] = "right";
+    element.appendChild(remove);
+    add_event(remove, "click", function () {
+      quotes.splice(this.id, 1, "");
+      element.style.display = "none";
+      console.log(quotes);
+    });
   };
 
   add_event(id("add-quote"), "keypress", function (e) {
     if ((e.which || e.keyCode) == 13 && id("add-quote").value.length != 0) {
-      quotes.push(id("add-quote").value.substring(0, 1).toUpperCase() + id("add-quote").value.substring(1).toLowerCase());
-      id("add-quote").value = "";
       addedQuote();
+      console.log(quotes);
     }
   });
   add_event(id("add-quote-btn"), "click", function () {
     if (id("add-quote").value.length != 0) {
-      quotes.push(id("add-quote").value.substring(0, 1).toUpperCase() + id("add-quote").value.substring(1).toLowerCase());
-      id("add-quote").value = "";
       addedQuote();
+      console.log(quotes);
     }
   });
 });
