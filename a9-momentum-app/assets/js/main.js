@@ -208,7 +208,7 @@ doc_ready(() => {
   };
 
   displayQuotes();
-  setInterval(displayQuotes, 500);
+  setInterval(displayQuotes, 3000);
 
   const defaultQuotes = () => {
     for (i = 0; i < quotes.length; i++) {
