@@ -23,8 +23,21 @@
   </head>
   <body>
     <main>
+      <div id="modal" class="wrap-player-overlay flex">
+        <p class="h4 mb-025">
+          Player <span id="player"></span> will play first.
+        </p>
+
+        <label class="switch">
+          <input type="checkbox" id="mark-checker" />
+          <span class="slider"></span>
+        </label>
+
+        <button id="proceed-btn" class="mt-05">Proceed</button>
+      </div>
+
       <div class="cont flex">
-        <p id="tooltip" class="h2 mb-025"></p>
+        <p id="tooltip" class="h2 mb-025 talign"></p>
 
         <button id="reset-btn" class="btn-reset">Reset</button>
 
