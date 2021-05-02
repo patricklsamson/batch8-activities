@@ -3,8 +3,12 @@ header {
   border-bottom: 0.1px solid #343a40;
 }
 
-header .grid:first-child {
+header .grid {
   padding: 5px 0;
+}
+
+header [class*="gcol"]:nth-child(2) {
+  position: relative;
 }
 
 header .brand {
