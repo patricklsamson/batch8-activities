@@ -148,7 +148,7 @@ doc_ready(function () {
   };
 
   displayQuotes();
-  setInterval(displayQuotes, 500);
+  setInterval(displayQuotes, 3000);
 
   var defaultQuotes = function defaultQuotes() {
     var _loop = function _loop() {
