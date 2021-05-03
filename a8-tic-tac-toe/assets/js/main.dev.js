@@ -13,6 +13,8 @@ doc_ready(function () {
       endGame = false,
       board = [["", "", ""], ["", "", ""], ["", "", ""]],
       i,
+      history = [],
+      historyCounter = 0,
       moves = [],
       storage = []; // counter = 0;
 
@@ -84,6 +86,32 @@ doc_ready(function () {
       // counter++;
 
 
+      history[historyCounter] = [historyCounter, mark, row, col];
+      historyCounter++;
+
+      var position = function position() {
+        if (row == 0 && col == 0) {
+          return "top leftmost box";
+        } else if (row == 0 && col == 1) {
+          return "top middle box";
+        } else if (row == 0 && col == 2) {
+          return "top rightmost box";
+        } else if (row == 1 && col == 0) {
+          return "middle leftmost box";
+        } else if (row == 1 && col == 1) {
+          return "middle box";
+        } else if (row == 1 && col == 2) {
+          return "middle rightmost box";
+        } else if (row == 2 && col == 0) {
+          return "bottom leftmost box";
+        } else if (row == 2 && col == 1) {
+          return "bottom middle box";
+        } else if (row == 2 && col == 2) {
+          return "bottom rightmost box";
+        }
+      };
+
+      console.log("Move ".concat(historyCounter, ": Player ").concat(mark.toUpperCase(), " puts their mark on the ").concat(position(), "."));
       moves.push([mark, row, col]);
 
       for (var _row = 0; _row < board.length; _row++) {
@@ -94,6 +122,7 @@ doc_ready(function () {
         if (_a && _a === _b && _b === _c) {
           gameEnd();
           id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner.");
+          console.log("Player ".concat(mark.toUpperCase(), " is the winner."));
           return;
         }
       }
@@ -106,6 +135,7 @@ doc_ready(function () {
         if (_a2 && _a2 === _b2 && _b2 === _c2) {
           gameEnd();
           id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner.");
+          console.log("Player ".concat(mark.toUpperCase(), " is the winner."));
           return;
         }
       }
@@ -119,11 +149,13 @@ doc_ready(function () {
       if (a && a === b && b === f || c && c === d && d == f) {
         gameEnd();
         id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner.");
+        console.log("Player ".concat(mark.toUpperCase(), " is the winner."));
       }
 
       if (moves.length == 9) {
         gameEnd();
-        id("tooltip").innerHTML = "The players ended in a Draw.";
+        id("tooltip").innerHTML = "The players ended in a draw.";
+        console.log("The players ended in a draw.");
       }
     }
 
@@ -136,9 +168,12 @@ doc_ready(function () {
   add_event(id("reset-btn"), "click", function () {
     endGame = false;
     board = [["", "", ""], ["", "", ""], ["", "", ""]];
+    history = [];
+    historyCounter = 0;
     moves = [];
     storage = []; // counter = 0;
 
+    console.clear();
     remove_class(id("modal"), "hide");
     id("mark-checker").checked = false;
     startGame();
