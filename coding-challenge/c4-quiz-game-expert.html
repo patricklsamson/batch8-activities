@@ -36,6 +36,7 @@
           question:
             "What does HTML stand for? \n 1) Hyper Text Markup Language \n 2) Hey Too Much Layout \n 3) How To Make Lasagna",
           answer: 1,
+          exit: 'Type and enter "exit" to quit the game.',
         },
         {
           question:
@@ -88,7 +89,7 @@
 
       const startQuiz = () => {
         let rand = Math.floor(Math.random() * questions.length),
-          entry = prompt(questions[rand].question);
+          entry = prompt(`${questions[rand].question} \n ${questions[0].exit}`);
 
         if (entry == questions[rand].answer && entry != "exit") {
           alert("You are correct!");
@@ -103,6 +104,7 @@
           alert(
             `You are wrong! The correct answer is: ${questions[rand].answer}`
           );
+
           startQuiz();
         } else if (entry == "exit") {
           alert("Check your score on the console!");
