@@ -13,8 +13,8 @@ This page is intended for presenting to you all the activities I completed throu
 1. [Chessboard (Flex)](/a5-chessboard-flex/index.html)
 1. [Chessboard (Grid)](/a6-chessboard-grid/index.html)
 1. [Product Landing Page](/a7-product-landing-page/index.html)
-1. [Tic Tac Toe](/a8-tic-tac-toe/index.html)
-1. [Momentum App](/a9-momentum-app/index.html)
+1. [Momentum App](/a8-momentum-app/index.html)
+1. [Tic Tac Toe](/a9-tic-tac-toe/index.html)
 
 ## Extras - Coding Challenge:
 
