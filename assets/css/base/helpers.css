@@ -130,7 +130,8 @@
   -o-background-size: cover;
   background-size: cover;
 }
-.img:before, .img:after {
+.img:before,
+.img:after {
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;
@@ -149,7 +150,8 @@
   -o-background-size: contain;
   background-size: contain;
 }
-.img.con:before, .img.con:after {
+.img.con:before,
+.img.con:after {
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -158,49 +160,57 @@
 .img.itop {
   background-position: top;
 }
-.img.itop:before, .img.itop:after {
+.img.itop:before,
+.img.itop:after {
   background-position: top;
 }
 .img.ibot {
   background-position: bottom;
 }
-.img.ibot:before, .img.ibot:after {
+.img.ibot:before,
+.img.ibot:after {
   background-position: bottom;
 }
 .img.ilft {
   background-position: left;
 }
-.img.ilft:before, .img.ilft:after {
+.img.ilft:before,
+.img.ilft:after {
   background-position: left;
 }
 .img.irgt {
   background-position: right;
 }
-.img.irgt:before, .img.irgt:after {
+.img.irgt:before,
+.img.irgt:after {
   background-position: right;
 }
 .img.ilt {
   background-position: left top;
 }
-.img.ilt:before, .img.ilt:after {
+.img.ilt:before,
+.img.ilt:after {
   background-position: left top;
 }
 .img.irt {
   background-position: right top;
 }
-.img.irt:before, .img.irt:after {
+.img.irt:before,
+.img.irt:after {
   background-position: right top;
 }
 .img.ilb {
   background-position: left bottom;
 }
-.img.ilb:before, .img.ilb:after {
+.img.ilb:before,
+.img.ilb:after {
   background-position: left bottom;
 }
 .img.irb {
   background-position: right bottom;
 }
-.img.irb:before, .img.irb:after {
+.img.irb:before,
+.img.irb:after {
   background-position: right bottom;
 }
 
