@@ -7,6 +7,8 @@ doc_ready(() => {
       ["", "", ""],
     ],
     i,
+    history = [],
+    historyCounter = 0,
     moves = [],
     storage = [];
   // counter = 0;
@@ -83,6 +85,35 @@ doc_ready(() => {
       // moves[counter] = [counter, mark, row, col];
       // counter++;
 
+      history[historyCounter] = [historyCounter, mark, row, col];
+      historyCounter++;
+
+      const position = () => {
+        if (row == 0 && col == 0) {
+          return "top leftmost box";
+        } else if (row == 0 && col == 1) {
+          return "top middle box";
+        } else if (row == 0 && col == 2) {
+          return "top rightmost box";
+        } else if (row == 1 && col == 0) {
+          return "middle leftmost box";
+        } else if (row == 1 && col == 1) {
+          return "middle box";
+        } else if (row == 1 && col == 2) {
+          return "middle rightmost box";
+        } else if (row == 2 && col == 0) {
+          return "bottom leftmost box";
+        } else if (row == 2 && col == 1) {
+          return "bottom middle box";
+        } else if (row == 2 && col == 2) {
+          return "bottom rightmost box";
+        }
+      };
+
+      console.log(
+        `Move ${historyCounter}: Player ${mark.toUpperCase()} puts their mark on the ${position()}.`
+      );
+
       moves.push([mark, row, col]);
 
       for (let row = 0; row < board.length; row++) {
@@ -92,9 +123,12 @@ doc_ready(() => {
 
         if (a && a === b && b === c) {
           gameEnd();
+
           id(
             "tooltip"
           ).innerHTML = `Player ${mark.toUpperCase()} is the winner.`;
+
+          console.log(`Player ${mark.toUpperCase()} is the winner.`);
           return;
         }
       }
@@ -109,6 +143,8 @@ doc_ready(() => {
           id(
             "tooltip"
           ).innerHTML = `Player ${mark.toUpperCase()} is the winner.`;
+
+          console.log(`Player ${mark.toUpperCase()} is the winner.`);
           return;
         }
       }
@@ -122,11 +158,13 @@ doc_ready(() => {
       if ((a && a === b && b === f) || (c && c === d && d == f)) {
         gameEnd();
         id("tooltip").innerHTML = `Player ${mark.toUpperCase()} is the winner.`;
+        console.log(`Player ${mark.toUpperCase()} is the winner.`);
       }
 
       if (moves.length == 9) {
         gameEnd();
-        id("tooltip").innerHTML = "The players ended in a Draw.";
+        id("tooltip").innerHTML = "The players ended in a draw.";
+        console.log("The players ended in a draw.");
       }
     }
 
@@ -144,10 +182,14 @@ doc_ready(() => {
       ["", "", ""],
       ["", "", ""],
     ];
+
+    history = [];
+    historyCounter = 0;
     moves = [];
     storage = [];
     // counter = 0;
 
+    console.clear();
     remove_class(id("modal"), "hide");
     id("mark-checker").checked = false;
     startGame();
