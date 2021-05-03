@@ -31,8 +31,8 @@ doc_ready(() => {
       "Every morning is a beautiful morning.",
       "Shine like the afternoon sun and let people be inspired for all the great things you do.",
       "Evenings are life's way of saying that you are closer to your dreams.",
-    ];
-  // quotesCounter = -1;
+    ],
+    quotesCounter = -1;
 
   const clock = () => {
     if (today.getHours() < 12) {
@@ -174,18 +174,20 @@ doc_ready(() => {
     }
   });
 
-  // const showQuotes = () => {
-  //   quotesCounter++;
+  const showQuotes = () => {
+    quotesCounter++;
 
-  //   if (quotesCounter == quotes.length) {
-  //     quotesCounter = 0;
-  //   }
+    if (quotesCounter == quotes.length) {
+      quotesCounter = 0;
+    }
 
-  //   id("quotes").innerHTML = inner(quotes[quotesCounter]);
-  // };
+    if (quotes[quotesCounter] != "") {
+      id("quotes").innerHTML = inner(quotes[quotesCounter]);
+    }
+  };
 
-  // showQuotes();
-  // setInterval(showQuotes, 5000);
+  showQuotes();
+  setInterval(showQuotes, 3000);
 
   // const listQuotes = () => {
   //   for (i = 0; i < quotes.length; i++) {
@@ -198,17 +200,6 @@ doc_ready(() => {
   // };
 
   // listQuotes();
-
-  const displayQuotes = () => {
-    let rand = Math.floor(Math.random() * quotes.length);
-
-    if (quotes[rand] != "") {
-      id("quotes").innerHTML = quotes[rand];
-    }
-  };
-
-  displayQuotes();
-  setInterval(displayQuotes, 3000);
 
   const defaultQuotes = () => {
     for (i = 0; i < quotes.length; i++) {
