@@ -12,7 +12,8 @@ doc_ready(function () {
       date = today.getDate() < 10 ? "0".concat(today.getDate()) : today.getDate();
   var i,
       todo = [],
-      quotes = ["Every morning is a beautiful morning.", "Shine like the afternoon sun and let people be inspired for all the great things you do.", "Evenings are life's way of saying that you are closer to your dreams."]; // quotesCounter = -1;
+      quotes = ["Every morning is a beautiful morning.", "Shine like the afternoon sun and let people be inspired for all the great things you do.", "Evenings are life's way of saying that you are closer to your dreams."],
+      quotesCounter = -1;
 
   var clock = function clock() {
     if (today.getHours() < 12) {
@@ -120,16 +121,22 @@ doc_ready(function () {
     if (id("add-to-do").value.length != 0) {
       addedToDo();
     }
-  }); // const showQuotes = () => {
-  //   quotesCounter++;
-  //   if (quotesCounter == quotes.length) {
-  //     quotesCounter = 0;
-  //   }
-  //   id("quotes").innerHTML = inner(quotes[quotesCounter]);
-  // };
-  // showQuotes();
-  // setInterval(showQuotes, 5000);
-  // const listQuotes = () => {
+  });
+
+  var showQuotes = function showQuotes() {
+    quotesCounter++;
+
+    if (quotesCounter == quotes.length) {
+      quotesCounter = 0;
+    }
+
+    if (quotes[quotesCounter] != "") {
+      id("quotes").innerHTML = inner(quotes[quotesCounter]);
+    }
+  };
+
+  showQuotes();
+  setInterval(showQuotes, 3000); // const listQuotes = () => {
   //   for (i = 0; i < quotes.length; i++) {
   //     const element = create_el("p");
   //     add_class(element, "mb-05");
@@ -138,17 +145,6 @@ doc_ready(function () {
   //   }
   // };
   // listQuotes();
-
-  var displayQuotes = function displayQuotes() {
-    var rand = Math.floor(Math.random() * quotes.length);
-
-    if (quotes[rand] != "") {
-      id("quotes").innerHTML = quotes[rand];
-    }
-  };
-
-  displayQuotes();
-  setInterval(displayQuotes, 3000);
 
   var defaultQuotes = function defaultQuotes() {
     var _loop = function _loop() {
