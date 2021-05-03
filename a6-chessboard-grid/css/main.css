@@ -6,7 +6,14 @@ html {
 
 main {
   position: relative;
-  background-image: -webkit-gradient(linear, left top, right top, from(#14406f), color-stop(#6c757d), to(#6b283b));
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#14406f),
+    color-stop(#6c757d),
+    to(#6b283b)
+  );
   background-image: -webkit-linear-gradient(left, #14406f, #6c757d, #6b283b);
   background-image: -moz-linear-gradient(left, #14406f, #6c757d, #6b283b);
   background-image: -o-linear-gradient(left, #14406f, #6c757d, #6b283b);
@@ -98,7 +105,14 @@ main {
   min-height: 100vh;
   width: 100vw;
   z-index: 99;
-  background-image: -webkit-gradient(linear, left top, right top, from(#14406f), color-stop(#6c757d), to(#6b283b));
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#14406f),
+    color-stop(#6c757d),
+    to(#6b283b)
+  );
   background-image: -webkit-linear-gradient(left, #14406f, #6c757d, #6b283b);
   background-image: -moz-linear-gradient(left, #14406f, #6c757d, #6b283b);
   background-image: -o-linear-gradient(left, #14406f, #6c757d, #6b283b);
