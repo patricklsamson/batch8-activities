@@ -158,10 +158,6 @@ main {
   right: 8px;
 }
 
-.divide:after {
-  content: "-";
-}
-
 .wrap-btn {
   width: 50%;
 }
