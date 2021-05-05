@@ -165,6 +165,20 @@ doc_ready(() => {
 
       moves.push([mark, row, col]);
 
+      const scorer = () => {
+        let element = create_el("span");
+
+        element.innerHTML = "l";
+        id(mark).appendChild(element);
+
+        for (i = 4; i < id(mark).querySelectorAll("span").length; i += 5) {
+          add_class(id(mark).querySelectorAll("span")[i], "divide");
+          add_class(id(mark).querySelectorAll("span")[i], "img");
+          add_class(id(mark).querySelectorAll("span")[i], "con");
+          id(mark).querySelectorAll("span")[i].innerHTML = "";
+        }
+      };
+
       for (let row = 0; row < board.length; row++) {
         let a = board[row][0],
           b = board[row][1],
@@ -178,6 +192,7 @@ doc_ready(() => {
           ).innerHTML = `Player ${mark.toUpperCase()} is the winner!`;
 
           console.log(`Player ${mark.toUpperCase()} is the winner!`);
+          scorer();
           return;
         }
       }
@@ -189,11 +204,13 @@ doc_ready(() => {
 
         if (a && a === b && b === c) {
           gameEnd();
+
           id(
             "tooltip"
           ).innerHTML = `Player ${mark.toUpperCase()} is the winner!`;
 
           console.log(`Player ${mark.toUpperCase()} is the winner!`);
+          scorer();
           return;
         }
       }
@@ -208,6 +225,7 @@ doc_ready(() => {
         gameEnd();
         id("tooltip").innerHTML = `Player ${mark.toUpperCase()} is the winner!`;
         console.log(`Player ${mark.toUpperCase()} is the winner!`);
+        scorer();
       }
 
       if (moves.length == 9) {
@@ -224,7 +242,7 @@ doc_ready(() => {
     add_event(box, "click", handler);
   });
 
-  add_event(id("reset-btn"), "click", () => {
+  const reset = () => {
     endGame = false;
     board = [
       ["", "", ""],
@@ -239,11 +257,20 @@ doc_ready(() => {
     movesStorage = [];
     // counter = 0;
 
+    startGame();
+
+    if (id("mark-checker").checked) {
+      circle = true;
+      id("player").innerHTML = "O";
+      circleTurn();
+    } else {
+      circle = false;
+      id("player").innerHTML = "X";
+      crossTurn();
+    }
+
     console.clear();
     id("history-wrap").innerHTML = "";
-    remove_class(id("modal"), "hide");
-    id("mark-checker").checked = false;
-    startGame();
 
     qsel_all(".box").forEach((box) => {
       add_event(box, "click", handler);
@@ -255,6 +282,17 @@ doc_ready(() => {
 
     remove_class(id("prev-btn"), "show");
     remove_class(id("next-btn"), "show");
+  };
+
+  add_event(id("reset-btn"), "click", reset);
+  add_event(id("newGame-btn"), "click", () => {
+    reset();
+    remove_class(id("modal"), "hide");
+    id("mark-checker").checked = false;
+    startGame();
+
+    id("x").innerHTML = "X =&nbsp;";
+    id("o").innerHTML = "O =&nbsp;";
   });
 
   add_event(id("prev-btn"), "click", () => {
