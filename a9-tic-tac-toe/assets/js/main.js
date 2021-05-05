@@ -43,6 +43,10 @@ doc_ready(() => {
     if (id("mark-checker").checked) {
       circle = true;
       id("player").innerHTML = "O";
+      id("mark-holder-wrap").querySelectorAll("p")[0].id = "o";
+      id("mark-holder-wrap").querySelectorAll("p")[1].id = "x";
+      id("mark-holder1").innerHTML = "O";
+      id("mark-holder2").innerHTML = "X";
       circleTurn();
     } else {
       circle = false;
@@ -175,7 +179,7 @@ doc_ready(() => {
           add_class(id(mark).querySelectorAll("span")[i], "divide");
           add_class(id(mark).querySelectorAll("span")[i], "img");
           add_class(id(mark).querySelectorAll("span")[i], "con");
-          id(mark).querySelectorAll("span")[i].innerHTML = "";
+          id(mark).querySelectorAll("span")[i].innerHTML = "-";
         }
       };
 
@@ -262,6 +266,10 @@ doc_ready(() => {
     if (id("mark-checker").checked) {
       circle = true;
       id("player").innerHTML = "O";
+      id("mark-holder-wrap").querySelectorAll("p")[0].id = "o";
+      id("mark-holder-wrap").querySelectorAll("p")[1].id = "x";
+      id("mark-holder1").innerHTML = "O";
+      id("mark-holder2").innerHTML = "X";
       circleTurn();
     } else {
       circle = false;
@@ -285,14 +293,18 @@ doc_ready(() => {
   };
 
   add_event(id("reset-btn"), "click", reset);
+
   add_event(id("newGame-btn"), "click", () => {
     reset();
     remove_class(id("modal"), "hide");
     id("mark-checker").checked = false;
     startGame();
-
-    id("x").innerHTML = "X =&nbsp;";
-    id("o").innerHTML = "O =&nbsp;";
+    id("mark-holder-wrap").querySelectorAll("p")[0].id = "x";
+    id("mark-holder-wrap").querySelectorAll("p")[1].id = "o";
+    id("mark-holder1").innerHTML = "X";
+    id("mark-holder2").innerHTML = "O";
+    id("x").innerHTML = "<q id='mark-holder1'>X</q> =&nbsp;";
+    id("o").innerHTML = "<q id='mark-holder2'>O</q> =&nbsp;";
   });
 
   add_event(id("prev-btn"), "click", () => {
