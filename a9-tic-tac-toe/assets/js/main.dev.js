@@ -78,6 +78,7 @@ doc_ready(function () {
       board[row][col] = mark;
       add_class(box, mark);
       remove_class(box, "empty");
+      box.style.cursor = "auto";
 
       if (circle = !circle) {
         circleTurn();
