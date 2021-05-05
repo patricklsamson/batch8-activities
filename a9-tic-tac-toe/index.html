@@ -23,9 +23,9 @@
     <link rel="stylesheet" href="assets/css/main.min.css" />
   </head>
   <body>
-    <main class="cboard img flex">
+    <main class="cboard img flex ftop">
       <div id="modal" class="wrap-player-overlay flex cboard img">
-        <p class="h2 mb-025">
+        <p class="h2 talign mb-025">
           Player <span id="player"></span> will play first.
         </p>
 
@@ -39,7 +39,7 @@
 
       <div class="cont">
         <div class="grid">
-          <div class="gcol-3">
+          <div class="gcol-lg-3 gcol-11">
             <h6 class="talign">Tic Tac Toe</h6>
 
             <button id="newGame-btn" class="img balign">New Game</button>
@@ -49,10 +49,22 @@
             <div id="mark-holder-wrap">
               <p id="x"><q id="mark-holder1">X</q> =&nbsp;</p>
               <p id="o"><q id="mark-holder2">O</q> =&nbsp;</p>
+              <p id="draw"><q>Draws</q> =&nbsp;</p>
             </div>
           </div>
 
-          <div class="gcol-6 flex">
+          <div class="gcol-lg-3 lg-push-6 gcol-1">
+            <input type="checkbox" id="history" />
+            <label for="history" class="talign"
+              ><span>History</span><span>?</span></label
+            >
+
+            <p id="console" class="talign">Check console for more details!</p>
+
+            <div id="history-wrap"></div>
+          </div>
+
+          <div id="board-wrap" class="gcol-lg-6 lg-pull-3 flex">
             <p id="tooltip" class="h4 mb-025 talign"></p>
 
             <button id="reset-btn" class="btn-reset img">Reset</button>
@@ -73,12 +85,6 @@
               <div class="box empty flex" data-row="2" data-col="1"></div>
               <div class="box empty flex" data-row="2" data-col="2"></div>
             </div>
-          </div>
-
-          <div class="gcol-3">
-            <h6 class="talign">History</h6>
-
-            <div id="history-wrap"></div>
           </div>
         </div>
       </div>
