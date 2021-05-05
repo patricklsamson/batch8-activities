@@ -111,7 +111,7 @@ doc_ready(function () {
     }
   });
 
-  for (var i = 0; i < qsa(".nav-link").length; i++) {
+  for (var i = 0; i < qsel_all(".nav-link").length; i++) {
     add_event(qsel_all(".nav-link")[i], "click", function () {
       id("nav-toggle").checked = false;
     });
