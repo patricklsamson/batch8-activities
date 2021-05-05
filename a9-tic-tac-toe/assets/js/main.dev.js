@@ -215,8 +215,9 @@ doc_ready(function () {
     board = [["", "", ""], ["", "", ""], ["", "", ""]];
     history = [];
     historyCounter = 0;
+    historyStorage = [];
     moves = [];
-    storage = []; // counter = 0;
+    movesStorage = []; // counter = 0;
 
     console.clear();
     id("history-wrap").innerHTML = "";
@@ -234,7 +235,9 @@ doc_ready(function () {
     remove_class(id("next-btn"), "show");
   });
   add_event(id("prev-btn"), "click", function () {
-    movesStorage.push.apply(movesStorage, _toConsumableArray(moves.splice(moves.length - 1, 1)));
+    var _movesStorage, _historyStorage;
+
+    (_movesStorage = movesStorage).push.apply(_movesStorage, _toConsumableArray(moves.splice(moves.length - 1, 1)));
 
     for (i = 0; i < movesStorage.length; i++) {
       remove_class(qsel("[data-row=\"".concat(movesStorage[i][1], "\"][data-col=\"").concat(movesStorage[i][2], "\"]")), movesStorage[i][0]);
@@ -248,7 +251,7 @@ doc_ready(function () {
       remove_class(id("prev-btn"), "show");
     }
 
-    historyStorage.push.apply(historyStorage, _toConsumableArray(history.splice(history.length - 1, 1)));
+    (_historyStorage = historyStorage).push.apply(_historyStorage, _toConsumableArray(history.splice(history.length - 1, 1)));
 
     for (i = 0; i < historyStorage.length; i++) {
       add_class(id("history-wrap").querySelectorAll(historyStorage[i][4])[historyStorage[i][0]], historyStorage[i][5]);
