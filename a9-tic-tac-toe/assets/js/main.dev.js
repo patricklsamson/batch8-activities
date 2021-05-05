@@ -160,6 +160,19 @@ doc_ready(function () {
       element.innerHTML = "".concat(historyCounter, " = ").concat(mark.toUpperCase(), " => ").concat(position());
       moves.push([mark, row, col]);
 
+      var scorer = function scorer() {
+        var element = create_el("span");
+        element.innerHTML = "l";
+        id(mark).appendChild(element);
+
+        for (i = 4; i < id(mark).querySelectorAll("span").length; i += 5) {
+          add_class(id(mark).querySelectorAll("span")[i], "divide");
+          add_class(id(mark).querySelectorAll("span")[i], "img");
+          add_class(id(mark).querySelectorAll("span")[i], "con");
+          id(mark).querySelectorAll("span")[i].innerHTML = "";
+        }
+      };
+
       for (var _row = 0; _row < board.length; _row++) {
         var _a = board[_row][0],
             _b = board[_row][1],
@@ -169,6 +182,7 @@ doc_ready(function () {
           gameEnd();
           id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner!");
           console.log("Player ".concat(mark.toUpperCase(), " is the winner!"));
+          scorer();
           return;
         }
       }
@@ -182,6 +196,7 @@ doc_ready(function () {
           gameEnd();
           id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner!");
           console.log("Player ".concat(mark.toUpperCase(), " is the winner!"));
+          scorer();
           return;
         }
       }
@@ -196,6 +211,7 @@ doc_ready(function () {
         gameEnd();
         id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner!");
         console.log("Player ".concat(mark.toUpperCase(), " is the winner!"));
+        scorer();
       }
 
       if (moves.length == 9) {
@@ -211,7 +227,8 @@ doc_ready(function () {
   qsel_all(".box").forEach(function (box) {
     add_event(box, "click", handler);
   });
-  add_event(id("reset-btn"), "click", function () {
+
+  var reset = function reset() {
     endGame = false;
     board = [["", "", ""], ["", "", ""], ["", "", ""]];
     history = [];
@@ -220,11 +237,20 @@ doc_ready(function () {
     moves = [];
     movesStorage = []; // counter = 0;
 
+    startGame();
+
+    if (id("mark-checker").checked) {
+      circle = true;
+      id("player").innerHTML = "O";
+      circleTurn();
+    } else {
+      circle = false;
+      id("player").innerHTML = "X";
+      crossTurn();
+    }
+
     console.clear();
     id("history-wrap").innerHTML = "";
-    remove_class(id("modal"), "hide");
-    id("mark-checker").checked = false;
-    startGame();
     qsel_all(".box").forEach(function (box) {
       add_event(box, "click", handler);
       add_class(box, "empty");
@@ -234,6 +260,16 @@ doc_ready(function () {
     });
     remove_class(id("prev-btn"), "show");
     remove_class(id("next-btn"), "show");
+  };
+
+  add_event(id("reset-btn"), "click", reset);
+  add_event(id("newGame-btn"), "click", function () {
+    reset();
+    remove_class(id("modal"), "hide");
+    id("mark-checker").checked = false;
+    startGame();
+    id("x").innerHTML = "X =&nbsp;";
+    id("o").innerHTML = "O =&nbsp;";
   });
   add_event(id("prev-btn"), "click", function () {
     var _movesStorage, _historyStorage;
