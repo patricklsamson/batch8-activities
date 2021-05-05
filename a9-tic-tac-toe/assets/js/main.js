@@ -233,8 +233,9 @@ doc_ready(() => {
 
     history = [];
     historyCounter = 0;
+    historyStorage = [];
     moves = [];
-    storage = [];
+    movesStorage = [];
     // counter = 0;
 
     console.clear();
