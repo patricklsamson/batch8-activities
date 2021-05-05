@@ -9,8 +9,9 @@ doc_ready(() => {
     i,
     history = [],
     historyCounter = 0,
+    historyStorage = [],
     moves = [],
-    storage = [];
+    movesStorage = [];
   // counter = 0;
 
   const circleTurn = () => {
@@ -60,8 +61,8 @@ doc_ready(() => {
     remove_class(id("tboard"), "o");
     add_class(id("prev-btn"), "show");
 
-    for (i = 0; i < qsa(".box").length; i++) {
-      qsa(".box")[i].style.cursor = "auto";
+    for (i = 0; i < qsel_all(".box").length; i++) {
+      qsel_all(".box")[i].style.cursor = "auto";
     }
   };
 
@@ -85,34 +86,81 @@ doc_ready(() => {
       // moves[counter] = [counter, mark, row, col];
       // counter++;
 
-      history[historyCounter] = [historyCounter, mark, row, col];
+      history[historyCounter] = [historyCounter, mark, row, col, "p", "strike"];
       historyCounter++;
 
       const position = () => {
-        if (row == 0 && col == 0) {
-          return "top leftmost box";
-        } else if (row == 0 && col == 1) {
-          return "top middle box";
-        } else if (row == 0 && col == 2) {
-          return "top rightmost box";
-        } else if (row == 1 && col == 0) {
-          return "middle leftmost box";
-        } else if (row == 1 && col == 1) {
-          return "middle box";
-        } else if (row == 1 && col == 2) {
-          return "middle rightmost box";
-        } else if (row == 2 && col == 0) {
-          return "bottom leftmost box";
-        } else if (row == 2 && col == 1) {
-          return "bottom middle box";
-        } else if (row == 2 && col == 2) {
-          return "bottom rightmost box";
+        // if (row == 0 && col == 0) {
+        //   return "top leftmost box";
+        // } else if (row == 0 && col == 1) {
+        //   return "top middle box";
+        // } else if (row == 0 && col == 2) {
+        //   return "top rightmost box";
+        // } else if (row == 1 && col == 0) {
+        //   return "middle leftmost box";
+        // } else if (row == 1 && col == 1) {
+        //   return "middle box";
+        // } else if (row == 1 && col == 2) {
+        //   return "middle rightmost box";
+        // } else if (row == 2 && col == 0) {
+        //   return "bottom leftmost box";
+        // } else if (row == 2 && col == 1) {
+        //   return "bottom middle box";
+        // } else if (row == 2 && col == 2) {
+        //   return "bottom rightmost box";
+        // }
+
+        let text;
+
+        switch (row + col) {
+          case "0" + "0":
+            text = "top leftmost";
+            break;
+
+          case "0" + "1":
+            text = "top middle";
+            break;
+
+          case "0" + "2":
+            text = "top rightmost";
+            break;
+
+          case "1" + "0":
+            text = "middle leftmost";
+            break;
+
+          case "1" + "1":
+            text = "middle";
+            break;
+
+          case "1" + "2":
+            text = "middle rightmost";
+            break;
+
+          case "2" + "0":
+            text = "bottom leftmost";
+            break;
+
+          case "2" + "1":
+            text = "bottom middle";
+            break;
+
+          case "2" + "2":
+            text = "bottom rightmost";
+            break;
         }
+
+        return text;
       };
 
       console.log(
-        `Move ${historyCounter}: Player ${mark.toUpperCase()} puts their mark on the ${position()}.`
+        `Move ${historyCounter}: Player ${mark.toUpperCase()} puts their mark on the ${position()} box.`
       );
+
+      const element = create_el("p");
+
+      id("history-wrap").appendChild(element);
+      element.innerHTML = `${historyCounter} = ${mark.toUpperCase()} => ${position()}`;
 
       moves.push([mark, row, col]);
 
@@ -126,9 +174,9 @@ doc_ready(() => {
 
           id(
             "tooltip"
-          ).innerHTML = `Player ${mark.toUpperCase()} is the winner.`;
+          ).innerHTML = `Player ${mark.toUpperCase()} is the winner!`;
 
-          console.log(`Player ${mark.toUpperCase()} is the winner.`);
+          console.log(`Player ${mark.toUpperCase()} is the winner!`);
           return;
         }
       }
@@ -142,9 +190,9 @@ doc_ready(() => {
           gameEnd();
           id(
             "tooltip"
-          ).innerHTML = `Player ${mark.toUpperCase()} is the winner.`;
+          ).innerHTML = `Player ${mark.toUpperCase()} is the winner!`;
 
-          console.log(`Player ${mark.toUpperCase()} is the winner.`);
+          console.log(`Player ${mark.toUpperCase()} is the winner!`);
           return;
         }
       }
@@ -157,13 +205,13 @@ doc_ready(() => {
 
       if ((a && a === b && b === f) || (c && c === d && d == f)) {
         gameEnd();
-        id("tooltip").innerHTML = `Player ${mark.toUpperCase()} is the winner.`;
-        console.log(`Player ${mark.toUpperCase()} is the winner.`);
+        id("tooltip").innerHTML = `Player ${mark.toUpperCase()} is the winner!`;
+        console.log(`Player ${mark.toUpperCase()} is the winner!`);
       }
 
       if (moves.length == 9) {
         gameEnd();
-        id("tooltip").innerHTML = "The players ended in a draw.";
+        id("tooltip").innerHTML = "It's a draw!";
         console.log("The players ended in a draw.");
       }
     }
@@ -171,7 +219,7 @@ doc_ready(() => {
     remove_event(e.target || e.srcElement, "click", handler);
   };
 
-  qsa(".box").forEach((box) => {
+  qsel_all(".box").forEach((box) => {
     add_event(box, "click", handler);
   });
 
@@ -190,11 +238,12 @@ doc_ready(() => {
     // counter = 0;
 
     console.clear();
+    id("history-wrap").innerHTML = "";
     remove_class(id("modal"), "hide");
     id("mark-checker").checked = false;
     startGame();
 
-    qsa(".box").forEach((box) => {
+    qsel_all(".box").forEach((box) => {
       add_event(box, "click", handler);
       add_class(box, "empty");
       remove_class(box, "x");
@@ -207,21 +256,34 @@ doc_ready(() => {
   });
 
   add_event(id("prev-btn"), "click", () => {
-    storage.push(...moves.splice(moves.length - 1, 1));
+    movesStorage.push(...moves.splice(moves.length - 1, 1));
 
-    for (i = 0; i < storage.length; i++) {
+    for (i = 0; i < movesStorage.length; i++) {
       remove_class(
-        qs(`[data-row="${storage[i][1]}"][data-col="${storage[i][2]}"]`),
-        storage[i][0]
+        qsel(
+          `[data-row="${movesStorage[i][1]}"][data-col="${movesStorage[i][2]}"]`
+        ),
+        movesStorage[i][0]
       );
     }
 
-    if (storage.length < moves.length) {
+    if (movesStorage.length < moves.length) {
       add_class(id("next-btn"), "show");
     }
 
     if (moves.length == 0) {
       remove_class(id("prev-btn"), "show");
+    }
+
+    historyStorage.push(...history.splice(history.length - 1, 1));
+
+    for (i = 0; i < historyStorage.length; i++) {
+      add_class(
+        id("history-wrap").querySelectorAll(historyStorage[i][4])[
+          historyStorage[i][0]
+        ],
+        historyStorage[i][5]
+      );
     }
 
     // if (counter == moves.length) {
@@ -248,21 +310,30 @@ doc_ready(() => {
   });
 
   add_event(id("next-btn"), "click", () => {
-    moves.push(...storage.splice(storage.length - 1, 1));
+    moves.push(...movesStorage.splice(movesStorage.length - 1, 1));
 
     for (i = 0; i < moves.length; i++) {
       add_class(
-        qs(`[data-row="${moves[i][1]}"][data-col="${moves[i][2]}"]`),
+        qsel(`[data-row="${moves[i][1]}"][data-col="${moves[i][2]}"]`),
         moves[i][0]
       );
     }
 
-    if (moves.length < storage.length) {
+    if (moves.length < movesStorage.length) {
       add_class(id("prev-btn"), "show");
     }
 
-    if (storage.length == 0) {
+    if (movesStorage.length == 0) {
       remove_class(id("next-btn"), "show");
+    }
+
+    history.push(...historyStorage.splice(historyStorage.length - 1, 1));
+
+    for (i = 0; i < history.length; i++) {
+      remove_class(
+        id("history-wrap").querySelectorAll(history[i][4])[history[i][0]],
+        history[i][5]
+      );
     }
 
     // if (counter < 0) {
