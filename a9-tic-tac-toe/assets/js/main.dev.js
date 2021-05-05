@@ -43,7 +43,8 @@ doc_ready(function () {
   };
 
   startGame();
-  add_event(id("mark-checker"), "click", function () {
+
+  var markChecker = function markChecker() {
     if (id("mark-checker").checked) {
       circle = true;
       id("player").innerHTML = "O";
@@ -57,7 +58,9 @@ doc_ready(function () {
       id("player").innerHTML = "X";
       crossTurn();
     }
-  });
+  };
+
+  add_event(id("mark-checker"), "click", markChecker);
   add_event(id("proceed-btn"), "click", function () {
     add_class(id("modal"), "hide");
   });
@@ -164,17 +167,23 @@ doc_ready(function () {
       element.innerHTML = "".concat(historyCounter, " = ").concat(mark.toUpperCase(), " => ").concat(position());
       moves.push([mark, row, col]);
 
-      var scorer = function scorer() {
+      var scorer = function scorer(el) {
         var element = create_el("span");
         element.innerHTML = "l";
-        id(mark).appendChild(element);
+        id(el).appendChild(element);
 
-        for (i = 4; i < id(mark).querySelectorAll("span").length; i += 5) {
-          add_class(id(mark).querySelectorAll("span")[i], "divide");
-          add_class(id(mark).querySelectorAll("span")[i], "img");
-          add_class(id(mark).querySelectorAll("span")[i], "con");
-          id(mark).querySelectorAll("span")[i].innerHTML = "-";
+        for (i = 4; i < id(el).querySelectorAll("span").length; i += 5) {
+          add_class(id(el).querySelectorAll("span")[i], "divide");
+          add_class(id(el).querySelectorAll("span")[i], "img");
+          add_class(id(el).querySelectorAll("span")[i], "con");
+          id(el).querySelectorAll("span")[i].innerHTML = "-";
         }
+      };
+
+      var winMessage = function winMessage() {
+        id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " wins!");
+        console.log("Player ".concat(mark.toUpperCase(), " is the winner!"));
+        scorer(mark);
       };
 
       for (var _row = 0; _row < board.length; _row++) {
@@ -184,9 +193,7 @@ doc_ready(function () {
 
         if (_a && _a === _b && _b === _c) {
           gameEnd();
-          id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner!");
-          console.log("Player ".concat(mark.toUpperCase(), " is the winner!"));
-          scorer();
+          winMessage();
           return;
         }
       }
@@ -198,9 +205,7 @@ doc_ready(function () {
 
         if (_a2 && _a2 === _b2 && _b2 === _c2) {
           gameEnd();
-          id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner!");
-          console.log("Player ".concat(mark.toUpperCase(), " is the winner!"));
-          scorer();
+          winMessage();
           return;
         }
       }
@@ -213,15 +218,14 @@ doc_ready(function () {
 
       if (a && a === b && b === f || c && c === d && d == f) {
         gameEnd();
-        id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner!");
-        console.log("Player ".concat(mark.toUpperCase(), " is the winner!"));
-        scorer();
+        winMessage();
       }
 
       if (moves.length == 9) {
         gameEnd();
         id("tooltip").innerHTML = "It's a draw!";
         console.log("The players ended in a draw.");
+        scorer("draw");
       }
     }
 
@@ -242,21 +246,7 @@ doc_ready(function () {
     movesStorage = []; // counter = 0;
 
     startGame();
-
-    if (id("mark-checker").checked) {
-      circle = true;
-      id("player").innerHTML = "O";
-      id("mark-holder-wrap").querySelectorAll("p")[0].id = "o";
-      id("mark-holder-wrap").querySelectorAll("p")[1].id = "x";
-      id("mark-holder1").innerHTML = "O";
-      id("mark-holder2").innerHTML = "X";
-      circleTurn();
-    } else {
-      circle = false;
-      id("player").innerHTML = "X";
-      crossTurn();
-    }
-
+    markChecker();
     console.clear();
     id("history-wrap").innerHTML = "";
     qsel_all(".box").forEach(function (box) {
@@ -282,6 +272,7 @@ doc_ready(function () {
     id("mark-holder2").innerHTML = "O";
     id("x").innerHTML = "<q id='mark-holder1'>X</q> =&nbsp;";
     id("o").innerHTML = "<q id='mark-holder2'>O</q> =&nbsp;";
+    id("draw").innerHTML = "<q>Draws</q> =&nbsp;";
   });
   add_event(id("prev-btn"), "click", function () {
     var _movesStorage, _historyStorage;
@@ -370,5 +361,8 @@ doc_ready(function () {
     //   }
     // }
 
+  });
+  add_event(id("history"), "click", function () {
+    toggle_class(id("board-wrap"), "hide");
   });
 });
