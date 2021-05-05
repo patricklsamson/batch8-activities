@@ -15,8 +15,9 @@ doc_ready(function () {
       i,
       history = [],
       historyCounter = 0,
+      historyStorage = [],
       moves = [],
-      storage = []; // counter = 0;
+      movesStorage = []; // counter = 0;
 
   var circleTurn = function circleTurn() {
     add_class(id("tboard"), "o");
@@ -63,8 +64,8 @@ doc_ready(function () {
     remove_class(id("tboard"), "o");
     add_class(id("prev-btn"), "show");
 
-    for (i = 0; i < qsa(".box").length; i++) {
-      qsa(".box")[i].style.cursor = "auto";
+    for (i = 0; i < qsel_all(".box").length; i++) {
+      qsel_all(".box")[i].style.cursor = "auto";
     }
   };
 
@@ -86,32 +87,76 @@ doc_ready(function () {
       // counter++;
 
 
-      history[historyCounter] = [historyCounter, mark, row, col];
+      history[historyCounter] = [historyCounter, mark, row, col, "p", "strike"];
       historyCounter++;
 
       var position = function position() {
-        if (row == 0 && col == 0) {
-          return "top leftmost box";
-        } else if (row == 0 && col == 1) {
-          return "top middle box";
-        } else if (row == 0 && col == 2) {
-          return "top rightmost box";
-        } else if (row == 1 && col == 0) {
-          return "middle leftmost box";
-        } else if (row == 1 && col == 1) {
-          return "middle box";
-        } else if (row == 1 && col == 2) {
-          return "middle rightmost box";
-        } else if (row == 2 && col == 0) {
-          return "bottom leftmost box";
-        } else if (row == 2 && col == 1) {
-          return "bottom middle box";
-        } else if (row == 2 && col == 2) {
-          return "bottom rightmost box";
+        // if (row == 0 && col == 0) {
+        //   return "top leftmost box";
+        // } else if (row == 0 && col == 1) {
+        //   return "top middle box";
+        // } else if (row == 0 && col == 2) {
+        //   return "top rightmost box";
+        // } else if (row == 1 && col == 0) {
+        //   return "middle leftmost box";
+        // } else if (row == 1 && col == 1) {
+        //   return "middle box";
+        // } else if (row == 1 && col == 2) {
+        //   return "middle rightmost box";
+        // } else if (row == 2 && col == 0) {
+        //   return "bottom leftmost box";
+        // } else if (row == 2 && col == 1) {
+        //   return "bottom middle box";
+        // } else if (row == 2 && col == 2) {
+        //   return "bottom rightmost box";
+        // }
+        var text;
+
+        switch (row + col) {
+          case "0" + "0":
+            text = "top leftmost";
+            break;
+
+          case "0" + "1":
+            text = "top middle";
+            break;
+
+          case "0" + "2":
+            text = "top rightmost";
+            break;
+
+          case "1" + "0":
+            text = "middle leftmost";
+            break;
+
+          case "1" + "1":
+            text = "middle";
+            break;
+
+          case "1" + "2":
+            text = "middle rightmost";
+            break;
+
+          case "2" + "0":
+            text = "bottom leftmost";
+            break;
+
+          case "2" + "1":
+            text = "bottom middle";
+            break;
+
+          case "2" + "2":
+            text = "bottom rightmost";
+            break;
         }
+
+        return text;
       };
 
-      console.log("Move ".concat(historyCounter, ": Player ").concat(mark.toUpperCase(), " puts their mark on the ").concat(position(), "."));
+      console.log("Move ".concat(historyCounter, ": Player ").concat(mark.toUpperCase(), " puts their mark on the ").concat(position(), " box."));
+      var element = create_el("p");
+      id("history-wrap").appendChild(element);
+      element.innerHTML = "".concat(historyCounter, " = ").concat(mark.toUpperCase(), " => ").concat(position());
       moves.push([mark, row, col]);
 
       for (var _row = 0; _row < board.length; _row++) {
@@ -121,8 +166,8 @@ doc_ready(function () {
 
         if (_a && _a === _b && _b === _c) {
           gameEnd();
-          id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner.");
-          console.log("Player ".concat(mark.toUpperCase(), " is the winner."));
+          id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner!");
+          console.log("Player ".concat(mark.toUpperCase(), " is the winner!"));
           return;
         }
       }
@@ -134,8 +179,8 @@ doc_ready(function () {
 
         if (_a2 && _a2 === _b2 && _b2 === _c2) {
           gameEnd();
-          id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner.");
-          console.log("Player ".concat(mark.toUpperCase(), " is the winner."));
+          id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner!");
+          console.log("Player ".concat(mark.toUpperCase(), " is the winner!"));
           return;
         }
       }
@@ -148,13 +193,13 @@ doc_ready(function () {
 
       if (a && a === b && b === f || c && c === d && d == f) {
         gameEnd();
-        id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner.");
-        console.log("Player ".concat(mark.toUpperCase(), " is the winner."));
+        id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " is the winner!");
+        console.log("Player ".concat(mark.toUpperCase(), " is the winner!"));
       }
 
       if (moves.length == 9) {
         gameEnd();
-        id("tooltip").innerHTML = "The players ended in a draw.";
+        id("tooltip").innerHTML = "It's a draw!";
         console.log("The players ended in a draw.");
       }
     }
@@ -162,7 +207,7 @@ doc_ready(function () {
     remove_event(e.target || e.srcElement, "click", handler);
   };
 
-  qsa(".box").forEach(function (box) {
+  qsel_all(".box").forEach(function (box) {
     add_event(box, "click", handler);
   });
   add_event(id("reset-btn"), "click", function () {
@@ -174,10 +219,11 @@ doc_ready(function () {
     storage = []; // counter = 0;
 
     console.clear();
+    id("history-wrap").innerHTML = "";
     remove_class(id("modal"), "hide");
     id("mark-checker").checked = false;
     startGame();
-    qsa(".box").forEach(function (box) {
+    qsel_all(".box").forEach(function (box) {
       add_event(box, "click", handler);
       add_class(box, "empty");
       remove_class(box, "x");
@@ -188,20 +234,24 @@ doc_ready(function () {
     remove_class(id("next-btn"), "show");
   });
   add_event(id("prev-btn"), "click", function () {
-    var _storage;
+    movesStorage.push.apply(movesStorage, _toConsumableArray(moves.splice(moves.length - 1, 1)));
 
-    (_storage = storage).push.apply(_storage, _toConsumableArray(moves.splice(moves.length - 1, 1)));
-
-    for (i = 0; i < storage.length; i++) {
-      remove_class(qs("[data-row=\"".concat(storage[i][1], "\"][data-col=\"").concat(storage[i][2], "\"]")), storage[i][0]);
+    for (i = 0; i < movesStorage.length; i++) {
+      remove_class(qsel("[data-row=\"".concat(movesStorage[i][1], "\"][data-col=\"").concat(movesStorage[i][2], "\"]")), movesStorage[i][0]);
     }
 
-    if (storage.length < moves.length) {
+    if (movesStorage.length < moves.length) {
       add_class(id("next-btn"), "show");
     }
 
     if (moves.length == 0) {
       remove_class(id("prev-btn"), "show");
+    }
+
+    historyStorage.push.apply(historyStorage, _toConsumableArray(history.splice(history.length - 1, 1)));
+
+    for (i = 0; i < historyStorage.length; i++) {
+      add_class(id("history-wrap").querySelectorAll(historyStorage[i][4])[historyStorage[i][0]], historyStorage[i][5]);
     } // if (counter == moves.length) {
     //   counter--;
     // }
@@ -226,20 +276,26 @@ doc_ready(function () {
 
   });
   add_event(id("next-btn"), "click", function () {
-    var _moves;
+    var _moves, _history;
 
-    (_moves = moves).push.apply(_moves, _toConsumableArray(storage.splice(storage.length - 1, 1)));
+    (_moves = moves).push.apply(_moves, _toConsumableArray(movesStorage.splice(movesStorage.length - 1, 1)));
 
     for (i = 0; i < moves.length; i++) {
-      add_class(qs("[data-row=\"".concat(moves[i][1], "\"][data-col=\"").concat(moves[i][2], "\"]")), moves[i][0]);
+      add_class(qsel("[data-row=\"".concat(moves[i][1], "\"][data-col=\"").concat(moves[i][2], "\"]")), moves[i][0]);
     }
 
-    if (moves.length < storage.length) {
+    if (moves.length < movesStorage.length) {
       add_class(id("prev-btn"), "show");
     }
 
-    if (storage.length == 0) {
+    if (movesStorage.length == 0) {
       remove_class(id("next-btn"), "show");
+    }
+
+    (_history = history).push.apply(_history, _toConsumableArray(historyStorage.splice(historyStorage.length - 1, 1)));
+
+    for (i = 0; i < history.length; i++) {
+      remove_class(id("history-wrap").querySelectorAll(history[i][4])[history[i][0]], history[i][5]);
     } // if (counter < 0) {
     //   counter++;
     // }
