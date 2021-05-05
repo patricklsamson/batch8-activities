@@ -18,11 +18,11 @@ function id(element) {
   return document.getElementById(element);
 }
 
-function qs(element) {
+function qsel(element) {
   return document.querySelector(element);
 }
 
-function qsa(element) {
+function qsel_all(element) {
   return document.querySelectorAll(element);
 }
 
@@ -130,7 +130,7 @@ function num_only(e) {
 
 function match_height(element) {
   var i = 0;
-  var items = qsa(element);
+  var items = qsel_all(element);
   var itemsHeight = [];
 
   for (i = 0; i < items.length; i++) {
@@ -192,10 +192,10 @@ caro = (function () {
     var self = this;
 
     self.def = {
-      target: qs(".caro"),
-      dotsWrapper: qs(".caro-dots"),
-      arrowLeft: qs(".caro-prev"),
-      arrowRight: qs(".caro-next"),
+      target: qsel(".caro"),
+      dotsWrapper: qsel(".caro-dots"),
+      arrowLeft: qsel(".caro-prev"),
+      arrowRight: qsel(".caro-next"),
       autoplay: {
         on: false,
         interval: 5000,
@@ -540,11 +540,11 @@ caro = (function () {
   return caro;
 })();
 
-function ssbox() {
-  var selected = qs(".selected"),
-    searchBox = qs(".search-box input"),
-    optionsContainer = qs(".options-container"),
-    optionsList = qsa(".option");
+function search_sel() {
+  var selected = qsel(".selected"),
+    searchBox = qsel(".search-box input"),
+    optionsContainer = qsel(".options-container"),
+    optionsList = qsel_all(".option");
 
   add_event(selected, "click", function () {
     toggle_class(this, "active");
@@ -560,7 +560,7 @@ function ssbox() {
   optionsList.forEach(function (o) {
     add_event(o, "click", function () {
       selected.innerHTML = o.querySelector("label").innerHTML;
-      remove_class(selected, "active");
+      remove_class(optionsContainer, "active");
     });
   });
 
