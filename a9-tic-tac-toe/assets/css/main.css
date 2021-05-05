@@ -1,7 +1,9 @@
 @charset "UTF-8";
 
 html {
-  font-size: 2vmin;
+  font-size: 3vmin;
+  font-family: "DJB Chalk It Up", cursive;
+  color: #f3fcf6;
 }
 
 @media only screen and (max-width: 767px) {
@@ -16,17 +18,50 @@ html {
   }
 }
 
+button {
+  position: relative;
+  background: transparent;
+  border: 0;
+  color: #f3fcf6;
+}
+
+button:before {
+  content: ".";
+  font-size: 0;
+  position: absolute;
+  background-image: url(../../../assets/img/line-white.png);
+  width: 125%;
+  height: 100%;
+  top: 20px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+button:hover:before {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cboard {
+  border: 35px solid #5f5642;
+  background-image: url(../../../assets/img/board.jpg);
+}
+
 main {
-  background: #343a40;
+  min-height: 100vh;
 }
 
 .wrap-player-overlay {
-  position: absolute;
-  background: #343a40;
+  position: fixed;
+  top: 0;
+  left: 0;
   min-height: 100vh;
   width: 100vw;
   z-index: 1;
-  color: #fff;
   visibility: visible;
   opacity: 1;
   -webkit-transition: 0.5s;
@@ -71,7 +106,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #ccc;
+  background: #e4dcdd;
   -webkit-transition: 0.25s;
   -o-transition: 0.25s;
   -moz-transition: 0.25s;
@@ -90,7 +125,7 @@ main {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background: #fff;
+  background: #f3fcf6;
   -webkit-transition: 0.25s;
   -o-transition: 0.25s;
   -moz-transition: 0.25s;
@@ -101,26 +136,15 @@ main {
 }
 
 #mark-checker:checked + .slider {
-  background: #2196f3;
+  background: #5f5642;
 }
 
 #mark-checker:checked + .slider:before {
   left: 30px;
 }
 
-.cont {
-  min-height: 100vh;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -moz-box-orient: vertical;
-  -moz-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-#tooltip {
-  color: #f8f9fa;
+.wrap-btn {
+  width: 50%;
 }
 
 .btn-prev,
@@ -139,20 +163,24 @@ main {
   opacity: 1;
 }
 
+.btn-next {
+  float: right;
+}
+
 .board {
   display: -ms-grid;
   display: grid;
+  grid-gap: 2vmin;
+  gap: 2vmin;
+  width: 49vmin;
+  margin: 0 auto;
   -ms-grid-rows: (15vmin) [3];
   -ms-grid-columns: (15vmin) [3];
   grid-template: repeat(3, 15vmin) / repeat(3, 15vmin);
-  grid-gap: 2vmin;
-  gap: 2vmin;
-  width: 49.2vmin;
-  margin: 0 auto;
+  background-image: url(../../../assets/img/board-grid.png);
 }
 
 .box {
-  background: #f8f9fa;
   cursor: pointer;
   position: relative;
 }
@@ -178,4 +206,8 @@ main {
 .board.o .empty:hover:before,
 .box.o:before {
   content: "O";
+}
+
+#history-wrap p.strike {
+  text-decoration: line-through;
 }
