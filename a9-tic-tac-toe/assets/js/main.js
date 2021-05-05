@@ -39,7 +39,7 @@ doc_ready(() => {
 
   startGame();
 
-  add_event(id("mark-checker"), "click", () => {
+  const markChecker = () => {
     if (id("mark-checker").checked) {
       circle = true;
       id("player").innerHTML = "O";
@@ -53,7 +53,9 @@ doc_ready(() => {
       id("player").innerHTML = "X";
       crossTurn();
     }
-  });
+  };
+
+  add_event(id("mark-checker"), "click", markChecker);
 
   add_event(id("proceed-btn"), "click", () => {
     add_class(id("modal"), "hide");
@@ -169,18 +171,24 @@ doc_ready(() => {
 
       moves.push([mark, row, col]);
 
-      const scorer = () => {
+      const scorer = (el) => {
         let element = create_el("span");
 
         element.innerHTML = "l";
-        id(mark).appendChild(element);
+        id(el).appendChild(element);
 
-        for (i = 4; i < id(mark).querySelectorAll("span").length; i += 5) {
-          add_class(id(mark).querySelectorAll("span")[i], "divide");
-          add_class(id(mark).querySelectorAll("span")[i], "img");
-          add_class(id(mark).querySelectorAll("span")[i], "con");
-          id(mark).querySelectorAll("span")[i].innerHTML = "-";
+        for (i = 4; i < id(el).querySelectorAll("span").length; i += 5) {
+          add_class(id(el).querySelectorAll("span")[i], "divide");
+          add_class(id(el).querySelectorAll("span")[i], "img");
+          add_class(id(el).querySelectorAll("span")[i], "con");
+          id(el).querySelectorAll("span")[i].innerHTML = "-";
         }
+      };
+
+      const winMessage = () => {
+        id("tooltip").innerHTML = `Player ${mark.toUpperCase()} wins!`;
+        console.log(`Player ${mark.toUpperCase()} is the winner!`);
+        scorer(mark);
       };
 
       for (let row = 0; row < board.length; row++) {
@@ -190,13 +198,7 @@ doc_ready(() => {
 
         if (a && a === b && b === c) {
           gameEnd();
-
-          id(
-            "tooltip"
-          ).innerHTML = `Player ${mark.toUpperCase()} is the winner!`;
-
-          console.log(`Player ${mark.toUpperCase()} is the winner!`);
-          scorer();
+          winMessage();
           return;
         }
       }
@@ -208,13 +210,7 @@ doc_ready(() => {
 
         if (a && a === b && b === c) {
           gameEnd();
-
-          id(
-            "tooltip"
-          ).innerHTML = `Player ${mark.toUpperCase()} is the winner!`;
-
-          console.log(`Player ${mark.toUpperCase()} is the winner!`);
-          scorer();
+          winMessage();
           return;
         }
       }
@@ -227,15 +223,14 @@ doc_ready(() => {
 
       if ((a && a === b && b === f) || (c && c === d && d == f)) {
         gameEnd();
-        id("tooltip").innerHTML = `Player ${mark.toUpperCase()} is the winner!`;
-        console.log(`Player ${mark.toUpperCase()} is the winner!`);
-        scorer();
+        winMessage();
       }
 
       if (moves.length == 9) {
         gameEnd();
         id("tooltip").innerHTML = "It's a draw!";
         console.log("The players ended in a draw.");
+        scorer("draw");
       }
     }
 
@@ -262,20 +257,7 @@ doc_ready(() => {
     // counter = 0;
 
     startGame();
-
-    if (id("mark-checker").checked) {
-      circle = true;
-      id("player").innerHTML = "O";
-      id("mark-holder-wrap").querySelectorAll("p")[0].id = "o";
-      id("mark-holder-wrap").querySelectorAll("p")[1].id = "x";
-      id("mark-holder1").innerHTML = "O";
-      id("mark-holder2").innerHTML = "X";
-      circleTurn();
-    } else {
-      circle = false;
-      id("player").innerHTML = "X";
-      crossTurn();
-    }
+    markChecker();
 
     console.clear();
     id("history-wrap").innerHTML = "";
@@ -305,6 +287,7 @@ doc_ready(() => {
     id("mark-holder2").innerHTML = "O";
     id("x").innerHTML = "<q id='mark-holder1'>X</q> =&nbsp;";
     id("o").innerHTML = "<q id='mark-holder2'>O</q> =&nbsp;";
+    id("draw").innerHTML = "<q>Draws</q> =&nbsp;";
   });
 
   add_event(id("prev-btn"), "click", () => {
@@ -409,5 +392,9 @@ doc_ready(() => {
     //     counter++;
     //   }
     // }
+  });
+
+  add_event(id("history"), "click", () => {
+    toggle_class(id("board-wrap"), "hide");
   });
 });
