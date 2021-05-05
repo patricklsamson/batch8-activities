@@ -143,6 +143,25 @@ main {
   left: 30px;
 }
 
+.divide {
+  position: relative;
+  margin: 0 8px;
+}
+
+.divide:before {
+  content: ".";
+  font-size: 0;
+  position: absolute;
+  background-image: url(../../../assets/img/slant.png);
+  width: 500%;
+  height: 100%;
+  right: 8px;
+}
+
+.divide:after {
+  content: "-";
+}
+
 .wrap-btn {
   width: 50%;
 }
