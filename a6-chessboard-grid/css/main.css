@@ -22,20 +22,20 @@ main {
 
 .wrap-continue {
   font-family: "American Captain", sans-serif;
-  /* font-size: 3vmin; */
+  font-size: 3vmin;
   position: relative;
 }
 
 .continue,
 .sure {
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
-  /* font-size: 7vmin; */
+  font-size: 7vmin;
 }
 
 .btn-yes,
 .btn-no {
   font-family: "American Captain", sans-serif;
-  /* font-size: 4vmin; */
+  font-size: 4vmin;
   padding: 0.5vmin 3vmin;
   -webkit-border-radius: 1.5vmin;
   -moz-border-radius: 1.5vmin;
@@ -194,7 +194,7 @@ main {
 .wrap-loader:before {
   content: "Loading...";
   position: absolute;
-  /* font-size: 10vmin; */
+  font-size: 10vmin;
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
   -webkit-animation: loading 1.5s forwards;
   -moz-animation: loading 1.5s forwards;
@@ -427,7 +427,7 @@ main {
 }
 
 h1 {
-  /* font-size: 6vmin; */
+  font-size: 6vmin;
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
   color: #a4abbd;
 }
@@ -499,7 +499,7 @@ label[for="story"] {
   z-index: 4;
   right: 30vmin;
   font-family: "American Captain", sans-serif;
-  /* font-size: 2.5vmin; */
+  font-size: 2.5vmin;
 }
 
 .wrap-overlay {
@@ -534,7 +534,7 @@ label[for="story"] {
 .newgame-main .story-inner {
   top: 0;
   width: 80vmin;
-  /* font-size: 3.5vmin; */
+  font-size: 3.5vmin;
 }
 
 legend {
@@ -543,12 +543,12 @@ legend {
 
 .story legend {
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
-  /* font-size: 3.5vmin; */
+  font-size: 3.5vmin;
 }
 
-/* .newgame-main .story legend {
+.newgame-main .story legend {
   font-size: 4.5vmin;
-} */
+}
 
 .story p {
   margin-bottom: 0.5em;
@@ -578,7 +578,7 @@ legend {
 
 .quote {
   font-family: "American Captain", sans-serif;
-  /* font-size: 2.5vmin; */
+  font-size: 2.5vmin;
   display: inline-block;
   position: relative;
   right: 0.5vmin;
@@ -633,7 +633,7 @@ label[for="tooltip"] {
 
 .tooltips legend {
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
-  /* font-size: 4.5vmin; */
+  font-size: 4.5vmin;
 }
 
 .tooltips p {
@@ -679,7 +679,7 @@ label[for="tooltip"] {
 .chess-square p {
   color: #a4abbd;
   font-family: "American Captain", sans-serif;
-  /* font-size: 3vmin; */
+  font-size: 3vmin;
   width: 2vmin;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -694,119 +694,7 @@ label[for="tooltip"] {
 
 .chess-square .bottom-pos {
   position: absolute;
-  top: 10vmin;
-}
-
-@media only screen and (max-width: 991px) {
-  html {
-    font-size: 2.5vmin;
-  }
-
-  label[for="story"] {
-    right: 27vmin;
-  }
-
-  label[for="tooltip"] {
-    left: 27vmin;
-  }
-
-  .tooltips img {
-    margin-bottom: 0.75rem;
-  }
-
-  .chess-square .bottom-pos {
-    top: 9.75vmin;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  html {
-    font-size: 3vmin;
-  }
-
-  label[for="story"] {
-    right: 25vmin;
-  }
-
-  label[for="tooltip"] {
-    left: 25vmin;
-  }
-
-  .story-inner {
-    margin-top: 2vmin;
-  }
-
-  .tooltips-inner {
-    margin-top: 5vmin;
-  }
-
-  .tooltips img {
-    margin-bottom: 0.65rem;
-  }
-
-  .chess-square .bottom-pos {
-    top: 9.25vmin;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  html {
-    font-size: 3.35vmin;
-  }
-
-  .wrap-sure {
-    width: 68vmin;
-  }
-
-  label[for="story"] {
-    right: 23vmin;
-  }
-
-  label[for="tooltip"] {
-    left: 23vmin;
-  }
-
-  .tooltips-inner {
-    margin-top: 10vmin;
-  }
-
-  .tooltips img {
-    margin-bottom: 0.5rem;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  html {
-    font-size: 4vmin;
-  }
-
-  .wrap-sure {
-    width: 80vmin;
-  }
-
-  label[for="story"] {
-    right: 20vmin;
-  }
-
-  label[for="tooltip"] {
-    left: 20vmin;
-  }
-
-  .story-inner {
-    margin-top: 10vmin;
-  }
-
-  .tooltips-inner {
-    font-size: 3vmin;
-  }
-
-  .chess-square p {
-    font-size: 3vmin;
-  }
-
-  .chess-square .bottom-pos {
-    top: 9.425vmin;
-  }
+  top: 9.25vmin;
 }
 
 .chess-square img {
@@ -937,7 +825,7 @@ label[for="hawkeye-h7-pos"] {
 }
 
 ol {
-  margin-left: 2vmin;
+  padding-left: 3vmin;
 }
 
 li {
