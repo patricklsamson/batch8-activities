@@ -186,9 +186,15 @@ doc_ready(() => {
       };
 
       const winMessage = () => {
-        id("tooltip").innerHTML = `Player ${mark.toUpperCase()} wins!`;
-        console.log(`Player ${mark.toUpperCase()} is the winner!`);
-        scorer(mark);
+        if (moves.length == 9) {
+          id("tooltip").innerHTML = "It's a draw!";
+          console.log("The players ended in a draw.");
+          scorer("draw");
+        } else {
+          id("tooltip").innerHTML = `Player ${mark.toUpperCase()} wins!`;
+          console.log(`Player ${mark.toUpperCase()} is the winner!`);
+          scorer(mark);
+        }
       };
 
       for (let row = 0; row < board.length; row++) {
@@ -228,9 +234,10 @@ doc_ready(() => {
 
       if (moves.length == 9) {
         gameEnd();
-        id("tooltip").innerHTML = "It's a draw!";
-        console.log("The players ended in a draw.");
-        scorer("draw");
+        winMessage();
+        // id("tooltip").innerHTML = "It's a draw!";
+        // console.log("The players ended in a draw.");
+        // scorer("draw");
       }
     }
 
