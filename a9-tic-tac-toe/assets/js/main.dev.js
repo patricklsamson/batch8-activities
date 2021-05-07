@@ -283,7 +283,13 @@ doc_ready(function () {
     id("draw").innerHTML = "<q>Draws</q> =&nbsp;";
   });
   add_event(id("prev-btn"), "click", function () {
-    var _movesStorage, _historyStorage;
+    var _historyStorage, _movesStorage;
+
+    (_historyStorage = historyStorage).push.apply(_historyStorage, _toConsumableArray(history.splice(history.length - 1, 1)));
+
+    for (i = 0; i < historyStorage.length; i++) {
+      add_class(id("history-wrap").querySelectorAll(historyStorage[i][4])[historyStorage[i][0]], historyStorage[i][5]);
+    }
 
     (_movesStorage = movesStorage).push.apply(_movesStorage, _toConsumableArray(moves.splice(moves.length - 1, 1)));
 
@@ -297,12 +303,6 @@ doc_ready(function () {
 
     if (moves.length == 0) {
       remove_class(id("prev-btn"), "show");
-    }
-
-    (_historyStorage = historyStorage).push.apply(_historyStorage, _toConsumableArray(history.splice(history.length - 1, 1)));
-
-    for (i = 0; i < historyStorage.length; i++) {
-      add_class(id("history-wrap").querySelectorAll(historyStorage[i][4])[historyStorage[i][0]], historyStorage[i][5]);
     } // if (counter == moves.length) {
     //   counter--;
     // }
@@ -327,7 +327,13 @@ doc_ready(function () {
 
   });
   add_event(id("next-btn"), "click", function () {
-    var _moves, _history;
+    var _history, _moves;
+
+    (_history = history).push.apply(_history, _toConsumableArray(historyStorage.splice(historyStorage.length - 1, 1)));
+
+    for (i = 0; i < history.length; i++) {
+      remove_class(id("history-wrap").querySelectorAll(history[i][4])[history[i][0]], history[i][5]);
+    }
 
     (_moves = moves).push.apply(_moves, _toConsumableArray(movesStorage.splice(movesStorage.length - 1, 1)));
 
@@ -341,12 +347,6 @@ doc_ready(function () {
 
     if (movesStorage.length == 0) {
       remove_class(id("next-btn"), "show");
-    }
-
-    (_history = history).push.apply(_history, _toConsumableArray(historyStorage.splice(historyStorage.length - 1, 1)));
-
-    for (i = 0; i < history.length; i++) {
-      remove_class(id("history-wrap").querySelectorAll(history[i][4])[history[i][0]], history[i][5]);
     } // if (counter < 0) {
     //   counter++;
     // }
