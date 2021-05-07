@@ -300,6 +300,17 @@ doc_ready(() => {
   });
 
   add_event(id("prev-btn"), "click", () => {
+    historyStorage.push(...history.splice(history.length - 1, 1));
+
+    for (i = 0; i < historyStorage.length; i++) {
+      add_class(
+        id("history-wrap").querySelectorAll(historyStorage[i][4])[
+          historyStorage[i][0]
+        ],
+        historyStorage[i][5]
+      );
+    }
+
     movesStorage.push(...moves.splice(moves.length - 1, 1));
 
     for (i = 0; i < movesStorage.length; i++) {
@@ -317,17 +328,6 @@ doc_ready(() => {
 
     if (moves.length == 0) {
       remove_class(id("prev-btn"), "show");
-    }
-
-    historyStorage.push(...history.splice(history.length - 1, 1));
-
-    for (i = 0; i < historyStorage.length; i++) {
-      add_class(
-        id("history-wrap").querySelectorAll(historyStorage[i][4])[
-          historyStorage[i][0]
-        ],
-        historyStorage[i][5]
-      );
     }
 
     // if (counter == moves.length) {
@@ -354,6 +354,15 @@ doc_ready(() => {
   });
 
   add_event(id("next-btn"), "click", () => {
+    history.push(...historyStorage.splice(historyStorage.length - 1, 1));
+
+    for (i = 0; i < history.length; i++) {
+      remove_class(
+        id("history-wrap").querySelectorAll(history[i][4])[history[i][0]],
+        history[i][5]
+      );
+    }
+
     moves.push(...movesStorage.splice(movesStorage.length - 1, 1));
 
     for (i = 0; i < moves.length; i++) {
@@ -369,15 +378,6 @@ doc_ready(() => {
 
     if (movesStorage.length == 0) {
       remove_class(id("next-btn"), "show");
-    }
-
-    history.push(...historyStorage.splice(historyStorage.length - 1, 1));
-
-    for (i = 0; i < history.length; i++) {
-      remove_class(
-        id("history-wrap").querySelectorAll(history[i][4])[history[i][0]],
-        history[i][5]
-      );
     }
 
     // if (counter < 0) {
