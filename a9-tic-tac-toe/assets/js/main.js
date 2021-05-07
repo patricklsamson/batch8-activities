@@ -39,7 +39,7 @@ doc_ready(() => {
 
   startGame();
 
-  add_event(id("mark-checker"), "click", () => {
+  const markChecker = () => {
     if (id("mark-checker").checked) {
       circle = true;
       id("player").innerHTML = "O";
@@ -53,7 +53,9 @@ doc_ready(() => {
       id("player").innerHTML = "X";
       crossTurn();
     }
-  });
+  };
+
+  add_event(id("mark-checker"), "click", markChecker);
 
   add_event(id("proceed-btn"), "click", () => {
     add_class(id("modal"), "hide");
