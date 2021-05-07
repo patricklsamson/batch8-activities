@@ -43,8 +43,7 @@ doc_ready(function () {
   };
 
   startGame();
-
-  var markChecker = function markChecker() {
+  add_event(id("mark-checker"), "click", function () {
     if (id("mark-checker").checked) {
       circle = true;
       id("player").innerHTML = "O";
@@ -58,9 +57,7 @@ doc_ready(function () {
       id("player").innerHTML = "X";
       crossTurn();
     }
-  };
-
-  add_event(id("mark-checker"), "click", markChecker);
+  });
   add_event(id("proceed-btn"), "click", function () {
     add_class(id("modal"), "hide");
   });
