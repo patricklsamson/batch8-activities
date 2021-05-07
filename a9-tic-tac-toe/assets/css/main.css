@@ -273,6 +273,7 @@ label[for="history"] {
     left: 0;
     min-height: 100vh;
     width: 100vw;
+    padding-top: 50px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -342,6 +343,6 @@ label[for="history"] {
 
 @media only screen and (max-width: 575px) {
   html {
-    font-size: 5vmin;
+    font-size: 4vmin;
   }
 }
