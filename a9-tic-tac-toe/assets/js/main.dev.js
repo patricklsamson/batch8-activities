@@ -168,16 +168,18 @@ doc_ready(function () {
       moves.push([mark, row, col]);
 
       var scorer = function scorer(el) {
-        var element = create_el("span");
-        element.innerHTML = "l";
-        id(el).appendChild(element);
+        setTimeout(function () {
+          var element = create_el("span");
+          element.innerHTML = "l";
+          id(el).appendChild(element);
 
-        for (i = 4; i < id(el).querySelectorAll("span").length; i += 5) {
-          add_class(id(el).querySelectorAll("span")[i - 1], "five");
-          add_class(id(el).querySelectorAll("span")[i - 1], "img");
-          add_class(id(el).querySelectorAll("span")[i - 1], "con");
-          id(el).querySelectorAll("span")[i].innerHTML = " - ";
-        }
+          for (i = 4; i < id(el).querySelectorAll("span").length; i += 5) {
+            add_class(id(el).querySelectorAll("span")[i - 1], "five");
+            add_class(id(el).querySelectorAll("span")[i - 1], "img");
+            add_class(id(el).querySelectorAll("span")[i - 1], "con");
+            id(el).querySelectorAll("span")[i].innerHTML = " - ";
+          }
+        }, 250);
       };
 
       var winMessage = function winMessage() {
