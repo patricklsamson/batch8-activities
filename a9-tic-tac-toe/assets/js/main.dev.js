@@ -291,6 +291,34 @@ doc_ready(function () {
       add_class(id("history-wrap").querySelectorAll(historyStorage[i][4])[historyStorage[i][0]], historyStorage[i][5]);
     }
 
+    var moveNum = function moveNum() {
+      var num;
+
+      for (i = 0; i < historyStorage.length; i++) {
+        num = historyStorage[i][0] + 1;
+      }
+
+      return num;
+    };
+
+    var moveMark = function moveMark() {
+      var move;
+
+      for (i = 0; i < historyStorage.length; i++) {
+        move = historyStorage[i][1];
+      }
+
+      return move.toUpperCase();
+    };
+
+    if (has_class(id("prev-btn"), "show")) {
+      var _console;
+
+      console.log("Move ".concat(moveNum(), " with mark ").concat(moveMark(), " was undone."));
+
+      (_console = console).log.apply(_console, _toConsumableArray(history));
+    }
+
     (_movesStorage = movesStorage).push.apply(_movesStorage, _toConsumableArray(moves.splice(moves.length - 1, 1)));
 
     for (i = 0; i < movesStorage.length; i++) {
@@ -333,6 +361,34 @@ doc_ready(function () {
 
     for (i = 0; i < history.length; i++) {
       remove_class(id("history-wrap").querySelectorAll(history[i][4])[history[i][0]], history[i][5]);
+    }
+
+    var moveNum = function moveNum() {
+      var num;
+
+      for (i = 0; i < history.length; i++) {
+        num = history[i][0] + 1;
+      }
+
+      return num;
+    };
+
+    var moveMark = function moveMark() {
+      var move;
+
+      for (i = 0; i < history.length; i++) {
+        move = history[i][1];
+      }
+
+      return move.toUpperCase();
+    };
+
+    if (has_class(id("next-btn"), "show")) {
+      var _console2;
+
+      console.log("Move ".concat(moveNum(), " with mark ").concat(moveMark(), " was redone."));
+
+      (_console2 = console).log.apply(_console2, _toConsumableArray(history));
     }
 
     (_moves = moves).push.apply(_moves, _toConsumableArray(movesStorage.splice(movesStorage.length - 1, 1)));
