@@ -178,10 +178,10 @@ doc_ready(() => {
         id(el).appendChild(element);
 
         for (i = 4; i < id(el).querySelectorAll("span").length; i += 5) {
-          add_class(id(el).querySelectorAll("span")[i], "divide");
-          add_class(id(el).querySelectorAll("span")[i], "img");
-          add_class(id(el).querySelectorAll("span")[i], "con");
-          id(el).querySelectorAll("span")[i].innerHTML = "-";
+          add_class(id(el).querySelectorAll("span")[i - 1], "five");
+          add_class(id(el).querySelectorAll("span")[i - 1], "img");
+          add_class(id(el).querySelectorAll("span")[i - 1], "con");
+          id(el).querySelectorAll("span")[i].innerHTML = " - ";
         }
       };
 
