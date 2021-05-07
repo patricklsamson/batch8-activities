@@ -311,6 +311,31 @@ doc_ready(() => {
       );
     }
 
+    const moveNum = () => {
+      let num;
+
+      for (i = 0; i < historyStorage.length; i++) {
+        num = historyStorage[i][0] + 1;
+      }
+
+      return num;
+    };
+
+    const moveMark = () => {
+      let move;
+
+      for (i = 0; i < historyStorage.length; i++) {
+        move = historyStorage[i][1];
+      }
+
+      return move.toUpperCase();
+    };
+
+    if (has_class(id("prev-btn"), "show")) {
+      console.log(`Move ${moveNum()} with mark ${moveMark()} was undone.`);
+      console.log(...history);
+    }
+
     movesStorage.push(...moves.splice(moves.length - 1, 1));
 
     for (i = 0; i < movesStorage.length; i++) {
@@ -361,6 +386,31 @@ doc_ready(() => {
         id("history-wrap").querySelectorAll(history[i][4])[history[i][0]],
         history[i][5]
       );
+    }
+
+    const moveNum = () => {
+      let num;
+
+      for (i = 0; i < history.length; i++) {
+        num = history[i][0] + 1;
+      }
+
+      return num;
+    };
+
+    const moveMark = () => {
+      let move;
+
+      for (i = 0; i < history.length; i++) {
+        move = history[i][1];
+      }
+
+      return move.toUpperCase();
+    };
+
+    if (has_class(id("next-btn"), "show")) {
+      console.log(`Move ${moveNum()} with mark ${moveMark()} was redone.`);
+      console.log(...history);
     }
 
     moves.push(...movesStorage.splice(movesStorage.length - 1, 1));
