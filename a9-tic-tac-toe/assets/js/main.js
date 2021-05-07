@@ -172,17 +172,19 @@ doc_ready(() => {
       moves.push([mark, row, col]);
 
       const scorer = (el) => {
-        let element = create_el("span");
+        setTimeout(() => {
+          let element = create_el("span");
 
-        element.innerHTML = "l";
-        id(el).appendChild(element);
+          element.innerHTML = "l";
+          id(el).appendChild(element);
 
-        for (i = 4; i < id(el).querySelectorAll("span").length; i += 5) {
-          add_class(id(el).querySelectorAll("span")[i - 1], "five");
-          add_class(id(el).querySelectorAll("span")[i - 1], "img");
-          add_class(id(el).querySelectorAll("span")[i - 1], "con");
-          id(el).querySelectorAll("span")[i].innerHTML = " - ";
-        }
+          for (i = 4; i < id(el).querySelectorAll("span").length; i += 5) {
+            add_class(id(el).querySelectorAll("span")[i - 1], "five");
+            add_class(id(el).querySelectorAll("span")[i - 1], "img");
+            add_class(id(el).querySelectorAll("span")[i - 1], "con");
+            id(el).querySelectorAll("span")[i].innerHTML = " - ";
+          }
+        }, 250);
       };
 
       const winMessage = () => {
