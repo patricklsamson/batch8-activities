@@ -278,6 +278,24 @@ doc_ready(function () {
     id("draw").innerHTML = "<q>Draws</q> =&nbsp;";
   });
 
+  var prevHistory = function prevHistory(arr1, arr2) {
+    arr1.push.apply(arr1, _toConsumableArray(arr2.splice(arr2.length - 1, 1)));
+
+    for (i = 0; i < arr1.length; i++) {
+      add_class(id("history-wrap").querySelectorAll(arr1[i][4])[arr1[i][0]], arr1[i][5]);
+      remove_class(qsel("[data-row=\"".concat(arr1[i][2], "\"][data-col=\"").concat(arr1[i][3], "\"]")), arr1[i][1]);
+    }
+  };
+
+  var nextHistory = function nextHistory(arr1, arr2) {
+    arr1.push.apply(arr1, _toConsumableArray(arr2.splice(arr2.length - 1, 1)));
+
+    for (i = 0; i < arr1.length; i++) {
+      remove_class(id("history-wrap").querySelectorAll(arr1[i][4])[arr1[i][0]], arr1[i][5]);
+      add_class(qsel("[data-row=\"".concat(arr1[i][2], "\"][data-col=\"").concat(arr1[i][3], "\"]")), arr1[i][1]);
+    }
+  };
+
   var moveNum = function moveNum(arr) {
     var num;
 
@@ -298,17 +316,13 @@ doc_ready(function () {
     return move.toUpperCase();
   };
 
-  var prevHistory = function prevHistory(arr) {
-    for (i = 0; i < arr.length; i++) {
-      add_class(id("history-wrap").querySelectorAll(arr[i][4])[arr[i][0]], arr[i][5]);
-      remove_class(qsel("[data-row=\"".concat(arr[i][2], "\"][data-col=\"").concat(arr[i][3], "\"]")), arr[i][1]);
-    }
-  };
+  var consoleHistory = function consoleHistory(btn, arr1, arr2) {
+    if (has_class(btn, "show")) {
+      var _console;
 
-  var nextHistory = function nextHistory(arr) {
-    for (i = 0; i < arr.length; i++) {
-      remove_class(id("history-wrap").querySelectorAll(arr[i][4])[arr[i][0]], arr[i][5]);
-      add_class(qsel("[data-row=\"".concat(arr[i][2], "\"][data-col=\"").concat(arr[i][3], "\"]")), arr[i][1]);
+      console.log("Move ".concat(moveNum(arr1), " with mark ").concat(moveMark(arr1), " was undone."));
+
+      (_console = console).log.apply(_console, _toConsumableArray(arr2));
     }
   };
 
@@ -325,20 +339,8 @@ doc_ready(function () {
   };
 
   add_event(id("prev-btn"), "click", function () {
-    var _historyStorage;
-
-    (_historyStorage = historyStorage).push.apply(_historyStorage, _toConsumableArray(history.splice(history.length - 1, 1)));
-
-    prevHistory(historyStorage);
-
-    if (has_class(id("prev-btn"), "show")) {
-      var _console;
-
-      console.log("Move ".concat(moveNum(historyStorage), " with mark ").concat(moveMark(historyStorage), " was undone."));
-
-      (_console = console).log.apply(_console, _toConsumableArray(history));
-    }
-
+    prevHistory(historyStorage, history);
+    consoleHistory(id("prev-btn"), historyStorage, history);
     showBtn(id("next-btn"), historyStorage, history);
     hideBtn(id("prev-btn"), history); // if (counter == moves.length) {
     //   counter--;
@@ -363,20 +365,8 @@ doc_ready(function () {
     // }
   });
   add_event(id("next-btn"), "click", function () {
-    var _history;
-
-    (_history = history).push.apply(_history, _toConsumableArray(historyStorage.splice(historyStorage.length - 1, 1)));
-
-    nextHistory(history);
-
-    if (has_class(id("next-btn"), "show")) {
-      var _console2;
-
-      console.log("Move ".concat(moveNum(history), " with mark ").concat(moveMark(history), " was redone."));
-
-      (_console2 = console).log.apply(_console2, _toConsumableArray(history));
-    }
-
+    nextHistory(history, historyStorage);
+    consoleHistory(id("next-btn"), history, history);
     showBtn(id("prev-btn"), history, historyStorage);
     hideBtn(id("next-btn"), historyStorage); // if (counter < 0) {
     //   counter++;
