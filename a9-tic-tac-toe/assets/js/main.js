@@ -66,7 +66,7 @@ doc_ready(() => {
     add_class(id("prev-btn"), "show");
 
     for (i = 0; i < qsel_all(".box").length; i++) {
-      qsel_all(".box")[i].style.cursor = "auto";
+      remove_class(qsel_all(".box")[i], "empty");
     }
   };
 
@@ -80,7 +80,6 @@ doc_ready(() => {
       board[row][col] = mark;
       add_class(box, mark);
       remove_class(box, "empty");
-      box.style.cursor = "auto";
 
       if ((circle = !circle)) {
         circleTurn();
@@ -270,7 +269,6 @@ doc_ready(() => {
       add_class(box, "empty");
       remove_class(box, "x");
       remove_class(box, "o");
-      box.style.cursor = "pointer";
     });
 
     remove_class(id("prev-btn"), "show");
