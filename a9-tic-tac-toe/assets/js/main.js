@@ -299,6 +299,26 @@ doc_ready(() => {
     id("draw").innerHTML = "<q>Draws</q> =&nbsp;";
   });
 
+  const moveNum = (arr) => {
+    let num;
+
+    for (i = 0; i < arr.length; i++) {
+      num = arr[i][0] + 1;
+    }
+
+    return num;
+  };
+
+  const moveMark = (arr) => {
+    let move;
+
+    for (i = 0; i < arr.length; i++) {
+      move = arr[i][1];
+    }
+
+    return move.toUpperCase();
+  };
+
   add_event(id("prev-btn"), "click", () => {
     historyStorage.push(...history.splice(history.length - 1, 1));
 
@@ -311,28 +331,12 @@ doc_ready(() => {
       );
     }
 
-    const moveNum = () => {
-      let num;
-
-      for (i = 0; i < historyStorage.length; i++) {
-        num = historyStorage[i][0] + 1;
-      }
-
-      return num;
-    };
-
-    const moveMark = () => {
-      let move;
-
-      for (i = 0; i < historyStorage.length; i++) {
-        move = historyStorage[i][1];
-      }
-
-      return move.toUpperCase();
-    };
-
     if (has_class(id("prev-btn"), "show")) {
-      console.log(`Move ${moveNum()} with mark ${moveMark()} was undone.`);
+      console.log(
+        `Move ${moveNum(historyStorage)} with mark ${moveMark(
+          historyStorage
+        )} was undone.`
+      );
       console.log(...history);
     }
 
@@ -388,28 +392,10 @@ doc_ready(() => {
       );
     }
 
-    const moveNum = () => {
-      let num;
-
-      for (i = 0; i < history.length; i++) {
-        num = history[i][0] + 1;
-      }
-
-      return num;
-    };
-
-    const moveMark = () => {
-      let move;
-
-      for (i = 0; i < history.length; i++) {
-        move = history[i][1];
-      }
-
-      return move.toUpperCase();
-    };
-
     if (has_class(id("next-btn"), "show")) {
-      console.log(`Move ${moveNum()} with mark ${moveMark()} was redone.`);
+      console.log(
+        `Move ${moveNum(history)} with mark ${moveMark(history)} was redone.`
+      );
       console.log(...history);
     }
 
