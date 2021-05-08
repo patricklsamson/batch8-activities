@@ -293,6 +293,38 @@ doc_ready(() => {
     id("draw").innerHTML = "<q>Draws</q> =&nbsp;";
   });
 
+  const prevHistory = (arr1, arr2) => {
+    arr1.push(...arr2.splice(arr2.length - 1, 1));
+
+    for (i = 0; i < arr1.length; i++) {
+      add_class(
+        id("history-wrap").querySelectorAll(arr1[i][4])[arr1[i][0]],
+        arr1[i][5]
+      );
+
+      remove_class(
+        qsel(`[data-row="${arr1[i][2]}"][data-col="${arr1[i][3]}"]`),
+        arr1[i][1]
+      );
+    }
+  };
+
+  const nextHistory = (arr1, arr2) => {
+    arr1.push(...arr2.splice(arr2.length - 1, 1));
+
+    for (i = 0; i < arr1.length; i++) {
+      remove_class(
+        id("history-wrap").querySelectorAll(arr1[i][4])[arr1[i][0]],
+        arr1[i][5]
+      );
+
+      add_class(
+        qsel(`[data-row="${arr1[i][2]}"][data-col="${arr1[i][3]}"]`),
+        arr1[i][1]
+      );
+    }
+  };
+
   const moveNum = (arr) => {
     let num;
 
@@ -313,31 +345,12 @@ doc_ready(() => {
     return move.toUpperCase();
   };
 
-  const prevHistory = (arr) => {
-    for (i = 0; i < arr.length; i++) {
-      add_class(
-        id("history-wrap").querySelectorAll(arr[i][4])[arr[i][0]],
-        arr[i][5]
+  const consoleHistory = (btn, arr1, arr2) => {
+    if (has_class(btn, "show")) {
+      console.log(
+        `Move ${moveNum(arr1)} with mark ${moveMark(arr1)} was undone.`
       );
-
-      remove_class(
-        qsel(`[data-row="${arr[i][2]}"][data-col="${arr[i][3]}"]`),
-        arr[i][1]
-      );
-    }
-  };
-
-  const nextHistory = (arr) => {
-    for (i = 0; i < arr.length; i++) {
-      remove_class(
-        id("history-wrap").querySelectorAll(arr[i][4])[arr[i][0]],
-        arr[i][5]
-      );
-
-      add_class(
-        qsel(`[data-row="${arr[i][2]}"][data-col="${arr[i][3]}"]`),
-        arr[i][1]
-      );
+      console.log(...arr2);
     }
   };
 
@@ -354,19 +367,8 @@ doc_ready(() => {
   };
 
   add_event(id("prev-btn"), "click", () => {
-    historyStorage.push(...history.splice(history.length - 1, 1));
-
-    prevHistory(historyStorage);
-
-    if (has_class(id("prev-btn"), "show")) {
-      console.log(
-        `Move ${moveNum(historyStorage)} with mark ${moveMark(
-          historyStorage
-        )} was undone.`
-      );
-      console.log(...history);
-    }
-
+    prevHistory(historyStorage, history);
+    consoleHistory(id("prev-btn"), historyStorage, history);
     showBtn(id("next-btn"), historyStorage, history);
     hideBtn(id("prev-btn"), history);
 
@@ -394,17 +396,8 @@ doc_ready(() => {
   });
 
   add_event(id("next-btn"), "click", () => {
-    history.push(...historyStorage.splice(historyStorage.length - 1, 1));
-
-    nextHistory(history);
-
-    if (has_class(id("next-btn"), "show")) {
-      console.log(
-        `Move ${moveNum(history)} with mark ${moveMark(history)} was redone.`
-      );
-      console.log(...history);
-    }
-
+    nextHistory(history, historyStorage);
+    consoleHistory(id("next-btn"), history, history);
     showBtn(id("prev-btn"), history, historyStorage);
     hideBtn(id("next-btn"), historyStorage);
 
