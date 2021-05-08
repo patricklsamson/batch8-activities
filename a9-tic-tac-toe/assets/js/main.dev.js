@@ -15,9 +15,7 @@ doc_ready(function () {
       i,
       history = [],
       historyCounter = 0,
-      historyStorage = [],
-      moves = [],
-      movesStorage = []; // counter = 0;
+      historyStorage = []; // counter = 0;
 
   var circleTurn = function circleTurn() {
     add_class(id("tboard"), "o");
@@ -165,7 +163,6 @@ doc_ready(function () {
       var element = create_el("p");
       id("history-wrap").appendChild(element);
       element.innerHTML = "".concat(historyCounter, " = ").concat(mark.toUpperCase(), " => ").concat(position());
-      moves.push([mark, row, col]);
 
       var scorer = function scorer(el) {
         setTimeout(function () {
@@ -183,7 +180,7 @@ doc_ready(function () {
       };
 
       var winMessage = function winMessage() {
-        if (moves.length == 9) {
+        if (history.length == 9) {
           id("tooltip").innerHTML = "It's a draw!";
           console.log("The players ended in a draw.");
           scorer("draw");
@@ -229,7 +226,7 @@ doc_ready(function () {
         winMessage();
       }
 
-      if (moves.length == 9) {
+      if (history.length == 9) {
         gameEnd();
         winMessage(); // id("tooltip").innerHTML = "It's a draw!";
         // console.log("The players ended in a draw.");
@@ -249,9 +246,7 @@ doc_ready(function () {
     board = [["", "", ""], ["", "", ""], ["", "", ""]];
     history = [];
     historyCounter = 0;
-    historyStorage = [];
-    moves = [];
-    movesStorage = []; // counter = 0;
+    historyStorage = []; // counter = 0;
 
     startGame();
     markChecker();
@@ -303,14 +298,38 @@ doc_ready(function () {
     return move.toUpperCase();
   };
 
+  var prevHistory = function prevHistory(arr) {
+    for (i = 0; i < arr.length; i++) {
+      add_class(id("history-wrap").querySelectorAll(arr[i][4])[arr[i][0]], arr[i][5]);
+      remove_class(qsel("[data-row=\"".concat(arr[i][2], "\"][data-col=\"").concat(arr[i][3], "\"]")), arr[i][1]);
+    }
+  };
+
+  var nextHistory = function nextHistory(arr) {
+    for (i = 0; i < arr.length; i++) {
+      remove_class(id("history-wrap").querySelectorAll(arr[i][4])[arr[i][0]], arr[i][5]);
+      add_class(qsel("[data-row=\"".concat(arr[i][2], "\"][data-col=\"").concat(arr[i][3], "\"]")), arr[i][1]);
+    }
+  };
+
+  var showBtn = function showBtn(btn, arr1, arr2) {
+    if (arr1.length < arr2.length) {
+      add_class(btn, "show");
+    }
+  };
+
+  var hideBtn = function hideBtn(btn, arr) {
+    if (arr.length == 0) {
+      remove_class(btn, "show");
+    }
+  };
+
   add_event(id("prev-btn"), "click", function () {
-    var _historyStorage, _movesStorage;
+    var _historyStorage;
 
     (_historyStorage = historyStorage).push.apply(_historyStorage, _toConsumableArray(history.splice(history.length - 1, 1)));
 
-    for (i = 0; i < historyStorage.length; i++) {
-      add_class(id("history-wrap").querySelectorAll(historyStorage[i][4])[historyStorage[i][0]], historyStorage[i][5]);
-    }
+    prevHistory(historyStorage);
 
     if (has_class(id("prev-btn"), "show")) {
       var _console;
@@ -320,19 +339,8 @@ doc_ready(function () {
       (_console = console).log.apply(_console, _toConsumableArray(history));
     }
 
-    (_movesStorage = movesStorage).push.apply(_movesStorage, _toConsumableArray(moves.splice(moves.length - 1, 1)));
-
-    for (i = 0; i < movesStorage.length; i++) {
-      remove_class(qsel("[data-row=\"".concat(movesStorage[i][1], "\"][data-col=\"").concat(movesStorage[i][2], "\"]")), movesStorage[i][0]);
-    }
-
-    if (movesStorage.length < moves.length) {
-      add_class(id("next-btn"), "show");
-    }
-
-    if (moves.length == 0) {
-      remove_class(id("prev-btn"), "show");
-    } // if (counter == moves.length) {
+    showBtn(id("next-btn"), historyStorage, history);
+    hideBtn(id("prev-btn"), history); // if (counter == moves.length) {
     //   counter--;
     // }
     // if (counter >= 0) {
@@ -353,16 +361,13 @@ doc_ready(function () {
     //     counter--;
     //   }
     // }
-
   });
   add_event(id("next-btn"), "click", function () {
-    var _history, _moves;
+    var _history;
 
     (_history = history).push.apply(_history, _toConsumableArray(historyStorage.splice(historyStorage.length - 1, 1)));
 
-    for (i = 0; i < history.length; i++) {
-      remove_class(id("history-wrap").querySelectorAll(history[i][4])[history[i][0]], history[i][5]);
-    }
+    nextHistory(history);
 
     if (has_class(id("next-btn"), "show")) {
       var _console2;
@@ -372,19 +377,8 @@ doc_ready(function () {
       (_console2 = console).log.apply(_console2, _toConsumableArray(history));
     }
 
-    (_moves = moves).push.apply(_moves, _toConsumableArray(movesStorage.splice(movesStorage.length - 1, 1)));
-
-    for (i = 0; i < moves.length; i++) {
-      add_class(qsel("[data-row=\"".concat(moves[i][1], "\"][data-col=\"").concat(moves[i][2], "\"]")), moves[i][0]);
-    }
-
-    if (moves.length < movesStorage.length) {
-      add_class(id("prev-btn"), "show");
-    }
-
-    if (movesStorage.length == 0) {
-      remove_class(id("next-btn"), "show");
-    } // if (counter < 0) {
+    showBtn(id("prev-btn"), history, historyStorage);
+    hideBtn(id("next-btn"), historyStorage); // if (counter < 0) {
     //   counter++;
     // }
     // if (counter < moves.length) {
@@ -405,7 +399,6 @@ doc_ready(function () {
     //     counter++;
     //   }
     // }
-
   });
   add_event(id("history"), "click", function () {
     toggle_class(id("board-wrap"), "hide");
