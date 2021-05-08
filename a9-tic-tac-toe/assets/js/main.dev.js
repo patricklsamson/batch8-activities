@@ -282,6 +282,27 @@ doc_ready(function () {
     id("o").innerHTML = "<q id='mark-holder2'>O</q> =&nbsp;";
     id("draw").innerHTML = "<q>Draws</q> =&nbsp;";
   });
+
+  var moveNum = function moveNum(arr) {
+    var num;
+
+    for (i = 0; i < arr.length; i++) {
+      num = arr[i][0] + 1;
+    }
+
+    return num;
+  };
+
+  var moveMark = function moveMark(arr) {
+    var move;
+
+    for (i = 0; i < arr.length; i++) {
+      move = arr[i][1];
+    }
+
+    return move.toUpperCase();
+  };
+
   add_event(id("prev-btn"), "click", function () {
     var _historyStorage, _movesStorage;
 
@@ -291,30 +312,10 @@ doc_ready(function () {
       add_class(id("history-wrap").querySelectorAll(historyStorage[i][4])[historyStorage[i][0]], historyStorage[i][5]);
     }
 
-    var moveNum = function moveNum() {
-      var num;
-
-      for (i = 0; i < historyStorage.length; i++) {
-        num = historyStorage[i][0] + 1;
-      }
-
-      return num;
-    };
-
-    var moveMark = function moveMark() {
-      var move;
-
-      for (i = 0; i < historyStorage.length; i++) {
-        move = historyStorage[i][1];
-      }
-
-      return move.toUpperCase();
-    };
-
     if (has_class(id("prev-btn"), "show")) {
       var _console;
 
-      console.log("Move ".concat(moveNum(), " with mark ").concat(moveMark(), " was undone."));
+      console.log("Move ".concat(moveNum(historyStorage), " with mark ").concat(moveMark(historyStorage), " was undone."));
 
       (_console = console).log.apply(_console, _toConsumableArray(history));
     }
@@ -363,30 +364,10 @@ doc_ready(function () {
       remove_class(id("history-wrap").querySelectorAll(history[i][4])[history[i][0]], history[i][5]);
     }
 
-    var moveNum = function moveNum() {
-      var num;
-
-      for (i = 0; i < history.length; i++) {
-        num = history[i][0] + 1;
-      }
-
-      return num;
-    };
-
-    var moveMark = function moveMark() {
-      var move;
-
-      for (i = 0; i < history.length; i++) {
-        move = history[i][1];
-      }
-
-      return move.toUpperCase();
-    };
-
     if (has_class(id("next-btn"), "show")) {
       var _console2;
 
-      console.log("Move ".concat(moveNum(), " with mark ").concat(moveMark(), " was redone."));
+      console.log("Move ".concat(moveNum(history), " with mark ").concat(moveMark(history), " was redone."));
 
       (_console2 = console).log.apply(_console2, _toConsumableArray(history));
     }
