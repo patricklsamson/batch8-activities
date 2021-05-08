@@ -297,11 +297,13 @@ doc_ready(() => {
     arr1.push(...arr2.splice(arr2.length - 1, 1));
 
     for (i = 0; i < arr1.length; i++) {
+      // HISTORY P INNER HTML ADD STRIKETHROUGH
       add_class(
         id("history-wrap").querySelectorAll(arr1[i][4])[arr1[i][0]],
         arr1[i][5]
       );
 
+      // REMOVE THE MARKS ONE BY ONE
       remove_class(
         qsel(`[data-row="${arr1[i][2]}"][data-col="${arr1[i][3]}"]`),
         arr1[i][1]
@@ -313,11 +315,13 @@ doc_ready(() => {
     arr1.push(...arr2.splice(arr2.length - 1, 1));
 
     for (i = 0; i < arr1.length; i++) {
+      // HISTORY P INNER HTML REMOVE STRIKETHROUGH
       remove_class(
         id("history-wrap").querySelectorAll(arr1[i][4])[arr1[i][0]],
         arr1[i][5]
       );
 
+      // PUT THE MARKS ONE BY ONE BACK IN THE BOARD AGAIN
       add_class(
         qsel(`[data-row="${arr1[i][2]}"][data-col="${arr1[i][3]}"]`),
         arr1[i][1]
