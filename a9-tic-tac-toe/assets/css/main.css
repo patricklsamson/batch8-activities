@@ -190,8 +190,11 @@ main {
 }
 
 .box {
-  cursor: pointer;
   position: relative;
+}
+
+.box.empty {
+  cursor: pointer;
 }
 
 .board.x .empty:hover:before,
