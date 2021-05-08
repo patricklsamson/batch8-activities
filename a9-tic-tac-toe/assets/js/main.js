@@ -9,9 +9,7 @@ doc_ready(() => {
     i,
     history = [],
     historyCounter = 0,
-    historyStorage = [],
-    moves = [],
-    movesStorage = [];
+    historyStorage = [];
   // counter = 0;
 
   const circleTurn = () => {
@@ -169,8 +167,6 @@ doc_ready(() => {
       id("history-wrap").appendChild(element);
       element.innerHTML = `${historyCounter} = ${mark.toUpperCase()} => ${position()}`;
 
-      moves.push([mark, row, col]);
-
       const scorer = (el) => {
         setTimeout(() => {
           let element = create_el("span");
@@ -188,7 +184,7 @@ doc_ready(() => {
       };
 
       const winMessage = () => {
-        if (moves.length == 9) {
+        if (history.length == 9) {
           id("tooltip").innerHTML = "It's a draw!";
           console.log("The players ended in a draw.");
           scorer("draw");
@@ -234,7 +230,7 @@ doc_ready(() => {
         winMessage();
       }
 
-      if (moves.length == 9) {
+      if (history.length == 9) {
         gameEnd();
         winMessage();
         // id("tooltip").innerHTML = "It's a draw!";
@@ -261,8 +257,6 @@ doc_ready(() => {
     history = [];
     historyCounter = 0;
     historyStorage = [];
-    moves = [];
-    movesStorage = [];
     // counter = 0;
 
     startGame();
@@ -319,17 +313,50 @@ doc_ready(() => {
     return move.toUpperCase();
   };
 
+  const prevHistory = (arr) => {
+    for (i = 0; i < arr.length; i++) {
+      add_class(
+        id("history-wrap").querySelectorAll(arr[i][4])[arr[i][0]],
+        arr[i][5]
+      );
+
+      remove_class(
+        qsel(`[data-row="${arr[i][2]}"][data-col="${arr[i][3]}"]`),
+        arr[i][1]
+      );
+    }
+  };
+
+  const nextHistory = (arr) => {
+    for (i = 0; i < arr.length; i++) {
+      remove_class(
+        id("history-wrap").querySelectorAll(arr[i][4])[arr[i][0]],
+        arr[i][5]
+      );
+
+      add_class(
+        qsel(`[data-row="${arr[i][2]}"][data-col="${arr[i][3]}"]`),
+        arr[i][1]
+      );
+    }
+  };
+
+  const showBtn = (btn, arr1, arr2) => {
+    if (arr1.length < arr2.length) {
+      add_class(btn, "show");
+    }
+  };
+
+  const hideBtn = (btn, arr) => {
+    if (arr.length == 0) {
+      remove_class(btn, "show");
+    }
+  };
+
   add_event(id("prev-btn"), "click", () => {
     historyStorage.push(...history.splice(history.length - 1, 1));
 
-    for (i = 0; i < historyStorage.length; i++) {
-      add_class(
-        id("history-wrap").querySelectorAll(historyStorage[i][4])[
-          historyStorage[i][0]
-        ],
-        historyStorage[i][5]
-      );
-    }
+    prevHistory(historyStorage);
 
     if (has_class(id("prev-btn"), "show")) {
       console.log(
@@ -340,24 +367,8 @@ doc_ready(() => {
       console.log(...history);
     }
 
-    movesStorage.push(...moves.splice(moves.length - 1, 1));
-
-    for (i = 0; i < movesStorage.length; i++) {
-      remove_class(
-        qsel(
-          `[data-row="${movesStorage[i][1]}"][data-col="${movesStorage[i][2]}"]`
-        ),
-        movesStorage[i][0]
-      );
-    }
-
-    if (movesStorage.length < moves.length) {
-      add_class(id("next-btn"), "show");
-    }
-
-    if (moves.length == 0) {
-      remove_class(id("prev-btn"), "show");
-    }
+    showBtn(id("next-btn"), historyStorage, history);
+    hideBtn(id("prev-btn"), history);
 
     // if (counter == moves.length) {
     //   counter--;
@@ -385,12 +396,7 @@ doc_ready(() => {
   add_event(id("next-btn"), "click", () => {
     history.push(...historyStorage.splice(historyStorage.length - 1, 1));
 
-    for (i = 0; i < history.length; i++) {
-      remove_class(
-        id("history-wrap").querySelectorAll(history[i][4])[history[i][0]],
-        history[i][5]
-      );
-    }
+    nextHistory(history);
 
     if (has_class(id("next-btn"), "show")) {
       console.log(
@@ -399,22 +405,8 @@ doc_ready(() => {
       console.log(...history);
     }
 
-    moves.push(...movesStorage.splice(movesStorage.length - 1, 1));
-
-    for (i = 0; i < moves.length; i++) {
-      add_class(
-        qsel(`[data-row="${moves[i][1]}"][data-col="${moves[i][2]}"]`),
-        moves[i][0]
-      );
-    }
-
-    if (moves.length < movesStorage.length) {
-      add_class(id("prev-btn"), "show");
-    }
-
-    if (movesStorage.length == 0) {
-      remove_class(id("next-btn"), "show");
-    }
+    showBtn(id("prev-btn"), history, historyStorage);
+    hideBtn(id("next-btn"), historyStorage);
 
     // if (counter < 0) {
     //   counter++;
