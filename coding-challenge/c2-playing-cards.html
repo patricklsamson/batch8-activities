@@ -177,7 +177,7 @@
           arrangedSuitDisplay
         );
         console.log(
-          `Number of Cards: ${shuffledDeck.length} \n Deal a card or five cards for poker now!`
+          `Number of Cards: ${shuffledDeck.length}\nDeal a card or five cards for poker now!`
         );
       };
 
@@ -188,7 +188,7 @@
         () => {
           if (shuffledDeck.length != 0) {
             console.log(
-              `Number of Cards: ${shuffledDeck.length - 1} \n Dealt Card: ${
+              `Number of Cards: ${shuffledDeck.length - 1}\nDealt Card: ${
                 shuffledDeck[shuffledDeck.length - 1].value.name
               } of ${shuffledDeck[shuffledDeck.length - 1].suit.name}`
             );
@@ -209,7 +209,7 @@
               card5 = shuffledDeck[shuffledDeck.length - 5];
 
             console.log(
-              `Number of Cards: ${shuffledDeck.length - 5} \n Dealt Cards: ${
+              `Number of Cards: ${shuffledDeck.length - 5}\nDealt Cards: ${
                 card1.value.name
               } of ${card1.suit.name}, ${card2.value.name} of ${
                 card2.suit.name
