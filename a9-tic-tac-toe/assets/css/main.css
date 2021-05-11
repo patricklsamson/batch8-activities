@@ -177,16 +177,9 @@ main {
 }
 
 .board {
-  display: -ms-grid;
-  display: grid;
   grid-gap: 2vmin;
   gap: 2vmin;
   width: 100%;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -moz-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -ms-grid-rows: (15vmin) [3];
   -ms-grid-columns: (15vmin) [3];
   grid-template: repeat(3, 15vmin) / repeat(3, 15vmin);
