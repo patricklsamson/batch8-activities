@@ -655,8 +655,6 @@ label[for="tooltip"] {
 }
 
 .chess-row {
-  display: -ms-grid;
-  display: grid;
   -ms-grid-rows: 10vmin;
   -ms-grid-columns: (10vmin) [8];
   grid-template: 10vmin / repeat(8, 10vmin);
