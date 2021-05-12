@@ -329,7 +329,18 @@ doc_ready(() => {
       };
 
       const winMessage = () => {
-        if (history.length == 9) {
+        // ADDED OBJECT EXERCISE
+        // if (history.length == 9) {
+        //   id("tooltip").innerHTML = "It's a draw!";
+        //   console.log("The players ended in a draw.");
+        //   scorer("draw");
+        // } else {
+        //   id("tooltip").innerHTML = `Player ${mark.toUpperCase()} wins!`;
+        //   console.log(`Player ${mark.toUpperCase()} is the winner!`);
+        //   scorer(mark);
+        // }
+
+        if (historyObj.history.length == 9) {
           id("tooltip").innerHTML = "It's a draw!";
           console.log("The players ended in a draw.");
           scorer("draw");
@@ -338,6 +349,7 @@ doc_ready(() => {
           console.log(`Player ${mark.toUpperCase()} is the winner!`);
           scorer(mark);
         }
+        // ADDED OBJECT EXERCISE
       };
 
       for (let row = 0; row < board.length; row++) {
@@ -375,10 +387,17 @@ doc_ready(() => {
         winMessage();
       }
 
-      if (history.length == 9) {
+      // ADDED OBJECT EXERCISE
+      // if (history.length == 9) {
+      //   gameEnd();
+      //   winMessage();
+      // }
+
+      if (historyObj.history.length == 9) {
         gameEnd();
         winMessage();
       }
+      // ADDED OBJECT EXERCISE
     }
 
     remove_event(e.target || e.srcElement, "click", handler);
