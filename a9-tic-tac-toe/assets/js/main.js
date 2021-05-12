@@ -352,6 +352,7 @@ doc_ready(() => {
         // ADDED OBJECT EXERCISE
       };
 
+      // HORIZONTAL WINNING COMBOS
       for (let row = 0; row < board.length; row++) {
         let a = board[row][0],
           b = board[row][1],
@@ -364,6 +365,7 @@ doc_ready(() => {
         }
       }
 
+      // VERTICAL WINNING COMBOS
       for (let col = 0; col < board.length; col++) {
         let a = board[0][col],
           b = board[1][col],
@@ -376,6 +378,7 @@ doc_ready(() => {
         }
       }
 
+      // DIAGONAL WINNING COMBOS
       let a = board[0][0],
         b = board[2][2],
         c = board[0][2],
