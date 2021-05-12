@@ -1,4 +1,5 @@
 doc_ready(() => {
+  // ADDED OBJECT EXERCISE
   let circle,
     endGame = false,
     board = [
@@ -6,124 +7,130 @@ doc_ready(() => {
       ["", "", ""],
       ["", "", ""],
     ],
-    i;
-  // history = [],
-  // historyCounter = 0,
-  // historyStorage = [];
-  // counter = 0;
+    i,
+    // history = [],
+    // historyCounter = 0,
+    // historyStorage = [];
 
-  // ADDED OBJECT EXERCISE
-  let historyObj = {
-    history: [],
-    historyCounter: 0,
-    historyStorage: [],
-    prevHistory: function () {
-      let moveNum, moveMark;
+    // OLD SOLUTION
+    // counter = 0;
 
-      this.historyStorage.push(
-        ...this.history.splice(this.history.length - 1, 1)
-      );
+    historyObj = {
+      history: [],
+      historyCounter: 0,
+      historyStorage: [],
+      prevHistory: function () {
+        let moveNum, moveMark;
 
-      for (i = 0; i < this.historyStorage.length; i++) {
-        // HISTORY P INNER HTML ADD STRIKETHROUGH
-        add_class(
-          id("history-wrap").querySelectorAll(this.historyStorage[i].inner)[
-            this.history.length
-          ],
-          this.historyStorage[i].delete
+        // PUSHING THE ITEMS OF MAIN ARRAY TO THE TEMPORARY ARRAY
+        this.historyStorage.push(
+          ...this.history.splice(this.history.length - 1, 1)
         );
 
-        // REMOVE THE MARKS ONE BY ONE
-        remove_class(
-          qsel(
-            `[data-row="${this.historyStorage[i].rowPos}"][data-col="${this.historyStorage[i].colPos}"]`
-          ),
-          this.historyStorage[i].marker
-        );
-      }
+        for (i = 0; i < this.historyStorage.length; i++) {
+          // HISTORY P INNER HTML ADD STRIKETHROUGH
+          add_class(
+            id("history-wrap").querySelectorAll(this.historyStorage[i].inner)[
+              this.history.length
+            ],
+            this.historyStorage[i].delete
+          );
 
-      for (i = 0; i < this.historyStorage.length; i++) {
-        moveNum =
-          this.historyCounter -
-          this.historyStorage.indexOf(this.historyStorage[i]);
-      }
+          // REMOVE THE MARKS ONE BY ONE
+          remove_class(
+            qsel(
+              `[data-row="${this.historyStorage[i].rowPos}"][data-col="${this.historyStorage[i].colPos}"]`
+            ),
+            this.historyStorage[i].marker
+          );
+        }
 
-      for (i = 0; i < this.historyStorage.length; i++) {
-        moveMark = this.historyStorage[i].marker;
-      }
+        // CONSOLE LOG OF HISTORY PER BUTTON PRESS
+        for (i = 0; i < this.historyStorage.length; i++) {
+          moveNum =
+            this.historyCounter -
+            this.historyStorage.indexOf(this.historyStorage[i]);
+        }
 
-      if (has_class(id("prev-btn"), "show")) {
-        console.log(
-          `Move ${moveNum} with mark ${moveMark.toUpperCase()} was undone.`
-        );
+        for (i = 0; i < this.historyStorage.length; i++) {
+          moveMark = this.historyStorage[i].marker;
+        }
 
-        console.log(...this.historyStorage);
-        console.log(...this.history);
-      }
+        if (has_class(id("prev-btn"), "show")) {
+          console.log(
+            `Move ${moveNum} with mark ${moveMark.toUpperCase()} was undone.`
+          );
 
-      // SHOW NEXT BUTTON
-      if (this.historyStorage.length < this.history.length) {
-        add_class(id("next-btn"), "show");
-      }
+          console.log(...this.historyStorage);
+          console.log(...this.history);
+        }
 
-      // HIDE PREVIOUS BUTTON
-      if (this.history.length == 0) {
-        remove_class(id("prev-btn"), "show");
-      }
-    },
-    nextHistory: function () {
-      let moveNum, moveMark;
+        // SHOW NEXT BUTTON
+        if (this.historyStorage.length < this.history.length) {
+          add_class(id("next-btn"), "show");
+        }
 
-      this.history.push(
-        ...this.historyStorage.splice(this.historyStorage.length - 1, 1)
-      );
+        // HIDE PREVIOUS BUTTON
+        if (this.history.length == 0) {
+          remove_class(id("prev-btn"), "show");
+        }
+      },
+      nextHistory: function () {
+        let moveNum, moveMark;
 
-      for (i = 0; i < this.history.length; i++) {
-        // HISTORY P INNER HTML REMOVE STRIKETHROUGH
-        remove_class(
-          id("history-wrap").querySelectorAll(this.history[i].inner)[
-            this.history.indexOf(this.history[i])
-          ],
-          this.history[i].delete
-        );
-
-        // PUT THE MARKS ONE BY ONE BACK IN THE BOARD AGAIN
-        add_class(
-          qsel(
-            `[data-row="${this.history[i].rowPos}"][data-col="${this.history[i].colPos}"]`
-          ),
-          this.history[i].marker
-        );
-      }
-
-      for (i = 0; i < this.history.length; i++) {
-        moveNum = this.history.indexOf(this.history[i]) + 1;
-      }
-
-      for (i = 0; i < this.history.length; i++) {
-        moveMark = this.history[i].marker;
-      }
-
-      if (has_class(id("next-btn"), "show")) {
-        console.log(
-          `Move ${moveNum} with mark ${moveMark.toUpperCase()} was redone.`
+        // PUSHING THE ITEMS OF TEMPORARY ARRAY BACK TO THE MAIN ARRAY
+        this.history.push(
+          ...this.historyStorage.splice(this.historyStorage.length - 1, 1)
         );
 
-        console.log(...this.history);
-        console.log(...this.historyStorage);
-      }
+        for (i = 0; i < this.history.length; i++) {
+          // HISTORY P INNER HTML REMOVE STRIKETHROUGH
+          remove_class(
+            id("history-wrap").querySelectorAll(this.history[i].inner)[
+              this.history.indexOf(this.history[i])
+            ],
+            this.history[i].delete
+          );
 
-      // SHOW PREVIOUS BUTTON
-      if (this.history.length < this.historyStorage.length) {
-        add_class(id("prev-btn"), "show");
-      }
+          // PUT THE MARKS ONE BY ONE BACK IN THE BOARD AGAIN
+          add_class(
+            qsel(
+              `[data-row="${this.history[i].rowPos}"][data-col="${this.history[i].colPos}"]`
+            ),
+            this.history[i].marker
+          );
+        }
 
-      // HIDE NEXT BUTTON
-      if (this.historyStorage.length == 0) {
-        remove_class(id("next-btn"), "show");
-      }
-    },
-  };
+        // CONSOLE LOG OF HISTORY PER BUTTON PRESS
+        for (i = 0; i < this.history.length; i++) {
+          moveNum = this.history.indexOf(this.history[i]) + 1;
+        }
+
+        for (i = 0; i < this.history.length; i++) {
+          moveMark = this.history[i].marker;
+        }
+
+        if (has_class(id("next-btn"), "show")) {
+          console.log(
+            `Move ${moveNum} with mark ${moveMark.toUpperCase()} was redone.`
+          );
+
+          console.log(...this.history);
+          console.log(...this.historyStorage);
+        }
+
+        // SHOW PREVIOUS BUTTON
+        if (this.history.length < this.historyStorage.length) {
+          add_class(id("prev-btn"), "show");
+        }
+
+        // HIDE NEXT BUTTON
+        if (this.historyStorage.length == 0) {
+          remove_class(id("next-btn"), "show");
+        }
+      },
+    };
+
   // ADDED OBJECT EXERCISE
 
   const circleTurn = () => {
@@ -201,6 +208,7 @@ doc_ready(() => {
         crossTurn();
       }
 
+      // OLD SOLUTION
       // moves[counter] = [counter, mark, row, col];
       // counter++;
 
@@ -220,6 +228,7 @@ doc_ready(() => {
       // ADDED OBJECT EXERCISE
 
       const position = () => {
+        // OLD SOLUTION
         // if (row == 0 && col == 0) {
         //   return "top leftmost box";
         // } else if (row == 0 && col == 1) {
@@ -387,14 +396,18 @@ doc_ready(() => {
       ["", "", ""],
     ];
 
+    // ADDED OBJECT EXERCISE
     // history = [];
     // historyCounter = 0;
     // historyStorage = [];
+
+    // OLD SOLUTION
     // counter = 0;
 
     historyObj.history = [];
     historyObj.historyCounter = 0;
     historyObj.historyStorage = [];
+    // ADDED OBJECT EXERCISE
 
     startGame();
     markChecker();
@@ -432,6 +445,7 @@ doc_ready(() => {
   // const prevHistory = (arr1, arr2) => {
   //   let moveNum, moveMark;
 
+  //   // PUSHING THE ITEMS OF MAIN ARRAY TO THE TEMPORARY ARRAY
   //   arr1.push(...arr2.splice(arr2.length - 1, 1));
 
   //   for (i = 0; i < arr1.length; i++) {
@@ -448,6 +462,7 @@ doc_ready(() => {
   //     );
   //   }
 
+  //   // CONSOLE LOG OF HISTORY PER BUTTON PRESS
   //   for (i = 0; i < arr1.length; i++) {
   //     moveNum = arr1[i][0] + 1;
   //   }
@@ -467,6 +482,9 @@ doc_ready(() => {
   // };
 
   // const nextHistory = (arr1, arr2) => {
+  //   let moveNum, moveMark;
+
+  //   // PUSHING THE ITEMS OF TEMPORARY ARRAY BACK TO THE MAIN ARRAY
   //   arr1.push(...arr2.splice(arr2.length - 1, 1));
 
   //   for (i = 0; i < arr1.length; i++) {
@@ -483,8 +501,7 @@ doc_ready(() => {
   //     );
   //   }
 
-  //   let moveNum, moveMark;
-
+  //   // CONSOLE LOG OF HISTORY PER BUTTON PRESS
   //   for (i = 0; i < arr1.length; i++) {
   //     moveNum = arr1[i][0] + 1;
   //   }
@@ -516,14 +533,18 @@ doc_ready(() => {
   // };
 
   add_event(id("prev-btn"), "click", () => {
+    // ADDED OBJECT EXERCISE
     // prevHistory(historyStorage, history);
     // showBtn(id("next-btn"), historyStorage, history);
     // hideBtn(id("prev-btn"), history);
     historyObj.prevHistory();
+    // ADDED OBJECT EXERCISE
 
+    // OLD SOLUTION
     // if (counter == moves.length) {
     //   counter--;
     // }
+
     // if (counter >= 0) {
     //   add_class(id("next-btn"), "show");
     //   remove_class(
@@ -536,6 +557,7 @@ doc_ready(() => {
     //     ),
     //     moves[counter][1]
     //   );
+
     //   if (counter == 0) {
     //     remove_class(id("prev-btn"), "show");
     //   } else {
@@ -545,14 +567,18 @@ doc_ready(() => {
   });
 
   add_event(id("next-btn"), "click", () => {
+    // ADDED OBJECT EXERCISE
     // nextHistory(history, historyStorage);
     // showBtn(id("prev-btn"), history, historyStorage);
     // hideBtn(id("next-btn"), historyStorage);
     historyObj.nextHistory();
+    // ADDED OBJECT EXERCISE
 
+    // OLD SOLUTION
     // if (counter < 0) {
     //   counter++;
     // }
+
     // if (counter < moves.length) {
     //   add_class(id("prev-btn"), "show");
     //   add_class(
@@ -565,6 +591,7 @@ doc_ready(() => {
     //     ),
     //     moves[counter][1]
     //   );
+
     //   if (counter == moves.length - 1) {
     //     remove_class(id("next-btn"), "show");
     //   } else {
