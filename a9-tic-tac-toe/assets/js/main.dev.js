@@ -9,23 +9,24 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 doc_ready(function () {
+  // ADDED OBJECT EXERCISE
   var circle,
       endGame = false,
       board = [["", "", ""], ["", "", ""], ["", "", ""]],
-      i; // history = [],
+      i,
+      // history = [],
   // historyCounter = 0,
   // historyStorage = [];
+  // OLD SOLUTION
   // counter = 0;
-  // ADDED OBJECT EXERCISE
-
-  var historyObj = {
+  historyObj = {
     history: [],
     historyCounter: 0,
     historyStorage: [],
     prevHistory: function prevHistory() {
       var _this$historyStorage;
 
-      var moveNum, moveMark;
+      var moveNum, moveMark; // PUSHING THE ITEMS OF MAIN ARRAY TO THE TEMPORARY ARRAY
 
       (_this$historyStorage = this.historyStorage).push.apply(_this$historyStorage, _toConsumableArray(this.history.splice(this.history.length - 1, 1)));
 
@@ -34,7 +35,8 @@ doc_ready(function () {
         add_class(id("history-wrap").querySelectorAll(this.historyStorage[i].inner)[this.history.length], this.historyStorage[i]["delete"]); // REMOVE THE MARKS ONE BY ONE
 
         remove_class(qsel("[data-row=\"".concat(this.historyStorage[i].rowPos, "\"][data-col=\"").concat(this.historyStorage[i].colPos, "\"]")), this.historyStorage[i].marker);
-      }
+      } // CONSOLE LOG OF HISTORY PER BUTTON PRESS
+
 
       for (i = 0; i < this.historyStorage.length; i++) {
         moveNum = this.historyCounter - this.historyStorage.indexOf(this.historyStorage[i]);
@@ -67,7 +69,7 @@ doc_ready(function () {
     nextHistory: function nextHistory() {
       var _this$history;
 
-      var moveNum, moveMark;
+      var moveNum, moveMark; // PUSHING THE ITEMS OF TEMPORARY ARRAY BACK TO THE MAIN ARRAY
 
       (_this$history = this.history).push.apply(_this$history, _toConsumableArray(this.historyStorage.splice(this.historyStorage.length - 1, 1)));
 
@@ -76,7 +78,8 @@ doc_ready(function () {
         remove_class(id("history-wrap").querySelectorAll(this.history[i].inner)[this.history.indexOf(this.history[i])], this.history[i]["delete"]); // PUT THE MARKS ONE BY ONE BACK IN THE BOARD AGAIN
 
         add_class(qsel("[data-row=\"".concat(this.history[i].rowPos, "\"][data-col=\"").concat(this.history[i].colPos, "\"]")), this.history[i].marker);
-      }
+      } // CONSOLE LOG OF HISTORY PER BUTTON PRESS
+
 
       for (i = 0; i < this.history.length; i++) {
         moveNum = this.history.indexOf(this.history[i]) + 1;
@@ -179,7 +182,8 @@ doc_ready(function () {
         circleTurn();
       } else {
         crossTurn();
-      } // moves[counter] = [counter, mark, row, col];
+      } // OLD SOLUTION
+      // moves[counter] = [counter, mark, row, col];
       // counter++;
       // ADDED OBJECT EXERCISE
       // history[historyCounter] = [historyCounter, mark, row, col, "p", "strike"];
@@ -196,6 +200,7 @@ doc_ready(function () {
       historyObj.historyCounter++; // ADDED OBJECT EXERCISE
 
       var position = function position() {
+        // OLD SOLUTION
         // if (row == 0 && col == 0) {
         //   return "top leftmost box";
         // } else if (row == 0 && col == 1) {
@@ -345,14 +350,17 @@ doc_ready(function () {
 
   var reset = function reset() {
     endGame = false;
-    board = [["", "", ""], ["", "", ""], ["", "", ""]]; // history = [];
+    board = [["", "", ""], ["", "", ""], ["", "", ""]]; // ADDED OBJECT EXERCISE
+    // history = [];
     // historyCounter = 0;
     // historyStorage = [];
+    // OLD SOLUTION
     // counter = 0;
 
     historyObj.history = [];
     historyObj.historyCounter = 0;
-    historyObj.historyStorage = [];
+    historyObj.historyStorage = []; // ADDED OBJECT EXERCISE
+
     startGame();
     markChecker();
     console.clear();
@@ -382,6 +390,7 @@ doc_ready(function () {
     id("draw").innerHTML = "<q>Draws</q> =&nbsp;";
   }); // const prevHistory = (arr1, arr2) => {
   //   let moveNum, moveMark;
+  //   // PUSHING THE ITEMS OF MAIN ARRAY TO THE TEMPORARY ARRAY
   //   arr1.push(...arr2.splice(arr2.length - 1, 1));
   //   for (i = 0; i < arr1.length; i++) {
   //     // HISTORY P INNER HTML ADD STRIKETHROUGH
@@ -395,6 +404,7 @@ doc_ready(function () {
   //       arr1[i][1]
   //     );
   //   }
+  //   // CONSOLE LOG OF HISTORY PER BUTTON PRESS
   //   for (i = 0; i < arr1.length; i++) {
   //     moveNum = arr1[i][0] + 1;
   //   }
@@ -410,6 +420,8 @@ doc_ready(function () {
   //   }
   // };
   // const nextHistory = (arr1, arr2) => {
+  //   let moveNum, moveMark;
+  //   // PUSHING THE ITEMS OF TEMPORARY ARRAY BACK TO THE MAIN ARRAY
   //   arr1.push(...arr2.splice(arr2.length - 1, 1));
   //   for (i = 0; i < arr1.length; i++) {
   //     // HISTORY P INNER HTML REMOVE STRIKETHROUGH
@@ -423,7 +435,7 @@ doc_ready(function () {
   //       arr1[i][1]
   //     );
   //   }
-  //   let moveNum, moveMark;
+  //   // CONSOLE LOG OF HISTORY PER BUTTON PRESS
   //   for (i = 0; i < arr1.length; i++) {
   //     moveNum = arr1[i][0] + 1;
   //   }
@@ -450,10 +462,13 @@ doc_ready(function () {
   // };
 
   add_event(id("prev-btn"), "click", function () {
+    // ADDED OBJECT EXERCISE
     // prevHistory(historyStorage, history);
     // showBtn(id("next-btn"), historyStorage, history);
     // hideBtn(id("prev-btn"), history);
-    historyObj.prevHistory(); // if (counter == moves.length) {
+    historyObj.prevHistory(); // ADDED OBJECT EXERCISE
+    // OLD SOLUTION
+    // if (counter == moves.length) {
     //   counter--;
     // }
     // if (counter >= 0) {
@@ -476,10 +491,13 @@ doc_ready(function () {
     // }
   });
   add_event(id("next-btn"), "click", function () {
+    // ADDED OBJECT EXERCISE
     // nextHistory(history, historyStorage);
     // showBtn(id("prev-btn"), history, historyStorage);
     // hideBtn(id("next-btn"), historyStorage);
-    historyObj.nextHistory(); // if (counter < 0) {
+    historyObj.nextHistory(); // ADDED OBJECT EXERCISE
+    // OLD SOLUTION
+    // if (counter < 0) {
     //   counter++;
     // }
     // if (counter < moves.length) {
