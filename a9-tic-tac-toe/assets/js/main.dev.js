@@ -289,7 +289,17 @@ doc_ready(function () {
       };
 
       var winMessage = function winMessage() {
-        if (history.length == 9) {
+        // ADDED OBJECT EXERCISE
+        // if (history.length == 9) {
+        //   id("tooltip").innerHTML = "It's a draw!";
+        //   console.log("The players ended in a draw.");
+        //   scorer("draw");
+        // } else {
+        //   id("tooltip").innerHTML = `Player ${mark.toUpperCase()} wins!`;
+        //   console.log(`Player ${mark.toUpperCase()} is the winner!`);
+        //   scorer(mark);
+        // }
+        if (historyObj.history.length == 9) {
           id("tooltip").innerHTML = "It's a draw!";
           console.log("The players ended in a draw.");
           scorer("draw");
@@ -297,7 +307,8 @@ doc_ready(function () {
           id("tooltip").innerHTML = "Player ".concat(mark.toUpperCase(), " wins!");
           console.log("Player ".concat(mark.toUpperCase(), " is the winner!"));
           scorer(mark);
-        }
+        } // ADDED OBJECT EXERCISE
+
       };
 
       for (var _row = 0; _row < board.length; _row++) {
@@ -333,12 +344,18 @@ doc_ready(function () {
       if (a && a === b && b === f || c && c === d && d == f) {
         gameEnd();
         winMessage();
-      }
+      } // ADDED OBJECT EXERCISE
+      // if (history.length == 9) {
+      //   gameEnd();
+      //   winMessage();
+      // }
 
-      if (history.length == 9) {
+
+      if (historyObj.history.length == 9) {
         gameEnd();
         winMessage();
-      }
+      } // ADDED OBJECT EXERCISE
+
     }
 
     remove_event(e.target || e.srcElement, "click", handler);
