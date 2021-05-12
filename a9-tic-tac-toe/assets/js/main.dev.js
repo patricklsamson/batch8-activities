@@ -309,7 +309,8 @@ doc_ready(function () {
           scorer(mark);
         } // ADDED OBJECT EXERCISE
 
-      };
+      }; // HORIZONTAL WINNING COMBOS
+
 
       for (var _row = 0; _row < board.length; _row++) {
         var _a = board[_row][0],
@@ -321,7 +322,8 @@ doc_ready(function () {
           winMessage();
           return;
         }
-      }
+      } // VERTICAL WINNING COMBOS
+
 
       for (var _col = 0; _col < board.length; _col++) {
         var _a2 = board[0][_col],
@@ -333,7 +335,8 @@ doc_ready(function () {
           winMessage();
           return;
         }
-      }
+      } // DIAGONAL WINNING COMBOS
+
 
       var a = board[0][0],
           b = board[2][2],
