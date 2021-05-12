@@ -12,10 +12,101 @@ doc_ready(function () {
   var circle,
       endGame = false,
       board = [["", "", ""], ["", "", ""], ["", "", ""]],
-      i,
-      history = [],
-      historyCounter = 0,
-      historyStorage = []; // counter = 0;
+      i; // history = [],
+  // historyCounter = 0,
+  // historyStorage = [];
+  // counter = 0;
+  // ADDED OBJECT EXERCISE
+
+  var historyObj = {
+    history: [],
+    historyCounter: 0,
+    historyStorage: [],
+    prevHistory: function prevHistory() {
+      var _this$historyStorage;
+
+      var moveNum, moveMark;
+
+      (_this$historyStorage = this.historyStorage).push.apply(_this$historyStorage, _toConsumableArray(this.history.splice(this.history.length - 1, 1)));
+
+      for (i = 0; i < this.historyStorage.length; i++) {
+        // HISTORY P INNER HTML ADD STRIKETHROUGH
+        add_class(id("history-wrap").querySelectorAll(this.historyStorage[i].inner)[this.history.length], this.historyStorage[i]["delete"]); // REMOVE THE MARKS ONE BY ONE
+
+        remove_class(qsel("[data-row=\"".concat(this.historyStorage[i].rowPos, "\"][data-col=\"").concat(this.historyStorage[i].colPos, "\"]")), this.historyStorage[i].marker);
+      }
+
+      for (i = 0; i < this.historyStorage.length; i++) {
+        moveNum = this.historyCounter - this.historyStorage.indexOf(this.historyStorage[i]);
+      }
+
+      for (i = 0; i < this.historyStorage.length; i++) {
+        moveMark = this.historyStorage[i].marker;
+      }
+
+      if (has_class(id("prev-btn"), "show")) {
+        var _console, _console2;
+
+        console.log("Move ".concat(moveNum, " with mark ").concat(moveMark.toUpperCase(), " was undone."));
+
+        (_console = console).log.apply(_console, _toConsumableArray(this.historyStorage));
+
+        (_console2 = console).log.apply(_console2, _toConsumableArray(this.history));
+      } // SHOW NEXT BUTTON
+
+
+      if (this.historyStorage.length < this.history.length) {
+        add_class(id("next-btn"), "show");
+      } // HIDE PREVIOUS BUTTON
+
+
+      if (this.history.length == 0) {
+        remove_class(id("prev-btn"), "show");
+      }
+    },
+    nextHistory: function nextHistory() {
+      var _this$history;
+
+      var moveNum, moveMark;
+
+      (_this$history = this.history).push.apply(_this$history, _toConsumableArray(this.historyStorage.splice(this.historyStorage.length - 1, 1)));
+
+      for (i = 0; i < this.history.length; i++) {
+        // HISTORY P INNER HTML REMOVE STRIKETHROUGH
+        remove_class(id("history-wrap").querySelectorAll(this.history[i].inner)[this.history.indexOf(this.history[i])], this.history[i]["delete"]); // PUT THE MARKS ONE BY ONE BACK IN THE BOARD AGAIN
+
+        add_class(qsel("[data-row=\"".concat(this.history[i].rowPos, "\"][data-col=\"").concat(this.history[i].colPos, "\"]")), this.history[i].marker);
+      }
+
+      for (i = 0; i < this.history.length; i++) {
+        moveNum = this.history.indexOf(this.history[i]) + 1;
+      }
+
+      for (i = 0; i < this.history.length; i++) {
+        moveMark = this.history[i].marker;
+      }
+
+      if (has_class(id("next-btn"), "show")) {
+        var _console3, _console4;
+
+        console.log("Move ".concat(moveNum, " with mark ").concat(moveMark.toUpperCase(), " was redone."));
+
+        (_console3 = console).log.apply(_console3, _toConsumableArray(this.history));
+
+        (_console4 = console).log.apply(_console4, _toConsumableArray(this.historyStorage));
+      } // SHOW PREVIOUS BUTTON
+
+
+      if (this.history.length < this.historyStorage.length) {
+        add_class(id("prev-btn"), "show");
+      } // HIDE NEXT BUTTON
+
+
+      if (this.historyStorage.length == 0) {
+        remove_class(id("next-btn"), "show");
+      }
+    }
+  }; // ADDED OBJECT EXERCISE
 
   var circleTurn = function circleTurn() {
     add_class(id("tboard"), "o");
@@ -90,10 +181,19 @@ doc_ready(function () {
         crossTurn();
       } // moves[counter] = [counter, mark, row, col];
       // counter++;
+      // ADDED OBJECT EXERCISE
+      // history[historyCounter] = [historyCounter, mark, row, col, "p", "strike"];
+      // historyCounter++;
 
 
-      history[historyCounter] = [historyCounter, mark, row, col, "p", "strike"];
-      historyCounter++;
+      historyObj.history[historyObj.historyCounter] = {
+        marker: mark,
+        rowPos: row,
+        colPos: col,
+        inner: "p",
+        "delete": "strike"
+      };
+      historyObj.historyCounter++; // ADDED OBJECT EXERCISE
 
       var position = function position() {
         // if (row == 0 && col == 0) {
@@ -156,12 +256,17 @@ doc_ready(function () {
         }
 
         return text;
-      };
+      }; // ADDED OBJECT EXERCISE
 
-      console.log("Move ".concat(historyCounter, ": Player ").concat(mark.toUpperCase(), " puts their mark on the ").concat(position(), " box."));
+
+      console.log( // `Move ${historyCounter}: Player ${mark.toUpperCase()} puts their mark on the ${position()} box.`
+      "Move ".concat(historyObj.historyCounter, ": Player ").concat(historyObj.history[historyObj.historyCounter - 1].marker.toUpperCase(), " puts their mark on the ").concat(position(), " box.")); // ADDED OBJECT EXERCISE
+
       var element = create_el("p");
-      id("history-wrap").appendChild(element);
-      element.innerHTML = "".concat(historyCounter, " = ").concat(mark.toUpperCase(), " => ").concat(position());
+      id("history-wrap").appendChild(element); // ADDED OBJECT EXERCISE
+      // element.innerHTML = `${historyCounter} = ${mark.toUpperCase()} => ${position()}`;
+
+      element.innerHTML = "".concat(historyObj.historyCounter, " = ").concat(mark.toUpperCase(), " => ").concat(position()); // ADDED OBJECT EXERCISE
 
       var scorer = function scorer(el) {
         setTimeout(function () {
@@ -227,9 +332,7 @@ doc_ready(function () {
 
       if (history.length == 9) {
         gameEnd();
-        winMessage(); // id("tooltip").innerHTML = "It's a draw!";
-        // console.log("The players ended in a draw.");
-        // scorer("draw");
+        winMessage();
       }
     }
 
@@ -242,11 +345,14 @@ doc_ready(function () {
 
   var reset = function reset() {
     endGame = false;
-    board = [["", "", ""], ["", "", ""], ["", "", ""]];
-    history = [];
-    historyCounter = 0;
-    historyStorage = []; // counter = 0;
+    board = [["", "", ""], ["", "", ""], ["", "", ""]]; // history = [];
+    // historyCounter = 0;
+    // historyStorage = [];
+    // counter = 0;
 
+    historyObj.history = [];
+    historyObj.historyCounter = 0;
+    historyObj.historyStorage = [];
     startGame();
     markChecker();
     console.clear();
@@ -274,77 +380,80 @@ doc_ready(function () {
     id("x").innerHTML = "<q id='mark-holder1'>X</q> =&nbsp;";
     id("o").innerHTML = "<q id='mark-holder2'>O</q> =&nbsp;";
     id("draw").innerHTML = "<q>Draws</q> =&nbsp;";
-  });
-
-  var prevHistory = function prevHistory(arr1, arr2) {
-    arr1.push.apply(arr1, _toConsumableArray(arr2.splice(arr2.length - 1, 1)));
-
-    for (i = 0; i < arr1.length; i++) {
-      // HISTORY P INNER HTML ADD STRIKETHROUGH
-      add_class(id("history-wrap").querySelectorAll(arr1[i][4])[arr1[i][0]], arr1[i][5]); // REMOVE THE MARKS ONE BY ONE
-
-      remove_class(qsel("[data-row=\"".concat(arr1[i][2], "\"][data-col=\"").concat(arr1[i][3], "\"]")), arr1[i][1]);
-    }
-  };
-
-  var nextHistory = function nextHistory(arr1, arr2) {
-    arr1.push.apply(arr1, _toConsumableArray(arr2.splice(arr2.length - 1, 1)));
-
-    for (i = 0; i < arr1.length; i++) {
-      // HISTORY P INNER HTML REMOVE STRIKETHROUGH
-      remove_class(id("history-wrap").querySelectorAll(arr1[i][4])[arr1[i][0]], arr1[i][5]); // PUT THE MARKS ONE BY ONE BACK IN THE BOARD AGAIN
-
-      add_class(qsel("[data-row=\"".concat(arr1[i][2], "\"][data-col=\"").concat(arr1[i][3], "\"]")), arr1[i][1]);
-    }
-  };
-
-  var moveNum = function moveNum(arr) {
-    var num;
-
-    for (i = 0; i < arr.length; i++) {
-      num = arr[i][0] + 1;
-    }
-
-    return num;
-  };
-
-  var moveMark = function moveMark(arr) {
-    var move;
-
-    for (i = 0; i < arr.length; i++) {
-      move = arr[i][1];
-    }
-
-    return move.toUpperCase();
-  };
-
-  var consoleHistory = function consoleHistory(btn, arr1, arr2) {
-    if (has_class(btn, "show")) {
-      var _console;
-
-      console.log("Move ".concat(moveNum(arr1), " with mark ").concat(moveMark(arr1), " was undone."));
-
-      (_console = console).log.apply(_console, _toConsumableArray(arr2));
-    }
-  };
-
-  var showBtn = function showBtn(btn, arr1, arr2) {
-    if (arr1.length < arr2.length) {
-      add_class(btn, "show");
-    }
-  };
-
-  var hideBtn = function hideBtn(btn, arr) {
-    if (arr.length == 0) {
-      remove_class(btn, "show");
-    }
-  };
+  }); // const prevHistory = (arr1, arr2) => {
+  //   let moveNum, moveMark;
+  //   arr1.push(...arr2.splice(arr2.length - 1, 1));
+  //   for (i = 0; i < arr1.length; i++) {
+  //     // HISTORY P INNER HTML ADD STRIKETHROUGH
+  //     add_class(
+  //       id("history-wrap").querySelectorAll(arr1[i][4])[arr1[i][0]],
+  //       arr1[i][5]
+  //     );
+  //     // REMOVE THE MARKS ONE BY ONE
+  //     remove_class(
+  //       qsel(`[data-row="${arr1[i][2]}"][data-col="${arr1[i][3]}"]`),
+  //       arr1[i][1]
+  //     );
+  //   }
+  //   for (i = 0; i < arr1.length; i++) {
+  //     moveNum = arr1[i][0] + 1;
+  //   }
+  //   for (i = 0; i < arr1.length; i++) {
+  //     moveMark = arr1[i][1];
+  //   }
+  //   if (has_class(id("prev-btn"), "show")) {
+  //     console.log(
+  //       `Move ${moveNum} with mark ${moveMark.toUpperCase()} was undone.`
+  //     );
+  //     console.log(...arr1);
+  //     console.log(...arr2);
+  //   }
+  // };
+  // const nextHistory = (arr1, arr2) => {
+  //   arr1.push(...arr2.splice(arr2.length - 1, 1));
+  //   for (i = 0; i < arr1.length; i++) {
+  //     // HISTORY P INNER HTML REMOVE STRIKETHROUGH
+  //     remove_class(
+  //       id("history-wrap").querySelectorAll(arr1[i][4])[arr1[i][0]],
+  //       arr1[i][5]
+  //     );
+  //     // PUT THE MARKS ONE BY ONE BACK IN THE BOARD AGAIN
+  //     add_class(
+  //       qsel(`[data-row="${arr1[i][2]}"][data-col="${arr1[i][3]}"]`),
+  //       arr1[i][1]
+  //     );
+  //   }
+  //   let moveNum, moveMark;
+  //   for (i = 0; i < arr1.length; i++) {
+  //     moveNum = arr1[i][0] + 1;
+  //   }
+  //   for (i = 0; i < arr1.length; i++) {
+  //     moveMark = arr1[i][1];
+  //   }
+  //   if (has_class(id("next-btn"), "show")) {
+  //     console.log(
+  //       `Move ${moveNum} with mark ${moveMark.toUpperCase()} was redone.`
+  //     );
+  //     console.log(...arr1);
+  //     console.log(...arr2);
+  //   }
+  // };
+  // const showBtn = (btn, arr1, arr2) => {
+  //   if (arr1.length < arr2.length) {
+  //     add_class(btn, "show");
+  //   }
+  // };
+  // const hideBtn = (btn, arr) => {
+  //   if (arr.length == 0) {
+  //     remove_class(btn, "show");
+  //   }
+  // };
 
   add_event(id("prev-btn"), "click", function () {
-    prevHistory(historyStorage, history);
-    consoleHistory(id("prev-btn"), historyStorage, history);
-    showBtn(id("next-btn"), historyStorage, history);
-    hideBtn(id("prev-btn"), history); // if (counter == moves.length) {
+    // prevHistory(historyStorage, history);
+    // showBtn(id("next-btn"), historyStorage, history);
+    // hideBtn(id("prev-btn"), history);
+    historyObj.prevHistory(); // if (counter == moves.length) {
     //   counter--;
     // }
     // if (counter >= 0) {
@@ -367,10 +476,10 @@ doc_ready(function () {
     // }
   });
   add_event(id("next-btn"), "click", function () {
-    nextHistory(history, historyStorage);
-    consoleHistory(id("next-btn"), history, history);
-    showBtn(id("prev-btn"), history, historyStorage);
-    hideBtn(id("next-btn"), historyStorage); // if (counter < 0) {
+    // nextHistory(history, historyStorage);
+    // showBtn(id("prev-btn"), history, historyStorage);
+    // hideBtn(id("next-btn"), historyStorage);
+    historyObj.nextHistory(); // if (counter < 0) {
     //   counter++;
     // }
     // if (counter < moves.length) {
