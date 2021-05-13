@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Patrick Samson" />
+    <title>Book Store</title>
+    <link
+      rel="icon"
+      href="../assets/img/favicon-32x32.png"
+      type="image/png"
+      size="32x32"
+    />
+    <link
+      rel="icon"
+      href="../assets/img/favicon-16x16.png"
+      type="image/png"
+      size="16x16"
+    />
+    <link rel="stylesheet" href="../assets/css/index.min.css" />
+  </head>
+  <body>
+    <main>
+      <div class="cont talign">
+        <p class="h2 mt-05 mb-05">
+          Check the "Console" tab in your browser's inspector.
+        </p>
+
+        <button id="add-book-btn">Add Book</button>
+        <button id="restock-book-btn">Restock Book</button>
+        <button id="sell-book-btn">Sell Book</button>
+        <button id="remove-book-btn">Remove Book</button>
+        <button id="reset-btn">Reset</button>
+      </div>
+    </main>
+
+    <script>
+      let store = {
+        store: prompt("What is the name of your book store?"),
+        inventoryList: [],
+        earnings: 0,
+        totalEarnings: function () {
+          console.log(`Store: ${this.store}\nEarnings: $${this.earnings}`);
+        },
+        listInventory: function () {
+          /**
+           * MAPS EVERY INVENTORY ARRAY ITEM ENTRIES
+           * WHICH INCLUDES THEIR CORRESPONDING BOOK TITLE, QUANTITY, AND VALUE
+           * AND ALSO MAKE ITS CORRESPONDING BOOK TITLE AS THE DECIDING FACTOR
+           * FOR FILTERING THE UNIQUE BOOK TITLES OF THE INVENTORY ARRAY ITEMS
+           */
+
+          /**
+           * NEW TEMPORARY UNIQUE ARRAY CREATED, ACCEPTING ONLY ENTRIES OF INVENTORY ARRAY ITEMS WITH UNIQUE BOOK TITLES
+           * FILTERING / CHECKING PREVIOUSLY MAPPED INVENTORY ARRAY ITEM ENTRIES AND THEIR CORRESPONDING BOOK TITLES
+           * IF BOOK TITLE OF CURRENTLY ADDED INVENTORY ITEM ENTRY MATCHES WITH ONE OF IT
+           * ONCE MATCHED, PREVIOUS ENTRIES WILL BE IGNORED AND BE OVERWRITTEN BY THE CURRENT ENTRY BECAUSE OF INDEX + 1
+           */
+
+          /**
+           * BECAUSE OF FILTER CALLBACK METHOD, SEARCH WILL ALSO ONLY BEGIN AT CURRENT INDEX + 1 AND
+           * ALSO IMPROVES PERFORMANCE, SINCE ONLY INVENTORY ARRAY ITEMS NOT PREVIOUSLY FILTERED GET CHECKED
+           */
+          let booksTitleMap = store.inventoryList.map((book) => book.title),
+            booksUniqArr = store.inventoryList.filter(
+              ({ title }, index) => !booksTitleMap.includes(title, index + 1)
+            ),
+            i;
+
+          // CONSOLE LOG ONLY THE BOOK TITLE THAT IS NOT "Not available"
+          for (i = 0; i < booksUniqArr.length; i++) {
+            if (booksUniqArr[i].title != "Not available") {
+              console.log(
+                `Book: ${booksUniqArr[i].title}\nQuantity: ${booksUniqArr[i].quantity}\nValue: $${booksUniqArr[i].value}`
+              );
+            }
+          }
+        },
+        addBook: function (title, quantity, value) {
+          let book = {
+              title: title,
+              quantity: quantity,
+              value: value,
+            },
+            bookPrompt = prompt(
+              "Add a book.\nPlease enter the title of the book, its quantity, and its value separated with commas respectively.\ne.g. <Book Title>, <Quantity>, <Value>\nYou can also overwrite a book's quantity and value by adding it again."
+            ),
+            bookArr = bookPrompt.split(",");
+          // PROMPT STRING CONVERTED TO ARRAY AND ITEMIZED WHERE "," IS PLACED
+
+          // TESTING IF QUANTITY AND VALUE INPUTS ARE NUMBERS
+          if (
+            bookArr.length == 3 &&
+            /^[0-9.,]+$/.test(parseInt(bookArr[1])) &&
+            /^[0-9.,]+$/.test(parseInt(bookArr[2]))
+          ) {
+            // REMOVE WHITE SPACES OUTSIDE WHEN POSSIBLE
+            // SPACES IN BETWEEN STRINGS ARE REPLACED WITH "_"
+            book.title = bookArr[0]
+              .replace(/\s+/g, " ")
+              .trim()
+              .split(" ")
+              .join("_")
+              .toLowerCase();
+
+            book.quantity = parseInt(bookArr[1].replace(/\s+/g, " ").trim());
+            book.value = bookArr[2].replace(/\s+/g, " ").trim();
+
+            store.inventoryList.push(book);
+            console.clear();
+            store.totalEarnings();
+            store.listInventory();
+          } else if (bookArr.length < 3) {
+            alert("Please complete the necessary details.");
+          } else if (
+            bookArr.length > 3 ||
+            !(
+              /^[0-9.,]+$/.test(parseInt(bookArr[1])) &&
+              /^[0-9.,]+$/.test(parseInt(bookArr[2]))
+            )
+          ) {
+            alert("Please input only the necessary details.");
+          }
+        },
+        restockBook: function (title, quantity) {
+          let restockPrompt = prompt(
+              "Restock a book.\nPlease enter the title of the book and the quantity separated with commas respectively.\ne.g. <Book Title>, <Quantity>"
+            ),
+            restockArr = restockPrompt.split(",");
+
+          title = restockArr[0]
+            .replace(/\s+/g, " ")
+            .trim()
+            .split(" ")
+            .join("_")
+            .toLowerCase();
+
+          // FINDING THE INDEX OF EXISTING INVENTORY ARRAY ITEM WHEREIN ITS BOOK TITLE MATCHES WITH THE CURRENT BOOK TITLE ENTRY
+          let bookCheck = store.inventoryList.findIndex(
+            (bookIndex) => bookIndex.title == title
+          );
+
+          if (
+            store.inventoryList[bookCheck] == null ||
+            store.inventoryList[bookCheck] == ""
+          ) {
+            alert("Book not found!");
+          } else if (
+            restockArr.length == 2 &&
+            /^[0-9.,]+$/.test(parseInt(restockArr[1]))
+          ) {
+            quantity = parseInt(restockArr[1].replace(/\s+/g, " ").trim());
+            store.inventoryList[bookCheck].quantity += quantity;
+
+            console.log(
+              `${title} book has been restocked. Its quantity is now ${store.inventoryList[bookCheck].quantity}.`
+            );
+            store.listInventory();
+          } else if (restockArr.length < 2) {
+            alert("Please complete the necessary details.");
+          } else if (
+            restockArr.length > 2 ||
+            !/^[0-9.,]+$/.test(parseInt(restockArr[1]))
+          ) {
+            alert("Please input only the necessary details.");
+          }
+        },
+        sellBook: function (title, quantity) {
+          let sellPrompt = prompt(
+              "Sell a book.\nPlease enter the title of the book and the quantity separated with commas respectively.\ne.g. <Book Title>, <Quantity>"
+            ),
+            sellArr = sellPrompt.split(",");
+
+          title = sellArr[0]
+            .replace(/\s+/g, " ")
+            .trim()
+            .split(" ")
+            .join("_")
+            .toLowerCase();
+
+          let bookCheck = store.inventoryList.findIndex(
+            (bookIndex) => bookIndex.title == title
+          );
+
+          if (
+            store.inventoryList[bookCheck] == null ||
+            store.inventoryList[bookCheck] == ""
+          ) {
+            alert("Book not found!");
+          } else if (
+            sellArr.length == 2 &&
+            /^[0-9.,]+$/.test(parseInt(sellArr[1]))
+          ) {
+            quantity = parseInt(sellArr[1].replace(/\s+/g, " ").trim());
+
+            /**
+             * IF QUANTITY ENTRY IS GREATER THAN THE CURRENT QUANTITY OF BOOK, THE QUANTITY / STOCK WILL STILL BE EXHAUSTED
+             * AND THE BOOK'S CURRENT QUANTITY TIMES ITS VALUE WILL BE ADDED TO THE STORE EARNINGS
+             */
+            if (store.inventoryList[bookCheck].quantity <= quantity) {
+              let earnings =
+                store.inventoryList[bookCheck].value *
+                store.inventoryList[bookCheck].quantity;
+
+              store.earnings += earnings;
+              store.inventoryList[bookCheck].quantity = 0;
+              store.totalEarnings();
+              store.listInventory();
+              console.log(`${title} out of stock.`);
+            } else {
+              store.inventoryList[bookCheck].quantity -= quantity;
+
+              let earnings = store.inventoryList[bookCheck].value * quantity;
+
+              store.earnings += earnings;
+
+              console.log(
+                `Successful transaction. The quantity of ${title} book is now ${store.inventoryList[bookCheck].quantity}`
+              );
+
+              store.totalEarnings();
+              store.listInventory();
+            }
+          } else if (sellArr.length < 2) {
+            alert("Please complete the necessary details.");
+          } else if (
+            sellArr.length > 2 ||
+            !/^[0-9.,]+$/.test(parseInt(sellArr[1]))
+          ) {
+            alert("Please input only the necessary details.");
+          }
+        },
+        removeBook: function (title) {
+          let removePrompt = prompt(
+            "Remove a book.\nPlease enter the title of the book."
+          );
+
+          title = removePrompt.replace(/\s+/g, " ").trim();
+
+          /**
+           * WHEN HAVING MULTIPLE ENTRIES OF INVENTORY ARRAY ITEMS WITH THE SAME BOOK TITLE
+           * THEY JUST PILE UP IN THE "store.inventoryList" ARRAY
+           * DUPLICATED INVENTORY ARRAY ITEMS WITH THE SAME BOOK TITLE ARE NOT DELETED INSTEAD RENAMED
+           * SINCE DELETE DESTROYS THE INDEX PATTERN OF INVENTORY ARRAY ITEMS
+           */
+
+          /**
+           * NEW TEMPORARY ARRAY CREATED, ACCEPTING ONE OR MORE INDICES OF EXISTING INVENTORY ARRAY ITEMS
+           * EVEN WHEN DUPLICATIONS ALSO EXIST
+           * FILTERS / CHECKS THE INDICES OF ONE OR MORE EXISTING INVENTORY ARRAY ITEMS WHEREIN THEIR BOOK TITLES
+           * MATCHES WITH THE CURRENT BOOK TITLE ENTRY ALSO INCLUDING THE DUPLICATES
+           * FOR THE PURPOSE OF REMOVING A BOOK JUST ONCE WHEN DUPLICATIONS EXIST
+           */
+          let removeBooksArr = [],
+            bookCheck = store.inventoryList.findIndex(
+              (bookIndex) => bookIndex.title == title
+            );
+
+          store.inventoryList.filter((book, index) => {
+            if (book.title == title) {
+              removeBooksArr.push(index);
+            }
+          });
+
+          for (i = 0; i < removeBooksArr.length; i++) {
+            if (
+              store.inventoryList[removeBooksArr[i]] == null ||
+              store.inventoryList[removeBooksArr[i]] == ""
+            ) {
+              alert("Book not found!");
+            } else {
+              store.inventoryList[removeBooksArr[i]].title = `Not available`;
+              store.inventoryList[removeBooksArr[i]].quantity = 0;
+              store.inventoryList[removeBooksArr[i]].value = 0;
+            }
+          }
+
+          // SEPARATED TO PREVENT ITERATIONS OF CONSOLE LOG
+          if (
+            store.inventoryList[bookCheck] != null ||
+            store.inventoryList[bookCheck] != ""
+          ) {
+            console.log(`${title} is removed from the inventory`);
+            store.listInventory();
+          }
+        },
+      };
+
+      console.log(`Store: ${store.store}`);
+
+      document
+        .getElementById("add-book-btn")
+        .addEventListener("click", store.addBook, false);
+
+      document
+        .getElementById("restock-book-btn")
+        .addEventListener("click", store.restockBook, false);
+
+      document
+        .getElementById("sell-book-btn")
+        .addEventListener("click", store.sellBook, false);
+
+      document
+        .getElementById("remove-book-btn")
+        .addEventListener("click", store.removeBook, false);
+
+      document.getElementById("reset-btn").addEventListener(
+        "click",
+        () => {
+          console.clear();
+          store.store = prompt("What is the name of your book store?");
+          console.log(`Store: ${store.store}`);
+          store.inventoryList = [];
+          store.earnings = 0;
+        },
+        false
+      );
+
+      // OLD SOLUTION
+      // function totalEarnings() {
+      //   console.log(`Store: ${store.store}\nEarnings: $${store.earnings}`);
+      // }
+
+      // function listInventory() {
+      //   for (i = 0; i < store.inventoryList.length; i++) {
+      //     console.log(
+      //       `Book: ${store.inventoryList[i].title}\nQuantity: ${store.inventoryList[i].quantity}\nValue: $${store.inventoryList[i].value}`
+      //     );
+      //   }
+      // }
+
+      // function addBook(title, quantity, value) {
+      //   let book = {
+      //       title: title,
+      //       quantity: quantity,
+      //       value: value,
+      //     },
+      //     bookPrompt = prompt(
+      //       "Add a book.\nPlease enter the title of the book, its quantity, and its value separated with commas respectively.\ne.g. <Book Title>, <Quantity>, <Value>"
+      //     ),
+      //     bookArr = bookPrompt.split(",");
+
+      //   if (bookArr.length == 3) {
+      //     book.title = bookArr[0]
+      //       .replace(/\s+/g, " ")
+      //       .trim()
+      //       .split(" ")
+      //       .join("_")
+      //       .toLowerCase();
+      //     book.quantity = Number(bookArr[1].replace(/\s+/g, " ").trim());
+      //     book.value = bookArr[2].replace(/\s+/g, " ").trim();
+
+      //     store.inventoryList.push(book);
+
+      //     console.clear();
+      //     totalEarnings();
+      //     listInventory();
+      //   } else {
+      //     alert("Please complete the necessary details.");
+      //   }
+      // }
+
+      // document
+      //   .getElementById("add-book-btn")
+      //   .addEventListener("click", addBook, false);
+
+      // function restockBook(title, quantity) {
+      //   let restockPrompt = prompt(
+      //       "Restock a book.\nPlease enter the title of the book and the quantity separated with commas respectively.\ne.g. <Book Title>, <Quantity>"
+      //     ),
+      //     restockArr = restockPrompt.split(",");
+
+      //   title = restockArr[0]
+      //     .replace(/\s+/g, " ")
+      //     .trim()
+      //     .split(" ")
+      //     .join("_")
+      //     .toLowerCase();
+      //   quantity = Number(restockArr[1].replace(/\s+/g, " ").trim());
+
+      //   let bookCheck = store.inventoryList.findIndex(
+      //     (bookIndex) => bookIndex.title == title
+      //   );
+
+      //   if (
+      //     store.inventoryList[bookCheck] == null ||
+      //     store.inventoryList[bookCheck] == ""
+      //   ) {
+      //     alert("Book not found!");
+      //   } else {
+      //     store.inventoryList[bookCheck].quantity += quantity;
+
+      //     console.log(
+      //       `${title} book has been restocked. Its quantity is now ${store.inventoryList[bookCheck].quantity}.`
+      //     );
+      //     listInventory();
+      //   }
+      // }
+
+      // document
+      //   .getElementById("restock-book-btn")
+      //   .addEventListener("click", restockBook, false);
+
+      // function sellBook(title, quantity) {
+      //   let sellPrompt = prompt(
+      //       "Sell a book.\nPlease enter the title of the book and the quantity separated with commas respectively.\ne.g. <Book Title>, <Quantity>"
+      //     ),
+      //     sellArr = sellPrompt.split(",");
+
+      //   title = sellArr[0]
+      //     .replace(/\s+/g, " ")
+      //     .trim()
+      //     .split(" ")
+      //     .join("_")
+      //     .toLowerCase();
+      //   quantity = sellArr[1].replace(/\s+/g, " ").trim();
+
+      //   let bookCheck = store.inventoryList.findIndex(
+      //     (bookIndex) => bookIndex.title == title
+      //   );
+
+      //   if (
+      //     store.inventoryList[bookCheck] == null ||
+      //     store.inventoryList[bookCheck] == ""
+      //   ) {
+      //     alert("Book not found!");
+      //   } else {
+      //     if (store.inventoryList[bookCheck].quantity < quantity) {
+      //       let earnings =
+      //         store.inventoryList[bookCheck].value *
+      //         store.inventoryList[bookCheck].quantity;
+
+      //       store.earnings += earnings;
+      //       store.inventoryList[bookCheck].quantity = 0;
+      //       totalEarnings();
+      //       listInventory();
+      //       console.log(`${title} out of stock.`);
+      //     } else {
+      //       store.inventoryList[bookCheck].quantity -= quantity;
+
+      //       let earnings = store.inventoryList[bookCheck].value * quantity;
+
+      //       store.earnings += earnings;
+
+      //       console.log(
+      //         `Successful transaction. The quantity of ${title} book is now ${store.inventoryList[bookCheck].quantity}`
+      //       );
+
+      //       totalEarnings();
+      //       listInventory();
+      //     }
+      //   }
+      // }
+
+      // document
+      //   .getElementById("sell-book-btn")
+      //   .addEventListener("click", sellBook, false);
+    </script>
+  </body>
+</html>
