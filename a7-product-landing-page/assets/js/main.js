@@ -29,10 +29,12 @@ doc_ready(function () {
         id("remember").checked = false;
       }
 
+      // ADDED JAVASCRIPT EXERCISE
       if (has_class(this, "once")) {
         alert("Check out our latest offers and products after logging in!");
         remove_class(this, "once");
       }
+      // ADDED JAVASCRIPT EXERCISE
     });
 
     add_event(id("password"), "keyup", function () {
