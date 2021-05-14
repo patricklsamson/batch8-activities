@@ -27,13 +27,20 @@
           For PC, check the "Console" tab in your browser's inspector.
         </p>
 
+        <p class="mb-05">
+          <a
+            href="https://github.com/patricklsamson/batch8-activities/blob/main/coding-challenge/c5-book-store.html"
+            >Click here to see the code!</a
+          >
+        </p>
+
         <button id="add-book-btn">Add Book</button>
         <button id="restock-book-btn">Restock Book</button>
         <button id="sell-book-btn">Sell Book</button>
         <button id="remove-book-btn">Remove Book</button>
         <button id="reset-btn">Reset</button>
 
-        <div class="wrap-logs talign tlft">
+        <div class="talign tlft">
           <p id="store-name" class="mt-05 mb-05"></p>
           <p id="earnings" class="mb-05"></p>
           <ul id="books" class="xbul"></ul>
@@ -43,8 +50,24 @@
 
     <script>
       let i,
+        storePrompt = prompt("What is the name of your book store?"),
         store = {
-          store: prompt("What is the name of your book store?"),
+          store: function () {
+            /**
+             * storePrompt" INPUT STRING CONVERTED TO ARRAY AND ITEMIZED WHERE SPACES ARE PLACED
+             * ITERATING AT EVERY SPLITTED STRING, FIRST LETTER IS CAPITALIZED
+             * AND THE REST OF THE LETTERS ARE SET TO LOWERCASE
+             */
+            let storeArr = storePrompt.split(" ");
+
+            for (i = 0; i < storeArr.length; i++) {
+              storeArr[i] =
+                storeArr[i].substring(0, 1).toUpperCase() +
+                storeArr[i].substring(1).toLowerCase();
+            }
+
+            return storeArr.join(" ");
+          },
           inventoryList: [],
           inventoryListUniq: function () {
             /**
@@ -76,7 +99,8 @@
           },
           earnings: 0,
           totalEarnings: function () {
-            console.log(`Store: ${this.store}\nEarnings: $${this.earnings}`);
+            console.log(`Store: ${this.store()}\nEarnings: $${this.earnings}`);
+
             document.getElementById(
               "earnings"
             ).innerHTML = `Earnings: $${this.earnings}`;
@@ -95,9 +119,10 @@
 
                 inventoryItems.innerHTML = `Book: ${
                   this.inventoryListUniq()[i].title
-                }\nQuantity: ${this.inventoryListUniq()[i].quantity}\nValue: $${
+                } Quantity: ${this.inventoryListUniq()[i].quantity} Value: $${
                   this.inventoryListUniq()[i].value
                 }`;
+
                 document.getElementById("books").appendChild(inventoryItems);
               }
             }
@@ -118,7 +143,7 @@
                 "Add a book.\nPlease enter the title of the book, its quantity, and its value separated with commas respectively.\ne.g. <Book Title>, <Quantity>, <Value>\nYou can also overwrite a book's quantity and value by adding it again."
               ),
               bookArr = bookPrompt.split(",");
-            // PROMPT STRING CONVERTED TO ARRAY AND ITEMIZED WHERE "," IS PLACED
+            // "bookPrompt" INPUT STRING CONVERTED TO ARRAY AND ITEMIZED WHERE "," IS PLACED
 
             // TESTING IF QUANTITY AND VALUE INPUTS ARE NUMBERS
             if (
@@ -126,14 +151,27 @@
               /^[0-9.,]+$/.test(parseInt(bookArr[1])) &&
               /^[0-9.,]+$/.test(parseInt(bookArr[2]))
             ) {
-              // REMOVE WHITE SPACES OUTSIDE WHEN POSSIBLE
-              // SPACES IN BETWEEN STRINGS ARE REPLACED WITH "_"
-              book.title = bookArr[0]
-                .replace(/\s+/g, " ")
-                .trim()
-                .split(" ")
-                .join("_")
-                .toLowerCase();
+              // OLD CODE
+              // /**
+              //  * REMOVE WHITE SPACES AROUND WHEN POSSIBLE
+              //  * SPACES IN BETWEEN STRINGS ARE REPLACED WITH "_"
+              //  */
+              // book.title = bookArr[0]
+              //   .replace(/\s+/g, " ")
+              //   .trim()
+              //   .split(" ")
+              //   .join("_")
+              //   .toLowerCase();
+
+              bookTitleArr = bookArr[0].replace(/\s+/g, " ").trim().split(" ");
+
+              for (i = 0; i < bookTitleArr.length; i++) {
+                bookTitleArr[i] =
+                  bookTitleArr[i].substring(0, 1).toUpperCase() +
+                  bookTitleArr[i].substring(1).toLowerCase();
+              }
+
+              book.title = bookTitleArr.join(" ");
 
               book.quantity = parseInt(bookArr[1].replace(/\s+/g, " ").trim());
               book.value = bookArr[2].replace(/\s+/g, " ").trim();
@@ -158,12 +196,23 @@
               ),
               restockArr = restockPrompt.split(",");
 
-            title = restockArr[0]
-              .replace(/\s+/g, " ")
-              .trim()
-              .split(" ")
-              .join("_")
-              .toLowerCase();
+            // OLD CODE
+            // title = restockArr[0]
+            //   .replace(/\s+/g, " ")
+            //   .trim()
+            //   .split(" ")
+            //   .join("_")
+            //   .toLowerCase();
+
+            titleArr = restockArr[0].replace(/\s+/g, " ").trim().split(" ");
+
+            for (i = 0; i < titleArr.length; i++) {
+              titleArr[i] =
+                titleArr[i].substring(0, 1).toUpperCase() +
+                titleArr[i].substring(1).toLowerCase();
+            }
+
+            title = titleArr.join(" ");
 
             // FINDING THE INDEX OF EXISTING INVENTORY ARRAY ITEM WHEREIN ITS BOOK TITLE MATCHES WITH THE CURRENT BOOK TITLE ENTRY
             let bookCheck = store
@@ -208,12 +257,15 @@
               ),
               sellArr = sellPrompt.split(",");
 
-            title = sellArr[0]
-              .replace(/\s+/g, " ")
-              .trim()
-              .split(" ")
-              .join("_")
-              .toLowerCase();
+            titleArr = sellArr[0].replace(/\s+/g, " ").trim().split(" ");
+
+            for (i = 0; i < titleArr.length; i++) {
+              titleArr[i] =
+                titleArr[i].substring(0, 1).toUpperCase() +
+                titleArr[i].substring(1).toLowerCase();
+            }
+
+            title = titleArr.join(" ");
 
             let bookCheck = store
               .inventoryListUniq()
@@ -284,7 +336,15 @@
               "Remove a book.\nPlease enter the title of the book."
             );
 
-            title = removePrompt.replace(/\s+/g, " ").trim();
+            titleArr = removePrompt.replace(/\s+/g, " ").trim().split(" ");
+
+            for (i = 0; i < titleArr.length; i++) {
+              titleArr[i] =
+                titleArr[i].substring(0, 1).toUpperCase() +
+                titleArr[i].substring(1).toLowerCase();
+            }
+
+            title = titleArr.join(" ");
 
             let bookCheck = store
               .inventoryListUniq()
@@ -330,17 +390,21 @@
             document.getElementById("books").innerHTML = "";
             store.inventoryList = [];
             store.earnings = 0;
-            store.store = prompt("What is the name of your book store?");
+            storePrompt = prompt("What is the name of your book store?");
+
             document.getElementById(
               "store-name"
-            ).innerHTML = `Store: ${store.store}`;
-            console.log(`Store: ${store.store}`);
+            ).innerHTML = `Store: ${store.store()}`;
+
+            console.log(`Store: ${store.store()}`);
           },
         };
 
-      console.log(`Store: ${store.store}`);
+      document.getElementById(
+        "store-name"
+      ).innerHTML = `Store: ${store.store()}`;
 
-      document.getElementById("store-name").innerHTML = `Store: ${store.store}`;
+      console.log(`Store: ${store.store()}`);
 
       document
         .getElementById("add-book-btn")
@@ -362,7 +426,7 @@
         .getElementById("reset-btn")
         .addEventListener("click", store.reset, false);
 
-      // OLD SOLUTION
+      // OLD CODE
       // function totalEarnings() {
       //   console.log(`Store: ${store.store}\nEarnings: $${store.earnings}`);
       // }
