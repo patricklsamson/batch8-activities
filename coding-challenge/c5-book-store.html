@@ -174,7 +174,7 @@
               book.title = bookTitleArr.join(" ");
 
               book.quantity = parseInt(bookArr[1].replace(/\s+/g, " ").trim());
-              book.value = bookArr[2].replace(/\s+/g, " ").trim();
+              book.value = parseInt(bookArr[2].replace(/\s+/g, " ").trim());
 
               store.inventoryList.push(book);
               store.logEvents();
