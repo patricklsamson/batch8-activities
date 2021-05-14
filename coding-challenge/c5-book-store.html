@@ -307,7 +307,7 @@
                 store.logEvents();
               } else if (store.inventoryListUniq()[bookCheck].quantity == 0) {
                 alert(
-                  `Transaction unsuccessful. ${title} book out of stock.\nPlease restock ${title} now.`
+                  `Transaction unsuccessful. ${title} book out of stock.\nPlease restock ${title} book now.`
                 );
               } else {
                 store.inventoryListUniq()[bookCheck].quantity -= quantity;
