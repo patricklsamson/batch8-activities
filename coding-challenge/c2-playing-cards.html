@@ -23,12 +23,47 @@
   <body>
     <main>
       <div class="cont talign">
-        <p class="h2 mt-05 mb-05">
-          Check the "Console" tab in your browser's inspector.
+        <p class="h6 mt-05 mb-05">
+          For PC, check the "Console" tab in your browser's inspector.
         </p>
+
+        <p class="mb-05">
+          <a
+            href="https://github.com/patricklsamson/batch8-activities/blob/main/coding-challenge/c2-playing-cards.html"
+            >Click here to see the code!</a
+          >
+        </p>
+
+        <p id="card-num"></p>
+        <p id="tooltip"></p>
+        <p id="poker-hand"></p>
+
         <button id="deal-btn">Deal a Card!</button>
         <button id="deal-five-btn">Deal Five Cards!</button>
         <button id="reset-btn">Reset</button>
+
+        <div id="standard-wrap">
+          <h6 class="mt-05">Standard Deck of Cards</h6>
+          <p id="standard"></p>
+        </div>
+
+        <h6>Shuffled Cards</h6>
+        <p id="shuffled"></p>
+
+        <div id="descend-wrap">
+          <h6>Arranged Value - Descending Order</h6>
+          <p id="descend"></p>
+        </div>
+
+        <div id="ascend-wrap">
+          <h6>Arranged Value - Ascending Order</h6>
+          <p id="ascend"></p>
+        </div>
+
+        <div id="suit-wrap">
+          <h6>Arranged Suit - Diamonds ♢, Hearts ♡, Spades ♠, Clubs ♣</h6>
+          <p id="suit"></p>
+        </div>
       </div>
     </main>
 
@@ -69,9 +104,10 @@
         pokerValue = [],
         suitsCounter,
         valueCounter,
-        i;
+        i,
+        j;
 
-      const arrangeCards = () => {
+      const standardArrange = () => {
         for (suitsCounter = 0; suitsCounter < suits.length; suitsCounter++) {
           for (valueCounter = 0; valueCounter < value.length; valueCounter++) {
             deck.push({
@@ -85,8 +121,22 @@
           deckDisplay.push(deck[i].value.symbol + deck[i].suit.symbol);
         }
 
-        console.log("Standard Deck of Cards", deckDisplay);
+        console.log(`Standard Deck of Cards\n${deckDisplay}`);
 
+        for (i = 0; i < deckDisplay.length; i++) {
+          let card = document.createElement("span");
+
+          if (i != 0 && i + 1 < deckDisplay.length && (i + 1) % 10 == 0) {
+            card.innerHTML = ` ${deckDisplay[i]}<br />`;
+          } else {
+            card.innerHTML = ` ${deckDisplay[i]} `;
+          }
+
+          document.getElementById("standard").appendChild(card);
+        }
+      };
+
+      const shuffleArrange = () => {
         for (i = deck.length - 1; i > -1; i--) {
           let j = Math.floor(Math.random() * i),
             temp = deck[i];
@@ -103,8 +153,26 @@
           );
         }
 
-        console.log("Shuffled Cards", shuffledDeckDisplay);
+        console.log(`Shuffled Cards\n${shuffledDeckDisplay}`);
 
+        for (i = 0; i < shuffledDeckDisplay.length; i++) {
+          let card = document.createElement("span");
+
+          if (
+            i != 0 &&
+            i + 1 < shuffledDeckDisplay.length &&
+            (i + 1) % 10 == 0
+          ) {
+            card.innerHTML = ` ${shuffledDeckDisplay[i]}<br />`;
+          } else {
+            card.innerHTML = ` ${shuffledDeckDisplay[i]} `;
+          }
+
+          document.getElementById("shuffled").appendChild(card);
+        }
+      };
+
+      const descendArrange = () => {
         for (valueCounter = 0; valueCounter < value.length; valueCounter++) {
           for (suitsCounter = 0; suitsCounter < suits.length; suitsCounter++) {
             arrangedValueDescend.push({
@@ -121,10 +189,27 @@
         }
 
         console.log(
-          "Arranged Value - Descending Order",
-          arrangedValueDescendDisplay
+          `Arranged Value - Descending Order\n${arrangedValueDescendDisplay}`
         );
 
+        for (i = 0; i < arrangedValueDescendDisplay.length; i++) {
+          let card = document.createElement("span");
+
+          if (
+            i != 0 &&
+            i + 1 < arrangedValueDescendDisplay.length &&
+            (i + 1) % 10 == 0
+          ) {
+            card.innerHTML = ` ${arrangedValueDescendDisplay[i]}<br />`;
+          } else {
+            card.innerHTML = ` ${arrangedValueDescendDisplay[i]} `;
+          }
+
+          document.getElementById("descend").appendChild(card);
+        }
+      };
+
+      const ascendArrange = () => {
         const valueReverse = value.reverse();
 
         for (
@@ -147,10 +232,27 @@
         }
 
         console.log(
-          "Arranged Value - Ascending Order",
-          arrangedValueAscendDisplay
+          `Arranged Value - Ascending Order\n${arrangedValueAscendDisplay}`
         );
 
+        for (i = 0; i < arrangedValueAscendDisplay.length; i++) {
+          let card = document.createElement("span");
+
+          if (
+            i != 0 &&
+            i + 1 < arrangedValueAscendDisplay.length &&
+            (i + 1) % 10 == 0
+          ) {
+            card.innerHTML = ` ${arrangedValueAscendDisplay[i]}<br />`;
+          } else {
+            card.innerHTML = ` ${arrangedValueAscendDisplay[i]} `;
+          }
+
+          document.getElementById("ascend").appendChild(card);
+        }
+      };
+
+      const suitArrange = () => {
         for (suitsCounter = 0; suitsCounter < suits.length; suitsCounter++) {
           for (i = value.length - 1; i > -1; i--) {
             let j = Math.floor(Math.random() * i),
@@ -173,26 +275,77 @@
         }
 
         console.log(
-          "Arranged Suit - Diamonds ♢, Hearts ♡, Spades ♠, Clubs ♣",
-          arrangedSuitDisplay
+          `Arranged Suit - Diamonds ♢, Hearts ♡, Spades ♠, Clubs ♣\n${arrangedSuitDisplay}`
         );
-        console.log(
-          `Number of Cards: ${shuffledDeck.length}\nDeal a card or five cards for poker now!`
-        );
+
+        for (i = 0; i < arrangedSuitDisplay.length; i++) {
+          let card = document.createElement("span");
+
+          if (
+            i != 0 &&
+            i + 1 < arrangedSuitDisplay.length &&
+            (i + 1) % 10 == 0
+          ) {
+            card.innerHTML = ` ${arrangedSuitDisplay[i]}<br />`;
+          } else {
+            card.innerHTML = ` ${arrangedSuitDisplay[i]} `;
+          }
+
+          document.getElementById("suit").appendChild(card);
+        }
       };
 
-      arrangeCards();
+      standardArrange();
+      shuffleArrange();
+      descendArrange();
+      ascendArrange();
+      suitArrange();
+
+      console.log(
+        `Number of Cards: ${shuffledDeck.length}\nDeal a card or five cards for poker now!`
+      );
+
+      document.getElementById(
+        "card-num"
+      ).innerHTML = `Number of Cards: ${shuffledDeck.length}`;
+
+      document.getElementById(
+        "tooltip"
+      ).innerHTML = `Deal a card or five cards for poker now!`;
 
       document.getElementById("deal-btn").addEventListener(
         "click",
         () => {
           if (shuffledDeck.length != 0) {
+            console.clear();
+
             console.log(
               `Number of Cards: ${shuffledDeck.length - 1}\nDealt Card: ${
                 shuffledDeck[shuffledDeck.length - 1].value.name
               } of ${shuffledDeck[shuffledDeck.length - 1].suit.name}`
             );
+
+            document.getElementById("card-num").innerHTML = `Number of Cards: ${
+              shuffledDeck.length - 1
+            }`;
+
+            document.getElementById("tooltip").innerHTML = `Dealt Card: ${
+              shuffledDeck[shuffledDeck.length - 1].value.name
+            } of ${shuffledDeck[shuffledDeck.length - 1].suit.name}`;
+
+            document.getElementById("standard-wrap").style.display = "none";
+            document.getElementById("descend-wrap").style.display = "none";
+            document.getElementById("ascend-wrap").style.display = "none";
+            document.getElementById("suit-wrap").style.display = "none";
+
             shuffledDeck.splice(shuffledDeck.length - 1, 1);
+
+            document.getElementById("shuffled").querySelectorAll("span")[
+              shuffledDeck.indexOf(shuffledDeck[shuffledDeck.length - 1]) + 1
+            ].style.display = "none";
+
+            shuffledDeckDisplay.splice(shuffledDeckDisplay.length - 1, 1);
+            console.log(shuffledDeckDisplay);
           }
         },
         false
@@ -208,6 +361,8 @@
               card4 = shuffledDeck[shuffledDeck.length - 4],
               card5 = shuffledDeck[shuffledDeck.length - 5];
 
+            console.clear();
+
             console.log(
               `Number of Cards: ${shuffledDeck.length - 5}\nDealt Cards: ${
                 card1.value.name
@@ -219,7 +374,38 @@
                 card5.suit.name
               }`
             );
+
+            document.getElementById("card-num").innerHTML = `Number of Cards: ${
+              shuffledDeck.length - 5
+            }`;
+
+            document.getElementById(
+              "tooltip"
+            ).innerHTML = `Dealt Cards: ${card1.value.name} of ${card1.suit.name}, ${card2.value.name} of ${card2.suit.name}, ${card3.value.name} of ${card3.suit.name}, ${card4.value.name} of ${card4.suit.name}, ${card5.value.name} of ${card5.suit.name}`;
+
+            document.getElementById("standard-wrap").style.display = "none";
+            document.getElementById("descend-wrap").style.display = "none";
+            document.getElementById("ascend-wrap").style.display = "none";
+            document.getElementById("suit-wrap").style.display = "none";
+
             shuffledDeck.splice(shuffledDeck.length - 5, 5);
+
+            if (shuffledDeck.length != shuffledDeck.length % 5) {
+              for (i = 1; i <= 5; i++) {
+                document.getElementById("shuffled").querySelectorAll("span")[
+                  shuffledDeck.indexOf(shuffledDeck[shuffledDeck.length - i]) +
+                    5
+                ].style.display = "none";
+              }
+            } else {
+              for (i = 2; i <= 6; i++) {
+                document.getElementById("shuffled").querySelectorAll("span")[
+                  i
+                ].style.display = "none";
+              }
+            }
+
+            shuffledDeckDisplay.splice(shuffledDeckDisplay.length - 5, 5);
 
             pokerSuit.push(
               card1.suit.checker,
@@ -250,6 +436,9 @@
               pokerValue[3] == pokerValue[4] - 1
             ) {
               console.log("Straight Flush!");
+
+              document.getElementById("poker-hand").innerHTML =
+                "Straight Flush!";
             } else if (
               (pokerValue[0] == pokerValue[1] &&
                 pokerValue[1] == pokerValue[2] &&
@@ -267,6 +456,9 @@
                   pokerValue[4]) != pokerValue[0])
             ) {
               console.log("Four of a Kind!");
+
+              document.getElementById("poker-hand").innerHTML =
+                "Four of a Kind!";
             } else if (
               (pokerValue[0] == pokerValue[1] &&
                 pokerValue[1] == pokerValue[2] &&
@@ -280,6 +472,7 @@
                   (pokerValue[0] && pokerValue[1]))
             ) {
               console.log("Full House!");
+              document.getElementById("poker-hand").innerHTML = "Full House!";
             } else if (
               pokerSuit[0] &&
               pokerSuit[0] == pokerSuit[1] &&
@@ -288,6 +481,7 @@
               pokerSuit[3] == pokerSuit[4]
             ) {
               console.log("Flush!");
+              document.getElementById("poker-hand").innerHTML = "Flush!";
             } else if (
               pokerValue[0] == pokerValue[1] - 1 &&
               pokerValue[1] == pokerValue[2] - 1 &&
@@ -295,6 +489,7 @@
               pokerValue[3] == pokerValue[4] - 1
             ) {
               console.log("Straight!");
+              document.getElementById("poker-hand").innerHTML = "Straight!";
             } else if (
               (pokerValue[0] == pokerValue[1] &&
                 pokerValue[1] == pokerValue[2] &&
@@ -308,6 +503,8 @@
                   (pokerValue[0] || pokerValue[1]))
             ) {
               console.log("Three of a Kind!");
+              document.getElementById("poker-hand").innerHTML =
+                "Three of a Kind!";
             } else if (
               (pokerValue[0] == pokerValue[1] &&
                 pokerValue[2] == pokerValue[3] &&
@@ -329,6 +526,7 @@
                   (pokerValue[3] && pokerValue[4])) != pokerValue[2])
             ) {
               console.log("Two Pair!");
+              document.getElementById("poker-hand").innerHTML = "Two Pair!";
             } else if (
               (pokerValue[0] == pokerValue[1] &&
                 pokerValue[2] != pokerValue[3] &&
@@ -352,9 +550,13 @@
                   (pokerValue[0] && pokerValue[1] && pokerValue[2]))
             ) {
               console.log("One Pair!");
+              document.getElementById("poker-hand").innerHTML = "One Pair!";
             } else {
               console.log("High Card!");
+              document.getElementById("poker-hand").innerHTML = "High Card!";
             }
+
+            console.log(shuffledDeckDisplay);
 
             pokerSuit = [];
             pokerValue = [];
@@ -366,22 +568,7 @@
       document.getElementById("reset-btn").addEventListener(
         "click",
         () => {
-          console.clear();
-          deck = [];
-          deckDisplay = [];
-          shuffledDeck = [];
-          shuffledDeckDisplay = [];
-          arrangedSuit = [];
-          arrangedSuitDisplay = [];
-          arrangedValueAscend = [];
-          arrangedValueAscendDisplay = [];
-          arrangedValueDescend = [];
-          arrangedValueDescendDisplay = [];
-          pokerSuit = [];
-          pokerValue = [];
-          suitsCounter = 0;
-          valueCounter = 0;
-          arrangeCards();
+          location.reload();
         },
         false
       );
