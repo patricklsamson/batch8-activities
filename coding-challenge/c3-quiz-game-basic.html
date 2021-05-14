@@ -23,14 +23,25 @@
   <body>
     <main>
       <div class="cont talign">
-        <p class="h2 mt-05">
-          Check the "Console" tab in your browser's inspector.
+        <p class="h6 mt-05 mb-05">
+          For PC, check the "Console" tab in your browser's inspector.
         </p>
+
+        <p class="mb-05">
+          <a
+            href="https://github.com/patricklsamson/batch8-activities/blob/main/coding-challenge/c3-quiz-game-basic.html"
+            >Click here to see the code!</a
+          >
+        </p>
+
+        <button id="start-quiz-btn">Start quiz again!</button>
+
+        <div id="answers" class="mt-05"></div>
       </div>
     </main>
 
     <script>
-      // OLD SOLUTION
+      // OLD CODE
       // function startQuiz() {
       //   const question1 = ["What does HTML stand for?", "1) Hyper Text Markup Language", "2) Hey Too Much Layout", "3) How To Make Lasagna"],
       //     question2 = ["What does CSS stand for?", "1) Cats Sour Sauce", "2) Cascading Style Sheets", "3) Center Style Solution"],
@@ -69,7 +80,8 @@
 
       const startQuiz = () => {
         for (i = 0; i < questions.length; i++) {
-          let entry = prompt(questions[i]);
+          let entry = prompt(questions[i]),
+            answersInner = document.createElement("p");
 
           if (entry == answers.indexOf(answers[i]) + 1) {
             alert("You are correct!");
@@ -78,12 +90,19 @@
           }
 
           console.log(
-            `The correct answer for ${questions[i]} is ${answers[i]}`
+            `The correct answer for "${questions[i][0]}"" is "${answers[i]}".`
           );
+
+          answersInner.innerHTML = `The correct answer for ${questions[i][0]} is ${answers[i]}`;
+          document.getElementById("answers").appendChild(answersInner);
         }
       };
 
       startQuiz();
+
+      document
+        .getElementById("start-quiz-btn")
+        .addEventListener("click", startQuiz, false);
     </script>
   </body>
 </html>
