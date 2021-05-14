@@ -43,6 +43,7 @@
         <div class="talign tlft">
           <p id="store-name" class="mt-05 mb-05"></p>
           <p id="earnings" class="mb-05"></p>
+          <p id="inventory"></p>
           <ul id="books" class="xbul"></ul>
         </div>
       </div>
@@ -107,6 +108,8 @@
           },
           listInventory: function () {
             // CONSOLE LOGS ONLY THE BOOKS WHEREIN THE TITLE IS NOT "Not available"
+            document.getElementById("inventory").innerHTML = "Inventory:";
+
             for (i = 0; i < this.inventoryListUniq().length; i++) {
               if (this.inventoryListUniq()[i].title != "Not available") {
                 console.log(
@@ -298,13 +301,13 @@
                 store.inventoryListUniq()[bookCheck].quantity = 0;
 
                 alert(
-                  `Successful transaction. ${title} out of stock.\nThe store earned a total of $${earnings} in this transaction.`
+                  `Successful transaction. ${title} book out of stock.\nThe store earned a total of $${earnings} in this transaction.`
                 );
 
                 store.logEvents();
               } else if (store.inventoryListUniq()[bookCheck].quantity == 0) {
                 alert(
-                  `Transaction unsuccessful. ${title} out of stock.\nPlease restock ${title} now.`
+                  `Transaction unsuccessful. ${title} book out of stock.\nPlease restock ${title} now.`
                 );
               } else {
                 store.inventoryListUniq()[bookCheck].quantity -= quantity;
@@ -380,13 +383,14 @@
                 store.inventoryList[removeBooksArr[i]].title = `Not available`;
               }
 
-              alert(`${title} is removed from the inventory.`);
+              alert(`${title} book has been removed from the inventory.`);
               store.logEvents();
             }
           },
           reset: function () {
             console.clear();
             document.getElementById("earnings").innerHTML = "";
+            document.getElementById("inventory").innerHTML = "";
             document.getElementById("books").innerHTML = "";
             store.inventoryList = [];
             store.earnings = 0;
