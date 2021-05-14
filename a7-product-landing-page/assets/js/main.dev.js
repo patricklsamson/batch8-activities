@@ -28,12 +28,14 @@ doc_ready(function () {
 
       if (id("remember").checked) {
         id("remember").checked = false;
-      }
+      } // ADDED JAVASCRIPT EXERCISE
+
 
       if (has_class(this, "once")) {
         alert("Check out our latest offers and products after logging in!");
         remove_class(this, "once");
-      }
+      } // ADDED JAVASCRIPT EXERCISE
+
     });
     add_event(id("password"), "keyup", function () {
       if (this.value == id("confirm-pw").value && this.value.length != 0) {
