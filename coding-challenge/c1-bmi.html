@@ -23,14 +23,25 @@
   <body>
     <main>
       <div class="cont talign">
-        <p class="h2 mt-05">
-          Check the "Console" tab in your browser's inspector.
+        <p class="h6 mt-05 mb-05">
+          For PC, check the "Console" tab in your browser's inspector.
         </p>
+
+        <p class="mb-05">
+          <a
+            href="https://github.com/patricklsamson/batch8-activities/blob/main/coding-challenge/c1-bmi.html"
+            >Click here to see the code!</a
+          >
+        </p>
+
+        <p id="victor-bmi" class="mt-05"></p>
+        <p id="john-bmi" class="mt-05"></p>
+        <p id="higher-bmi" class="mt-05"></p>
       </div>
     </main>
 
     <script>
-      // OLD SOLUTION
+      // OLD CODE
       // var victor = {
       //   mass: 78,
       //   height: 1.7,
@@ -40,7 +51,7 @@
       // };
 
       // var john = {
-      //   mass: 78,
+      //   mass: 87,
       //   height: 1.7,
       //   bmi: function () {
       //     return this.mass / Math.pow(this.height, 2);
@@ -62,8 +73,8 @@
       var avion = {
         ceo: {
           name: "Victor",
-          mass: 78,
-          height: 1.7,
+          mass: prompt("Set Victor's mass."),
+          height: prompt("Set Victor's height."),
           bmi: function () {
             return (
               this.name +
@@ -75,8 +86,8 @@
         },
         coo: {
           name: "John",
-          mass: 87,
-          height: 1.8,
+          mass: prompt("Set John's mass."),
+          height: prompt("Set John's height."),
           bmi: function () {
             return (
               this.name +
@@ -102,6 +113,9 @@
       console.log(avion.ceo.bmi());
       console.log(avion.coo.bmi());
       console.log(avion.higherBmi());
+      document.getElementById("victor-bmi").innerHTML = avion.ceo.bmi();
+      document.getElementById("john-bmi").innerHTML = avion.coo.bmi();
+      document.getElementById("higher-bmi").innerHTML = avion.higherBmi();
     </script>
   </body>
 </html>
