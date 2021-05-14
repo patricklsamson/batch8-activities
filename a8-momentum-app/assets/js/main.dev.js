@@ -136,7 +136,8 @@ doc_ready(function () {
   };
 
   showQuotes();
-  setInterval(showQuotes, 3000); // const listQuotes = () => {
+  setInterval(showQuotes, 3000); // OLD CODE
+  // const listQuotes = () => {
   //   for (i = 0; i < quotes.length; i++) {
   //     const element = create_el("p");
   //     add_class(element, "mb-05");
