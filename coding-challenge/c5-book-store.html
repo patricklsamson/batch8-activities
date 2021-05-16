@@ -91,8 +91,8 @@
              * BECAUSE OF FILTER CALLBACK METHOD, SEARCH WILL ALSO ONLY BEGIN AT CURRENT INDEX + 1 AND
              * ALSO IMPROVES PERFORMANCE, SINCE ONLY INVENTORY ARRAY ITEMS NOT PREVIOUSLY FILTERED GET CHECKED
              */
-            let inventoryMap = store.inventoryList.map((book) => book.title),
-              inventoryUniqArr = store.inventoryList.filter(
+            let inventoryMap = this.inventoryList.map((book) => book.title),
+              inventoryUniqArr = this.inventoryList.filter(
                 ({ title }, index) => !inventoryMap.includes(title, index + 1)
               );
 
