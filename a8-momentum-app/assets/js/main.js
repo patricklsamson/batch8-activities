@@ -174,21 +174,6 @@ doc_ready(() => {
     }
   });
 
-  const showQuotes = () => {
-    quotesCounter++;
-
-    if (quotesCounter == quotes.length) {
-      quotesCounter = 0;
-    }
-
-    if (quotes[quotesCounter] != "") {
-      id("quotes").innerHTML = inner(quotes[quotesCounter]);
-    }
-  };
-
-  showQuotes();
-  setInterval(showQuotes, 3000);
-
   // OLD CODE
   // const listQuotes = () => {
   //   for (i = 0; i < quotes.length; i++) {
@@ -220,7 +205,6 @@ doc_ready(() => {
       add_event(remove, "click", function () {
         quotes.splice(this.id, 1, "");
         element.style.display = "none";
-        console.log(quotes);
       });
     }
   };
@@ -255,21 +239,42 @@ doc_ready(() => {
     add_event(remove, "click", function () {
       quotes.splice(this.id, 1, "");
       element.style.display = "none";
-      console.log(quotes);
     });
   };
+
+  // OLD CODE
+  // const showQuotes = () => {
+  //   quotesCounter++;
+
+  //   if (quotesCounter == quotes.length) {
+  //     quotesCounter = 0;
+  //   }
+
+  //   if (quotes[quotesCounter] != "") {
+  //     id("quotes").innerHTML = inner(quotes[quotesCounter]);
+  //   }
+  // };
+
+  const showQuotes = () => {
+    const filteredQuotes = quotes.filter((quote) => quote != "");
+
+    id("quotes").innerHTML = inner(
+      filteredQuotes[Math.floor(Math.random() * filteredQuotes.length)]
+    );
+  };
+
+  showQuotes();
+  setInterval(showQuotes, 3000);
 
   add_event(id("add-quote"), "keypress", (e) => {
     if ((e.which || e.keyCode) == 13 && id("add-quote").value.length != 0) {
       addedQuote();
-      console.log(quotes);
     }
   });
 
   add_event(id("add-quote-btn"), "click", () => {
     if (id("add-quote").value.length != 0) {
       addedQuote();
-      console.log(quotes);
     }
   });
 });
