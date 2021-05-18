@@ -6,7 +6,7 @@ doc_ready(() => {
     hours = twelveHours < 10 ? `0${twelveHours}` : twelveHours,
     minutes =
       today.getMinutes() < 10 ? `0${today.getMinutes()}` : today.getMinutes(),
-    ampm = today.getHours() >= 12 ? " PM" : " AM",
+    ampm = today.getHours() >= 12 ? "PM" : "AM",
     months = [
       "Jan",
       "Feb",
@@ -43,7 +43,8 @@ doc_ready(() => {
       id("greetings").innerHTML = "Evening";
     }
 
-    id("time").innerHTML = `${hours}:${minutes}${ampm}`;
+    id("time").innerHTML = `${hours}:${minutes} ${ampm}`;
+
     add_att(
       id("time"),
       "datetime",
