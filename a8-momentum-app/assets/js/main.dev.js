@@ -6,7 +6,7 @@ doc_ready(function () {
       twelveHours = today.getHours() % 12 ? today.getHours() % 12 : 12,
       hours = twelveHours < 10 ? "0".concat(twelveHours) : twelveHours,
       minutes = today.getMinutes() < 10 ? "0".concat(today.getMinutes()) : today.getMinutes(),
-      ampm = today.getHours() >= 12 ? " PM" : " AM",
+      ampm = today.getHours() >= 12 ? "PM" : "AM",
       months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
       monthsNum = today.getMonth() < 10 ? "0".concat(today.getMonth() + 1) : today.getMonth() + 1,
       date = today.getDate() < 10 ? "0".concat(today.getDate()) : today.getDate();
@@ -24,7 +24,7 @@ doc_ready(function () {
       id("greetings").innerHTML = "Evening";
     }
 
-    id("time").innerHTML = "".concat(hours, ":").concat(minutes).concat(ampm);
+    id("time").innerHTML = "".concat(hours, ":").concat(minutes, " ").concat(ampm);
     add_att(id("time"), "datetime", "".concat(today.getHours(), ":").concat(today.getMinutes()));
 
     for (i = 0; i < months.length; i++) {
