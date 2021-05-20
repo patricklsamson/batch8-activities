@@ -196,7 +196,8 @@ doc_ready(function () {
     var filteredQuotes = quotes.filter(function (quote) {
       return quote != "";
     });
-    id("quotes").innerHTML = inner(filteredQuotes[Math.floor(Math.random() * filteredQuotes.length)]);
+    id("quotes").innerHTML = inner(filteredQuotes[rand(filteredQuotes.length)]);
+    console.log(filteredQuotes);
   };
 
   showQuotes();
