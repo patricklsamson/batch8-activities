@@ -128,20 +128,14 @@ function num_only(e) {
   return !(char > 31 && (char < 48 || char > 57));
 }
 
-function match_height(element) {
-  var i = 0;
-  var items = qsel_all(element);
-  var itemsHeight = [];
+function no_num(e) {
+  var char = e.which || e.keyCode;
 
-  for (i = 0; i < items.length; i++) {
-    itemsHeight.push(items[i].offsetHeight);
-  }
+  return char > 31 && (char < 48 || char > 57);
+}
 
-  var maxHeight = Math.max(...itemsHeight);
-
-  for (i = 0; i < items.length; i++) {
-    items[i].style.height = maxHeight + "px";
-  }
+function num_commas(number) {
+  return number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function match_media(media, oldMedia, match, unmatch) {
@@ -164,6 +158,22 @@ function match_media(media, oldMedia, match, unmatch) {
     } else {
       unmatch();
     }
+  }
+}
+
+function match_height(element) {
+  var i = 0;
+  var items = qsel_all(element);
+  var itemsHeight = [];
+
+  for (i = 0; i < items.length; i++) {
+    itemsHeight.push(items[i].offsetHeight);
+  }
+
+  var maxHeight = Math.max(...itemsHeight);
+
+  for (i = 0; i < items.length; i++) {
+    items[i].style.height = maxHeight + "px";
   }
 }
 
