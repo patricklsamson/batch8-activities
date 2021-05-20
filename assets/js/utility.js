@@ -138,6 +138,10 @@ function num_commas(number) {
   return number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 
+function num_space(number) {
+  return number.toString().replace(/\d{4}(?=.)/g, "$& ");
+}
+
 function match_media(media, oldMedia, match, unmatch) {
   if (window.matchMedia) {
     var mq = window.matchMedia(media);
