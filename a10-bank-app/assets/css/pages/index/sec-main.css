@@ -1,0 +1,17 @@
+main .grid-cont {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 400px 200px;
+}
+
+main .wrap-accounts {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#acc-num-ul li {
+  cursor: pointer;
+}
+
+#acc-num-ul li:hover {
+  background: yellow;
+}
