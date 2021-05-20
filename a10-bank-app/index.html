@@ -1,0 +1,372 @@
+<!-- FAIR USE -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Patrick Samson" />
+    <title>Bank App</title>
+    <link
+      rel="icon"
+      href="../assets/img/favicon-32x32.png"
+      type="image/png"
+      size="32x32"
+    />
+    <link
+      rel="icon"
+      href="../assets/img/favicon-16x16.png"
+      type="image/png"
+      size="16x16"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/index.min.css" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+  </head>
+  <body>
+    <section id="modal" class="sec-modal">
+      <div class="cont flex">
+        <div id="login-wrap" class="wrap-login">
+          <h1><img src="../assets/img/logo-opt.png" alt="logo" /> Bank App</h1>
+
+          <form action="#" method="get" id="login-form" class="form-login">
+            <label for="login-username">Username</label><br />
+            <input
+              type="text"
+              name="login-username"
+              autocomplete="off"
+              value="admin"
+              id="login-username"
+            /><br />
+
+            <label for="login-password">Password</label><br />
+            <input
+              type="password"
+              name="login-password"
+              value="admin"
+              id="login-password"
+            /><br />
+
+            <input type="submit" value="Log In" id="login-btn" class="balign" />
+
+            Don't have an account yet?
+            <span id="open-signup-btn" role="button">Sign Up</span>
+          </form>
+        </div>
+
+        <div id="signup-wrap" class="wrap-signup">
+          <h1><img src="../assets/img/logo-opt.png" alt="logo" /> Bank App</h1>
+
+          <form action="#" method="get" id="signup-form" class="form-signup">
+            <label for="signup-first-name">First Name</label><br />
+            <input
+              type="text"
+              name="signup-first-name"
+              autocomplete="off"
+              id="signup-first-name"
+            /><br />
+
+            <label for="signup-middle-name">Middle Name</label><br />
+            <input
+              type="text"
+              name="signup-middle-name"
+              autocomplete="off"
+              id="signup-middle-name"
+            /><br />
+
+            <label for="signup-last-name">Last Name</label><br />
+            <input
+              type="text"
+              name="signup-last-name"
+              autocomplete="off"
+              id="signup-last-name"
+            /><br />
+
+            <label for="signup-account-num">Account No.</label><br />
+            <input
+              type="text"
+              name="signup-account-num"
+              id="signup-account-num"
+            /><br />
+
+            <label for="signup-username">Username</label><br />
+            <input
+              type="text"
+              name="signup-username"
+              autocomplete="off"
+              id="signup-username"
+            /><br />
+
+            <label for="signup-email">Email</label><br />
+            <input
+              type="email"
+              name="signup-email"
+              autocomplete="off"
+              id="signup-email"
+            /><br />
+
+            <label for="signup-password">Password</label><br />
+            <input
+              type="password"
+              name="signup-password"
+              id="signup-password"
+            /><br />
+
+            <label for="signup-confirm-password">Confirm Password</label><br />
+            <input type="password" id="signup-confirm-password" /><br />
+
+            <input
+              type="submit"
+              value="Sign Up"
+              id="signup-btn"
+              class="balign"
+            />
+          </form>
+
+          <button id="back-signup-btn" class="balign">
+            &#10094;&#10094; Back
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <header>
+      <div class="cont">
+        <div class="gcol-6">
+          <h4><img src="../assets/img/logo-opt.png" alt="logo" /> Bank App</h4>
+        </div>
+
+        <div class="gcol-6"></div>
+      </div>
+    </header>
+
+    <main>
+      <div class="cont">
+        <div class="grid-cont">
+          <div class="wrap-accounts">
+            <h6>Bank Accounts</h6>
+
+            <div class="grid">
+              <div class="gcol-2">
+                <p>Account No.</p>
+
+                <ul id="acc-num-ul" class="xbul"></ul>
+              </div>
+
+              <div class="gcol-5">
+                <p>Accounts</p>
+
+                <ul id="acc-ul" class="xbul"></ul>
+              </div>
+
+              <div class="gcol-2">
+                <p>Account Type</p>
+
+                <ul id="acc-type-ul" class="xbul"></ul>
+              </div>
+
+              <div class="gcol-2">
+                <p>Balance</p>
+
+                <ul id="balance-ul" class="xbul"></ul>
+              </div>
+
+              <div class="gcol-1">
+                <p>⏳</p>
+
+                <ul id="transact-ul" class="xbul"></ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="wrap-add-account">
+            <h6>Add Account</h6>
+
+            <form action="" method="get" id="add-form" class="form-add">
+              <label for="add-first-name">First Name</label><br />
+              <input
+                type="text"
+                name="add-first-name"
+                autocomplete="off"
+                id="add-first-name"
+              /><br />
+
+              <label for="add-middle-name">Middle Name</label><br />
+              <input
+                type="text"
+                name="add-middle-name"
+                autocomplete="off"
+                id="add-middle-name"
+              /><br />
+
+              <label for="add-last-name">Last Name</label><br />
+              <input
+                type="text"
+                name="add-last-name"
+                autocomplete="off"
+                id="add-last-name"
+              /><br />
+
+              <p>Account Type</p>
+
+              <input type="radio" name="account-type" id="savings" checked />
+              <label for="savings">Savings Account(₱2000)</label>
+
+              <input type="radio" name="account-type" id="checking" />
+              <label for="checking">Checking Account(₱5000)</label><br />
+
+              <label for="add-deposit">Additional Deposit (Optional)</label
+              ><br />
+              ₱<input
+                type="number"
+                name="add-deposit"
+                value="0"
+                id="add-deposit"
+              />
+              .
+              <input
+                type="number"
+                name="add-deposit"
+                value="00"
+                id="add-deposit-dec"
+              /><br />
+
+              <input
+                type="submit"
+                value="Add Account"
+                id="add-acc-btn"
+                class="balign"
+              />
+            </form>
+          </div>
+
+          <div class="wrap-withdraw">
+            <h6>Withdraw</h6>
+
+            <form
+              action=""
+              method="get"
+              id="withdraw-form"
+              class="form-withdraw"
+            >
+              <label for="withdraw-account">Enter Account No.</label><br />
+              <input
+                type="text"
+                autocomplete="off"
+                id="withdraw-account"
+              /><br />
+
+              <label for="withdraw-amount">Enter an Amount</label><br />
+              ₱<input
+                type="number"
+                name="withdraw-amount"
+                value="0"
+                id="withdraw-amount"
+              />
+              .
+              <input
+                type="number"
+                name="withdraw-amount"
+                value="00"
+                id="withdraw-amount-dec"
+              /><br />
+
+              <input
+                type="submit"
+                value="Withdraw"
+                id="withdraw-btn"
+                class="balign"
+              />
+            </form>
+          </div>
+
+          <div class="wrap-deposit">
+            <h6>Deposit</h6>
+
+            <form action="" method="get" id="deposit-form" class="form-deposit">
+              <label for="deposit-account">Enter Account No.</label><br />
+              <input
+                type="text"
+                autocomplete="off"
+                id="deposit-account"
+              /><br />
+
+              <label for="deposit-amount">Enter an Amount</label><br />
+              ₱<input
+                type="number"
+                name="deposit-amount"
+                value="0"
+                id="deposit-amount"
+              />
+              .
+              <input
+                type="number"
+                name="deposit-amount"
+                value="00"
+                id="deposit-amount-dec"
+              /><br />
+
+              <input
+                type="submit"
+                value="Deposit"
+                id="deposit-btn"
+                class="balign"
+              />
+            </form>
+          </div>
+
+          <div class="wrap-send">
+            <h6>Send Money</h6>
+
+            <form action="" method="get" id="send-form" class="form-send">
+              <label for="sender-account">Enter Account No. of Sender</label
+              ><br />
+              <input type="text" autocomplete="off" id="sender-account" /><br />
+
+              <label for="send-amount">Enter an Amount</label><br />
+              ₱<input
+                type="number"
+                name="send-amount"
+                value="0"
+                id="send-amount"
+              />
+              .
+              <input
+                type="number"
+                name="send-amount"
+                value="00"
+                id="send-amount-dec"
+              /><br />
+
+              <label for="receiver-account">Enter Account No. of Receiver</label
+              ><br />
+              <input
+                type="text"
+                autocomplete="off"
+                id="receiver-account"
+              /><br />
+
+              <input
+                type="submit"
+                value="Send Money"
+                id="send-btn"
+                class="balign"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../assets/js/utility.prod.js"></script>
+    <script src="assets/js/main.prod.js"></script>
+  </body>
+</html>
