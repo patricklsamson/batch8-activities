@@ -167,6 +167,19 @@ function match_media(media, oldMedia, match, unmatch) {
   }
 }
 
+function modal_open() {
+  if (has_class(document.body, "modal-open")) {
+    document.body.style.top = "-" + window.scrollTop + "px";
+  } else {
+    document.body.style.top = "";
+    window.scrollTo(0, parseInt(document.body.style.top || "0") * -1);
+  }
+}
+
+function rand(number) {
+  return Math.floor(Math.random() * number);
+}
+
 function dataset(element, value) {
   if (element.dataset) {
     return element.dataset.value;
