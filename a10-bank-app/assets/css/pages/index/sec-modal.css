@@ -1,0 +1,58 @@
+.sec-modal {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: #fff;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.sec-modal.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sec-modal .cont {
+  position: relative;
+  min-height: 100vh;
+}
+
+.sec-modal .wrap-login {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.sec-modal .wrap-login.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sec-modal .form-login,
+.sec-modal .form-signup {
+  width: 70%;
+  margin: 0 auto;
+}
+
+#open-signup-btn {
+  text-decoration: underline;
+}
+
+.sec-modal .wrap-signup {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.sec-modal .wrap-signup.show {
+  visibility: visible;
+  opacity: 1;
+}
