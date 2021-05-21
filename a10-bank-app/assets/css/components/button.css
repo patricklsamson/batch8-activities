@@ -1,0 +1,20 @@
+.btn-bank {
+  border: 2px solid transparent;
+  background: transparent;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn-bank.major {
+  font-size: 24px;
+}
+
+.btn-bank.major:hover {
+  border: 2px solid #343a40;
+}
+
+.btn-bank.minor:hover {
+  border: 2px solid #343a40;
+}
