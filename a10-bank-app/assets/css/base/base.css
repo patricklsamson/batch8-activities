@@ -1,0 +1,20 @@
+body {
+  min-height: 100vh;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    from(#343a40),
+    color-stop(#f8f9fa),
+    to(#67b2b2)
+  );
+  background-image: -webkit-linear-gradient(
+    top left,
+    #343a40,
+    #f8f9fa,
+    #67b2b2
+  );
+  background-image: -moz-linear-gradient(top left, #343a40, #f8f9fa, #67b2b2);
+  background-image: -o-linear-gradient(top left, #343a40, #f8f9fa, #67b2b2);
+  background-image: linear-gradient(to bottom right, #343a40, #f8f9fa, #67b2b2);
+}
