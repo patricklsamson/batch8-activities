@@ -129,6 +129,10 @@ doc_ready(() => {
         alert("Balance cannot be negative!");
       } else if (parseFloat(amount) == 0) {
         alert("Enter an amount!");
+      } else if (
+        users[senderCheck].accountNumber == users[receiverCheck].accountNumber
+      ) {
+        alert("Account number entries are not allowed!");
       } else {
         let senderGender = users[senderCheck].gender == "male" ? "His" : "Her",
           receiverGender =
@@ -181,8 +185,11 @@ doc_ready(() => {
         let j,
           accNumLi = create_el("li"),
           accLi = create_el("li"),
+          accLiSpan = create_el("span"),
           accTypeLi = create_el("li"),
           deleteLi = create_el("li"),
+          historyModal = create_el("div"),
+          historyModalClose = create_el("i"),
           historyUl = create_el("ul");
 
         accNumLi.innerHTML = num_space(users[i].accountNumber);
@@ -201,19 +208,39 @@ doc_ready(() => {
           }
         });
 
-        accLi.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
-
-        id("acc-ul").appendChild(accLi);
-        accLi.appendChild(historyUl);
+        accLiSpan.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
+        add_class(historyModalClose, "far");
+        add_class(historyModalClose, "fa-times-circle");
         add_class(historyUl, "xbul");
         historyUl.id = `h${users.indexOf(users[i])}`;
 
-        for (j = 0; j < users[i].transactionHistory.length; j++) {
+        if (users[i].transactionHistory.length == 0) {
           let historyLi = create_el("li");
 
-          historyLi.innerHTML = users[i].transactionHistory[j];
+          historyLi.innerHTML = "No transactions yet.";
           historyUl.appendChild(historyLi);
+        } else {
+          for (j = 0; j < users[i].transactionHistory.length; j++) {
+            let historyLi = create_el("li");
+
+            historyLi.innerHTML = users[i].transactionHistory[j];
+            historyUl.appendChild(historyLi);
+          }
         }
+
+        historyModal.appendChild(historyModalClose);
+        historyModal.appendChild(historyUl);
+        accLi.appendChild(accLiSpan);
+        accLi.appendChild(historyModal);
+        id("acc-ul").appendChild(accLi);
+
+        add_event(accLiSpan, "click", () => {
+          add_class(historyModal, "show");
+        });
+
+        add_event(historyModalClose, "click", () => {
+          remove_class(historyModal, "show");
+        });
 
         accTypeLi.innerHTML = users[i].accountType;
         id("acc-type-ul").appendChild(accTypeLi);
