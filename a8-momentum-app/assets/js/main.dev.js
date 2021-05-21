@@ -98,11 +98,11 @@ doc_ready(function () {
     id("add-to-do").value = "";
     var element = create_el("li"),
         remove = create_el("i");
-    id("to-do-list").appendChild(element);
     element.innerHTML = inner(todo[todo.length - 1]);
     add_class(remove, "fas");
     add_class(remove, "fa-minus-circle");
     remove.style["float"] = "right";
+    id("to-do-list").appendChild(element);
     element.appendChild(remove);
     add_event(element, "click", function () {
       toggle_class(element, "done");
@@ -137,13 +137,13 @@ doc_ready(function () {
       var element = create_el("p"),
           remove = create_el("i");
       add_class(element, "mb-05");
-      id("added-quotes-wrap").appendChild(element);
       element.innerHTML = inner(quotes[i]);
       remove.id = quotes.indexOf(quotes[i]);
       add_class(remove, "fas");
       add_class(remove, "fa-minus-circle");
       remove.style.cursor = "pointer";
       remove.style["float"] = "right";
+      id("added-quotes-wrap").appendChild(element);
       element.appendChild(remove);
       add_event(remove, "click", function () {
         quotes.splice(this.id, 1, "");
@@ -164,7 +164,6 @@ doc_ready(function () {
     var element = create_el("p"),
         remove = create_el("i");
     add_class(element, "mb-05");
-    id("added-quotes-wrap").appendChild(element);
     element.innerHTML = inner(quotes[quotes.length - 1]);
 
     for (i = 0; i < quotes.length; i++) {
@@ -175,6 +174,7 @@ doc_ready(function () {
     add_class(remove, "fa-minus-circle");
     remove.style.cursor = "pointer";
     remove.style["float"] = "right";
+    id("added-quotes-wrap").appendChild(element);
     element.appendChild(remove);
     add_event(remove, "click", function () {
       quotes.splice(this.id, 1, "");
