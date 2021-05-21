@@ -9,7 +9,8 @@ main .wrap-accounts {
 }
 
 #acc-num-ul li,
-#acc-ul li,
+#acc-ul li span,
+#acc-ul i,
 #delete-ul i {
   cursor: pointer;
 }
