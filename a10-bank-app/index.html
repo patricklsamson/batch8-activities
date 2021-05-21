@@ -41,7 +41,9 @@
     <section id="modal" class="sec-modal">
       <div class="cont flex">
         <div id="login-wrap" class="wrap-login">
-          <h1><img src="../assets/img/logo-opt.png" alt="logo" /> Bank App</h1>
+          <h1 class="mb-025">
+            <img src="../assets/img/logo-opt.png" alt="logo" /> Bank App
+          </h1>
 
           <form action="#" method="get" id="login-form" class="form-login">
             <label for="login-username">Username</label><br />
@@ -51,6 +53,7 @@
               autocomplete="off"
               value="admin"
               id="login-username"
+              class="mb-05"
             /><br />
 
             <label for="login-password">Password</label><br />
@@ -59,9 +62,15 @@
               name="login-password"
               value="admin"
               id="login-password"
+              class="mb-05"
             /><br />
 
-            <input type="submit" value="Log In" id="login-btn" class="balign" />
+            <input
+              type="submit"
+              value="Log In"
+              id="login-btn"
+              class="balign mt-05 mb-05 btn-bank major"
+            />
 
             Don't have an account yet?
             <span id="open-signup-btn" role="button">Sign Up</span>
@@ -69,7 +78,7 @@
         </div>
 
         <div id="signup-wrap" class="wrap-signup">
-          <h1><img src="../assets/img/logo-opt.png" alt="logo" /> Bank App</h1>
+          <h2><img src="../assets/img/logo-opt.png" alt="logo" /> Bank App</h2>
 
           <form action="#" method="get" id="signup-form" class="form-signup">
             <label for="signup-first-name">First Name</label><br />
@@ -127,18 +136,22 @@
             /><br />
 
             <label for="signup-confirm-password">Confirm Password</label><br />
-            <input type="password" id="signup-confirm-password" /><br />
+            <input
+              type="password"
+              id="signup-confirm-password"
+              class="mb-05"
+            /><br />
 
             <input
               type="submit"
               value="Sign Up"
               id="signup-btn"
-              class="balign"
+              class="balign mt-05 mb-05 btn-bank major"
             />
           </form>
 
-          <button id="back-signup-btn" class="balign">
-            &#10094;&#10094; Back
+          <button id="back-signup-btn" class="balign mt-05 mb-05 btn-bank">
+            <span>&#10094;&#10094;</span> Back
           </button>
         </div>
       </div>
@@ -147,13 +160,13 @@
     <header>
       <div class="cont">
         <div class="grid">
-          <div class="gcol-6">
-            <h4>
+          <div class="gcol-6 mh">
+            <h5>
               <img src="../assets/img/logo-opt.png" alt="logo" /> Bank App
-            </h4>
+            </h5>
           </div>
 
-          <div class="gcol-6">
+          <div class="gcol-6 mh flex frgt">
             <div id="navcoll" class="wrap-navcoll">
               <div class="menu-container">
                 <nav>
@@ -161,6 +174,7 @@
                     <li>
                       <a href="#" id="load-data-btn">Load Initial Data</a>
                     </li>
+                    <li><a href="#">Settings</a></li>
                     <li><a href="#" id="log-out-btn">Log Out</a></li>
                   </ul>
                 </nav>
@@ -174,43 +188,59 @@
     <main>
       <div class="cont">
         <div class="grid-cont">
-          <div class="wrap-accounts">
+          <div class="wrap-accounts wrap-card">
             <h6>Bank Accounts</h6>
 
-            <div class="grid">
+            <div class="grid wrap-thead">
               <div class="gcol-2">
                 <p>Account No.</p>
-
-                <ul id="acc-num-ul" class="xbul"></ul>
               </div>
 
               <div class="gcol-5">
                 <p>Accounts</p>
+              </div>
 
+              <div class="gcol-2">
+                <p class="talign">Account Type</p>
+              </div>
+
+              <div class="gcol-2">
+                <p class="talign">Balance</p>
+              </div>
+
+              <div class="gcol-1">
+                <i
+                  role="button"
+                  id="clear-all-btn"
+                  class="fas fa-trash-alt"
+                ></i>
+              </div>
+            </div>
+
+            <div class="grid wrap-scroll">
+              <div class="gcol-2">
+                <ul id="acc-num-ul" class="xbul"></ul>
+              </div>
+
+              <div class="gcol-5">
                 <ul id="acc-ul" class="xbul"></ul>
               </div>
 
               <div class="gcol-2">
-                <p>Account Type</p>
-
-                <ul id="acc-type-ul" class="xbul"></ul>
+                <ul id="acc-type-ul" class="xbul talign"></ul>
               </div>
 
               <div class="gcol-2">
-                <p>Balance</p>
-
-                <ul id="balance-ul" class="xbul"></ul>
+                <ul id="balance-ul" class="xbul talign trgt"></ul>
               </div>
 
               <div class="gcol-1">
-                <i role="button" id="clear-all-btn" class="fas fa-trash-alt"></i>
-
                 <ul id="delete-ul" class="xbul"></ul>
               </div>
             </div>
           </div>
 
-          <div class="wrap-add-account">
+          <div class="wrap-add-account wrap-card">
             <h6>Add Account</h6>
 
             <form action="" method="get" id="add-form" class="form-add">
@@ -249,24 +279,27 @@
               <p>Account Type</p>
 
               <input type="radio" name="account-type" id="savings" checked />
-              <label for="savings">Savings Account(₱2000)</label>
+              <label for="savings">Savings</label>
 
               <input type="radio" name="account-type" id="checking" />
-              <label for="checking">Checking Account(₱5000)</label><br />
+              <label for="checking">Checking</label><br />
 
-              <label for="add-deposit">Additional Deposit (Optional)</label
+              <label for="add-deposit-amount"
+                >Additional Deposit (Optional)</label
               ><br />
-              ₱<input
+              ₱
+              <input
                 type="number"
-                name="add-deposit"
+                name="add-deposit-amount"
                 value="0"
-                id="add-deposit"
+                id="add-deposit-amount"
               />
               .
               <input
                 type="number"
                 name="add-deposit"
                 value="00"
+                max="99"
                 id="add-deposit-dec"
               /><br />
 
@@ -274,87 +307,104 @@
                 type="submit"
                 value="Add Account"
                 id="add-acc-btn"
-                class="balign"
+                class="balign mt-05 btn-bank minor"
               />
             </form>
           </div>
 
-          <div class="wrap-withdraw">
+          <div class="wrap-withdraw wrap-card">
             <h6>Withdraw</h6>
 
-            <form
-              action=""
-              method="get"
-              id="withdraw-form"
-              class="form-withdraw"
-            >
-              <label for="withdraw-account">Enter Account No.</label><br />
-              <input
-                type="text"
-                autocomplete="off"
-                id="withdraw-account"
-              /><br />
+            <div class="table">
+              <div class="valign">
+                <form
+                  action=""
+                  method="get"
+                  id="withdraw-form"
+                  class="form-withdraw"
+                >
+                  <label for="withdraw-account">Enter Account No.</label><br />
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    id="withdraw-account"
+                  /><br />
 
-              <label for="withdraw-amount">Enter an Amount</label><br />
-              ₱<input
-                type="number"
-                name="withdraw-amount"
-                value="0"
-                id="withdraw-amount"
-              />
-              .
-              <input
-                type="number"
-                name="withdraw-amount"
-                value="00"
-                id="withdraw-amount-dec"
-              /><br />
+                  <label for="withdraw-amount">Enter an Amount</label><br />
+                  ₱
+                  <input
+                    type="number"
+                    name="withdraw-amount"
+                    value="0"
+                    id="withdraw-amount"
+                  />
+                  .
+                  <input
+                    type="number"
+                    name="withdraw-amount"
+                    value="00"
+                    max="99"
+                    id="withdraw-amount-dec"
+                  /><br />
 
-              <input
-                type="submit"
-                value="Withdraw"
-                id="withdraw-btn"
-                class="balign"
-              />
-            </form>
+                  <input
+                    type="submit"
+                    value="Withdraw"
+                    id="withdraw-btn"
+                    class="balign mt-05 btn-bank minor"
+                  />
+                </form>
+              </div>
+            </div>
           </div>
 
-          <div class="wrap-deposit">
+          <div class="wrap-deposit wrap-card">
             <h6>Deposit</h6>
 
-            <form action="" method="get" id="deposit-form" class="form-deposit">
-              <label for="deposit-account">Enter Account No.</label><br />
-              <input
-                type="text"
-                autocomplete="off"
-                id="deposit-account"
-              /><br />
+            <div class="table">
+              <div class="valign">
+                <form
+                  action=""
+                  method="get"
+                  id="deposit-form"
+                  class="form-deposit"
+                >
+                  <label for="deposit-account">Enter Account No.</label><br />
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    id="deposit-account"
+                  /><br />
 
-              <label for="deposit-amount">Enter an Amount</label><br />
-              ₱<input
-                type="number"
-                name="deposit-amount"
-                value="0"
-                id="deposit-amount"
-              />
-              .
-              <input
-                type="number"
-                name="deposit-amount"
-                value="00"
-                id="deposit-amount-dec"
-              /><br />
+                  <label for="deposit-amount">Enter an Amount</label><br />
+                  ₱
+                  <input
+                    type="number"
+                    name="deposit-amount"
+                    value="0"
+                    id="deposit-amount"
+                  />
+                  .
+                  <input
+                    type="number"
+                    name="deposit-amount"
+                    value="00"
+                    max="99"
+                    id="deposit-amount-dec"
+                  /><br />
 
-              <input
-                type="submit"
-                value="Deposit"
-                id="deposit-btn"
-                class="balign"
-              />
-            </form>
+                  <input
+                    type="submit"
+                    value="Deposit"
+                    id="deposit-btn"
+                    class="balign mt-05 btn-bank minor"
+                  />
+                </form>
+              </div>
+            </div>
           </div>
 
-          <div class="wrap-send">
+          <div class="wrap-send wrap-card">
             <h6>Send Money</h6>
 
             <form action="" method="get" id="send-form" class="form-send">
@@ -362,8 +412,17 @@
               ><br />
               <input type="text" autocomplete="off" id="sender-account" /><br />
 
+              <label for="receiver-account">Enter Account No. of Receiver</label
+              ><br />
+              <input
+                type="text"
+                autocomplete="off"
+                id="receiver-account"
+              /><br />
+
               <label for="send-amount">Enter an Amount</label><br />
-              ₱<input
+              ₱
+              <input
                 type="number"
                 name="send-amount"
                 value="0"
@@ -374,22 +433,15 @@
                 type="number"
                 name="send-amount"
                 value="00"
+                max="99"
                 id="send-amount-dec"
-              /><br />
-
-              <label for="receiver-account">Enter Account No. of Receiver</label
-              ><br />
-              <input
-                type="text"
-                autocomplete="off"
-                id="receiver-account"
               /><br />
 
               <input
                 type="submit"
                 value="Send Money"
                 id="send-btn"
-                class="balign"
+                class="balign mt-05 btn-bank minor"
               />
             </form>
           </div>
