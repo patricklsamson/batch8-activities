@@ -108,6 +108,8 @@ doc_ready(function () {
           alert("Balance cannot be negative!");
         } else if (parseFloat(amount) == 0) {
           alert("Enter an amount!");
+        } else if (users[senderCheck].accountNumber == users[receiverCheck].accountNumber) {
+          alert("Account number entries are not allowed!");
         } else {
           var senderGender = users[senderCheck].gender == "male" ? "His" : "Her",
               receiverGender = users[receiverCheck].gender == "male" ? "His" : "Her";
@@ -147,8 +149,11 @@ doc_ready(function () {
           var j = void 0,
               accNumLi = create_el("li"),
               accLi = create_el("li"),
+              accLiSpan = create_el("span"),
               accTypeLi = create_el("li"),
               deleteLi = create_el("li"),
+              historyModal = create_el("div"),
+              historyModalClose = create_el("i"),
               historyUl = create_el("ul");
           accNumLi.innerHTML = num_space(users[i].accountNumber);
           id("acc-num-ul").appendChild(accNumLi);
@@ -162,18 +167,36 @@ doc_ready(function () {
               e.clipboardData.setData("text/plain", accNumLi.textContent);
             }
           });
-          accLi.innerHTML = "".concat(users[i].firstName, " ").concat(users[i].middleName, " ").concat(users[i].lastName);
-          id("acc-ul").appendChild(accLi);
-          accLi.appendChild(historyUl);
+          accLiSpan.innerHTML = "".concat(users[i].firstName, " ").concat(users[i].middleName, " ").concat(users[i].lastName);
+          add_class(historyModalClose, "far");
+          add_class(historyModalClose, "fa-times-circle");
           add_class(historyUl, "xbul");
           historyUl.id = "h".concat(users.indexOf(users[i]));
 
-          for (j = 0; j < users[i].transactionHistory.length; j++) {
+          if (users[i].transactionHistory.length == 0) {
             var historyLi = create_el("li");
-            historyLi.innerHTML = users[i].transactionHistory[j];
+            historyLi.innerHTML = "No transactions yet.";
             historyUl.appendChild(historyLi);
+          } else {
+            for (j = 0; j < users[i].transactionHistory.length; j++) {
+              var _historyLi = create_el("li");
+
+              _historyLi.innerHTML = users[i].transactionHistory[j];
+              historyUl.appendChild(_historyLi);
+            }
           }
 
+          historyModal.appendChild(historyModalClose);
+          historyModal.appendChild(historyUl);
+          accLi.appendChild(accLiSpan);
+          accLi.appendChild(historyModal);
+          id("acc-ul").appendChild(accLi);
+          add_event(accLiSpan, "click", function () {
+            add_class(historyModal, "show");
+          });
+          add_event(historyModalClose, "click", function () {
+            remove_class(historyModal, "show");
+          });
           accTypeLi.innerHTML = users[i].accountType;
           id("acc-type-ul").appendChild(accTypeLi);
           deleteLi.innerHTML = "<i id=\"".concat(users.indexOf(users[i]), "\" class=\"fas fa-minus-circle\"></i>");
