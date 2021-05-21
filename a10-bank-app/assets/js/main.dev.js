@@ -66,7 +66,8 @@ doc_ready(function () {
         } else {
           var gender = users[userCheck].gender == "male" ? "His" : "Her";
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
-          users[userCheck].transactionHistory.push("".concat(users[userCheck].firstName, " withdrew an amount of \u20B1").concat(amount, " from ").concat(gender.charAt(0).toLowerCase() + gender.substring(1), " account. ").concat(gender, " remaining balance is now \u20B1").concat(users[userCheck].balance, "."));
+          users[userCheck].transactionHistory.push("".concat(users[userCheck].firstName, " withdrew an amount of \u20B1").concat(amount, " from ").concat(gender.charAt(0).toLowerCase() + gender.substring(1), " account. ").concat(gender, " remaining account balance is now \u20B1").concat(users[userCheck].balance, "."));
+          alert("".concat(users[userCheck].firstName, "'s withdrawal transaction is successful!"));
         }
 
         localStorage.setItem("users", JSON.stringify(users));
@@ -86,7 +87,8 @@ doc_ready(function () {
         } else {
           var gender = users[userCheck].gender == "male" ? "His" : "Her";
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2);
-          users[userCheck].transactionHistory.push("".concat(users[userCheck].firstName, " deposited an amount of \u20B1").concat(amount, " into ").concat(gender.charAt(0).toLowerCase() + gender.substring(1), " account. ").concat(gender, " remaining balance is now \u20B1").concat(users[userCheck].balance, "."));
+          users[userCheck].transactionHistory.push("".concat(users[userCheck].firstName, " deposited an amount of \u20B1").concat(amount, " into ").concat(gender.charAt(0).toLowerCase() + gender.substring(1), " account. ").concat(gender, " account balance is now \u20B1").concat(users[userCheck].balance, "."));
+          alert("".concat(users[userCheck].firstName, "'s deposit transaction is successful!"));
         }
 
         localStorage.setItem("users", JSON.stringify(users));
@@ -114,9 +116,10 @@ doc_ready(function () {
           var senderGender = users[senderCheck].gender == "male" ? "His" : "Her",
               receiverGender = users[receiverCheck].gender == "male" ? "His" : "Her";
           users[senderCheck].balance = parseFloat(parseFloat(users[senderCheck].balance) - parseFloat(amount)).toFixed(2);
-          users[senderCheck].transactionHistory.push("".concat(users[senderCheck].firstName, " sent an amount of \u20B1").concat(amount, " into ").concat(users[receiverCheck].firstName, "'s account. ").concat(senderGender, " remaining balance is now \u20B1").concat(users[senderCheck].balance, "."));
+          users[senderCheck].transactionHistory.push("".concat(users[senderCheck].firstName, " sent an amount of \u20B1").concat(amount, " into ").concat(users[receiverCheck].firstName, "'s account. ").concat(senderGender, " remaining account balance is now \u20B1").concat(users[senderCheck].balance, "."));
           users[receiverCheck].balance = parseFloat(parseFloat(users[receiverCheck].balance) + parseFloat(amount)).toFixed(2);
-          users[receiverCheck].transactionHistory.push("".concat(users[receiverCheck].firstName, " received an amount of \u20B1").concat(amount, " from ").concat(users[senderCheck].firstName, "'s account. ").concat(receiverGender, " remaining balance is now \u20B1").concat(users[receiverCheck].balance, "."));
+          users[receiverCheck].transactionHistory.push("".concat(users[receiverCheck].firstName, " received an amount of \u20B1").concat(amount, " from ").concat(users[senderCheck].firstName, "'s account. ").concat(receiverGender, " account balance is now \u20B1").concat(users[receiverCheck].balance, "."));
+          alert("".concat(users[senderCheck].firstName, " successfuly sent money into ").concat(users[receiverCheck].firstName, "'s account!"));
         }
 
         localStorage.setItem("users", JSON.stringify(users));
@@ -331,6 +334,7 @@ doc_ready(function () {
     if (id("add-first-name").value.length != 0 && id("add-last-name").value.length != 0) {
       create_user(inner(id("add-first-name").value.toUpperCase()), inner(id("add-middle-name").value.toUpperCase()), inner(id("add-last-name").value.toUpperCase()), gender, acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000), account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
       FnHandler.list_users();
+      alert("".concat(id("add-first-name").value.toUpperCase(), "'s account have been successfully created!"));
       id("add-first-name").value = "";
       id("add-middle-name").value = "";
       id("add-last-name").value = "";
