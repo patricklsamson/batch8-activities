@@ -26,6 +26,12 @@ doc_ready(() => {
     static userStorage() {
       let users;
 
+      /**
+       * IF USERS KEY STILL DOES NOT EXISTS INSIDE THE LOCAL STORAGE, USERS EMPTY ARRAY WILL BE CREATED
+       * ELSE ONCE IT ALREADY WAS CREATED INSIDE THE LOCAL STORAGE,
+       * IT WILL GET THE USERS EMPTY ARRAY CREATED INSIDE THE LOCAL STORAGE
+       * AND PARSE IT TO RETURN OBJECTS INSTEAD OF STRINGS
+       */
       if (localStorage.getItem("users") === null) {
         users = [];
       } else {
@@ -36,34 +42,71 @@ doc_ready(() => {
     }
 
     static addUser(userAccount) {
+      // TO GET EITHER THE EMPTY ARRAY OR THE ONE INSIDE THE LOCAL STORAGE AFTER IT WAS ALREADY CREATED
       const users = FnHandler.userStorage();
 
       users.push(userAccount);
+
+      /**
+       * SETS AN ITEM OR KEY INSIDE THE LOCAL STORAGE CALLED USERS
+       * AND THEN ITS CORRESPONDING VALUE IS AN ARRAY CONTAINING THE "userAccount" CREATED
+       * BECAUSE OF PUSH, AND THEN STRINGIFY IT TO CONVERT THE OBJECTS INTO STRINGS
+       * NECESSARY FOR SENDING DATA TO THE WEB SERVER
+       */
       localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    static time_stamp() {
+      const today = new Date(),
+        month =
+          today.getMonth() < 10
+            ? `0${today.getMonth() + 1}`
+            : today.getMonth() + 1,
+        date = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate(),
+        dateFull = `${month}/${date}/${today.getFullYear()}`,
+        hour =
+          today.getHours() < 10 ? `0${today.getHours()}` : today.getHours(),
+        minute =
+          today.getMinutes() < 10
+            ? `0${today.getMinutes()}`
+            : today.getMinutes(),
+        seconds =
+          today.getSeconds() < 10
+            ? `0${today.getSeconds()}`
+            : today.getSeconds(),
+        timeFull = `${hour}:${minute}:${seconds}`;
+
+      return `${dateFull} - ${timeFull}`;
     }
 
     static withdraw(user, amount) {
       const users = FnHandler.userStorage();
 
+      // FINDING THE INDEX OF EXISTING USERS ARRAY ITEM WHEREIN ITS ACCOUNT NUMBER WITH THE CURRENT ACCOUNT NUMBER ENTRY
       let userCheck = users.findIndex(
         (userIndex) => userIndex.accountNumber == user
       );
 
+      /**
+       * IF THERE IS NO EXISTING INDEX OF USERS ARRAY ITEM THAT CONTAINS THE CURRENT ACCOUNT NUMBER ENTRY,
+       * THE USER WILL NEVER BE FOUND
+       */
       if (users[userCheck] == null || users[userCheck] == "") {
         alert("User not found!");
       } else if (parseFloat(users[userCheck].balance) < parseFloat(amount)) {
-        alert("Balance cannot be negative!");
+        alert("Not enough money!");
       } else if (parseFloat(amount) == 0) {
         alert("Enter an amount!");
       } else {
         let gender = users[userCheck].gender == "male" ? "His" : "Her";
 
+        // FIXED 2 DECIMAL PLACES
         users[userCheck].balance = parseFloat(
           parseFloat(users[userCheck].balance) - parseFloat(amount)
         ).toFixed(2);
 
         users[userCheck].transactionHistory.push(
-          `${
+          `${FnHandler.time_stamp()} : ${
             users[userCheck].firstName
           } withdrew an amount of ₱${amount} from ${
             gender.charAt(0).toLowerCase() + gender.substring(1)
@@ -77,6 +120,10 @@ doc_ready(() => {
         );
       }
 
+      /**
+       * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
+       * BY OVERRIDING AND SETTING IT AGAIN, AND ALSO STRINGIFY IT AGAIN TOO
+       */
       localStorage.setItem("users", JSON.stringify(users));
     }
 
@@ -99,7 +146,7 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[userCheck].transactionHistory.push(
-          `${
+          `${FnHandler.time_stamp()} : ${
             users[userCheck].firstName
           } deposited an amount of ₱${amount} into ${
             gender.charAt(0).toLowerCase() + gender.substring(1)
@@ -134,7 +181,7 @@ doc_ready(() => {
       ) {
         alert("Users not found!");
       } else if (parseFloat(users[senderCheck].balance) < parseFloat(amount)) {
-        alert("Balance cannot be negative!");
+        alert("Not enough money!");
       } else if (parseFloat(amount) == 0) {
         alert("Enter an amount!");
       } else if (
@@ -151,7 +198,13 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[senderCheck].transactionHistory.push(
-          `${users[senderCheck].firstName} sent an amount of ₱${amount} into ${users[receiverCheck].firstName}'s account. ${senderGender} remaining account balance is now ₱${users[senderCheck].balance}.`
+          `${FnHandler.time_stamp()} : ${
+            users[senderCheck].firstName
+          } sent an amount of ₱${amount} into ${
+            users[receiverCheck].firstName
+          }'s account. ${senderGender} remaining account balance is now ₱${
+            users[senderCheck].balance
+          }.`
         );
 
         users[receiverCheck].balance = parseFloat(
@@ -159,7 +212,13 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[receiverCheck].transactionHistory.push(
-          `${users[receiverCheck].firstName} received an amount of ₱${amount} from ${users[senderCheck].firstName}'s account. ${receiverGender} account balance is now ₱${users[receiverCheck].balance}.`
+          `${FnHandler.time_stamp()} : ${
+            users[receiverCheck].firstName
+          } received an amount of ₱${amount} from ${
+            users[senderCheck].firstName
+          }'s account. ${receiverGender} account balance is now ₱${
+            users[receiverCheck].balance
+          }.`
         );
 
         alert(
@@ -178,6 +237,11 @@ doc_ready(() => {
         ),
         balanceLi = create_el("li");
 
+      /**
+       * IF THE CONDITION IS MET AND TRUE OR USERS ARE EXISTING, THE FUNCTION WILL CONTINUE TO EXECUTE
+       * AND DISPLAY THE BALANCE LIST, IN THIS WAY ERRORS CAN BE AVOIDED IF THERE ARE STILL NO USERS EXISTING
+       * INSIDE THE LOCAL STORAGE
+       */
       if (users[userCheck]) {
         balanceLi.innerHTML = `₱${num_commas(users[userCheck].balance)}`;
         id("balance-ul").appendChild(balanceLi);
@@ -187,6 +251,7 @@ doc_ready(() => {
     static list_users() {
       const users = FnHandler.userStorage();
 
+      // EMPTYING THE INNERHTML OF EACH LIST TO PREVENT DUPLICATE STACKS OF DISPLAY PER UPDATE OF OBJECTS
       id("acc-num-ul").innerHTML = "";
       id("acc-ul").innerHTML = "";
       id("acc-type-ul").innerHTML = "";
@@ -208,10 +273,12 @@ doc_ready(() => {
 
         id("acc-num-ul").appendChild(accNumLi);
 
+        // ONE CLICK COPY FUNCTION OF A STRING OR TEXT
         add_event(accNumLi, "click", () => {
           document.execCommand("copy");
         });
 
+        // SETS OR PASSES THE TEXT COPIED INTO THE CLIPBOARD FOR PASTING
         add_event(accNumLi, "copy", (e) => {
           e.preventDefault();
 
@@ -223,8 +290,9 @@ doc_ready(() => {
         accLiSpan.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
         add_class(historyModalClose, "far");
         add_class(historyModalClose, "fa-times-circle");
+        add_class(historyModalClose, "fa-2x");
         add_class(historyUl, "xbul");
-        historyUl.id = `h${users.indexOf(users[i])}`;
+        add_class(historyUl, "wrap-scroll");
 
         if (users[i].transactionHistory.length == 0) {
           let historyLi = create_el("li");
@@ -257,25 +325,44 @@ doc_ready(() => {
         accTypeLi.innerHTML = users[i].accountType;
         id("acc-type-ul").appendChild(accTypeLi);
 
+        // SETTING ID OF EACH DELETE BUTTON WITH REFERENCE TO THE INDICES OF ARRAY ITEMS INSIDE THE LOCAL STORAGE, FOR PRECISE AND ACCURATE DELETION
         deleteLi.innerHTML = `<i id="${users.indexOf(
           users[i]
         )}" class="fas fa-minus-circle"></i>`;
 
         id("delete-ul").appendChild(deleteLi);
 
+        /**
+         * TARGETING THE DELETE BUTTON ("i") INSIDE THE "li" ELEMENT AND THEN
+         * GETTING THE USERS ARRAY INSIDE THE LOCAL STORAGE TO SPLICE IT AND
+         * OVERRIDING AND SETTING IT AGAIN BACK INSIDE THE LOCAL STORAGE FOR UPDATING
+         * WHEREIN THE ARRAY ITEMS OF THE USERS ARE ALREADY SPLICED OR RATHER DELETED
+         * PROMPT FOR DELETING AN ACCOUNT, TO PREVENT ACCIDENTAL DELETION
+         */
         add_event(deleteLi.querySelector("i"), "click", function () {
-          let getLocalStorage = JSON.parse(localStorage.getItem("users"));
+          let deletePrompt = prompt(
+              'Are you sure to delete this account?\nType "Y" for yes and "N" for no.',
+              "N"
+            ),
+            deleteAnswer = deletePrompt.toLowerCase();
 
-          getLocalStorage.splice(this.id, 1);
-          localStorage.setItem("users", JSON.stringify(getLocalStorage));
-          FnHandler.list_users();
+          if (deleteAnswer == "y") {
+            let getLocalStorage = JSON.parse(localStorage.getItem("users"));
+
+            getLocalStorage.splice(this.id, 1);
+            localStorage.setItem("users", JSON.stringify(getLocalStorage));
+            FnHandler.list_users();
+          } else {
+            return;
+          }
         });
 
         FnHandler.get_balance(users[i].accountNumber);
       }
     }
 
-    static firstChar() {
+    // ONCE FIRST VALUE OR CHARACTER INPUTTED IS A NUMBER IN ALL NAME INPUTS ACROSS THE DOM, ALERT WILL EXEECUTE
+    static first_char() {
       qsel_all("[id*='-name']").forEach((input) => {
         add_event(input, "keyup", () => {
           if (
@@ -291,11 +378,61 @@ doc_ready(() => {
         });
       });
     }
+
+    // ONCE NEGATIVE OR MINUS SIGN IS INPUTTED IN ALL AMOUNT INPUTS ACROSS THE DOM, ALERT WILL EXECUTE
+    static negative_char() {
+      qsel_all("[id*='-amount']").forEach((input) => {
+        add_event(input, "keyup", (e) => {
+          if ((e.which || e.keyCode) == 189) {
+            alert("Amount cannot be negative!");
+
+            // CHECKS IF INPUT ID INCLUDES "dec" (DECIMAL INPUTS), THEN CHANGES ITS VALUE ACCORDINGLY
+            if (input.id.includes("dec")) {
+              input.value = "00";
+            } else {
+              input.value = "0";
+            }
+          }
+        });
+      });
+    }
+
+    // RESTRICT NUMBER INPUT IN ALL ACCOUNT INPUTS ACROSS THE DOM
+    static num_only() {
+      qsel_all("[id*='-account']").forEach((input) => {
+        add_att(input, "onkeypress", "return num_only(event)");
+      });
+    }
+
+    static reset() {
+      qsel_all("[id*='-name']").forEach((input) => {
+        input.value = "";
+      });
+
+      qsel_all("[id*='-account']").forEach((input) => {
+        input.value = "";
+      });
+
+      qsel_all("[id*='-amount']").forEach((input) => {
+        if (input.id.includes("dec")) {
+          input.value = "00";
+        } else {
+          input.value = "0";
+        }
+      });
+
+      id("male").checked = true;
+      id("savings").checked = true;
+    }
   }
 
+  match_height(".mh");
   FnHandler.list_users();
-  FnHandler.firstChar();
+  FnHandler.first_char();
+  FnHandler.negative_char();
+  FnHandler.num_only();
 
+  // FUNCTION FOR CREATING A NEW USER, CONNECTING THE CLASS "User" INTO THE CLASS "FnHandler" TO PUSH EVERY NEW USER CREATED INTO THE LOCAL STORAGE
   const create_user = (
     firstName,
     middleName,
@@ -314,6 +451,10 @@ doc_ready(() => {
         (userIndex) => userIndex.lastName == lastName
       );
 
+    /**
+     * THIS PREVENTS DUPLICATE USERS, EVERY FIRST NAME AND LAST NAME INPUTS ARE CHECKED
+     * IF IT IS ALREADY EXISTING INSIDE THE LOCAL STORAGE
+     */
     if (users[fNameCheck] && users[lNameCheck]) {
       alert("User already exists!");
     } else {
@@ -361,6 +502,7 @@ doc_ready(() => {
     toggle_class(id("signup-wrap"), "show");
   });
 
+  // LOADS INITIAL DATA FOR IMMEDIATE TESTING PURPOSES OF WHOEVER VISITS THE SITE
   add_event(id("load-data-btn"), "click", (e) => {
     e.preventDefault();
 
@@ -375,12 +517,13 @@ doc_ready(() => {
       janeCheck = users.findIndex((userIndex) => userIndex.firstName == "JANE"),
       doeCheck = users.findIndex((userIndex) => userIndex.lastName == "DOE");
 
+    // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE
     if (!users[juanCheck] && !users[delaCruzCheck]) {
-      let balance = 2500;
+      let balance = 2500.5;
 
       create_user(
         "JUAN",
-        "HERMOSA",
+        "HERMAN",
         "DELA CRUZ",
         "male",
         "07" + (rand(9000000000) + 1000000000),
@@ -410,9 +553,11 @@ doc_ready(() => {
   add_event(id("log-out-btn"), "click", (e) => {
     e.preventDefault();
     toggle_class(id("modal"), "hide");
+    FnHandler.reset();
     return false;
   });
 
+  // PROMPT FOR CLEARING ALL DATA, TO PREVENT ACCIDENTAL DELETION
   add_event(id("clear-all-btn"), "click", () => {
     let clearPrompt = prompt(
         'Are you sure to delete all stored datas?\nType "Y" for yes and "N" for no.',
@@ -441,7 +586,7 @@ doc_ready(() => {
         parseFloat(id("add-deposit-dec").value) < 10
           ? `0${parseFloat(id("add-deposit-dec").value)}`
           : id("add-deposit-dec").value,
-      add_deposit = `${id("add-deposit").value}.${add_deposit_dec}`;
+      add_deposit = `${id("add-deposit-amount").value}.${add_deposit_dec}`;
 
     if (
       id("add-first-name").value.length != 0 &&
@@ -465,13 +610,7 @@ doc_ready(() => {
         ).value.toUpperCase()}'s account have been successfully created!`
       );
 
-      id("add-first-name").value = "";
-      id("add-middle-name").value = "";
-      id("add-last-name").value = "";
-      id("male").checked = true;
-      id("savings").checked = true;
-      id("add-deposit").value = "0";
-      id("add-deposit-dec").value = "00";
+      FnHandler.reset();
     } else {
       alert("Please complete the necessary details");
     }
@@ -494,10 +633,7 @@ doc_ready(() => {
     );
 
     FnHandler.list_users();
-
-    id("withdraw-account").value = "";
-    id("withdraw-amount").value = "0";
-    id("withdraw-amount-dec").value = "00";
+    FnHandler.reset();
     return false;
   });
 
@@ -516,9 +652,7 @@ doc_ready(() => {
     );
 
     FnHandler.list_users();
-    id("deposit-account").value = "";
-    id("deposit-amount").value = "0";
-    id("deposit-amount-dec").value = "00";
+    FnHandler.reset();
     return false;
   });
 
@@ -538,10 +672,7 @@ doc_ready(() => {
     );
 
     FnHandler.list_users();
-    id("sender-account").value = "";
-    id("receiver-account").value = "";
-    id("send-amount").value = "0";
-    id("send-amount-dec").value = "00";
+    FnHandler.reset();
     return false;
   });
 });
