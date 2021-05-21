@@ -4,11 +4,17 @@
  * Base
  *--------------------------------------------------*/
 
+@import "base/base.css";
 @import "base/typography.css";
 
 /**
  * Components
  *--------------------------------------------------*/
+
+@import "components/containers.css";
+@import "components/navbar.css";
+@import "components/header.css";
+@import "components/button.css";
 
 /**
  * Pages
