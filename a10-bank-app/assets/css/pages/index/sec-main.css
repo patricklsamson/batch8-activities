@@ -1,22 +1,94 @@
 main .grid-cont {
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 400px 200px;
+  grid-template-rows: 415px 250px;
+  grid-gap: 15px;
 }
 
 main .wrap-accounts {
   grid-column-start: 1;
   grid-column-end: 3;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    from(rgba(52, 58, 64, 0.3)),
+    color-stop(40%, rgba(248, 249, 250, 0.3))
+  );
+  background-image: -webkit-linear-gradient(
+    top left,
+    rgba(52, 58, 64, 0.3),
+    rgba(248, 249, 250, 0.3) 60%
+  );
+  background-image: -moz-linear-gradient(
+    top left,
+    rgba(52, 58, 64, 0.3),
+    rgba(248, 249, 250, 0.3) 60%
+  );
+  background-image: -o-linear-gradient(
+    top left,
+    rgba(52, 58, 64, 0.3),
+    rgba(248, 249, 250, 0.3) 60%
+  );
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(52, 58, 64, 0.3),
+    rgba(248, 249, 250, 0.3) 60%
+  );
 }
 
-#acc-num-ul li,
+main .wrap-thead {
+  padding-right: 10px;
+}
+
+main .wrap-scroll {
+  overflow-y: scroll;
+  height: 85%;
+}
+
+main .wrap-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+main .wrap-scroll::-webkit-scrollbar-track {
+  background: #d3d3d3;
+  -webkit-box-shadow: inset 0 0 5px #f8f9fa;
+  -moz-box-shadow: inset 0 0 5px #f8f9fa;
+  box-shadow: inset 0 0 5px #f8f9fa;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+main .wrap-scroll::-webkit-scrollbar-thumb {
+  background: #343a40;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+main .wrap-scroll::-webkit-scrollbar-thumb:hover {
+  background: #6c757d;
+}
+
+#acc-num-ul li {
+  cursor: grab;
+}
+
+#acc-num-ul li:active {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+
 #acc-ul li span,
 #acc-ul i,
 #delete-ul i {
   cursor: pointer;
 }
 
-#acc-num-ul li:hover {
-  background: yellow;
+#acc-num-ul li:hover,
+#acc-ul li span:hover {
+  color: #67b2b2;
 }
 
 #acc-ul li div {
@@ -38,6 +110,18 @@ main .wrap-accounts {
   -moz-transition: 0.5s;
   transition: 0.5s;
   padding: 25px;
+  border: 2px solid #343a40;
+}
+
+#acc-ul li div:before {
+  content: ".";
+  font-size: 0;
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  top: -50%;
+  left: -50%;
 }
 
 #acc-ul li div.show {
@@ -47,4 +131,94 @@ main .wrap-accounts {
 
 #acc-ul li div i {
   float: right;
+}
+
+#acc-ul li div ul {
+  height: 100%;
+  margin-right: 40px;
+}
+
+main .wrap-add-account {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(60%, rgba(248, 249, 250, 0.3)),
+    to(rgba(103, 178, 178, 0.3))
+  );
+  background-image: -webkit-linear-gradient(
+    top left,
+    rgba(248, 249, 250, 0.3) 60%,
+    rgba(103, 178, 178, 0.3)
+  );
+  background-image: -moz-linear-gradient(
+    top left,
+    rgba(248, 249, 250, 0.3) 60%,
+    rgba(103, 178, 178, 0.3)
+  );
+  background-image: -o-linear-gradient(
+    top left,
+    rgba(248, 249, 250, 0.3) 60%,
+    rgba(103, 178, 178, 0.3)
+  );
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(248, 249, 250, 0.3) 60%,
+    rgba(103, 178, 178, 0.3)
+  );
+}
+
+main .wrap-withdraw {
+  background: rgba(248, 249, 250, 0.3);
+}
+
+main .wrap-deposit {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(40%, rgba(248, 249, 250, 0.3)),
+    to(rgba(103, 178, 178, 0.3))
+  );
+  background-image: -webkit-linear-gradient(
+    top left,
+    rgba(248, 249, 250, 0.3) 40%,
+    rgba(103, 178, 178, 0.3)
+  );
+  background-image: -moz-linear-gradient(
+    top left,
+    rgba(248, 249, 250, 0.3) 40%,
+    rgba(103, 178, 178, 0.3)
+  );
+  background-image: -o-linear-gradient(
+    top left,
+    rgba(248, 249, 250, 0.3) 40%,
+    rgba(103, 178, 178, 0.3)
+  );
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(248, 249, 250, 0.3) 40%,
+    rgba(103, 178, 178, 0.3)
+  );
+}
+
+.wrap-send {
+  background: rgba(103, 178, 178, 0.3);
+}
+
+main .table {
+  height: 90%;
+}
+
+main form {
+  width: 70%;
+  margin: 0 auto;
+}
+
+[id*="-amount"] {
+  width: 40%;
+}
+
+[id*="-dec"] {
+  width: 15%;
 }
