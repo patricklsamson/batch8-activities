@@ -67,9 +67,13 @@ doc_ready(() => {
             users[userCheck].firstName
           } withdrew an amount of ₱${amount} from ${
             gender.charAt(0).toLowerCase() + gender.substring(1)
-          } account. ${gender} remaining balance is now ₱${
+          } account. ${gender} remaining account balance is now ₱${
             users[userCheck].balance
           }.`
+        );
+
+        alert(
+          `${users[userCheck].firstName}'s withdrawal transaction is successful!`
         );
       }
 
@@ -99,9 +103,13 @@ doc_ready(() => {
             users[userCheck].firstName
           } deposited an amount of ₱${amount} into ${
             gender.charAt(0).toLowerCase() + gender.substring(1)
-          } account. ${gender} remaining balance is now ₱${
+          } account. ${gender} account balance is now ₱${
             users[userCheck].balance
           }.`
+        );
+
+        alert(
+          `${users[userCheck].firstName}'s deposit transaction is successful!`
         );
       }
 
@@ -143,7 +151,7 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[senderCheck].transactionHistory.push(
-          `${users[senderCheck].firstName} sent an amount of ₱${amount} into ${users[receiverCheck].firstName}'s account. ${senderGender} remaining balance is now ₱${users[senderCheck].balance}.`
+          `${users[senderCheck].firstName} sent an amount of ₱${amount} into ${users[receiverCheck].firstName}'s account. ${senderGender} remaining account balance is now ₱${users[senderCheck].balance}.`
         );
 
         users[receiverCheck].balance = parseFloat(
@@ -151,7 +159,11 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[receiverCheck].transactionHistory.push(
-          `${users[receiverCheck].firstName} received an amount of ₱${amount} from ${users[senderCheck].firstName}'s account. ${receiverGender} remaining balance is now ₱${users[receiverCheck].balance}.`
+          `${users[receiverCheck].firstName} received an amount of ₱${amount} from ${users[senderCheck].firstName}'s account. ${receiverGender} account balance is now ₱${users[receiverCheck].balance}.`
+        );
+
+        alert(
+          `${users[senderCheck].firstName} successfuly sent money into ${users[receiverCheck].firstName}'s account!`
         );
       }
 
@@ -446,6 +458,13 @@ doc_ready(() => {
       );
 
       FnHandler.list_users();
+
+      alert(
+        `${id(
+          "add-first-name"
+        ).value.toUpperCase()}'s account have been successfully created!`
+      );
+
       id("add-first-name").value = "";
       id("add-middle-name").value = "";
       id("add-last-name").value = "";
