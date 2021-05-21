@@ -55,6 +55,8 @@
 }
 
 .caro-cont .caro .caro-inner .slide:active {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
   cursor: grabbing;
 }
 
