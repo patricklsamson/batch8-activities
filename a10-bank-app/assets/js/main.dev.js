@@ -9,15 +9,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 doc_ready(function () {
   var i;
 
-  var User = function User(firstName, middleName, lastName, accountNumber, accountType, balance) {
+  var User = function User(firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
     _classCallCheck(this, User);
 
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
+    this.gender = gender;
     this.accountNumber = accountNumber;
     this.accountType = accountType;
     this.balance = balance;
+    this.transactionHistory = [];
   };
 
   var FnHandler =
@@ -62,7 +64,9 @@ doc_ready(function () {
         } else if (parseFloat(amount) == 0) {
           alert("Enter an amount!");
         } else {
+          var gender = users[userCheck].gender == "male" ? "His" : "Her";
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
+          users[userCheck].transactionHistory.push("".concat(users[userCheck].firstName, " withdrew an amount of \u20B1").concat(amount, " from ").concat(gender.charAt(0).toLowerCase() + gender.substring(1), " account. ").concat(gender, " remaining balance is now \u20B1").concat(users[userCheck].balance, "."));
         }
 
         localStorage.setItem("users", JSON.stringify(users));
@@ -80,7 +84,9 @@ doc_ready(function () {
         } else if (parseFloat(amount) == 0) {
           alert("Enter an amount!");
         } else {
+          var gender = users[userCheck].gender == "male" ? "His" : "Her";
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2);
+          users[userCheck].transactionHistory.push("".concat(users[userCheck].firstName, " deposited an amount of \u20B1").concat(amount, " into ").concat(gender.charAt(0).toLowerCase() + gender.substring(1), " account. ").concat(gender, " remaining balance is now \u20B1").concat(users[userCheck].balance, "."));
         }
 
         localStorage.setItem("users", JSON.stringify(users));
@@ -103,49 +109,86 @@ doc_ready(function () {
         } else if (parseFloat(amount) == 0) {
           alert("Enter an amount!");
         } else {
+          var senderGender = users[senderCheck].gender == "male" ? "His" : "Her",
+              receiverGender = users[receiverCheck].gender == "male" ? "His" : "Her";
           users[senderCheck].balance = parseFloat(parseFloat(users[senderCheck].balance) - parseFloat(amount)).toFixed(2);
+          users[senderCheck].transactionHistory.push("".concat(users[senderCheck].firstName, " sent an amount of \u20B1").concat(amount, " into ").concat(users[receiverCheck].firstName, "'s account. ").concat(senderGender, " remaining balance is now \u20B1").concat(users[senderCheck].balance, "."));
           users[receiverCheck].balance = parseFloat(parseFloat(users[receiverCheck].balance) + parseFloat(amount)).toFixed(2);
+          users[receiverCheck].transactionHistory.push("".concat(users[receiverCheck].firstName, " received an amount of \u20B1").concat(amount, " from ").concat(users[senderCheck].firstName, "'s account. ").concat(receiverGender, " remaining balance is now \u20B1").concat(users[receiverCheck].balance, "."));
         }
 
         localStorage.setItem("users", JSON.stringify(users));
       }
     }, {
+      key: "get_balance",
+      value: function get_balance(user) {
+        var users = FnHandler.userStorage();
+        var userCheck = users.findIndex(function (userIndex) {
+          return userIndex.accountNumber == user;
+        }),
+            balanceLi = create_el("li");
+
+        if (users[userCheck]) {
+          balanceLi.innerHTML = "\u20B1".concat(num_commas(users[userCheck].balance));
+          id("balance-ul").appendChild(balanceLi);
+        }
+      }
+    }, {
       key: "list_users",
       value: function list_users() {
+        var users = FnHandler.userStorage();
         id("acc-num-ul").innerHTML = "";
         id("acc-ul").innerHTML = "";
         id("acc-type-ul").innerHTML = "";
         id("balance-ul").innerHTML = "";
+        id("delete-ul").innerHTML = "";
 
-        if (FnHandler.userStorage().length != 0) {
-          var _loop = function _loop() {
-            var accNumLi = create_el("li"),
-                accLi = create_el("li"),
-                accTypeLi = create_el("li"),
-                balanceLi = create_el("li");
-            accNumLi.innerHTML = num_space(FnHandler.userStorage()[i].accountNumber);
-            id("acc-num-ul").appendChild(accNumLi);
-            add_event(accNumLi, "click", function () {
-              document.execCommand("copy");
-            });
-            add_event(accNumLi, "copy", function (e) {
-              e.preventDefault();
+        var _loop = function _loop() {
+          var j = void 0,
+              accNumLi = create_el("li"),
+              accLi = create_el("li"),
+              accTypeLi = create_el("li"),
+              deleteLi = create_el("li"),
+              historyUl = create_el("ul");
+          accNumLi.innerHTML = num_space(users[i].accountNumber);
+          id("acc-num-ul").appendChild(accNumLi);
+          add_event(accNumLi, "click", function () {
+            document.execCommand("copy");
+          });
+          add_event(accNumLi, "copy", function (e) {
+            e.preventDefault();
 
-              if (e.clipboardData) {
-                e.clipboardData.setData("text/plain", accNumLi.textContent);
-              }
-            });
-            accLi.innerHTML = "".concat(FnHandler.userStorage()[i].firstName, " ").concat(FnHandler.userStorage()[i].middleName, " ").concat(FnHandler.userStorage()[i].lastName);
-            id("acc-ul").appendChild(accLi);
-            accTypeLi.innerHTML = FnHandler.userStorage()[i].accountType;
-            id("acc-type-ul").appendChild(accTypeLi);
-            balanceLi.innerHTML = "\u20B1".concat(num_commas(FnHandler.userStorage()[i].balance));
-            id("balance-ul").appendChild(balanceLi);
-          };
+            if (e.clipboardData) {
+              e.clipboardData.setData("text/plain", accNumLi.textContent);
+            }
+          });
+          accLi.innerHTML = "".concat(users[i].firstName, " ").concat(users[i].middleName, " ").concat(users[i].lastName);
+          id("acc-ul").appendChild(accLi);
+          accLi.appendChild(historyUl);
+          add_class(historyUl, "xbul");
+          historyUl.id = "h".concat(users.indexOf(users[i]));
 
-          for (i = 0; i < FnHandler.userStorage().length; i++) {
-            _loop();
+          for (j = 0; j < users[i].transactionHistory.length; j++) {
+            var historyLi = create_el("li");
+            historyLi.innerHTML = users[i].transactionHistory[j];
+            historyUl.appendChild(historyLi);
           }
+
+          accTypeLi.innerHTML = users[i].accountType;
+          id("acc-type-ul").appendChild(accTypeLi);
+          deleteLi.innerHTML = "<i id=\"".concat(users.indexOf(users[i]), "\" class=\"fas fa-minus-circle\"></i>");
+          id("delete-ul").appendChild(deleteLi);
+          add_event(deleteLi.querySelector("i"), "click", function () {
+            var getLocalStorage = JSON.parse(localStorage.getItem("users"));
+            getLocalStorage.splice(this.id, 1);
+            localStorage.setItem("users", JSON.stringify(getLocalStorage));
+            FnHandler.list_users();
+          });
+          FnHandler.get_balance(users[i].accountNumber);
+        };
+
+        for (i = 0; i < users.length; i++) {
+          _loop();
         }
       }
     }, {
@@ -168,7 +211,7 @@ doc_ready(function () {
   FnHandler.list_users();
   FnHandler.firstChar();
 
-  var create_user = function create_user(firstName, middleName, lastName, accountNumber, accountType, balance) {
+  var create_user = function create_user(firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
     var users = FnHandler.userStorage();
     var fNameCheck = users.findIndex(function (userIndex) {
       return userIndex.firstName == firstName;
@@ -180,7 +223,7 @@ doc_ready(function () {
     if (users[fNameCheck] && users[lNameCheck]) {
       alert("User already exists!");
     } else {
-      var newUserAccount = new User(firstName, middleName, lastName, accountNumber, accountType, balance);
+      var newUserAccount = new User(firstName, middleName, lastName, gender, accountNumber, accountType, balance);
       FnHandler.addUser(newUserAccount);
     }
   };
@@ -208,19 +251,68 @@ doc_ready(function () {
     toggle_class(id("login-wrap"), "hide");
     toggle_class(id("signup-wrap"), "show");
   });
+  add_event(id("load-data-btn"), "click", function (e) {
+    e.preventDefault();
+    var users = FnHandler.userStorage();
+    var juanCheck = users.findIndex(function (userIndex) {
+      return userIndex.firstName == "JUAN";
+    }),
+        delaCruzCheck = users.findIndex(function (userIndex) {
+      return userIndex.lastName == "DELA CRUZ";
+    }),
+        janeCheck = users.findIndex(function (userIndex) {
+      return userIndex.firstName == "JANE";
+    }),
+        doeCheck = users.findIndex(function (userIndex) {
+      return userIndex.lastName == "DOE";
+    });
+
+    if (!users[juanCheck] && !users[delaCruzCheck]) {
+      var balance = 2500;
+      create_user("JUAN", "HERMOSA", "DELA CRUZ", "male", "07" + (rand(9000000000) + 1000000000), "Savings", balance.toFixed(2));
+    }
+
+    if (!users[janeCheck] && !users[doeCheck]) {
+      var _balance = 5200;
+      create_user("JANE", "HILLS", "DOE", "female", "02" + (rand(9000000000) + 1000000000), "Checking", _balance.toFixed(2));
+    }
+
+    FnHandler.list_users();
+    return false;
+  });
+  add_event(id("log-out-btn"), "click", function (e) {
+    e.preventDefault();
+    toggle_class(id("modal"), "hide");
+    return false;
+  });
+  add_event(id("clear-all-btn"), "click", function () {
+    var clearPrompt = prompt('Are you sure to delete all stored datas?\nType "Y" for yes and "N" for no.', "N"),
+        clearAnswer = clearPrompt.toLowerCase();
+
+    if (clearAnswer == "y") {
+      window.localStorage.clear();
+      FnHandler.list_users();
+    } else {
+      return;
+    }
+  });
   add_event(id("add-form"), "submit", function (e) {
     e.preventDefault();
-    var account_type = id("savings").checked ? "Savings" : "Checking",
+    var gender = id("male").checked ? "male" : "female",
+        acc_num = id("savings").checked ? ["05", "06", "07", "08", "09"] : ["01", "02", "03", "04"],
+        account_type = id("savings").checked ? "Savings" : "Checking",
         account_type_bal = id("savings").checked ? 2000 : 5000,
         add_deposit_dec = parseFloat(id("add-deposit-dec").value) < 10 ? "0".concat(parseFloat(id("add-deposit-dec").value)) : id("add-deposit-dec").value,
         add_deposit = "".concat(id("add-deposit").value, ".").concat(add_deposit_dec);
 
     if (id("add-first-name").value.length != 0 && id("add-last-name").value.length != 0) {
-      create_user(inner(id("add-first-name").value.toUpperCase()), inner(id("add-middle-name").value.toUpperCase()), inner(id("add-last-name").value.toUpperCase()), rand(900000000000) + 100000000000, account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
+      create_user(inner(id("add-first-name").value.toUpperCase()), inner(id("add-middle-name").value.toUpperCase()), inner(id("add-last-name").value.toUpperCase()), gender, acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000), account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
       FnHandler.list_users();
       id("add-first-name").value = "";
       id("add-middle-name").value = "";
       id("add-last-name").value = "";
+      id("male").checked = true;
+      id("savings").checked = true;
       id("add-deposit").value = "0";
       id("add-deposit-dec").value = "00";
     } else {
