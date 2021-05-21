@@ -4,7 +4,23 @@
   width: 100vw;
   top: 0;
   left: 0;
-  background: #fff;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    from(#343a40),
+    color-stop(#f8f9fa),
+    to(#67b2b2)
+  );
+  background-image: -webkit-linear-gradient(
+    top left,
+    #343a40,
+    #f8f9fa,
+    #67b2b2
+  );
+  background-image: -moz-linear-gradient(top left, #343a40, #f8f9fa, #67b2b2);
+  background-image: -o-linear-gradient(top left, #343a40, #f8f9fa, #67b2b2);
+  background-image: linear-gradient(to bottom right, #343a40, #f8f9fa, #67b2b2);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -33,6 +49,10 @@
   opacity: 0;
 }
 
+.sec-modal .wrap-login img {
+  width: 55px;
+}
+
 .sec-modal .form-login,
 .sec-modal .form-signup {
   width: 70%;
@@ -56,4 +76,21 @@
 .sec-modal .wrap-signup.show {
   visibility: visible;
   opacity: 1;
+}
+
+.sec-modal .wrap-signup img {
+  width: 50px;
+}
+
+#back-signup-btn span {
+  position: relative;
+  right: 0;
+}
+
+#back-signup-btn:hover span {
+  right: 5px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
 }
