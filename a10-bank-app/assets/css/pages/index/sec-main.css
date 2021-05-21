@@ -8,10 +8,42 @@ main .wrap-accounts {
   grid-column-end: 3;
 }
 
-#acc-num-ul li {
+#acc-num-ul li,
+#acc-ul li,
+#delete-ul i {
   cursor: pointer;
 }
 
 #acc-num-ul li:hover {
   background: yellow;
+}
+
+#acc-ul li div {
+  position: fixed;
+  width: 50vw;
+  height: 50vh;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  padding: 25px;
+}
+
+#acc-ul li div.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+#acc-ul li div i {
+  float: right;
 }
