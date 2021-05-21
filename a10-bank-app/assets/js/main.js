@@ -6,6 +6,7 @@ doc_ready(() => {
       firstName,
       middleName,
       lastName,
+      gender,
       accountNumber,
       accountType,
       balance
@@ -13,9 +14,11 @@ doc_ready(() => {
       this.firstName = firstName;
       this.middleName = middleName;
       this.lastName = lastName;
+      this.gender = gender;
       this.accountNumber = accountNumber;
       this.accountType = accountType;
       this.balance = balance;
+      this.transactionHistory = [];
     }
   }
 
@@ -53,9 +56,21 @@ doc_ready(() => {
       } else if (parseFloat(amount) == 0) {
         alert("Enter an amount!");
       } else {
+        let gender = users[userCheck].gender == "male" ? "His" : "Her";
+
         users[userCheck].balance = parseFloat(
           parseFloat(users[userCheck].balance) - parseFloat(amount)
         ).toFixed(2);
+
+        users[userCheck].transactionHistory.push(
+          `${
+            users[userCheck].firstName
+          } withdrew an amount of ₱${amount} from ${
+            gender.charAt(0).toLowerCase() + gender.substring(1)
+          } account. ${gender} remaining balance is now ₱${
+            users[userCheck].balance
+          }.`
+        );
       }
 
       localStorage.setItem("users", JSON.stringify(users));
@@ -73,9 +88,21 @@ doc_ready(() => {
       } else if (parseFloat(amount) == 0) {
         alert("Enter an amount!");
       } else {
+        let gender = users[userCheck].gender == "male" ? "His" : "Her";
+
         users[userCheck].balance = parseFloat(
           parseFloat(users[userCheck].balance) + parseFloat(amount)
         ).toFixed(2);
+
+        users[userCheck].transactionHistory.push(
+          `${
+            users[userCheck].firstName
+          } deposited an amount of ₱${amount} into ${
+            gender.charAt(0).toLowerCase() + gender.substring(1)
+          } account. ${gender} remaining balance is now ₱${
+            users[userCheck].balance
+          }.`
+        );
       }
 
       localStorage.setItem("users", JSON.stringify(users));
@@ -103,64 +130,109 @@ doc_ready(() => {
       } else if (parseFloat(amount) == 0) {
         alert("Enter an amount!");
       } else {
+        let senderGender = users[senderCheck].gender == "male" ? "His" : "Her",
+          receiverGender =
+            users[receiverCheck].gender == "male" ? "His" : "Her";
+
         users[senderCheck].balance = parseFloat(
           parseFloat(users[senderCheck].balance) - parseFloat(amount)
         ).toFixed(2);
 
+        users[senderCheck].transactionHistory.push(
+          `${users[senderCheck].firstName} sent an amount of ₱${amount} into ${users[receiverCheck].firstName}'s account. ${senderGender} remaining balance is now ₱${users[senderCheck].balance}.`
+        );
+
         users[receiverCheck].balance = parseFloat(
           parseFloat(users[receiverCheck].balance) + parseFloat(amount)
         ).toFixed(2);
+
+        users[receiverCheck].transactionHistory.push(
+          `${users[receiverCheck].firstName} received an amount of ₱${amount} from ${users[senderCheck].firstName}'s account. ${receiverGender} remaining balance is now ₱${users[receiverCheck].balance}.`
+        );
       }
 
       localStorage.setItem("users", JSON.stringify(users));
     }
 
+    static get_balance(user) {
+      const users = FnHandler.userStorage();
+
+      let userCheck = users.findIndex(
+          (userIndex) => userIndex.accountNumber == user
+        ),
+        balanceLi = create_el("li");
+
+      if (users[userCheck]) {
+        balanceLi.innerHTML = `₱${num_commas(users[userCheck].balance)}`;
+        id("balance-ul").appendChild(balanceLi);
+      }
+    }
+
     static list_users() {
+      const users = FnHandler.userStorage();
+
       id("acc-num-ul").innerHTML = "";
       id("acc-ul").innerHTML = "";
       id("acc-type-ul").innerHTML = "";
       id("balance-ul").innerHTML = "";
+      id("delete-ul").innerHTML = "";
 
-      if (FnHandler.userStorage().length != 0) {
-        for (i = 0; i < FnHandler.userStorage().length; i++) {
-          let accNumLi = create_el("li"),
-            accLi = create_el("li"),
-            accTypeLi = create_el("li"),
-            balanceLi = create_el("li");
+      for (i = 0; i < users.length; i++) {
+        let j,
+          accNumLi = create_el("li"),
+          accLi = create_el("li"),
+          accTypeLi = create_el("li"),
+          deleteLi = create_el("li"),
+          historyUl = create_el("ul");
 
-          accNumLi.innerHTML = num_space(
-            FnHandler.userStorage()[i].accountNumber
-          );
+        accNumLi.innerHTML = num_space(users[i].accountNumber);
 
-          id("acc-num-ul").appendChild(accNumLi);
+        id("acc-num-ul").appendChild(accNumLi);
 
-          add_event(accNumLi, "click", () => {
-            document.execCommand("copy");
-          });
+        add_event(accNumLi, "click", () => {
+          document.execCommand("copy");
+        });
 
-          add_event(accNumLi, "copy", (e) => {
-            e.preventDefault();
+        add_event(accNumLi, "copy", (e) => {
+          e.preventDefault();
 
-            if (e.clipboardData) {
-              e.clipboardData.setData("text/plain", accNumLi.textContent);
-            }
-          });
+          if (e.clipboardData) {
+            e.clipboardData.setData("text/plain", accNumLi.textContent);
+          }
+        });
 
-          accLi.innerHTML = `${FnHandler.userStorage()[i].firstName} ${
-            FnHandler.userStorage()[i].middleName
-          } ${FnHandler.userStorage()[i].lastName}`;
+        accLi.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
 
-          id("acc-ul").appendChild(accLi);
+        id("acc-ul").appendChild(accLi);
+        accLi.appendChild(historyUl);
+        add_class(historyUl, "xbul");
+        historyUl.id = `h${users.indexOf(users[i])}`;
 
-          accTypeLi.innerHTML = FnHandler.userStorage()[i].accountType;
-          id("acc-type-ul").appendChild(accTypeLi);
+        for (j = 0; j < users[i].transactionHistory.length; j++) {
+          let historyLi = create_el("li");
 
-          balanceLi.innerHTML = `₱${num_commas(
-            FnHandler.userStorage()[i].balance
-          )}`;
-
-          id("balance-ul").appendChild(balanceLi);
+          historyLi.innerHTML = users[i].transactionHistory[j];
+          historyUl.appendChild(historyLi);
         }
+
+        accTypeLi.innerHTML = users[i].accountType;
+        id("acc-type-ul").appendChild(accTypeLi);
+
+        deleteLi.innerHTML = `<i id="${users.indexOf(
+          users[i]
+        )}" class="fas fa-minus-circle"></i>`;
+
+        id("delete-ul").appendChild(deleteLi);
+
+        add_event(deleteLi.querySelector("i"), "click", function () {
+          let getLocalStorage = JSON.parse(localStorage.getItem("users"));
+
+          getLocalStorage.splice(this.id, 1);
+          localStorage.setItem("users", JSON.stringify(getLocalStorage));
+          FnHandler.list_users();
+        });
+
+        FnHandler.get_balance(users[i].accountNumber);
       }
     }
 
@@ -189,6 +261,7 @@ doc_ready(() => {
     firstName,
     middleName,
     lastName,
+    gender,
     accountNumber,
     accountType,
     balance
@@ -209,6 +282,7 @@ doc_ready(() => {
         firstName,
         middleName,
         lastName,
+        gender,
         accountNumber,
         accountType,
         balance
@@ -248,10 +322,81 @@ doc_ready(() => {
     toggle_class(id("signup-wrap"), "show");
   });
 
+  add_event(id("load-data-btn"), "click", (e) => {
+    e.preventDefault();
+
+    const users = FnHandler.userStorage();
+
+    let juanCheck = users.findIndex(
+        (userIndex) => userIndex.firstName == "JUAN"
+      ),
+      delaCruzCheck = users.findIndex(
+        (userIndex) => userIndex.lastName == "DELA CRUZ"
+      ),
+      janeCheck = users.findIndex((userIndex) => userIndex.firstName == "JANE"),
+      doeCheck = users.findIndex((userIndex) => userIndex.lastName == "DOE");
+
+    if (!users[juanCheck] && !users[delaCruzCheck]) {
+      let balance = 2500;
+
+      create_user(
+        "JUAN",
+        "HERMOSA",
+        "DELA CRUZ",
+        "male",
+        "07" + (rand(9000000000) + 1000000000),
+        "Savings",
+        balance.toFixed(2)
+      );
+    }
+
+    if (!users[janeCheck] && !users[doeCheck]) {
+      let balance = 5200;
+
+      create_user(
+        "JANE",
+        "HILLS",
+        "DOE",
+        "female",
+        "02" + (rand(9000000000) + 1000000000),
+        "Checking",
+        balance.toFixed(2)
+      );
+    }
+
+    FnHandler.list_users();
+    return false;
+  });
+
+  add_event(id("log-out-btn"), "click", (e) => {
+    e.preventDefault();
+    toggle_class(id("modal"), "hide");
+    return false;
+  });
+
+  add_event(id("clear-all-btn"), "click", () => {
+    let clearPrompt = prompt(
+        'Are you sure to delete all stored datas?\nType "Y" for yes and "N" for no.',
+        "N"
+      ),
+      clearAnswer = clearPrompt.toLowerCase();
+
+    if (clearAnswer == "y") {
+      window.localStorage.clear();
+      FnHandler.list_users();
+    } else {
+      return;
+    }
+  });
+
   add_event(id("add-form"), "submit", (e) => {
     e.preventDefault();
 
-    let account_type = id("savings").checked ? "Savings" : "Checking",
+    let gender = id("male").checked ? "male" : "female",
+      acc_num = id("savings").checked
+        ? ["05", "06", "07", "08", "09"]
+        : ["01", "02", "03", "04"],
+      account_type = id("savings").checked ? "Savings" : "Checking",
       account_type_bal = id("savings").checked ? 2000 : 5000,
       add_deposit_dec =
         parseFloat(id("add-deposit-dec").value) < 10
@@ -267,7 +412,8 @@ doc_ready(() => {
         inner(id("add-first-name").value.toUpperCase()),
         inner(id("add-middle-name").value.toUpperCase()),
         inner(id("add-last-name").value.toUpperCase()),
-        rand(900000000000) + 100000000000,
+        gender,
+        acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000),
         account_type,
         parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2)
       );
@@ -276,6 +422,8 @@ doc_ready(() => {
       id("add-first-name").value = "";
       id("add-middle-name").value = "";
       id("add-last-name").value = "";
+      id("male").checked = true;
+      id("savings").checked = true;
       id("add-deposit").value = "0";
       id("add-deposit-dec").value = "00";
     } else {
@@ -300,6 +448,7 @@ doc_ready(() => {
     );
 
     FnHandler.list_users();
+
     id("withdraw-account").value = "";
     id("withdraw-amount").value = "0";
     id("withdraw-amount-dec").value = "00";
