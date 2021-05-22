@@ -191,7 +191,33 @@ main .wrap-add-account {
 }
 
 main .wrap-withdraw {
-  background: rgba(248, 249, 250, 0.3);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(80%, rgba(248, 249, 250, 0.3)),
+    to(rgba(103, 178, 178, 0.3))
+  );
+  background-image: -webkit-linear-gradient(
+    top left,
+    rgba(248, 249, 250, 0.3) 80%,
+    rgba(103, 178, 178, 0.3)
+  );
+  background-image: -moz-linear-gradient(
+    top left,
+    rgba(248, 249, 250, 0.3) 80%,
+    rgba(103, 178, 178, 0.3)
+  );
+  background-image: -o-linear-gradient(
+    top left,
+    rgba(248, 249, 250, 0.3) 80%,
+    rgba(103, 178, 178, 0.3)
+  );
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(248, 249, 250, 0.3) 80%,
+    rgba(103, 178, 178, 0.3)
+  );
 }
 
 main .wrap-deposit {
@@ -199,27 +225,27 @@ main .wrap-deposit {
     linear,
     left top,
     right bottom,
-    color-stop(40%, rgba(248, 249, 250, 0.3)),
+    color-stop(20%, rgba(248, 249, 250, 0.3)),
     to(rgba(103, 178, 178, 0.3))
   );
   background-image: -webkit-linear-gradient(
     top left,
-    rgba(248, 249, 250, 0.3) 40%,
+    rgba(248, 249, 250, 0.3) 20%,
     rgba(103, 178, 178, 0.3)
   );
   background-image: -moz-linear-gradient(
     top left,
-    rgba(248, 249, 250, 0.3) 40%,
+    rgba(248, 249, 250, 0.3) 20%,
     rgba(103, 178, 178, 0.3)
   );
   background-image: -o-linear-gradient(
     top left,
-    rgba(248, 249, 250, 0.3) 40%,
+    rgba(248, 249, 250, 0.3) 20%,
     rgba(103, 178, 178, 0.3)
   );
   background-image: linear-gradient(
     to bottom right,
-    rgba(248, 249, 250, 0.3) 40%,
+    rgba(248, 249, 250, 0.3) 20%,
     rgba(103, 178, 178, 0.3)
   );
 }
