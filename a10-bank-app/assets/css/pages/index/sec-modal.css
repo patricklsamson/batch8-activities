@@ -55,8 +55,7 @@
 
 .sec-modal .form-login,
 .sec-modal .form-signup {
-  width: 70%;
-  margin: 0 auto;
+  width: 50%;
 }
 
 #open-signup-btn {
