@@ -226,12 +226,13 @@ doc_ready(() => {
       localStorage.setItem("users", JSON.stringify(users));
     }
 
-    static get_balance(user) {
+    static get_balance(user, parent) {
       const users = FnHandler.userStorage();
 
       let userCheck = users.findIndex(
           (userIndex) => userIndex.accountNumber == user
         ),
+        balanceTd = create_el("td"),
         balanceLi = create_el("li");
 
       /**
@@ -240,51 +241,49 @@ doc_ready(() => {
        * INSIDE THE LOCAL STORAGE
        */
       if (users[userCheck]) {
-        balanceLi.innerHTML = `₱${num_commas(users[userCheck].balance)}`;
-        id("balance-ul").appendChild(balanceLi);
+        balanceTd.innerHTML = `₱${num_commas(users[userCheck].balance)}`;
+        parent.appendChild(balanceTd);
       }
     }
 
     static list_users() {
       const users = FnHandler.userStorage();
 
-      // EMPTYING THE INNERHTML OF EACH LIST TO PREVENT DUPLICATE STACKS OF DISPLAY PER UPDATE OF OBJECTS
-      id("acc-num-ul").innerHTML = "";
-      id("acc-ul").innerHTML = "";
-      id("acc-type-ul").innerHTML = "";
-      id("balance-ul").innerHTML = "";
-      id("delete-ul").innerHTML = "";
+      // EMPTYING THE INNERHTML OF THE TABLE TO PREVENT DUPLICATE STACKS OF DISPLAY PER UPDATE OF OBJECTS
+      id("acc-table").innerHTML = "";
 
       for (i = 0; i < users.length; i++) {
         let j,
-          accNumLi = create_el("li"),
-          accLi = create_el("li"),
-          accLiSpan = create_el("span"),
-          accTypeLi = create_el("li"),
-          deleteLi = create_el("li"),
+          tableRow = create_el("tr"),
+          accNumTd = create_el("td"),
+          accTd = create_el("td"),
+          accTdSpan = create_el("span"),
+          accTypeTd = create_el("td"),
+          deleteTd = create_el("td"),
           historyModal = create_el("div"),
           historyModalClose = create_el("i"),
           historyUl = create_el("ul");
 
-        accNumLi.innerHTML = num_space(users[i].accountNumber);
-
-        id("acc-num-ul").appendChild(accNumLi);
+        accNumTd.innerHTML = num_space(users[i].accountNumber);
+        tableRow.appendChild(accNumTd);
 
         // ONE CLICK COPY FUNCTION OF A STRING OR TEXT
-        add_event(accNumLi, "click", () => {
+        add_event(accNumTd, "click", () => {
           document.execCommand("copy");
         });
 
         // SETS OR PASSES THE TEXT COPIED INTO THE CLIPBOARD FOR PASTING
-        add_event(accNumLi, "copy", (e) => {
+        add_event(accNumTd, "copy", (e) => {
           e.preventDefault();
 
           if (e.clipboardData) {
-            e.clipboardData.setData("text/plain", accNumLi.textContent);
+            e.clipboardData.setData("text/plain", accNumTd.textContent);
           }
         });
 
-        accLiSpan.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
+        accTdSpan.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
+
+        // accLiSpan.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
         add_class(historyModalClose, "far");
         add_class(historyModalClose, "fa-times-circle");
         add_class(historyModalClose, "fa-2x");
@@ -307,11 +306,12 @@ doc_ready(() => {
 
         historyModal.appendChild(historyModalClose);
         historyModal.appendChild(historyUl);
-        accLi.appendChild(accLiSpan);
-        accLi.appendChild(historyModal);
-        id("acc-ul").appendChild(accLi);
 
-        add_event(accLiSpan, "click", () => {
+        accTd.appendChild(accTdSpan);
+        accTd.appendChild(historyModal);
+        tableRow.appendChild(accTd);
+
+        add_event(accTdSpan, "click", () => {
           add_class(historyModal, "show");
         });
 
@@ -319,24 +319,22 @@ doc_ready(() => {
           remove_class(historyModal, "show");
         });
 
-        accTypeLi.innerHTML = users[i].accountType;
-        id("acc-type-ul").appendChild(accTypeLi);
+        accTypeTd.innerHTML = users[i].accountType;
+        tableRow.appendChild(accTypeTd);
 
         // SETTING ID OF EACH DELETE BUTTON WITH REFERENCE TO THE INDICES OF ARRAY ITEMS INSIDE THE LOCAL STORAGE, FOR PRECISE AND ACCURATE DELETION
-        deleteLi.innerHTML = `<i id="${users.indexOf(
+        deleteTd.innerHTML = `<i id="${users.indexOf(
           users[i]
         )}" class="fas fa-minus-circle"></i>`;
 
-        id("delete-ul").appendChild(deleteLi);
-
         /**
-         * TARGETING THE DELETE BUTTON ("i") INSIDE THE "li" ELEMENT AND THEN
+         * TARGETING THE DELETE BUTTON ("i") INSIDE EACH "td" ELEMENT AND THEN
          * GETTING THE USERS ARRAY INSIDE THE LOCAL STORAGE TO SPLICE IT AND
          * OVERRIDING AND SETTING IT AGAIN BACK INSIDE THE LOCAL STORAGE FOR UPDATING
          * WHEREIN THE ARRAY ITEMS OF THE USERS ARE ALREADY SPLICED OR RATHER DELETED
          * PROMPT FOR DELETING AN ACCOUNT, TO PREVENT ACCIDENTAL DELETION
          */
-        add_event(deleteLi.querySelector("i"), "click", function () {
+        add_event(deleteTd.querySelector("i"), "click", function () {
           let deletePrompt = prompt(
               'Are you sure to delete this account?\nType "Y" for yes and "N" for no.',
               "N"
@@ -354,7 +352,10 @@ doc_ready(() => {
           }
         });
 
-        FnHandler.get_balance(users[i].accountNumber);
+        FnHandler.get_balance(users[i].accountNumber, tableRow);
+        tableRow.appendChild(deleteTd);
+
+        id("acc-table").appendChild(tableRow);
       }
     }
 
