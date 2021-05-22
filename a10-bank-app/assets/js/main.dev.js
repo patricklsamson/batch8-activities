@@ -96,11 +96,12 @@ doc_ready(function () {
         } else if (parseFloat(amount) == 0) {
           alert("Enter an amount!");
         } else {
-          var gender = users[userCheck].gender == "male" ? "His" : "Her"; // FIXED 2 DECIMAL PLACES
+          var gender = users[userCheck].gender == "male" ? "his" : "her"; // FIXED 2 DECIMAL PLACES
 
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
-          users[userCheck].transactionHistory.push("".concat(FnHandler.time_stamp(), " : ").concat(users[userCheck].firstName, " withdrew an amount of \u20B1").concat(amount, " from ").concat(gender.charAt(0).toLowerCase() + gender.substring(1), " account. ").concat(gender, " remaining account balance is now \u20B1").concat(users[userCheck].balance, "."));
-          alert("".concat(users[userCheck].firstName, "'s withdrawal transaction is successful!"));
+          var initialBal = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2);
+          users[userCheck].transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Withdrawn an amount of <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[userCheck].firstName, "</strong>'s account. From an initial account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
+          alert("Withdrawal transaction from ".concat(users[userCheck].firstName, "'s account has been successful!"));
         }
         /**
          * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
@@ -123,10 +124,11 @@ doc_ready(function () {
         } else if (parseFloat(amount) == 0) {
           alert("Enter an amount!");
         } else {
-          var gender = users[userCheck].gender == "male" ? "His" : "Her";
+          var gender = users[userCheck].gender == "male" ? "his" : "her";
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2);
-          users[userCheck].transactionHistory.push("".concat(FnHandler.time_stamp(), " : ").concat(users[userCheck].firstName, " deposited an amount of \u20B1").concat(amount, " into ").concat(gender.charAt(0).toLowerCase() + gender.substring(1), " account. ").concat(gender, " account balance is now \u20B1").concat(users[userCheck].balance, "."));
-          alert("".concat(users[userCheck].firstName, "'s deposit transaction is successful!"));
+          var initialBal = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
+          users[userCheck].transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Deposited an amount of <strong>\u20B1").concat(amount, "</strong> into <strong>").concat(users[userCheck].firstName, "</strong>'s account. From an initial account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
+          alert("Deposit transaction from ".concat(users[userCheck].firstName, "'s account has been successful!"));
         }
 
         localStorage.setItem("users", JSON.stringify(users));
@@ -155,13 +157,15 @@ doc_ready(function () {
         } else if (users[senderCheck].accountNumber == users[receiverCheck].accountNumber) {
           alert("Account number entries are not allowed!");
         } else {
-          var senderGender = users[senderCheck].gender == "male" ? "His" : "Her",
-              receiverGender = users[receiverCheck].gender == "male" ? "His" : "Her";
+          var senderGender = users[senderCheck].gender == "male" ? "his" : "her",
+              receiverGender = users[receiverCheck].gender == "male" ? "his" : "her";
           users[senderCheck].balance = parseFloat(parseFloat(users[senderCheck].balance) - parseFloat(amount)).toFixed(2);
-          users[senderCheck].transactionHistory.push("".concat(FnHandler.time_stamp(), " : ").concat(users[senderCheck].firstName, " sent an amount of \u20B1").concat(amount, " into ").concat(users[receiverCheck].firstName, "'s account. ").concat(senderGender, " remaining account balance is now \u20B1").concat(users[senderCheck].balance, "."));
+          var senderInitialBal = parseFloat(parseFloat(users[senderCheck].balance) + parseFloat(amount)).toFixed(2);
+          users[senderCheck].transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Sent an amount of <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[senderCheck].firstName, "</strong>'s account into ").concat(users[receiverCheck].firstName, "'s account. From <strong>").concat(users[senderCheck].firstName, "</strong>'s initial account balance of <strong>\u20B1").concat(senderInitialBal, "</strong>, ").concat(senderGender, " remaining account balance is now <strong>\u20B1").concat(users[senderCheck].balance, "</strong>."));
           users[receiverCheck].balance = parseFloat(parseFloat(users[receiverCheck].balance) + parseFloat(amount)).toFixed(2);
-          users[receiverCheck].transactionHistory.push("".concat(FnHandler.time_stamp(), " : ").concat(users[receiverCheck].firstName, " received an amount of \u20B1").concat(amount, " from ").concat(users[senderCheck].firstName, "'s account. ").concat(receiverGender, " account balance is now \u20B1").concat(users[receiverCheck].balance, "."));
-          alert("".concat(users[senderCheck].firstName, " successfuly sent money into ").concat(users[receiverCheck].firstName, "'s account!"));
+          var receiverInitialBal = parseFloat(parseFloat(users[receiverCheck].balance) - parseFloat(amount)).toFixed(2);
+          users[receiverCheck].transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Received an amount of <strong>\u20B1").concat(amount, "</strong> from ").concat(users[senderCheck].firstName, "'s account into <strong>").concat(users[receiverCheck].firstName, "</strong>'s account. From <strong>").concat(users[receiverCheck].firstName, "</strong>'s initial account balance of <strong>\u20B1").concat(receiverInitialBal, "</strong>, ").concat(receiverGender, " account balance is now <strong>\u20B1").concat(users[receiverCheck].balance, "</strong>."));
+          alert("Successfuly sent money from ".concat(users[senderCheck].firstName, "'s account into ").concat(users[receiverCheck].firstName, "'s account!"));
         }
 
         localStorage.setItem("users", JSON.stringify(users));
@@ -203,7 +207,8 @@ doc_ready(function () {
               deleteTd = create_el("td"),
               historyModal = create_el("div"),
               historyModalClose = create_el("i"),
-              historyUl = create_el("ul");
+              historyUl = create_el("ul"),
+              noTransact = create_el("li");
           accNumTd.innerHTML = num_space(users[i].accountNumber);
           tableRow.appendChild(accNumTd); // ONE CLICK COPY FUNCTION OF A STRING OR TEXT
 
@@ -218,26 +223,38 @@ doc_ready(function () {
               e.clipboardData.setData("text/plain", accNumTd.textContent);
             }
           });
-          accTdSpan.innerHTML = "".concat(users[i].firstName, " ").concat(users[i].middleName, " ").concat(users[i].lastName); // accLiSpan.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
-
+          accTdSpan.innerHTML = "".concat(users[i].firstName, " ").concat(users[i].middleName, " ").concat(users[i].lastName);
           add_class(historyModalClose, "far");
           add_class(historyModalClose, "fa-times-circle");
           add_class(historyModalClose, "fa-2x");
           add_class(historyUl, "xbul");
-          add_class(historyUl, "wrap-scroll");
+          add_class(historyUl, "wrap-scroll"); // INDICATION WHEN NO OTHER TRANSACTIONS ARE MADE YET ASIDE FROM OPENING THE ACCOUNT
 
-          if (users[i].transactionHistory.length == 0) {
+          if (users[i].transactionHistory.length == 1) {
+            noTransact.innerHTML = "No other transactions yet.";
+            historyUl.appendChild(noTransact);
+          } // REVERSE FOR LOOP, SO THAT LATEST TRANSACTION HISTORY LOG REMAINS AT THE TOP
+
+
+          for (j = users[i].transactionHistory.length - 1; j >= 0; j--) {
             var historyLi = create_el("li");
-            historyLi.innerHTML = "No transactions yet.";
+            historyLi.innerHTML = users[i].transactionHistory[j];
+            add_class(historyLi, "mb-05");
             historyUl.appendChild(historyLi);
-          } else {
-            for (j = 0; j < users[i].transactionHistory.length; j++) {
-              var _historyLi = create_el("li");
+          } // OLD CODE
+          // if (users[i].transactionHistory.length == 0) {
+          //   let historyLi = create_el("li");
+          //   historyLi.innerHTML = "No transactions yet.";
+          //   historyUl.appendChild(historyLi);
+          // } else {
+          //   for (j = 0; j < users[i].transactionHistory.length; j++) {
+          //     let historyLi = create_el("li");
+          //     historyLi.innerHTML = users[i].transactionHistory[j];
+          //     add_class(historyLi, "mb-05");
+          //     historyUl.appendChild(historyLi);
+          //   }
+          // }
 
-              _historyLi.innerHTML = users[i].transactionHistory[j];
-              historyUl.appendChild(_historyLi);
-            }
-          }
 
           historyModal.appendChild(historyModalClose);
           historyModal.appendChild(historyUl);
@@ -326,21 +343,9 @@ doc_ready(function () {
     }, {
       key: "reset",
       value: function reset() {
-        qsel_all("[id*='-name']").forEach(function (input) {
-          input.value = "";
+        qsel_all("form").forEach(function (form) {
+          form.reset();
         });
-        qsel_all("[id*='-account']").forEach(function (input) {
-          input.value = "";
-        });
-        qsel_all("[id*='-amount']").forEach(function (input) {
-          if (input.id.includes("dec")) {
-            input.value = "00";
-          } else {
-            input.value = "0";
-          }
-        });
-        id("male").checked = true;
-        id("savings").checked = true;
       }
     }]);
 
@@ -370,6 +375,7 @@ doc_ready(function () {
       alert("User already exists!");
     } else {
       var newUserAccount = new User(firstName, middleName, lastName, gender, accountNumber, accountType, balance);
+      newUserAccount.transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Opened a ").concat(newUserAccount.accountType.toLowerCase(), " account for <strong>").concat(newUserAccount.firstName, "</strong> ").concat(newUserAccount.middleName, " ").concat(newUserAccount.lastName, "."));
       FnHandler.addUser(newUserAccount);
     }
   };
