@@ -173,13 +173,10 @@ doc_ready(() => {
           (userIndex) => userIndex.accountNumber == to_user
         );
 
-      if (
-        users[senderCheck] == null ||
-        users[senderCheck] == "" ||
-        users[receiverCheck] == null ||
-        users[receiverCheck] == ""
-      ) {
-        alert("Users not found!");
+      if (users[senderCheck] == null || users[senderCheck] == "") {
+        alert("Sender's account not found!");
+      } else if (users[receiverCheck] == null || users[receiverCheck] == "") {
+        alert("Receiver's account not found!");
       } else if (parseFloat(users[senderCheck].balance) < parseFloat(amount)) {
         alert("Not enough money!");
       } else if (parseFloat(amount) == 0) {
