@@ -98,25 +98,27 @@ doc_ready(() => {
       } else if (parseFloat(amount) == 0) {
         alert("Enter an amount!");
       } else {
-        let gender = users[userCheck].gender == "male" ? "His" : "Her";
+        let gender = users[userCheck].gender == "male" ? "his" : "her";
 
         // FIXED 2 DECIMAL PLACES
         users[userCheck].balance = parseFloat(
           parseFloat(users[userCheck].balance) - parseFloat(amount)
         ).toFixed(2);
 
+        let initialBal = parseFloat(
+          parseFloat(users[userCheck].balance) + parseFloat(amount)
+        ).toFixed(2);
+
         users[userCheck].transactionHistory.push(
-          `${FnHandler.time_stamp()} : ${
+          `<em>${FnHandler.time_stamp()}</em> : Withdrawn an amount of <strong>₱${amount}</strong> from <strong>${
             users[userCheck].firstName
-          } withdrew an amount of ₱${amount} from ${
-            gender.charAt(0).toLowerCase() + gender.substring(1)
-          } account. ${gender} remaining account balance is now ₱${
+          }</strong>'s account. From an initial account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
             users[userCheck].balance
-          }.`
+          }</strong>.`
         );
 
         alert(
-          `${users[userCheck].firstName}'s withdrawal transaction is successful!`
+          `Withdrawal transaction from ${users[userCheck].firstName}'s account has been successful!`
         );
       }
 
@@ -139,24 +141,26 @@ doc_ready(() => {
       } else if (parseFloat(amount) == 0) {
         alert("Enter an amount!");
       } else {
-        let gender = users[userCheck].gender == "male" ? "His" : "Her";
+        let gender = users[userCheck].gender == "male" ? "his" : "her";
 
         users[userCheck].balance = parseFloat(
           parseFloat(users[userCheck].balance) + parseFloat(amount)
         ).toFixed(2);
 
+        let initialBal = parseFloat(
+          parseFloat(users[userCheck].balance) - parseFloat(amount)
+        ).toFixed(2);
+
         users[userCheck].transactionHistory.push(
-          `${FnHandler.time_stamp()} : ${
+          `<em>${FnHandler.time_stamp()}</em> : Deposited an amount of <strong>₱${amount}</strong> into <strong>${
             users[userCheck].firstName
-          } deposited an amount of ₱${amount} into ${
-            gender.charAt(0).toLowerCase() + gender.substring(1)
-          } account. ${gender} account balance is now ₱${
+          }</strong>'s account. From an initial account balance of <strong>₱${initialBal}</strong>, ${gender} account balance is now <strong>₱${
             users[userCheck].balance
-          }.`
+          }</strong>.`
         );
 
         alert(
-          `${users[userCheck].firstName}'s deposit transaction is successful!`
+          `Deposit transaction from ${users[userCheck].firstName}'s account has been successful!`
         );
       }
 
@@ -191,40 +195,52 @@ doc_ready(() => {
       ) {
         alert("Account number entries are not allowed!");
       } else {
-        let senderGender = users[senderCheck].gender == "male" ? "His" : "Her",
+        let senderGender = users[senderCheck].gender == "male" ? "his" : "her",
           receiverGender =
-            users[receiverCheck].gender == "male" ? "His" : "Her";
+            users[receiverCheck].gender == "male" ? "his" : "her";
 
         users[senderCheck].balance = parseFloat(
           parseFloat(users[senderCheck].balance) - parseFloat(amount)
         ).toFixed(2);
 
+        let senderInitialBal = parseFloat(
+          parseFloat(users[senderCheck].balance) + parseFloat(amount)
+        ).toFixed(2);
+
         users[senderCheck].transactionHistory.push(
-          `${FnHandler.time_stamp()} : ${
+          `<em>${FnHandler.time_stamp()}</em> : Sent an amount of <strong>₱${amount}</strong> from <strong>${
             users[senderCheck].firstName
-          } sent an amount of ₱${amount} into ${
+          }</strong>'s account into ${
             users[receiverCheck].firstName
-          }'s account. ${senderGender} remaining account balance is now ₱${
+          }'s account. From <strong>${
+            users[senderCheck].firstName
+          }</strong>'s initial account balance of <strong>₱${senderInitialBal}</strong>, ${senderGender} remaining account balance is now <strong>₱${
             users[senderCheck].balance
-          }.`
+          }</strong>.`
         );
 
         users[receiverCheck].balance = parseFloat(
           parseFloat(users[receiverCheck].balance) + parseFloat(amount)
         ).toFixed(2);
 
+        let receiverInitialBal = parseFloat(
+          parseFloat(users[receiverCheck].balance) - parseFloat(amount)
+        ).toFixed(2);
+
         users[receiverCheck].transactionHistory.push(
-          `${FnHandler.time_stamp()} : ${
-            users[receiverCheck].firstName
-          } received an amount of ₱${amount} from ${
+          `<em>${FnHandler.time_stamp()}</em> : Received an amount of <strong>₱${amount}</strong> from ${
             users[senderCheck].firstName
-          }'s account. ${receiverGender} account balance is now ₱${
+          }'s account into <strong>${
+            users[receiverCheck].firstName
+          }</strong>'s account. From <strong>${
+            users[receiverCheck].firstName
+          }</strong>'s initial account balance of <strong>₱${receiverInitialBal}</strong>, ${receiverGender} account balance is now <strong>₱${
             users[receiverCheck].balance
-          }.`
+          }</strong>.`
         );
 
         alert(
-          `${users[senderCheck].firstName} successfuly sent money into ${users[receiverCheck].firstName}'s account!`
+          `Successfuly sent money from ${users[senderCheck].firstName}'s account into ${users[receiverCheck].firstName}'s account!`
         );
       }
 
@@ -267,7 +283,8 @@ doc_ready(() => {
           deleteTd = create_el("td"),
           historyModal = create_el("div"),
           historyModalClose = create_el("i"),
-          historyUl = create_el("ul");
+          historyUl = create_el("ul"),
+          noTransact = create_el("li");
 
         accNumTd.innerHTML = num_space(users[i].accountNumber);
         tableRow.appendChild(accNumTd);
@@ -287,27 +304,42 @@ doc_ready(() => {
         });
 
         accTdSpan.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
-
-        // accLiSpan.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
         add_class(historyModalClose, "far");
         add_class(historyModalClose, "fa-times-circle");
         add_class(historyModalClose, "fa-2x");
         add_class(historyUl, "xbul");
         add_class(historyUl, "wrap-scroll");
 
-        if (users[i].transactionHistory.length == 0) {
+        // INDICATION WHEN NO OTHER TRANSACTIONS ARE MADE YET ASIDE FROM OPENING THE ACCOUNT
+        if (users[i].transactionHistory.length == 1) {
+          noTransact.innerHTML = "No other transactions yet.";
+          historyUl.appendChild(noTransact);
+        }
+
+        // REVERSE FOR LOOP, SO THAT LATEST TRANSACTION HISTORY LOG REMAINS AT THE TOP
+        for (j = users[i].transactionHistory.length - 1; j >= 0; j--) {
           let historyLi = create_el("li");
 
-          historyLi.innerHTML = "No transactions yet.";
+          historyLi.innerHTML = users[i].transactionHistory[j];
+          add_class(historyLi, "mb-05");
           historyUl.appendChild(historyLi);
-        } else {
-          for (j = 0; j < users[i].transactionHistory.length; j++) {
-            let historyLi = create_el("li");
-
-            historyLi.innerHTML = users[i].transactionHistory[j];
-            historyUl.appendChild(historyLi);
-          }
         }
+
+        // OLD CODE
+        // if (users[i].transactionHistory.length == 0) {
+        //   let historyLi = create_el("li");
+
+        //   historyLi.innerHTML = "No transactions yet.";
+        //   historyUl.appendChild(historyLi);
+        // } else {
+        //   for (j = 0; j < users[i].transactionHistory.length; j++) {
+        //     let historyLi = create_el("li");
+
+        //     historyLi.innerHTML = users[i].transactionHistory[j];
+        //     add_class(historyLi, "mb-05");
+        //     historyUl.appendChild(historyLi);
+        //   }
+        // }
 
         historyModal.appendChild(historyModalClose);
         historyModal.appendChild(historyUl);
@@ -408,24 +440,9 @@ doc_ready(() => {
     }
 
     static reset() {
-      qsel_all("[id*='-name']").forEach((input) => {
-        input.value = "";
+      qsel_all("form").forEach((form) => {
+        form.reset();
       });
-
-      qsel_all("[id*='-account']").forEach((input) => {
-        input.value = "";
-      });
-
-      qsel_all("[id*='-amount']").forEach((input) => {
-        if (input.id.includes("dec")) {
-          input.value = "00";
-        } else {
-          input.value = "0";
-        }
-      });
-
-      id("male").checked = true;
-      id("savings").checked = true;
     }
   }
 
@@ -469,6 +486,12 @@ doc_ready(() => {
         accountNumber,
         accountType,
         balance
+      );
+
+      newUserAccount.transactionHistory.push(
+        `<em>${FnHandler.time_stamp()}</em> : Opened a ${newUserAccount.accountType.toLowerCase()} account for <strong>${
+          newUserAccount.firstName
+        }</strong> ${newUserAccount.middleName} ${newUserAccount.lastName}.`
       );
 
       FnHandler.addUser(newUserAccount);
