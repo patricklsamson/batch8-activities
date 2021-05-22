@@ -142,7 +142,9 @@ doc_ready(function () {
           return userIndex.accountNumber == to_user;
         });
 
-        if (users[senderCheck] == null || users[senderCheck] == "") {
+        if ((users[senderCheck] == null || users[senderCheck] == "") && (users[receiverCheck] == null || users[receiverCheck] == "")) {
+          alert("Users not found!");
+        } else if (users[senderCheck] == null || users[senderCheck] == "") {
           alert("Sender's account not found!");
         } else if (users[receiverCheck] == null || users[receiverCheck] == "") {
           alert("Receiver's account not found!");
@@ -433,14 +435,18 @@ doc_ready(function () {
   }); // PROMPT FOR CLEARING ALL DATA, TO PREVENT ACCIDENTAL DELETION
 
   add_event(id("clear-all-btn"), "click", function () {
-    var clearPrompt = prompt('Are you sure to delete all stored datas?\nType "Y" for yes and "N" for no.', "N"),
-        clearAnswer = clearPrompt.toLowerCase();
+    var users = FnHandler.userStorage();
 
-    if (clearAnswer == "y") {
-      window.localStorage.clear();
-      FnHandler.list_users();
-    } else {
-      return;
+    if (users.length != 0) {
+      var clearPrompt = prompt('Are you sure to delete all stored datas?\nType "Y" for yes and "N" for no.', "N"),
+          clearAnswer = clearPrompt != null ? clearPrompt.toLowerCase() : console.clear();
+
+      if (clearAnswer == "y") {
+        window.localStorage.clear();
+        FnHandler.list_users();
+      } else {
+        return;
+      }
     }
   });
   add_event(id("add-form"), "submit", function (e) {
