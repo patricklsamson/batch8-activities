@@ -1,0 +1,12 @@
+form {
+  width: 70%;
+  margin: 0 auto;
+}
+
+[id*="-amount"] {
+  width: 40%;
+}
+
+[id*="-dec"] {
+  width: 15%;
+}
