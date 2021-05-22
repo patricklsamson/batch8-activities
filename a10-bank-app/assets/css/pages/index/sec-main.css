@@ -42,7 +42,7 @@ main .wrap-thead {
 
 main .wrap-scroll {
   overflow-y: scroll;
-  height: 85%;
+  height: 340px;
 }
 
 main .wrap-scroll::-webkit-scrollbar {
@@ -70,28 +70,49 @@ main .wrap-scroll::-webkit-scrollbar-thumb:hover {
   background: #6c757d;
 }
 
-#acc-num-ul li {
+main table {
+  table-layout: auto;
+  width: 100%;
+}
+
+main table th:first-child {
+  width: 23%;
+}
+
+main table th:nth-child(2) {
+  width: 43%;
+}
+
+main table th:nth-child(3),
+main table th:nth-child(4) {
+  width: 14.7%;
+}
+
+main table th:last-child {
+  padding-right: 10px;
+}
+
+#acc-table td:first-child {
   cursor: grab;
 }
 
-#acc-num-ul li:active {
+#acc-table td:first-child:active {
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
 }
 
-#acc-ul li span,
-#acc-ul i,
-#delete-ul i {
+#acc-table td span,
+#acc-table td i {
   cursor: pointer;
 }
 
-#acc-num-ul li:hover,
-#acc-ul li span:hover {
+#acc-table td:first-child:hover,
+#acc-table td span:hover {
   color: #67b2b2;
 }
 
-#acc-ul li div {
+#acc-table td div {
   position: fixed;
   width: 50vw;
   height: 50vh;
@@ -111,9 +132,10 @@ main .wrap-scroll::-webkit-scrollbar-thumb:hover {
   transition: 0.5s;
   padding: 25px;
   border: 2px solid #343a40;
+  text-align: left;
 }
 
-#acc-ul li div:before {
+#acc-table td div:before {
   content: ".";
   font-size: 0;
   position: absolute;
@@ -124,16 +146,16 @@ main .wrap-scroll::-webkit-scrollbar-thumb:hover {
   left: -50%;
 }
 
-#acc-ul li div.show {
+#acc-table td div.show {
   visibility: visible;
   opacity: 1;
 }
 
-#acc-ul li div i {
+#acc-table td div i {
   float: right;
 }
 
-#acc-ul li div ul {
+#acc-table td div ul {
   height: 100%;
   margin-right: 40px;
 }
