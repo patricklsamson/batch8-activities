@@ -591,9 +591,9 @@ doc_ready(() => {
       account_type = id("savings").checked ? "Savings" : "Checking",
       account_type_bal = id("savings").checked ? 2000 : 5000,
       add_deposit_dec =
-        parseFloat(id("add-deposit-dec").value) < 10
-          ? `0${parseFloat(id("add-deposit-dec").value)}`
-          : id("add-deposit-dec").value,
+        parseFloat(id("add-deposit-amount-dec").value) < 10
+          ? `0${parseFloat(id("add-deposit-amount-dec").value)}`
+          : id("add-deposit-amount-dec").value,
       add_deposit = `${id("add-deposit-amount").value}.${add_deposit_dec}`;
 
     if (
