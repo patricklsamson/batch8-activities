@@ -641,7 +641,7 @@ doc_ready(() => {
         ).value.toUpperCase()}'s account have been successfully created!`
       );
 
-      FnHandler.reset();
+      id("add-form").reset();
     } else {
       alert("Please complete the necessary details");
     }
@@ -664,7 +664,7 @@ doc_ready(() => {
     );
 
     FnHandler.list_users();
-    FnHandler.reset();
+    id("withdraw-form").reset();
     return false;
   });
 
@@ -683,7 +683,7 @@ doc_ready(() => {
     );
 
     FnHandler.list_users();
-    FnHandler.reset();
+    id("deposit-form").reset();
     return false;
   });
 
@@ -703,7 +703,7 @@ doc_ready(() => {
     );
 
     FnHandler.list_users();
-    FnHandler.reset();
+    id("send-form").reset();
     return false;
   });
 });
