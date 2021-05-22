@@ -455,7 +455,7 @@ doc_ready(function () {
         acc_num = id("savings").checked ? ["05", "06", "07", "08", "09"] : ["01", "02", "03", "04"],
         account_type = id("savings").checked ? "Savings" : "Checking",
         account_type_bal = id("savings").checked ? 2000 : 5000,
-        add_deposit_dec = parseFloat(id("add-deposit-dec").value) < 10 ? "0".concat(parseFloat(id("add-deposit-dec").value)) : id("add-deposit-dec").value,
+        add_deposit_dec = parseFloat(id("add-deposit-amount-dec").value) < 10 ? "0".concat(parseFloat(id("add-deposit-amount-dec").value)) : id("add-deposit-amount-dec").value,
         add_deposit = "".concat(id("add-deposit-amount").value, ".").concat(add_deposit_dec);
 
     if (id("add-first-name").value.length != 0 && id("add-last-name").value.length != 0) {
