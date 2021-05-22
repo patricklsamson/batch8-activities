@@ -37,8 +37,8 @@
     <link rel="stylesheet" href="../assets/css/index.min.css" />
     <link rel="stylesheet" href="assets/css/main.min.css" />
   </head>
-  <body>
-    <section id="modal" class="sec-modal">
+  <body class="img">
+    <section id="modal" class="sec-modal img">
       <div class="cont flex">
         <div id="login-wrap" class="wrap-login">
           <h1 class="mb-025">
@@ -191,53 +191,33 @@
           <div class="wrap-accounts wrap-card">
             <h6>Bank Accounts</h6>
 
-            <div class="grid wrap-thead">
-              <div class="gcol-2">
-                <p>Account No.</p>
-              </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Account No.</th>
+                  <th>Accounts</th>
+                  <th>Account Type</th>
+                  <th>Balance</th>
+                  <th>
+                    <i
+                      role="button"
+                      id="clear-all-btn"
+                      class="fas fa-trash-alt"
+                    ></i>
+                  </th>
+                </tr>
+              </thead>
 
-              <div class="gcol-5">
-                <p>Accounts</p>
-              </div>
-
-              <div class="gcol-2">
-                <p class="talign">Account Type</p>
-              </div>
-
-              <div class="gcol-2">
-                <p class="talign">Balance</p>
-              </div>
-
-              <div class="gcol-1">
-                <i
-                  role="button"
-                  id="clear-all-btn"
-                  class="fas fa-trash-alt"
-                ></i>
-              </div>
-            </div>
-
-            <div class="grid wrap-scroll">
-              <div class="gcol-2">
-                <ul id="acc-num-ul" class="xbul"></ul>
-              </div>
-
-              <div class="gcol-5">
-                <ul id="acc-ul" class="xbul"></ul>
-              </div>
-
-              <div class="gcol-2">
-                <ul id="acc-type-ul" class="xbul talign"></ul>
-              </div>
-
-              <div class="gcol-2">
-                <ul id="balance-ul" class="xbul talign trgt"></ul>
-              </div>
-
-              <div class="gcol-1">
-                <ul id="delete-ul" class="xbul"></ul>
-              </div>
-            </div>
+              <tbody class="talign">
+                <tr>
+                  <td colspan="5">
+                    <div class="wrap-scroll">
+                      <table id="acc-table"></table>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <div class="wrap-add-account wrap-card">
