@@ -36,10 +36,6 @@ main .wrap-accounts {
   );
 }
 
-main .wrap-thead {
-  padding-right: 10px;
-}
-
 main .wrap-scroll {
   overflow-y: scroll;
   height: 340px;
@@ -158,6 +154,7 @@ main table th:last-child {
 #acc-table td div ul {
   height: 100%;
   margin-right: 40px;
+  padding-right: 20px;
 }
 
 main .wrap-add-account {
