@@ -257,16 +257,3 @@ main .wrap-deposit {
 main .table {
   height: 90%;
 }
-
-main form {
-  width: 70%;
-  margin: 0 auto;
-}
-
-[id*="-amount"] {
-  width: 40%;
-}
-
-[id*="-dec"] {
-  width: 15%;
-}
