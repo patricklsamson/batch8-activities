@@ -10,3 +10,7 @@ form {
 [id*="-dec"] {
   width: 15%;
 }
+
+form .rflex input {
+  margin: 0 5px;
+}
