@@ -468,7 +468,7 @@ doc_ready(function () {
       create_user(inner(id("add-first-name").value.toUpperCase()), inner(id("add-middle-name").value.toUpperCase()), inner(id("add-last-name").value.toUpperCase()), gender, acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000), account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
       FnHandler.list_users();
       alert("".concat(id("add-first-name").value.toUpperCase(), "'s account have been successfully created!"));
-      FnHandler.reset();
+      id("add-form").reset();
     } else {
       alert("Please complete the necessary details");
     }
@@ -481,7 +481,7 @@ doc_ready(function () {
         withdraw_amount = "".concat(id("withdraw-amount").value, ".").concat(withdraw_amount_dec);
     FnHandler.withdraw(inner(id("withdraw-account").value.split(" ").join("")), withdraw_amount);
     FnHandler.list_users();
-    FnHandler.reset();
+    id("withdraw-form").reset();
     return false;
   });
   add_event(id("deposit-form"), "submit", function (e) {
@@ -490,7 +490,7 @@ doc_ready(function () {
         deposit_amount = "".concat(id("deposit-amount").value, ".").concat(deposit_amount_dec);
     FnHandler.deposit(inner(id("deposit-account").value.split(" ").join("")), deposit_amount);
     FnHandler.list_users();
-    FnHandler.reset();
+    id("deposit-form").reset();
     return false;
   });
   add_event(id("send-form"), "submit", function (e) {
@@ -499,7 +499,7 @@ doc_ready(function () {
         send_amount = "".concat(id("send-amount").value, ".").concat(send_amount_dec);
     FnHandler.send(inner(id("sender-account").value.split(" ").join("")), inner(id("receiver-account").value.split(" ").join("")), send_amount);
     FnHandler.list_users();
-    FnHandler.reset();
+    id("send-form").reset();
     return false;
   });
 });
