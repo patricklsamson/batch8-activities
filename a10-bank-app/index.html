@@ -51,7 +51,6 @@
               type="text"
               name="login-username"
               autocomplete="off"
-              value="admin"
               id="login-username"
               class="mb-05"
             /><br />
@@ -60,7 +59,6 @@
             <input
               type="password"
               name="login-password"
-              value="admin"
               id="login-password"
               class="mb-05"
             /><br />
@@ -174,9 +172,6 @@
               <div class="menu-container">
                 <nav>
                   <ul>
-                    <li>
-                      <a href="#" id="load-data-btn">Load Initial Data</a>
-                    </li>
                     <li><a href="#">Settings</a></li>
                     <li><a href="#" id="log-out-btn">Log Out</a></li>
                   </ul>
@@ -192,7 +187,10 @@
       <div class="cont">
         <div class="grid-cont">
           <div class="wrap-accounts wrap-card">
-            <h6>Bank Accounts</h6>
+            <h6>
+              Bank Accounts
+              <i role="button" id="load-data-btn" class="fas fa-download"></i>
+            </h6>
 
             <table>
               <thead>
@@ -233,6 +231,7 @@
                 name="add-first-name"
                 autocomplete="off"
                 id="add-first-name"
+                required
               /><br />
 
               <label for="add-middle-name">Middle Name</label><br />
@@ -249,6 +248,7 @@
                 name="add-last-name"
                 autocomplete="off"
                 id="add-last-name"
+                required
               /><br />
 
               <p>Gender</p>
@@ -272,10 +272,9 @@
               ><br />
               ₱
               <input
-                type="number"
+                type="text"
                 name="add-deposit-amount"
-                value="0"
-                min="0"
+                autocomplete="off"
                 id="add-deposit-amount"
               />
               .
@@ -316,10 +315,9 @@
                   <label for="withdraw-amount">Enter an Amount</label><br />
                   ₱
                   <input
-                    type="number"
+                    type="text"
                     name="withdraw-amount"
-                    value="0"
-                    min="0"
+                    autocomplete="off"
                     id="withdraw-amount"
                   />
                   .
@@ -362,10 +360,9 @@
                   <label for="deposit-amount">Enter an Amount</label><br />
                   ₱
                   <input
-                    type="number"
+                    type="text"
                     name="deposit-amount"
-                    value="0"
-                    min="0"
+                    autocomplete="off"
                     id="deposit-amount"
                   />
                   .
@@ -411,10 +408,9 @@
               <label for="send-amount">Enter an Amount</label><br />
               ₱
               <input
-                type="number"
+                type="text"
                 name="send-amount"
-                value="0"
-                min="0"
+                autocomplete="off"
                 id="send-amount"
               />
               .
