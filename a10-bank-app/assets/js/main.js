@@ -1,8 +1,19 @@
 doc_ready(() => {
   let i;
 
-  class User {
+  class Admin {
+    constructor(username, password, adminId) {
+      this.username = username;
+      this.password = password;
+      this.adminId = adminId;
+    }
+  }
+
+  // REGULAR BANK ACCOUNT USERS INHERIT THE USERNAME AND PASSWORD PROPERTY OF THE ADMIN
+  class User extends Admin {
     constructor(
+      username,
+      password,
       firstName,
       middleName,
       lastName,
@@ -11,6 +22,7 @@ doc_ready(() => {
       accountType,
       balance
     ) {
+      super(username, password);
       this.firstName = firstName;
       this.middleName = middleName;
       this.lastName = lastName;
@@ -41,11 +53,11 @@ doc_ready(() => {
       return users;
     }
 
-    static addUser(userAccount) {
-      // TO GET EITHER THE EMPTY ARRAY OR THE ONE INSIDE THE LOCAL STORAGE AFTER IT WAS ALREADY CREATED
+    static addAdmin(adminAccount) {
+      // TO GET EITHER THE EMPTY ARRAY OR THE ONE INSIDE THE LOCAL STORAGE WHEN AFTER IT WAS ALREADY CREATED
       const users = FnHandler.userStorage();
 
-      users.push(userAccount);
+      users.push(adminAccount);
 
       /**
        * SETS AN ITEM OR KEY INSIDE THE LOCAL STORAGE CALLED USERS
@@ -53,6 +65,13 @@ doc_ready(() => {
        * BECAUSE OF PUSH, AND THEN STRINGIFY IT TO CONVERT THE OBJECTS INTO STRINGS
        * NECESSARY FOR SENDING DATA TO THE WEB SERVER
        */
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    static addUser(userAccount) {
+      const users = FnHandler.userStorage();
+
+      users.push(userAccount);
       localStorage.setItem("users", JSON.stringify(users));
     }
 
@@ -88,14 +107,15 @@ doc_ready(() => {
       );
 
       /**
-       * IF THERE IS NO EXISTING INDEX OF USERS ARRAY ITEM THAT CONTAINS THE CURRENT ACCOUNT NUMBER ENTRY,
+       * IF THERE IS NO EXISTING INDEX OF USERS ARRAY ITEM
+       * THAT CONTAINS THE CURRENT ACCOUNT NUMBER ENTRY,
        * THE USER WILL NEVER BE FOUND
        */
       if (users[userCheck] == null || users[userCheck] == "") {
         alert("User not found!");
       } else if (parseFloat(users[userCheck].balance) < parseFloat(amount)) {
         alert("Not enough money!");
-      } else if (parseFloat(amount) == 0) {
+      } else if (parseFloat(amount) == null || parseFloat(amount) == "") {
         alert("Enter an amount!");
       } else {
         let gender = users[userCheck].gender == "male" ? "his" : "her";
@@ -109,10 +129,10 @@ doc_ready(() => {
           parseFloat(users[userCheck].balance) + parseFloat(amount)
         ).toFixed(2);
 
-        users[userCheck].transactionHistory.push(
+        users[userCheck].transactionHistory.unshift(
           `<em>${FnHandler.time_stamp()}</em> : Withdrawn an amount of <strong>₱${amount}</strong> from <strong>${
             users[userCheck].firstName
-          }</strong>'s account. From an initial account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
+          }</strong>'s account. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
             users[userCheck].balance
           }</strong>.`
         );
@@ -138,7 +158,7 @@ doc_ready(() => {
 
       if (users[userCheck] == null || users[userCheck] == "") {
         alert("User not found!");
-      } else if (parseFloat(amount) == 0) {
+      } else if (parseFloat(amount) == null || parseFloat(amount) == "") {
         alert("Enter an amount!");
       } else {
         let gender = users[userCheck].gender == "male" ? "his" : "her";
@@ -151,10 +171,10 @@ doc_ready(() => {
           parseFloat(users[userCheck].balance) - parseFloat(amount)
         ).toFixed(2);
 
-        users[userCheck].transactionHistory.push(
+        users[userCheck].transactionHistory.unshift(
           `<em>${FnHandler.time_stamp()}</em> : Deposited an amount of <strong>₱${amount}</strong> into <strong>${
             users[userCheck].firstName
-          }</strong>'s account. From an initial account balance of <strong>₱${initialBal}</strong>, ${gender} account balance is now <strong>₱${
+          }</strong>'s account. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} account balance is now <strong>₱${
             users[userCheck].balance
           }</strong>.`
         );
@@ -188,7 +208,7 @@ doc_ready(() => {
         alert("Receiver's account not found!");
       } else if (parseFloat(users[senderCheck].balance) < parseFloat(amount)) {
         alert("Not enough money!");
-      } else if (parseFloat(amount) == 0) {
+      } else if (parseFloat(amount) == null || parseFloat(amount) == "") {
         alert("Enter an amount!");
       } else if (
         users[senderCheck].accountNumber == users[receiverCheck].accountNumber
@@ -207,14 +227,14 @@ doc_ready(() => {
           parseFloat(users[senderCheck].balance) + parseFloat(amount)
         ).toFixed(2);
 
-        users[senderCheck].transactionHistory.push(
+        users[senderCheck].transactionHistory.unshift(
           `<em>${FnHandler.time_stamp()}</em> : Sent an amount of <strong>₱${amount}</strong> from <strong>${
             users[senderCheck].firstName
           }</strong>'s account into ${
             users[receiverCheck].firstName
           }'s account. From <strong>${
             users[senderCheck].firstName
-          }</strong>'s initial account balance of <strong>₱${senderInitialBal}</strong>, ${senderGender} remaining account balance is now <strong>₱${
+          }</strong>'s previous account balance of <strong>₱${senderInitialBal}</strong>, ${senderGender} remaining account balance is now <strong>₱${
             users[senderCheck].balance
           }</strong>.`
         );
@@ -227,14 +247,14 @@ doc_ready(() => {
           parseFloat(users[receiverCheck].balance) - parseFloat(amount)
         ).toFixed(2);
 
-        users[receiverCheck].transactionHistory.push(
+        users[receiverCheck].transactionHistory.unshift(
           `<em>${FnHandler.time_stamp()}</em> : Received an amount of <strong>₱${amount}</strong> from ${
             users[senderCheck].firstName
           }'s account into <strong>${
             users[receiverCheck].firstName
           }</strong>'s account. From <strong>${
             users[receiverCheck].firstName
-          }</strong>'s initial account balance of <strong>₱${receiverInitialBal}</strong>, ${receiverGender} account balance is now <strong>₱${
+          }</strong>'s previous account balance of <strong>₱${receiverInitialBal}</strong>, ${receiverGender} account balance is now <strong>₱${
             users[receiverCheck].balance
           }</strong>.`
         );
@@ -253,11 +273,10 @@ doc_ready(() => {
       let userCheck = users.findIndex(
           (userIndex) => userIndex.accountNumber == user
         ),
-        balanceTd = create_el("td"),
-        balanceLi = create_el("li");
+        balanceTd = create_el("td");
 
       /**
-       * IF THE CONDITION IS MET AND TRUE OR USERS ARE EXISTING, THE FUNCTION WILL CONTINUE TO EXECUTE
+       * IF THE CONDITION IS MET AND TRUE OR USERS ARE ALREADY EXISTING, THE FUNCTION WILL CONTINUE TO EXECUTE
        * AND DISPLAY THE BALANCE LIST, IN THIS WAY ERRORS CAN BE AVOIDED IF THERE ARE STILL NO USERS EXISTING
        * INSIDE THE LOCAL STORAGE
        */
@@ -273,7 +292,8 @@ doc_ready(() => {
       // EMPTYING THE INNERHTML OF THE TABLE TO PREVENT DUPLICATE STACKS OF DISPLAY PER UPDATE OF OBJECTS
       id("acc-table").innerHTML = "";
 
-      for (i = 0; i < users.length; i++) {
+      // ITERATION STARTS AT ONE TO PREVENT THE FIRST ARRAY ITEM TO DISPLAY WHICH IS FOR THE ADMIN
+      for (i = 1; i < users.length; i++) {
         let j,
           tableRow = create_el("tr"),
           accNumTd = create_el("td"),
@@ -316,8 +336,7 @@ doc_ready(() => {
           historyUl.appendChild(noTransact);
         }
 
-        // REVERSE FOR LOOP, SO THAT LATEST TRANSACTION HISTORY LOG REMAINS AT THE TOP
-        for (j = users[i].transactionHistory.length - 1; j >= 0; j--) {
+        for (j = 0; j < users[i].transactionHistory.length; j++) {
           let historyLi = create_el("li");
 
           historyLi.innerHTML = users[i].transactionHistory[j];
@@ -326,6 +345,15 @@ doc_ready(() => {
         }
 
         // OLD CODE
+        // // REVERSE FOR LOOP, SO THAT LATEST TRANSACTION HISTORY LOG REMAINS AT THE TOP
+        // for (j = users[i].transactionHistory.length - 1; j >= 0; j--) {
+        //   let historyLi = create_el("li");
+
+        //   historyLi.innerHTML = users[i].transactionHistory[j];
+        //   add_class(historyLi, "mb-05");
+        //   historyUl.appendChild(historyLi);
+        // }
+
         // if (users[i].transactionHistory.length == 0) {
         //   let historyLi = create_el("li");
 
@@ -343,7 +371,6 @@ doc_ready(() => {
 
         historyModal.appendChild(historyModalClose);
         historyModal.appendChild(historyUl);
-
         accTd.appendChild(accTdSpan);
         accTd.appendChild(historyModal);
         tableRow.appendChild(accTd);
@@ -364,21 +391,26 @@ doc_ready(() => {
           users[i]
         )}" class="fas fa-minus-circle"></i>`;
 
-        /**
-         * TARGETING THE DELETE BUTTON ("i") INSIDE EACH "td" ELEMENT AND THEN
-         * GETTING THE USERS ARRAY INSIDE THE LOCAL STORAGE TO SPLICE IT AND
-         * OVERRIDING AND SETTING IT AGAIN BACK INSIDE THE LOCAL STORAGE FOR UPDATING
-         * WHEREIN THE ARRAY ITEMS OF THE USERS ARE ALREADY SPLICED OR RATHER DELETED
-         * PROMPT FOR DELETING AN ACCOUNT, TO PREVENT ACCIDENTAL DELETION
-         */
+        // TARGETING THE DELETE BUTTON ("i") INSIDE EACH "td" ELEMENT
         add_event(deleteTd.querySelector("i"), "click", function () {
+          // PROMPT FOR DELETING AN INDIVIDUAL ACCOUNT, TO PREVENT ACCIDENTAL DELETION
           let deletePrompt = prompt(
               'Are you sure to delete this account?\nType "Y" for yes and "N" for no.',
               "N"
             ),
-            deleteAnswer = deletePrompt.toLowerCase();
+            deleteAnswer =
+              deletePrompt != null
+                ? deletePrompt.toLowerCase()
+                : console.clear();
+          // THIS TERNARY OPERATOR PREVENTS ERROR POPPING UP WHEN THE PROMPT HAS BEEN CANCELED
 
           if (deleteAnswer == "y") {
+            /**
+             * GETTING THE USERS ARRAY INSIDE THE LOCAL STORAGE TO SPLICE IT AND
+             * OVERRIDING AND SETTING IT AGAIN BACK INSIDE THE LOCAL STORAGE FOR UPDATING
+             * WHEREIN THE ARRAY ITEMS OF THE USERS ARE ALREADY SPLICED OR RATHER DELETED
+             * PROMPT FOR DELETING AN ACCOUNT, TO PREVENT ACCIDENTAL DELETION
+             */
             let getLocalStorage = JSON.parse(localStorage.getItem("users"));
 
             getLocalStorage.splice(this.id, 1);
@@ -437,8 +469,44 @@ doc_ready(() => {
       qsel_all("[id*='-account']").forEach((input) => {
         add_att(input, "onkeypress", "return num_only(event)");
       });
+
+      qsel_all("[id*='-amount']").forEach((input) => {
+        add_att(input, "onkeypress", "return num_only(event)");
+      });
     }
 
+    // UI FOR ADDING COMMAS WHILE TYPING IN ALL AMOUNT INPUTS ACROSS THE DOM
+    static type_comma() {
+      qsel_all("[id*='-amount']").forEach((input) => {
+        add_event(input, "keyup", (e) => {
+          // SKIP FOR ARROW KEYS
+          if (
+            (e.which >= 37 && e.which <= 40) ||
+            (e.keyCode >= 37 && e.keyCode <= 40)
+          ) {
+            return;
+          }
+
+          input.value = input.value
+            .replace(/,/gi, "")
+            .split(/(?=(?:\d{3})+$)/)
+            .join(",");
+        });
+      });
+    }
+
+    // FORCING ALL DECIMAL INPUTS ACROSS THE DOM TO ADD ZERO WHEN IT IS STILL A SINGLE DIGIT NUMBER
+    static dec_addZero() {
+      qsel_all("[id*='-dec']").forEach((input) => {
+        add_event(input, "change", () => {
+          if (!isNaN(input.value) && input.value.length == 1) {
+            input.value = `0${input.value}`;
+          }
+        });
+      });
+    }
+
+    // FOR RESETTING ALL FORMS AT ONCE
     static reset() {
       qsel_all("form").forEach((form) => {
         form.reset();
@@ -451,9 +519,32 @@ doc_ready(() => {
   FnHandler.first_char();
   FnHandler.negative_char();
   FnHandler.num_only();
+  FnHandler.type_comma();
+  FnHandler.dec_addZero();
 
-  // FUNCTION FOR CREATING A NEW USER, CONNECTING THE CLASS "User" INTO THE CLASS "FnHandler" TO PUSH EVERY NEW USER CREATED INTO THE LOCAL STORAGE
+  const create_admin = (username, password, adminId) => {
+    const users = FnHandler.userStorage();
+    let adminCheck = users.findIndex((adminIndex) => adminIndex.adminId);
+
+    // THIS MAKES THE CREATION OF ADMIN ACCOUNT ONLY ONCE
+    if (users[adminCheck]) {
+      return;
+    } else {
+      const admin = new Admin(username, password, adminId);
+
+      FnHandler.addUser(admin);
+    }
+  };
+
+  create_admin("admin", "admin", "1");
+
+  /**
+   * FUNCTION FOR CREATING A NEW USER, CONNECTING THE CLASS "User"
+   * INTO THE CLASS "FnHandler" TO PUSH EVERY NEW USER CREATED INTO THE LOCAL STORAGE
+   */
   const create_user = (
+    username,
+    password,
     firstName,
     middleName,
     lastName,
@@ -479,6 +570,8 @@ doc_ready(() => {
       alert("User already exists!");
     } else {
       const newUserAccount = new User(
+        username,
+        password,
         firstName,
         middleName,
         lastName,
@@ -488,10 +581,17 @@ doc_ready(() => {
         balance
       );
 
+      // FIRST LOG INSIDE THE TRANSACTION HISTORY INDICATING WHEN THE ACCOUNT WAS CREATED OR OPENED
       newUserAccount.transactionHistory.push(
-        `<em>${FnHandler.time_stamp()}</em> : Opened a ${newUserAccount.accountType.toLowerCase()} account for <strong>${
-          newUserAccount.firstName
-        }</strong> ${newUserAccount.middleName} ${newUserAccount.lastName}.`
+        `<em>${FnHandler.time_stamp()}</em> : Opened a ${
+          newUserAccount.accountType
+        } account for <strong>${newUserAccount.firstName}</strong> ${
+          newUserAccount.middleName
+        } ${
+          newUserAccount.lastName
+        } with an initial account balance of <strong>₱${
+          newUserAccount.balance
+        }</strong>.`
       );
 
       FnHandler.addUser(newUserAccount);
@@ -501,10 +601,16 @@ doc_ready(() => {
   add_event(id("login-form"), "submit", (e) => {
     e.preventDefault();
 
-    if (
-      id("login-username").value == "admin" &&
-      id("login-password").value == "admin"
-    ) {
+    const users = FnHandler.userStorage();
+
+    let usernameCheck = users.findIndex(
+        (usernameIndex) => usernameIndex.username == id("login-username").value
+      ),
+      passwordCheck = users.findIndex(
+        (passwordIndex) => passwordIndex.password == id("login-password").value
+      );
+
+    if (users[usernameCheck] && users[passwordCheck]) {
       toggle_class(id("modal"), "hide");
     }
 
@@ -543,25 +649,40 @@ doc_ready(() => {
       janeCheck = users.findIndex((userIndex) => userIndex.firstName == "JANE"),
       doeCheck = users.findIndex((userIndex) => userIndex.lastName == "DOE");
 
-    // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE
+    // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE WHEN THE DATA STILL DON'T EXIST
     if (!users[juanCheck] && !users[delaCruzCheck]) {
-      let balance = 2500.5;
+      let loadPrompt = prompt(
+          'Continuing will load initial data for immediate testing purposes?\nType "Y" to continue or "N" otherwise.',
+          "Y"
+        ),
+        loadAnswer =
+          loadPrompt != null ? loadPrompt.toLowerCase() : console.clear(),
+        balance = 2500.5;
 
-      create_user(
-        "JUAN",
-        "HERMAN",
-        "DELA CRUZ",
-        "male",
-        "07" + (rand(9000000000) + 1000000000),
-        "Savings",
-        balance.toFixed(2)
-      );
+      if (loadAnswer == "n" || loadAnswer == null || loadAnswer == "") {
+        return;
+      } else {
+        // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
+        create_user(
+          "",
+          "",
+          "JUAN",
+          "HERMAN",
+          "DELA CRUZ",
+          "male",
+          "07" + (rand(9000000000) + 1000000000),
+          "Savings",
+          balance.toFixed(2)
+        );
+      }
     }
 
     if (!users[janeCheck] && !users[doeCheck]) {
       let balance = 5200;
 
       create_user(
+        "",
+        "",
         "JANE",
         "HILLS",
         "DOE",
@@ -572,6 +693,7 @@ doc_ready(() => {
       );
     }
 
+    // THIS FUNCTION IS CALLED AGAIN TO REFRESH THE LIST IN THE UI
     FnHandler.list_users();
     return false;
   });
@@ -596,7 +718,11 @@ doc_ready(() => {
           clearPrompt != null ? clearPrompt.toLowerCase() : console.clear();
 
       if (clearAnswer == "y") {
-        window.localStorage.clear();
+        let getLocalStorage = JSON.parse(localStorage.getItem("users"));
+
+        // DOES NOT INCLUDE FIRST ARRAY ITEM IN SPLICING OR DELETING WHICH IS THE ADMIN USERNAME AND PASSWORD
+        getLocalStorage.splice(1, users.length);
+        localStorage.setItem("users", JSON.stringify(getLocalStorage));
         FnHandler.list_users();
       } else {
         return;
@@ -613,38 +739,44 @@ doc_ready(() => {
         : ["01", "02", "03", "04"],
       account_type = id("savings").checked ? "Savings" : "Checking",
       account_type_bal = id("savings").checked ? 2000 : 5000,
-      add_deposit_dec =
-        parseFloat(id("add-deposit-amount-dec").value) < 10
-          ? `0${parseFloat(id("add-deposit-amount-dec").value)}`
-          : id("add-deposit-amount-dec").value,
-      add_deposit = `${id("add-deposit-amount").value}.${add_deposit_dec}`;
+      depositAmount =
+        id("add-deposit-amount").value.length == 0
+          ? "0"
+          : id("add-deposit-amount").value.split(",").join(""),
+      add_deposit = `${depositAmount}.${id("add-deposit-amount-dec").value}`;
+    /**
+     * BECAUSE OF "FnHandler.type_comma()"
+     * ".split(",").join("")" IS NECESSARY TO CONVERT THE VALUE TYPED
+     * BACK TO WITHOUT COMMAS FOR STORING
+     */
 
-    if (
-      id("add-first-name").value.length != 0 &&
-      id("add-last-name").value.length != 0
-    ) {
-      create_user(
-        inner(id("add-first-name").value.toUpperCase()),
-        inner(id("add-middle-name").value.toUpperCase()),
-        inner(id("add-last-name").value.toUpperCase()),
-        gender,
-        acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000),
-        account_type,
-        parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2)
-      );
+    // OLD CODE
+    //  add_deposit_dec =
+    //  parseFloat(id("add-deposit-amount-dec").value) < 10
+    //    ? `0${parseFloat(id("add-deposit-amount-dec").value)}`
+    //    : id("add-deposit-amount-dec").value,
 
-      FnHandler.list_users();
+    create_user(
+      "",
+      "",
+      inner(id("add-first-name").value.toUpperCase()),
+      inner(id("add-middle-name").value.toUpperCase()),
+      inner(id("add-last-name").value.toUpperCase()),
+      gender,
+      acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000),
+      account_type,
+      parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2)
+    );
 
-      alert(
-        `${id(
-          "add-first-name"
-        ).value.toUpperCase()}'s account have been successfully created!`
-      );
+    FnHandler.list_users();
 
-      id("add-form").reset();
-    } else {
-      alert("Please complete the necessary details");
-    }
+    alert(
+      `${id(
+        "add-first-name"
+      ).value.toUpperCase()}'s account have been successfully created!`
+    );
+
+    id("add-form").reset();
 
     return false;
   });
@@ -652,12 +784,14 @@ doc_ready(() => {
   add_event(id("withdraw-form"), "submit", (e) => {
     e.preventDefault();
 
-    let withdraw_amount_dec =
-        parseFloat(id("withdraw-amount-dec").value) < 10
-          ? `0${parseFloat(id("withdraw-amount-dec").value)}`
-          : id("withdraw-amount-dec").value,
-      withdraw_amount = `${id("withdraw-amount").value}.${withdraw_amount_dec}`;
+    let withdraw_amount = `${id("withdraw-amount").value.split(",").join("")}.${
+      id("withdraw-amount-dec").value
+    }`;
 
+    /**
+     * ".split(" ").join("")" IS NECESSARY TO CONVERT THE ACCOUNT NUMBER
+     * WITH SPACES WHEN COPIED BACK TO WITHOUT SPACES FOR STORING
+     */
     FnHandler.withdraw(
       inner(id("withdraw-account").value.split(" ").join("")),
       withdraw_amount
@@ -671,11 +805,9 @@ doc_ready(() => {
   add_event(id("deposit-form"), "submit", (e) => {
     e.preventDefault();
 
-    let deposit_amount_dec =
-        parseFloat(id("deposit-amount-dec").value) < 10
-          ? `0${parseFloat(id("deposit-amount-dec").value)}`
-          : id("deposit-amount-dec").value,
-      deposit_amount = `${id("deposit-amount").value}.${deposit_amount_dec}`;
+    let deposit_amount = `${id("deposit-amount").value.split(",").join("")}.${
+      id("deposit-amount-dec").value
+    }`;
 
     FnHandler.deposit(
       inner(id("deposit-account").value.split(" ").join("")),
@@ -690,11 +822,9 @@ doc_ready(() => {
   add_event(id("send-form"), "submit", (e) => {
     e.preventDefault();
 
-    let send_amount_dec =
-        parseFloat(id("send-amount-dec").value) < 10
-          ? `0${parseFloat(id("send-amount-dec").value)}`
-          : id("send-amount-dec").value,
-      send_amount = `${id("send-amount").value}.${send_amount_dec}`;
+    let send_amount = `${id("send-amount").value.split(",").join("")}.${
+      id("send-amount-dec").value
+    }`;
 
     FnHandler.send(
       inner(id("sender-account").value.split(" ").join("")),
