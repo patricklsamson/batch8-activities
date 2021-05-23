@@ -1,26 +1,59 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 doc_ready(function () {
   var i;
 
-  var User = function User(firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
-    _classCallCheck(this, User);
+  var Admin = function Admin(username, password, adminId) {
+    _classCallCheck(this, Admin);
 
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.gender = gender;
-    this.accountNumber = accountNumber;
-    this.accountType = accountType;
-    this.balance = balance;
-    this.transactionHistory = [];
-  };
+    this.username = username;
+    this.password = password;
+    this.adminId = adminId;
+  }; // REGULAR BANK ACCOUNT USERS INHERIT THE USERNAME AND PASSWORD PROPERTY OF THE ADMIN
+
+
+  var User =
+  /*#__PURE__*/
+  function (_Admin) {
+    _inherits(User, _Admin);
+
+    function User(username, password, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
+      var _this;
+
+      _classCallCheck(this, User);
+
+      _this = _possibleConstructorReturn(this, _getPrototypeOf(User).call(this, username, password));
+      _this.firstName = firstName;
+      _this.middleName = middleName;
+      _this.lastName = lastName;
+      _this.gender = gender;
+      _this.accountNumber = accountNumber;
+      _this.accountType = accountType;
+      _this.balance = balance;
+      _this.transactionHistory = [];
+      return _this;
+    }
+
+    return User;
+  }(Admin);
 
   var FnHandler =
   /*#__PURE__*/
@@ -49,11 +82,11 @@ doc_ready(function () {
         return users;
       }
     }, {
-      key: "addUser",
-      value: function addUser(userAccount) {
-        // TO GET EITHER THE EMPTY ARRAY OR THE ONE INSIDE THE LOCAL STORAGE AFTER IT WAS ALREADY CREATED
+      key: "addAdmin",
+      value: function addAdmin(adminAccount) {
+        // TO GET EITHER THE EMPTY ARRAY OR THE ONE INSIDE THE LOCAL STORAGE WHEN AFTER IT WAS ALREADY CREATED
         var users = FnHandler.userStorage();
-        users.push(userAccount);
+        users.push(adminAccount);
         /**
          * SETS AN ITEM OR KEY INSIDE THE LOCAL STORAGE CALLED USERS
          * AND THEN ITS CORRESPONDING VALUE IS AN ARRAY CONTAINING THE "userAccount" CREATED
@@ -61,6 +94,13 @@ doc_ready(function () {
          * NECESSARY FOR SENDING DATA TO THE WEB SERVER
          */
 
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+    }, {
+      key: "addUser",
+      value: function addUser(userAccount) {
+        var users = FnHandler.userStorage();
+        users.push(userAccount);
         localStorage.setItem("users", JSON.stringify(users));
       }
     }, {
@@ -85,7 +125,8 @@ doc_ready(function () {
           return userIndex.accountNumber == user;
         });
         /**
-         * IF THERE IS NO EXISTING INDEX OF USERS ARRAY ITEM THAT CONTAINS THE CURRENT ACCOUNT NUMBER ENTRY,
+         * IF THERE IS NO EXISTING INDEX OF USERS ARRAY ITEM
+         * THAT CONTAINS THE CURRENT ACCOUNT NUMBER ENTRY,
          * THE USER WILL NEVER BE FOUND
          */
 
@@ -93,14 +134,14 @@ doc_ready(function () {
           alert("User not found!");
         } else if (parseFloat(users[userCheck].balance) < parseFloat(amount)) {
           alert("Not enough money!");
-        } else if (parseFloat(amount) == 0) {
+        } else if (parseFloat(amount) == null || parseFloat(amount) == "") {
           alert("Enter an amount!");
         } else {
           var gender = users[userCheck].gender == "male" ? "his" : "her"; // FIXED 2 DECIMAL PLACES
 
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
           var initialBal = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2);
-          users[userCheck].transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Withdrawn an amount of <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[userCheck].firstName, "</strong>'s account. From an initial account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
+          users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Withdrawn an amount of <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[userCheck].firstName, "</strong>'s account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
           alert("Withdrawal transaction from ".concat(users[userCheck].firstName, "'s account has been successful!"));
         }
         /**
@@ -121,13 +162,13 @@ doc_ready(function () {
 
         if (users[userCheck] == null || users[userCheck] == "") {
           alert("User not found!");
-        } else if (parseFloat(amount) == 0) {
+        } else if (parseFloat(amount) == null || parseFloat(amount) == "") {
           alert("Enter an amount!");
         } else {
           var gender = users[userCheck].gender == "male" ? "his" : "her";
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2);
           var initialBal = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
-          users[userCheck].transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Deposited an amount of <strong>\u20B1").concat(amount, "</strong> into <strong>").concat(users[userCheck].firstName, "</strong>'s account. From an initial account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
+          users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Deposited an amount of <strong>\u20B1").concat(amount, "</strong> into <strong>").concat(users[userCheck].firstName, "</strong>'s account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
           alert("Deposit transaction from ".concat(users[userCheck].firstName, "'s account has been successful!"));
         }
 
@@ -152,7 +193,7 @@ doc_ready(function () {
           alert("Receiver's account not found!");
         } else if (parseFloat(users[senderCheck].balance) < parseFloat(amount)) {
           alert("Not enough money!");
-        } else if (parseFloat(amount) == 0) {
+        } else if (parseFloat(amount) == null || parseFloat(amount) == "") {
           alert("Enter an amount!");
         } else if (users[senderCheck].accountNumber == users[receiverCheck].accountNumber) {
           alert("Account number entries are not allowed!");
@@ -161,10 +202,10 @@ doc_ready(function () {
               receiverGender = users[receiverCheck].gender == "male" ? "his" : "her";
           users[senderCheck].balance = parseFloat(parseFloat(users[senderCheck].balance) - parseFloat(amount)).toFixed(2);
           var senderInitialBal = parseFloat(parseFloat(users[senderCheck].balance) + parseFloat(amount)).toFixed(2);
-          users[senderCheck].transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Sent an amount of <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[senderCheck].firstName, "</strong>'s account into ").concat(users[receiverCheck].firstName, "'s account. From <strong>").concat(users[senderCheck].firstName, "</strong>'s initial account balance of <strong>\u20B1").concat(senderInitialBal, "</strong>, ").concat(senderGender, " remaining account balance is now <strong>\u20B1").concat(users[senderCheck].balance, "</strong>."));
+          users[senderCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Sent an amount of <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[senderCheck].firstName, "</strong>'s account into ").concat(users[receiverCheck].firstName, "'s account. From <strong>").concat(users[senderCheck].firstName, "</strong>'s previous account balance of <strong>\u20B1").concat(senderInitialBal, "</strong>, ").concat(senderGender, " remaining account balance is now <strong>\u20B1").concat(users[senderCheck].balance, "</strong>."));
           users[receiverCheck].balance = parseFloat(parseFloat(users[receiverCheck].balance) + parseFloat(amount)).toFixed(2);
           var receiverInitialBal = parseFloat(parseFloat(users[receiverCheck].balance) - parseFloat(amount)).toFixed(2);
-          users[receiverCheck].transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Received an amount of <strong>\u20B1").concat(amount, "</strong> from ").concat(users[senderCheck].firstName, "'s account into <strong>").concat(users[receiverCheck].firstName, "</strong>'s account. From <strong>").concat(users[receiverCheck].firstName, "</strong>'s initial account balance of <strong>\u20B1").concat(receiverInitialBal, "</strong>, ").concat(receiverGender, " account balance is now <strong>\u20B1").concat(users[receiverCheck].balance, "</strong>."));
+          users[receiverCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Received an amount of <strong>\u20B1").concat(amount, "</strong> from ").concat(users[senderCheck].firstName, "'s account into <strong>").concat(users[receiverCheck].firstName, "</strong>'s account. From <strong>").concat(users[receiverCheck].firstName, "</strong>'s previous account balance of <strong>\u20B1").concat(receiverInitialBal, "</strong>, ").concat(receiverGender, " account balance is now <strong>\u20B1").concat(users[receiverCheck].balance, "</strong>."));
           alert("Successfuly sent money from ".concat(users[senderCheck].firstName, "'s account into ").concat(users[receiverCheck].firstName, "'s account!"));
         }
 
@@ -177,10 +218,9 @@ doc_ready(function () {
         var userCheck = users.findIndex(function (userIndex) {
           return userIndex.accountNumber == user;
         }),
-            balanceTd = create_el("td"),
-            balanceLi = create_el("li");
+            balanceTd = create_el("td");
         /**
-         * IF THE CONDITION IS MET AND TRUE OR USERS ARE EXISTING, THE FUNCTION WILL CONTINUE TO EXECUTE
+         * IF THE CONDITION IS MET AND TRUE OR USERS ARE ALREADY EXISTING, THE FUNCTION WILL CONTINUE TO EXECUTE
          * AND DISPLAY THE BALANCE LIST, IN THIS WAY ERRORS CAN BE AVOIDED IF THERE ARE STILL NO USERS EXISTING
          * INSIDE THE LOCAL STORAGE
          */
@@ -195,7 +235,7 @@ doc_ready(function () {
       value: function list_users() {
         var users = FnHandler.userStorage(); // EMPTYING THE INNERHTML OF THE TABLE TO PREVENT DUPLICATE STACKS OF DISPLAY PER UPDATE OF OBJECTS
 
-        id("acc-table").innerHTML = "";
+        id("acc-table").innerHTML = ""; // ITERATION STARTS AT ONE TO PREVENT THE FIRST ARRAY ITEM TO DISPLAY WHICH IS FOR THE ADMIN
 
         var _loop = function _loop() {
           var j = void 0,
@@ -233,15 +273,21 @@ doc_ready(function () {
           if (users[i].transactionHistory.length == 1) {
             noTransact.innerHTML = "No other transactions yet.";
             historyUl.appendChild(noTransact);
-          } // REVERSE FOR LOOP, SO THAT LATEST TRANSACTION HISTORY LOG REMAINS AT THE TOP
+          }
 
-
-          for (j = users[i].transactionHistory.length - 1; j >= 0; j--) {
+          for (j = 0; j < users[i].transactionHistory.length; j++) {
             var historyLi = create_el("li");
             historyLi.innerHTML = users[i].transactionHistory[j];
             add_class(historyLi, "mb-05");
             historyUl.appendChild(historyLi);
           } // OLD CODE
+          // // REVERSE FOR LOOP, SO THAT LATEST TRANSACTION HISTORY LOG REMAINS AT THE TOP
+          // for (j = users[i].transactionHistory.length - 1; j >= 0; j--) {
+          //   let historyLi = create_el("li");
+          //   historyLi.innerHTML = users[i].transactionHistory[j];
+          //   add_class(historyLi, "mb-05");
+          //   historyUl.appendChild(historyLi);
+          // }
           // if (users[i].transactionHistory.length == 0) {
           //   let historyLi = create_el("li");
           //   historyLi.innerHTML = "No transactions yet.";
@@ -270,20 +316,20 @@ doc_ready(function () {
           accTypeTd.innerHTML = users[i].accountType;
           tableRow.appendChild(accTypeTd); // SETTING ID OF EACH DELETE BUTTON WITH REFERENCE TO THE INDICES OF ARRAY ITEMS INSIDE THE LOCAL STORAGE, FOR PRECISE AND ACCURATE DELETION
 
-          deleteTd.innerHTML = "<i id=\"".concat(users.indexOf(users[i]), "\" class=\"fas fa-minus-circle\"></i>");
-          /**
-           * TARGETING THE DELETE BUTTON ("i") INSIDE EACH "td" ELEMENT AND THEN
-           * GETTING THE USERS ARRAY INSIDE THE LOCAL STORAGE TO SPLICE IT AND
-           * OVERRIDING AND SETTING IT AGAIN BACK INSIDE THE LOCAL STORAGE FOR UPDATING
-           * WHEREIN THE ARRAY ITEMS OF THE USERS ARE ALREADY SPLICED OR RATHER DELETED
-           * PROMPT FOR DELETING AN ACCOUNT, TO PREVENT ACCIDENTAL DELETION
-           */
+          deleteTd.innerHTML = "<i id=\"".concat(users.indexOf(users[i]), "\" class=\"fas fa-minus-circle\"></i>"); // TARGETING THE DELETE BUTTON ("i") INSIDE EACH "td" ELEMENT
 
           add_event(deleteTd.querySelector("i"), "click", function () {
+            // PROMPT FOR DELETING AN INDIVIDUAL ACCOUNT, TO PREVENT ACCIDENTAL DELETION
             var deletePrompt = prompt('Are you sure to delete this account?\nType "Y" for yes and "N" for no.', "N"),
-                deleteAnswer = deletePrompt.toLowerCase();
+                deleteAnswer = deletePrompt != null ? deletePrompt.toLowerCase() : console.clear(); // THIS TERNARY OPERATOR PREVENTS ERROR POPPING UP WHEN THE PROMPT HAS BEEN CANCELED
 
             if (deleteAnswer == "y") {
+              /**
+               * GETTING THE USERS ARRAY INSIDE THE LOCAL STORAGE TO SPLICE IT AND
+               * OVERRIDING AND SETTING IT AGAIN BACK INSIDE THE LOCAL STORAGE FOR UPDATING
+               * WHEREIN THE ARRAY ITEMS OF THE USERS ARE ALREADY SPLICED OR RATHER DELETED
+               * PROMPT FOR DELETING AN ACCOUNT, TO PREVENT ACCIDENTAL DELETION
+               */
               var getLocalStorage = JSON.parse(localStorage.getItem("users"));
               getLocalStorage.splice(this.id, 1);
               localStorage.setItem("users", JSON.stringify(getLocalStorage));
@@ -297,7 +343,7 @@ doc_ready(function () {
           id("acc-table").appendChild(tableRow);
         };
 
-        for (i = 0; i < users.length; i++) {
+        for (i = 1; i < users.length; i++) {
           _loop();
         }
       } // ONCE FIRST VALUE OR CHARACTER INPUTTED IS A NUMBER IN ALL NAME INPUTS ACROSS THE DOM, ALERT WILL EXEECUTE
@@ -339,7 +385,38 @@ doc_ready(function () {
         qsel_all("[id*='-account']").forEach(function (input) {
           add_att(input, "onkeypress", "return num_only(event)");
         });
-      }
+        qsel_all("[id*='-amount']").forEach(function (input) {
+          add_att(input, "onkeypress", "return num_only(event)");
+        });
+      } // UI FOR ADDING COMMAS WHILE TYPING IN ALL AMOUNT INPUTS ACROSS THE DOM
+
+    }, {
+      key: "type_comma",
+      value: function type_comma() {
+        qsel_all("[id*='-amount']").forEach(function (input) {
+          add_event(input, "keyup", function (e) {
+            // SKIP FOR ARROW KEYS
+            if (e.which >= 37 && e.which <= 40 || e.keyCode >= 37 && e.keyCode <= 40) {
+              return;
+            }
+
+            input.value = input.value.replace(/,/gi, "").split(/(?=(?:\d{3})+$)/).join(",");
+          });
+        });
+      } // FORCING ALL DECIMAL INPUTS ACROSS THE DOM TO ADD ZERO WHEN IT IS STILL A SINGLE DIGIT NUMBER
+
+    }, {
+      key: "dec_addZero",
+      value: function dec_addZero() {
+        qsel_all("[id*='-dec']").forEach(function (input) {
+          add_event(input, "change", function () {
+            if (!isNaN(input.value) && input.value.length == 1) {
+              input.value = "0".concat(input.value);
+            }
+          });
+        });
+      } // FOR RESETTING ALL FORMS AT ONCE
+
     }, {
       key: "reset",
       value: function reset() {
@@ -356,9 +433,31 @@ doc_ready(function () {
   FnHandler.list_users();
   FnHandler.first_char();
   FnHandler.negative_char();
-  FnHandler.num_only(); // FUNCTION FOR CREATING A NEW USER, CONNECTING THE CLASS "User" INTO THE CLASS "FnHandler" TO PUSH EVERY NEW USER CREATED INTO THE LOCAL STORAGE
+  FnHandler.num_only();
+  FnHandler.type_comma();
+  FnHandler.dec_addZero();
 
-  var create_user = function create_user(firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
+  var create_admin = function create_admin(username, password, adminId) {
+    var users = FnHandler.userStorage();
+    var adminCheck = users.findIndex(function (adminIndex) {
+      return adminIndex.adminId;
+    }); // THIS MAKES THE CREATION OF ADMIN ACCOUNT ONLY ONCE
+
+    if (users[adminCheck]) {
+      return;
+    } else {
+      var admin = new Admin(username, password, adminId);
+      FnHandler.addUser(admin);
+    }
+  };
+
+  create_admin("admin", "admin", "1");
+  /**
+   * FUNCTION FOR CREATING A NEW USER, CONNECTING THE CLASS "User"
+   * INTO THE CLASS "FnHandler" TO PUSH EVERY NEW USER CREATED INTO THE LOCAL STORAGE
+   */
+
+  var create_user = function create_user(username, password, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
     var users = FnHandler.userStorage();
     var fNameCheck = users.findIndex(function (userIndex) {
       return userIndex.firstName == firstName;
@@ -374,16 +473,24 @@ doc_ready(function () {
     if (users[fNameCheck] && users[lNameCheck]) {
       alert("User already exists!");
     } else {
-      var newUserAccount = new User(firstName, middleName, lastName, gender, accountNumber, accountType, balance);
-      newUserAccount.transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Opened a ").concat(newUserAccount.accountType.toLowerCase(), " account for <strong>").concat(newUserAccount.firstName, "</strong> ").concat(newUserAccount.middleName, " ").concat(newUserAccount.lastName, "."));
+      var newUserAccount = new User(username, password, firstName, middleName, lastName, gender, accountNumber, accountType, balance); // FIRST LOG INSIDE THE TRANSACTION HISTORY INDICATING WHEN THE ACCOUNT WAS CREATED OR OPENED
+
+      newUserAccount.transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Opened a ").concat(newUserAccount.accountType, " account for <strong>").concat(newUserAccount.firstName, "</strong> ").concat(newUserAccount.middleName, " ").concat(newUserAccount.lastName, " with an initial account balance of <strong>\u20B1").concat(newUserAccount.balance, "</strong>."));
       FnHandler.addUser(newUserAccount);
     }
   };
 
   add_event(id("login-form"), "submit", function (e) {
     e.preventDefault();
+    var users = FnHandler.userStorage();
+    var usernameCheck = users.findIndex(function (usernameIndex) {
+      return usernameIndex.username == id("login-username").value;
+    }),
+        passwordCheck = users.findIndex(function (passwordIndex) {
+      return passwordIndex.password == id("login-password").value;
+    });
 
-    if (id("login-username").value == "admin" && id("login-password").value == "admin") {
+    if (users[usernameCheck] && users[passwordCheck]) {
       toggle_class(id("modal"), "hide");
     }
 
@@ -418,17 +525,26 @@ doc_ready(function () {
     }),
         doeCheck = users.findIndex(function (userIndex) {
       return userIndex.lastName == "DOE";
-    }); // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE
+    }); // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE WHEN THE DATA STILL DON'T EXIST
 
     if (!users[juanCheck] && !users[delaCruzCheck]) {
-      var balance = 2500.5;
-      create_user("JUAN", "HERMAN", "DELA CRUZ", "male", "07" + (rand(9000000000) + 1000000000), "Savings", balance.toFixed(2));
+      var loadPrompt = prompt('Continuing will load initial data for immediate testing purposes?\nType "Y" to continue or "N" otherwise.', "Y"),
+          loadAnswer = loadPrompt != null ? loadPrompt.toLowerCase() : console.clear(),
+          balance = 2500.5;
+
+      if (loadAnswer == "n" || loadAnswer == null || loadAnswer == "") {
+        return;
+      } else {
+        // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
+        create_user("", "", "JUAN", "HERMAN", "DELA CRUZ", "male", "07" + (rand(9000000000) + 1000000000), "Savings", balance.toFixed(2));
+      }
     }
 
     if (!users[janeCheck] && !users[doeCheck]) {
       var _balance = 5200;
-      create_user("JANE", "HILLS", "DOE", "female", "02" + (rand(9000000000) + 1000000000), "Checking", _balance.toFixed(2));
-    }
+      create_user("", "", "JANE", "HILLS", "DOE", "female", "02" + (rand(9000000000) + 1000000000), "Checking", _balance.toFixed(2));
+    } // THIS FUNCTION IS CALLED AGAIN TO REFRESH THE LIST IN THE UI
+
 
     FnHandler.list_users();
     return false;
@@ -448,7 +564,10 @@ doc_ready(function () {
           clearAnswer = clearPrompt != null ? clearPrompt.toLowerCase() : console.clear();
 
       if (clearAnswer == "y") {
-        window.localStorage.clear();
+        var getLocalStorage = JSON.parse(localStorage.getItem("users")); // DOES NOT INCLUDE FIRST ARRAY ITEM IN SPLICING OR DELETING WHICH IS THE ADMIN USERNAME AND PASSWORD
+
+        getLocalStorage.splice(1, users.length);
+        localStorage.setItem("users", JSON.stringify(getLocalStorage));
         FnHandler.list_users();
       } else {
         return;
@@ -461,24 +580,33 @@ doc_ready(function () {
         acc_num = id("savings").checked ? ["05", "06", "07", "08", "09"] : ["01", "02", "03", "04"],
         account_type = id("savings").checked ? "Savings" : "Checking",
         account_type_bal = id("savings").checked ? 2000 : 5000,
-        add_deposit_dec = parseFloat(id("add-deposit-amount-dec").value) < 10 ? "0".concat(parseFloat(id("add-deposit-amount-dec").value)) : id("add-deposit-amount-dec").value,
-        add_deposit = "".concat(id("add-deposit-amount").value, ".").concat(add_deposit_dec);
+        depositAmount = id("add-deposit-amount").value.length == 0 ? "0" : id("add-deposit-amount").value.split(",").join(""),
+        add_deposit = "".concat(depositAmount, ".").concat(id("add-deposit-amount-dec").value);
+    /**
+     * BECAUSE OF "FnHandler.type_comma()"
+     * ".split(",").join("")" IS NECESSARY TO CONVERT THE VALUE TYPED
+     * BACK TO WITHOUT COMMAS FOR STORING
+     */
+    // OLD CODE
+    //  add_deposit_dec =
+    //  parseFloat(id("add-deposit-amount-dec").value) < 10
+    //    ? `0${parseFloat(id("add-deposit-amount-dec").value)}`
+    //    : id("add-deposit-amount-dec").value,
 
-    if (id("add-first-name").value.length != 0 && id("add-last-name").value.length != 0) {
-      create_user(inner(id("add-first-name").value.toUpperCase()), inner(id("add-middle-name").value.toUpperCase()), inner(id("add-last-name").value.toUpperCase()), gender, acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000), account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
-      FnHandler.list_users();
-      alert("".concat(id("add-first-name").value.toUpperCase(), "'s account have been successfully created!"));
-      id("add-form").reset();
-    } else {
-      alert("Please complete the necessary details");
-    }
-
+    create_user("", "", inner(id("add-first-name").value.toUpperCase()), inner(id("add-middle-name").value.toUpperCase()), inner(id("add-last-name").value.toUpperCase()), gender, acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000), account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
+    FnHandler.list_users();
+    alert("".concat(id("add-first-name").value.toUpperCase(), "'s account have been successfully created!"));
+    id("add-form").reset();
     return false;
   });
   add_event(id("withdraw-form"), "submit", function (e) {
     e.preventDefault();
-    var withdraw_amount_dec = parseFloat(id("withdraw-amount-dec").value) < 10 ? "0".concat(parseFloat(id("withdraw-amount-dec").value)) : id("withdraw-amount-dec").value,
-        withdraw_amount = "".concat(id("withdraw-amount").value, ".").concat(withdraw_amount_dec);
+    var withdraw_amount = "".concat(id("withdraw-amount").value.split(",").join(""), ".").concat(id("withdraw-amount-dec").value);
+    /**
+     * ".split(" ").join("")" IS NECESSARY TO CONVERT THE ACCOUNT NUMBER
+     * WITH SPACES WHEN COPIED BACK TO WITHOUT SPACES FOR STORING
+     */
+
     FnHandler.withdraw(inner(id("withdraw-account").value.split(" ").join("")), withdraw_amount);
     FnHandler.list_users();
     id("withdraw-form").reset();
@@ -486,8 +614,7 @@ doc_ready(function () {
   });
   add_event(id("deposit-form"), "submit", function (e) {
     e.preventDefault();
-    var deposit_amount_dec = parseFloat(id("deposit-amount-dec").value) < 10 ? "0".concat(parseFloat(id("deposit-amount-dec").value)) : id("deposit-amount-dec").value,
-        deposit_amount = "".concat(id("deposit-amount").value, ".").concat(deposit_amount_dec);
+    var deposit_amount = "".concat(id("deposit-amount").value.split(",").join(""), ".").concat(id("deposit-amount-dec").value);
     FnHandler.deposit(inner(id("deposit-account").value.split(" ").join("")), deposit_amount);
     FnHandler.list_users();
     id("deposit-form").reset();
@@ -495,8 +622,7 @@ doc_ready(function () {
   });
   add_event(id("send-form"), "submit", function (e) {
     e.preventDefault();
-    var send_amount_dec = parseFloat(id("send-amount-dec").value) < 10 ? "0".concat(parseFloat(id("send-amount-dec").value)) : id("send-amount-dec").value,
-        send_amount = "".concat(id("send-amount").value, ".").concat(send_amount_dec);
+    var send_amount = "".concat(id("send-amount").value.split(",").join(""), ".").concat(id("send-amount-dec").value);
     FnHandler.send(inner(id("sender-account").value.split(" ").join("")), inner(id("receiver-account").value.split(" ").join("")), send_amount);
     FnHandler.list_users();
     id("send-form").reset();
