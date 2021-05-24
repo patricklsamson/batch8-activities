@@ -205,117 +205,121 @@
     <main>
       <div class="cont">
         <div class="grid-cont">
-          <div id="accounts-wrap" class="wrap-accounts wrap-card">
-            <h6>
-              Bank Accounts
-              <i role="button" id="load-data-btn" class="fas fa-download"></i>
-            </h6>
+          <div class="wrap-accounts wrap-card">
+            <div id="accounts-wrap">
+              <h6>
+                Bank Accounts
+                <i role="button" id="load-data-btn" class="fas fa-download"></i>
+              </h6>
 
-            <table>
-              <thead>
-                <tr>
-                  <th>Account No.</th>
-                  <th>Accounts</th>
-                  <th>Account Type</th>
-                  <th>Balance</th>
-                  <th>
-                    <i
-                      role="button"
-                      id="clear-all-btn"
-                      class="fas fa-trash-alt"
-                    ></i>
-                  </th>
-                </tr>
-              </thead>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Account No.</th>
+                    <th>Accounts</th>
+                    <th>Account Type</th>
+                    <th>Balance</th>
+                    <th>
+                      <i
+                        role="button"
+                        id="clear-all-btn"
+                        class="fas fa-trash-alt"
+                      ></i>
+                    </th>
+                  </tr>
+                </thead>
 
-              <tbody class="talign">
-                <tr>
-                  <td colspan="5">
-                    <div class="wrap-scroll">
-                      <table id="acc-table"></table>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                <tbody class="talign">
+                  <tr>
+                    <td colspan="5">
+                      <div class="wrap-scroll">
+                        <table id="acc-table"></table>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
-          <div id="add-account-wrap" class="wrap-add-account wrap-card">
-            <h6>Add Account</h6>
+          <div class="wrap-add-account wrap-card">
+            <div id="add-newaccount-wrap">
+              <h6>Add Account</h6>
 
-            <form action="#" id="add-form" class="form-add">
-              <label for="add-first-name">First Name</label><br />
-              <input
-                type="text"
-                name="add-first-name"
-                autocomplete="off"
-                id="add-first-name"
-                required
-              /><br />
-
-              <label for="add-middle-name">Middle Name</label><br />
-              <input
-                type="text"
-                name="add-middle-name"
-                autocomplete="off"
-                id="add-middle-name"
-              /><br />
-
-              <label for="add-last-name">Last Name</label><br />
-              <input
-                type="text"
-                name="add-last-name"
-                autocomplete="off"
-                id="add-last-name"
-                required
-              /><br />
-
-              <p>Gender</p>
-
-              <input type="radio" name="gender" id="male" checked />
-              <label for="male">Male</label>
-
-              <input type="radio" name="gender" id="female" />
-              <label for="female">Female</label><br />
-
-              <p>Account Type</p>
-
-              <input type="radio" name="account-type" id="savings" checked />
-              <label for="savings">Savings</label>
-
-              <input type="radio" name="account-type" id="checking" />
-              <label for="checking">Checking</label><br />
-
-              <label for="add-deposit-amount"
-                >Additional Deposit (Optional)</label
-              ><br />
-              ₱
-              <input
-                type="text"
-                name="add-deposit-amount"
-                autocomplete="off"
-                id="add-deposit-amount"
-              />
-              .
-              <input
-                type="number"
-                name="add-deposit"
-                value="00"
-                min="0"
-                max="99"
-                id="add-deposit-amount-dec"
-              /><br />
-
-              <div class="rflex mt-05">
+              <form action="#" id="add-form" class="form-add">
+                <label for="add-first-name">First Name</label><br />
                 <input
-                  type="submit"
-                  value="Add Account"
-                  id="add-acc-btn"
-                  class="btn-bank minor"
+                  type="text"
+                  name="add-first-name"
+                  autocomplete="off"
+                  id="add-first-name"
+                  required
+                /><br />
+
+                <label for="add-middle-name">Middle Name</label><br />
+                <input
+                  type="text"
+                  name="add-middle-name"
+                  autocomplete="off"
+                  id="add-middle-name"
+                /><br />
+
+                <label for="add-last-name">Last Name</label><br />
+                <input
+                  type="text"
+                  name="add-last-name"
+                  autocomplete="off"
+                  id="add-last-name"
+                  required
+                /><br />
+
+                <p>Gender</p>
+
+                <input type="radio" name="gender" id="male" checked />
+                <label for="male">Male</label>
+
+                <input type="radio" name="gender" id="female" />
+                <label for="female">Female</label><br />
+
+                <p>Account Type</p>
+
+                <input type="radio" name="account-type" id="savings" checked />
+                <label for="savings">Savings</label>
+
+                <input type="radio" name="account-type" id="checking" />
+                <label for="checking">Checking</label><br />
+
+                <label for="add-deposit-amount"
+                  >Additional Deposit (Optional)</label
+                ><br />
+                ₱
+                <input
+                  type="text"
+                  name="add-deposit-amount"
+                  autocomplete="off"
+                  id="add-deposit-amount"
                 />
-                <input type="reset" value="Reset" class="btn-bank minor" />
-              </div>
-            </form>
+                .
+                <input
+                  type="number"
+                  name="add-deposit"
+                  value="00"
+                  min="0"
+                  max="99"
+                  id="add-deposit-amount-dec"
+                /><br />
+
+                <div class="rflex mt-05">
+                  <input
+                    type="submit"
+                    value="Add Account"
+                    id="add-acc-btn"
+                    class="btn-bank minor"
+                  />
+                  <input type="reset" value="Reset" class="btn-bank minor" />
+                </div>
+              </form>
+            </div>
           </div>
 
           <div class="wrap-withdraw wrap-card">
