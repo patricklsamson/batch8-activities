@@ -36,48 +36,14 @@ main .wrap-accounts {
   );
 }
 
-main .wrap-scroll {
-  overflow-y: scroll;
+main .wrap-acc-table {
   height: 340px;
 }
 
-main .wrap-scroll::-webkit-scrollbar {
-  width: 10px;
-}
-
-main .wrap-scroll::-webkit-scrollbar-track {
-  background: #d3d3d3;
-  -webkit-box-shadow: inset 0 0 5px #f8f9fa;
-  -moz-box-shadow: inset 0 0 5px #f8f9fa;
-  box-shadow: inset 0 0 5px #f8f9fa;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-}
-
-main .wrap-scroll::-webkit-scrollbar-thumb {
-  background: #343a40;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-}
-
-main .wrap-scroll::-webkit-scrollbar-thumb:hover {
-  background: #6c757d;
-}
-
-#accounts-wrap,
-#add-newaccount-wrap {
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
-}
-
 #accounts-wrap.hide,
-#add-newaccount-wrap.hide {
-  visibility: hidden;
-  opacity: 0;
+#add-newaccount-wrap.hide,
+#expense-wrap.hide {
+  display: none;
 }
 
 main table {
@@ -150,55 +116,6 @@ main table td[colspan="5"] {
 #acc-table td:first-child:hover,
 #acc-table td span:hover {
   color: #67b2b2;
-}
-
-#acc-table td div {
-  position: fixed;
-  width: 50vw;
-  height: 50vh;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  background: #fff;
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
-  padding: 25px;
-  border: 2px solid #343a40;
-  text-align: left;
-}
-
-#acc-table td div:before {
-  content: ".";
-  font-size: 0;
-  position: absolute;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  top: -50%;
-  left: -50%;
-}
-
-#acc-table td div.show {
-  visibility: visible;
-  opacity: 1;
-}
-
-#acc-table td div i {
-  float: right;
-}
-
-#acc-table td div ul {
-  height: 100%;
-  margin-right: 40px;
-  padding-right: 20px;
 }
 
 main .wrap-add-account {
