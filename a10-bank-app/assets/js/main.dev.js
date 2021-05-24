@@ -1,32 +1,63 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 doc_ready(function () {
-  var i;
+  var i; // SEPARATED ADMIN FOR BETTER DISTINCTION FROM REGULAR USERS ESPECIALLY FOR LOCAL STORAGE
 
-  var User = function User(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
-    _classCallCheck(this, User);
+  var Admin = function Admin(username, password, adminId) {
+    _classCallCheck(this, Admin);
 
     this.username = username;
     this.password = password;
-    this.email = email;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.gender = gender;
-    this.accountNumber = accountNumber;
-    this.accountType = accountType;
-    this.balance = balance;
-    this.transactionHistory = [];
-    this.userTransactionHistory = [];
-    this.expenseItems = [];
-    this.friends = [];
-  };
+    this.adminId = adminId;
+  }; // CONSTRUCTOR FOR EACH INDIVIDUAL USERS THAT INHERITS ADMIN USERNAME AND PASSWORD PROPERTIES
+
+
+  var User =
+  /*#__PURE__*/
+  function (_Admin) {
+    _inherits(User, _Admin);
+
+    function User(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
+      var _this;
+
+      _classCallCheck(this, User);
+
+      _this = _possibleConstructorReturn(this, _getPrototypeOf(User).call(this, username, password));
+      _this.email = email;
+      _this.firstName = firstName;
+      _this.middleName = middleName;
+      _this.lastName = lastName;
+      _this.gender = gender;
+      _this.accountNumber = accountNumber;
+      _this.accountType = accountType;
+      _this.balance = balance;
+      _this.transactionHistory = [];
+      _this.userTransactionHistory = [];
+      _this.expenseItems = [];
+      _this.friends = [];
+      return _this;
+    }
+
+    return User;
+  }(Admin);
 
   var ExpenseItem = function ExpenseItem(name, cost, owner) {
     _classCallCheck(this, ExpenseItem);
@@ -44,15 +75,43 @@ doc_ready(function () {
     }
 
     _createClass(FnHandler, null, [{
-      key: "userStorage",
-      value: function userStorage() {
-        var users;
+      key: "adminStorage",
+      value: function adminStorage() {
+        var admin;
         /**
          * IF USERS KEY STILL DOES NOT EXISTS INSIDE THE LOCAL STORAGE, USERS EMPTY ARRAY WILL BE CREATED
          * ELSE ONCE IT ALREADY WAS CREATED INSIDE THE LOCAL STORAGE,
          * IT WILL GET THE USERS EMPTY ARRAY CREATED INSIDE THE LOCAL STORAGE
          * AND PARSE IT TO RETURN OBJECTS INSTEAD OF STRINGS
          */
+
+        if (localStorage.getItem("admin") === null) {
+          admin = [];
+        } else {
+          admin = JSON.parse(localStorage.getItem("admin"));
+        }
+
+        return admin;
+      }
+    }, {
+      key: "addAdmin",
+      value: function addAdmin(adminAccount) {
+        // TO GET EITHER THE EMPTY ARRAY OR THE ONE INSIDE THE LOCAL STORAGE WHEN AFTER IT WAS ALREADY CREATED
+        var admin = FnHandler.adminStorage();
+        admin.push(adminAccount);
+        /**
+         * SETS AN ITEM OR KEY INSIDE THE LOCAL STORAGE CALLED "admin"
+         * AND THEN ITS CORRESPONDING VALUE IS AN ARRAY CONTAINING THE "adminAccount" CREATED
+         * BECAUSE OF PUSH, AND THEN STRINGIFY IT TO CONVERT THE OBJECT/S INTO STRING/S
+         * NECESSARY FOR SENDING DATA TO THE WEB SERVER
+         */
+
+        localStorage.setItem("admin", JSON.stringify(admin));
+      }
+    }, {
+      key: "userStorage",
+      value: function userStorage() {
+        var users;
 
         if (localStorage.getItem("users") === null) {
           users = [];
@@ -63,21 +122,6 @@ doc_ready(function () {
         return users;
       }
     }, {
-      key: "addAdmin",
-      value: function addAdmin(adminAccount) {
-        // TO GET EITHER THE EMPTY ARRAY OR THE ONE INSIDE THE LOCAL STORAGE WHEN AFTER IT WAS ALREADY CREATED
-        var users = FnHandler.userStorage();
-        users.push(adminAccount);
-        /**
-         * SETS AN ITEM OR KEY INSIDE THE LOCAL STORAGE CALLED USERS
-         * AND THEN ITS CORRESPONDING VALUE IS AN ARRAY CONTAINING THE "userAccount" CREATED
-         * BECAUSE OF PUSH, AND THEN STRINGIFY IT TO CONVERT THE OBJECTS INTO STRINGS
-         * NECESSARY FOR SENDING DATA TO THE WEB SERVER
-         */
-
-        localStorage.setItem("users", JSON.stringify(users));
-      }
-    }, {
       key: "addUser",
       value: function addUser(userAccount) {
         var users = FnHandler.userStorage();
@@ -85,35 +129,93 @@ doc_ready(function () {
         localStorage.setItem("users", JSON.stringify(users));
       }
     }, {
+      key: "login_user",
+      value: function login_user(username, password) {
+        var admin = FnHandler.adminStorage(),
+            users = FnHandler.userStorage();
+        var adminUsernameCheck = admin.findIndex(function (index) {
+          return index.username == username;
+        }),
+            adminPasswordCheck = admin.findIndex(function (index) {
+          return index.password == password;
+        }),
+            usernameCheck = users.findIndex(function (index) {
+          return index.username == username;
+        }),
+            passwordCheck = users.findIndex(function (index) {
+          return index.password == password;
+        });
+
+        if (admin[adminUsernameCheck] && admin[adminPasswordCheck]) {
+          toggle_class(id("modal"), "hide");
+          add_class(id("friends-li"), "hide");
+          add_class(id("transactions-li"), "hide");
+          add_class(id("expense-wrap"), "hide");
+        } else if (users[usernameCheck] && users[passwordCheck]) {
+          var j;
+
+          for (i = 0; i < users.length; i++) {
+            if (users[i].username == username && users[i].password == password) {
+              // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
+              setTimeout(function () {
+                toggle_class(id("modal"), "hide");
+              }, 250);
+              add_class(id("accounts-wrap"), "hide");
+              add_class(id("add-newaccount-wrap"), "hide");
+            }
+          }
+
+          id("owner").innerHTML = "".concat(users[usernameCheck].firstName, " ").concat(users[usernameCheck].middleName, " ").concat(users[usernameCheck].lastName);
+          id("owner-acc-num").innerHTML = num_space(users[usernameCheck].accountNumber);
+
+          for (j = 0; j < users[usernameCheck].userTransactionHistory.length; j++) {
+            var transactionLi = create_el("li"),
+                noTransact = create_el("li");
+
+            if (users[usernameCheck].userTransactionHistory.length == 1) {
+              noTransact.innerHTML = "No other transactions yet.";
+              id("owner-transaction").appendChild(noTransact);
+            }
+
+            transactionLi.innerHTML = users[usernameCheck].userTransactionHistory[j];
+            id("owner-transaction").appendChild(transactionLi);
+          }
+        } else {
+          alert("User not found!");
+        }
+      }
+    }, {
       key: "signup_user",
       value: function signup_user(firstName, middleName, lastName, gender, username, password, email, accountNumber) {
         var users = FnHandler.userStorage();
-        var firstNameCheck = users.findIndex(function (userIndex) {
-          return userIndex.firstName == firstName;
+        /**
+         * FINDING THE INDEX OF EXISTING USERS ARRAY ITEM WHEREIN ITS CORRESPONDING PROPERTY
+         * MATCHES WITH THE CURRENT ENTRY FOR THAT PROPERTY
+         */
+
+        var firstNameCheck = users.findIndex(function (index) {
+          return index.firstName == firstName;
         }),
-            middleNameCheck = users.findIndex(function (userIndex) {
-          return userIndex.middleName == middleName;
+            middleNameCheck = users.findIndex(function (index) {
+          return index.middleName == middleName;
         }),
-            lastNameCheck = users.findIndex(function (userIndex) {
-          return userIndex.lastName == lastName;
+            lastNameCheck = users.findIndex(function (index) {
+          return index.lastName == lastName;
         }),
-            genderCheck = users.findIndex(function (userIndex) {
-          return userIndex.gender == gender;
+            accountNumberCheck = users.findIndex(function (index) {
+          return index.accountNumber == accountNumber;
         }),
-            accountNumberCheck = users.findIndex(function (userIndex) {
-          return userIndex.accountNumber == accountNumber;
+            usernameCheck = users.findIndex(function (index) {
+          return index.username == username;
         }),
-            usernameCheck = users.findIndex(function (userIndex) {
-          return userIndex.username == username;
-        }),
-            passwordCheck = users.findIndex(function (userIndex) {
-          return userIndex.password == password;
+            passwordCheck = users.findIndex(function (index) {
+          return index.password == password;
         }),
             emailCheck = users.findIndex(function (userIndex) {
           return userIndex.email == email;
         }); // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
 
-        if (users[firstNameCheck] == null || users[firstNameCheck] == "" || users[middleNameCheck] == null || users[middleNameCheck] == "" || users[lastNameCheck] == null || users[lastNameCheck] == "" || !users[genderCheck] || users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
+        if (users[firstNameCheck] == null || users[firstNameCheck] == "" || users[middleNameCheck] == null || users[middleNameCheck] == "" || users[lastNameCheck] == null || users[lastNameCheck] == "" || users[accountNumberCheck].gender != gender || users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
           alert("User not found!");
         } else if (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "") {
           toggle_class(id("login-wrap"), "hide");
@@ -124,6 +226,11 @@ doc_ready(function () {
         } else {
           alert("You have already signed up!");
         }
+        /**
+         * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
+         * BY OVERRIDING AND SETTING IT AGAIN, AND ALSO STRINGIFY IT AGAIN TOO
+         */
+
 
         localStorage.setItem("users", JSON.stringify(users));
       }
@@ -143,10 +250,9 @@ doc_ready(function () {
     }, {
       key: "withdraw",
       value: function withdraw(user, amount) {
-        var users = FnHandler.userStorage(); // FINDING THE INDEX OF EXISTING USERS ARRAY ITEM WHEREIN ITS ACCOUNT NUMBER WITH THE CURRENT ACCOUNT NUMBER ENTRY
-
-        var userCheck = users.findIndex(function (userIndex) {
-          return userIndex.accountNumber == user;
+        var users = FnHandler.userStorage();
+        var userCheck = users.findIndex(function (index) {
+          return index.accountNumber == user;
         });
         /**
          * IF THERE IS NO EXISTING INDEX OF USERS ARRAY ITEM
@@ -171,11 +277,6 @@ doc_ready(function () {
           users[userCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You withdrawed an amount of <strong>\u20B1").concat(amount, "</strong> from your account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
           alert("Withdrawal transaction has been successful!");
         }
-        /**
-         * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
-         * BY OVERRIDING AND SETTING IT AGAIN, AND ALSO STRINGIFY IT AGAIN TOO
-         */
-
 
         localStorage.setItem("users", JSON.stringify(users));
       }
@@ -183,8 +284,8 @@ doc_ready(function () {
       key: "deposit",
       value: function deposit(user, amount) {
         var users = FnHandler.userStorage();
-        var userCheck = users.findIndex(function (userIndex) {
-          return userIndex.accountNumber == user;
+        var userCheck = users.findIndex(function (index) {
+          return index.accountNumber == user;
         });
 
         if (users[userCheck] == null || users[userCheck] == "") {
@@ -206,11 +307,11 @@ doc_ready(function () {
       key: "send",
       value: function send(from_user, to_user, amount) {
         var users = FnHandler.userStorage();
-        var senderCheck = users.findIndex(function (userIndex) {
-          return userIndex.accountNumber == from_user;
+        var senderCheck = users.findIndex(function (index) {
+          return index.accountNumber == from_user;
         }),
-            receiverCheck = users.findIndex(function (userIndex) {
-          return userIndex.accountNumber == to_user;
+            receiverCheck = users.findIndex(function (index) {
+          return index.accountNumber == to_user;
         });
 
         if ((users[senderCheck] == null || users[senderCheck] == "") && (users[receiverCheck] == null || users[receiverCheck] == "")) {
@@ -245,8 +346,8 @@ doc_ready(function () {
       key: "get_balance",
       value: function get_balance(user, parent) {
         var users = FnHandler.userStorage();
-        var userCheck = users.findIndex(function (userIndex) {
-          return userIndex.accountNumber == user;
+        var userCheck = users.findIndex(function (index) {
+          return index.accountNumber == user;
         }),
             balanceTd = create_el("td");
         /**
@@ -366,7 +467,7 @@ doc_ready(function () {
           id("acc-table").appendChild(tableRow);
         };
 
-        for (i = 1; i < users.length; i++) {
+        for (i = 0; i < users.length; i++) {
           _loop();
         }
       } // ONCE FIRST VALUE OR CHARACTER INPUTTED IS A NUMBER IN ALL NAME INPUTS ACROSS THE DOM, ALERT WILL EXEECUTE
@@ -489,21 +590,22 @@ doc_ready(function () {
   FnHandler.dec_addZero();
   FnHandler.password_match();
 
-  var create_admin = function create_admin(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
-    var users = FnHandler.userStorage();
-    var adminCheck = users.findIndex(function (adminIndex) {
-      return adminIndex.accountNumber == accountNumber;
+  var create_admin = function create_admin(username, password, adminId) {
+    var admin = FnHandler.adminStorage();
+    var adminCheck = admin.findIndex(function (index) {
+      return index.adminId == adminId;
     }); // THIS MAKES THE CREATION OF ADMIN ACCOUNT ONLY ONCE
 
-    if (users[adminCheck]) {
+    if (admin[adminCheck]) {
       return;
     } else {
-      var admin = new User(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance);
-      FnHandler.addUser(admin);
+      var _admin = new Admin(username, password, adminId);
+
+      FnHandler.addAdmin(_admin);
     }
   };
 
-  create_admin("admin", "admin", "admin", "admin", "admin", "admin", "admin", "1", "admin", "0");
+  create_admin("admin", "admin", "1");
   /**
    * FUNCTION FOR CREATING A NEW USER, CONNECTING THE CLASS "User"
    * INTO THE CLASS "FnHandler" TO PUSH EVERY NEW USER CREATED INTO THE LOCAL STORAGE
@@ -511,11 +613,11 @@ doc_ready(function () {
 
   var create_user = function create_user(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
     var users = FnHandler.userStorage();
-    var fNameCheck = users.findIndex(function (userIndex) {
-      return userIndex.firstName == firstName;
+    var fNameCheck = users.findIndex(function (index) {
+      return index.firstName == firstName;
     }),
-        lNameCheck = users.findIndex(function (userIndex) {
-      return userIndex.lastName == lastName;
+        lNameCheck = users.findIndex(function (index) {
+      return index.lastName == lastName;
     });
     /**
      * THIS PREVENTS DUPLICATE USERS, EVERY FIRST NAME AND LAST NAME INPUTS ARE CHECKED
@@ -536,17 +638,17 @@ doc_ready(function () {
 
   add_event(id("load-data-btn"), "click", function () {
     var users = FnHandler.userStorage();
-    var juanCheck = users.findIndex(function (userIndex) {
-      return userIndex.firstName == "JUAN";
+    var juanCheck = users.findIndex(function (index) {
+      return index.firstName == "JUAN";
     }),
-        delaCruzCheck = users.findIndex(function (userIndex) {
-      return userIndex.lastName == "DELA CRUZ";
+        delaCruzCheck = users.findIndex(function (index) {
+      return index.lastName == "DELA CRUZ";
     }),
-        janeCheck = users.findIndex(function (userIndex) {
-      return userIndex.firstName == "JANE";
+        janeCheck = users.findIndex(function (index) {
+      return index.firstName == "JANE";
     }),
-        doeCheck = users.findIndex(function (userIndex) {
-      return userIndex.lastName == "DOE";
+        doeCheck = users.findIndex(function (index) {
+      return index.lastName == "DOE";
     }); // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE WHEN THE DATA STILL DON'T EXIST
 
     if (!users[juanCheck] && !users[delaCruzCheck]) {
@@ -580,8 +682,7 @@ doc_ready(function () {
 
       if (clearAnswer == "y") {
         // DOES NOT INCLUDE FIRST ARRAY ITEM IN SPLICING OR DELETING WHICH IS THE ADMIN USERNAME AND PASSWORD
-        users.splice(1, users.length);
-        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.removeItem("users");
         FnHandler.list_users();
       } else {
         return;
@@ -615,35 +716,34 @@ doc_ready(function () {
   });
   add_event(id("login-form"), "submit", function (e) {
     e.preventDefault();
-    var users = FnHandler.userStorage();
-    var usernameCheck = users.findIndex(function (usernameIndex) {
-      return usernameIndex.username == id("login-username").value;
-    }),
-        passwordCheck = users.findIndex(function (passwordIndex) {
-      return passwordIndex.password == id("login-password").value;
-    });
-
-    if (users[usernameCheck] && users[passwordCheck]) {
-      // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
-      if (users[0].username == id("login-username").value && users[0].password == id("login-password").value) {
-        toggle_class(id("modal"), "hide");
-        add_class(id("friends-li"), "hide");
-        add_class(id("transactions-li"), "hide");
-      } else {
-        for (i = 1; i < users.length; i++) {
-          if (users[i].username == id("login-username").value && users[i].password == id("login-password").value) {
-            // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
-            setTimeout(function () {
-              toggle_class(id("modal"), "hide");
-            }, 250);
-            add_class(id("accounts-wrap"), "hide");
-            add_class(id("add-newaccount-wrap"), "hide");
-          }
-        }
-      }
-    } else {
-      alert("User not found!");
-    }
+    FnHandler.login_user(id("login-username").value, id("login-password").value); // OLD CODE
+    // if (users[usernameCheck] && users[passwordCheck]) {
+    //   // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
+    //   if (
+    //     users[0].username == id("login-username").value &&
+    //     users[0].password == id("login-password").value
+    //   ) {
+    //     toggle_class(id("modal"), "hide");
+    //     add_class(id("friends-li"), "hide");
+    //     add_class(id("transactions-li"), "hide");
+    //   } else {
+    //     for (i = 1; i < users.length; i++) {
+    //       if (
+    //         users[i].username == id("login-username").value &&
+    //         users[i].password == id("login-password").value
+    //       ) {
+    //         // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
+    //         setTimeout(() => {
+    //           toggle_class(id("modal"), "hide");
+    //         }, 250);
+    //         add_class(id("accounts-wrap"), "hide");
+    //         add_class(id("add-newaccount-wrap"), "hide");
+    //       }
+    //     }
+    //   }
+    // } else {
+    //   alert("User not found!");
+    // }
 
     return false;
   });
@@ -655,8 +755,9 @@ doc_ready(function () {
       remove_class(id("friends-li"), "hide");
       remove_class(id("transactions-li"), "hide");
       remove_class(id("accounts-wrap"), "hide");
+      remove_class(id("expense-wrap"), "hide");
       remove_class(id("add-newaccount-wrap"), "hide");
-    }, 250);
+    }, 500);
     FnHandler.reset();
     return false;
   });
@@ -675,12 +776,22 @@ doc_ready(function () {
       id("signup-form").reset();
     }
 
+    remove_class(id("match-msg"), "fa-check");
+    remove_class(id("match-msg"), "fa-times");
     return false;
   });
   add_event(id("back-signup-btn"), "click", function () {
     toggle_class(id("login-wrap"), "hide");
     toggle_class(id("signup-wrap"), "show");
+    remove_class(id("match-msg"), "fa-check");
+    remove_class(id("match-msg"), "fa-times");
     FnHandler.reset();
+  });
+  add_event(id("owner-transaction-btn"), "click", function () {
+    add_class(id("owner-transaction-modal"), "show");
+  });
+  add_event(id("close-owner-transaction-btn"), "click", function () {
+    remove_class(id("owner-transaction-modal"), "show");
   });
   add_event(id("withdraw-form"), "submit", function (e) {
     e.preventDefault();
