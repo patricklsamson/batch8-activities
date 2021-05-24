@@ -3,6 +3,10 @@ form {
   margin: 0 auto;
 }
 
+#match-msg {
+  cursor: auto;
+}
+
 #match-msg.fa-check {
   color: green;
 }
