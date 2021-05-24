@@ -69,6 +69,75 @@ doc_ready(() => {
       localStorage.setItem("users", JSON.stringify(users));
     }
 
+    static signup_user(
+      firstName,
+      middleName,
+      lastName,
+      gender,
+      username,
+      password,
+      email,
+      accountNumber
+    ) {
+      const users = FnHandler.userStorage();
+
+      let firstNameCheck = users.findIndex(
+          (userIndex) => userIndex.firstName == firstName
+        ),
+        middleNameCheck = users.findIndex(
+          (userIndex) => userIndex.middleName == middleName
+        ),
+        lastNameCheck = users.findIndex(
+          (userIndex) => userIndex.lastName == lastName
+        ),
+        genderCheck = users.findIndex(
+          (userIndex) => userIndex.gender == gender
+        ),
+        accountNumberCheck = users.findIndex(
+          (userIndex) => userIndex.accountNumber == accountNumber
+        ),
+        usernameCheck = users.findIndex(
+          (userIndex) => userIndex.username == username
+        ),
+        passwordCheck = users.findIndex(
+          (userIndex) => userIndex.password == password
+        ),
+        emailCheck = users.findIndex((userIndex) => userIndex.email == email);
+
+      // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
+      if (
+        users[firstNameCheck] == null ||
+        users[firstNameCheck] == "" ||
+        users[middleNameCheck] == null ||
+        users[middleNameCheck] == "" ||
+        users[lastNameCheck] == null ||
+        users[lastNameCheck] == "" ||
+        users[genderCheck] == null ||
+        users[genderCheck] == "" ||
+        users[accountNumberCheck] == null ||
+        users[accountNumberCheck] == ""
+      ) {
+        alert("User not found!");
+      } else if (
+        users[usernameCheck] == null ||
+        users[usernameCheck] == "" ||
+        users[passwordCheck] == null ||
+        users[passwordCheck] == "" ||
+        users[emailCheck] == null ||
+        users[emailCheck] == ""
+      ) {
+        toggle_class(id("login-wrap"), "hide");
+        toggle_class(id("signup-wrap"), "show");
+        users[accountNumberCheck].username = username;
+        users[accountNumberCheck].password = password;
+        users[accountNumberCheck].email = email;
+      } else {
+        alert("You have already signed up!");
+      }
+
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
     static time_stamp() {
       const today = new Date(),
         month =
@@ -414,75 +483,6 @@ doc_ready(() => {
       }
     }
 
-    static signup_user(
-      firstName,
-      middleName,
-      lastName,
-      gender,
-      username,
-      password,
-      email,
-      accountNumber
-    ) {
-      const users = FnHandler.userStorage();
-
-      let firstNameCheck = users.findIndex(
-          (userIndex) => userIndex.firstName == firstName
-        ),
-        middleNameCheck = users.findIndex(
-          (userIndex) => userIndex.middleName == middleName
-        ),
-        lastNameCheck = users.findIndex(
-          (userIndex) => userIndex.lastName == lastName
-        ),
-        genderCheck = users.findIndex(
-          (userIndex) => userIndex.gender == gender
-        ),
-        accountNumberCheck = users.findIndex(
-          (userIndex) => userIndex.accountNumber == accountNumber
-        ),
-        usernameCheck = users.findIndex(
-          (userIndex) => userIndex.username == username
-        ),
-        passwordCheck = users.findIndex(
-          (userIndex) => userIndex.password == password
-        ),
-        emailCheck = users.findIndex((userIndex) => userIndex.email == email);
-
-      // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
-      if (
-        users[firstNameCheck] == null ||
-        users[firstNameCheck] == "" ||
-        users[middleNameCheck] == null ||
-        users[middleNameCheck] == "" ||
-        users[lastNameCheck] == null ||
-        users[lastNameCheck] == "" ||
-        users[genderCheck] == null ||
-        users[genderCheck] == "" ||
-        users[accountNumberCheck] == null ||
-        users[accountNumberCheck] == ""
-      ) {
-        alert("User not found!");
-      } else if (
-        users[usernameCheck] == null ||
-        users[usernameCheck] == "" ||
-        users[passwordCheck] == null ||
-        users[passwordCheck] == "" ||
-        users[emailCheck] == null ||
-        users[emailCheck] == ""
-      ) {
-        toggle_class(id("login-wrap"), "hide");
-        toggle_class(id("signup-wrap"), "show");
-        users[accountNumberCheck].username = username;
-        users[accountNumberCheck].password = password;
-        users[accountNumberCheck].email = email;
-      } else {
-        alert("You have already signed up!");
-      }
-
-      localStorage.setItem("users", JSON.stringify(users));
-    }
-
     // ONCE FIRST VALUE OR CHARACTER INPUTTED IS A NUMBER IN ALL NAME INPUTS ACROSS THE DOM, ALERT WILL EXEECUTE
     static first_char() {
       qsel_all("[id*='-name']").forEach((input) => {
@@ -732,77 +732,6 @@ doc_ready(() => {
     }
   };
 
-  add_event(id("login-form"), "submit", (e) => {
-    e.preventDefault();
-
-    const users = FnHandler.userStorage();
-
-    let usernameCheck = users.findIndex(
-        (usernameIndex) => usernameIndex.username == id("login-username").value
-      ),
-      passwordCheck = users.findIndex(
-        (passwordIndex) => passwordIndex.password == id("login-password").value
-      );
-
-    if (users[usernameCheck] && users[passwordCheck]) {
-      // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
-      if (
-        users[0].username == id("login-username").value &&
-        users[0].password == id("login-password").value
-      ) {
-        toggle_class(id("modal"), "hide");
-      } else {
-        for (i = 1; i < users.length; i++) {
-          if (
-            users[i].username == id("login-username").value &&
-            users[i].password == id("login-password").value
-          ) {
-            toggle_class(id("modal"), "hide");
-            add_class(id("main"), "hide");
-          }
-        }
-      }
-    } else {
-      alert("User not found!");
-    }
-
-    return false;
-  });
-
-  add_event(id("open-signup-btn"), "click", () => {
-    toggle_class(id("login-wrap"), "hide");
-    toggle_class(id("signup-wrap"), "show");
-  });
-
-  add_event(id("signup-form"), "submit", (e) => {
-    e.preventDefault();
-
-    if (id("signup-password").value != id("signup-confirm-password").value) {
-      return;
-    } else {
-      let gender = id("signup-male").checked ? "male" : "female";
-
-      FnHandler.signup_user(
-        id("signup-first-name").value.toUpperCase(),
-        id("signup-middle-name").value.toUpperCase(),
-        id("signup-last-name").value.toUpperCase(),
-        gender,
-        id("signup-username").value,
-        id("signup-password").value,
-        id("signup-email").value,
-        id("signup-account-num").value.split(" ").join("")
-      );
-    }
-
-    return false;
-  });
-
-  add_event(id("back-signup-btn"), "click", () => {
-    toggle_class(id("login-wrap"), "hide");
-    toggle_class(id("signup-wrap"), "show");
-    FnHandler.reset();
-  });
-
   // LOADS INITIAL DATA FOR IMMEDIATE TESTING PURPOSES OF WHOEVER VISITS THE SITE
   add_event(id("load-data-btn"), "click", () => {
     const users = FnHandler.userStorage();
@@ -864,14 +793,6 @@ doc_ready(() => {
 
     // THIS FUNCTION IS CALLED AGAIN TO REFRESH THE LIST IN THE UI
     FnHandler.list_users();
-  });
-
-  add_event(id("log-out-btn"), "click", (e) => {
-    e.preventDefault();
-    toggle_class(id("modal"), "hide");
-    remove_class(id("main"), "hide");
-    FnHandler.reset();
-    return false;
   });
 
   // PROMPT FOR CLEARING ALL DATA, TO PREVENT ACCIDENTAL DELETION
@@ -947,6 +868,94 @@ doc_ready(() => {
     id("add-form").reset();
 
     return false;
+  });
+
+  add_event(id("login-form"), "submit", (e) => {
+    e.preventDefault();
+
+    const users = FnHandler.userStorage();
+
+    let usernameCheck = users.findIndex(
+        (usernameIndex) => usernameIndex.username == id("login-username").value
+      ),
+      passwordCheck = users.findIndex(
+        (passwordIndex) => passwordIndex.password == id("login-password").value
+      );
+
+    if (users[usernameCheck] && users[passwordCheck]) {
+      // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
+      if (
+        users[0].username == id("login-username").value &&
+        users[0].password == id("login-password").value
+      ) {
+        toggle_class(id("modal"), "hide");
+      } else {
+        for (i = 1; i < users.length; i++) {
+          if (
+            users[i].username == id("login-username").value &&
+            users[i].password == id("login-password").value
+          ) {
+            // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
+            setTimeout(() => {
+              toggle_class(id("modal"), "hide");
+            }, 250);
+
+            add_class(id("main"), "hide");
+          }
+        }
+      }
+    } else {
+      alert("User not found!");
+    }
+
+    return false;
+  });
+
+  add_event(id("log-out-btn"), "click", (e) => {
+    e.preventDefault();
+    toggle_class(id("modal"), "hide");
+
+    // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
+    setTimeout(() => {
+      remove_class(id("main"), "hide");
+    }, 250);
+
+    FnHandler.reset();
+    return false;
+  });
+
+  add_event(id("open-signup-btn"), "click", () => {
+    toggle_class(id("login-wrap"), "hide");
+    toggle_class(id("signup-wrap"), "show");
+  });
+
+  add_event(id("signup-form"), "submit", (e) => {
+    e.preventDefault();
+
+    if (id("signup-password").value != id("signup-confirm-password").value) {
+      return;
+    } else {
+      let gender = id("signup-male").checked ? "male" : "female";
+
+      FnHandler.signup_user(
+        id("signup-first-name").value.toUpperCase(),
+        id("signup-middle-name").value.toUpperCase(),
+        id("signup-last-name").value.toUpperCase(),
+        gender,
+        id("signup-username").value,
+        id("signup-password").value,
+        id("signup-email").value,
+        id("signup-account-num").value.split(" ").join("")
+      );
+    }
+
+    return false;
+  });
+
+  add_event(id("back-signup-btn"), "click", () => {
+    toggle_class(id("login-wrap"), "hide");
+    toggle_class(id("signup-wrap"), "show");
+    FnHandler.reset();
   });
 
   add_event(id("withdraw-form"), "submit", (e) => {
