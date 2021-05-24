@@ -25,6 +25,15 @@ doc_ready(() => {
       this.accountType = accountType;
       this.balance = balance;
       this.transactionHistory = [];
+      this.expenseItems = [];
+    }
+  }
+
+  class ExpenseItem {
+    constructor(name, cost, owner) {
+      this.name = name;
+      this.cost = cost;
+      this.owner = owner;
     }
   }
 
@@ -901,7 +910,7 @@ doc_ready(() => {
             }, 250);
 
             add_class(id("accounts-wrap"), "hide");
-            add_class(id("add-account-wrap"), "hide");
+            add_class(id("add-newaccount-wrap"), "hide");
           }
         }
       }
@@ -919,7 +928,7 @@ doc_ready(() => {
     // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
     setTimeout(() => {
       remove_class(id("accounts-wrap"), "hide");
-      remove_class(id("add-account-wrap"), "hide");
+      remove_class(id("add-newaccount-wrap"), "hide");
     }, 250);
 
     FnHandler.reset();
