@@ -1,7 +1,17 @@
 doc_ready(() => {
   let i;
 
-  class User {
+  // SEPARATED ADMIN FOR BETTER DISTINCTION FROM REGULAR USERS ESPECIALLY FOR LOCAL STORAGE
+  class Admin {
+    constructor(username, password, adminId) {
+      this.username = username;
+      this.password = password;
+      this.adminId = adminId;
+    }
+  }
+
+  // CONSTRUCTOR FOR EACH INDIVIDUAL USERS THAT INHERITS ADMIN USERNAME AND PASSWORD PROPERTIES
+  class User extends Admin {
     constructor(
       username,
       password,
@@ -14,8 +24,7 @@ doc_ready(() => {
       accountType,
       balance
     ) {
-      this.username = username;
-      this.password = password;
+      super(username, password);
       this.email = email;
       this.firstName = firstName;
       this.middleName = middleName;
@@ -40,8 +49,8 @@ doc_ready(() => {
   }
 
   class FnHandler {
-    static userStorage() {
-      let users;
+    static adminStorage() {
+      let admin;
 
       /**
        * IF USERS KEY STILL DOES NOT EXISTS INSIDE THE LOCAL STORAGE, USERS EMPTY ARRAY WILL BE CREATED
@@ -49,6 +58,33 @@ doc_ready(() => {
        * IT WILL GET THE USERS EMPTY ARRAY CREATED INSIDE THE LOCAL STORAGE
        * AND PARSE IT TO RETURN OBJECTS INSTEAD OF STRINGS
        */
+      if (localStorage.getItem("admin") === null) {
+        admin = [];
+      } else {
+        admin = JSON.parse(localStorage.getItem("admin"));
+      }
+
+      return admin;
+    }
+
+    static addAdmin(adminAccount) {
+      // TO GET EITHER THE EMPTY ARRAY OR THE ONE INSIDE THE LOCAL STORAGE WHEN AFTER IT WAS ALREADY CREATED
+      const admin = FnHandler.adminStorage();
+
+      admin.push(adminAccount);
+
+      /**
+       * SETS AN ITEM OR KEY INSIDE THE LOCAL STORAGE CALLED "admin"
+       * AND THEN ITS CORRESPONDING VALUE IS AN ARRAY CONTAINING THE "adminAccount" CREATED
+       * BECAUSE OF PUSH, AND THEN STRINGIFY IT TO CONVERT THE OBJECT/S INTO STRING/S
+       * NECESSARY FOR SENDING DATA TO THE WEB SERVER
+       */
+      localStorage.setItem("admin", JSON.stringify(admin));
+    }
+
+    static userStorage() {
+      let users;
+
       if (localStorage.getItem("users") === null) {
         users = [];
       } else {
@@ -58,26 +94,75 @@ doc_ready(() => {
       return users;
     }
 
-    static addAdmin(adminAccount) {
-      // TO GET EITHER THE EMPTY ARRAY OR THE ONE INSIDE THE LOCAL STORAGE WHEN AFTER IT WAS ALREADY CREATED
-      const users = FnHandler.userStorage();
-
-      users.push(adminAccount);
-
-      /**
-       * SETS AN ITEM OR KEY INSIDE THE LOCAL STORAGE CALLED USERS
-       * AND THEN ITS CORRESPONDING VALUE IS AN ARRAY CONTAINING THE "userAccount" CREATED
-       * BECAUSE OF PUSH, AND THEN STRINGIFY IT TO CONVERT THE OBJECTS INTO STRINGS
-       * NECESSARY FOR SENDING DATA TO THE WEB SERVER
-       */
-      localStorage.setItem("users", JSON.stringify(users));
-    }
-
     static addUser(userAccount) {
       const users = FnHandler.userStorage();
 
       users.push(userAccount);
       localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    static login_user(username, password) {
+      const admin = FnHandler.adminStorage(),
+        users = FnHandler.userStorage();
+
+      let adminUsernameCheck = admin.findIndex(
+          (index) => index.username == username
+        ),
+        adminPasswordCheck = admin.findIndex(
+          (index) => index.password == password
+        ),
+        usernameCheck = users.findIndex((index) => index.username == username),
+        passwordCheck = users.findIndex((index) => index.password == password);
+
+      if (admin[adminUsernameCheck] && admin[adminPasswordCheck]) {
+        toggle_class(id("modal"), "hide");
+        add_class(id("friends-li"), "hide");
+        add_class(id("transactions-li"), "hide");
+        add_class(id("expense-wrap"), "hide");
+      } else if (users[usernameCheck] && users[passwordCheck]) {
+        let j;
+
+        for (i = 0; i < users.length; i++) {
+          if (users[i].username == username && users[i].password == password) {
+            // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
+            setTimeout(() => {
+              toggle_class(id("modal"), "hide");
+            }, 250);
+
+            add_class(id("accounts-wrap"), "hide");
+            add_class(id("add-newaccount-wrap"), "hide");
+          }
+        }
+
+        id(
+          "owner"
+        ).innerHTML = `${users[usernameCheck].firstName} ${users[usernameCheck].middleName} ${users[usernameCheck].lastName}`;
+
+        id("owner-acc-num").innerHTML = num_space(
+          users[usernameCheck].accountNumber
+        );
+
+        for (
+          j = 0;
+          j < users[usernameCheck].userTransactionHistory.length;
+          j++
+        ) {
+          let transactionLi = create_el("li"),
+            noTransact = create_el("li");
+
+          if (users[usernameCheck].userTransactionHistory.length == 1) {
+            noTransact.innerHTML = "No other transactions yet.";
+            id("owner-transaction").appendChild(noTransact);
+          }
+
+          transactionLi.innerHTML =
+            users[usernameCheck].userTransactionHistory[j];
+
+          id("owner-transaction").appendChild(transactionLi);
+        }
+      } else {
+        alert("User not found!");
+      }
     }
 
     static signup_user(
@@ -92,27 +177,22 @@ doc_ready(() => {
     ) {
       const users = FnHandler.userStorage();
 
+      /**
+       * FINDING THE INDEX OF EXISTING USERS ARRAY ITEM WHEREIN ITS CORRESPONDING PROPERTY
+       * MATCHES WITH THE CURRENT ENTRY FOR THAT PROPERTY
+       */
       let firstNameCheck = users.findIndex(
-          (userIndex) => userIndex.firstName == firstName
+          (index) => index.firstName == firstName
         ),
         middleNameCheck = users.findIndex(
-          (userIndex) => userIndex.middleName == middleName
+          (index) => index.middleName == middleName
         ),
-        lastNameCheck = users.findIndex(
-          (userIndex) => userIndex.lastName == lastName
-        ),
-        genderCheck = users.findIndex(
-          (userIndex) => userIndex.gender == gender
-        ),
+        lastNameCheck = users.findIndex((index) => index.lastName == lastName),
         accountNumberCheck = users.findIndex(
-          (userIndex) => userIndex.accountNumber == accountNumber
+          (index) => index.accountNumber == accountNumber
         ),
-        usernameCheck = users.findIndex(
-          (userIndex) => userIndex.username == username
-        ),
-        passwordCheck = users.findIndex(
-          (userIndex) => userIndex.password == password
-        ),
+        usernameCheck = users.findIndex((index) => index.username == username),
+        passwordCheck = users.findIndex((index) => index.password == password),
         emailCheck = users.findIndex((userIndex) => userIndex.email == email);
 
       // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
@@ -123,7 +203,7 @@ doc_ready(() => {
         users[middleNameCheck] == "" ||
         users[lastNameCheck] == null ||
         users[lastNameCheck] == "" ||
-        !users[genderCheck] ||
+        users[accountNumberCheck].gender != gender ||
         users[accountNumberCheck] == null ||
         users[accountNumberCheck] == ""
       ) {
@@ -145,6 +225,10 @@ doc_ready(() => {
         alert("You have already signed up!");
       }
 
+      /**
+       * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
+       * BY OVERRIDING AND SETTING IT AGAIN, AND ALSO STRINGIFY IT AGAIN TOO
+       */
       localStorage.setItem("users", JSON.stringify(users));
     }
 
@@ -174,10 +258,7 @@ doc_ready(() => {
     static withdraw(user, amount) {
       const users = FnHandler.userStorage();
 
-      // FINDING THE INDEX OF EXISTING USERS ARRAY ITEM WHEREIN ITS ACCOUNT NUMBER WITH THE CURRENT ACCOUNT NUMBER ENTRY
-      let userCheck = users.findIndex(
-        (userIndex) => userIndex.accountNumber == user
-      );
+      let userCheck = users.findIndex((index) => index.accountNumber == user);
 
       /**
        * IF THERE IS NO EXISTING INDEX OF USERS ARRAY ITEM
@@ -221,19 +302,13 @@ doc_ready(() => {
         alert(`Withdrawal transaction has been successful!`);
       }
 
-      /**
-       * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
-       * BY OVERRIDING AND SETTING IT AGAIN, AND ALSO STRINGIFY IT AGAIN TOO
-       */
       localStorage.setItem("users", JSON.stringify(users));
     }
 
     static deposit(user, amount) {
       const users = FnHandler.userStorage();
 
-      let userCheck = users.findIndex(
-        (userIndex) => userIndex.accountNumber == user
-      );
+      let userCheck = users.findIndex((index) => index.accountNumber == user);
 
       if (users[userCheck] == null || users[userCheck] == "") {
         alert("User not found!");
@@ -274,10 +349,10 @@ doc_ready(() => {
       const users = FnHandler.userStorage();
 
       let senderCheck = users.findIndex(
-          (userIndex) => userIndex.accountNumber == from_user
+          (index) => index.accountNumber == from_user
         ),
         receiverCheck = users.findIndex(
-          (userIndex) => userIndex.accountNumber == to_user
+          (index) => index.accountNumber == to_user
         );
 
       if (
@@ -367,9 +442,7 @@ doc_ready(() => {
     static get_balance(user, parent) {
       const users = FnHandler.userStorage();
 
-      let userCheck = users.findIndex(
-          (userIndex) => userIndex.accountNumber == user
-        ),
+      let userCheck = users.findIndex((index) => index.accountNumber == user),
         balanceTd = create_el("td");
 
       /**
@@ -390,7 +463,7 @@ doc_ready(() => {
       id("acc-table").innerHTML = "";
 
       // ITERATION STARTS AT ONE TO PREVENT THE FIRST ARRAY ITEM TO DISPLAY WHICH IS FOR THE ADMIN
-      for (i = 1; i < users.length; i++) {
+      for (i = 0; i < users.length; i++) {
         let j,
           tableRow = create_el("tr"),
           accNumTd = create_el("td"),
@@ -652,57 +725,22 @@ doc_ready(() => {
   FnHandler.dec_addZero();
   FnHandler.password_match();
 
-  const create_admin = (
-    username,
-    password,
-    email,
-    firstName,
-    middleName,
-    lastName,
-    gender,
-    accountNumber,
-    accountType,
-    balance
-  ) => {
-    const users = FnHandler.userStorage();
+  const create_admin = (username, password, adminId) => {
+    const admin = FnHandler.adminStorage();
 
-    let adminCheck = users.findIndex(
-      (adminIndex) => adminIndex.accountNumber == accountNumber
-    );
+    let adminCheck = admin.findIndex((index) => index.adminId == adminId);
 
     // THIS MAKES THE CREATION OF ADMIN ACCOUNT ONLY ONCE
-    if (users[adminCheck]) {
+    if (admin[adminCheck]) {
       return;
     } else {
-      const admin = new User(
-        username,
-        password,
-        email,
-        firstName,
-        middleName,
-        lastName,
-        gender,
-        accountNumber,
-        accountType,
-        balance
-      );
+      const admin = new Admin(username, password, adminId);
 
-      FnHandler.addUser(admin);
+      FnHandler.addAdmin(admin);
     }
   };
 
-  create_admin(
-    "admin",
-    "admin",
-    "admin",
-    "admin",
-    "admin",
-    "admin",
-    "admin",
-    "1",
-    "admin",
-    "0"
-  );
+  create_admin("admin", "admin", "1");
 
   /**
    * FUNCTION FOR CREATING A NEW USER, CONNECTING THE CLASS "User"
@@ -722,12 +760,8 @@ doc_ready(() => {
   ) => {
     const users = FnHandler.userStorage();
 
-    let fNameCheck = users.findIndex(
-        (userIndex) => userIndex.firstName == firstName
-      ),
-      lNameCheck = users.findIndex(
-        (userIndex) => userIndex.lastName == lastName
-      );
+    let fNameCheck = users.findIndex((index) => index.firstName == firstName),
+      lNameCheck = users.findIndex((index) => index.lastName == lastName);
 
     /**
      * THIS PREVENTS DUPLICATE USERS, EVERY FIRST NAME AND LAST NAME INPUTS ARE CHECKED
@@ -774,14 +808,10 @@ doc_ready(() => {
   add_event(id("load-data-btn"), "click", () => {
     const users = FnHandler.userStorage();
 
-    let juanCheck = users.findIndex(
-        (userIndex) => userIndex.firstName == "JUAN"
-      ),
-      delaCruzCheck = users.findIndex(
-        (userIndex) => userIndex.lastName == "DELA CRUZ"
-      ),
-      janeCheck = users.findIndex((userIndex) => userIndex.firstName == "JANE"),
-      doeCheck = users.findIndex((userIndex) => userIndex.lastName == "DOE");
+    let juanCheck = users.findIndex((index) => index.firstName == "JUAN"),
+      delaCruzCheck = users.findIndex((index) => index.lastName == "DELA CRUZ"),
+      janeCheck = users.findIndex((index) => index.firstName == "JANE"),
+      doeCheck = users.findIndex((index) => index.lastName == "DOE");
 
     // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE WHEN THE DATA STILL DON'T EXIST
     if (!users[juanCheck] && !users[delaCruzCheck]) {
@@ -847,8 +877,7 @@ doc_ready(() => {
 
       if (clearAnswer == "y") {
         // DOES NOT INCLUDE FIRST ARRAY ITEM IN SPLICING OR DELETING WHICH IS THE ADMIN USERNAME AND PASSWORD
-        users.splice(1, users.length);
-        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.removeItem("users");
         FnHandler.list_users();
       } else {
         return;
@@ -911,43 +940,40 @@ doc_ready(() => {
   add_event(id("login-form"), "submit", (e) => {
     e.preventDefault();
 
-    const users = FnHandler.userStorage();
+    FnHandler.login_user(
+      id("login-username").value,
+      id("login-password").value
+    );
 
-    let usernameCheck = users.findIndex(
-        (usernameIndex) => usernameIndex.username == id("login-username").value
-      ),
-      passwordCheck = users.findIndex(
-        (passwordIndex) => passwordIndex.password == id("login-password").value
-      );
+    // OLD CODE
+    // if (users[usernameCheck] && users[passwordCheck]) {
+    //   // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
+    //   if (
+    //     users[0].username == id("login-username").value &&
+    //     users[0].password == id("login-password").value
+    //   ) {
+    //     toggle_class(id("modal"), "hide");
+    //     add_class(id("friends-li"), "hide");
+    //     add_class(id("transactions-li"), "hide");
+    //   } else {
+    //     for (i = 1; i < users.length; i++) {
+    //       if (
+    //         users[i].username == id("login-username").value &&
+    //         users[i].password == id("login-password").value
+    //       ) {
+    //         // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
+    //         setTimeout(() => {
+    //           toggle_class(id("modal"), "hide");
+    //         }, 250);
 
-    if (users[usernameCheck] && users[passwordCheck]) {
-      // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
-      if (
-        users[0].username == id("login-username").value &&
-        users[0].password == id("login-password").value
-      ) {
-        toggle_class(id("modal"), "hide");
-        add_class(id("friends-li"), "hide");
-        add_class(id("transactions-li"), "hide");
-      } else {
-        for (i = 1; i < users.length; i++) {
-          if (
-            users[i].username == id("login-username").value &&
-            users[i].password == id("login-password").value
-          ) {
-            // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
-            setTimeout(() => {
-              toggle_class(id("modal"), "hide");
-            }, 250);
-
-            add_class(id("accounts-wrap"), "hide");
-            add_class(id("add-newaccount-wrap"), "hide");
-          }
-        }
-      }
-    } else {
-      alert("User not found!");
-    }
+    //         add_class(id("accounts-wrap"), "hide");
+    //         add_class(id("add-newaccount-wrap"), "hide");
+    //       }
+    //     }
+    //   }
+    // } else {
+    //   alert("User not found!");
+    // }
 
     return false;
   });
@@ -961,8 +987,9 @@ doc_ready(() => {
       remove_class(id("friends-li"), "hide");
       remove_class(id("transactions-li"), "hide");
       remove_class(id("accounts-wrap"), "hide");
+      remove_class(id("expense-wrap"), "hide");
       remove_class(id("add-newaccount-wrap"), "hide");
-    }, 250);
+    }, 500);
 
     FnHandler.reset();
     return false;
@@ -995,13 +1022,25 @@ doc_ready(() => {
       id("signup-form").reset();
     }
 
+    remove_class(id("match-msg"), "fa-check");
+    remove_class(id("match-msg"), "fa-times");
     return false;
   });
 
   add_event(id("back-signup-btn"), "click", () => {
     toggle_class(id("login-wrap"), "hide");
     toggle_class(id("signup-wrap"), "show");
+    remove_class(id("match-msg"), "fa-check");
+    remove_class(id("match-msg"), "fa-times");
     FnHandler.reset();
+  });
+
+  add_event(id("owner-transaction-btn"), "click", () => {
+    add_class(id("owner-transaction-modal"), "show");
+  });
+
+  add_event(id("close-owner-transaction-btn"), "click", () => {
+    remove_class(id("owner-transaction-modal"), "show");
   });
 
   add_event(id("withdraw-form"), "submit", (e) => {
