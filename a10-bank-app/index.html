@@ -50,17 +50,21 @@
             <input
               type="text"
               name="login-username"
+              value="admin"
               autocomplete="off"
               id="login-username"
               class="mb-05"
+              required
             /><br />
 
             <label for="login-password">Password</label><br />
             <input
               type="password"
               name="login-password"
+              value="admin"
               id="login-password"
               class="mb-05"
+              required
             /><br />
 
             <input
@@ -87,6 +91,7 @@
               name="signup-first-name"
               autocomplete="off"
               id="signup-first-name"
+              required
             /><br />
 
             <label for="signup-middle-name">Middle Name</label><br />
@@ -103,7 +108,16 @@
               name="signup-last-name"
               autocomplete="off"
               id="signup-last-name"
+              required
             /><br />
+
+            <p>Gender</p>
+
+            <input type="radio" name="signup-gender" id="signup-male" checked />
+            <label for="signup-male">Male</label>
+
+            <input type="radio" name="signup-gender" id="signup-female" />
+            <label for="signup-female">Female</label><br />
 
             <label for="signup-account-num">Account No.</label><br />
             <input
@@ -118,6 +132,7 @@
               name="signup-username"
               autocomplete="off"
               id="signup-username"
+              required
             /><br />
 
             <label for="signup-email">Email</label><br />
@@ -126,6 +141,7 @@
               name="signup-email"
               autocomplete="off"
               id="signup-email"
+              required
             /><br />
 
             <label for="signup-password">Password</label><br />
@@ -133,13 +149,16 @@
               type="password"
               name="signup-password"
               id="signup-password"
+              required
             /><br />
 
-            <label for="signup-confirm-password">Confirm Password</label><br />
+            <label for="signup-confirm-password">Confirm Password</label>
+            <i id="match-msg" class="fas"></i><br />
             <input
               type="password"
               id="signup-confirm-password"
               class="mb-05"
+              required
             /><br />
 
             <input
@@ -183,7 +202,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main">
       <div class="cont">
         <div class="grid-cont">
           <div class="wrap-accounts wrap-card">
@@ -254,10 +273,10 @@
               <p>Gender</p>
 
               <input type="radio" name="gender" id="male" checked />
-              <label for="savings">Male</label>
+              <label for="male">Male</label>
 
               <input type="radio" name="gender" id="female" />
-              <label for="checking">Female</label><br />
+              <label for="female">Female</label><br />
 
               <p>Account Type</p>
 
