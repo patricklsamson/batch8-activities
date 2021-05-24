@@ -395,7 +395,7 @@ doc_ready(function () {
               if (input.id.includes("dec")) {
                 input.value = "00";
               } else {
-                input.value = "0";
+                input.value = "";
               }
             }
           });
