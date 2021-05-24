@@ -21,15 +21,10 @@
   background-image: -moz-linear-gradient(top left, #343a40, #f8f9fa, #67b2b2);
   background-image: -o-linear-gradient(top left, #343a40, #f8f9fa, #67b2b2);
   background-image: linear-gradient(to bottom right, #343a40, #f8f9fa, #67b2b2);
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
 }
 
 .sec-modal.hide {
-  visibility: hidden;
-  opacity: 0;
+  display: none;
 }
 
 .sec-modal .cont {
