@@ -3,6 +3,14 @@ form {
   margin: 0 auto;
 }
 
+#match-msg.fa-check {
+  color: green;
+}
+
+#match-msg.fa-times {
+  color: red;
+}
+
 [id*="-amount"] {
   width: 40%;
 }
