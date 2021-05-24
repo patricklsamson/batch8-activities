@@ -6,3 +6,8 @@ header img {
   width: 35px;
   vertical-align: text-top;
 }
+
+#friends-li.hide,
+#transactions-li.hide {
+  display: none;
+}
