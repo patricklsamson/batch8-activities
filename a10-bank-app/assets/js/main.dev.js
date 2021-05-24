@@ -113,7 +113,7 @@ doc_ready(function () {
           return userIndex.email == email;
         }); // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
 
-        if (users[firstNameCheck] == null || users[firstNameCheck] == "" || users[middleNameCheck] == null || users[middleNameCheck] == "" || users[lastNameCheck] == null || users[lastNameCheck] == "" || users[genderCheck] == null || users[genderCheck] == "" || users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
+        if (users[firstNameCheck] == null || users[firstNameCheck] == "" || users[middleNameCheck] == null || users[middleNameCheck] == "" || users[lastNameCheck] == null || users[lastNameCheck] == "" || !users[genderCheck] || users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
           alert("User not found!");
         } else if (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "") {
           toggle_class(id("login-wrap"), "hide");
@@ -672,6 +672,7 @@ doc_ready(function () {
     } else {
       var gender = id("signup-male").checked ? "male" : "female";
       FnHandler.signup_user(id("signup-first-name").value.toUpperCase(), id("signup-middle-name").value.toUpperCase(), id("signup-last-name").value.toUpperCase(), gender, id("signup-username").value, id("signup-password").value, id("signup-email").value, id("signup-account-num").value.split(" ").join(""));
+      id("signup-form").reset();
     }
 
     return false;
