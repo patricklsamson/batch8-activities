@@ -1,0 +1,161 @@
+.sec-modal {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    from(#343a40),
+    color-stop(#f8f9fa),
+    to(#67b2b2)
+  );
+  background-image: -webkit-linear-gradient(
+    top left,
+    #343a40,
+    #f8f9fa,
+    #67b2b2
+  );
+  background-image: -moz-linear-gradient(top left, #343a40, #f8f9fa, #67b2b2);
+  background-image: -o-linear-gradient(top left, #343a40, #f8f9fa, #67b2b2);
+  background-image: linear-gradient(to bottom right, #343a40, #f8f9fa, #67b2b2);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.sec-modal.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sec-modal .cont {
+  position: relative;
+  min-height: 100vh;
+}
+
+.sec-modal .wrap-login {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.sec-modal .wrap-login.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sec-modal .wrap-login img {
+  width: 55px;
+}
+
+#login-form,
+#signup-form {
+  width: 50%;
+}
+
+#open-signup-btn {
+  text-decoration: underline;
+}
+
+.sec-modal .wrap-signup {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.sec-modal .wrap-signup.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sec-modal .wrap-signup img {
+  width: 50px;
+}
+
+#back-signup-btn span {
+  position: relative;
+  right: 0;
+}
+
+#back-signup-btn:hover span {
+  right: 5px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#owner-transaction-modal,
+#acc-table td div {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#owner-transaction-modal.show,
+#acc-table td div.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.wrap-owner-transaction,
+#acc-table td div {
+  width: 50vw;
+  height: 50vh;
+  padding: 25px;
+  background: #fff;
+  border: 2px solid #343a40;
+}
+
+#owner-transaction-modal i,
+#acc-table td div i {
+  float: right;
+  cursor: pointer;
+}
+
+#acc-table td div {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: left;
+}
+
+#acc-table td div:before {
+  content: ".";
+  font-size: 0;
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  top: -50%;
+  left: -50%;
+}
+
+#owner-transaction,
+#acc-table td div ul {
+  height: 100%;
+  margin-right: 40px;
+  padding-right: 20px;
+}
