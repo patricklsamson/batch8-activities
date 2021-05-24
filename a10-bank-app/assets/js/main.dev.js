@@ -23,6 +23,15 @@ doc_ready(function () {
     this.accountType = accountType;
     this.balance = balance;
     this.transactionHistory = [];
+    this.expenseItems = [];
+  };
+
+  var ExpenseItem = function ExpenseItem(name, cost, owner) {
+    _classCallCheck(this, ExpenseItem);
+
+    this.name = name;
+    this.cost = cost;
+    this.owner = owner;
   };
 
   var FnHandler =
@@ -617,7 +626,7 @@ doc_ready(function () {
               toggle_class(id("modal"), "hide");
             }, 250);
             add_class(id("accounts-wrap"), "hide");
-            add_class(id("add-account-wrap"), "hide");
+            add_class(id("add-newaccount-wrap"), "hide");
           }
         }
       }
@@ -633,7 +642,7 @@ doc_ready(function () {
 
     setTimeout(function () {
       remove_class(id("accounts-wrap"), "hide");
-      remove_class(id("add-account-wrap"), "hide");
+      remove_class(id("add-newaccount-wrap"), "hide");
     }, 250);
     FnHandler.reset();
     return false;
