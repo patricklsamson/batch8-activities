@@ -1,5 +1,13 @@
+main {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
 main.hide {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
 }
 
 main .grid-cont {
