@@ -123,8 +123,7 @@ doc_ready(() => {
         users[middleNameCheck] == "" ||
         users[lastNameCheck] == null ||
         users[lastNameCheck] == "" ||
-        users[genderCheck] == null ||
-        users[genderCheck] == "" ||
+        !users[genderCheck] ||
         users[accountNumberCheck] == null ||
         users[accountNumberCheck] == ""
       ) {
@@ -992,6 +991,8 @@ doc_ready(() => {
         id("signup-email").value,
         id("signup-account-num").value.split(" ").join("")
       );
+
+      id("signup-form").reset();
     }
 
     return false;
