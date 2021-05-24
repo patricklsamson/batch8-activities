@@ -74,6 +74,49 @@ doc_ready(function () {
         localStorage.setItem("users", JSON.stringify(users));
       }
     }, {
+      key: "signup_user",
+      value: function signup_user(firstName, middleName, lastName, gender, username, password, email, accountNumber) {
+        var users = FnHandler.userStorage();
+        var firstNameCheck = users.findIndex(function (userIndex) {
+          return userIndex.firstName == firstName;
+        }),
+            middleNameCheck = users.findIndex(function (userIndex) {
+          return userIndex.middleName == middleName;
+        }),
+            lastNameCheck = users.findIndex(function (userIndex) {
+          return userIndex.lastName == lastName;
+        }),
+            genderCheck = users.findIndex(function (userIndex) {
+          return userIndex.gender == gender;
+        }),
+            accountNumberCheck = users.findIndex(function (userIndex) {
+          return userIndex.accountNumber == accountNumber;
+        }),
+            usernameCheck = users.findIndex(function (userIndex) {
+          return userIndex.username == username;
+        }),
+            passwordCheck = users.findIndex(function (userIndex) {
+          return userIndex.password == password;
+        }),
+            emailCheck = users.findIndex(function (userIndex) {
+          return userIndex.email == email;
+        }); // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
+
+        if (users[firstNameCheck] == null || users[firstNameCheck] == "" || users[middleNameCheck] == null || users[middleNameCheck] == "" || users[lastNameCheck] == null || users[lastNameCheck] == "" || users[genderCheck] == null || users[genderCheck] == "" || users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
+          alert("User not found!");
+        } else if (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "") {
+          toggle_class(id("login-wrap"), "hide");
+          toggle_class(id("signup-wrap"), "show");
+          users[accountNumberCheck].username = username;
+          users[accountNumberCheck].password = password;
+          users[accountNumberCheck].email = email;
+        } else {
+          alert("You have already signed up!");
+        }
+
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+    }, {
       key: "time_stamp",
       value: function time_stamp() {
         var today = new Date(),
@@ -309,49 +352,6 @@ doc_ready(function () {
         for (i = 1; i < users.length; i++) {
           _loop();
         }
-      }
-    }, {
-      key: "signup_user",
-      value: function signup_user(firstName, middleName, lastName, gender, username, password, email, accountNumber) {
-        var users = FnHandler.userStorage();
-        var firstNameCheck = users.findIndex(function (userIndex) {
-          return userIndex.firstName == firstName;
-        }),
-            middleNameCheck = users.findIndex(function (userIndex) {
-          return userIndex.middleName == middleName;
-        }),
-            lastNameCheck = users.findIndex(function (userIndex) {
-          return userIndex.lastName == lastName;
-        }),
-            genderCheck = users.findIndex(function (userIndex) {
-          return userIndex.gender == gender;
-        }),
-            accountNumberCheck = users.findIndex(function (userIndex) {
-          return userIndex.accountNumber == accountNumber;
-        }),
-            usernameCheck = users.findIndex(function (userIndex) {
-          return userIndex.username == username;
-        }),
-            passwordCheck = users.findIndex(function (userIndex) {
-          return userIndex.password == password;
-        }),
-            emailCheck = users.findIndex(function (userIndex) {
-          return userIndex.email == email;
-        }); // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
-
-        if (users[firstNameCheck] == null || users[firstNameCheck] == "" || users[middleNameCheck] == null || users[middleNameCheck] == "" || users[lastNameCheck] == null || users[lastNameCheck] == "" || users[genderCheck] == null || users[genderCheck] == "" || users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
-          alert("User not found!");
-        } else if (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "") {
-          toggle_class(id("login-wrap"), "hide");
-          toggle_class(id("signup-wrap"), "show");
-          users[accountNumberCheck].username = username;
-          users[accountNumberCheck].password = password;
-          users[accountNumberCheck].email = email;
-        } else {
-          alert("You have already signed up!");
-        }
-
-        localStorage.setItem("users", JSON.stringify(users));
       } // ONCE FIRST VALUE OR CHARACTER INPUTTED IS A NUMBER IN ALL NAME INPUTS ACROSS THE DOM, ALERT WILL EXEECUTE
 
     }, {
@@ -513,57 +513,8 @@ doc_ready(function () {
       newUserAccount.transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Opened a ").concat(newUserAccount.accountType, " account for <strong>").concat(newUserAccount.firstName, "</strong> ").concat(newUserAccount.middleName, " ").concat(newUserAccount.lastName, " with an initial account balance of <strong>\u20B1").concat(newUserAccount.balance, "</strong>."));
       FnHandler.addUser(newUserAccount);
     }
-  };
+  }; // LOADS INITIAL DATA FOR IMMEDIATE TESTING PURPOSES OF WHOEVER VISITS THE SITE
 
-  add_event(id("login-form"), "submit", function (e) {
-    e.preventDefault();
-    var users = FnHandler.userStorage();
-    var usernameCheck = users.findIndex(function (usernameIndex) {
-      return usernameIndex.username == id("login-username").value;
-    }),
-        passwordCheck = users.findIndex(function (passwordIndex) {
-      return passwordIndex.password == id("login-password").value;
-    });
-
-    if (users[usernameCheck] && users[passwordCheck]) {
-      // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
-      if (users[0].username == id("login-username").value && users[0].password == id("login-password").value) {
-        toggle_class(id("modal"), "hide");
-      } else {
-        for (i = 1; i < users.length; i++) {
-          if (users[i].username == id("login-username").value && users[i].password == id("login-password").value) {
-            toggle_class(id("modal"), "hide");
-            add_class(id("main"), "hide");
-          }
-        }
-      }
-    } else {
-      alert("User not found!");
-    }
-
-    return false;
-  });
-  add_event(id("open-signup-btn"), "click", function () {
-    toggle_class(id("login-wrap"), "hide");
-    toggle_class(id("signup-wrap"), "show");
-  });
-  add_event(id("signup-form"), "submit", function (e) {
-    e.preventDefault();
-
-    if (id("signup-password").value != id("signup-confirm-password").value) {
-      return;
-    } else {
-      var gender = id("signup-male").checked ? "male" : "female";
-      FnHandler.signup_user(id("signup-first-name").value.toUpperCase(), id("signup-middle-name").value.toUpperCase(), id("signup-last-name").value.toUpperCase(), gender, id("signup-username").value, id("signup-password").value, id("signup-email").value, id("signup-account-num").value.split(" ").join(""));
-    }
-
-    return false;
-  });
-  add_event(id("back-signup-btn"), "click", function () {
-    toggle_class(id("login-wrap"), "hide");
-    toggle_class(id("signup-wrap"), "show");
-    FnHandler.reset();
-  }); // LOADS INITIAL DATA FOR IMMEDIATE TESTING PURPOSES OF WHOEVER VISITS THE SITE
 
   add_event(id("load-data-btn"), "click", function () {
     var users = FnHandler.userStorage();
@@ -600,13 +551,6 @@ doc_ready(function () {
 
 
     FnHandler.list_users();
-  });
-  add_event(id("log-out-btn"), "click", function (e) {
-    e.preventDefault();
-    toggle_class(id("modal"), "hide");
-    remove_class(id("main"), "hide");
-    FnHandler.reset();
-    return false;
   }); // PROMPT FOR CLEARING ALL DATA, TO PREVENT ACCIDENTAL DELETION
 
   add_event(id("clear-all-btn"), "click", function () {
@@ -650,6 +594,68 @@ doc_ready(function () {
     alert("".concat(id("add-first-name").value.toUpperCase(), "'s account have been successfully created!"));
     id("add-form").reset();
     return false;
+  });
+  add_event(id("login-form"), "submit", function (e) {
+    e.preventDefault();
+    var users = FnHandler.userStorage();
+    var usernameCheck = users.findIndex(function (usernameIndex) {
+      return usernameIndex.username == id("login-username").value;
+    }),
+        passwordCheck = users.findIndex(function (passwordIndex) {
+      return passwordIndex.password == id("login-password").value;
+    });
+
+    if (users[usernameCheck] && users[passwordCheck]) {
+      // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
+      if (users[0].username == id("login-username").value && users[0].password == id("login-password").value) {
+        toggle_class(id("modal"), "hide");
+      } else {
+        for (i = 1; i < users.length; i++) {
+          if (users[i].username == id("login-username").value && users[i].password == id("login-password").value) {
+            // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
+            setTimeout(function () {
+              toggle_class(id("modal"), "hide");
+            }, 250);
+            add_class(id("main"), "hide");
+          }
+        }
+      }
+    } else {
+      alert("User not found!");
+    }
+
+    return false;
+  });
+  add_event(id("log-out-btn"), "click", function (e) {
+    e.preventDefault();
+    toggle_class(id("modal"), "hide"); // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
+
+    setTimeout(function () {
+      remove_class(id("main"), "hide");
+    }, 250);
+    FnHandler.reset();
+    return false;
+  });
+  add_event(id("open-signup-btn"), "click", function () {
+    toggle_class(id("login-wrap"), "hide");
+    toggle_class(id("signup-wrap"), "show");
+  });
+  add_event(id("signup-form"), "submit", function (e) {
+    e.preventDefault();
+
+    if (id("signup-password").value != id("signup-confirm-password").value) {
+      return;
+    } else {
+      var gender = id("signup-male").checked ? "male" : "female";
+      FnHandler.signup_user(id("signup-first-name").value.toUpperCase(), id("signup-middle-name").value.toUpperCase(), id("signup-last-name").value.toUpperCase(), gender, id("signup-username").value, id("signup-password").value, id("signup-email").value, id("signup-account-num").value.split(" ").join(""));
+    }
+
+    return false;
+  });
+  add_event(id("back-signup-btn"), "click", function () {
+    toggle_class(id("login-wrap"), "hide");
+    toggle_class(id("signup-wrap"), "show");
+    FnHandler.reset();
   });
   add_event(id("withdraw-form"), "submit", function (e) {
     e.preventDefault();
