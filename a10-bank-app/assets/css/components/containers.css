@@ -4,3 +4,7 @@
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
+
+.wrap-scroll {
+  overflow-y: scroll;
+}
