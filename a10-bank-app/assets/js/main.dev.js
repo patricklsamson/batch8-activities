@@ -616,7 +616,8 @@ doc_ready(function () {
             setTimeout(function () {
               toggle_class(id("modal"), "hide");
             }, 250);
-            add_class(id("main"), "hide");
+            add_class(id("accounts-wrap"), "hide");
+            add_class(id("add-account-wrap"), "hide");
           }
         }
       }
@@ -631,7 +632,8 @@ doc_ready(function () {
     toggle_class(id("modal"), "hide"); // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
 
     setTimeout(function () {
-      remove_class(id("main"), "hide");
+      remove_class(id("accounts-wrap"), "hide");
+      remove_class(id("add-account-wrap"), "hide");
     }, 250);
     FnHandler.reset();
     return false;
