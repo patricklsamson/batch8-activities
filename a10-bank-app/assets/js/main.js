@@ -25,7 +25,9 @@ doc_ready(() => {
       this.accountType = accountType;
       this.balance = balance;
       this.transactionHistory = [];
+      this.userTransactionHistory = [];
       this.expenseItems = [];
+      this.friends = [];
     }
   }
 
@@ -201,6 +203,7 @@ doc_ready(() => {
           parseFloat(users[userCheck].balance) + parseFloat(amount)
         ).toFixed(2);
 
+        // TRANSACTION HISTORY FOR ADMIN
         users[userCheck].transactionHistory.unshift(
           `<em>${FnHandler.time_stamp()}</em> : Withdrawn an amount of <strong>₱${amount}</strong> from <strong>${
             users[userCheck].firstName
@@ -209,9 +212,14 @@ doc_ready(() => {
           }</strong>.`
         );
 
-        alert(
-          `Withdrawal transaction from ${users[userCheck].firstName}'s account has been successful!`
+        // TRANSACTION HISTORY FOR USER
+        users[userCheck].userTransactionHistory.unshift(
+          `<em>${FnHandler.time_stamp()}</em> : You withdrawed an amount of <strong>₱${amount}</strong> from your account. From a previous account balance of <strong>₱${initialBal}</strong>, your remaining account balance is now <strong>₱${
+            users[userCheck].balance
+          }</strong>.`
         );
+
+        alert(`Withdrawal transaction has been successful!`);
       }
 
       /**
@@ -251,9 +259,13 @@ doc_ready(() => {
           }</strong>.`
         );
 
-        alert(
-          `Deposit transaction from ${users[userCheck].firstName}'s account has been successful!`
+        users[userCheck].userTransactionHistory.unshift(
+          `<em>${FnHandler.time_stamp()}</em> : You deposited an amount of <strong>₱${amount}</strong> into your account. From a previous account balance of <strong>₱${initialBal}</strong>, your remaining account balance is now <strong>₱${
+            users[userCheck].balance
+          }</strong>.`
         );
+
+        alert(`Deposit transaction account has been successful!`);
       }
 
       localStorage.setItem("users", JSON.stringify(users));
@@ -311,6 +323,14 @@ doc_ready(() => {
           }</strong>.`
         );
 
+        users[senderCheck].userTransactionHistory.unshift(
+          `<em>${FnHandler.time_stamp()}</em> : You sent an amount of <strong>₱${amount}</strong> from your account into ${
+            users[receiverCheck].firstName
+          }'s account. From a previous account balance of <strong>₱${senderInitialBal}</strong>, your remaining account balance is now <strong>₱${
+            users[senderCheck].balance
+          }</strong>.`
+        );
+
         users[receiverCheck].balance = parseFloat(
           parseFloat(users[receiverCheck].balance) + parseFloat(amount)
         ).toFixed(2);
@@ -331,9 +351,15 @@ doc_ready(() => {
           }</strong>.`
         );
 
-        alert(
-          `Successfuly sent money from ${users[senderCheck].firstName}'s account into ${users[receiverCheck].firstName}'s account!`
+        users[receiverCheck].userTransactionHistory.unshift(
+          `<em>${FnHandler.time_stamp()}</em> : You received an amount of <strong>₱${amount}</strong> from ${
+            users[senderCheck].firstName
+          }'s account into your account. From a previous account balance of <strong>₱${receiverInitialBal}</strong>, your account balance is now <strong>₱${
+            users[receiverCheck].balance
+          }</strong>.`
         );
+
+        alert(`Money transfer transaction has been successful!`);
       }
 
       localStorage.setItem("users", JSON.stringify(users));
@@ -726,13 +752,17 @@ doc_ready(() => {
 
       // FIRST LOG INSIDE THE TRANSACTION HISTORY INDICATING WHEN THE ACCOUNT WAS CREATED OR OPENED
       newUserAccount.transactionHistory.push(
-        `<em>${FnHandler.time_stamp()}</em> : Opened a ${
-          newUserAccount.accountType
-        } account for <strong>${newUserAccount.firstName}</strong> ${
-          newUserAccount.middleName
-        } ${
+        `<em>${FnHandler.time_stamp()}</em> : Opened a ${newUserAccount.accountType.toLowerCase()} account for <strong>${
+          newUserAccount.firstName
+        }</strong> ${newUserAccount.middleName} ${
           newUserAccount.lastName
         } with an initial account balance of <strong>₱${
+          newUserAccount.balance
+        }</strong>.`
+      );
+
+      newUserAccount.userTransactionHistory.push(
+        `<em>${FnHandler.time_stamp()}</em> : You have opened a ${newUserAccount.accountType.toLowerCase()} account with an initial account balance of <strong>₱${
           newUserAccount.balance
         }</strong>.`
       );
@@ -833,7 +863,7 @@ doc_ready(() => {
     let gender = id("male").checked ? "male" : "female",
       acc_num = id("savings").checked
         ? ["05", "06", "07", "08", "09"]
-        : ["01", "02", "03", "04"],
+        : ["00", "01", "02", "03", "04"],
       account_type = id("savings").checked ? "Savings" : "Checking",
       account_type_bal = id("savings").checked ? 2000 : 5000,
       depositAmount =
@@ -898,6 +928,8 @@ doc_ready(() => {
         users[0].password == id("login-password").value
       ) {
         toggle_class(id("modal"), "hide");
+        add_class(id("friends-li"), "hide");
+        add_class(id("transactions-li"), "hide");
       } else {
         for (i = 1; i < users.length; i++) {
           if (
@@ -927,6 +959,8 @@ doc_ready(() => {
 
     // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
     setTimeout(() => {
+      remove_class(id("friends-li"), "hide");
+      remove_class(id("transactions-li"), "hide");
       remove_class(id("accounts-wrap"), "hide");
       remove_class(id("add-newaccount-wrap"), "hide");
     }, 250);
