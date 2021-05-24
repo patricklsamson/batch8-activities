@@ -1,59 +1,29 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 doc_ready(function () {
   var i;
 
-  var Admin = function Admin(username, password, adminId) {
-    _classCallCheck(this, Admin);
+  var User = function User(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
+    _classCallCheck(this, User);
 
     this.username = username;
     this.password = password;
-    this.adminId = adminId;
-  }; // REGULAR BANK ACCOUNT USERS INHERIT THE USERNAME AND PASSWORD PROPERTY OF THE ADMIN
-
-
-  var User =
-  /*#__PURE__*/
-  function (_Admin) {
-    _inherits(User, _Admin);
-
-    function User(username, password, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
-      var _this;
-
-      _classCallCheck(this, User);
-
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(User).call(this, username, password));
-      _this.firstName = firstName;
-      _this.middleName = middleName;
-      _this.lastName = lastName;
-      _this.gender = gender;
-      _this.accountNumber = accountNumber;
-      _this.accountType = accountType;
-      _this.balance = balance;
-      _this.transactionHistory = [];
-      return _this;
-    }
-
-    return User;
-  }(Admin);
+    this.email = email;
+    this.firstName = firstName;
+    this.middleName = middleName;
+    this.lastName = lastName;
+    this.gender = gender;
+    this.accountNumber = accountNumber;
+    this.accountType = accountType;
+    this.balance = balance;
+    this.transactionHistory = [];
+  };
 
   var FnHandler =
   /*#__PURE__*/
@@ -324,15 +294,8 @@ doc_ready(function () {
                 deleteAnswer = deletePrompt != null ? deletePrompt.toLowerCase() : console.clear(); // THIS TERNARY OPERATOR PREVENTS ERROR POPPING UP WHEN THE PROMPT HAS BEEN CANCELED
 
             if (deleteAnswer == "y") {
-              /**
-               * GETTING THE USERS ARRAY INSIDE THE LOCAL STORAGE TO SPLICE IT AND
-               * OVERRIDING AND SETTING IT AGAIN BACK INSIDE THE LOCAL STORAGE FOR UPDATING
-               * WHEREIN THE ARRAY ITEMS OF THE USERS ARE ALREADY SPLICED OR RATHER DELETED
-               * PROMPT FOR DELETING AN ACCOUNT, TO PREVENT ACCIDENTAL DELETION
-               */
-              var getLocalStorage = JSON.parse(localStorage.getItem("users"));
-              getLocalStorage.splice(this.id, 1);
-              localStorage.setItem("users", JSON.stringify(getLocalStorage));
+              users.splice(this.id, 1);
+              localStorage.setItem("users", JSON.stringify(users));
               FnHandler.list_users();
             } else {
               return;
@@ -346,6 +309,49 @@ doc_ready(function () {
         for (i = 1; i < users.length; i++) {
           _loop();
         }
+      }
+    }, {
+      key: "signup_user",
+      value: function signup_user(firstName, middleName, lastName, gender, username, password, email, accountNumber) {
+        var users = FnHandler.userStorage();
+        var firstNameCheck = users.findIndex(function (userIndex) {
+          return userIndex.firstName == firstName;
+        }),
+            middleNameCheck = users.findIndex(function (userIndex) {
+          return userIndex.middleName == middleName;
+        }),
+            lastNameCheck = users.findIndex(function (userIndex) {
+          return userIndex.lastName == lastName;
+        }),
+            genderCheck = users.findIndex(function (userIndex) {
+          return userIndex.gender == gender;
+        }),
+            accountNumberCheck = users.findIndex(function (userIndex) {
+          return userIndex.accountNumber == accountNumber;
+        }),
+            usernameCheck = users.findIndex(function (userIndex) {
+          return userIndex.username == username;
+        }),
+            passwordCheck = users.findIndex(function (userIndex) {
+          return userIndex.password == password;
+        }),
+            emailCheck = users.findIndex(function (userIndex) {
+          return userIndex.email == email;
+        }); // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
+
+        if (users[firstNameCheck] == null || users[firstNameCheck] == "" || users[middleNameCheck] == null || users[middleNameCheck] == "" || users[lastNameCheck] == null || users[lastNameCheck] == "" || users[genderCheck] == null || users[genderCheck] == "" || users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
+          alert("User not found!");
+        } else if (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "") {
+          toggle_class(id("login-wrap"), "hide");
+          toggle_class(id("signup-wrap"), "show");
+          users[accountNumberCheck].username = username;
+          users[accountNumberCheck].password = password;
+          users[accountNumberCheck].email = email;
+        } else {
+          alert("You have already signed up!");
+        }
+
+        localStorage.setItem("users", JSON.stringify(users));
       } // ONCE FIRST VALUE OR CHARACTER INPUTTED IS A NUMBER IN ALL NAME INPUTS ACROSS THE DOM, ALERT WILL EXEECUTE
 
     }, {
@@ -415,6 +421,34 @@ doc_ready(function () {
             }
           });
         });
+      }
+    }, {
+      key: "password_match",
+      value: function password_match() {
+        add_event(id("signup-password"), "keyup", function () {
+          if (this.value == id("signup-confirm-password").value && this.value.length != 0) {
+            remove_class(id("match-msg"), "fa-times");
+            add_class(id("match-msg"), "fa-check");
+          } else if (this.value != id("signup-confirm-password").value && id("signup-confirm-password").value.length >= 1) {
+            remove_class(id("match-msg"), "fa-check");
+            add_class(id("match-msg"), "fa-times");
+          } else if (this.value.length == 0) {
+            remove_class(id("match-msg"), "fa-check");
+            remove_class(id("match-msg"), "fa-times");
+          }
+        });
+        add_event(id("signup-confirm-password"), "keyup", function () {
+          if (this.value == id("signup-password").value && this.value.length != 0) {
+            remove_class(id("match-msg"), "fa-times");
+            add_class(id("match-msg"), "fa-check");
+          } else if (this.value != id("signup-password").value && id("signup-password").value.length >= 1) {
+            remove_class(id("match-msg"), "fa-check");
+            add_class(id("match-msg"), "fa-times");
+          } else if (this.value.length == 0) {
+            remove_class(id("match-msg"), "fa-check");
+            remove_class(id("match-msg"), "fa-times");
+          }
+        });
       } // FOR RESETTING ALL FORMS AT ONCE
 
     }, {
@@ -436,28 +470,29 @@ doc_ready(function () {
   FnHandler.num_only();
   FnHandler.type_comma();
   FnHandler.dec_addZero();
+  FnHandler.password_match();
 
-  var create_admin = function create_admin(username, password, adminId) {
+  var create_admin = function create_admin(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
     var users = FnHandler.userStorage();
     var adminCheck = users.findIndex(function (adminIndex) {
-      return adminIndex.adminId;
+      return adminIndex.accountNumber == accountNumber;
     }); // THIS MAKES THE CREATION OF ADMIN ACCOUNT ONLY ONCE
 
     if (users[adminCheck]) {
       return;
     } else {
-      var admin = new Admin(username, password, adminId);
+      var admin = new User(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance);
       FnHandler.addUser(admin);
     }
   };
 
-  create_admin("admin", "admin", "1");
+  create_admin("admin", "admin", "admin", "admin", "admin", "admin", "admin", "1", "admin", "0");
   /**
    * FUNCTION FOR CREATING A NEW USER, CONNECTING THE CLASS "User"
    * INTO THE CLASS "FnHandler" TO PUSH EVERY NEW USER CREATED INTO THE LOCAL STORAGE
    */
 
-  var create_user = function create_user(username, password, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
+  var create_user = function create_user(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
     var users = FnHandler.userStorage();
     var fNameCheck = users.findIndex(function (userIndex) {
       return userIndex.firstName == firstName;
@@ -473,7 +508,7 @@ doc_ready(function () {
     if (users[fNameCheck] && users[lNameCheck]) {
       alert("User already exists!");
     } else {
-      var newUserAccount = new User(username, password, firstName, middleName, lastName, gender, accountNumber, accountType, balance); // FIRST LOG INSIDE THE TRANSACTION HISTORY INDICATING WHEN THE ACCOUNT WAS CREATED OR OPENED
+      var newUserAccount = new User(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance); // FIRST LOG INSIDE THE TRANSACTION HISTORY INDICATING WHEN THE ACCOUNT WAS CREATED OR OPENED
 
       newUserAccount.transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Opened a ").concat(newUserAccount.accountType, " account for <strong>").concat(newUserAccount.firstName, "</strong> ").concat(newUserAccount.middleName, " ").concat(newUserAccount.lastName, " with an initial account balance of <strong>\u20B1").concat(newUserAccount.balance, "</strong>."));
       FnHandler.addUser(newUserAccount);
@@ -491,7 +526,19 @@ doc_ready(function () {
     });
 
     if (users[usernameCheck] && users[passwordCheck]) {
-      toggle_class(id("modal"), "hide");
+      // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
+      if (users[0].username == id("login-username").value && users[0].password == id("login-password").value) {
+        toggle_class(id("modal"), "hide");
+      } else {
+        for (i = 1; i < users.length; i++) {
+          if (users[i].username == id("login-username").value && users[i].password == id("login-password").value) {
+            toggle_class(id("modal"), "hide");
+            add_class(id("main"), "hide");
+          }
+        }
+      }
+    } else {
+      alert("User not found!");
     }
 
     return false;
@@ -502,17 +549,23 @@ doc_ready(function () {
   });
   add_event(id("signup-form"), "submit", function (e) {
     e.preventDefault();
-    toggle_class(id("login-wrap"), "hide");
-    toggle_class(id("signup-wrap"), "show");
+
+    if (id("signup-password").value != id("signup-confirm-password").value) {
+      return;
+    } else {
+      var gender = id("signup-male").checked ? "male" : "female";
+      FnHandler.signup_user(id("signup-first-name").value.toUpperCase(), id("signup-middle-name").value.toUpperCase(), id("signup-last-name").value.toUpperCase(), gender, id("signup-username").value, id("signup-password").value, id("signup-email").value, id("signup-account-num").value.split(" ").join(""));
+    }
+
     return false;
   });
   add_event(id("back-signup-btn"), "click", function () {
     toggle_class(id("login-wrap"), "hide");
     toggle_class(id("signup-wrap"), "show");
+    FnHandler.reset();
   }); // LOADS INITIAL DATA FOR IMMEDIATE TESTING PURPOSES OF WHOEVER VISITS THE SITE
 
-  add_event(id("load-data-btn"), "click", function (e) {
-    e.preventDefault();
+  add_event(id("load-data-btn"), "click", function () {
     var users = FnHandler.userStorage();
     var juanCheck = users.findIndex(function (userIndex) {
       return userIndex.firstName == "JUAN";
@@ -530,28 +583,28 @@ doc_ready(function () {
     if (!users[juanCheck] && !users[delaCruzCheck]) {
       var loadPrompt = prompt('Continuing will load initial data for immediate testing purposes?\nType "Y" to continue or "N" otherwise.', "Y"),
           loadAnswer = loadPrompt != null ? loadPrompt.toLowerCase() : console.clear(),
-          balance = 2500.5;
+          balance = 2500.05;
 
       if (loadAnswer == "n" || loadAnswer == null || loadAnswer == "") {
         return;
       } else {
         // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
-        create_user("", "", "JUAN", "HERMAN", "DELA CRUZ", "male", "07" + (rand(9000000000) + 1000000000), "Savings", balance.toFixed(2));
+        create_user("juandelacruz", "juanjuan", "juandelacruz@mail.com", "JUAN", "", "DELA CRUZ", "male", "071096025466", "Savings", balance.toFixed(2));
       }
     }
 
     if (!users[janeCheck] && !users[doeCheck]) {
       var _balance = 5200;
-      create_user("", "", "JANE", "HILLS", "DOE", "female", "02" + (rand(9000000000) + 1000000000), "Checking", _balance.toFixed(2));
+      create_user("", "", "", "JANE", "HILLS", "DOE", "female", "023451282250", "Checking", _balance.toFixed(2));
     } // THIS FUNCTION IS CALLED AGAIN TO REFRESH THE LIST IN THE UI
 
 
     FnHandler.list_users();
-    return false;
   });
   add_event(id("log-out-btn"), "click", function (e) {
     e.preventDefault();
     toggle_class(id("modal"), "hide");
+    remove_class(id("main"), "hide");
     FnHandler.reset();
     return false;
   }); // PROMPT FOR CLEARING ALL DATA, TO PREVENT ACCIDENTAL DELETION
@@ -564,10 +617,9 @@ doc_ready(function () {
           clearAnswer = clearPrompt != null ? clearPrompt.toLowerCase() : console.clear();
 
       if (clearAnswer == "y") {
-        var getLocalStorage = JSON.parse(localStorage.getItem("users")); // DOES NOT INCLUDE FIRST ARRAY ITEM IN SPLICING OR DELETING WHICH IS THE ADMIN USERNAME AND PASSWORD
-
-        getLocalStorage.splice(1, users.length);
-        localStorage.setItem("users", JSON.stringify(getLocalStorage));
+        // DOES NOT INCLUDE FIRST ARRAY ITEM IN SPLICING OR DELETING WHICH IS THE ADMIN USERNAME AND PASSWORD
+        users.splice(1, users.length);
+        localStorage.setItem("users", JSON.stringify(users));
         FnHandler.list_users();
       } else {
         return;
@@ -593,7 +645,7 @@ doc_ready(function () {
     //    ? `0${parseFloat(id("add-deposit-amount-dec").value)}`
     //    : id("add-deposit-amount-dec").value,
 
-    create_user("", "", inner(id("add-first-name").value.toUpperCase()), inner(id("add-middle-name").value.toUpperCase()), inner(id("add-last-name").value.toUpperCase()), gender, acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000), account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
+    create_user("", "", "", inner(id("add-first-name").value.toUpperCase()), inner(id("add-middle-name").value.toUpperCase()), inner(id("add-last-name").value.toUpperCase()), gender, acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000), account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
     FnHandler.list_users();
     alert("".concat(id("add-first-name").value.toUpperCase(), "'s account have been successfully created!"));
     id("add-form").reset();
