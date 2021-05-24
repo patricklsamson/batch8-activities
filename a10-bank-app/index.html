@@ -45,12 +45,7 @@
             <img src="../assets/img/logo-opt.png" alt="logo" /> Banco de Triase
           </h1>
 
-          <form
-            action="#"
-            autocomplete="off"
-            id="login-form"
-            class="form-login"
-          >
+          <form action="#" autocomplete="off" id="login-form">
             <label for="login-username">Username</label><br />
             <input
               type="text"
@@ -89,12 +84,7 @@
             <img src="../assets/img/logo-opt.png" alt="logo" /> Banco de Triase
           </h2>
 
-          <form
-            action="#"
-            autocomplete="off"
-            id="signup-form"
-            class="form-signup"
-          >
+          <form action="#" autocomplete="off" id="signup-form">
             <label for="signup-first-name">First Name</label><br />
             <input
               type="text"
@@ -187,6 +177,24 @@
       </div>
     </section>
 
+    <section id="owner-transaction-modal" class="flex">
+      <div class="wrap-owner-transaction">
+        <i
+          id="close-owner-transaction-btn"
+          class="far fa-times-circle fa-2x"
+        ></i>
+        <ul id="owner-transaction" class="xbul wrap-scroll"></ul>
+      </div>
+    </section>
+
+    <section id="settings-modal" class="flex">
+      <div class="wrap-settings">
+        <i id="close-settings-btn" class="far fa-times-circle fa-2x"></i>
+
+        <form action="" autocomplete="off" id="settings-form"></form>
+      </div>
+    </section>
+
     <header>
       <div class="cont">
         <div class="grid">
@@ -203,8 +211,10 @@
                 <nav>
                   <ul>
                     <li id="friends-li"><a href="#">Friends</a></li>
-                    <li id="transactions-li"><a href="#">Transactions</a></li>
-                    <li><a href="#">Settings</a></li>
+                    <li id="transactions-li">
+                      <a href="#" id="owner-transaction-btn">Transactions</a>
+                    </li>
+                    <li><a href="#" id="settings">Settings</a></li>
                     <li><a href="#" id="log-out-btn">Log Out</a></li>
                   </ul>
                 </nav>
@@ -245,7 +255,7 @@
                 <tbody class="talign">
                   <tr>
                     <td colspan="5">
-                      <div class="wrap-scroll">
+                      <div class="wrap-acc-table wrap-scroll">
                         <table id="acc-table"></table>
                       </div>
                     </td>
@@ -253,18 +263,17 @@
                 </tbody>
               </table>
             </div>
+
+            <div id="expense-wrap">
+              <p><span id="owner"></span> : <span id="owner-acc-num"></span></p>
+            </div>
           </div>
 
           <div class="wrap-add-account wrap-card">
             <div id="add-newaccount-wrap">
               <h6>Add Account</h6>
 
-              <form
-                action="#"
-                autocomplete="off"
-                id="add-form"
-                class="form-add"
-              >
+              <form action="#" autocomplete="off" id="add-form">
                 <label for="add-first-name">First Name</label><br />
                 <input
                   type="text"
@@ -345,12 +354,7 @@
 
             <div class="table">
               <div class="valign">
-                <form
-                  action="#"
-                  autocomplete="off"
-                  id="withdraw-form"
-                  class="form-withdraw"
-                >
+                <form action="#" autocomplete="off" id="withdraw-form">
                   <label for="withdraw-account">Enter Account No.</label><br />
                   <input
                     type="text"
@@ -395,12 +399,7 @@
 
             <div class="table">
               <div class="valign">
-                <form
-                  action="#"
-                  autocomplete="off"
-                  id="deposit-form"
-                  class="form-deposit"
-                >
+                <form action="#" autocomplete="off" id="deposit-form">
                   <label for="deposit-account">Enter Account No.</label><br />
                   <input
                     type="text"
@@ -443,12 +442,7 @@
           <div class="wrap-send wrap-card">
             <h6>Send Money</h6>
 
-            <form
-              action="#"
-              autocomplete="off"
-              id="send-form"
-              class="form-send"
-            >
+            <form action="#" autocomplete="off" id="send-form">
               <label for="sender-account">Enter Account No. of Sender</label
               ><br />
               <input type="text" autocomplete="off" id="sender-account" /><br />
