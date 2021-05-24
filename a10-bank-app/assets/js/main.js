@@ -1,19 +1,11 @@
 doc_ready(() => {
   let i;
 
-  class Admin {
-    constructor(username, password, adminId) {
-      this.username = username;
-      this.password = password;
-      this.adminId = adminId;
-    }
-  }
-
-  // REGULAR BANK ACCOUNT USERS INHERIT THE USERNAME AND PASSWORD PROPERTY OF THE ADMIN
-  class User extends Admin {
+  class User {
     constructor(
       username,
       password,
+      email,
       firstName,
       middleName,
       lastName,
@@ -22,7 +14,9 @@ doc_ready(() => {
       accountType,
       balance
     ) {
-      super(username, password);
+      this.username = username;
+      this.password = password;
+      this.email = email;
       this.firstName = firstName;
       this.middleName = middleName;
       this.lastName = lastName;
@@ -405,16 +399,8 @@ doc_ready(() => {
           // THIS TERNARY OPERATOR PREVENTS ERROR POPPING UP WHEN THE PROMPT HAS BEEN CANCELED
 
           if (deleteAnswer == "y") {
-            /**
-             * GETTING THE USERS ARRAY INSIDE THE LOCAL STORAGE TO SPLICE IT AND
-             * OVERRIDING AND SETTING IT AGAIN BACK INSIDE THE LOCAL STORAGE FOR UPDATING
-             * WHEREIN THE ARRAY ITEMS OF THE USERS ARE ALREADY SPLICED OR RATHER DELETED
-             * PROMPT FOR DELETING AN ACCOUNT, TO PREVENT ACCIDENTAL DELETION
-             */
-            let getLocalStorage = JSON.parse(localStorage.getItem("users"));
-
-            getLocalStorage.splice(this.id, 1);
-            localStorage.setItem("users", JSON.stringify(getLocalStorage));
+            users.splice(this.id, 1);
+            localStorage.setItem("users", JSON.stringify(users));
             FnHandler.list_users();
           } else {
             return;
@@ -426,6 +412,75 @@ doc_ready(() => {
 
         id("acc-table").appendChild(tableRow);
       }
+    }
+
+    static signup_user(
+      firstName,
+      middleName,
+      lastName,
+      gender,
+      username,
+      password,
+      email,
+      accountNumber
+    ) {
+      const users = FnHandler.userStorage();
+
+      let firstNameCheck = users.findIndex(
+          (userIndex) => userIndex.firstName == firstName
+        ),
+        middleNameCheck = users.findIndex(
+          (userIndex) => userIndex.middleName == middleName
+        ),
+        lastNameCheck = users.findIndex(
+          (userIndex) => userIndex.lastName == lastName
+        ),
+        genderCheck = users.findIndex(
+          (userIndex) => userIndex.gender == gender
+        ),
+        accountNumberCheck = users.findIndex(
+          (userIndex) => userIndex.accountNumber == accountNumber
+        ),
+        usernameCheck = users.findIndex(
+          (userIndex) => userIndex.username == username
+        ),
+        passwordCheck = users.findIndex(
+          (userIndex) => userIndex.password == password
+        ),
+        emailCheck = users.findIndex((userIndex) => userIndex.email == email);
+
+      // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
+      if (
+        users[firstNameCheck] == null ||
+        users[firstNameCheck] == "" ||
+        users[middleNameCheck] == null ||
+        users[middleNameCheck] == "" ||
+        users[lastNameCheck] == null ||
+        users[lastNameCheck] == "" ||
+        users[genderCheck] == null ||
+        users[genderCheck] == "" ||
+        users[accountNumberCheck] == null ||
+        users[accountNumberCheck] == ""
+      ) {
+        alert("User not found!");
+      } else if (
+        users[usernameCheck] == null ||
+        users[usernameCheck] == "" ||
+        users[passwordCheck] == null ||
+        users[passwordCheck] == "" ||
+        users[emailCheck] == null ||
+        users[emailCheck] == ""
+      ) {
+        toggle_class(id("login-wrap"), "hide");
+        toggle_class(id("signup-wrap"), "show");
+        users[accountNumberCheck].username = username;
+        users[accountNumberCheck].password = password;
+        users[accountNumberCheck].email = email;
+      } else {
+        alert("You have already signed up!");
+      }
+
+      localStorage.setItem("users", JSON.stringify(users));
     }
 
     // ONCE FIRST VALUE OR CHARACTER INPUTTED IS A NUMBER IN ALL NAME INPUTS ACROSS THE DOM, ALERT WILL EXEECUTE
@@ -506,6 +561,46 @@ doc_ready(() => {
       });
     }
 
+    static password_match() {
+      add_event(id("signup-password"), "keyup", function () {
+        if (
+          this.value == id("signup-confirm-password").value &&
+          this.value.length != 0
+        ) {
+          remove_class(id("match-msg"), "fa-times");
+          add_class(id("match-msg"), "fa-check");
+        } else if (
+          this.value != id("signup-confirm-password").value &&
+          id("signup-confirm-password").value.length >= 1
+        ) {
+          remove_class(id("match-msg"), "fa-check");
+          add_class(id("match-msg"), "fa-times");
+        } else if (this.value.length == 0) {
+          remove_class(id("match-msg"), "fa-check");
+          remove_class(id("match-msg"), "fa-times");
+        }
+      });
+
+      add_event(id("signup-confirm-password"), "keyup", function () {
+        if (
+          this.value == id("signup-password").value &&
+          this.value.length != 0
+        ) {
+          remove_class(id("match-msg"), "fa-times");
+          add_class(id("match-msg"), "fa-check");
+        } else if (
+          this.value != id("signup-password").value &&
+          id("signup-password").value.length >= 1
+        ) {
+          remove_class(id("match-msg"), "fa-check");
+          add_class(id("match-msg"), "fa-times");
+        } else if (this.value.length == 0) {
+          remove_class(id("match-msg"), "fa-check");
+          remove_class(id("match-msg"), "fa-times");
+        }
+      });
+    }
+
     // FOR RESETTING ALL FORMS AT ONCE
     static reset() {
       qsel_all("form").forEach((form) => {
@@ -521,22 +616,59 @@ doc_ready(() => {
   FnHandler.num_only();
   FnHandler.type_comma();
   FnHandler.dec_addZero();
+  FnHandler.password_match();
 
-  const create_admin = (username, password, adminId) => {
+  const create_admin = (
+    username,
+    password,
+    email,
+    firstName,
+    middleName,
+    lastName,
+    gender,
+    accountNumber,
+    accountType,
+    balance
+  ) => {
     const users = FnHandler.userStorage();
-    let adminCheck = users.findIndex((adminIndex) => adminIndex.adminId);
+
+    let adminCheck = users.findIndex(
+      (adminIndex) => adminIndex.accountNumber == accountNumber
+    );
 
     // THIS MAKES THE CREATION OF ADMIN ACCOUNT ONLY ONCE
     if (users[adminCheck]) {
       return;
     } else {
-      const admin = new Admin(username, password, adminId);
+      const admin = new User(
+        username,
+        password,
+        email,
+        firstName,
+        middleName,
+        lastName,
+        gender,
+        accountNumber,
+        accountType,
+        balance
+      );
 
       FnHandler.addUser(admin);
     }
   };
 
-  create_admin("admin", "admin", "1");
+  create_admin(
+    "admin",
+    "admin",
+    "admin",
+    "admin",
+    "admin",
+    "admin",
+    "admin",
+    "1",
+    "admin",
+    "0"
+  );
 
   /**
    * FUNCTION FOR CREATING A NEW USER, CONNECTING THE CLASS "User"
@@ -545,6 +677,7 @@ doc_ready(() => {
   const create_user = (
     username,
     password,
+    email,
     firstName,
     middleName,
     lastName,
@@ -572,6 +705,7 @@ doc_ready(() => {
       const newUserAccount = new User(
         username,
         password,
+        email,
         firstName,
         middleName,
         lastName,
@@ -611,7 +745,25 @@ doc_ready(() => {
       );
 
     if (users[usernameCheck] && users[passwordCheck]) {
-      toggle_class(id("modal"), "hide");
+      // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
+      if (
+        users[0].username == id("login-username").value &&
+        users[0].password == id("login-password").value
+      ) {
+        toggle_class(id("modal"), "hide");
+      } else {
+        for (i = 1; i < users.length; i++) {
+          if (
+            users[i].username == id("login-username").value &&
+            users[i].password == id("login-password").value
+          ) {
+            toggle_class(id("modal"), "hide");
+            add_class(id("main"), "hide");
+          }
+        }
+      }
+    } else {
+      alert("User not found!");
     }
 
     return false;
@@ -624,20 +776,35 @@ doc_ready(() => {
 
   add_event(id("signup-form"), "submit", (e) => {
     e.preventDefault();
-    toggle_class(id("login-wrap"), "hide");
-    toggle_class(id("signup-wrap"), "show");
+
+    if (id("signup-password").value != id("signup-confirm-password").value) {
+      return;
+    } else {
+      let gender = id("signup-male").checked ? "male" : "female";
+
+      FnHandler.signup_user(
+        id("signup-first-name").value.toUpperCase(),
+        id("signup-middle-name").value.toUpperCase(),
+        id("signup-last-name").value.toUpperCase(),
+        gender,
+        id("signup-username").value,
+        id("signup-password").value,
+        id("signup-email").value,
+        id("signup-account-num").value.split(" ").join("")
+      );
+    }
+
     return false;
   });
 
   add_event(id("back-signup-btn"), "click", () => {
     toggle_class(id("login-wrap"), "hide");
     toggle_class(id("signup-wrap"), "show");
+    FnHandler.reset();
   });
 
   // LOADS INITIAL DATA FOR IMMEDIATE TESTING PURPOSES OF WHOEVER VISITS THE SITE
-  add_event(id("load-data-btn"), "click", (e) => {
-    e.preventDefault();
-
+  add_event(id("load-data-btn"), "click", () => {
     const users = FnHandler.userStorage();
 
     let juanCheck = users.findIndex(
@@ -657,20 +824,21 @@ doc_ready(() => {
         ),
         loadAnswer =
           loadPrompt != null ? loadPrompt.toLowerCase() : console.clear(),
-        balance = 2500.5;
+        balance = 2500.05;
 
       if (loadAnswer == "n" || loadAnswer == null || loadAnswer == "") {
         return;
       } else {
         // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
         create_user(
-          "",
-          "",
+          "juandelacruz",
+          "juanjuan",
+          "juandelacruz@mail.com",
           "JUAN",
-          "HERMAN",
+          "",
           "DELA CRUZ",
           "male",
-          "07" + (rand(9000000000) + 1000000000),
+          "071096025466",
           "Savings",
           balance.toFixed(2)
         );
@@ -683,11 +851,12 @@ doc_ready(() => {
       create_user(
         "",
         "",
+        "",
         "JANE",
         "HILLS",
         "DOE",
         "female",
-        "02" + (rand(9000000000) + 1000000000),
+        "023451282250",
         "Checking",
         balance.toFixed(2)
       );
@@ -695,12 +864,12 @@ doc_ready(() => {
 
     // THIS FUNCTION IS CALLED AGAIN TO REFRESH THE LIST IN THE UI
     FnHandler.list_users();
-    return false;
   });
 
   add_event(id("log-out-btn"), "click", (e) => {
     e.preventDefault();
     toggle_class(id("modal"), "hide");
+    remove_class(id("main"), "hide");
     FnHandler.reset();
     return false;
   });
@@ -718,11 +887,9 @@ doc_ready(() => {
           clearPrompt != null ? clearPrompt.toLowerCase() : console.clear();
 
       if (clearAnswer == "y") {
-        let getLocalStorage = JSON.parse(localStorage.getItem("users"));
-
         // DOES NOT INCLUDE FIRST ARRAY ITEM IN SPLICING OR DELETING WHICH IS THE ADMIN USERNAME AND PASSWORD
-        getLocalStorage.splice(1, users.length);
-        localStorage.setItem("users", JSON.stringify(getLocalStorage));
+        users.splice(1, users.length);
+        localStorage.setItem("users", JSON.stringify(users));
         FnHandler.list_users();
       } else {
         return;
@@ -757,6 +924,7 @@ doc_ready(() => {
     //    : id("add-deposit-amount-dec").value,
 
     create_user(
+      "",
       "",
       "",
       inner(id("add-first-name").value.toUpperCase()),
