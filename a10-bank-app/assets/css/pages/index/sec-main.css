@@ -66,8 +66,8 @@ main .wrap-scroll::-webkit-scrollbar-thumb:hover {
   background: #6c757d;
 }
 
-#accounts-wrap.hide,
-#add-account-wrap.hide {
+#accounts-wrap,
+#add-newaccount-wrap {
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -75,7 +75,7 @@ main .wrap-scroll::-webkit-scrollbar-thumb:hover {
 }
 
 #accounts-wrap.hide,
-#add-account-wrap.hide {
+#add-newaccount-wrap.hide {
   visibility: hidden;
   opacity: 0;
 }
