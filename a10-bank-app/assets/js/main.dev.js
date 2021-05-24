@@ -23,7 +23,9 @@ doc_ready(function () {
     this.accountType = accountType;
     this.balance = balance;
     this.transactionHistory = [];
+    this.userTransactionHistory = [];
     this.expenseItems = [];
+    this.friends = [];
   };
 
   var ExpenseItem = function ExpenseItem(name, cost, owner) {
@@ -162,9 +164,12 @@ doc_ready(function () {
           var gender = users[userCheck].gender == "male" ? "his" : "her"; // FIXED 2 DECIMAL PLACES
 
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
-          var initialBal = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2);
-          users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Withdrawn an amount of <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[userCheck].firstName, "</strong>'s account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
-          alert("Withdrawal transaction from ".concat(users[userCheck].firstName, "'s account has been successful!"));
+          var initialBal = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2); // TRANSACTION HISTORY FOR ADMIN
+
+          users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Withdrawn an amount of <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[userCheck].firstName, "</strong>'s account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>.")); // TRANSACTION HISTORY FOR USER
+
+          users[userCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You withdrawed an amount of <strong>\u20B1").concat(amount, "</strong> from your account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
+          alert("Withdrawal transaction has been successful!");
         }
         /**
          * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
@@ -191,7 +196,8 @@ doc_ready(function () {
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2);
           var initialBal = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
           users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Deposited an amount of <strong>\u20B1").concat(amount, "</strong> into <strong>").concat(users[userCheck].firstName, "</strong>'s account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
-          alert("Deposit transaction from ".concat(users[userCheck].firstName, "'s account has been successful!"));
+          users[userCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You deposited an amount of <strong>\u20B1").concat(amount, "</strong> into your account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
+          alert("Deposit transaction account has been successful!");
         }
 
         localStorage.setItem("users", JSON.stringify(users));
@@ -225,10 +231,12 @@ doc_ready(function () {
           users[senderCheck].balance = parseFloat(parseFloat(users[senderCheck].balance) - parseFloat(amount)).toFixed(2);
           var senderInitialBal = parseFloat(parseFloat(users[senderCheck].balance) + parseFloat(amount)).toFixed(2);
           users[senderCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Sent an amount of <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[senderCheck].firstName, "</strong>'s account into ").concat(users[receiverCheck].firstName, "'s account. From <strong>").concat(users[senderCheck].firstName, "</strong>'s previous account balance of <strong>\u20B1").concat(senderInitialBal, "</strong>, ").concat(senderGender, " remaining account balance is now <strong>\u20B1").concat(users[senderCheck].balance, "</strong>."));
+          users[senderCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You sent an amount of <strong>\u20B1").concat(amount, "</strong> from your account into ").concat(users[receiverCheck].firstName, "'s account. From a previous account balance of <strong>\u20B1").concat(senderInitialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[senderCheck].balance, "</strong>."));
           users[receiverCheck].balance = parseFloat(parseFloat(users[receiverCheck].balance) + parseFloat(amount)).toFixed(2);
           var receiverInitialBal = parseFloat(parseFloat(users[receiverCheck].balance) - parseFloat(amount)).toFixed(2);
           users[receiverCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Received an amount of <strong>\u20B1").concat(amount, "</strong> from ").concat(users[senderCheck].firstName, "'s account into <strong>").concat(users[receiverCheck].firstName, "</strong>'s account. From <strong>").concat(users[receiverCheck].firstName, "</strong>'s previous account balance of <strong>\u20B1").concat(receiverInitialBal, "</strong>, ").concat(receiverGender, " account balance is now <strong>\u20B1").concat(users[receiverCheck].balance, "</strong>."));
-          alert("Successfuly sent money from ".concat(users[senderCheck].firstName, "'s account into ").concat(users[receiverCheck].firstName, "'s account!"));
+          users[receiverCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You received an amount of <strong>\u20B1").concat(amount, "</strong> from ").concat(users[senderCheck].firstName, "'s account into your account. From a previous account balance of <strong>\u20B1").concat(receiverInitialBal, "</strong>, your account balance is now <strong>\u20B1").concat(users[receiverCheck].balance, "</strong>."));
+          alert("Money transfer transaction has been successful!");
         }
 
         localStorage.setItem("users", JSON.stringify(users));
@@ -519,7 +527,8 @@ doc_ready(function () {
     } else {
       var newUserAccount = new User(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance); // FIRST LOG INSIDE THE TRANSACTION HISTORY INDICATING WHEN THE ACCOUNT WAS CREATED OR OPENED
 
-      newUserAccount.transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Opened a ").concat(newUserAccount.accountType, " account for <strong>").concat(newUserAccount.firstName, "</strong> ").concat(newUserAccount.middleName, " ").concat(newUserAccount.lastName, " with an initial account balance of <strong>\u20B1").concat(newUserAccount.balance, "</strong>."));
+      newUserAccount.transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Opened a ").concat(newUserAccount.accountType.toLowerCase(), " account for <strong>").concat(newUserAccount.firstName, "</strong> ").concat(newUserAccount.middleName, " ").concat(newUserAccount.lastName, " with an initial account balance of <strong>\u20B1").concat(newUserAccount.balance, "</strong>."));
+      newUserAccount.userTransactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : You have opened a ").concat(newUserAccount.accountType.toLowerCase(), " account with an initial account balance of <strong>\u20B1").concat(newUserAccount.balance, "</strong>."));
       FnHandler.addUser(newUserAccount);
     }
   }; // LOADS INITIAL DATA FOR IMMEDIATE TESTING PURPOSES OF WHOEVER VISITS THE SITE
@@ -582,7 +591,7 @@ doc_ready(function () {
   add_event(id("add-form"), "submit", function (e) {
     e.preventDefault();
     var gender = id("male").checked ? "male" : "female",
-        acc_num = id("savings").checked ? ["05", "06", "07", "08", "09"] : ["01", "02", "03", "04"],
+        acc_num = id("savings").checked ? ["05", "06", "07", "08", "09"] : ["00", "01", "02", "03", "04"],
         account_type = id("savings").checked ? "Savings" : "Checking",
         account_type_bal = id("savings").checked ? 2000 : 5000,
         depositAmount = id("add-deposit-amount").value.length == 0 ? "0" : id("add-deposit-amount").value.split(",").join(""),
@@ -618,6 +627,8 @@ doc_ready(function () {
       // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
       if (users[0].username == id("login-username").value && users[0].password == id("login-password").value) {
         toggle_class(id("modal"), "hide");
+        add_class(id("friends-li"), "hide");
+        add_class(id("transactions-li"), "hide");
       } else {
         for (i = 1; i < users.length; i++) {
           if (users[i].username == id("login-username").value && users[i].password == id("login-password").value) {
@@ -641,6 +652,8 @@ doc_ready(function () {
     toggle_class(id("modal"), "hide"); // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
 
     setTimeout(function () {
+      remove_class(id("friends-li"), "hide");
+      remove_class(id("transactions-li"), "hide");
       remove_class(id("accounts-wrap"), "hide");
       remove_class(id("add-newaccount-wrap"), "hide");
     }, 250);
