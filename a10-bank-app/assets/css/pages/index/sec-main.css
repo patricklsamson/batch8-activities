@@ -42,11 +42,24 @@ main .wrap-acc-table {
 
 #accounts-wrap.hide,
 #add-newaccount-wrap.hide,
-#expense-wrap.hide {
+#expense-wrap.hide,
+#connections-wrap.hide {
   display: none;
 }
 
-main table {
+#load-data-btn:hover,
+#acc-table td:first-child:hover,
+#acc-table td span:hover,
+#owner-acc-num:hover,
+#owner-transaction-btn:hover {
+  color: #67b2b2;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+main #accounts-wrap table {
   table-layout: auto;
   width: 100%;
 }
@@ -56,44 +69,44 @@ th {
   border: 1px solid #000;
 } */
 
-main table th:first-child,
-main table td:first-child {
+main #accounts-wrap table th:first-child,
+main #accounts-wrap table td:first-child {
   width: 16%;
 }
 
-main table th:nth-child(2) {
+main #accounts-wrap table th:nth-child(2) {
   width: 44.3%;
 }
 
-main table td:nth-child(2) {
+main #accounts-wrap table td:nth-child(2) {
   width: 45%;
 }
 
-main table th:nth-child(3) {
+main #accounts-wrap table th:nth-child(3) {
   width: 13.8%;
 }
 
-main table td:nth-child(3) {
+main #accounts-wrap table td:nth-child(3) {
   width: 14%;
 }
 
-main table th:nth-child(4) {
+main #accounts-wrap table th:nth-child(4) {
   width: 19.7%;
 }
 
-main table td:nth-child(4) {
+main #accounts-wrap table td:nth-child(4) {
   width: 20%;
 }
 
-main table th:last-child {
+main #accounts-wrap table th:last-child {
   padding-right: 18px;
 }
 
-main table td:last-child {
+main #accounts-wrap table td:last-child {
   padding-right: 10px;
 }
 
-main table td[colspan="5"] {
+main #accounts-wrap table td[colspan="5"] {
   width: auto;
   padding: 0;
 }
@@ -113,12 +126,6 @@ main table td[colspan="5"] {
 #acc-table td span,
 #acc-table td i {
   cursor: pointer;
-}
-
-#acc-table td:first-child:hover,
-#acc-table td span:hover,
-#owner-acc-num:hover {
-  color: #67b2b2;
 }
 
 main .wrap-add-account {
