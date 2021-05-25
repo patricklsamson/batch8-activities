@@ -94,7 +94,7 @@
   transition: 0.5s;
 }
 
-#owner-transaction-modal,
+.wrap-modal,
 #acc-table td div {
   position: fixed;
   height: 100vh;
@@ -109,13 +109,13 @@
   transition: 0.5s;
 }
 
-#owner-transaction-modal.show,
+.wrap-modal.show,
 #acc-table td div.show {
   visibility: visible;
   opacity: 1;
 }
 
-.wrap-owner-transaction,
+.wrap-modal-inner,
 #acc-table td div {
   width: 50vw;
   height: 50vh;
@@ -124,9 +124,30 @@
   border: 2px solid #343a40;
 }
 
-#owner-transaction-modal i,
+.wrap-modal i[id*="-btn"],
 #acc-table td div i {
   float: right;
+}
+
+.wrap-modal form,
+.wrap-modal ul,
+#acc-table td div ul {
+  padding-right: 20px;
+}
+
+.wrap-modal ul,
+#acc-table td div ul {
+  height: 100%;
+  margin-right: 40px;
+}
+
+#settings-modal .wrap-modal-inner {
+  width: 20vw;
+  height: 27vh;
+}
+
+#settings-modal .wrap-modal-inner.user {
+  height: 51vh;
 }
 
 #acc-table td div {
@@ -150,11 +171,4 @@
   height: 100vh;
   top: -50%;
   left: -50%;
-}
-
-#owner-transaction,
-#acc-table td div ul {
-  height: 100%;
-  margin-right: 40px;
-  padding-right: 20px;
 }
