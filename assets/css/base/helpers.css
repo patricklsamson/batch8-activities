@@ -292,6 +292,30 @@
   margin-bottom: 0.5em;
 }
 
+.mt-075 {
+  margin-top: 0.75em;
+}
+
+.mb-075 {
+  margin-bottom: 0.75em;
+}
+
+.mt-10 {
+  margin-top: 1em;
+}
+
+.mb-10 {
+  margin-bottom: 1em;
+}
+
+.mt-125 {
+  margin-top: 1.25em;
+}
+
+.mb-125 {
+  margin-bottom: 1.25em;
+}
+
 .xbul {
   list-style: none;
   padding-left: 0;
