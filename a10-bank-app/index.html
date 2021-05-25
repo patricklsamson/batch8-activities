@@ -177,8 +177,8 @@
       </div>
     </section>
 
-    <section id="owner-transaction-modal" class="flex">
-      <div class="wrap-owner-transaction">
+    <section id="owner-transaction-modal" class="flex wrap-modal">
+      <div class="wrap-modal-inner">
         <i
           id="close-owner-transaction-btn"
           class="far fa-times-circle fa-2x"
@@ -187,11 +187,123 @@
       </div>
     </section>
 
-    <section id="settings-modal" class="flex">
-      <div class="wrap-settings">
+    <section id="settings-modal" class="flex wrap-modal">
+      <div id="settings-modal-inner" class="wrap-modal-inner">
         <i id="close-settings-btn" class="far fa-times-circle fa-2x"></i>
 
-        <form action="" autocomplete="off" id="settings-form"></form>
+        <form action="#" autocomplete="off" id="admin-settings-form">
+          <label for="admin-old-password">Old Password</label><br />
+          <input
+            type="password"
+            name="admin-old-password"
+            id="admin-old-password"
+            required
+          /><br />
+
+          <label for="admin-new-password">New Password</label><br />
+          <input
+            type="password"
+            name="admin-new-password"
+            id="admin-new-password"
+            required
+          /><br />
+
+          <label for="admin-confirm-new-password">Confirm New Password</label>
+          <i id="admin-change-match-msg" class="fas"></i><br />
+          <input
+            type="password"
+            id="admin-confirm-new-password"
+            class="mb-05"
+            required
+          /><br />
+
+          <input
+            type="submit"
+            value="Change Password"
+            id="admin-change-password-btn"
+            class="balign mt-05 mb-05 btn-bank minor"
+          />
+        </form>
+
+        <div id="user-settings-form">
+          <form
+            action="#"
+            autocomplete="off"
+            id="change-email-form"
+            class="mb-10"
+          >
+            <label for="change-email">Change Email</label><br />
+            <input
+              type="email"
+              name="change-email"
+              id="change-email"
+              class="mb-05"
+            /><br />
+
+            <input
+              type="submit"
+              value="Change Email"
+              id="change-email-btn"
+              class="balign mt-05 btn-bank minor"
+            />
+          </form>
+
+          <form
+            action="#"
+            autocomplete="off"
+            id="change-username-form"
+            class="mb-10"
+          >
+            <label for="change-username">Change Username</label><br />
+            <input
+              type="text"
+              name="change-username"
+              id="change-username"
+              class="mb-05"
+            /><br />
+
+            <input
+              type="submit"
+              value="Change Username"
+              id="change-username-btn"
+              class="balign mt-05 btn-bank minor"
+            />
+          </form>
+
+          <form action="#" autocomplete="off" id="change-password-form">
+            <label for="old-password">Old Password</label><br />
+            <input
+              type="password"
+              name="old-password"
+              id="old-password"
+              required
+            /><br />
+
+            <label for="new-password">New Password</label><br />
+            <input
+              type="password"
+              name="new-password"
+              id="new-password"
+              required
+            /><br />
+
+            <label for="confirm-new-password">Confirm New Password</label>
+            <i id="change-match-msg" class="fas"></i><br />
+            <input
+              type="password"
+              id="confirm-new-password"
+              class="mb-05"
+              required
+            /><br />
+
+            <input
+              type="submit"
+              value="Change Password"
+              id="change-password-btn"
+              class="balign mt-05 mb-05 btn-bank minor"
+            />
+          </form>
+        </div>
       </div>
     </section>
 
@@ -214,7 +326,7 @@
                     <li id="transactions-li">
                       <a href="#" id="owner-transaction-btn">Transactions</a>
                     </li>
-                    <li><a href="#" id="settings">Settings</a></li>
+                    <li><a href="#" id="settings-btn">Settings</a></li>
                     <li><a href="#" id="log-out-btn">Log Out</a></li>
                   </ul>
                 </nav>
