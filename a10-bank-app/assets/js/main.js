@@ -128,9 +128,8 @@ doc_ready(() => {
 
       if (admin[0].username == username && admin[0].password == password) {
         toggle_class(id("modal"), "hide");
-        add_class(id("friends-li"), "hide");
-        add_class(id("transactions-li"), "hide");
         add_class(id("expense-wrap"), "hide");
+        add_class(id("connections-wrap"), "hide");
 
         add_event(id("admin-settings-form"), "submit", (e) => {
           e.preventDefault();
@@ -1187,10 +1186,9 @@ doc_ready(() => {
 
     // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
     setTimeout(() => {
-      remove_class(id("friends-li"), "hide");
-      remove_class(id("transactions-li"), "hide");
       remove_class(id("accounts-wrap"), "hide");
       remove_class(id("expense-wrap"), "hide");
+      remove_class(id("connections-wrap"), "hide");
       remove_class(id("add-newaccount-wrap"), "hide");
     }, 500);
 
