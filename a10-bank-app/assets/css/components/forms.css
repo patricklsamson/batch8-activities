@@ -3,15 +3,27 @@ form {
   margin: 0 auto;
 }
 
-#match-msg {
+#admin-settings-form.hide {
+  display: none;
+}
+
+#user-settings-form {
+  display: none;
+}
+
+#user-settings-form.show {
+  display: block;
+}
+
+i[id*="-msg"] {
   cursor: auto;
 }
 
-#match-msg.fa-check {
+i[id*="-msg"].fa-check {
   color: green;
 }
 
-#match-msg.fa-times {
+i[id*="-msg"].fa-times {
   color: red;
 }
 
