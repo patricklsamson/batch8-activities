@@ -1,5 +1,5 @@
 doc_ready(() => {
-  let i;
+  let i, j;
 
   // SEPARATED ADMIN FOR BETTER DISTINCTION FROM REGULAR USERS ESPECIALLY FOR LOCAL STORAGE
   class Admin {
@@ -101,27 +101,84 @@ doc_ready(() => {
       localStorage.setItem("users", JSON.stringify(users));
     }
 
+    static click_copy(element) {
+      // ONE CLICK COPY FUNCTION OF A STRING OR TEXT
+      add_event(element, "click", () => {
+        document.execCommand("copy");
+      });
+
+      // SETS OR PASSES THE TEXT COPIED INTO THE CLIPBOARD FOR PASTING
+      add_event(element, "copy", (e) => {
+        e.preventDefault();
+
+        if (e.clipboardData) {
+          e.clipboardData.setData("text/plain", element.textContent);
+        }
+      });
+    }
+
     static login_user(username, password) {
       const admin = FnHandler.adminStorage(),
         users = FnHandler.userStorage();
 
-      let adminUsernameCheck = admin.findIndex(
+      let usernameCheck = users.findIndex(
           (index) => index.username == username
         ),
-        adminPasswordCheck = admin.findIndex(
-          (index) => index.password == password
-        ),
-        usernameCheck = users.findIndex((index) => index.username == username),
         passwordCheck = users.findIndex((index) => index.password == password);
 
-      if (admin[adminUsernameCheck] && admin[adminPasswordCheck]) {
+      if (admin[0].username == username && admin[0].password == password) {
         toggle_class(id("modal"), "hide");
         add_class(id("friends-li"), "hide");
         add_class(id("transactions-li"), "hide");
         add_class(id("expense-wrap"), "hide");
-      } else if (users[usernameCheck] && users[passwordCheck]) {
-        let j;
 
+        add_event(id("admin-settings-form"), "submit", (e) => {
+          e.preventDefault();
+
+          if (admin[0].password != id("admin-old-password").value) {
+            alert("Old password wrong!");
+          } else if (
+            id("admin-old-password").value ==
+            id("admin-confirm-new-password").value
+          ) {
+            alert("There have been no changes made for the password!");
+          } else if (
+            id("admin-new-password").value !=
+            id("admin-confirm-new-password").value
+          ) {
+            alert("New password entries do not match!");
+          } else if (id("admin-confirm-new-password").value.length < 5) {
+            let passwordPrompt = prompt(
+                'Are you sure to have a weak password?\nType "Y" for yes and "N" for no.',
+                "N"
+              ),
+              passwordAnswer =
+                passwordPrompt != null
+                  ? passwordPrompt.toLowerCase()
+                  : console.clear();
+
+            if (passwordAnswer == "y") {
+              admin[0].password = id("admin-confirm-new-password").value;
+              id("admin-settings-form").reset();
+              remove_class(id("admin-change-match-msg"), "fa-check");
+              remove_class(id("admin-change-match-msg"), "fa-times");
+              alert("Change password successful!");
+              localStorage.setItem("admin", JSON.stringify(admin));
+            } else {
+              return;
+            }
+          } else {
+            admin[0].password = id("admin-confirm-new-password").value;
+            id("admin-settings-form").reset();
+            remove_class(id("admin-change-match-msg"), "fa-check");
+            remove_class(id("admin-change-match-msg"), "fa-times");
+            alert("Change password successful!");
+            localStorage.setItem("admin", JSON.stringify(admin));
+          }
+
+          return false;
+        });
+      } else if (users[usernameCheck] && users[passwordCheck]) {
         for (i = 0; i < users.length; i++) {
           if (users[i].username == username && users[i].password == password) {
             // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
@@ -129,6 +186,9 @@ doc_ready(() => {
               toggle_class(id("modal"), "hide");
             }, 250);
 
+            add_class(id("settings-modal-inner"), "user");
+            add_class(id("admin-settings-form"), "hide");
+            add_class(id("user-settings-form"), "show");
             add_class(id("accounts-wrap"), "hide");
             add_class(id("add-newaccount-wrap"), "hide");
           }
@@ -141,6 +201,8 @@ doc_ready(() => {
         id("owner-acc-num").innerHTML = num_space(
           users[usernameCheck].accountNumber
         );
+
+        id("owner-transaction").innerHTML = "";
 
         for (
           j = 0;
@@ -160,8 +222,120 @@ doc_ready(() => {
 
           id("owner-transaction").appendChild(transactionLi);
         }
+
+        add_event(id("change-email-form"), "submit", (e) => {
+          e.preventDefault();
+
+          if (users[usernameCheck].email == id("change-email").value) {
+            alert("There have been no changes made for the email!");
+          } else {
+            users[usernameCheck].email = id("change-email").value;
+            alert("Change email successful!");
+            localStorage.setItem("users", JSON.stringify(users));
+          }
+
+          id("change-email-form").reset();
+          return false;
+        });
+
+        add_event(id("change-username-form"), "submit", (e) => {
+          e.preventDefault();
+
+          if (id("change-username").value.length < 5) {
+            alert("Username cannot be less than 5 characters!");
+          } else if (
+            users[usernameCheck].username == id("change-username").value
+          ) {
+            alert("There have been no changes made for the username!");
+          } else {
+            users[usernameCheck].username = id("change-username").value;
+            alert("Change username successful!");
+            localStorage.setItem("users", JSON.stringify(users));
+          }
+
+          id("change-username-form").reset();
+          return false;
+        });
+
+        add_event(id("change-password-form"), "submit", (e) => {
+          e.preventDefault();
+
+          if (users[usernameCheck].password != id("old-password").value) {
+            alert("Old password wrong!");
+          } else if (
+            id("old-password").value == id("confirm-new-password").value
+          ) {
+            alert("There have been no changes made for the password!");
+          } else if (
+            id("new-password").value != id("confirm-new-password").value
+          ) {
+            alert("New password entries do not match!");
+          } else if (id("confirm-new-password").value.length < 5) {
+            let passwordPrompt = prompt(
+                'Are you sure to have a weak password?\nType "Y" for yes and "N" for no.',
+                "N"
+              ),
+              passwordAnswer =
+                passwordPrompt != null
+                  ? passwordPrompt.toLowerCase()
+                  : console.clear();
+
+            if (passwordAnswer == "y") {
+              users[usernameCheck].password = id("confirm-new-password").value;
+              id("change-password-form").reset();
+              remove_class(id("change-match-msg"), "fa-check");
+              remove_class(id("change-match-msg"), "fa-times");
+              alert("Change password successful!");
+              localStorage.setItem("users", JSON.stringify(users));
+            } else {
+              return;
+            }
+          } else {
+            users[usernameCheck].password = id("confirm-new-password").value;
+            id("change-password-form").reset();
+            remove_class(id("change-match-msg"), "fa-check");
+            remove_class(id("change-match-msg"), "fa-times");
+            alert("Change password successful!");
+            localStorage.setItem("users", JSON.stringify(users));
+          }
+
+          return false;
+        });
       } else {
         alert("User not found!");
+      }
+
+      setTimeout(() => {
+        id("login-form").reset();
+      }, 500);
+    }
+
+    static reprint_individual_history(user) {
+      const users = FnHandler.userStorage();
+
+      let accountNumCheck = users.findIndex(
+        (index) => index.accountNumber == user
+      );
+
+      id("owner-transaction").innerHTML = "";
+
+      for (
+        i = 0;
+        i < users[accountNumCheck].userTransactionHistory.length;
+        i++
+      ) {
+        let transactionLi = create_el("li"),
+          noTransact = create_el("li");
+
+        if (users[accountNumCheck].userTransactionHistory.length == 1) {
+          noTransact.innerHTML = "No other transactions yet.";
+          id("owner-transaction").appendChild(noTransact);
+        }
+
+        transactionLi.innerHTML =
+          users[accountNumCheck].userTransactionHistory[i];
+
+        id("owner-transaction").appendChild(transactionLi);
       }
     }
 
@@ -172,6 +346,7 @@ doc_ready(() => {
       gender,
       username,
       password,
+      confirmPassword,
       email,
       accountNumber
     ) {
@@ -208,6 +383,40 @@ doc_ready(() => {
         users[accountNumberCheck] == ""
       ) {
         alert("User not found!");
+      } else if (username.length < 5) {
+        alert("Username cannot be less than 5 characters!");
+      } else if (password != confirmPassword) {
+        alert("Password entries do not match!");
+      } else if (confirmPassword.length < 5) {
+        let passwordPrompt = prompt(
+            'Are you sure to have a weak password?\nType "Y" for yes and "N" for no.',
+            "N"
+          ),
+          passwordAnswer =
+            passwordPrompt != null
+              ? passwordPrompt.toLowerCase()
+              : console.clear();
+
+        if (
+          passwordAnswer == "y" &&
+          (users[usernameCheck] == null ||
+            users[usernameCheck] == "" ||
+            users[passwordCheck] == null ||
+            users[passwordCheck] == "" ||
+            users[emailCheck] == null ||
+            users[emailCheck] == "")
+        ) {
+          toggle_class(id("login-wrap"), "hide");
+          toggle_class(id("signup-wrap"), "show");
+          users[accountNumberCheck].username = username;
+          users[accountNumberCheck].password = confirmPassword;
+          users[accountNumberCheck].email = email;
+          remove_class(id("match-msg"), "fa-check");
+          remove_class(id("match-msg"), "fa-times");
+          id("signup-form").reset();
+        } else {
+          return;
+        }
       } else if (
         users[usernameCheck] == null ||
         users[usernameCheck] == "" ||
@@ -219,10 +428,16 @@ doc_ready(() => {
         toggle_class(id("login-wrap"), "hide");
         toggle_class(id("signup-wrap"), "show");
         users[accountNumberCheck].username = username;
-        users[accountNumberCheck].password = password;
+        users[accountNumberCheck].password = confirmPassword;
         users[accountNumberCheck].email = email;
+        remove_class(id("match-msg"), "fa-check");
+        remove_class(id("match-msg"), "fa-times");
+        id("signup-form").reset();
       } else {
+        remove_class(id("match-msg"), "fa-check");
+        remove_class(id("match-msg"), "fa-times");
         alert("You have already signed up!");
+        id("signup-form").reset();
       }
 
       /**
@@ -285,16 +500,16 @@ doc_ready(() => {
 
         // TRANSACTION HISTORY FOR ADMIN
         users[userCheck].transactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Withdrawn an amount of <strong>₱${amount}</strong> from <strong>${
+          `<em>${FnHandler.time_stamp()}</em> : Withdrawal transaction amounting to <strong>₱${amount}</strong> from <strong>${
             users[userCheck].firstName
-          }</strong>'s account. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
+          }</strong>'s account has been successful. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
             users[userCheck].balance
           }</strong>.`
         );
 
         // TRANSACTION HISTORY FOR USER
         users[userCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : You withdrawed an amount of <strong>₱${amount}</strong> from your account. From a previous account balance of <strong>₱${initialBal}</strong>, your remaining account balance is now <strong>₱${
+          `<em>${FnHandler.time_stamp()}</em> : Withdrawal transaction amounting to <strong>₱${amount}</strong> from your account has been successful. From a previous account balance of <strong>₱${initialBal}</strong>, your remaining account balance is now <strong>₱${
             users[userCheck].balance
           }</strong>.`
         );
@@ -326,15 +541,15 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[userCheck].transactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Deposited an amount of <strong>₱${amount}</strong> into <strong>${
+          `<em>${FnHandler.time_stamp()}</em> : Deposit transaction amounting to <strong>₱${amount}</strong> into <strong>${
             users[userCheck].firstName
-          }</strong>'s account. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} account balance is now <strong>₱${
+          }</strong>'s account has been successful. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} account balance is now <strong>₱${
             users[userCheck].balance
           }</strong>.`
         );
 
         users[userCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : You deposited an amount of <strong>₱${amount}</strong> into your account. From a previous account balance of <strong>₱${initialBal}</strong>, your remaining account balance is now <strong>₱${
+          `<em>${FnHandler.time_stamp()}</em> : Deposit transaction amounting to <strong>₱${amount}</strong> into your account has been successful. From a previous account balance of <strong>₱${initialBal}</strong>, your remaining account balance is now <strong>₱${
             users[userCheck].balance
           }</strong>.`
         );
@@ -386,11 +601,11 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[senderCheck].transactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Sent an amount of <strong>₱${amount}</strong> from <strong>${
+          `<em>${FnHandler.time_stamp()}</em> : Outcoming money transfer amounting to <strong>₱${amount}</strong> from <strong>${
             users[senderCheck].firstName
           }</strong>'s account into ${
             users[receiverCheck].firstName
-          }'s account. From <strong>${
+          }'s account has been successful. From <strong>${
             users[senderCheck].firstName
           }</strong>'s previous account balance of <strong>₱${senderInitialBal}</strong>, ${senderGender} remaining account balance is now <strong>₱${
             users[senderCheck].balance
@@ -398,9 +613,9 @@ doc_ready(() => {
         );
 
         users[senderCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : You sent an amount of <strong>₱${amount}</strong> from your account into ${
+          `<em>${FnHandler.time_stamp()}</em> : Outcoming money transfer amounting to <strong>₱${amount}</strong> from your account into ${
             users[receiverCheck].firstName
-          }'s account. From a previous account balance of <strong>₱${senderInitialBal}</strong>, your remaining account balance is now <strong>₱${
+          }'s account has been successful. From a previous account balance of <strong>₱${senderInitialBal}</strong>, your remaining account balance is now <strong>₱${
             users[senderCheck].balance
           }</strong>.`
         );
@@ -414,11 +629,11 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[receiverCheck].transactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Received an amount of <strong>₱${amount}</strong> from ${
+          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${amount}</strong> from ${
             users[senderCheck].firstName
           }'s account into <strong>${
             users[receiverCheck].firstName
-          }</strong>'s account. From <strong>${
+          }</strong>'s account has been successful. From <strong>${
             users[receiverCheck].firstName
           }</strong>'s previous account balance of <strong>₱${receiverInitialBal}</strong>, ${receiverGender} account balance is now <strong>₱${
             users[receiverCheck].balance
@@ -426,20 +641,20 @@ doc_ready(() => {
         );
 
         users[receiverCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : You received an amount of <strong>₱${amount}</strong> from ${
+          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${amount}</strong> from ${
             users[senderCheck].firstName
-          }'s account into your account. From a previous account balance of <strong>₱${receiverInitialBal}</strong>, your account balance is now <strong>₱${
+          }'s account into your account has been successful. From a previous account balance of <strong>₱${receiverInitialBal}</strong>, your account balance is now <strong>₱${
             users[receiverCheck].balance
           }</strong>.`
         );
 
-        alert(`Money transfer transaction has been successful!`);
+        alert(`Money transfer has been successful!`);
       }
 
       localStorage.setItem("users", JSON.stringify(users));
     }
 
-    static get_balance(user, parent) {
+    static get_balance(user, parentEl) {
       const users = FnHandler.userStorage();
 
       let userCheck = users.findIndex((index) => index.accountNumber == user),
@@ -452,7 +667,7 @@ doc_ready(() => {
        */
       if (users[userCheck]) {
         balanceTd.innerHTML = `₱${num_commas(users[userCheck].balance)}`;
-        parent.appendChild(balanceTd);
+        parentEl.appendChild(balanceTd);
       }
     }
 
@@ -464,8 +679,7 @@ doc_ready(() => {
 
       // ITERATION STARTS AT ONE TO PREVENT THE FIRST ARRAY ITEM TO DISPLAY WHICH IS FOR THE ADMIN
       for (i = 0; i < users.length; i++) {
-        let j,
-          tableRow = create_el("tr"),
+        let tableRow = create_el("tr"),
           accNumTd = create_el("td"),
           accTd = create_el("td"),
           accTdSpan = create_el("span"),
@@ -478,21 +692,7 @@ doc_ready(() => {
 
         accNumTd.innerHTML = num_space(users[i].accountNumber);
         tableRow.appendChild(accNumTd);
-
-        // ONE CLICK COPY FUNCTION OF A STRING OR TEXT
-        add_event(accNumTd, "click", () => {
-          document.execCommand("copy");
-        });
-
-        // SETS OR PASSES THE TEXT COPIED INTO THE CLIPBOARD FOR PASTING
-        add_event(accNumTd, "copy", (e) => {
-          e.preventDefault();
-
-          if (e.clipboardData) {
-            e.clipboardData.setData("text/plain", accNumTd.textContent);
-          }
-        });
-
+        FnHandler.click_copy(accNumTd);
         accTdSpan.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
         add_class(historyModalClose, "far");
         add_class(historyModalClose, "fa-times-circle");
@@ -668,42 +868,33 @@ doc_ready(() => {
       });
     }
 
-    static password_match() {
-      add_event(id("signup-password"), "keyup", function () {
-        if (
-          this.value == id("signup-confirm-password").value &&
-          this.value.length != 0
-        ) {
-          remove_class(id("match-msg"), "fa-times");
-          add_class(id("match-msg"), "fa-check");
+    static password_match(password, confirmPassword, message) {
+      add_event(password, "keyup", function () {
+        if (this.value == confirmPassword.value && this.value.length != 0) {
+          remove_class(message, "fa-times");
+          add_class(message, "fa-check");
         } else if (
-          this.value != id("signup-confirm-password").value &&
-          id("signup-confirm-password").value.length >= 1
+          this.value != confirmPassword.value &&
+          confirmPassword.value.length >= 1
         ) {
-          remove_class(id("match-msg"), "fa-check");
-          add_class(id("match-msg"), "fa-times");
+          remove_class(message, "fa-check");
+          add_class(message, "fa-times");
         } else if (this.value.length == 0) {
-          remove_class(id("match-msg"), "fa-check");
-          remove_class(id("match-msg"), "fa-times");
+          remove_class(message, "fa-check");
+          remove_class(message, "fa-times");
         }
       });
 
-      add_event(id("signup-confirm-password"), "keyup", function () {
-        if (
-          this.value == id("signup-password").value &&
-          this.value.length != 0
-        ) {
-          remove_class(id("match-msg"), "fa-times");
-          add_class(id("match-msg"), "fa-check");
-        } else if (
-          this.value != id("signup-password").value &&
-          id("signup-password").value.length >= 1
-        ) {
-          remove_class(id("match-msg"), "fa-check");
-          add_class(id("match-msg"), "fa-times");
+      add_event(confirmPassword, "keyup", function () {
+        if (this.value == password.value && this.value.length != 0) {
+          remove_class(message, "fa-times");
+          add_class(message, "fa-check");
+        } else if (this.value != password.value && password.value.length >= 1) {
+          remove_class(message, "fa-check");
+          add_class(message, "fa-times");
         } else if (this.value.length == 0) {
-          remove_class(id("match-msg"), "fa-check");
-          remove_class(id("match-msg"), "fa-times");
+          remove_class(message, "fa-check");
+          remove_class(message, "fa-times");
         }
       });
     }
@@ -723,7 +914,19 @@ doc_ready(() => {
   FnHandler.num_only();
   FnHandler.type_comma();
   FnHandler.dec_addZero();
-  FnHandler.password_match();
+  FnHandler.click_copy(id("owner-acc-num"));
+
+  FnHandler.password_match(
+    id("signup-password"),
+    id("signup-confirm-password"),
+    id("match-msg")
+  );
+
+  FnHandler.password_match(
+    id("new-password"),
+    id("confirm-new-password"),
+    id("change-match-msg")
+  );
 
   const create_admin = (username, password, adminId) => {
     const admin = FnHandler.adminStorage();
@@ -991,6 +1194,10 @@ doc_ready(() => {
       remove_class(id("add-newaccount-wrap"), "hide");
     }, 500);
 
+    remove_class(id("settings-modal-inner"), "user");
+    remove_class(id("admin-settings-form"), "hide");
+    remove_class(id("user-settings-form"), "show");
+
     FnHandler.reset();
     return false;
   });
@@ -1003,27 +1210,20 @@ doc_ready(() => {
   add_event(id("signup-form"), "submit", (e) => {
     e.preventDefault();
 
-    if (id("signup-password").value != id("signup-confirm-password").value) {
-      return;
-    } else {
-      let gender = id("signup-male").checked ? "male" : "female";
+    let gender = id("signup-male").checked ? "male" : "female";
 
-      FnHandler.signup_user(
-        id("signup-first-name").value.toUpperCase(),
-        id("signup-middle-name").value.toUpperCase(),
-        id("signup-last-name").value.toUpperCase(),
-        gender,
-        id("signup-username").value,
-        id("signup-password").value,
-        id("signup-email").value,
-        id("signup-account-num").value.split(" ").join("")
-      );
+    FnHandler.signup_user(
+      id("signup-first-name").value.toUpperCase(),
+      id("signup-middle-name").value.toUpperCase(),
+      id("signup-last-name").value.toUpperCase(),
+      gender,
+      id("signup-username").value,
+      id("signup-password").value,
+      id("signup-confirm-password").value,
+      id("signup-email").value,
+      id("signup-account-num").value.split(" ").join("")
+    );
 
-      id("signup-form").reset();
-    }
-
-    remove_class(id("match-msg"), "fa-check");
-    remove_class(id("match-msg"), "fa-times");
     return false;
   });
 
@@ -1043,6 +1243,17 @@ doc_ready(() => {
     remove_class(id("owner-transaction-modal"), "show");
   });
 
+  add_event(id("settings-btn"), "click", () => {
+    add_class(id("settings-modal"), "show");
+  });
+
+  add_event(id("close-settings-btn"), "click", () => {
+    remove_class(id("settings-modal"), "show");
+    remove_class(id("change-match-msg"), "fa-check");
+    remove_class(id("change-match-msg"), "fa-times");
+    FnHandler.reset();
+  });
+
   add_event(id("withdraw-form"), "submit", (e) => {
     e.preventDefault();
 
@@ -1060,6 +1271,9 @@ doc_ready(() => {
     );
 
     FnHandler.list_users();
+    FnHandler.reprint_individual_history(
+      id("owner-acc-num").innerHTML.split(" ").join("")
+    );
     id("withdraw-form").reset();
     return false;
   });
@@ -1077,6 +1291,9 @@ doc_ready(() => {
     );
 
     FnHandler.list_users();
+    FnHandler.reprint_individual_history(
+      id("owner-acc-num").innerHTML.split(" ").join("")
+    );
     id("deposit-form").reset();
     return false;
   });
@@ -1095,6 +1312,9 @@ doc_ready(() => {
     );
 
     FnHandler.list_users();
+    FnHandler.reprint_individual_history(
+      id("owner-acc-num").innerHTML.split(" ").join("")
+    );
     id("send-form").reset();
     return false;
   });
