@@ -98,11 +98,13 @@ main table td[colspan="5"] {
   padding: 0;
 }
 
-#acc-table td:first-child {
+#acc-table td:first-child,
+#owner-acc-num {
   cursor: grab;
 }
 
-#acc-table td:first-child:active {
+#acc-table td:first-child:active,
+#owner-acc-num:active {
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
@@ -114,7 +116,8 @@ main table td[colspan="5"] {
 }
 
 #acc-table td:first-child:hover,
-#acc-table td span:hover {
+#acc-table td span:hover,
+#owner-acc-num:hover {
   color: #67b2b2;
 }
 
