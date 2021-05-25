@@ -50,7 +50,7 @@
             <input
               type="text"
               name="login-username"
-              value="admin"
+              value="juandelacruz"
               autocomplete="off"
               id="login-username"
               class="mb-05"
@@ -61,7 +61,7 @@
             <input
               type="password"
               name="login-password"
-              value="admin"
+              value="juanjuan"
               id="login-password"
               class="mb-05"
               required
@@ -322,10 +322,6 @@
               <div class="menu-container">
                 <nav>
                   <ul>
-                    <li id="friends-li"><a href="#">Friends</a></li>
-                    <li id="transactions-li">
-                      <a href="#" id="owner-transaction-btn">Transactions</a>
-                    </li>
                     <li><a href="#" id="settings-btn">Settings</a></li>
                     <li><a href="#" id="log-out-btn">Log Out</a></li>
                   </ul>
@@ -377,7 +373,33 @@
             </div>
 
             <div id="expense-wrap">
-              <p><span id="owner"></span> : <span id="owner-acc-num"></span></p>
+              <h6>Expense Items</h6>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name of Items</th>
+                    <th>Cost</th>
+                    <th>
+                      <i
+                        role="button"
+                        id="clear-items-btn"
+                        class="fas fa-trash-alt"
+                      ></i>
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody class="talign">
+                  <tr>
+                    <td colspan="3">
+                      <div class="wrap-expense-table wrap-scroll">
+                        <table id="expense-table"></table>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
@@ -458,6 +480,15 @@
                   <input type="reset" value="Reset" class="btn-bank minor" />
                 </div>
               </form>
+            </div>
+
+            <div id="connections-wrap">
+              <p>
+                <i id="owner-transaction-btn" class="fas fa-history"></i>
+                <span id="owner"></span> : <span id="owner-acc-num"></span>
+              </p>
+
+              <h6>Connections</h6>
             </div>
           </div>
 
