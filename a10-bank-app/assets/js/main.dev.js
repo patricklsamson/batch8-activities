@@ -19,7 +19,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 doc_ready(function () {
-  var i; // SEPARATED ADMIN FOR BETTER DISTINCTION FROM REGULAR USERS ESPECIALLY FOR LOCAL STORAGE
+  var i, j; // SEPARATED ADMIN FOR BETTER DISTINCTION FROM REGULAR USERS ESPECIALLY FOR LOCAL STORAGE
 
   var Admin = function Admin(username, password, adminId) {
     _classCallCheck(this, Admin);
@@ -129,37 +129,82 @@ doc_ready(function () {
         localStorage.setItem("users", JSON.stringify(users));
       }
     }, {
+      key: "click_copy",
+      value: function click_copy(element) {
+        // ONE CLICK COPY FUNCTION OF A STRING OR TEXT
+        add_event(element, "click", function () {
+          document.execCommand("copy");
+        }); // SETS OR PASSES THE TEXT COPIED INTO THE CLIPBOARD FOR PASTING
+
+        add_event(element, "copy", function (e) {
+          e.preventDefault();
+
+          if (e.clipboardData) {
+            e.clipboardData.setData("text/plain", element.textContent);
+          }
+        });
+      }
+    }, {
       key: "login_user",
       value: function login_user(username, password) {
         var admin = FnHandler.adminStorage(),
             users = FnHandler.userStorage();
-        var adminUsernameCheck = admin.findIndex(function (index) {
-          return index.username == username;
-        }),
-            adminPasswordCheck = admin.findIndex(function (index) {
-          return index.password == password;
-        }),
-            usernameCheck = users.findIndex(function (index) {
+        var usernameCheck = users.findIndex(function (index) {
           return index.username == username;
         }),
             passwordCheck = users.findIndex(function (index) {
           return index.password == password;
         });
 
-        if (admin[adminUsernameCheck] && admin[adminPasswordCheck]) {
+        if (admin[0].username == username && admin[0].password == password) {
           toggle_class(id("modal"), "hide");
           add_class(id("friends-li"), "hide");
           add_class(id("transactions-li"), "hide");
           add_class(id("expense-wrap"), "hide");
-        } else if (users[usernameCheck] && users[passwordCheck]) {
-          var j;
+          add_event(id("admin-settings-form"), "submit", function (e) {
+            e.preventDefault();
 
+            if (admin[0].password != id("admin-old-password").value) {
+              alert("Old password wrong!");
+            } else if (id("admin-old-password").value == id("admin-confirm-new-password").value) {
+              alert("There have been no changes made for the password!");
+            } else if (id("admin-new-password").value != id("admin-confirm-new-password").value) {
+              alert("New password entries do not match!");
+            } else if (id("admin-confirm-new-password").value.length < 5) {
+              var passwordPrompt = prompt('Are you sure to have a weak password?\nType "Y" for yes and "N" for no.', "N"),
+                  passwordAnswer = passwordPrompt != null ? passwordPrompt.toLowerCase() : console.clear();
+
+              if (passwordAnswer == "y") {
+                admin[0].password = id("admin-confirm-new-password").value;
+                id("admin-settings-form").reset();
+                remove_class(id("admin-change-match-msg"), "fa-check");
+                remove_class(id("admin-change-match-msg"), "fa-times");
+                alert("Change password successful!");
+                localStorage.setItem("admin", JSON.stringify(admin));
+              } else {
+                return;
+              }
+            } else {
+              admin[0].password = id("admin-confirm-new-password").value;
+              id("admin-settings-form").reset();
+              remove_class(id("admin-change-match-msg"), "fa-check");
+              remove_class(id("admin-change-match-msg"), "fa-times");
+              alert("Change password successful!");
+              localStorage.setItem("admin", JSON.stringify(admin));
+            }
+
+            return false;
+          });
+        } else if (users[usernameCheck] && users[passwordCheck]) {
           for (i = 0; i < users.length; i++) {
             if (users[i].username == username && users[i].password == password) {
               // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
               setTimeout(function () {
                 toggle_class(id("modal"), "hide");
               }, 250);
+              add_class(id("settings-modal-inner"), "user");
+              add_class(id("admin-settings-form"), "hide");
+              add_class(id("user-settings-form"), "show");
               add_class(id("accounts-wrap"), "hide");
               add_class(id("add-newaccount-wrap"), "hide");
             }
@@ -167,6 +212,7 @@ doc_ready(function () {
 
           id("owner").innerHTML = "".concat(users[usernameCheck].firstName, " ").concat(users[usernameCheck].middleName, " ").concat(users[usernameCheck].lastName);
           id("owner-acc-num").innerHTML = num_space(users[usernameCheck].accountNumber);
+          id("owner-transaction").innerHTML = "";
 
           for (j = 0; j < users[usernameCheck].userTransactionHistory.length; j++) {
             var transactionLi = create_el("li"),
@@ -180,13 +226,104 @@ doc_ready(function () {
             transactionLi.innerHTML = users[usernameCheck].userTransactionHistory[j];
             id("owner-transaction").appendChild(transactionLi);
           }
+
+          add_event(id("change-email-form"), "submit", function (e) {
+            e.preventDefault();
+
+            if (users[usernameCheck].email == id("change-email").value) {
+              alert("There have been no changes made for the email!");
+            } else {
+              users[usernameCheck].email = id("change-email").value;
+              alert("Change email successful!");
+              localStorage.setItem("users", JSON.stringify(users));
+            }
+
+            id("change-email-form").reset();
+            return false;
+          });
+          add_event(id("change-username-form"), "submit", function (e) {
+            e.preventDefault();
+
+            if (id("change-username").value.length < 5) {
+              alert("Username cannot be less than 5 characters!");
+            } else if (users[usernameCheck].username == id("change-username").value) {
+              alert("There have been no changes made for the username!");
+            } else {
+              users[usernameCheck].username = id("change-username").value;
+              alert("Change username successful!");
+              localStorage.setItem("users", JSON.stringify(users));
+            }
+
+            id("change-username-form").reset();
+            return false;
+          });
+          add_event(id("change-password-form"), "submit", function (e) {
+            e.preventDefault();
+
+            if (users[usernameCheck].password != id("old-password").value) {
+              alert("Old password wrong!");
+            } else if (id("old-password").value == id("confirm-new-password").value) {
+              alert("There have been no changes made for the password!");
+            } else if (id("new-password").value != id("confirm-new-password").value) {
+              alert("New password entries do not match!");
+            } else if (id("confirm-new-password").value.length < 5) {
+              var passwordPrompt = prompt('Are you sure to have a weak password?\nType "Y" for yes and "N" for no.', "N"),
+                  passwordAnswer = passwordPrompt != null ? passwordPrompt.toLowerCase() : console.clear();
+
+              if (passwordAnswer == "y") {
+                users[usernameCheck].password = id("confirm-new-password").value;
+                id("change-password-form").reset();
+                remove_class(id("change-match-msg"), "fa-check");
+                remove_class(id("change-match-msg"), "fa-times");
+                alert("Change password successful!");
+                localStorage.setItem("users", JSON.stringify(users));
+              } else {
+                return;
+              }
+            } else {
+              users[usernameCheck].password = id("confirm-new-password").value;
+              id("change-password-form").reset();
+              remove_class(id("change-match-msg"), "fa-check");
+              remove_class(id("change-match-msg"), "fa-times");
+              alert("Change password successful!");
+              localStorage.setItem("users", JSON.stringify(users));
+            }
+
+            return false;
+          });
         } else {
           alert("User not found!");
+        }
+
+        setTimeout(function () {
+          id("login-form").reset();
+        }, 500);
+      }
+    }, {
+      key: "reprint_individual_history",
+      value: function reprint_individual_history(user) {
+        var users = FnHandler.userStorage();
+        var accountNumCheck = users.findIndex(function (index) {
+          return index.accountNumber == user;
+        });
+        id("owner-transaction").innerHTML = "";
+
+        for (i = 0; i < users[accountNumCheck].userTransactionHistory.length; i++) {
+          var transactionLi = create_el("li"),
+              noTransact = create_el("li");
+
+          if (users[accountNumCheck].userTransactionHistory.length == 1) {
+            noTransact.innerHTML = "No other transactions yet.";
+            id("owner-transaction").appendChild(noTransact);
+          }
+
+          transactionLi.innerHTML = users[accountNumCheck].userTransactionHistory[i];
+          id("owner-transaction").appendChild(transactionLi);
         }
       }
     }, {
       key: "signup_user",
-      value: function signup_user(firstName, middleName, lastName, gender, username, password, email, accountNumber) {
+      value: function signup_user(firstName, middleName, lastName, gender, username, password, confirmPassword, email, accountNumber) {
         var users = FnHandler.userStorage();
         /**
          * FINDING THE INDEX OF EXISTING USERS ARRAY ITEM WHEREIN ITS CORRESPONDING PROPERTY
@@ -217,14 +354,40 @@ doc_ready(function () {
 
         if (users[firstNameCheck] == null || users[firstNameCheck] == "" || users[middleNameCheck] == null || users[middleNameCheck] == "" || users[lastNameCheck] == null || users[lastNameCheck] == "" || users[accountNumberCheck].gender != gender || users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
           alert("User not found!");
+        } else if (username.length < 5) {
+          alert("Username cannot be less than 5 characters!");
+        } else if (password != confirmPassword) {
+          alert("Password entries do not match!");
+        } else if (confirmPassword.length < 5) {
+          var passwordPrompt = prompt('Are you sure to have a weak password?\nType "Y" for yes and "N" for no.', "N"),
+              passwordAnswer = passwordPrompt != null ? passwordPrompt.toLowerCase() : console.clear();
+
+          if (passwordAnswer == "y" && (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "")) {
+            toggle_class(id("login-wrap"), "hide");
+            toggle_class(id("signup-wrap"), "show");
+            users[accountNumberCheck].username = username;
+            users[accountNumberCheck].password = confirmPassword;
+            users[accountNumberCheck].email = email;
+            remove_class(id("match-msg"), "fa-check");
+            remove_class(id("match-msg"), "fa-times");
+            id("signup-form").reset();
+          } else {
+            return;
+          }
         } else if (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "") {
           toggle_class(id("login-wrap"), "hide");
           toggle_class(id("signup-wrap"), "show");
           users[accountNumberCheck].username = username;
-          users[accountNumberCheck].password = password;
+          users[accountNumberCheck].password = confirmPassword;
           users[accountNumberCheck].email = email;
+          remove_class(id("match-msg"), "fa-check");
+          remove_class(id("match-msg"), "fa-times");
+          id("signup-form").reset();
         } else {
+          remove_class(id("match-msg"), "fa-check");
+          remove_class(id("match-msg"), "fa-times");
           alert("You have already signed up!");
+          id("signup-form").reset();
         }
         /**
          * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
@@ -272,9 +435,9 @@ doc_ready(function () {
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
           var initialBal = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2); // TRANSACTION HISTORY FOR ADMIN
 
-          users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Withdrawn an amount of <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[userCheck].firstName, "</strong>'s account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>.")); // TRANSACTION HISTORY FOR USER
+          users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Withdrawal transaction amounting to <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[userCheck].firstName, "</strong>'s account has been successful. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>.")); // TRANSACTION HISTORY FOR USER
 
-          users[userCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You withdrawed an amount of <strong>\u20B1").concat(amount, "</strong> from your account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
+          users[userCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Withdrawal transaction amounting to <strong>\u20B1").concat(amount, "</strong> from your account has been successful. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
           alert("Withdrawal transaction has been successful!");
         }
 
@@ -296,8 +459,8 @@ doc_ready(function () {
           var gender = users[userCheck].gender == "male" ? "his" : "her";
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2);
           var initialBal = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
-          users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Deposited an amount of <strong>\u20B1").concat(amount, "</strong> into <strong>").concat(users[userCheck].firstName, "</strong>'s account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
-          users[userCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You deposited an amount of <strong>\u20B1").concat(amount, "</strong> into your account. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
+          users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Deposit transaction amounting to <strong>\u20B1").concat(amount, "</strong> into <strong>").concat(users[userCheck].firstName, "</strong>'s account has been successful. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
+          users[userCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Deposit transaction amounting to <strong>\u20B1").concat(amount, "</strong> into your account has been successful. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
           alert("Deposit transaction account has been successful!");
         }
 
@@ -331,20 +494,20 @@ doc_ready(function () {
               receiverGender = users[receiverCheck].gender == "male" ? "his" : "her";
           users[senderCheck].balance = parseFloat(parseFloat(users[senderCheck].balance) - parseFloat(amount)).toFixed(2);
           var senderInitialBal = parseFloat(parseFloat(users[senderCheck].balance) + parseFloat(amount)).toFixed(2);
-          users[senderCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Sent an amount of <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[senderCheck].firstName, "</strong>'s account into ").concat(users[receiverCheck].firstName, "'s account. From <strong>").concat(users[senderCheck].firstName, "</strong>'s previous account balance of <strong>\u20B1").concat(senderInitialBal, "</strong>, ").concat(senderGender, " remaining account balance is now <strong>\u20B1").concat(users[senderCheck].balance, "</strong>."));
-          users[senderCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You sent an amount of <strong>\u20B1").concat(amount, "</strong> from your account into ").concat(users[receiverCheck].firstName, "'s account. From a previous account balance of <strong>\u20B1").concat(senderInitialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[senderCheck].balance, "</strong>."));
+          users[senderCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Outcoming money transfer amounting to <strong>\u20B1").concat(amount, "</strong> from <strong>").concat(users[senderCheck].firstName, "</strong>'s account into ").concat(users[receiverCheck].firstName, "'s account has been successful. From <strong>").concat(users[senderCheck].firstName, "</strong>'s previous account balance of <strong>\u20B1").concat(senderInitialBal, "</strong>, ").concat(senderGender, " remaining account balance is now <strong>\u20B1").concat(users[senderCheck].balance, "</strong>."));
+          users[senderCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Outcoming money transfer amounting to <strong>\u20B1").concat(amount, "</strong> from your account into ").concat(users[receiverCheck].firstName, "'s account has been successful. From a previous account balance of <strong>\u20B1").concat(senderInitialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[senderCheck].balance, "</strong>."));
           users[receiverCheck].balance = parseFloat(parseFloat(users[receiverCheck].balance) + parseFloat(amount)).toFixed(2);
           var receiverInitialBal = parseFloat(parseFloat(users[receiverCheck].balance) - parseFloat(amount)).toFixed(2);
-          users[receiverCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Received an amount of <strong>\u20B1").concat(amount, "</strong> from ").concat(users[senderCheck].firstName, "'s account into <strong>").concat(users[receiverCheck].firstName, "</strong>'s account. From <strong>").concat(users[receiverCheck].firstName, "</strong>'s previous account balance of <strong>\u20B1").concat(receiverInitialBal, "</strong>, ").concat(receiverGender, " account balance is now <strong>\u20B1").concat(users[receiverCheck].balance, "</strong>."));
-          users[receiverCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You received an amount of <strong>\u20B1").concat(amount, "</strong> from ").concat(users[senderCheck].firstName, "'s account into your account. From a previous account balance of <strong>\u20B1").concat(receiverInitialBal, "</strong>, your account balance is now <strong>\u20B1").concat(users[receiverCheck].balance, "</strong>."));
-          alert("Money transfer transaction has been successful!");
+          users[receiverCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Incoming money transfer amounting to <strong>\u20B1").concat(amount, "</strong> from ").concat(users[senderCheck].firstName, "'s account into <strong>").concat(users[receiverCheck].firstName, "</strong>'s account has been successful. From <strong>").concat(users[receiverCheck].firstName, "</strong>'s previous account balance of <strong>\u20B1").concat(receiverInitialBal, "</strong>, ").concat(receiverGender, " account balance is now <strong>\u20B1").concat(users[receiverCheck].balance, "</strong>."));
+          users[receiverCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Incoming money transfer amounting to <strong>\u20B1").concat(amount, "</strong> from ").concat(users[senderCheck].firstName, "'s account into your account has been successful. From a previous account balance of <strong>\u20B1").concat(receiverInitialBal, "</strong>, your account balance is now <strong>\u20B1").concat(users[receiverCheck].balance, "</strong>."));
+          alert("Money transfer has been successful!");
         }
 
         localStorage.setItem("users", JSON.stringify(users));
       }
     }, {
       key: "get_balance",
-      value: function get_balance(user, parent) {
+      value: function get_balance(user, parentEl) {
         var users = FnHandler.userStorage();
         var userCheck = users.findIndex(function (index) {
           return index.accountNumber == user;
@@ -358,7 +521,7 @@ doc_ready(function () {
 
         if (users[userCheck]) {
           balanceTd.innerHTML = "\u20B1".concat(num_commas(users[userCheck].balance));
-          parent.appendChild(balanceTd);
+          parentEl.appendChild(balanceTd);
         }
       }
     }, {
@@ -369,8 +532,7 @@ doc_ready(function () {
         id("acc-table").innerHTML = ""; // ITERATION STARTS AT ONE TO PREVENT THE FIRST ARRAY ITEM TO DISPLAY WHICH IS FOR THE ADMIN
 
         var _loop = function _loop() {
-          var j = void 0,
-              tableRow = create_el("tr"),
+          var tableRow = create_el("tr"),
               accNumTd = create_el("td"),
               accTd = create_el("td"),
               accTdSpan = create_el("span"),
@@ -381,19 +543,8 @@ doc_ready(function () {
               historyUl = create_el("ul"),
               noTransact = create_el("li");
           accNumTd.innerHTML = num_space(users[i].accountNumber);
-          tableRow.appendChild(accNumTd); // ONE CLICK COPY FUNCTION OF A STRING OR TEXT
-
-          add_event(accNumTd, "click", function () {
-            document.execCommand("copy");
-          }); // SETS OR PASSES THE TEXT COPIED INTO THE CLIPBOARD FOR PASTING
-
-          add_event(accNumTd, "copy", function (e) {
-            e.preventDefault();
-
-            if (e.clipboardData) {
-              e.clipboardData.setData("text/plain", accNumTd.textContent);
-            }
-          });
+          tableRow.appendChild(accNumTd);
+          FnHandler.click_copy(accNumTd);
           accTdSpan.innerHTML = "".concat(users[i].firstName, " ").concat(users[i].middleName, " ").concat(users[i].lastName);
           add_class(historyModalClose, "far");
           add_class(historyModalClose, "fa-times-circle");
@@ -542,29 +693,29 @@ doc_ready(function () {
       }
     }, {
       key: "password_match",
-      value: function password_match() {
-        add_event(id("signup-password"), "keyup", function () {
-          if (this.value == id("signup-confirm-password").value && this.value.length != 0) {
-            remove_class(id("match-msg"), "fa-times");
-            add_class(id("match-msg"), "fa-check");
-          } else if (this.value != id("signup-confirm-password").value && id("signup-confirm-password").value.length >= 1) {
-            remove_class(id("match-msg"), "fa-check");
-            add_class(id("match-msg"), "fa-times");
+      value: function password_match(password, confirmPassword, message) {
+        add_event(password, "keyup", function () {
+          if (this.value == confirmPassword.value && this.value.length != 0) {
+            remove_class(message, "fa-times");
+            add_class(message, "fa-check");
+          } else if (this.value != confirmPassword.value && confirmPassword.value.length >= 1) {
+            remove_class(message, "fa-check");
+            add_class(message, "fa-times");
           } else if (this.value.length == 0) {
-            remove_class(id("match-msg"), "fa-check");
-            remove_class(id("match-msg"), "fa-times");
+            remove_class(message, "fa-check");
+            remove_class(message, "fa-times");
           }
         });
-        add_event(id("signup-confirm-password"), "keyup", function () {
-          if (this.value == id("signup-password").value && this.value.length != 0) {
-            remove_class(id("match-msg"), "fa-times");
-            add_class(id("match-msg"), "fa-check");
-          } else if (this.value != id("signup-password").value && id("signup-password").value.length >= 1) {
-            remove_class(id("match-msg"), "fa-check");
-            add_class(id("match-msg"), "fa-times");
+        add_event(confirmPassword, "keyup", function () {
+          if (this.value == password.value && this.value.length != 0) {
+            remove_class(message, "fa-times");
+            add_class(message, "fa-check");
+          } else if (this.value != password.value && password.value.length >= 1) {
+            remove_class(message, "fa-check");
+            add_class(message, "fa-times");
           } else if (this.value.length == 0) {
-            remove_class(id("match-msg"), "fa-check");
-            remove_class(id("match-msg"), "fa-times");
+            remove_class(message, "fa-check");
+            remove_class(message, "fa-times");
           }
         });
       } // FOR RESETTING ALL FORMS AT ONCE
@@ -588,7 +739,9 @@ doc_ready(function () {
   FnHandler.num_only();
   FnHandler.type_comma();
   FnHandler.dec_addZero();
-  FnHandler.password_match();
+  FnHandler.click_copy(id("owner-acc-num"));
+  FnHandler.password_match(id("signup-password"), id("signup-confirm-password"), id("match-msg"));
+  FnHandler.password_match(id("new-password"), id("confirm-new-password"), id("change-match-msg"));
 
   var create_admin = function create_admin(username, password, adminId) {
     var admin = FnHandler.adminStorage();
@@ -758,6 +911,9 @@ doc_ready(function () {
       remove_class(id("expense-wrap"), "hide");
       remove_class(id("add-newaccount-wrap"), "hide");
     }, 500);
+    remove_class(id("settings-modal-inner"), "user");
+    remove_class(id("admin-settings-form"), "hide");
+    remove_class(id("user-settings-form"), "show");
     FnHandler.reset();
     return false;
   });
@@ -767,17 +923,8 @@ doc_ready(function () {
   });
   add_event(id("signup-form"), "submit", function (e) {
     e.preventDefault();
-
-    if (id("signup-password").value != id("signup-confirm-password").value) {
-      return;
-    } else {
-      var gender = id("signup-male").checked ? "male" : "female";
-      FnHandler.signup_user(id("signup-first-name").value.toUpperCase(), id("signup-middle-name").value.toUpperCase(), id("signup-last-name").value.toUpperCase(), gender, id("signup-username").value, id("signup-password").value, id("signup-email").value, id("signup-account-num").value.split(" ").join(""));
-      id("signup-form").reset();
-    }
-
-    remove_class(id("match-msg"), "fa-check");
-    remove_class(id("match-msg"), "fa-times");
+    var gender = id("signup-male").checked ? "male" : "female";
+    FnHandler.signup_user(id("signup-first-name").value.toUpperCase(), id("signup-middle-name").value.toUpperCase(), id("signup-last-name").value.toUpperCase(), gender, id("signup-username").value, id("signup-password").value, id("signup-confirm-password").value, id("signup-email").value, id("signup-account-num").value.split(" ").join(""));
     return false;
   });
   add_event(id("back-signup-btn"), "click", function () {
@@ -793,6 +940,15 @@ doc_ready(function () {
   add_event(id("close-owner-transaction-btn"), "click", function () {
     remove_class(id("owner-transaction-modal"), "show");
   });
+  add_event(id("settings-btn"), "click", function () {
+    add_class(id("settings-modal"), "show");
+  });
+  add_event(id("close-settings-btn"), "click", function () {
+    remove_class(id("settings-modal"), "show");
+    remove_class(id("change-match-msg"), "fa-check");
+    remove_class(id("change-match-msg"), "fa-times");
+    FnHandler.reset();
+  });
   add_event(id("withdraw-form"), "submit", function (e) {
     e.preventDefault();
     var withdraw_amount = "".concat(id("withdraw-amount").value.split(",").join(""), ".").concat(id("withdraw-amount-dec").value);
@@ -803,6 +959,7 @@ doc_ready(function () {
 
     FnHandler.withdraw(inner(id("withdraw-account").value.split(" ").join("")), withdraw_amount);
     FnHandler.list_users();
+    FnHandler.reprint_individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("withdraw-form").reset();
     return false;
   });
@@ -811,6 +968,7 @@ doc_ready(function () {
     var deposit_amount = "".concat(id("deposit-amount").value.split(",").join(""), ".").concat(id("deposit-amount-dec").value);
     FnHandler.deposit(inner(id("deposit-account").value.split(" ").join("")), deposit_amount);
     FnHandler.list_users();
+    FnHandler.reprint_individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("deposit-form").reset();
     return false;
   });
@@ -819,6 +977,7 @@ doc_ready(function () {
     var send_amount = "".concat(id("send-amount").value.split(",").join(""), ".").concat(id("send-amount-dec").value);
     FnHandler.send(inner(id("sender-account").value.split(" ").join("")), inner(id("receiver-account").value.split(" ").join("")), send_amount);
     FnHandler.list_users();
+    FnHandler.reprint_individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("send-form").reset();
     return false;
   });
