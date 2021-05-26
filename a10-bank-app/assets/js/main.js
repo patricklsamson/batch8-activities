@@ -16,6 +16,7 @@ doc_ready(() => {
       username,
       password,
       email,
+      signedUp,
       firstName,
       middleName,
       lastName,
@@ -33,6 +34,7 @@ doc_ready(() => {
       this.accountNumber = accountNumber;
       this.accountType = accountType;
       this.balance = balance;
+      this.signedUp = signedUp;
       this.transactionHistory = [];
       this.userTransactionHistory = [];
       this.expenseItems = [];
@@ -360,88 +362,93 @@ doc_ready(() => {
         passwordCheck = users.findIndex((index) => index.password == password),
         emailCheck = users.findIndex((userIndex) => userIndex.email == email);
 
-      for (i = 0; i < users.length; i++) {
-        if (users[i].username == username) {
-          alert("Username already used!");
-          return;
+      if (users[accountNumberCheck].signedUp == false) {
+        for (i = 0; i < users.length; i++) {
+          if (users[i].username == username) {
+            alert("Username already used!");
+            return;
+          }
         }
-      }
-
-      // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
-      if (
-        users[firstNameCheck] == null ||
-        users[firstNameCheck] == "" ||
-        users[middleNameCheck] == null ||
-        users[middleNameCheck] == "" ||
-        users[lastNameCheck] == null ||
-        users[lastNameCheck] == "" ||
-        users[accountNumberCheck].gender != gender ||
-        users[accountNumberCheck] == null ||
-        users[accountNumberCheck] == ""
-      ) {
-        alert("User not found!");
-      } else if (username.length < 5) {
-        alert("Username cannot be less than 5 characters!");
-      } else if (password != confirmPassword) {
-        alert("Password entries do not match!");
-      } else if (confirmPassword.length < 5) {
-        let passwordPrompt = prompt(
-            'Are you sure to have a weak password?\nType "Y" for yes and "N" for no.',
-            "N"
-          ),
-          passwordAnswer =
-            passwordPrompt != null
-              ? passwordPrompt.toLowerCase()
-              : console.clear();
 
         if (
-          passwordAnswer == "y" &&
-          (users[usernameCheck] == null ||
-            users[usernameCheck] == "" ||
-            users[passwordCheck] == null ||
-            users[passwordCheck] == "" ||
-            users[emailCheck] == null ||
-            users[emailCheck] == "")
+          users[firstNameCheck] == null ||
+          users[firstNameCheck] == "" ||
+          users[middleNameCheck] == null ||
+          users[middleNameCheck] == "" ||
+          users[lastNameCheck] == null ||
+          users[lastNameCheck] == "" ||
+          users[accountNumberCheck].gender != gender ||
+          users[accountNumberCheck] == null ||
+          users[accountNumberCheck] == ""
+        ) {
+          alert("User not found!");
+        } else if (username.length < 5) {
+          alert("Username cannot be less than 5 characters!");
+        } else if (password != confirmPassword) {
+          alert("Password entries do not match!");
+        } else if (confirmPassword.length < 5) {
+          let passwordPrompt = prompt(
+              'Are you sure to have a weak password?\nType "Y" for yes and "N" for no.',
+              "N"
+            ),
+            passwordAnswer =
+              passwordPrompt != null
+                ? passwordPrompt.toLowerCase()
+                : console.clear();
+
+          if (
+            passwordAnswer == "y" &&
+            (users[usernameCheck] == null ||
+              users[usernameCheck] == "" ||
+              users[passwordCheck] == null ||
+              users[passwordCheck] == "" ||
+              users[emailCheck] == null ||
+              users[emailCheck] == "")
+          ) {
+            toggle_class(id("login-wrap"), "hide");
+            toggle_class(id("signup-wrap"), "show");
+            users[accountNumberCheck].username = username;
+            users[accountNumberCheck].password = confirmPassword;
+            users[accountNumberCheck].email = email;
+            users[accountNumberCheck].signedUp = true;
+            alert("You have successfuly signed up!");
+            remove_class(id("match-msg"), "fa-check");
+            remove_class(id("match-msg"), "fa-times");
+            id("signup-form").reset();
+          } else {
+            return;
+          }
+        } else if (
+          users[usernameCheck] == null ||
+          users[usernameCheck] == "" ||
+          users[passwordCheck] == null ||
+          users[passwordCheck] == "" ||
+          users[emailCheck] == null ||
+          users[emailCheck] == ""
         ) {
           toggle_class(id("login-wrap"), "hide");
           toggle_class(id("signup-wrap"), "show");
           users[accountNumberCheck].username = username;
           users[accountNumberCheck].password = confirmPassword;
           users[accountNumberCheck].email = email;
+          users[accountNumberCheck].signedUp = true;
+          alert("You have successfuly signed up!");
           remove_class(id("match-msg"), "fa-check");
           remove_class(id("match-msg"), "fa-times");
           id("signup-form").reset();
-        } else {
-          return;
         }
-      } else if (
-        users[usernameCheck] == null ||
-        users[usernameCheck] == "" ||
-        users[passwordCheck] == null ||
-        users[passwordCheck] == "" ||
-        users[emailCheck] == null ||
-        users[emailCheck] == ""
-      ) {
-        toggle_class(id("login-wrap"), "hide");
-        toggle_class(id("signup-wrap"), "show");
-        users[accountNumberCheck].username = username;
-        users[accountNumberCheck].password = confirmPassword;
-        users[accountNumberCheck].email = email;
-        remove_class(id("match-msg"), "fa-check");
-        remove_class(id("match-msg"), "fa-times");
-        id("signup-form").reset();
+
+        /**
+         * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
+         * BY OVERRIDING AND SETTING IT AGAIN, AND ALSO STRINGIFY IT AGAIN TOO
+         */
+        localStorage.setItem("users", JSON.stringify(users));
       } else {
         remove_class(id("match-msg"), "fa-check");
         remove_class(id("match-msg"), "fa-times");
         alert("You have already signed up!");
         id("signup-form").reset();
       }
-
-      /**
-       * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
-       * BY OVERRIDING AND SETTING IT AGAIN, AND ALSO STRINGIFY IT AGAIN TOO
-       */
-      localStorage.setItem("users", JSON.stringify(users));
     }
 
     static time_stamp() {
@@ -950,6 +957,7 @@ doc_ready(() => {
     username,
     password,
     email,
+    signedUp,
     firstName,
     middleName,
     lastName,
@@ -974,6 +982,7 @@ doc_ready(() => {
         username,
         password,
         email,
+        signedUp,
         firstName,
         middleName,
         lastName,
@@ -1031,6 +1040,7 @@ doc_ready(() => {
           "juandelacruz",
           "juanjuan",
           "juandelacruz@mail.com",
+          true,
           "JUAN",
           "",
           "DELA CRUZ",
@@ -1049,6 +1059,7 @@ doc_ready(() => {
         "",
         "",
         "",
+        false,
         "JANE",
         "HILLS",
         "DOE",
@@ -1115,6 +1126,7 @@ doc_ready(() => {
       "",
       "",
       "",
+      false,
       inner(id("add-first-name").value.toUpperCase()),
       inner(id("add-middle-name").value.toUpperCase()),
       inner(id("add-last-name").value.toUpperCase()),
