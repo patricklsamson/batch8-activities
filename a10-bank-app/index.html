@@ -375,31 +375,37 @@
             <div id="expense-wrap">
               <h6>Expense Items</h6>
 
-              <table>
-                <thead>
-                  <tr>
-                    <th>Name of Items</th>
-                    <th>Cost</th>
-                    <th>
-                      <i
-                        role="button"
-                        id="clear-items-btn"
-                        class="fas fa-trash-alt"
-                      ></i>
-                    </th>
-                  </tr>
-                </thead>
+              <div class="grid">
+                <div class="gcol-6">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Name of Items</th>
+                        <th>Cost</th>
+                        <th>
+                          <i
+                            role="button"
+                            id="clear-items-btn"
+                            class="fas fa-trash-alt"
+                          ></i>
+                        </th>
+                      </tr>
+                    </thead>
 
-                <tbody class="talign">
-                  <tr>
-                    <td colspan="3">
-                      <div class="wrap-expense-table wrap-scroll">
-                        <table id="expense-table"></table>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                    <tbody class="talign">
+                      <tr>
+                        <td colspan="3">
+                          <div class="wrap-expense-table wrap-scroll">
+                            <table id="expense-table"></table>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="gcol-6"></div>
+              </div>
             </div>
           </div>
 
@@ -488,7 +494,42 @@
                 <span id="owner"></span> : <span id="owner-acc-num"></span>
               </p>
 
-              <h6>Connections</h6>
+              <h6 class="mt-025 mb-025">
+                Connections
+                <i id="add-connections-btn" class="fas fa-user-plus"></i>
+              </h6>
+
+              <form
+                action="#"
+                autocomplete="off"
+                id="connections-form"
+                class="mb-05"
+              >
+                <input
+                  type="text"
+                  placeholder="Name of Connection"
+                  autocomplete="off"
+                  id="connections-name"
+                />
+
+                <input
+                  type="text"
+                  placeholder="Account Number"
+                  autocomplete="off"
+                  id="connections-account-num"
+                />
+
+                <input
+                  type="submit"
+                  value="+"
+                  id="connections-btn"
+                  class="btn-bank minor"
+                />
+              </form>
+
+              <div class="wrap-connections-table wrap-scroll">
+                <table id="connections-table"></table>
+              </div>
             </div>
           </div>
 
