@@ -3,10 +3,7 @@ form {
   margin: 0 auto;
 }
 
-#admin-settings-form.hide {
-  display: none;
-}
-
+#admin-settings-form.hide,
 #user-settings-form {
   display: none;
 }
@@ -25,6 +22,29 @@ i[id*="-msg"].fa-check {
 
 i[id*="-msg"].fa-times {
   color: red;
+}
+
+#connections-form {
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#connections-form.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+#connections-name {
+  width: 40%;
+}
+
+#connections-account-num {
+  width: 52%;
 }
 
 [id*="-amount"] {
