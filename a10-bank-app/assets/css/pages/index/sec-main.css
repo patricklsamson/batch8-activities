@@ -36,7 +36,8 @@ main .wrap-accounts {
   );
 }
 
-main .wrap-acc-table {
+main .wrap-acc-table,
+main .wrap-expense-table {
   height: 340px;
 }
 
@@ -52,8 +53,8 @@ main .wrap-acc-table {
 #acc-table td span:hover,
 #owner-transaction-btn:hover,
 #owner:hover,
-#owner-acc-num:hover,
-#add-connections-btn:hover {
+#add-connections-btn:hover,
+#connections-table td:nth-child(2):hover {
   color: #67b2b2;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -68,7 +69,6 @@ main .wrap-acc-table {
 }
 
 main #accounts-wrap table {
-  table-layout: auto;
   width: 100%;
 }
 
@@ -120,12 +120,12 @@ main #accounts-wrap table td[colspan="5"] {
 }
 
 #acc-table td:first-child,
-#owner-acc-num {
+#connections-table td:nth-child(2) {
   cursor: grab;
 }
 
 #acc-table td:first-child:active,
-#owner-acc-num:active {
+#connections-table td:nth-child(2):active {
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
@@ -163,6 +163,19 @@ main .wrap-add-account {
 
 main .wrap-connections-table {
   height: 292px;
+}
+
+#connections-table td:nth-child(2) {
+  width: 30%;
+}
+
+#connections-table td:nth-child(3) {
+  width: 15%;
+  text-align: center;
+}
+
+#connections-table td:nth-child(4) {
+  width: 5%;
 }
 
 main .wrap-withdraw {
