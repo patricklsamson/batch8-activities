@@ -35,7 +35,7 @@ doc_ready(function () {
   function (_Admin) {
     _inherits(User, _Admin);
 
-    function User(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
+    function User(username, password, email, signedUp, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
       var _this;
 
       _classCallCheck(this, User);
@@ -49,6 +49,7 @@ doc_ready(function () {
       _this.accountNumber = accountNumber;
       _this.accountType = accountType;
       _this.balance = balance;
+      _this.signedUp = signedUp;
       _this.transactionHistory = [];
       _this.userTransactionHistory = [];
       _this.expenseItems = [];
@@ -345,58 +346,63 @@ doc_ready(function () {
           return userIndex.email == email;
         });
 
-        for (i = 0; i < users.length; i++) {
-          if (users[i].username == username) {
-            alert("Username already used!");
-            return;
+        if (users[accountNumberCheck].signedUp == false) {
+          for (i = 0; i < users.length; i++) {
+            if (users[i].username == username) {
+              alert("Username already used!");
+              return;
+            }
           }
-        } // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
 
+          if (users[firstNameCheck] == null || users[firstNameCheck] == "" || users[middleNameCheck] == null || users[middleNameCheck] == "" || users[lastNameCheck] == null || users[lastNameCheck] == "" || users[accountNumberCheck].gender != gender || users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
+            alert("User not found!");
+          } else if (username.length < 5) {
+            alert("Username cannot be less than 5 characters!");
+          } else if (password != confirmPassword) {
+            alert("Password entries do not match!");
+          } else if (confirmPassword.length < 5) {
+            var passwordPrompt = prompt('Are you sure to have a weak password?\nType "Y" for yes and "N" for no.', "N"),
+                passwordAnswer = passwordPrompt != null ? passwordPrompt.toLowerCase() : console.clear();
 
-        if (users[firstNameCheck] == null || users[firstNameCheck] == "" || users[middleNameCheck] == null || users[middleNameCheck] == "" || users[lastNameCheck] == null || users[lastNameCheck] == "" || users[accountNumberCheck].gender != gender || users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
-          alert("User not found!");
-        } else if (username.length < 5) {
-          alert("Username cannot be less than 5 characters!");
-        } else if (password != confirmPassword) {
-          alert("Password entries do not match!");
-        } else if (confirmPassword.length < 5) {
-          var passwordPrompt = prompt('Are you sure to have a weak password?\nType "Y" for yes and "N" for no.', "N"),
-              passwordAnswer = passwordPrompt != null ? passwordPrompt.toLowerCase() : console.clear();
-
-          if (passwordAnswer == "y" && (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "")) {
+            if (passwordAnswer == "y" && (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "")) {
+              toggle_class(id("login-wrap"), "hide");
+              toggle_class(id("signup-wrap"), "show");
+              users[accountNumberCheck].username = username;
+              users[accountNumberCheck].password = confirmPassword;
+              users[accountNumberCheck].email = email;
+              users[accountNumberCheck].signedUp = true;
+              alert("You have successfuly signed up!");
+              remove_class(id("match-msg"), "fa-check");
+              remove_class(id("match-msg"), "fa-times");
+              id("signup-form").reset();
+            } else {
+              return;
+            }
+          } else if (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "") {
             toggle_class(id("login-wrap"), "hide");
             toggle_class(id("signup-wrap"), "show");
             users[accountNumberCheck].username = username;
             users[accountNumberCheck].password = confirmPassword;
             users[accountNumberCheck].email = email;
+            users[accountNumberCheck].signedUp = true;
+            alert("You have successfuly signed up!");
             remove_class(id("match-msg"), "fa-check");
             remove_class(id("match-msg"), "fa-times");
             id("signup-form").reset();
-          } else {
-            return;
           }
-        } else if (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "") {
-          toggle_class(id("login-wrap"), "hide");
-          toggle_class(id("signup-wrap"), "show");
-          users[accountNumberCheck].username = username;
-          users[accountNumberCheck].password = confirmPassword;
-          users[accountNumberCheck].email = email;
-          remove_class(id("match-msg"), "fa-check");
-          remove_class(id("match-msg"), "fa-times");
-          id("signup-form").reset();
+          /**
+           * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
+           * BY OVERRIDING AND SETTING IT AGAIN, AND ALSO STRINGIFY IT AGAIN TOO
+           */
+
+
+          localStorage.setItem("users", JSON.stringify(users));
         } else {
           remove_class(id("match-msg"), "fa-check");
           remove_class(id("match-msg"), "fa-times");
           alert("You have already signed up!");
           id("signup-form").reset();
         }
-        /**
-         * THIS IS REPEATED TO UPDATE THE USERS KEY INSIDE THE LOCAL STORAGE
-         * BY OVERRIDING AND SETTING IT AGAIN, AND ALSO STRINGIFY IT AGAIN TOO
-         */
-
-
-        localStorage.setItem("users", JSON.stringify(users));
       }
     }, {
       key: "time_stamp",
@@ -765,7 +771,7 @@ doc_ready(function () {
    * INTO THE CLASS "FnHandler" TO PUSH EVERY NEW USER CREATED INTO THE LOCAL STORAGE
    */
 
-  var create_user = function create_user(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
+  var create_user = function create_user(username, password, email, signedUp, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
     var users = FnHandler.userStorage();
     var fNameCheck = users.findIndex(function (index) {
       return index.firstName == firstName;
@@ -781,7 +787,7 @@ doc_ready(function () {
     if (users[fNameCheck] && users[lNameCheck]) {
       alert("User already exists!");
     } else {
-      var newUserAccount = new User(username, password, email, firstName, middleName, lastName, gender, accountNumber, accountType, balance); // FIRST LOG INSIDE THE TRANSACTION HISTORY INDICATING WHEN THE ACCOUNT WAS CREATED OR OPENED
+      var newUserAccount = new User(username, password, email, signedUp, firstName, middleName, lastName, gender, accountNumber, accountType, balance); // FIRST LOG INSIDE THE TRANSACTION HISTORY INDICATING WHEN THE ACCOUNT WAS CREATED OR OPENED
 
       newUserAccount.transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Opened a ").concat(newUserAccount.accountType.toLowerCase(), " account for <strong>").concat(newUserAccount.firstName, "</strong> ").concat(newUserAccount.middleName, " ").concat(newUserAccount.lastName, " with an initial account balance of <strong>\u20B1").concat(newUserAccount.balance, "</strong>."));
       newUserAccount.userTransactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : You have opened a ").concat(newUserAccount.accountType.toLowerCase(), " account with an initial account balance of <strong>\u20B1").concat(newUserAccount.balance, "</strong>."));
@@ -814,13 +820,13 @@ doc_ready(function () {
         return;
       } else {
         // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
-        create_user("juandelacruz", "juanjuan", "juandelacruz@mail.com", "JUAN", "", "DELA CRUZ", "male", "071096025466", "Savings", balance.toFixed(2));
+        create_user("juandelacruz", "juanjuan", "juandelacruz@mail.com", true, "JUAN", "", "DELA CRUZ", "male", "071096025466", "Savings", balance.toFixed(2));
       }
     }
 
     if (!users[janeCheck] && !users[doeCheck]) {
       var _balance = 5200;
-      create_user("", "", "", "JANE", "HILLS", "DOE", "female", "023451282250", "Checking", _balance.toFixed(2));
+      create_user("", "", "", false, "JANE", "HILLS", "DOE", "female", "023451282250", "Checking", _balance.toFixed(2));
     } // THIS FUNCTION IS CALLED AGAIN TO REFRESH THE LIST IN THE UI
 
 
@@ -862,7 +868,7 @@ doc_ready(function () {
     //    ? `0${parseFloat(id("add-deposit-amount-dec").value)}`
     //    : id("add-deposit-amount-dec").value,
 
-    create_user("", "", "", inner(id("add-first-name").value.toUpperCase()), inner(id("add-middle-name").value.toUpperCase()), inner(id("add-last-name").value.toUpperCase()), gender, acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000), account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
+    create_user("", "", "", false, inner(id("add-first-name").value.toUpperCase()), inner(id("add-middle-name").value.toUpperCase()), inner(id("add-last-name").value.toUpperCase()), gender, acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000), account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
     FnHandler.list_users();
     alert("".concat(id("add-first-name").value.toUpperCase(), "'s account have been successfully created!"));
     id("add-form").reset();
