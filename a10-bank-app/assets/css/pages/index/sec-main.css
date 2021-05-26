@@ -50,13 +50,21 @@ main .wrap-acc-table {
 #load-data-btn:hover,
 #acc-table td:first-child:hover,
 #acc-table td span:hover,
+#owner-transaction-btn:hover,
+#owner:hover,
 #owner-acc-num:hover,
-#owner-transaction-btn:hover {
+#add-connections-btn:hover {
   color: #67b2b2;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
   transition: 0.5s;
+}
+
+#owner,
+#acc-table td span,
+#acc-table td i {
+  cursor: pointer;
 }
 
 main #accounts-wrap table {
@@ -123,11 +131,6 @@ main #accounts-wrap table td[colspan="5"] {
   cursor: grabbing;
 }
 
-#acc-table td span,
-#acc-table td i {
-  cursor: pointer;
-}
-
 main .wrap-add-account {
   background-image: -webkit-gradient(
     linear,
@@ -156,6 +159,10 @@ main .wrap-add-account {
     rgba(248, 249, 250, 0.3) 60%,
     rgba(103, 178, 178, 0.3)
   );
+}
+
+main .wrap-connections-table {
+  height: 292px;
 }
 
 main .wrap-withdraw {
