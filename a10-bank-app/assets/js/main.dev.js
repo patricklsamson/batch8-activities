@@ -263,7 +263,7 @@ doc_ready(function () {
             if (id("change-username").value.length < 5) {
               alert("Username cannot be less than 5 characters!");
             } else if (users[usernameCheck].username == id("change-username").value) {
-              alert("There have been no changes made for the username!");
+              alert("Username already used!");
             } else {
               users[usernameCheck].username = id("change-username").value;
               alert("Change username successful!");
