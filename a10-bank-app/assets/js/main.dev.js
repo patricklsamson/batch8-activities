@@ -145,6 +145,29 @@ doc_ready(function () {
         });
       }
     }, {
+      key: "individual_history",
+      value: function individual_history(user) {
+        var users = FnHandler.userStorage();
+        var accountNumCheck = users.findIndex(function (index) {
+          return index.accountNumber == user;
+        });
+        id("owner-transaction").innerHTML = "";
+
+        for (i = 0; i < users[accountNumCheck].userTransactionHistory.length; i++) {
+          var transactionLi = create_el("li"),
+              noTransact = create_el("li");
+
+          if (users[accountNumCheck].userTransactionHistory.length == 1) {
+            noTransact.innerHTML = "No other transactions yet.";
+            id("owner-transaction").appendChild(noTransact);
+          }
+
+          transactionLi.innerHTML = users[accountNumCheck].userTransactionHistory[i];
+          add_class(transactionLi, "mb-05");
+          id("owner-transaction").appendChild(transactionLi);
+        }
+      }
+    }, {
       key: "login_user",
       value: function login_user(username, password) {
         var admin = FnHandler.adminStorage(),
@@ -211,21 +234,7 @@ doc_ready(function () {
 
           id("owner").innerHTML = "".concat(users[usernameCheck].firstName, " ").concat(users[usernameCheck].middleName, " ").concat(users[usernameCheck].lastName);
           id("owner-acc-num").innerHTML = num_space(users[usernameCheck].accountNumber);
-          id("owner-transaction").innerHTML = "";
-
-          for (j = 0; j < users[usernameCheck].userTransactionHistory.length; j++) {
-            var transactionLi = create_el("li"),
-                noTransact = create_el("li");
-
-            if (users[usernameCheck].userTransactionHistory.length == 1) {
-              noTransact.innerHTML = "No other transactions yet.";
-              id("owner-transaction").appendChild(noTransact);
-            }
-
-            transactionLi.innerHTML = users[usernameCheck].userTransactionHistory[j];
-            id("owner-transaction").appendChild(transactionLi);
-          }
-
+          FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
           add_event(id("change-email-form"), "submit", function (e) {
             e.preventDefault();
 
@@ -242,6 +251,13 @@ doc_ready(function () {
           });
           add_event(id("change-username-form"), "submit", function (e) {
             e.preventDefault();
+
+            for (i = 0; i < users.length; i++) {
+              if (users[i].username == username) {
+                alert("Username already used!");
+                return;
+              }
+            }
 
             if (id("change-username").value.length < 5) {
               alert("Username cannot be less than 5 characters!");
@@ -299,28 +315,6 @@ doc_ready(function () {
         }, 500);
       }
     }, {
-      key: "reprint_individual_history",
-      value: function reprint_individual_history(user) {
-        var users = FnHandler.userStorage();
-        var accountNumCheck = users.findIndex(function (index) {
-          return index.accountNumber == user;
-        });
-        id("owner-transaction").innerHTML = "";
-
-        for (i = 0; i < users[accountNumCheck].userTransactionHistory.length; i++) {
-          var transactionLi = create_el("li"),
-              noTransact = create_el("li");
-
-          if (users[accountNumCheck].userTransactionHistory.length == 1) {
-            noTransact.innerHTML = "No other transactions yet.";
-            id("owner-transaction").appendChild(noTransact);
-          }
-
-          transactionLi.innerHTML = users[accountNumCheck].userTransactionHistory[i];
-          id("owner-transaction").appendChild(transactionLi);
-        }
-      }
-    }, {
       key: "signup_user",
       value: function signup_user(firstName, middleName, lastName, gender, username, password, confirmPassword, email, accountNumber) {
         var users = FnHandler.userStorage();
@@ -349,7 +343,15 @@ doc_ready(function () {
         }),
             emailCheck = users.findIndex(function (userIndex) {
           return userIndex.email == email;
-        }); // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
+        });
+
+        for (i = 0; i < users.length; i++) {
+          if (users[i].username == username) {
+            alert("Username already used!");
+            return;
+          }
+        } // IF USERNAME PASSWORD AND EMAIL ARE STILL NULL OR EMPTY, THE SIGNING UP WILL CONTINUE, OTHERWISE NOT
+
 
         if (users[firstNameCheck] == null || users[firstNameCheck] == "" || users[middleNameCheck] == null || users[middleNameCheck] == "" || users[lastNameCheck] == null || users[lastNameCheck] == "" || users[accountNumberCheck].gender != gender || users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
           alert("User not found!");
@@ -932,12 +934,6 @@ doc_ready(function () {
     remove_class(id("match-msg"), "fa-times");
     FnHandler.reset();
   });
-  add_event(id("owner-transaction-btn"), "click", function () {
-    add_class(id("owner-transaction-modal"), "show");
-  });
-  add_event(id("close-owner-transaction-btn"), "click", function () {
-    remove_class(id("owner-transaction-modal"), "show");
-  });
   add_event(id("settings-btn"), "click", function () {
     add_class(id("settings-modal"), "show");
   });
@@ -946,6 +942,16 @@ doc_ready(function () {
     remove_class(id("change-match-msg"), "fa-check");
     remove_class(id("change-match-msg"), "fa-times");
     FnHandler.reset();
+  });
+  add_event(id("owner-transaction-btn"), "click", function () {
+    add_class(id("owner-transaction-modal"), "show");
+  });
+  add_event(id("close-owner-transaction-btn"), "click", function () {
+    remove_class(id("owner-transaction-modal"), "show");
+  });
+  add_event(id("add-connections-btn"), "click", function () {
+    toggle_class(id("connections-form"), "show");
+    id("connections-form").reset();
   });
   add_event(id("withdraw-form"), "submit", function (e) {
     e.preventDefault();
@@ -957,7 +963,7 @@ doc_ready(function () {
 
     FnHandler.withdraw(inner(id("withdraw-account").value.split(" ").join("")), withdraw_amount);
     FnHandler.list_users();
-    FnHandler.reprint_individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
+    FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("withdraw-form").reset();
     return false;
   });
@@ -966,7 +972,7 @@ doc_ready(function () {
     var deposit_amount = "".concat(id("deposit-amount").value.split(",").join(""), ".").concat(id("deposit-amount-dec").value);
     FnHandler.deposit(inner(id("deposit-account").value.split(" ").join("")), deposit_amount);
     FnHandler.list_users();
-    FnHandler.reprint_individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
+    FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("deposit-form").reset();
     return false;
   });
@@ -975,7 +981,7 @@ doc_ready(function () {
     var send_amount = "".concat(id("send-amount").value.split(",").join(""), ".").concat(id("send-amount-dec").value);
     FnHandler.send(inner(id("sender-account").value.split(" ").join("")), inner(id("receiver-account").value.split(" ").join("")), send_amount);
     FnHandler.list_users();
-    FnHandler.reprint_individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
+    FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("send-form").reset();
     return false;
   });
