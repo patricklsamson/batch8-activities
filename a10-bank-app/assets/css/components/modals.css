@@ -172,3 +172,13 @@
   top: -50%;
   left: -50%;
 }
+
+#profile-modal .wrap-modal-inner {
+  width: 20vw;
+  height: 20vh;
+}
+
+#profile-modal h6,
+#profile-modal p {
+  padding-right: 50px;
+}
