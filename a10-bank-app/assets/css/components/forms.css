@@ -4,7 +4,19 @@ form {
 }
 
 #admin-settings-form.hide,
-#user-settings-form {
+#user-settings-form,
+#withdraw-form.hide label[for="withdraw-account"],
+#withdraw-form.hide label[for="withdraw-account"] + br,
+#withdraw-form.hide #withdraw-account,
+#withdraw-form.hide #withdraw-account + br,
+#deposit-form.hide label[for="deposit-account"],
+#deposit-form.hide label[for="deposit-account"] + br,
+#deposit-form.hide #deposit-account,
+#deposit-form.hide #deposit-account + br,
+#send-form.hide label[for="sender-account"],
+#send-form.hide label[for="sender-account"] + br,
+#send-form.hide #sender-account,
+#send-form.hide #sender-account + br {
   display: none;
 }
 
