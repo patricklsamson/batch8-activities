@@ -183,6 +183,7 @@
           id="close-owner-transaction-btn"
           class="far fa-times-circle fa-2x"
         ></i>
+
         <ul id="owner-transaction" class="xbul wrap-scroll"></ul>
       </div>
     </section>
@@ -494,6 +495,20 @@
                 <span id="owner"></span> : <span id="owner-acc-num"></span>
               </p>
 
+              <div id="profile-modal" class="flex wrap-modal">
+                <div class="wrap-modal-inner">
+                  <i
+                    id="close-profile-btn"
+                    class="far fa-times-circle fa-2x"
+                  ></i>
+
+                  <h6 class="mb-025">Profile</h6>
+                  <p class="mb-05">Account Name: <span id="profile-name"></span></p>
+                  <p class="mb-05">Username: <span id="profile-username"></span></p>
+                  <p>Email: <span id="profile-email"></span></p>
+                </div>
+              </div>
+
               <h6 class="mt-025 mb-025">
                 Connections
                 <i id="add-connections-btn" class="fas fa-user-plus"></i>
@@ -510,6 +525,7 @@
                   placeholder="Name of Connection"
                   autocomplete="off"
                   id="connections-name"
+                  required
                 />
 
                 <input
@@ -517,6 +533,7 @@
                   placeholder="Account Number"
                   autocomplete="off"
                   id="connections-account-num"
+                  required
                 />
 
                 <input
