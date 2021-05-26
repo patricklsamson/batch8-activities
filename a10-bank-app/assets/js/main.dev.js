@@ -53,7 +53,7 @@ doc_ready(function () {
       _this.transactionHistory = [];
       _this.userTransactionHistory = [];
       _this.expenseItems = [];
-      _this.friends = [];
+      _this.connections = [];
       return _this;
     }
 
@@ -184,6 +184,9 @@ doc_ready(function () {
           toggle_class(id("modal"), "hide");
           add_class(id("expense-wrap"), "hide");
           add_class(id("connections-wrap"), "hide");
+          id("withdraw-account").removeAttribute("value");
+          id("deposit-account").removeAttribute("value");
+          id("sender-account").removeAttribute("value");
           add_event(id("admin-settings-form"), "submit", function (e) {
             e.preventDefault();
 
@@ -218,12 +221,15 @@ doc_ready(function () {
 
             return false;
           });
-        } else if (users[usernameCheck] && users[passwordCheck]) {
+        } else if (users[usernameCheck] && users[passwordCheck] && usernameCheck == passwordCheck) {
           for (i = 0; i < users.length; i++) {
             if (users[i].username == username && users[i].password == password) {
               // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
               setTimeout(function () {
                 toggle_class(id("modal"), "hide");
+                add_class(id("withdraw-form"), "hide");
+                add_class(id("deposit-form"), "hide");
+                add_class(id("send-form"), "hide");
               }, 250);
               add_class(id("settings-modal-inner"), "user");
               add_class(id("admin-settings-form"), "hide");
@@ -236,6 +242,12 @@ doc_ready(function () {
           id("owner").innerHTML = "".concat(users[usernameCheck].firstName, " ").concat(users[usernameCheck].middleName, " ").concat(users[usernameCheck].lastName);
           id("owner-acc-num").innerHTML = num_space(users[usernameCheck].accountNumber);
           FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
+          id("profile-name").innerHTML = "".concat(users[usernameCheck].firstName, " ").concat(users[usernameCheck].middleName, " ").concat(users[usernameCheck].lastName);
+          id("profile-username").innerHTML = users[usernameCheck].username;
+          id("profile-email").innerHTML = users[usernameCheck].email;
+          add_att(id("withdraw-account"), "value", id("owner-acc-num").innerHTML);
+          add_att(id("deposit-account"), "value", id("owner-acc-num").innerHTML);
+          add_att(id("sender-account"), "value", id("owner-acc-num").innerHTML);
           add_event(id("change-email-form"), "submit", function (e) {
             e.preventDefault();
 
@@ -254,7 +266,7 @@ doc_ready(function () {
             e.preventDefault();
 
             for (i = 0; i < users.length; i++) {
-              if (users[i].username == username) {
+              if (users[i].username == id("change-username").value) {
                 alert("Username already used!");
                 return;
               }
@@ -262,8 +274,6 @@ doc_ready(function () {
 
             if (id("change-username").value.length < 5) {
               alert("Username cannot be less than 5 characters!");
-            } else if (users[usernameCheck].username == id("change-username").value) {
-              alert("Username already used!");
             } else {
               users[usernameCheck].username = id("change-username").value;
               alert("Change username successful!");
@@ -307,8 +317,10 @@ doc_ready(function () {
 
             return false;
           });
+        } else if (!users[usernameCheck]) {
+          alert("User does not exist!");
         } else {
-          alert("User not found!");
+          alert("Username and password do not match!");
         }
 
         setTimeout(function () {
@@ -346,7 +358,13 @@ doc_ready(function () {
           return userIndex.email == email;
         });
 
-        if (users[accountNumberCheck].signedUp == false) {
+        if (users[accountNumberCheck].signedUp) {
+          remove_class(id("match-msg"), "fa-check");
+          remove_class(id("match-msg"), "fa-times");
+          alert("You have already signed up!");
+          id("signup-form").reset();
+          return;
+        } else {
           for (i = 0; i < users.length; i++) {
             if (users[i].username == username) {
               alert("Username already used!");
@@ -397,11 +415,88 @@ doc_ready(function () {
 
 
           localStorage.setItem("users", JSON.stringify(users));
+        }
+      }
+    }, {
+      key: "add_connections",
+      value: function add_connections(user, name, connection) {
+        var users = FnHandler.userStorage();
+        var ownerCheck = users.findIndex(function (index) {
+          return index.accountNumber == user;
+        }),
+            accountNumberCheck = users.findIndex(function (index) {
+          return index.accountNumber == connection;
+        });
+
+        for (i = 0; i < users[ownerCheck].connections.length; i++) {
+          if (users[ownerCheck].connections[j].accountNumber == connection) {
+            alert("User already exists!");
+            return;
+          }
+        }
+
+        if (users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
+          alert("User not found");
+        } else if (user == connection) {
+          alert("Cannot add own account number!");
         } else {
-          remove_class(id("match-msg"), "fa-check");
-          remove_class(id("match-msg"), "fa-times");
-          alert("You have already signed up!");
-          id("signup-form").reset();
+          users[ownerCheck].connections.push({
+            name: name,
+            accountNumber: connection
+          });
+          remove_class(id("connections-form"), "show");
+          id("connections-form").reset();
+          localStorage.setItem("users", JSON.stringify(users));
+        }
+      }
+    }, {
+      key: "list_connections",
+      value: function list_connections(user) {
+        var users = FnHandler.userStorage();
+        var ownerCheck = users.findIndex(function (index) {
+          return index.accountNumber == user;
+        });
+        id("connections-table").innerHTML = "";
+
+        for (i = 0; i < users[ownerCheck].connections.length; i++) {
+          var tableRow = create_el("tr"),
+              nameTd = create_el("td"),
+              accNumTd = create_el("td"),
+              editTd = create_el("td"),
+              deleteTd = create_el("td");
+          nameTd.innerHTML = users[ownerCheck].connections[i].name;
+          tableRow.appendChild(nameTd);
+          accNumTd.innerHTML = num_space(users[ownerCheck].connections[i].accountNumber);
+          FnHandler.click_copy(accNumTd);
+          tableRow.appendChild(accNumTd);
+          editTd.innerHTML = "<i id=\"".concat(i, "\" class=\"fas fa-edit\"></i>");
+          add_event(editTd.querySelector("i"), "click", function () {
+            if (!has_class(id("connections-form"), "show")) {
+              add_class(id("connections-form"), "show");
+            }
+
+            id("connections-name").value = users[ownerCheck].connections[this.id].name;
+            id("connections-account-num").value = users[ownerCheck].connections[this.id].accountNumber;
+            users[ownerCheck].connections.splice(this.id, 1);
+            localStorage.setItem("users", JSON.stringify(users));
+            return FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join(""));
+          });
+          tableRow.appendChild(editTd);
+          deleteTd.innerHTML = "<i id=\"".concat(i, "\" class=\"fas fa-minus-circle\"></i>");
+          add_event(deleteTd.querySelector("i"), "click", function () {
+            var deletePrompt = prompt('Are you sure to delete this connection?\nType "Y" for yes and "N" for no.', "N"),
+                deleteAnswer = deletePrompt != null ? deletePrompt.toLowerCase() : console.clear();
+
+            if (deleteAnswer == "y") {
+              users[ownerCheck].connections.splice(this.id, 1);
+              localStorage.setItem("users", JSON.stringify(users));
+              return FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join(""));
+            } else {
+              return;
+            }
+          });
+          tableRow.appendChild(deleteTd);
+          id("connections-table").appendChild(tableRow);
         }
       }
     }, {
@@ -446,9 +541,8 @@ doc_ready(function () {
 
           users[userCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Withdrawal transaction amounting to <strong>\u20B1").concat(amount, "</strong> from your account has been successful. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
           alert("Withdrawal transaction has been successful!");
+          localStorage.setItem("users", JSON.stringify(users));
         }
-
-        localStorage.setItem("users", JSON.stringify(users));
       }
     }, {
       key: "deposit",
@@ -467,11 +561,10 @@ doc_ready(function () {
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2);
           var initialBal = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
           users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Deposit transaction amounting to <strong>\u20B1").concat(amount, "</strong> into <strong>").concat(users[userCheck].firstName, "</strong>'s account has been successful. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
-          users[userCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Deposit transaction amounting to <strong>\u20B1").concat(amount, "</strong> into your account has been successful. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
+          users[userCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Deposit transaction amounting to <strong>\u20B1").concat(amount, "</strong> into your account has been successful. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your account balance is now <strong>\u20B1").concat(users[userCheck].balance, "</strong>."));
           alert("Deposit transaction account has been successful!");
+          localStorage.setItem("users", JSON.stringify(users));
         }
-
-        localStorage.setItem("users", JSON.stringify(users));
       }
     }, {
       key: "send",
@@ -508,9 +601,8 @@ doc_ready(function () {
           users[receiverCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Incoming money transfer amounting to <strong>\u20B1").concat(amount, "</strong> from ").concat(users[senderCheck].firstName, "'s account into <strong>").concat(users[receiverCheck].firstName, "</strong>'s account has been successful. From <strong>").concat(users[receiverCheck].firstName, "</strong>'s previous account balance of <strong>\u20B1").concat(receiverInitialBal, "</strong>, ").concat(receiverGender, " account balance is now <strong>\u20B1").concat(users[receiverCheck].balance, "</strong>."));
           users[receiverCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Incoming money transfer amounting to <strong>\u20B1").concat(amount, "</strong> from ").concat(users[senderCheck].firstName, "'s account into your account has been successful. From a previous account balance of <strong>\u20B1").concat(receiverInitialBal, "</strong>, your account balance is now <strong>\u20B1").concat(users[receiverCheck].balance, "</strong>."));
           alert("Money transfer has been successful!");
+          localStorage.setItem("users", JSON.stringify(users));
         }
-
-        localStorage.setItem("users", JSON.stringify(users));
       }
     }, {
       key: "get_balance",
@@ -553,11 +645,17 @@ doc_ready(function () {
           tableRow.appendChild(accNumTd);
           FnHandler.click_copy(accNumTd);
           accTdSpan.innerHTML = "".concat(users[i].firstName, " ").concat(users[i].middleName, " ").concat(users[i].lastName);
+          add_event(accTdSpan, "click", function () {
+            add_class(historyModal, "show");
+          });
           add_class(historyModalClose, "far");
           add_class(historyModalClose, "fa-times-circle");
           add_class(historyModalClose, "fa-2x");
           add_class(historyUl, "xbul");
-          add_class(historyUl, "wrap-scroll"); // INDICATION WHEN NO OTHER TRANSACTIONS ARE MADE YET ASIDE FROM OPENING THE ACCOUNT
+          add_class(historyUl, "wrap-scroll");
+          add_event(historyModalClose, "click", function () {
+            remove_class(historyModal, "show");
+          }); // INDICATION WHEN NO OTHER TRANSACTIONS ARE MADE YET ASIDE FROM OPENING THE ACCOUNT
 
           if (users[i].transactionHistory.length == 1) {
             noTransact.innerHTML = "No other transactions yet.";
@@ -596,12 +694,6 @@ doc_ready(function () {
           accTd.appendChild(accTdSpan);
           accTd.appendChild(historyModal);
           tableRow.appendChild(accTd);
-          add_event(accTdSpan, "click", function () {
-            add_class(historyModal, "show");
-          });
-          add_event(historyModalClose, "click", function () {
-            remove_class(historyModal, "show");
-          });
           accTypeTd.innerHTML = users[i].accountType;
           tableRow.appendChild(accTypeTd); // SETTING ID OF EACH DELETE BUTTON WITH REFERENCE TO THE INDICES OF ARRAY ITEMS INSIDE THE LOCAL STORAGE, FOR PRECISE AND ACCURATE DELETION
 
@@ -746,7 +838,6 @@ doc_ready(function () {
   FnHandler.num_only();
   FnHandler.type_comma();
   FnHandler.dec_addZero();
-  FnHandler.click_copy(id("owner-acc-num"));
   FnHandler.password_match(id("signup-password"), id("signup-confirm-password"), id("match-msg"));
   FnHandler.password_match(id("new-password"), id("confirm-new-password"), id("change-match-msg"));
 
@@ -876,7 +967,8 @@ doc_ready(function () {
   });
   add_event(id("login-form"), "submit", function (e) {
     e.preventDefault();
-    FnHandler.login_user(id("login-username").value, id("login-password").value); // OLD CODE
+    FnHandler.login_user(id("login-username").value, id("login-password").value);
+    FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join("")); // OLD CODE
     // if (users[usernameCheck] && users[passwordCheck]) {
     //   // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
     //   if (
@@ -915,7 +1007,11 @@ doc_ready(function () {
       remove_class(id("accounts-wrap"), "hide");
       remove_class(id("expense-wrap"), "hide");
       remove_class(id("connections-wrap"), "hide");
+      remove_class(id("connections-form"), "show");
       remove_class(id("add-newaccount-wrap"), "hide");
+      remove_class(id("withdraw-form"), "hide");
+      remove_class(id("deposit-form"), "hide");
+      remove_class(id("send-form"), "hide");
     }, 500);
     remove_class(id("settings-modal-inner"), "user");
     remove_class(id("admin-settings-form"), "hide");
@@ -955,9 +1051,21 @@ doc_ready(function () {
   add_event(id("close-owner-transaction-btn"), "click", function () {
     remove_class(id("owner-transaction-modal"), "show");
   });
+  add_event(id("owner"), "click", function () {
+    add_class(id("profile-modal"), "show");
+  });
+  add_event(id("close-profile-btn"), "click", function () {
+    remove_class(id("profile-modal"), "show");
+  });
   add_event(id("add-connections-btn"), "click", function () {
     toggle_class(id("connections-form"), "show");
     id("connections-form").reset();
+  });
+  add_event(id("connections-form"), "submit", function (e) {
+    e.preventDefault();
+    FnHandler.add_connections(id("owner-acc-num").innerHTML.split(" ").join(""), id("connections-name").value.toUpperCase(), id("connections-account-num").value.split(" ").join(""));
+    FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join(""));
+    return false;
   });
   add_event(id("withdraw-form"), "submit", function (e) {
     e.preventDefault();
