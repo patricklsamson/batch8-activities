@@ -165,6 +165,12 @@ th {
   cursor: grabbing;
 }
 
+#expense-wrap .wrap-tooltip {
+  border: 2px solid #343a40;
+  padding: 18px;
+  margin: 26px 15px 15px;
+}
+
 main .wrap-add-account {
   background-image: -webkit-gradient(
     linear,
