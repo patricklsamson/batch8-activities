@@ -1432,6 +1432,12 @@ doc_ready(() => {
   );
 
   FnHandler.password_match(
+    id("admin-new-password"),
+    id("admin-confirm-new-password"),
+    id("admin-change-match-msg")
+  );
+
+  FnHandler.password_match(
     id("new-password"),
     id("confirm-new-password"),
     id("change-match-msg")
@@ -1771,6 +1777,8 @@ doc_ready(() => {
     remove_class(id("settings-modal"), "show");
     remove_class(id("change-match-msg"), "fa-check");
     remove_class(id("change-match-msg"), "fa-times");
+    remove_class(id("admin-change-match-msg"), "fa-check");
+    remove_class(id("admin-change-match-msg"), "fa-times");
     FnHandler.reset();
   });
 
