@@ -2,10 +2,6 @@
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
@@ -15,6 +11,10 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -27,45 +27,6 @@ doc_ready(function () {
     this.username = username;
     this.password = password;
     this.adminId = adminId;
-  }; // CONSTRUCTOR FOR EACH INDIVIDUAL USERS THAT INHERITS ADMIN USERNAME AND PASSWORD PROPERTIES
-
-
-  var User =
-  /*#__PURE__*/
-  function (_Admin) {
-    _inherits(User, _Admin);
-
-    function User(username, password, email, signedUp, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
-      var _this;
-
-      _classCallCheck(this, User);
-
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(User).call(this, username, password));
-      _this.email = email;
-      _this.firstName = firstName;
-      _this.middleName = middleName;
-      _this.lastName = lastName;
-      _this.gender = gender;
-      _this.accountNumber = accountNumber;
-      _this.accountType = accountType;
-      _this.balance = balance;
-      _this.signedUp = signedUp;
-      _this.transactionHistory = [];
-      _this.userTransactionHistory = [];
-      _this.expenseItems = [];
-      _this.connections = [];
-      return _this;
-    }
-
-    return User;
-  }(Admin);
-
-  var ExpenseItem = function ExpenseItem(name, cost, owner) {
-    _classCallCheck(this, ExpenseItem);
-
-    this.name = name;
-    this.cost = cost;
-    this.owner = owner;
   };
 
   var FnHandler =
@@ -621,7 +582,7 @@ doc_ready(function () {
           add_event(deleteTd.querySelector("i"), "click", function () {
             // PROMPT FOR DELETING AN INDIVIDUAL ACCOUNT, TO PREVENT ACCIDENTAL DELETION
             var deletePrompt = prompt('Are you sure to delete this account?\nType "Y" for yes and "N" for no.', "N"),
-                deleteAnswer = deletePrompt != null ? deletePrompt.toLowerCase() : console.clear(); // THIS TERNARY OPERATOR PREVENTS ERROR POPPING UP WHEN THE PROMPT HAS BEEN CANCELED
+                deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear(); // THIS TERNARY OPERATOR PREVENTS ERROR POPPING UP WHEN THE PROMPT HAS BEEN CANCELED
 
             if (deleteAnswer == "y") {
               users.splice(this.id, 1);
@@ -708,7 +669,7 @@ doc_ready(function () {
           deleteTd.innerHTML = "<i id=\"".concat(i, "\" class=\"fas fa-minus-circle\"></i>");
           add_event(deleteTd.querySelector("i"), "click", function () {
             var deletePrompt = prompt('Are you sure to delete this connection?\nType "Y" for yes and "N" for no.', "N"),
-                deleteAnswer = deletePrompt != null ? deletePrompt.toLowerCase() : console.clear();
+                deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear();
 
             if (deleteAnswer == "y") {
               users[ownerCheck].connections.splice(this.id, 1);
@@ -831,6 +792,142 @@ doc_ready(function () {
 
     return FnHandler;
   }();
+
+  var ExpenseItem = function ExpenseItem(name, cost, owner) {
+    _classCallCheck(this, ExpenseItem);
+
+    this.name = name;
+    this.cost = cost;
+    this.owner = owner;
+  }; // CONSTRUCTOR FOR EACH INDIVIDUAL USERS THAT INHERITS ADMIN USERNAME AND PASSWORD PROPERTIES
+
+
+  var User =
+  /*#__PURE__*/
+  function (_Admin) {
+    _inherits(User, _Admin);
+
+    function User(username, password, email, signedUp, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
+      var _this;
+
+      _classCallCheck(this, User);
+
+      _this = _possibleConstructorReturn(this, _getPrototypeOf(User).call(this, username, password));
+      _this.email = email;
+      _this.firstName = firstName;
+      _this.middleName = middleName;
+      _this.lastName = lastName;
+      _this.gender = gender;
+      _this.accountNumber = accountNumber;
+      _this.accountType = accountType;
+      _this.balance = balance;
+      _this.signedUp = signedUp;
+      _this.transactionHistory = [];
+      _this.userTransactionHistory = [];
+      _this.expenseItems = [];
+      _this.connections = [];
+      return _this;
+    }
+
+    _createClass(User, null, [{
+      key: "add",
+      value: function add(name, cost, owner) {
+        var users = FnHandler.userStorage();
+        var ownerCheck = users.findIndex(function (index) {
+          return index.accountNumber == owner;
+        }),
+            nameCheck = users[ownerCheck].expenseItems.findIndex(function (index) {
+          return index.name == name;
+        });
+
+        if (users[ownerCheck].expenseItems[nameCheck]) {
+          alert("Expense item already exists!");
+        } else {
+          var newExpenseItem = new ExpenseItem(name, cost, owner);
+          users[ownerCheck].balance = parseFloat(parseFloat(users[ownerCheck].balance) - parseFloat(cost)).toFixed(2);
+          users[ownerCheck].expenseItems.push(newExpenseItem);
+          id("add-expense-form").reset();
+          localStorage.setItem("users", JSON.stringify(users));
+        }
+      }
+    }, {
+      key: "get_balance",
+      value: function get_balance(owner) {
+        var users = FnHandler.userStorage();
+        var ownerCheck = users.findIndex(function (index) {
+          return index.accountNumber == owner;
+        });
+        id("owner-balance").innerHTML = "";
+        id("owner-balance").innerHTML = "\u20B1".concat(num_commas(users[ownerCheck].balance));
+      }
+    }, {
+      key: "total_expenses",
+      value: function total_expenses(owner) {
+        var users = FnHandler.userStorage();
+        var ownerCheck = users.findIndex(function (index) {
+          return index.accountNumber == owner;
+        }),
+            total = 0;
+        id("owner-expenses").innerHTML = "";
+
+        for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
+          total = parseFloat(total + parseFloat(users[ownerCheck].expenseItems[i].cost));
+        }
+
+        id("owner-expenses").innerHTML = "\u20B1".concat(num_commas(total));
+      }
+    }, {
+      key: "list",
+      value: function list(owner) {
+        var users = FnHandler.userStorage();
+        var ownerCheck = users.findIndex(function (index) {
+          return index.accountNumber == owner;
+        });
+        id("expense-table").innerHTML = "";
+
+        for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
+          var tableRow = create_el("tr"),
+              nameTd = create_el("td"),
+              costTd = create_el("td"),
+              editTd = create_el("td"),
+              deleteTd = create_el("td");
+          nameTd.innerHTML = users[ownerCheck].expenseItems[i].name;
+          tableRow.appendChild(nameTd);
+          costTd.innerHTML = "\u20B1".concat(num_commas(users[ownerCheck].expenseItems[i].cost));
+          tableRow.appendChild(costTd);
+          editTd.innerHTML = "<i id=\"".concat(i, "\" class=\"fas fa-edit\"></i>");
+          add_event(editTd.querySelector("i"), "click", function () {
+            id("add-expense-name").value = users[ownerCheck].expenseItems[this.id].name;
+            id("add-expense-amount").value = num_commas(users[ownerCheck].expenseItems[this.id].cost.split(".")[0]);
+            id("add-expense-amount-dec").value = users[ownerCheck].expenseItems[this.id].cost.split(".")[1];
+            users[ownerCheck].balance = parseFloat(parseFloat(users[ownerCheck].balance) + parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2);
+            users[ownerCheck].expenseItems.splice(this.id, 1);
+            localStorage.setItem("users", JSON.stringify(users));
+            return User.list(id("owner-acc-num").innerHTML.split(" ").join("")), User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")), User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
+          });
+          tableRow.appendChild(editTd);
+          deleteTd.innerHTML = "<i id=\"".concat(i, "\" class=\"fas fa-minus-circle\"></i>");
+          add_event(deleteTd.querySelector("i"), "click", function () {
+            var deletePrompt = prompt('Are you sure to delete this item?\n Type "Y" for yes and "N" for no.', "N"),
+                deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear();
+
+            if (deleteAnswer == "y") {
+              users[ownerCheck].balance = parseFloat(parseFloat(users[ownerCheck].balance) + parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2);
+              users[ownerCheck].expenseItems.splice(this.id, 1);
+              localStorage.setItem("users", JSON.stringify(users));
+              return User.list(id("owner-acc-num").innerHTML.split(" ").join("")), User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""), User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join("")));
+            } else {
+              return;
+            }
+          });
+          tableRow.appendChild(deleteTd);
+          id("expense-table").appendChild(tableRow);
+        }
+      }
+    }]);
+
+    return User;
+  }(Admin);
 
   match_height(".mh");
   FnHandler.list_users();
@@ -969,7 +1066,10 @@ doc_ready(function () {
   add_event(id("login-form"), "submit", function (e) {
     e.preventDefault();
     FnHandler.login_user(inner(trim(id("login-username").value)), inner(trim(id("login-password").value)));
-    FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join("")); // OLD CODE
+    FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join("")); // OLD CODE
     // if (users[usernameCheck] && users[passwordCheck]) {
     //   // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
     //   if (
@@ -1058,6 +1158,13 @@ doc_ready(function () {
   });
   add_event(id("close-profile-btn"), "click", function () {
     remove_class(id("profile-modal"), "show");
+  });
+  add_event(id("add-expense-form"), "submit", function (e) {
+    e.preventDefault();
+    var expense_amount = "".concat(id("add-expense-amount").value.split(",").join(""), ".").concat(id("add-expense-amount-dec").value);
+    User.add(inner(trim(id("add-expense-name").value.toUpperCase())), expense_amount, id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+    return false, User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")), User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
   });
   add_event(id("add-connections-btn"), "click", function () {
     toggle_class(id("connections-form"), "show");
