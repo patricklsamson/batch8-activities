@@ -172,8 +172,8 @@ th {
 
 #expense-wrap .wrap-tooltip {
   border: 2px solid #343a40;
-  padding: 18px;
-  margin: 26px 15px 15px;
+  padding: 20px;
+  margin: 15px;
 }
 
 main .wrap-add-account {
