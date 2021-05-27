@@ -1050,35 +1050,28 @@ doc_ready(function () {
 
   add_event(id("load-data-btn"), "click", function () {
     var users = FnHandler.userStorage();
-    var juanCheck = users.findIndex(function (index) {
-      return index.firstName == "JUAN";
-    }),
-        delaCruzCheck = users.findIndex(function (index) {
-      return index.lastName == "DELA CRUZ";
-    }),
-        janeCheck = users.findIndex(function (index) {
+    var janeCheck = users.findIndex(function (index) {
       return index.firstName == "JANE";
     }),
         doeCheck = users.findIndex(function (index) {
       return index.lastName == "DOE";
+    }),
+        juanCheck = users.findIndex(function (index) {
+      return index.firstName == "JUAN";
+    }),
+        delaCruzCheck = users.findIndex(function (index) {
+      return index.lastName == "DELA CRUZ";
     }); // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE WHEN THE DATA STILL DON'T EXIST
 
-    if (!users[juanCheck] && !users[delaCruzCheck]) {
-      var loadPrompt = prompt('Continuing will load initial data for immediate testing purposes?\nType "Y" to continue or "N" otherwise.', "Y"),
-          loadAnswer = loadPrompt != null ? trim(loadPrompt.toLowerCase()) : console.clear(),
-          balance = 2500.05;
+    if (!users[janeCheck] && !users[doeCheck]) {
+      var balance = 5200.05; // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
 
-      if (loadAnswer == "n" || loadAnswer == null || loadAnswer == "") {
-        return;
-      } else {
-        // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
-        create_user("juandelacruz", "juanjuan", "juandelacruz@mail.com", true, "JUAN", "", "DELA CRUZ", "male", "071096025466", "Savings", balance.toFixed(2));
-      }
+      create_user("janedoe", "janedoe", "janedoe@mail.com", true, "JANE", "HILLS", "DOE", "female", "023451282250", "Checking", balance.toFixed(2));
     }
 
-    if (!users[janeCheck] && !users[doeCheck]) {
-      var _balance = 5200;
-      create_user("", "", "", false, "JANE", "HILLS", "DOE", "female", "023451282250", "Checking", _balance.toFixed(2));
+    if (!users[juanCheck] && !users[delaCruzCheck]) {
+      var _balance = 2500;
+      create_user("", "", "", false, "JUAN", "", "DELA CRUZ", "male", "071096025466", "Savings", _balance.toFixed(2));
     } // THIS FUNCTION IS CALLED AGAIN TO REFRESH THE LIST IN THE UI
 
 
