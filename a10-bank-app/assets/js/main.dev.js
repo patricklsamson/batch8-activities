@@ -190,18 +190,18 @@ doc_ready(function () {
           add_event(id("admin-settings-form"), "submit", function (e) {
             e.preventDefault();
 
-            if (admin[0].password != id("admin-old-password").value) {
+            if (admin[0].password != inner(id("admin-old-password").value)) {
               alert("Old password wrong!");
-            } else if (id("admin-old-password").value == id("admin-confirm-new-password").value) {
+            } else if (inner(id("admin-old-password").value) == inner(id("admin-confirm-new-password").value)) {
               alert("There have been no changes made for the password!");
-            } else if (id("admin-new-password").value != id("admin-confirm-new-password").value) {
+            } else if (inner(id("admin-new-password").value) != inner(id("admin-confirm-new-password").value)) {
               alert("New password entries do not match!");
-            } else if (id("admin-confirm-new-password").value.length < 5) {
+            } else if (inner(id("admin-confirm-new-password").value).length < 5) {
               var passwordPrompt = prompt('Are you sure to have a weak password?\nType "Y" for yes and "N" for no.', "N"),
                   passwordAnswer = passwordPrompt != null ? passwordPrompt.toLowerCase() : console.clear();
 
               if (passwordAnswer == "y") {
-                admin[0].password = id("admin-confirm-new-password").value;
+                admin[0].password = inner(id("admin-confirm-new-password").value);
                 id("admin-settings-form").reset();
                 remove_class(id("admin-change-match-msg"), "fa-check");
                 remove_class(id("admin-change-match-msg"), "fa-times");
@@ -211,7 +211,7 @@ doc_ready(function () {
                 return;
               }
             } else {
-              admin[0].password = id("admin-confirm-new-password").value;
+              admin[0].password = inner(id("admin-confirm-new-password").value);
               id("admin-settings-form").reset();
               remove_class(id("admin-change-match-msg"), "fa-check");
               remove_class(id("admin-change-match-msg"), "fa-times");
@@ -229,6 +229,7 @@ doc_ready(function () {
                 toggle_class(id("modal"), "hide");
                 add_class(id("withdraw-form"), "hide");
                 add_class(id("deposit-form"), "hide");
+                add_class(qsel(".wrap-send"), "user");
                 add_class(id("send-form"), "hide");
               }, 250);
               add_class(id("settings-modal-inner"), "user");
@@ -251,10 +252,10 @@ doc_ready(function () {
           add_event(id("change-email-form"), "submit", function (e) {
             e.preventDefault();
 
-            if (users[usernameCheck].email == id("change-email").value) {
+            if (users[usernameCheck].email == inner(trim(id("change-email").value))) {
               alert("There have been no changes made for the email!");
             } else {
-              users[usernameCheck].email = id("change-email").value;
+              users[usernameCheck].email = inner(trim(id("change-email").value));
               alert("Change email successful!");
               localStorage.setItem("users", JSON.stringify(users));
             }
@@ -266,7 +267,7 @@ doc_ready(function () {
             e.preventDefault();
 
             for (i = 0; i < users.length; i++) {
-              if (users[i].username == id("change-username").value) {
+              if (users[i].username == inner(trim(id("change-username").value))) {
                 alert("Username already used!");
                 return;
               }
@@ -275,7 +276,7 @@ doc_ready(function () {
             if (id("change-username").value.length < 5) {
               alert("Username cannot be less than 5 characters!");
             } else {
-              users[usernameCheck].username = id("change-username").value;
+              users[usernameCheck].username = inner(trim(id("change-username").value));
               alert("Change username successful!");
               localStorage.setItem("users", JSON.stringify(users));
             }
@@ -286,18 +287,18 @@ doc_ready(function () {
           add_event(id("change-password-form"), "submit", function (e) {
             e.preventDefault();
 
-            if (users[usernameCheck].password != id("old-password").value) {
+            if (users[usernameCheck].password != inner(id("old-password").value)) {
               alert("Old password wrong!");
-            } else if (id("old-password").value == id("confirm-new-password").value) {
+            } else if (inner(id("old-password").value) == inner(id("confirm-new-password").value)) {
               alert("There have been no changes made for the password!");
-            } else if (id("new-password").value != id("confirm-new-password").value) {
+            } else if (inner(id("new-password").value) != inner(id("confirm-new-password").value)) {
               alert("New password entries do not match!");
-            } else if (id("confirm-new-password").value.length < 5) {
+            } else if (inner(id("confirm-new-password").value).length < 5) {
               var passwordPrompt = prompt('Are you sure to have a weak password?\nType "Y" for yes and "N" for no.', "N"),
-                  passwordAnswer = passwordPrompt != null ? passwordPrompt.toLowerCase() : console.clear();
+                  passwordAnswer = passwordPrompt != null ? trim(passwordPrompt.toLowerCase()) : console.clear();
 
               if (passwordAnswer == "y") {
-                users[usernameCheck].password = id("confirm-new-password").value;
+                users[usernameCheck].password = inner(id("confirm-new-password").value);
                 id("change-password-form").reset();
                 remove_class(id("change-match-msg"), "fa-check");
                 remove_class(id("change-match-msg"), "fa-times");
@@ -307,7 +308,7 @@ doc_ready(function () {
                 return;
               }
             } else {
-              users[usernameCheck].password = id("confirm-new-password").value;
+              users[usernameCheck].password = inner(id("confirm-new-password").value);
               id("change-password-form").reset();
               remove_class(id("change-match-msg"), "fa-check");
               remove_class(id("change-match-msg"), "fa-times");
@@ -380,7 +381,7 @@ doc_ready(function () {
             alert("Password entries do not match!");
           } else if (confirmPassword.length < 5) {
             var passwordPrompt = prompt('Are you sure to have a weak password?\nType "Y" for yes and "N" for no.', "N"),
-                passwordAnswer = passwordPrompt != null ? passwordPrompt.toLowerCase() : console.clear();
+                passwordAnswer = passwordPrompt != null ? trim(passwordPrompt.toLowerCase()) : console.clear();
 
             if (passwordAnswer == "y" && (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "")) {
               toggle_class(id("login-wrap"), "hide");
@@ -415,88 +416,6 @@ doc_ready(function () {
 
 
           localStorage.setItem("users", JSON.stringify(users));
-        }
-      }
-    }, {
-      key: "add_connections",
-      value: function add_connections(user, name, connection) {
-        var users = FnHandler.userStorage();
-        var ownerCheck = users.findIndex(function (index) {
-          return index.accountNumber == user;
-        }),
-            accountNumberCheck = users.findIndex(function (index) {
-          return index.accountNumber == connection;
-        });
-
-        for (i = 0; i < users[ownerCheck].connections.length; i++) {
-          if (users[ownerCheck].connections[j].accountNumber == connection) {
-            alert("User already exists!");
-            return;
-          }
-        }
-
-        if (users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
-          alert("User not found");
-        } else if (user == connection) {
-          alert("Cannot add own account number!");
-        } else {
-          users[ownerCheck].connections.push({
-            name: name,
-            accountNumber: connection
-          });
-          remove_class(id("connections-form"), "show");
-          id("connections-form").reset();
-          localStorage.setItem("users", JSON.stringify(users));
-        }
-      }
-    }, {
-      key: "list_connections",
-      value: function list_connections(user) {
-        var users = FnHandler.userStorage();
-        var ownerCheck = users.findIndex(function (index) {
-          return index.accountNumber == user;
-        });
-        id("connections-table").innerHTML = "";
-
-        for (i = 0; i < users[ownerCheck].connections.length; i++) {
-          var tableRow = create_el("tr"),
-              nameTd = create_el("td"),
-              accNumTd = create_el("td"),
-              editTd = create_el("td"),
-              deleteTd = create_el("td");
-          nameTd.innerHTML = users[ownerCheck].connections[i].name;
-          tableRow.appendChild(nameTd);
-          accNumTd.innerHTML = num_space(users[ownerCheck].connections[i].accountNumber);
-          FnHandler.click_copy(accNumTd);
-          tableRow.appendChild(accNumTd);
-          editTd.innerHTML = "<i id=\"".concat(i, "\" class=\"fas fa-edit\"></i>");
-          add_event(editTd.querySelector("i"), "click", function () {
-            if (!has_class(id("connections-form"), "show")) {
-              add_class(id("connections-form"), "show");
-            }
-
-            id("connections-name").value = users[ownerCheck].connections[this.id].name;
-            id("connections-account-num").value = users[ownerCheck].connections[this.id].accountNumber;
-            users[ownerCheck].connections.splice(this.id, 1);
-            localStorage.setItem("users", JSON.stringify(users));
-            return FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join(""));
-          });
-          tableRow.appendChild(editTd);
-          deleteTd.innerHTML = "<i id=\"".concat(i, "\" class=\"fas fa-minus-circle\"></i>");
-          add_event(deleteTd.querySelector("i"), "click", function () {
-            var deletePrompt = prompt('Are you sure to delete this connection?\nType "Y" for yes and "N" for no.', "N"),
-                deleteAnswer = deletePrompt != null ? deletePrompt.toLowerCase() : console.clear();
-
-            if (deleteAnswer == "y") {
-              users[ownerCheck].connections.splice(this.id, 1);
-              localStorage.setItem("users", JSON.stringify(users));
-              return FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join(""));
-            } else {
-              return;
-            }
-          });
-          tableRow.appendChild(deleteTd);
-          id("connections-table").appendChild(tableRow);
         }
       }
     }, {
@@ -720,6 +639,88 @@ doc_ready(function () {
         for (i = 0; i < users.length; i++) {
           _loop();
         }
+      }
+    }, {
+      key: "add_connections",
+      value: function add_connections(user, name, connection) {
+        var users = FnHandler.userStorage();
+        var ownerCheck = users.findIndex(function (index) {
+          return index.accountNumber == user;
+        }),
+            accountNumberCheck = users.findIndex(function (index) {
+          return index.accountNumber == connection;
+        });
+
+        for (i = 0; i < users[ownerCheck].connections.length; i++) {
+          if (users[ownerCheck].connections[i].accountNumber == connection) {
+            alert("Connection already exists!");
+            return;
+          }
+        }
+
+        if (users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
+          alert("User not found");
+        } else if (user == connection) {
+          alert("Cannot add own account number!");
+        } else {
+          users[ownerCheck].connections.push({
+            name: name,
+            accountNumber: connection
+          });
+          remove_class(id("connections-form"), "show");
+          id("connections-form").reset();
+          localStorage.setItem("users", JSON.stringify(users));
+        }
+      }
+    }, {
+      key: "list_connections",
+      value: function list_connections(user) {
+        var users = FnHandler.userStorage();
+        var ownerCheck = users.findIndex(function (index) {
+          return index.accountNumber == user;
+        });
+        id("connections-table").innerHTML = "";
+
+        for (i = 0; i < users[ownerCheck].connections.length; i++) {
+          var tableRow = create_el("tr"),
+              nameTd = create_el("td"),
+              accNumTd = create_el("td"),
+              editTd = create_el("td"),
+              deleteTd = create_el("td");
+          nameTd.innerHTML = users[ownerCheck].connections[i].name;
+          tableRow.appendChild(nameTd);
+          accNumTd.innerHTML = num_space(users[ownerCheck].connections[i].accountNumber);
+          FnHandler.click_copy(accNumTd);
+          tableRow.appendChild(accNumTd);
+          editTd.innerHTML = "<i id=\"".concat(i, "\" class=\"fas fa-edit\"></i>");
+          add_event(editTd.querySelector("i"), "click", function () {
+            if (!has_class(id("connections-form"), "show")) {
+              add_class(id("connections-form"), "show");
+            }
+
+            id("connections-name").value = users[ownerCheck].connections[this.id].name;
+            id("connections-account-num").value = users[ownerCheck].connections[this.id].accountNumber;
+            users[ownerCheck].connections.splice(this.id, 1);
+            localStorage.setItem("users", JSON.stringify(users));
+            return FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join(""));
+          });
+          tableRow.appendChild(editTd);
+          deleteTd.innerHTML = "<i id=\"".concat(i, "\" class=\"fas fa-minus-circle\"></i>");
+          add_event(deleteTd.querySelector("i"), "click", function () {
+            var deletePrompt = prompt('Are you sure to delete this connection?\nType "Y" for yes and "N" for no.', "N"),
+                deleteAnswer = deletePrompt != null ? deletePrompt.toLowerCase() : console.clear();
+
+            if (deleteAnswer == "y") {
+              users[ownerCheck].connections.splice(this.id, 1);
+              localStorage.setItem("users", JSON.stringify(users));
+              return FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join(""));
+            } else {
+              return;
+            }
+          });
+          tableRow.appendChild(deleteTd);
+          id("connections-table").appendChild(tableRow);
+        }
       } // ONCE FIRST VALUE OR CHARACTER INPUTTED IS A NUMBER IN ALL NAME INPUTS ACROSS THE DOM, ALERT WILL EXEECUTE
 
     }, {
@@ -904,7 +905,7 @@ doc_ready(function () {
 
     if (!users[juanCheck] && !users[delaCruzCheck]) {
       var loadPrompt = prompt('Continuing will load initial data for immediate testing purposes?\nType "Y" to continue or "N" otherwise.', "Y"),
-          loadAnswer = loadPrompt != null ? loadPrompt.toLowerCase() : console.clear(),
+          loadAnswer = loadPrompt != null ? trim(loadPrompt.toLowerCase()) : console.clear(),
           balance = 2500.05;
 
       if (loadAnswer == "n" || loadAnswer == null || loadAnswer == "") {
@@ -929,7 +930,7 @@ doc_ready(function () {
 
     if (users.length != 0) {
       var clearPrompt = prompt('Are you sure to delete all stored datas?\nType "Y" for yes and "N" for no.', "N"),
-          clearAnswer = clearPrompt != null ? clearPrompt.toLowerCase() : console.clear();
+          clearAnswer = clearPrompt != null ? trim(clearPrompt.toLowerCase()) : console.clear();
 
       if (clearAnswer == "y") {
         // DOES NOT INCLUDE FIRST ARRAY ITEM IN SPLICING OR DELETING WHICH IS THE ADMIN USERNAME AND PASSWORD
@@ -959,15 +960,15 @@ doc_ready(function () {
     //    ? `0${parseFloat(id("add-deposit-amount-dec").value)}`
     //    : id("add-deposit-amount-dec").value,
 
-    create_user("", "", "", false, inner(id("add-first-name").value.toUpperCase()), inner(id("add-middle-name").value.toUpperCase()), inner(id("add-last-name").value.toUpperCase()), gender, acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000), account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
+    create_user("", "", "", false, inner(trim(id("add-first-name").value.toUpperCase())), inner(trim(id("add-middle-name").value.toUpperCase())), inner(trim(id("add-last-name").value.toUpperCase())), gender, acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000), account_type, parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2));
     FnHandler.list_users();
-    alert("".concat(id("add-first-name").value.toUpperCase(), "'s account have been successfully created!"));
+    alert("".concat(inner(trim(id("add-first-name").value.toUpperCase())), "'s account have been successfully created!"));
     id("add-form").reset();
     return false;
   });
   add_event(id("login-form"), "submit", function (e) {
     e.preventDefault();
-    FnHandler.login_user(id("login-username").value, id("login-password").value);
+    FnHandler.login_user(inner(trim(id("login-username").value)), inner(trim(id("login-password").value)));
     FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join("")); // OLD CODE
     // if (users[usernameCheck] && users[passwordCheck]) {
     //   // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
@@ -1011,6 +1012,7 @@ doc_ready(function () {
       remove_class(id("add-newaccount-wrap"), "hide");
       remove_class(id("withdraw-form"), "hide");
       remove_class(id("deposit-form"), "hide");
+      remove_class(qsel(".wrap-send"), "user");
       remove_class(id("send-form"), "hide");
     }, 500);
     remove_class(id("settings-modal-inner"), "user");
@@ -1026,7 +1028,7 @@ doc_ready(function () {
   add_event(id("signup-form"), "submit", function (e) {
     e.preventDefault();
     var gender = id("signup-male").checked ? "male" : "female";
-    FnHandler.signup_user(id("signup-first-name").value.toUpperCase(), id("signup-middle-name").value.toUpperCase(), id("signup-last-name").value.toUpperCase(), gender, id("signup-username").value, id("signup-password").value, id("signup-confirm-password").value, id("signup-email").value, id("signup-account-num").value.split(" ").join(""));
+    FnHandler.signup_user(inner(trim(id("signup-first-name").value.toUpperCase())), inner(trim(id("signup-middle-name").value.toUpperCase())), inner(trim(id("signup-last-name").value.toUpperCase())), gender, inner(trim(id("signup-username").value)), inner(id("signup-password").value), inner(id("signup-confirm-password").value), inner(trim(id("signup-email").value)), id("signup-account-num").value.split(" ").join(""));
     return false;
   });
   add_event(id("back-signup-btn"), "click", function () {
@@ -1063,7 +1065,7 @@ doc_ready(function () {
   });
   add_event(id("connections-form"), "submit", function (e) {
     e.preventDefault();
-    FnHandler.add_connections(id("owner-acc-num").innerHTML.split(" ").join(""), id("connections-name").value.toUpperCase(), id("connections-account-num").value.split(" ").join(""));
+    FnHandler.add_connections(id("owner-acc-num").innerHTML.split(" ").join(""), inner(trim(id("connections-name").value.toUpperCase())), id("connections-account-num").value.split(" ").join(""));
     FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join(""));
     return false;
   });
@@ -1075,7 +1077,7 @@ doc_ready(function () {
      * WITH SPACES WHEN COPIED BACK TO WITHOUT SPACES FOR STORING
      */
 
-    FnHandler.withdraw(inner(id("withdraw-account").value.split(" ").join("")), withdraw_amount);
+    FnHandler.withdraw(id("withdraw-account").value.split(" ").join(""), withdraw_amount);
     FnHandler.list_users();
     FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("withdraw-form").reset();
@@ -1084,7 +1086,7 @@ doc_ready(function () {
   add_event(id("deposit-form"), "submit", function (e) {
     e.preventDefault();
     var deposit_amount = "".concat(id("deposit-amount").value.split(",").join(""), ".").concat(id("deposit-amount-dec").value);
-    FnHandler.deposit(inner(id("deposit-account").value.split(" ").join("")), deposit_amount);
+    FnHandler.deposit(id("deposit-account").value.split(" ").join(""), deposit_amount);
     FnHandler.list_users();
     FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("deposit-form").reset();
@@ -1093,7 +1095,7 @@ doc_ready(function () {
   add_event(id("send-form"), "submit", function (e) {
     e.preventDefault();
     var send_amount = "".concat(id("send-amount").value.split(",").join(""), ".").concat(id("send-amount-dec").value);
-    FnHandler.send(inner(id("sender-account").value.split(" ").join("")), inner(id("receiver-account").value.split(" ").join("")), send_amount);
+    FnHandler.send(id("sender-account").value.split(" ").join(""), id("receiver-account").value.split(" ").join(""), send_amount);
     FnHandler.list_users();
     FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("send-form").reset();
