@@ -36,6 +36,11 @@ main .wrap-accounts {
   );
 }
 
+table thead > tr,
+table > tr {
+  border-bottom: 10px solid transparent;
+}
+
 main .wrap-acc-table {
   height: 340px;
 }
