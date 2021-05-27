@@ -10,46 +10,6 @@ doc_ready(() => {
     }
   }
 
-  // CONSTRUCTOR FOR EACH INDIVIDUAL USERS THAT INHERITS ADMIN USERNAME AND PASSWORD PROPERTIES
-  class User extends Admin {
-    constructor(
-      username,
-      password,
-      email,
-      signedUp,
-      firstName,
-      middleName,
-      lastName,
-      gender,
-      accountNumber,
-      accountType,
-      balance
-    ) {
-      super(username, password);
-      this.email = email;
-      this.firstName = firstName;
-      this.middleName = middleName;
-      this.lastName = lastName;
-      this.gender = gender;
-      this.accountNumber = accountNumber;
-      this.accountType = accountType;
-      this.balance = balance;
-      this.signedUp = signedUp;
-      this.transactionHistory = [];
-      this.userTransactionHistory = [];
-      this.expenseItems = [];
-      this.connections = [];
-    }
-  }
-
-  class ExpenseItem {
-    constructor(name, cost, owner) {
-      this.name = name;
-      this.cost = cost;
-      this.owner = owner;
-    }
-  }
-
   class FnHandler {
     static adminStorage() {
       let admin;
@@ -808,7 +768,7 @@ doc_ready(() => {
             ),
             deleteAnswer =
               deletePrompt != null
-                ? deletePrompt.toLowerCase()
+                ? trim(deletePrompt.toLowerCase())
                 : console.clear();
           // THIS TERNARY OPERATOR PREVENTS ERROR POPPING UP WHEN THE PROMPT HAS BEEN CANCELED
 
@@ -918,7 +878,7 @@ doc_ready(() => {
             ),
             deleteAnswer =
               deletePrompt != null
-                ? deletePrompt.toLowerCase()
+                ? trim(deletePrompt.toLowerCase())
                 : console.clear();
 
           if (deleteAnswer == "y") {
@@ -934,7 +894,6 @@ doc_ready(() => {
         });
 
         tableRow.appendChild(deleteTd);
-
         id("connections-table").appendChild(tableRow);
       }
     }
@@ -1053,6 +1012,194 @@ doc_ready(() => {
       qsel_all("form").forEach((form) => {
         form.reset();
       });
+    }
+  }
+
+  class ExpenseItem {
+    constructor(name, cost, owner) {
+      this.name = name;
+      this.cost = cost;
+      this.owner = owner;
+    }
+  }
+
+  // CONSTRUCTOR FOR EACH INDIVIDUAL USERS THAT INHERITS ADMIN USERNAME AND PASSWORD PROPERTIES
+  class User extends Admin {
+    constructor(
+      username,
+      password,
+      email,
+      signedUp,
+      firstName,
+      middleName,
+      lastName,
+      gender,
+      accountNumber,
+      accountType,
+      balance
+    ) {
+      super(username, password);
+      this.email = email;
+      this.firstName = firstName;
+      this.middleName = middleName;
+      this.lastName = lastName;
+      this.gender = gender;
+      this.accountNumber = accountNumber;
+      this.accountType = accountType;
+      this.balance = balance;
+      this.signedUp = signedUp;
+      this.transactionHistory = [];
+      this.userTransactionHistory = [];
+      this.expenseItems = [];
+      this.connections = [];
+    }
+
+    static add(name, cost, owner) {
+      const users = FnHandler.userStorage();
+
+      let ownerCheck = users.findIndex((index) => index.accountNumber == owner),
+        nameCheck = users[ownerCheck].expenseItems.findIndex(
+          (index) => index.name == name
+        );
+
+      if (users[ownerCheck].expenseItems[nameCheck]) {
+        alert("Expense item already exists!");
+      } else {
+        const newExpenseItem = new ExpenseItem(name, cost, owner);
+
+        users[ownerCheck].balance = parseFloat(
+          parseFloat(users[ownerCheck].balance) - parseFloat(cost)
+        ).toFixed(2);
+
+        users[ownerCheck].expenseItems.push(newExpenseItem);
+        id("add-expense-form").reset();
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+    }
+
+    static get_balance(owner) {
+      const users = FnHandler.userStorage();
+
+      let ownerCheck = users.findIndex((index) => index.accountNumber == owner);
+
+      id("owner-balance").innerHTML = "";
+
+      id("owner-balance").innerHTML = `₱${num_commas(
+        users[ownerCheck].balance
+      )}`;
+    }
+
+    static total_expenses(owner) {
+      const users = FnHandler.userStorage();
+
+      let ownerCheck = users.findIndex((index) => index.accountNumber == owner),
+        total = 0;
+
+      id("owner-expenses").innerHTML = "";
+
+      for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
+        total = parseFloat(
+          total + parseFloat(users[ownerCheck].expenseItems[i].cost)
+        );
+      }
+
+      id("owner-expenses").innerHTML = `₱${num_commas(total)}`;
+    }
+
+    static list(owner) {
+      const users = FnHandler.userStorage();
+
+      let ownerCheck = users.findIndex((index) => index.accountNumber == owner);
+
+      id("expense-table").innerHTML = "";
+
+      for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
+        let tableRow = create_el("tr"),
+          nameTd = create_el("td"),
+          costTd = create_el("td"),
+          editTd = create_el("td"),
+          deleteTd = create_el("td");
+
+        nameTd.innerHTML = users[ownerCheck].expenseItems[i].name;
+        tableRow.appendChild(nameTd);
+
+        costTd.innerHTML = `₱${num_commas(
+          users[ownerCheck].expenseItems[i].cost
+        )}`;
+
+        tableRow.appendChild(costTd);
+
+        editTd.innerHTML = `<i id="${i}" class="fas fa-edit"></i>`;
+
+        add_event(editTd.querySelector("i"), "click", function () {
+          id("add-expense-name").value =
+            users[ownerCheck].expenseItems[this.id].name;
+
+          id("add-expense-amount").value = num_commas(
+            users[ownerCheck].expenseItems[this.id].cost.split(".")[0]
+          );
+
+          id("add-expense-amount-dec").value =
+            users[ownerCheck].expenseItems[this.id].cost.split(".")[1];
+
+          users[ownerCheck].balance = parseFloat(
+            parseFloat(users[ownerCheck].balance) +
+              parseFloat(users[ownerCheck].expenseItems[this.id].cost)
+          ).toFixed(2);
+
+          users[ownerCheck].expenseItems.splice(this.id, 1);
+
+          localStorage.setItem("users", JSON.stringify(users));
+
+          return (
+            User.list(id("owner-acc-num").innerHTML.split(" ").join("")),
+            User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")),
+            User.total_expenses(
+              id("owner-acc-num").innerHTML.split(" ").join("")
+            )
+          );
+        });
+
+        tableRow.appendChild(editTd);
+
+        deleteTd.innerHTML = `<i id="${i}" class="fas fa-minus-circle"></i>`;
+
+        add_event(deleteTd.querySelector("i"), "click", function () {
+          let deletePrompt = prompt(
+              'Are you sure to delete this item?\n Type "Y" for yes and "N" for no.',
+              "N"
+            ),
+            deleteAnswer =
+              deletePrompt != null
+                ? trim(deletePrompt.toLowerCase())
+                : console.clear();
+
+          if (deleteAnswer == "y") {
+            users[ownerCheck].balance = parseFloat(
+              parseFloat(users[ownerCheck].balance) +
+                parseFloat(users[ownerCheck].expenseItems[this.id].cost)
+            ).toFixed(2);
+
+            users[ownerCheck].expenseItems.splice(this.id, 1);
+            localStorage.setItem("users", JSON.stringify(users));
+
+            return (
+              User.list(id("owner-acc-num").innerHTML.split(" ").join("")),
+              User.get_balance(
+                id("owner-acc-num").innerHTML.split(" ").join(""),
+                User.total_expenses(
+                  id("owner-acc-num").innerHTML.split(" ").join("")
+                )
+              )
+            );
+          } else {
+            return;
+          }
+        });
+
+        tableRow.appendChild(deleteTd);
+        id("expense-table").appendChild(tableRow);
+      }
     }
   }
 
@@ -1307,6 +1454,10 @@ doc_ready(() => {
       id("owner-acc-num").innerHTML.split(" ").join("")
     );
 
+    User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
+
     // OLD CODE
     // if (users[usernameCheck] && users[passwordCheck]) {
     //   // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
@@ -1423,6 +1574,28 @@ doc_ready(() => {
 
   add_event(id("close-profile-btn"), "click", () => {
     remove_class(id("profile-modal"), "show");
+  });
+
+  add_event(id("add-expense-form"), "submit", (e) => {
+    e.preventDefault();
+
+    let expense_amount = `${id("add-expense-amount")
+      .value.split(",")
+      .join("")}.${id("add-expense-amount-dec").value}`;
+
+    User.add(
+      inner(trim(id("add-expense-name").value.toUpperCase())),
+      expense_amount,
+      id("owner-acc-num").innerHTML.split(" ").join("")
+    );
+
+    User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+
+    return (
+      false,
+      User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")),
+      User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""))
+    );
   });
 
   add_event(id("add-connections-btn"), "click", () => {
