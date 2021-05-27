@@ -227,6 +227,11 @@ doc_ready(() => {
             alert("There have been no changes made for the email!");
           } else {
             users[usernameCheck].email = inner(trim(id("change-email").value));
+
+            id("profile-email").innerHTML = inner(
+              trim(id("change-email").value)
+            );
+
             alert("Change email successful!");
             localStorage.setItem("users", JSON.stringify(users));
           }
@@ -249,6 +254,10 @@ doc_ready(() => {
             alert("Username cannot be less than 5 characters!");
           } else {
             users[usernameCheck].username = inner(
+              trim(id("change-username").value)
+            );
+
+            id("profile-username").innerHTML = inner(
               trim(id("change-username").value)
             );
 
@@ -313,6 +322,33 @@ doc_ready(() => {
           }
 
           return false;
+        });
+
+        add_event(id("clear-items-btn"), "click", () => {
+          let deletePrompt = prompt(
+              'Are you sure to delete all items?\nType "Y" for yes and "N" for no.',
+              "N"
+            ),
+            deleteAnswer =
+              deletePrompt != null
+                ? trim(deletePrompt.toLowerCase())
+                : console.clear();
+
+          if (deleteAnswer == "y") {
+            users[usernameCheck].expenseItems = [];
+            localStorage.setItem("users", JSON.stringify(users));
+            return (
+              User.list(id("owner-acc-num").innerHTML.split(" ").join("")),
+              User.get_balance(
+                id("owner-acc-num").innerHTML.split(" ").join("")
+              ),
+              User.total_expenses(
+                id("owner-acc-num").innerHTML.split(" ").join("")
+              )
+            );
+          } else {
+            return;
+          }
         });
       } else if (!users[usernameCheck]) {
         alert("User does not exist!");
@@ -1071,6 +1107,25 @@ doc_ready(() => {
           parseFloat(users[ownerCheck].balance) - parseFloat(cost)
         ).toFixed(2);
 
+        let initialBal = parseFloat(
+            parseFloat(users[ownerCheck].balance) + parseFloat(cost)
+          ).toFixed(2),
+          gender = users[ownerCheck].gender == "male" ? "his" : "her";
+
+        users[ownerCheck].userTransactionHistory.unshift(
+          `<em>${FnHandler.time_stamp()}</em> : You added an expense item, <strong>${name}</strong>, costing an amount of <strong>₱${cost}</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, your remaining account balance is now <strong>₱${
+            users[ownerCheck].balance
+          }</strong>.`
+        );
+
+        users[ownerCheck].transactionHistory.unshift(
+          `<em>${FnHandler.time_stamp()}</em> : <strong>${
+            users[ownerCheck].firstName
+          }</strong> added an expense item, <strong>${name}</strong>, costing an amount of <strong>₱${cost}</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
+            users[ownerCheck].balance
+          }</strong>.`
+        );
+
         users[ownerCheck].expenseItems.push(newExpenseItem);
         id("add-expense-form").reset();
         localStorage.setItem("users", JSON.stringify(users));
@@ -1103,7 +1158,7 @@ doc_ready(() => {
         );
       }
 
-      id("owner-expenses").innerHTML = `₱${num_commas(total)}`;
+      id("owner-expenses").innerHTML = `₱${num_commas(total.toFixed(2))}`;
     }
 
     static list(owner) {
@@ -1147,14 +1202,44 @@ doc_ready(() => {
               parseFloat(users[ownerCheck].expenseItems[this.id].cost)
           ).toFixed(2);
 
-          users[ownerCheck].expenseItems.splice(this.id, 1);
+          let initialBal = parseFloat(
+              parseFloat(users[ownerCheck].balance) -
+                parseFloat(users[ownerCheck].expenseItems[this.id].cost)
+            ).toFixed(2),
+            gender = users[ownerCheck].gender == "male" ? "his" : "her";
 
+          users[ownerCheck].userTransactionHistory.unshift(
+            `<em>${FnHandler.time_stamp()}</em> : You deleted an expense item, <strong>${
+              users[ownerCheck].expenseItems[this.id].name
+            }</strong>, costing an amount of <strong>₱${
+              users[ownerCheck].expenseItems[this.id].cost
+            }</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, your account balance is now <strong>₱${
+              users[ownerCheck].balance
+            }</strong>.`
+          );
+
+          users[ownerCheck].transactionHistory.unshift(
+            `<em>${FnHandler.time_stamp()}</em> : <strong>${
+              users[ownerCheck].firstName
+            }</strong> deleted an expense item, <strong>${
+              users[ownerCheck].expenseItems[this.id].name
+            }</strong>, costing an amount of <strong>₱${
+              users[ownerCheck].expenseItems[this.id].cost
+            }</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
+              users[ownerCheck].balance
+            }</strong>.`
+          );
+
+          users[ownerCheck].expenseItems.splice(this.id, 1);
           localStorage.setItem("users", JSON.stringify(users));
 
           return (
             User.list(id("owner-acc-num").innerHTML.split(" ").join("")),
             User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")),
             User.total_expenses(
+              id("owner-acc-num").innerHTML.split(" ").join("")
+            ),
+            FnHandler.individual_history(
               id("owner-acc-num").innerHTML.split(" ").join("")
             )
           );
@@ -1180,16 +1265,46 @@ doc_ready(() => {
                 parseFloat(users[ownerCheck].expenseItems[this.id].cost)
             ).toFixed(2);
 
+            let initialBal = parseFloat(
+                parseFloat(users[ownerCheck].balance) -
+                  parseFloat(users[ownerCheck].expenseItems[this.id].cost)
+              ).toFixed(2),
+              gender = users[ownerCheck].gender == "male" ? "his" : "her";
+
+            users[ownerCheck].userTransactionHistory.unshift(
+              `<em>${FnHandler.time_stamp()}</em> : You deleted an expense item, <strong>${
+                users[ownerCheck].expenseItems[this.id].name
+              }</strong>, costing an amount of <strong>₱${
+                users[ownerCheck].expenseItems[this.id].cost
+              }</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, your account balance is now <strong>₱${
+                users[ownerCheck].balance
+              }</strong>.`
+            );
+
+            users[ownerCheck].transactionHistory.unshift(
+              `<em>${FnHandler.time_stamp()}</em> : <strong>${
+                users[ownerCheck].firstName
+              }</strong> deleted an expense item, <strong>${
+                users[ownerCheck].expenseItems[this.id].name
+              }</strong>, costing an amount of <strong>₱${
+                users[ownerCheck].expenseItems[this.id].cost
+              }</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
+                users[ownerCheck].balance
+              }</strong>.`
+            );
+
             users[ownerCheck].expenseItems.splice(this.id, 1);
             localStorage.setItem("users", JSON.stringify(users));
-
             return (
               User.list(id("owner-acc-num").innerHTML.split(" ").join("")),
               User.get_balance(
-                id("owner-acc-num").innerHTML.split(" ").join(""),
-                User.total_expenses(
-                  id("owner-acc-num").innerHTML.split(" ").join("")
-                )
+                id("owner-acc-num").innerHTML.split(" ").join("")
+              ),
+              User.total_expenses(
+                id("owner-acc-num").innerHTML.split(" ").join("")
+              ),
+              FnHandler.individual_history(
+                id("owner-acc-num").innerHTML.split(" ").join("")
               )
             );
           } else {
@@ -1591,6 +1706,12 @@ doc_ready(() => {
 
     User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
 
+    FnHandler.list_users();
+
+    FnHandler.individual_history(
+      id("owner-acc-num").innerHTML.split(" ").join("")
+    );
+
     return (
       false,
       User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")),
@@ -1642,7 +1763,10 @@ doc_ready(() => {
     );
 
     id("withdraw-form").reset();
-    return false;
+
+    return (
+      false, User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""))
+    );
   });
 
   add_event(id("deposit-form"), "submit", (e) => {
@@ -1664,7 +1788,10 @@ doc_ready(() => {
     );
 
     id("deposit-form").reset();
-    return false;
+
+    return (
+      false, User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""))
+    );
   });
 
   add_event(id("send-form"), "submit", (e) => {
@@ -1687,6 +1814,9 @@ doc_ready(() => {
     );
 
     id("send-form").reset();
-    return false;
+
+    return (
+      false, User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""))
+    );
   });
 });
