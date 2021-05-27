@@ -1528,55 +1528,45 @@ doc_ready(() => {
   add_event(id("load-data-btn"), "click", () => {
     const users = FnHandler.userStorage();
 
-    let juanCheck = users.findIndex((index) => index.firstName == "JUAN"),
-      delaCruzCheck = users.findIndex((index) => index.lastName == "DELA CRUZ"),
-      janeCheck = users.findIndex((index) => index.firstName == "JANE"),
-      doeCheck = users.findIndex((index) => index.lastName == "DOE");
+    let janeCheck = users.findIndex((index) => index.firstName == "JANE"),
+      doeCheck = users.findIndex((index) => index.lastName == "DOE"),
+      juanCheck = users.findIndex((index) => index.firstName == "JUAN"),
+      delaCruzCheck = users.findIndex((index) => index.lastName == "DELA CRUZ");
 
     // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE WHEN THE DATA STILL DON'T EXIST
-    if (!users[juanCheck] && !users[delaCruzCheck]) {
-      let loadPrompt = prompt(
-          'Continuing will load initial data for immediate testing purposes?\nType "Y" to continue or "N" otherwise.',
-          "Y"
-        ),
-        loadAnswer =
-          loadPrompt != null ? trim(loadPrompt.toLowerCase()) : console.clear(),
-        balance = 2500.05;
-
-      if (loadAnswer == "n" || loadAnswer == null || loadAnswer == "") {
-        return;
-      } else {
-        // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
-        create_user(
-          "juandelacruz",
-          "juanjuan",
-          "juandelacruz@mail.com",
-          true,
-          "JUAN",
-          "",
-          "DELA CRUZ",
-          "male",
-          "071096025466",
-          "Savings",
-          balance.toFixed(2)
-        );
-      }
-    }
-
     if (!users[janeCheck] && !users[doeCheck]) {
-      let balance = 5200;
+      let balance = 5200.05;
 
+      // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
       create_user(
-        "",
-        "",
-        "",
-        false,
+        "janedoe",
+        "janedoe",
+        "janedoe@mail.com",
+        true,
         "JANE",
         "HILLS",
         "DOE",
         "female",
         "023451282250",
         "Checking",
+        balance.toFixed(2)
+      );
+    }
+
+    if (!users[juanCheck] && !users[delaCruzCheck]) {
+      let balance = 2500;
+
+      create_user(
+        "",
+        "",
+        "",
+        false,
+        "JUAN",
+        "",
+        "DELA CRUZ",
+        "male",
+        "071096025466",
+        "Savings",
         balance.toFixed(2)
       );
     }
