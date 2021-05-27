@@ -166,6 +166,10 @@
               //   .join("_")
               //   .toLowerCase();
 
+              /**
+               * REMOVE WHITE SPACES AROUND WHEN POSSIBLE
+               * SPACES IN BETWEEN STRINGS ARE REPLACED WITH " "
+               */
               bookTitleArr = bookArr[0].replace(/\s+/g, " ").trim().split(" ");
 
               for (i = 0; i < bookTitleArr.length; i++) {
