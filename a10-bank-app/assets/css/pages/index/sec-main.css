@@ -42,11 +42,11 @@ table > tr {
 }
 
 main .wrap-acc-table {
-  height: 340px;
+  height: 333px;
 }
 
 main .wrap-expense-table {
-  height: 308px;
+  height: 300px;
 }
 
 #accounts-wrap.hide,
