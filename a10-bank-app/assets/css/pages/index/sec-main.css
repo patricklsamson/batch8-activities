@@ -71,7 +71,8 @@ main .wrap-expense-table {
   cursor: pointer;
 }
 
-main #accounts-wrap table {
+#acc-table,
+#expense-table {
   width: 100%;
 }
 
@@ -80,44 +81,74 @@ th {
   border: 1px solid #000;
 } */
 
-main #accounts-wrap table th:first-child,
-main #accounts-wrap table td:first-child {
+#accounts-wrap table th:first-child,
+#accounts-wrap table td:first-child {
   width: 16%;
 }
 
-main #accounts-wrap table th:nth-child(2) {
+#accounts-wrap table th:nth-child(2) {
   width: 44.3%;
 }
 
-main #accounts-wrap table td:nth-child(2) {
+#accounts-wrap table td:nth-child(2) {
   width: 45%;
 }
 
-main #accounts-wrap table th:nth-child(3) {
+#accounts-wrap table th:nth-child(3) {
   width: 13.8%;
 }
 
-main #accounts-wrap table td:nth-child(3) {
+#accounts-wrap table td:nth-child(3) {
   width: 14%;
 }
 
-main #accounts-wrap table th:nth-child(4) {
+#accounts-wrap table th:nth-child(4) {
   width: 19.7%;
 }
 
-main #accounts-wrap table td:nth-child(4) {
+#accounts-wrap table td:nth-child(4) {
   width: 20%;
 }
 
-main #accounts-wrap table th:last-child {
+#accounts-wrap table th:last-child {
   padding-right: 18px;
 }
 
-main #accounts-wrap table td:last-child {
+#accounts-wrap table td:last-child {
   padding-right: 10px;
 }
 
-main #accounts-wrap table td[colspan="5"] {
+#expense-wrap table th:first-child {
+  width: 50%;
+}
+
+#expense-wrap table td:first-child {
+  width: 48.5%;
+}
+
+#expense-wrap table th:nth-child(2) {
+  width: 30%;
+}
+
+#expense-wrap table td:nth-child(2) {
+  width: 29.5%;
+}
+
+#expense-wrap table th:nth-child(3) {
+  width: 15%;
+}
+
+#expense-wrap table td:nth-child(3) {
+  width: 14.8%;
+}
+
+#expense-wrap table th:last-child,
+#expense-wrap table td:last-child {
+  padding-right: 25px;
+}
+
+#accounts-wrap table td[colspan="5"],
+#expense-wrap table td[colspan="4"] {
   width: auto;
   padding: 0;
 }
