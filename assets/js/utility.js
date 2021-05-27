@@ -40,6 +40,10 @@ function inner(str) {
     .replace(/\//g, "&#x2F;");
 }
 
+function trim(str) {
+  return str.replace(/\s+/g, " ").trim();
+}
+
 function add_event(element, e, fn) {
   if (element.addEventListener) {
     element.addEventListener(e, fn, false);
