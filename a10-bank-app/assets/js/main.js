@@ -1549,7 +1549,7 @@ doc_ready(() => {
 
     // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE WHEN THE DATA STILL DON'T EXIST
     if (!users[janeCheck] && !users[doeCheck]) {
-      let balance = 5200.05;
+      let balance = 7200.05;
 
       // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
       create_user(
@@ -1568,7 +1568,7 @@ doc_ready(() => {
     }
 
     if (!users[juanCheck] && !users[delaCruzCheck]) {
-      let balance = 2500;
+      let balance = 2700;
 
       create_user(
         "juandelacruz",
@@ -1586,7 +1586,7 @@ doc_ready(() => {
     }
 
     if (!users[juanitaCheck] && !users[samonteCheck]) {
-      let balance = 3200.5;
+      let balance = 5200.5;
 
       create_user(
         "",
@@ -1604,7 +1604,7 @@ doc_ready(() => {
     }
 
     if (!users[johnCheck] && !users[schmoeCheck]) {
-      let balance = 2300;
+      let balance = 2500;
 
       create_user(
         "",
