@@ -210,6 +210,10 @@ main .wrap-connections-table {
   height: 322px;
 }
 
+#connections-table td:first-child {
+  width: 40%;
+}
+
 #connections-table td:nth-child(2) {
   width: 30%;
 }
