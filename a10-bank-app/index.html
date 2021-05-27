@@ -374,6 +374,29 @@
             </div>
 
             <div id="expense-wrap">
+              <p class="mb-05">
+                <i id="owner-transaction-btn" class="fas fa-history"></i>
+                <span id="owner"></span> : <span id="owner-acc-num"></span>
+              </p>
+
+              <div id="profile-modal" class="flex wrap-modal">
+                <div class="wrap-modal-inner">
+                  <i
+                    id="close-profile-btn"
+                    class="far fa-times-circle fa-2x"
+                  ></i>
+
+                  <h6 class="mb-025">Profile</h6>
+                  <p class="mb-05">
+                    Account Name: <span id="profile-name"></span>
+                  </p>
+                  <p class="mb-05">
+                    Username: <span id="profile-username"></span>
+                  </p>
+                  <p>Email: <span id="profile-email"></span></p>
+                </div>
+              </div>
+
               <h6>Expense Items</h6>
 
               <div class="grid">
@@ -405,7 +428,51 @@
                   </table>
                 </div>
 
-                <div class="gcol-6"></div>
+                <div class="gcol-6">
+                  <form action="" autocomplete="off" id="add-expense-form">
+                    <label for="add-expense-name">Add Expense Item</label><br />
+                    <input
+                      type="text"
+                      name="add-expense-name"
+                      autocomplete="off"
+                      id="add-expense-name"
+                      required
+                    /><br />
+
+                    <label for="add-expense-amount">Expense Item Cost</label
+                    ><br />
+                    ₱
+                    <input
+                      type="text"
+                      name="add-expense-amount"
+                      autocomplete="off"
+                      id="add-expense-amount"
+                    />
+                    .
+                    <input
+                      type="number"
+                      name="add-expense-amount"
+                      value="00"
+                      min="0"
+                      max="99"
+                      id="add-expense-amount-dec"
+                    /><br />
+
+                    <div class="rflex mt-05">
+                      <input
+                        type="submit"
+                        value="Add Expense Item"
+                        id="expense-btn"
+                        class="btn-bank minor"
+                      />
+                      <input
+                        type="reset"
+                        value="Reset"
+                        class="btn-bank minor"
+                      />
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -470,7 +537,7 @@
                 .
                 <input
                   type="number"
-                  name="add-deposit"
+                  name="add-deposit-amount"
                   value="00"
                   min="0"
                   max="99"
@@ -490,26 +557,7 @@
             </div>
 
             <div id="connections-wrap">
-              <p>
-                <i id="owner-transaction-btn" class="fas fa-history"></i>
-                <span id="owner"></span> : <span id="owner-acc-num"></span>
-              </p>
-
-              <div id="profile-modal" class="flex wrap-modal">
-                <div class="wrap-modal-inner">
-                  <i
-                    id="close-profile-btn"
-                    class="far fa-times-circle fa-2x"
-                  ></i>
-
-                  <h6 class="mb-025">Profile</h6>
-                  <p class="mb-05">Account Name: <span id="profile-name"></span></p>
-                  <p class="mb-05">Username: <span id="profile-username"></span></p>
-                  <p>Email: <span id="profile-email"></span></p>
-                </div>
-              </div>
-
-              <h6 class="mt-025 mb-025">
+              <h6 class="mb-025">
                 Connections
                 <i id="add-connections-btn" class="fas fa-user-plus"></i>
               </h6>
