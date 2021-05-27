@@ -1088,23 +1088,23 @@ doc_ready(function () {
     }); // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE WHEN THE DATA STILL DON'T EXIST
 
     if (!users[janeCheck] && !users[doeCheck]) {
-      var balance = 5200.05; // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
+      var balance = 7200.05; // USERNAME AND PASSWORD ARGUMENTS ARE SET TO BLANK (""), THEY WILL ONLY HAVE VALUES FROM SIGNUP FORM
 
       create_user("janedoe", "janedoe", "janedoe@mail.com", true, "JANE", "HILLS", "DOE", "female", "023451282250", "Checking", balance.toFixed(2));
     }
 
     if (!users[juanCheck] && !users[delaCruzCheck]) {
-      var _balance = 2500;
+      var _balance = 2700;
       create_user("juandelacruz", "juandelacruz", "juandelacruz@mail.com", true, "JUAN", "", "DELA CRUZ", "male", "071096025466", "Savings", _balance.toFixed(2));
     }
 
     if (!users[juanitaCheck] && !users[samonteCheck]) {
-      var _balance2 = 3200.5;
+      var _balance2 = 5200.5;
       create_user("", "", "", false, "JUANITA", "HERMOSA", "SAMONTE", "female", "031734218924", "Checking", _balance2.toFixed(2));
     }
 
     if (!users[johnCheck] && !users[schmoeCheck]) {
-      var _balance3 = 2300;
+      var _balance3 = 2500;
       create_user("", "", "", false, "JOHN", "", "SCHMOE", "male", "064581565583", "Savings", _balance3.toFixed(2));
     } // THIS FUNCTION IS CALLED AGAIN TO REFRESH THE LIST IN THE UI
 
