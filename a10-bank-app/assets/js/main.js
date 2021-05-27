@@ -1,4 +1,6 @@
 doc_ready(() => {
+  localStorage_space();
+
   let i, j;
 
   // SEPARATED ADMIN FOR BETTER DISTINCTION FROM REGULAR USERS ESPECIALLY FOR LOCAL STORAGE
@@ -7,6 +9,302 @@ doc_ready(() => {
       this.username = username;
       this.password = password;
       this.adminId = adminId;
+    }
+  }
+
+  class ExpenseItem {
+    constructor(name, cost, owner) {
+      this.name = name;
+      this.cost = cost;
+      this.owner = owner;
+    }
+  }
+
+  // CONSTRUCTOR FOR EACH INDIVIDUAL USERS THAT INHERITS ADMIN USERNAME AND PASSWORD PROPERTIES
+  class User extends Admin {
+    constructor(
+      username,
+      password,
+      email,
+      signedUp,
+      firstName,
+      middleName,
+      lastName,
+      gender,
+      accountNumber,
+      accountType,
+      balance
+    ) {
+      super(username, password);
+      this.email = email;
+      this.firstName = firstName;
+      this.middleName = middleName;
+      this.lastName = lastName;
+      this.gender = gender;
+      this.accountNumber = accountNumber;
+      this.accountType = accountType;
+      this.balance = balance;
+      this.signedUp = signedUp;
+      this.transactionHistory = [];
+      this.userTransactionHistory = [];
+      this.expenseItems = [];
+      this.connections = [];
+    }
+
+    static add(name, cost, owner) {
+      const users = FnHandler.userStorage();
+
+      let ownerCheck = users.findIndex((index) => index.accountNumber == owner),
+        nameCheck = users[ownerCheck].expenseItems.findIndex(
+          (index) => index.name == name
+        );
+
+      if (users[ownerCheck].expenseItems[nameCheck]) {
+        alert("Expense item already exists!");
+      } else {
+        const newExpenseItem = new ExpenseItem(name, cost, owner);
+
+        users[ownerCheck].balance = parseFloat(
+          parseFloat(users[ownerCheck].balance) - parseFloat(cost)
+        ).toFixed(2);
+
+        let initialBal = parseFloat(
+            parseFloat(users[ownerCheck].balance) + parseFloat(cost)
+          ).toFixed(2),
+          gender = users[ownerCheck].gender == "male" ? "His" : "Her";
+
+        users[ownerCheck].userTransactionHistory.unshift(
+          `<em>${FnHandler.time_stamp()}</em> : You added an expense item: <strong>${name}</strong>, costing an amount of <strong>₱${num_commas(
+            cost
+          )}</strong>. Your remaining account balance is now <strong>₱${num_commas(
+            users[ownerCheck].balance
+          )}</strong> from a previous account balance of <strong>₱${num_commas(
+            initialBal
+          )}</strong>.`
+        );
+
+        users[ownerCheck].transactionHistory.unshift(
+          `<em>${FnHandler.time_stamp()}</em> : <strong>${
+            users[ownerCheck].firstName
+          }</strong> added an expense item: <strong>${name}</strong>, costing an amount of <strong>₱${num_commas(
+            cost
+          )}</strong>. ${gender} remaining account balance is now <strong>₱${num_commas(
+            users[ownerCheck].balance
+          )}</strong> from a previous account balance of <strong>₱${num_commas(
+            initialBal
+          )}</strong>.`
+        );
+
+        users[ownerCheck].expenseItems.push(newExpenseItem);
+        id("add-expense-form").reset();
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+    }
+
+    static get_balance(owner) {
+      const users = FnHandler.userStorage();
+
+      let ownerCheck = users.findIndex((index) => index.accountNumber == owner);
+
+      id("owner-balance").innerHTML = "";
+
+      id("owner-balance").innerHTML = `₱${num_commas(
+        users[ownerCheck].balance
+      )}`;
+    }
+
+    static total_expenses(owner) {
+      const users = FnHandler.userStorage();
+
+      let ownerCheck = users.findIndex((index) => index.accountNumber == owner),
+        total = 0;
+
+      id("owner-expenses").innerHTML = "";
+
+      for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
+        total = parseFloat(
+          total + parseFloat(users[ownerCheck].expenseItems[i].cost)
+        );
+      }
+
+      id("owner-expenses").innerHTML = `₱${num_commas(total.toFixed(2))}`;
+    }
+
+    static list(owner) {
+      const users = FnHandler.userStorage();
+
+      let ownerCheck = users.findIndex((index) => index.accountNumber == owner);
+
+      id("expense-table").innerHTML = "";
+
+      for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
+        let tableRow = create_el("tr"),
+          nameTd = create_el("td"),
+          costTd = create_el("td"),
+          editTd = create_el("td"),
+          deleteTd = create_el("td");
+
+        nameTd.innerHTML = users[ownerCheck].expenseItems[i].name;
+        tableRow.appendChild(nameTd);
+
+        costTd.innerHTML = `₱${num_commas(
+          users[ownerCheck].expenseItems[i].cost
+        )}`;
+
+        tableRow.appendChild(costTd);
+
+        editTd.innerHTML = `<i id="${i}" class="fas fa-edit"></i>`;
+
+        add_event(editTd.querySelector("i"), "click", function () {
+          const users = FnHandler.userStorage();
+
+          let ownerCheck = users.findIndex(
+            (index) => index.accountNumber == owner
+          );
+
+          id("add-expense-name").value =
+            users[ownerCheck].expenseItems[this.id].name;
+
+          id("add-expense-amount").value = num_commas(
+            users[ownerCheck].expenseItems[this.id].cost.split(".")[0]
+          );
+
+          id("add-expense-amount-dec").value =
+            users[ownerCheck].expenseItems[this.id].cost.split(".")[1];
+
+          users[ownerCheck].balance = parseFloat(
+            parseFloat(users[ownerCheck].balance) +
+              parseFloat(users[ownerCheck].expenseItems[this.id].cost)
+          ).toFixed(2);
+
+          let initialBal = parseFloat(
+              parseFloat(users[ownerCheck].balance) -
+                parseFloat(users[ownerCheck].expenseItems[this.id].cost)
+            ).toFixed(2),
+            gender = users[ownerCheck].gender == "male" ? "His" : "Her";
+
+          users[ownerCheck].userTransactionHistory.unshift(
+            `<em>${FnHandler.time_stamp()}</em> : You deleted an expense item: <strong>${
+              users[ownerCheck].expenseItems[this.id].name
+            }</strong>, costing an amount of <strong>₱${num_commas(
+              users[ownerCheck].expenseItems[this.id].cost
+            )}</strong>. Your account balance is now <strong>₱${num_commas(
+              users[ownerCheck].balance
+            )}</strong> from a previous account balance of <strong>₱${num_commas(
+              initialBal
+            )}</strong>.`
+          );
+
+          users[ownerCheck].transactionHistory.unshift(
+            `<em>${FnHandler.time_stamp()}</em> : <strong>${
+              users[ownerCheck].firstName
+            }</strong> deleted an expense item: <strong>${
+              users[ownerCheck].expenseItems[this.id].name
+            }</strong>, costing an amount of <strong>₱${num_commas(
+              users[ownerCheck].expenseItems[this.id].cost
+            )}</strong>. ${gender} remaining account balance is now <strong>₱${num_commas(
+              users[ownerCheck].balance
+            )}</strong> from a previous account balance of <strong>₱${num_commas(
+              initialBal
+            )}</strong>.`
+          );
+
+          users[ownerCheck].expenseItems.splice(this.id, 1);
+          localStorage.setItem("users", JSON.stringify(users));
+
+          User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+
+          FnHandler.individual_history(
+            id("owner-acc-num").innerHTML.split(" ").join("")
+          );
+
+          User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+
+          User.total_expenses(
+            id("owner-acc-num").innerHTML.split(" ").join("")
+          );
+        });
+
+        tableRow.appendChild(editTd);
+
+        deleteTd.innerHTML = `<i id="${i}" class="fas fa-minus-circle"></i>`;
+
+        add_event(deleteTd.querySelector("i"), "click", function () {
+          const users = FnHandler.userStorage();
+
+          let ownerCheck = users.findIndex(
+            (index) => index.accountNumber == owner
+          );
+
+          let deletePrompt = prompt(
+              'Are you sure to delete this item?\n Type "Y" for yes and "N" for no.',
+              "N"
+            ),
+            deleteAnswer =
+              deletePrompt != null
+                ? trim(deletePrompt.toLowerCase())
+                : console.clear();
+
+          if (deleteAnswer == "y") {
+            users[ownerCheck].balance = parseFloat(
+              parseFloat(users[ownerCheck].balance) +
+                parseFloat(users[ownerCheck].expenseItems[this.id].cost)
+            ).toFixed(2);
+
+            let initialBal = parseFloat(
+                parseFloat(users[ownerCheck].balance) -
+                  parseFloat(users[ownerCheck].expenseItems[this.id].cost)
+              ).toFixed(2),
+              gender = users[ownerCheck].gender == "male" ? "His" : "Her";
+
+            users[ownerCheck].userTransactionHistory.unshift(
+              `<em>${FnHandler.time_stamp()}</em> : You deleted an expense item: <strong>${
+                users[ownerCheck].expenseItems[this.id].name
+              }</strong>, costing an amount of <strong>₱${num_commas(
+                users[ownerCheck].expenseItems[this.id].cost
+              )}</strong>. Your account balance is now <strong>₱${num_commas(
+                users[ownerCheck].balance
+              )}</strong> from a previous account balance of <strong>₱${num_commas(
+                initialBal
+              )}</strong>.`
+            );
+
+            users[ownerCheck].transactionHistory.unshift(
+              `<em>${FnHandler.time_stamp()}</em> : <strong>${
+                users[ownerCheck].firstName
+              }</strong> deleted an expense item: <strong>${
+                users[ownerCheck].expenseItems[this.id].name
+              }</strong>, costing an amount of <strong>₱${num_commas(
+                users[ownerCheck].expenseItems[this.id].cost
+              )}</strong>. ${gender} remaining account balance is now <strong>₱${num_commas(
+                users[ownerCheck].balance
+              )}</strong> from a previous account balance of <strong>₱${num_commas(
+                initialBal
+              )}</strong>.`
+            );
+
+            users[ownerCheck].expenseItems.splice(this.id, 1);
+            localStorage.setItem("users", JSON.stringify(users));
+
+            User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+
+            FnHandler.individual_history(
+              id("owner-acc-num").innerHTML.split(" ").join("")
+            );
+
+            User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+
+            User.total_expenses(
+              id("owner-acc-num").innerHTML.split(" ").join("")
+            );
+          } else {
+            return;
+          }
+        });
+
+        tableRow.appendChild(deleteTd);
+        id("expense-table").appendChild(tableRow);
+      }
     }
   }
 
@@ -325,29 +623,81 @@ doc_ready(() => {
         });
 
         add_event(id("clear-items-btn"), "click", () => {
-          let deletePrompt = prompt(
-              'Are you sure to delete all items?\nType "Y" for yes and "N" for no.',
-              "N"
-            ),
-            deleteAnswer =
-              deletePrompt != null
-                ? trim(deletePrompt.toLowerCase())
-                : console.clear();
+          const users = FnHandler.userStorage();
 
-          if (deleteAnswer == "y") {
-            users[usernameCheck].expenseItems = [];
-            localStorage.setItem("users", JSON.stringify(users));
-            return (
-              User.list(id("owner-acc-num").innerHTML.split(" ").join("")),
+          let usernameCheck = users.findIndex(
+            (index) => index.username == username
+          );
+
+          if (users[usernameCheck].expenseItems.length != 0) {
+            let deletePrompt = prompt(
+                'Are you sure to delete all items?\nType "Y" for yes and "N" for no.',
+                "N"
+              ),
+              deleteAnswer =
+                deletePrompt != null
+                  ? trim(deletePrompt.toLowerCase())
+                  : console.clear();
+
+            if (deleteAnswer == "y") {
+              let total = 0,
+                gender = users[usernameCheck].gender == "male" ? "His" : "Her";
+
+              for (i = 0; i < users[usernameCheck].expenseItems.length; i++) {
+                total = parseFloat(
+                  total + parseFloat(users[usernameCheck].expenseItems[i].cost)
+                );
+              }
+
+              users[usernameCheck].balance = parseFloat(
+                parseFloat(users[usernameCheck].balance) + total
+              );
+
+              let initialBal = parseFloat(
+                parseFloat(users[usernameCheck].balance) - total
+              );
+
+              users[usernameCheck].userTransactionHistory.unshift(
+                `<em>${FnHandler.time_stamp()}</em> : You deleted all expense items, costing an amount of <strong>₱${num_commas(
+                  total.toFixed(2)
+                )}</strong>. Your account balance is now <strong>₱${num_commas(
+                  users[usernameCheck].balance
+                )}</strong> from a previous account balance of <strong>₱${num_commas(
+                  initialBal.toFixed(2)
+                )}</strong>.`
+              );
+
+              users[usernameCheck].transactionHistory.unshift(
+                `<em>${FnHandler.time_stamp()}</em> : <strong>${
+                  users[usernameCheck].firstName
+                }</strong> deleted all expense items, costing an amount of <strong>${num_commas(
+                  total.toFixed(2)
+                )}</strong>. ${gender} account balance is now <strong>₱${num_commas(
+                  users[usernameCheck].balance
+                )}</strong> from a previous account balance of <strong>₱${num_commas(
+                  initialBal.toFixed(2)
+                )}</strong>.`
+              );
+
+              users[usernameCheck].expenseItems = [];
+              localStorage.setItem("users", JSON.stringify(users));
+
+              User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+
+              FnHandler.individual_history(
+                id("owner-acc-num").innerHTML.split(" ").join("")
+              );
+
               User.get_balance(
                 id("owner-acc-num").innerHTML.split(" ").join("")
-              ),
+              );
+
               User.total_expenses(
                 id("owner-acc-num").innerHTML.split(" ").join("")
-              )
-            );
-          } else {
-            return;
+              );
+            } else {
+              return;
+            }
           }
         });
       } else if (!users[usernameCheck]) {
@@ -522,7 +872,7 @@ doc_ready(() => {
       } else if (parseFloat(amount) == null || parseFloat(amount) == "") {
         alert("Enter an amount!");
       } else {
-        let gender = users[userCheck].gender == "male" ? "his" : "her";
+        let gender = users[userCheck].gender == "male" ? "His" : "Her";
 
         // FIXED 2 DECIMAL PLACES
         users[userCheck].balance = parseFloat(
@@ -537,16 +887,20 @@ doc_ready(() => {
         users[userCheck].transactionHistory.unshift(
           `<em>${FnHandler.time_stamp()}</em> : Withdrawal transaction amounting to <strong>₱${amount}</strong> from <strong>${
             users[userCheck].firstName
-          }</strong>'s account has been successful. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
+          }</strong>'s account has been successful. ${gender} remaining account balance is now <strong>₱${num_commas(
             users[userCheck].balance
-          }</strong>.`
+          )}</strong> from a previous account balance of <strong>₱${num_commas(
+            initialBal
+          )}</strong>.`
         );
 
         // TRANSACTION HISTORY FOR USER
         users[userCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Withdrawal transaction amounting to <strong>₱${amount}</strong> from your account has been successful. From a previous account balance of <strong>₱${initialBal}</strong>, your remaining account balance is now <strong>₱${
+          `<em>${FnHandler.time_stamp()}</em> : Withdrawal transaction amounting to <strong>₱${amount}</strong> from your account has been successful. Your remaining account balance is now <strong>₱${num_commas(
             users[userCheck].balance
-          }</strong>.`
+          )}</strong> from a previous account balance of <strong>₱${num_commas(
+            initialBal
+          )}</strong>.`
         );
 
         alert(`Withdrawal transaction has been successful!`);
@@ -564,7 +918,7 @@ doc_ready(() => {
       } else if (parseFloat(amount) == null || parseFloat(amount) == "") {
         alert("Enter an amount!");
       } else {
-        let gender = users[userCheck].gender == "male" ? "his" : "her";
+        let gender = users[userCheck].gender == "male" ? "His" : "Her";
 
         users[userCheck].balance = parseFloat(
           parseFloat(users[userCheck].balance) + parseFloat(amount)
@@ -577,15 +931,19 @@ doc_ready(() => {
         users[userCheck].transactionHistory.unshift(
           `<em>${FnHandler.time_stamp()}</em> : Deposit transaction amounting to <strong>₱${amount}</strong> into <strong>${
             users[userCheck].firstName
-          }</strong>'s account has been successful. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} account balance is now <strong>₱${
+          }</strong>'s account has been successful. ${gender} account balance is now <strong>₱${num_commas(
             users[userCheck].balance
-          }</strong>.`
+          )}</strong> from a previous account balance of <strong>₱${num_commas(
+            initialBal
+          )}</strong>.`
         );
 
         users[userCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Deposit transaction amounting to <strong>₱${amount}</strong> into your account has been successful. From a previous account balance of <strong>₱${initialBal}</strong>, your account balance is now <strong>₱${
+          `<em>${FnHandler.time_stamp()}</em> : Deposit transaction amounting to <strong>₱${amount}</strong> into your account has been successful. Your account balance is now <strong>₱${num_commas(
             users[userCheck].balance
-          }</strong>.`
+          )}</strong> from a previous account balance of <strong>₱${num_commas(
+            initialBal
+          )}</strong>.`
         );
 
         alert(`Deposit transaction account has been successful!`);
@@ -621,9 +979,9 @@ doc_ready(() => {
       ) {
         alert("Account number entries are not allowed!");
       } else {
-        let senderGender = users[senderCheck].gender == "male" ? "his" : "her",
+        let senderGender = users[senderCheck].gender == "male" ? "His" : "Her",
           receiverGender =
-            users[receiverCheck].gender == "male" ? "his" : "her";
+            users[receiverCheck].gender == "male" ? "His" : "Her";
 
         users[senderCheck].balance = parseFloat(
           parseFloat(users[senderCheck].balance) - parseFloat(amount)
@@ -634,23 +992,27 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[senderCheck].transactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Outcoming money transfer amounting to <strong>₱${amount}</strong> from <strong>${
-            users[senderCheck].firstName
-          }</strong>'s account into ${
+          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${amount}</strong> into ${
             users[receiverCheck].firstName
-          }'s account has been successful. From <strong>${
+          }'s account from <strong>${
             users[senderCheck].firstName
-          }</strong>'s previous account balance of <strong>₱${senderInitialBal}</strong>, ${senderGender} remaining account balance is now <strong>₱${
+          }</strong>'s account has been successful. ${senderGender} remaining account balance is now <strong>₱${num_commas(
             users[senderCheck].balance
-          }</strong>.`
+          )}</strong> from <strong>${
+            users[senderCheck].firstName
+          }</strong>'s previous account balance of <strong>₱${num_commas(
+            senderInitialBal
+          )}</strong>.`
         );
 
         users[senderCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Outcoming money transfer amounting to <strong>₱${amount}</strong> from your account into ${
+          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${amount}</strong> into ${
             users[receiverCheck].firstName
-          }'s account has been successful. From a previous account balance of <strong>₱${senderInitialBal}</strong>, your remaining account balance is now <strong>₱${
+          }'s account from your account has been successful. Your remaining account balance is now <strong>₱${num_commas(
             users[senderCheck].balance
-          }</strong>.`
+          )}</strong> from a previous account balance of <strong>₱${num_commas(
+            senderInitialBal
+          )}</strong>.`
         );
 
         users[receiverCheck].balance = parseFloat(
@@ -666,19 +1028,23 @@ doc_ready(() => {
             users[senderCheck].firstName
           }'s account into <strong>${
             users[receiverCheck].firstName
-          }</strong>'s account has been successful. From <strong>${
-            users[receiverCheck].firstName
-          }</strong>'s previous account balance of <strong>₱${receiverInitialBal}</strong>, ${receiverGender} account balance is now <strong>₱${
+          }</strong>'s account has been successful. ${receiverGender} account balance is now <strong>₱${num_commas(
             users[receiverCheck].balance
-          }</strong>.`
+          )}</strong> from <strong>${
+            users[receiverCheck].firstName
+          }</strong>'s previous account balance of <strong>₱${num_commas(
+            receiverInitialBal
+          )}</strong>.`
         );
 
         users[receiverCheck].userTransactionHistory.unshift(
           `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${amount}</strong> from ${
             users[senderCheck].firstName
-          }'s account into your account has been successful. From a previous account balance of <strong>₱${receiverInitialBal}</strong>, your account balance is now <strong>₱${
+          }'s account into your account has been successful. From a previous account balance of <strong>₱${num_commas(
+            receiverInitialBal
+          )}</strong>, your account balance is now <strong>₱${num_commas(
             users[receiverCheck].balance
-          }</strong>.`
+          )}</strong>.`
         );
 
         alert(`Money transfer has been successful!`);
@@ -1051,273 +1417,6 @@ doc_ready(() => {
     }
   }
 
-  class ExpenseItem {
-    constructor(name, cost, owner) {
-      this.name = name;
-      this.cost = cost;
-      this.owner = owner;
-    }
-  }
-
-  // CONSTRUCTOR FOR EACH INDIVIDUAL USERS THAT INHERITS ADMIN USERNAME AND PASSWORD PROPERTIES
-  class User extends Admin {
-    constructor(
-      username,
-      password,
-      email,
-      signedUp,
-      firstName,
-      middleName,
-      lastName,
-      gender,
-      accountNumber,
-      accountType,
-      balance
-    ) {
-      super(username, password);
-      this.email = email;
-      this.firstName = firstName;
-      this.middleName = middleName;
-      this.lastName = lastName;
-      this.gender = gender;
-      this.accountNumber = accountNumber;
-      this.accountType = accountType;
-      this.balance = balance;
-      this.signedUp = signedUp;
-      this.transactionHistory = [];
-      this.userTransactionHistory = [];
-      this.expenseItems = [];
-      this.connections = [];
-    }
-
-    static add(name, cost, owner) {
-      const users = FnHandler.userStorage();
-
-      let ownerCheck = users.findIndex((index) => index.accountNumber == owner),
-        nameCheck = users[ownerCheck].expenseItems.findIndex(
-          (index) => index.name == name
-        );
-
-      if (users[ownerCheck].expenseItems[nameCheck]) {
-        alert("Expense item already exists!");
-      } else {
-        const newExpenseItem = new ExpenseItem(name, cost, owner);
-
-        users[ownerCheck].balance = parseFloat(
-          parseFloat(users[ownerCheck].balance) - parseFloat(cost)
-        ).toFixed(2);
-
-        let initialBal = parseFloat(
-            parseFloat(users[ownerCheck].balance) + parseFloat(cost)
-          ).toFixed(2),
-          gender = users[ownerCheck].gender == "male" ? "his" : "her";
-
-        users[ownerCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : You added an expense item, <strong>${name}</strong>, costing an amount of <strong>₱${cost}</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, your remaining account balance is now <strong>₱${
-            users[ownerCheck].balance
-          }</strong>.`
-        );
-
-        users[ownerCheck].transactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : <strong>${
-            users[ownerCheck].firstName
-          }</strong> added an expense item, <strong>${name}</strong>, costing an amount of <strong>₱${cost}</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
-            users[ownerCheck].balance
-          }</strong>.`
-        );
-
-        users[ownerCheck].expenseItems.push(newExpenseItem);
-        id("add-expense-form").reset();
-        localStorage.setItem("users", JSON.stringify(users));
-      }
-    }
-
-    static get_balance(owner) {
-      const users = FnHandler.userStorage();
-
-      let ownerCheck = users.findIndex((index) => index.accountNumber == owner);
-
-      id("owner-balance").innerHTML = "";
-
-      id("owner-balance").innerHTML = `₱${num_commas(
-        users[ownerCheck].balance
-      )}`;
-    }
-
-    static total_expenses(owner) {
-      const users = FnHandler.userStorage();
-
-      let ownerCheck = users.findIndex((index) => index.accountNumber == owner),
-        total = 0;
-
-      id("owner-expenses").innerHTML = "";
-
-      for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
-        total = parseFloat(
-          total + parseFloat(users[ownerCheck].expenseItems[i].cost)
-        );
-      }
-
-      id("owner-expenses").innerHTML = `₱${num_commas(total.toFixed(2))}`;
-    }
-
-    static list(owner) {
-      const users = FnHandler.userStorage();
-
-      let ownerCheck = users.findIndex((index) => index.accountNumber == owner);
-
-      id("expense-table").innerHTML = "";
-
-      for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
-        let tableRow = create_el("tr"),
-          nameTd = create_el("td"),
-          costTd = create_el("td"),
-          editTd = create_el("td"),
-          deleteTd = create_el("td");
-
-        nameTd.innerHTML = users[ownerCheck].expenseItems[i].name;
-        tableRow.appendChild(nameTd);
-
-        costTd.innerHTML = `₱${num_commas(
-          users[ownerCheck].expenseItems[i].cost
-        )}`;
-
-        tableRow.appendChild(costTd);
-
-        editTd.innerHTML = `<i id="${i}" class="fas fa-edit"></i>`;
-
-        add_event(editTd.querySelector("i"), "click", function () {
-          id("add-expense-name").value =
-            users[ownerCheck].expenseItems[this.id].name;
-
-          id("add-expense-amount").value = num_commas(
-            users[ownerCheck].expenseItems[this.id].cost.split(".")[0]
-          );
-
-          id("add-expense-amount-dec").value =
-            users[ownerCheck].expenseItems[this.id].cost.split(".")[1];
-
-          users[ownerCheck].balance = parseFloat(
-            parseFloat(users[ownerCheck].balance) +
-              parseFloat(users[ownerCheck].expenseItems[this.id].cost)
-          ).toFixed(2);
-
-          let initialBal = parseFloat(
-              parseFloat(users[ownerCheck].balance) -
-                parseFloat(users[ownerCheck].expenseItems[this.id].cost)
-            ).toFixed(2),
-            gender = users[ownerCheck].gender == "male" ? "his" : "her";
-
-          users[ownerCheck].userTransactionHistory.unshift(
-            `<em>${FnHandler.time_stamp()}</em> : You deleted an expense item, <strong>${
-              users[ownerCheck].expenseItems[this.id].name
-            }</strong>, costing an amount of <strong>₱${
-              users[ownerCheck].expenseItems[this.id].cost
-            }</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, your account balance is now <strong>₱${
-              users[ownerCheck].balance
-            }</strong>.`
-          );
-
-          users[ownerCheck].transactionHistory.unshift(
-            `<em>${FnHandler.time_stamp()}</em> : <strong>${
-              users[ownerCheck].firstName
-            }</strong> deleted an expense item, <strong>${
-              users[ownerCheck].expenseItems[this.id].name
-            }</strong>, costing an amount of <strong>₱${
-              users[ownerCheck].expenseItems[this.id].cost
-            }</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
-              users[ownerCheck].balance
-            }</strong>.`
-          );
-
-          users[ownerCheck].expenseItems.splice(this.id, 1);
-          localStorage.setItem("users", JSON.stringify(users));
-
-          return (
-            User.list(id("owner-acc-num").innerHTML.split(" ").join("")),
-            User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")),
-            User.total_expenses(
-              id("owner-acc-num").innerHTML.split(" ").join("")
-            ),
-            FnHandler.individual_history(
-              id("owner-acc-num").innerHTML.split(" ").join("")
-            )
-          );
-        });
-
-        tableRow.appendChild(editTd);
-
-        deleteTd.innerHTML = `<i id="${i}" class="fas fa-minus-circle"></i>`;
-
-        add_event(deleteTd.querySelector("i"), "click", function () {
-          let deletePrompt = prompt(
-              'Are you sure to delete this item?\n Type "Y" for yes and "N" for no.',
-              "N"
-            ),
-            deleteAnswer =
-              deletePrompt != null
-                ? trim(deletePrompt.toLowerCase())
-                : console.clear();
-
-          if (deleteAnswer == "y") {
-            users[ownerCheck].balance = parseFloat(
-              parseFloat(users[ownerCheck].balance) +
-                parseFloat(users[ownerCheck].expenseItems[this.id].cost)
-            ).toFixed(2);
-
-            let initialBal = parseFloat(
-                parseFloat(users[ownerCheck].balance) -
-                  parseFloat(users[ownerCheck].expenseItems[this.id].cost)
-              ).toFixed(2),
-              gender = users[ownerCheck].gender == "male" ? "his" : "her";
-
-            users[ownerCheck].userTransactionHistory.unshift(
-              `<em>${FnHandler.time_stamp()}</em> : You deleted an expense item, <strong>${
-                users[ownerCheck].expenseItems[this.id].name
-              }</strong>, costing an amount of <strong>₱${
-                users[ownerCheck].expenseItems[this.id].cost
-              }</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, your account balance is now <strong>₱${
-                users[ownerCheck].balance
-              }</strong>.`
-            );
-
-            users[ownerCheck].transactionHistory.unshift(
-              `<em>${FnHandler.time_stamp()}</em> : <strong>${
-                users[ownerCheck].firstName
-              }</strong> deleted an expense item, <strong>${
-                users[ownerCheck].expenseItems[this.id].name
-              }</strong>, costing an amount of <strong>₱${
-                users[ownerCheck].expenseItems[this.id].cost
-              }</strong>. From a previous account balance of <strong>₱${initialBal}</strong>, ${gender} remaining account balance is now <strong>₱${
-                users[ownerCheck].balance
-              }</strong>.`
-            );
-
-            users[ownerCheck].expenseItems.splice(this.id, 1);
-            localStorage.setItem("users", JSON.stringify(users));
-            return (
-              User.list(id("owner-acc-num").innerHTML.split(" ").join("")),
-              User.get_balance(
-                id("owner-acc-num").innerHTML.split(" ").join("")
-              ),
-              User.total_expenses(
-                id("owner-acc-num").innerHTML.split(" ").join("")
-              ),
-              FnHandler.individual_history(
-                id("owner-acc-num").innerHTML.split(" ").join("")
-              )
-            );
-          } else {
-            return;
-          }
-        });
-
-        tableRow.appendChild(deleteTd);
-        id("expense-table").appendChild(tableRow);
-      }
-    }
-  }
-
   match_height(".mh");
   FnHandler.list_users();
   FnHandler.first_char();
@@ -1404,15 +1503,15 @@ doc_ready(() => {
           newUserAccount.firstName
         }</strong> ${newUserAccount.middleName} ${
           newUserAccount.lastName
-        } with an initial account balance of <strong>₱${
+        } with an initial account balance of <strong>₱${num_commas(
           newUserAccount.balance
-        }</strong>.`
+        )}</strong>.`
       );
 
       newUserAccount.userTransactionHistory.push(
-        `<em>${FnHandler.time_stamp()}</em> : You have opened a ${newUserAccount.accountType.toLowerCase()} account with an initial account balance of <strong>₱${
+        `<em>${FnHandler.time_stamp()}</em> : You have opened a ${newUserAccount.accountType.toLowerCase()} account with an initial account balance of <strong>₱${num_commas(
           newUserAccount.balance
-        }</strong>.`
+        )}</strong>.`
       );
 
       FnHandler.addUser(newUserAccount);
@@ -1712,11 +1811,10 @@ doc_ready(() => {
       id("owner-acc-num").innerHTML.split(" ").join("")
     );
 
-    return (
-      false,
-      User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")),
-      User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""))
-    );
+    User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
+
+    return false;
   });
 
   add_event(id("add-connections-btn"), "click", () => {
