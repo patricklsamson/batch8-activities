@@ -36,9 +36,12 @@ main .wrap-accounts {
   );
 }
 
-main .wrap-acc-table,
-main .wrap-expense-table {
+main .wrap-acc-table {
   height: 340px;
+}
+
+main .wrap-expense-table {
+  height: 308px;
 }
 
 #accounts-wrap.hide,
@@ -162,7 +165,7 @@ main .wrap-add-account {
 }
 
 main .wrap-connections-table {
-  height: 292px;
+  height: 322px;
 }
 
 #connections-table td:nth-child(2) {
@@ -238,10 +241,14 @@ main .wrap-deposit {
   );
 }
 
+main .table {
+  height: 90%;
+}
+
 .wrap-send {
   background: rgba(103, 178, 178, 0.3);
 }
 
-main .table {
-  height: 90%;
+.wrap-send.user h6 {
+  margin-bottom: 0.5em;
 }
