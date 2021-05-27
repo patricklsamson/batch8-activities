@@ -106,11 +106,13 @@ doc_ready(() => {
 
       let ownerCheck = users.findIndex((index) => index.accountNumber == owner);
 
-      id("owner-balance").innerHTML = "";
+      if (users[ownerCheck] != null) {
+        id("owner-balance").innerHTML = "";
 
-      id("owner-balance").innerHTML = `₱${num_commas(
-        users[ownerCheck].balance
-      )}`;
+        id("owner-balance").innerHTML = `₱${num_commas(
+          users[ownerCheck].balance
+        )}`;
+      }
     }
 
     static total_expenses(owner) {
@@ -119,15 +121,17 @@ doc_ready(() => {
       let ownerCheck = users.findIndex((index) => index.accountNumber == owner),
         total = 0;
 
-      id("owner-expenses").innerHTML = "";
+      if (users[ownerCheck] != null) {
+        id("owner-expenses").innerHTML = "";
 
-      for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
-        total = parseFloat(
-          total + parseFloat(users[ownerCheck].expenseItems[i].cost)
-        );
+        for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
+          total = parseFloat(
+            total + parseFloat(users[ownerCheck].expenseItems[i].cost)
+          );
+        }
+
+        id("owner-expenses").innerHTML = `₱${num_commas(total.toFixed(2))}`;
       }
-
-      id("owner-expenses").innerHTML = `₱${num_commas(total.toFixed(2))}`;
     }
 
     static list(owner) {
@@ -135,117 +139,44 @@ doc_ready(() => {
 
       let ownerCheck = users.findIndex((index) => index.accountNumber == owner);
 
-      id("expense-table").innerHTML = "";
+      if (users[ownerCheck] != null) {
+        id("expense-table").innerHTML = "";
 
-      for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
-        let tableRow = create_el("tr"),
-          nameTd = create_el("td"),
-          costTd = create_el("td"),
-          editTd = create_el("td"),
-          deleteTd = create_el("td");
+        for (i = 0; i < users[ownerCheck].expenseItems.length; i++) {
+          let tableRow = create_el("tr"),
+            nameTd = create_el("td"),
+            costTd = create_el("td"),
+            editTd = create_el("td"),
+            deleteTd = create_el("td");
 
-        nameTd.innerHTML = users[ownerCheck].expenseItems[i].name;
-        tableRow.appendChild(nameTd);
+          nameTd.innerHTML = users[ownerCheck].expenseItems[i].name;
+          tableRow.appendChild(nameTd);
 
-        costTd.innerHTML = `₱${num_commas(
-          users[ownerCheck].expenseItems[i].cost
-        )}`;
+          costTd.innerHTML = `₱${num_commas(
+            users[ownerCheck].expenseItems[i].cost
+          )}`;
 
-        tableRow.appendChild(costTd);
+          tableRow.appendChild(costTd);
 
-        editTd.innerHTML = `<i id="${i}" class="fas fa-edit"></i>`;
+          editTd.innerHTML = `<i id="${i}" class="fas fa-edit"></i>`;
 
-        add_event(editTd.querySelector("i"), "click", function () {
-          const users = FnHandler.userStorage();
+          add_event(editTd.querySelector("i"), "click", function () {
+            const users = FnHandler.userStorage();
 
-          let ownerCheck = users.findIndex(
-            (index) => index.accountNumber == owner
-          );
+            let ownerCheck = users.findIndex(
+              (index) => index.accountNumber == owner
+            );
 
-          id("add-expense-name").value =
-            users[ownerCheck].expenseItems[this.id].name;
+            id("add-expense-name").value =
+              users[ownerCheck].expenseItems[this.id].name;
 
-          id("add-expense-amount").value = num_commas(
-            users[ownerCheck].expenseItems[this.id].cost.split(".")[0]
-          );
+            id("add-expense-amount").value = num_commas(
+              users[ownerCheck].expenseItems[this.id].cost.split(".")[0]
+            );
 
-          id("add-expense-amount-dec").value =
-            users[ownerCheck].expenseItems[this.id].cost.split(".")[1];
+            id("add-expense-amount-dec").value =
+              users[ownerCheck].expenseItems[this.id].cost.split(".")[1];
 
-          users[ownerCheck].balance = parseFloat(
-            parseFloat(users[ownerCheck].balance) +
-              parseFloat(users[ownerCheck].expenseItems[this.id].cost)
-          ).toFixed(2);
-
-          let initialBal = parseFloat(
-              parseFloat(users[ownerCheck].balance) -
-                parseFloat(users[ownerCheck].expenseItems[this.id].cost)
-            ).toFixed(2),
-            gender = users[ownerCheck].gender == "male" ? "His" : "Her";
-
-          users[ownerCheck].userTransactionHistory.unshift(
-            `<em>${FnHandler.time_stamp()}</em> : You deleted an expense item: <strong>${
-              users[ownerCheck].expenseItems[this.id].name
-            }</strong>, costing an amount of <strong>₱${num_commas(
-              users[ownerCheck].expenseItems[this.id].cost
-            )}</strong>. Your account balance is now <strong>₱${num_commas(
-              users[ownerCheck].balance
-            )}</strong> from a previous account balance of <strong>₱${num_commas(
-              initialBal
-            )}</strong>.`
-          );
-
-          users[ownerCheck].transactionHistory.unshift(
-            `<em>${FnHandler.time_stamp()}</em> : <strong>${
-              users[ownerCheck].firstName
-            }</strong> deleted an expense item: <strong>${
-              users[ownerCheck].expenseItems[this.id].name
-            }</strong>, costing an amount of <strong>₱${num_commas(
-              users[ownerCheck].expenseItems[this.id].cost
-            )}</strong>. ${gender} remaining account balance is now <strong>₱${num_commas(
-              users[ownerCheck].balance
-            )}</strong> from a previous account balance of <strong>₱${num_commas(
-              initialBal
-            )}</strong>.`
-          );
-
-          users[ownerCheck].expenseItems.splice(this.id, 1);
-          localStorage.setItem("users", JSON.stringify(users));
-
-          User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
-
-          FnHandler.individual_history(
-            id("owner-acc-num").innerHTML.split(" ").join("")
-          );
-
-          User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
-
-          User.total_expenses(
-            id("owner-acc-num").innerHTML.split(" ").join("")
-          );
-        });
-
-        tableRow.appendChild(editTd);
-
-        deleteTd.innerHTML = `<i id="${i}" class="fas fa-minus-circle"></i>`;
-
-        add_event(deleteTd.querySelector("i"), "click", function () {
-          const users = FnHandler.userStorage();
-
-          let ownerCheck = users.findIndex(
-            (index) => index.accountNumber == owner
-          );
-
-          let deletePrompt = prompt(
-              'Are you sure to delete this item?\n Type "Y" for yes and "N" for no.',
-              "N"
-            ),
-            deleteAnswer =
-              deletePrompt != null
-                ? trim(deletePrompt.toLowerCase())
-                : console.clear();
-
-          if (deleteAnswer == "y") {
             users[ownerCheck].balance = parseFloat(
               parseFloat(users[ownerCheck].balance) +
                 parseFloat(users[ownerCheck].expenseItems[this.id].cost)
@@ -297,13 +228,90 @@ doc_ready(() => {
             User.total_expenses(
               id("owner-acc-num").innerHTML.split(" ").join("")
             );
-          } else {
-            return;
-          }
-        });
+          });
 
-        tableRow.appendChild(deleteTd);
-        id("expense-table").appendChild(tableRow);
+          tableRow.appendChild(editTd);
+
+          deleteTd.innerHTML = `<i id="${i}" class="fas fa-minus-circle"></i>`;
+
+          add_event(deleteTd.querySelector("i"), "click", function () {
+            const users = FnHandler.userStorage();
+
+            let ownerCheck = users.findIndex(
+              (index) => index.accountNumber == owner
+            );
+
+            let deletePrompt = prompt(
+                'Are you sure to delete this item?\n Type "Y" for yes and "N" for no.',
+                "N"
+              ),
+              deleteAnswer =
+                deletePrompt != null
+                  ? trim(deletePrompt.toLowerCase())
+                  : console.clear();
+
+            if (deleteAnswer == "y") {
+              users[ownerCheck].balance = parseFloat(
+                parseFloat(users[ownerCheck].balance) +
+                  parseFloat(users[ownerCheck].expenseItems[this.id].cost)
+              ).toFixed(2);
+
+              let initialBal = parseFloat(
+                  parseFloat(users[ownerCheck].balance) -
+                    parseFloat(users[ownerCheck].expenseItems[this.id].cost)
+                ).toFixed(2),
+                gender = users[ownerCheck].gender == "male" ? "His" : "Her";
+
+              users[ownerCheck].userTransactionHistory.unshift(
+                `<em>${FnHandler.time_stamp()}</em> : You deleted an expense item: <strong>${
+                  users[ownerCheck].expenseItems[this.id].name
+                }</strong>, costing an amount of <strong>₱${num_commas(
+                  users[ownerCheck].expenseItems[this.id].cost
+                )}</strong>. Your account balance is now <strong>₱${num_commas(
+                  users[ownerCheck].balance
+                )}</strong> from a previous account balance of <strong>₱${num_commas(
+                  initialBal
+                )}</strong>.`
+              );
+
+              users[ownerCheck].transactionHistory.unshift(
+                `<em>${FnHandler.time_stamp()}</em> : <strong>${
+                  users[ownerCheck].firstName
+                }</strong> deleted an expense item: <strong>${
+                  users[ownerCheck].expenseItems[this.id].name
+                }</strong>, costing an amount of <strong>₱${num_commas(
+                  users[ownerCheck].expenseItems[this.id].cost
+                )}</strong>. ${gender} remaining account balance is now <strong>₱${num_commas(
+                  users[ownerCheck].balance
+                )}</strong> from a previous account balance of <strong>₱${num_commas(
+                  initialBal
+                )}</strong>.`
+              );
+
+              users[ownerCheck].expenseItems.splice(this.id, 1);
+              localStorage.setItem("users", JSON.stringify(users));
+
+              User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+
+              FnHandler.individual_history(
+                id("owner-acc-num").innerHTML.split(" ").join("")
+              );
+
+              User.get_balance(
+                id("owner-acc-num").innerHTML.split(" ").join("")
+              );
+
+              User.total_expenses(
+                id("owner-acc-num").innerHTML.split(" ").join("")
+              );
+            } else {
+              return;
+            }
+          });
+
+          tableRow.appendChild(deleteTd);
+          id("expense-table").appendChild(tableRow);
+        }
       }
     }
   }
@@ -359,6 +367,118 @@ doc_ready(() => {
 
       users.push(userAccount);
       localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    static add_connections(user, name, connection) {
+      const users = FnHandler.userStorage();
+
+      let ownerCheck = users.findIndex((index) => index.accountNumber == user),
+        accountNumberCheck = users.findIndex(
+          (index) => index.accountNumber == connection
+        );
+
+      for (i = 0; i < users[ownerCheck].connections.length; i++) {
+        if (users[ownerCheck].connections[i].accountNumber == connection) {
+          alert("Connection already exists!");
+          return;
+        }
+      }
+
+      if (
+        users[accountNumberCheck] == null ||
+        users[accountNumberCheck] == ""
+      ) {
+        alert("User not found");
+      } else if (user == connection) {
+        alert("Cannot add own account number!");
+      } else {
+        users[ownerCheck].connections.push({
+          name: name,
+          accountNumber: connection,
+        });
+
+        remove_class(id("connections-form"), "show");
+        id("connections-form").reset();
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+    }
+
+    static list_connections(user) {
+      const users = FnHandler.userStorage();
+
+      let ownerCheck = users.findIndex((index) => index.accountNumber == user);
+
+      if (users[ownerCheck] != null) {
+        id("connections-table").innerHTML = "";
+
+        for (i = 0; i < users[ownerCheck].connections.length; i++) {
+          let tableRow = create_el("tr"),
+            nameTd = create_el("td"),
+            accNumTd = create_el("td"),
+            editTd = create_el("td"),
+            deleteTd = create_el("td");
+
+          nameTd.innerHTML = users[ownerCheck].connections[i].name;
+          tableRow.appendChild(nameTd);
+
+          accNumTd.innerHTML = num_space(
+            users[ownerCheck].connections[i].accountNumber
+          );
+
+          FnHandler.click_copy(accNumTd);
+          tableRow.appendChild(accNumTd);
+
+          editTd.innerHTML = `<i id="${i}" class="fas fa-edit"></i>`;
+
+          add_event(editTd.querySelector("i"), "click", function () {
+            if (!has_class(id("connections-form"), "show")) {
+              add_class(id("connections-form"), "show");
+            }
+
+            id("connections-name").value =
+              users[ownerCheck].connections[this.id].name;
+
+            id("connections-account-num").value =
+              users[ownerCheck].connections[this.id].accountNumber;
+
+            users[ownerCheck].connections.splice(this.id, 1);
+            localStorage.setItem("users", JSON.stringify(users));
+
+            return FnHandler.list_connections(
+              id("owner-acc-num").innerHTML.split(" ").join("")
+            );
+          });
+
+          tableRow.appendChild(editTd);
+
+          deleteTd.innerHTML = `<i id="${i}" class="fas fa-minus-circle"></i>`;
+
+          add_event(deleteTd.querySelector("i"), "click", function () {
+            let deletePrompt = prompt(
+                'Are you sure to delete this connection?\nType "Y" for yes and "N" for no.',
+                "N"
+              ),
+              deleteAnswer =
+                deletePrompt != null
+                  ? trim(deletePrompt.toLowerCase())
+                  : console.clear();
+
+            if (deleteAnswer == "y") {
+              users[ownerCheck].connections.splice(this.id, 1);
+              localStorage.setItem("users", JSON.stringify(users));
+
+              return FnHandler.list_connections(
+                id("owner-acc-num").innerHTML.split(" ").join("")
+              );
+            } else {
+              return;
+            }
+          });
+
+          tableRow.appendChild(deleteTd);
+          id("connections-table").appendChild(tableRow);
+        }
+      }
     }
 
     static click_copy(element) {
@@ -1190,116 +1310,6 @@ doc_ready(() => {
       }
     }
 
-    static add_connections(user, name, connection) {
-      const users = FnHandler.userStorage();
-
-      let ownerCheck = users.findIndex((index) => index.accountNumber == user),
-        accountNumberCheck = users.findIndex(
-          (index) => index.accountNumber == connection
-        );
-
-      for (i = 0; i < users[ownerCheck].connections.length; i++) {
-        if (users[ownerCheck].connections[i].accountNumber == connection) {
-          alert("Connection already exists!");
-          return;
-        }
-      }
-
-      if (
-        users[accountNumberCheck] == null ||
-        users[accountNumberCheck] == ""
-      ) {
-        alert("User not found");
-      } else if (user == connection) {
-        alert("Cannot add own account number!");
-      } else {
-        users[ownerCheck].connections.push({
-          name: name,
-          accountNumber: connection,
-        });
-
-        remove_class(id("connections-form"), "show");
-        id("connections-form").reset();
-        localStorage.setItem("users", JSON.stringify(users));
-      }
-    }
-
-    static list_connections(user) {
-      const users = FnHandler.userStorage();
-
-      let ownerCheck = users.findIndex((index) => index.accountNumber == user);
-
-      id("connections-table").innerHTML = "";
-
-      for (i = 0; i < users[ownerCheck].connections.length; i++) {
-        let tableRow = create_el("tr"),
-          nameTd = create_el("td"),
-          accNumTd = create_el("td"),
-          editTd = create_el("td"),
-          deleteTd = create_el("td");
-
-        nameTd.innerHTML = users[ownerCheck].connections[i].name;
-        tableRow.appendChild(nameTd);
-
-        accNumTd.innerHTML = num_space(
-          users[ownerCheck].connections[i].accountNumber
-        );
-
-        FnHandler.click_copy(accNumTd);
-        tableRow.appendChild(accNumTd);
-
-        editTd.innerHTML = `<i id="${i}" class="fas fa-edit"></i>`;
-
-        add_event(editTd.querySelector("i"), "click", function () {
-          if (!has_class(id("connections-form"), "show")) {
-            add_class(id("connections-form"), "show");
-          }
-
-          id("connections-name").value =
-            users[ownerCheck].connections[this.id].name;
-
-          id("connections-account-num").value =
-            users[ownerCheck].connections[this.id].accountNumber;
-
-          users[ownerCheck].connections.splice(this.id, 1);
-          localStorage.setItem("users", JSON.stringify(users));
-
-          return FnHandler.list_connections(
-            id("owner-acc-num").innerHTML.split(" ").join("")
-          );
-        });
-
-        tableRow.appendChild(editTd);
-
-        deleteTd.innerHTML = `<i id="${i}" class="fas fa-minus-circle"></i>`;
-
-        add_event(deleteTd.querySelector("i"), "click", function () {
-          let deletePrompt = prompt(
-              'Are you sure to delete this connection?\nType "Y" for yes and "N" for no.',
-              "N"
-            ),
-            deleteAnswer =
-              deletePrompt != null
-                ? trim(deletePrompt.toLowerCase())
-                : console.clear();
-
-          if (deleteAnswer == "y") {
-            users[ownerCheck].connections.splice(this.id, 1);
-            localStorage.setItem("users", JSON.stringify(users));
-
-            return FnHandler.list_connections(
-              id("owner-acc-num").innerHTML.split(" ").join("")
-            );
-          } else {
-            return;
-          }
-        });
-
-        tableRow.appendChild(deleteTd);
-        id("connections-table").appendChild(tableRow);
-      }
-    }
-
     // ONCE FIRST VALUE OR CHARACTER INPUTTED IS A NUMBER IN ALL NAME INPUTS ACROSS THE DOM, ALERT WILL EXEECUTE
     static first_char() {
       qsel_all("[id*='-name']").forEach((input) => {
@@ -1531,7 +1541,11 @@ doc_ready(() => {
     let janeCheck = users.findIndex((index) => index.firstName == "JANE"),
       doeCheck = users.findIndex((index) => index.lastName == "DOE"),
       juanCheck = users.findIndex((index) => index.firstName == "JUAN"),
-      delaCruzCheck = users.findIndex((index) => index.lastName == "DELA CRUZ");
+      delaCruzCheck = users.findIndex((index) => index.lastName == "DELA CRUZ"),
+      juanitaCheck = users.findIndex((index) => index.firstName == "JUANITA"),
+      samonteCheck = users.findIndex((index) => index.lastName == "SAMONTE"),
+      johnCheck = users.findIndex((index) => index.firstName == "JOHN"),
+      schmoeCheck = users.findIndex((index) => index.lastName == "SCHMOE");
 
     // THIS PREVENTS MULTIPLE LOADING OF INITIAL DATA, AND JUST LOAD IT ONCE WHEN THE DATA STILL DON'T EXIST
     if (!users[janeCheck] && !users[doeCheck]) {
@@ -1557,15 +1571,51 @@ doc_ready(() => {
       let balance = 2500;
 
       create_user(
-        "",
-        "",
-        "",
-        false,
+        "juandelacruz",
+        "juandelacruz",
+        "juandelacruz@mail.com",
+        true,
         "JUAN",
         "",
         "DELA CRUZ",
         "male",
         "071096025466",
+        "Savings",
+        balance.toFixed(2)
+      );
+    }
+
+    if (!users[juanitaCheck] && !users[samonteCheck]) {
+      let balance = 3200.5;
+
+      create_user(
+        "",
+        "",
+        "",
+        false,
+        "JUANITA",
+        "HERMOSA",
+        "SAMONTE",
+        "female",
+        "031734218924",
+        "Checking",
+        balance.toFixed(2)
+      );
+    }
+
+    if (!users[johnCheck] && !users[schmoeCheck]) {
+      let balance = 2300;
+
+      create_user(
+        "",
+        "",
+        "",
+        false,
+        "JOHN",
+        "",
+        "SCHMOE",
+        "male",
+        "064581565583",
         "Savings",
         balance.toFixed(2)
       );
@@ -1654,6 +1704,27 @@ doc_ready(() => {
 
   add_event(id("login-form"), "submit", (e) => {
     e.preventDefault();
+
+    const users = FnHandler.userStorage();
+
+    let janeCheck = users.findIndex(
+      (index) => (index.accountNumber = "023451282250")
+    );
+
+    if (users[janeCheck]) {
+      let connectionCheck = users[janeCheck].connections.findIndex(
+        (index) => index.accountNumber == "071096025466"
+      );
+
+      if (!users[janeCheck].connections[connectionCheck]) {
+        users[janeCheck].connections.push({
+          name: "JUAN",
+          accountNumber: "071096025466",
+        });
+
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+    }
 
     FnHandler.login_user(
       inner(trim(id("login-username").value)),
