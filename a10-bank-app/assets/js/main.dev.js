@@ -217,6 +217,7 @@ doc_ready(function () {
               alert("There have been no changes made for the email!");
             } else {
               users[usernameCheck].email = inner(trim(id("change-email").value));
+              id("profile-email").innerHTML = inner(trim(id("change-email").value));
               alert("Change email successful!");
               localStorage.setItem("users", JSON.stringify(users));
             }
@@ -238,6 +239,7 @@ doc_ready(function () {
               alert("Username cannot be less than 5 characters!");
             } else {
               users[usernameCheck].username = inner(trim(id("change-username").value));
+              id("profile-username").innerHTML = inner(trim(id("change-username").value));
               alert("Change username successful!");
               localStorage.setItem("users", JSON.stringify(users));
             }
@@ -278,6 +280,18 @@ doc_ready(function () {
             }
 
             return false;
+          });
+          add_event(id("clear-items-btn"), "click", function () {
+            var deletePrompt = prompt('Are you sure to delete all items?\nType "Y" for yes and "N" for no.', "N"),
+                deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear();
+
+            if (deleteAnswer == "y") {
+              users[usernameCheck].expenseItems = [];
+              localStorage.setItem("users", JSON.stringify(users));
+              return User.list(id("owner-acc-num").innerHTML.split(" ").join("")), User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")), User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
+            } else {
+              return;
+            }
           });
         } else if (!users[usernameCheck]) {
           alert("User does not exist!");
@@ -845,6 +859,10 @@ doc_ready(function () {
         } else {
           var newExpenseItem = new ExpenseItem(name, cost, owner);
           users[ownerCheck].balance = parseFloat(parseFloat(users[ownerCheck].balance) - parseFloat(cost)).toFixed(2);
+          var initialBal = parseFloat(parseFloat(users[ownerCheck].balance) + parseFloat(cost)).toFixed(2),
+              gender = users[ownerCheck].gender == "male" ? "his" : "her";
+          users[ownerCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You added an expense item, <strong>").concat(name, "</strong>, costing an amount of <strong>\u20B1").concat(cost, "</strong>. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your remaining account balance is now <strong>\u20B1").concat(users[ownerCheck].balance, "</strong>."));
+          users[ownerCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : <strong>").concat(users[ownerCheck].firstName, "</strong> added an expense item, <strong>").concat(name, "</strong>, costing an amount of <strong>\u20B1").concat(cost, "</strong>. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(users[ownerCheck].balance, "</strong>."));
           users[ownerCheck].expenseItems.push(newExpenseItem);
           id("add-expense-form").reset();
           localStorage.setItem("users", JSON.stringify(users));
@@ -874,7 +892,7 @@ doc_ready(function () {
           total = parseFloat(total + parseFloat(users[ownerCheck].expenseItems[i].cost));
         }
 
-        id("owner-expenses").innerHTML = "\u20B1".concat(num_commas(total));
+        id("owner-expenses").innerHTML = "\u20B1".concat(num_commas(total.toFixed(2)));
       }
     }, {
       key: "list",
@@ -901,9 +919,13 @@ doc_ready(function () {
             id("add-expense-amount").value = num_commas(users[ownerCheck].expenseItems[this.id].cost.split(".")[0]);
             id("add-expense-amount-dec").value = users[ownerCheck].expenseItems[this.id].cost.split(".")[1];
             users[ownerCheck].balance = parseFloat(parseFloat(users[ownerCheck].balance) + parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2);
+            var initialBal = parseFloat(parseFloat(users[ownerCheck].balance) - parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2),
+                gender = users[ownerCheck].gender == "male" ? "his" : "her";
+            users[ownerCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You deleted an expense item, <strong>").concat(users[ownerCheck].expenseItems[this.id].name, "</strong>, costing an amount of <strong>\u20B1").concat(users[ownerCheck].expenseItems[this.id].cost, "</strong>. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your account balance is now <strong>\u20B1").concat(users[ownerCheck].balance, "</strong>."));
+            users[ownerCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : <strong>").concat(users[ownerCheck].firstName, "</strong> deleted an expense item, <strong>").concat(users[ownerCheck].expenseItems[this.id].name, "</strong>, costing an amount of <strong>\u20B1").concat(users[ownerCheck].expenseItems[this.id].cost, "</strong>. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(users[ownerCheck].balance, "</strong>."));
             users[ownerCheck].expenseItems.splice(this.id, 1);
             localStorage.setItem("users", JSON.stringify(users));
-            return User.list(id("owner-acc-num").innerHTML.split(" ").join("")), User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")), User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
+            return User.list(id("owner-acc-num").innerHTML.split(" ").join("")), User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")), User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join("")), FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
           });
           tableRow.appendChild(editTd);
           deleteTd.innerHTML = "<i id=\"".concat(i, "\" class=\"fas fa-minus-circle\"></i>");
@@ -913,9 +935,13 @@ doc_ready(function () {
 
             if (deleteAnswer == "y") {
               users[ownerCheck].balance = parseFloat(parseFloat(users[ownerCheck].balance) + parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2);
+              var initialBal = parseFloat(parseFloat(users[ownerCheck].balance) - parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2),
+                  gender = users[ownerCheck].gender == "male" ? "his" : "her";
+              users[ownerCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You deleted an expense item, <strong>").concat(users[ownerCheck].expenseItems[this.id].name, "</strong>, costing an amount of <strong>\u20B1").concat(users[ownerCheck].expenseItems[this.id].cost, "</strong>. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, your account balance is now <strong>\u20B1").concat(users[ownerCheck].balance, "</strong>."));
+              users[ownerCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : <strong>").concat(users[ownerCheck].firstName, "</strong> deleted an expense item, <strong>").concat(users[ownerCheck].expenseItems[this.id].name, "</strong>, costing an amount of <strong>\u20B1").concat(users[ownerCheck].expenseItems[this.id].cost, "</strong>. From a previous account balance of <strong>\u20B1").concat(initialBal, "</strong>, ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(users[ownerCheck].balance, "</strong>."));
               users[ownerCheck].expenseItems.splice(this.id, 1);
               localStorage.setItem("users", JSON.stringify(users));
-              return User.list(id("owner-acc-num").innerHTML.split(" ").join("")), User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""), User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join("")));
+              return User.list(id("owner-acc-num").innerHTML.split(" ").join("")), User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")), User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join("")), FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
             } else {
               return;
             }
@@ -1164,6 +1190,8 @@ doc_ready(function () {
     var expense_amount = "".concat(id("add-expense-amount").value.split(",").join(""), ".").concat(id("add-expense-amount-dec").value);
     User.add(inner(trim(id("add-expense-name").value.toUpperCase())), expense_amount, id("owner-acc-num").innerHTML.split(" ").join(""));
     User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+    FnHandler.list_users();
+    FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     return false, User.get_balance(id("owner-acc-num").innerHTML.split(" ").join("")), User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
   });
   add_event(id("add-connections-btn"), "click", function () {
@@ -1188,7 +1216,7 @@ doc_ready(function () {
     FnHandler.list_users();
     FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("withdraw-form").reset();
-    return false;
+    return false, User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
   });
   add_event(id("deposit-form"), "submit", function (e) {
     e.preventDefault();
@@ -1197,7 +1225,7 @@ doc_ready(function () {
     FnHandler.list_users();
     FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("deposit-form").reset();
-    return false;
+    return false, User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
   });
   add_event(id("send-form"), "submit", function (e) {
     e.preventDefault();
@@ -1206,6 +1234,6 @@ doc_ready(function () {
     FnHandler.list_users();
     FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("send-form").reset();
-    return false;
+    return false, User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
   });
 });
