@@ -404,8 +404,9 @@
                   <table>
                     <thead>
                       <tr>
-                        <th>Name of Items</th>
+                        <th>Name of Item</th>
                         <th>Cost</th>
+                        <th></th>
                         <th>
                           <i
                             role="button"
@@ -418,7 +419,7 @@
 
                     <tbody class="talign">
                       <tr>
-                        <td colspan="3">
+                        <td colspan="4">
                           <div class="wrap-expense-table wrap-scroll">
                             <table id="expense-table"></table>
                           </div>
@@ -429,6 +430,15 @@
                 </div>
 
                 <div class="gcol-6">
+                  <div class="wrap-tooltip mb-05">
+                    <p>
+                      Remaining Account Balance:
+                      <span id="owner-balance"></span>
+                    </p>
+
+                    <p>Total Expenses: <span id="owner-expenses"></span></p>
+                  </div>
+
                   <form action="" autocomplete="off" id="add-expense-form">
                     <label for="add-expense-name">Add Expense Item</label><br />
                     <input
