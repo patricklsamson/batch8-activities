@@ -1216,12 +1216,23 @@ doc_ready(function () {
 
     return false;
   });
+
+  var remove_filter = function remove_filter() {
+    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+      remove_class(id("acc-table").querySelectorAll("tr[class*='savings']")[i], "hide");
+      remove_class(id("acc-table").querySelectorAll("tr[class*='checking']")[i], "hide");
+    }
+  };
+
   add_event(id("log-out-btn"), "click", function (e) {
     e.preventDefault();
     toggle_class(id("modal"), "hide"); // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
 
     setTimeout(function () {
       remove_class(id("accounts-wrap"), "hide");
+      id("filter-all").checked = true;
+      id("search-name").value = "";
+      remove_filter();
       remove_class(id("expense-wrap"), "hide");
       remove_class(id("connections-wrap"), "hide");
       remove_class(id("connections-form"), "show");
@@ -1254,12 +1265,7 @@ doc_ready(function () {
     remove_class(id("match-msg"), "fa-times");
     FnHandler.reset();
   });
-  add_event(id("filter-all"), "click", function () {
-    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
-      remove_class(id("acc-table").querySelectorAll("tr[class*='savings']")[i], "hide");
-      remove_class(id("acc-table").querySelectorAll("tr[class*='checking']")[i], "hide");
-    }
-  });
+  add_event(id("filter-all"), "click", remove_filter);
   add_event(id("filter-savings"), "click", function () {
     for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
       remove_class(id("acc-table").querySelectorAll("tr[class*='savings']")[i], "hide");
@@ -1276,9 +1282,9 @@ doc_ready(function () {
     for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
       if (id("acc-table").querySelectorAll("tr")[i].querySelectorAll("td")[1].querySelector("span")) {
         if (id("acc-table").querySelectorAll("tr")[i].querySelectorAll("td")[1].querySelector("span").innerHTML.toUpperCase().indexOf(id("search-name").value.toUpperCase()) > -1) {
-          id("acc-table").querySelectorAll("tr")[i].style.display = "";
+          remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
         } else {
-          id("acc-table").querySelectorAll("tr")[i].style.display = "none";
+          add_class(id("acc-table").querySelectorAll("tr")[i], "hide");
         }
       }
     }
