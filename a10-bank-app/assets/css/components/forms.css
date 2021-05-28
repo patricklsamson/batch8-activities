@@ -37,7 +37,8 @@ i[id*="-msg"].fa-times {
 }
 
 #search-name {
-  width: 40%;
+  width: 220px;
+  padding: 10px;
   vertical-align: top;
 }
 
@@ -74,4 +75,14 @@ i[id*="-msg"].fa-times {
 
 form .rflex input {
   margin: 0 5px;
+}
+
+form p,
+label,
+input {
+  font-weight: 700;
+}
+
+[type="radio"] + label {
+  font-weight: 400;
 }
