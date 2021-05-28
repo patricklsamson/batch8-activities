@@ -169,7 +169,9 @@ th {
 }
 
 #acc-table .checking.hide,
-#acc-table .savings.hide {
+#acc-table .checking.search-hide,
+#acc-table .savings.hide,
+#acc-table .savings.search-hide {
   display: none;
 }
 
