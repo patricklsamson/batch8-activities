@@ -25,3 +25,15 @@
 i[class*="fa"] {
   cursor: pointer;
 }
+
+[id*="close"]:hover {
+  color: #67b2b2;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#open-signup-btn {
+  font-weight: 700;
+}
