@@ -4,6 +4,11 @@ nav li {
 
 nav a {
   color: #000;
+  font-weight: 700;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
 }
 
 nav a:hover {
