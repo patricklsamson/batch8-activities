@@ -36,13 +36,23 @@ main .wrap-accounts {
   );
 }
 
+main .wrap-filter {
+  float: right;
+  font-size: 16px;
+}
+
+main .wrap-filter i {
+  cursor: auto;
+  margin-left: 25px;
+}
+
 table thead > tr,
 table > tr {
   border-bottom: 10px solid transparent;
 }
 
 main .wrap-acc-table {
-  height: 333px;
+  height: 320px;
 }
 
 main .wrap-expense-table {
@@ -156,6 +166,11 @@ th {
 #expense-wrap table td[colspan="4"] {
   width: auto;
   padding: 0;
+}
+
+#acc-table .checking.hide,
+#acc-table .savings.hide {
+  display: none;
 }
 
 #acc-table td:first-child,
