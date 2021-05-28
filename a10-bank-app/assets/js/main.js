@@ -1821,7 +1821,7 @@ doc_ready(() => {
     // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
     setTimeout(() => {
       remove_class(id("accounts-wrap"), "hide");
-      id("filter-all").checked = true;
+      id("filter").value = "all";
       id("search-name").value = "";
 
       for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
@@ -1880,30 +1880,32 @@ doc_ready(() => {
     FnHandler.reset();
   });
 
-  add_event(id("filter-all"), "click", () => {
-    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
-      remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
-    }
-  });
-
-  add_event(id("filter-savings"), "click", () => {
-    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
-      if (has_class(id("acc-table").querySelectorAll("tr")[i], "checking")) {
-        add_class(id("acc-table").querySelectorAll("tr")[i], "hide");
-      } else {
+  add_event(id("filter"), "click", () => {
+    if (id("filter").value == "all") {
+      for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
         remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
+      }
+    } else if (id("filter").value == "savings") {
+      for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+        if (has_class(id("acc-table").querySelectorAll("tr")[i], "checking")) {
+          add_class(id("acc-table").querySelectorAll("tr")[i], "hide");
+        } else {
+          remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
+        }
+      }
+    } else {
+      for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+        if (has_class(id("acc-table").querySelectorAll("tr")[i], "savings")) {
+          add_class(id("acc-table").querySelectorAll("tr")[i], "hide");
+        } else {
+          remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
+        }
       }
     }
   });
 
-  add_event(id("filter-checking"), "click", () => {
-    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
-      if (has_class(id("acc-table").querySelectorAll("tr")[i], "savings")) {
-        add_class(id("acc-table").querySelectorAll("tr")[i], "hide");
-      } else {
-        remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
-      }
-    }
+  add_event(id("open-search-btn"), "click", () => {
+    toggle_class(id("search-wrap"), "active");
   });
 
   add_event(id("search-name"), "keyup", () => {
