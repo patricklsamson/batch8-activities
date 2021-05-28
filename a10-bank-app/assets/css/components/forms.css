@@ -36,6 +36,11 @@ i[id*="-msg"].fa-times {
   color: red;
 }
 
+#search-name {
+  width: 40%;
+  vertical-align: top;
+}
+
 #connections-form {
   width: 100%;
   visibility: hidden;
