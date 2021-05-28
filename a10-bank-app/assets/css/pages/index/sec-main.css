@@ -37,13 +37,18 @@ main .wrap-accounts {
 }
 
 main .wrap-filter {
-  float: right;
-  font-size: 16px;
+  justify-content: space-between;
+  border-bottom: 2px solid #343a40;
+  padding-bottom: 15px;
+}
+
+main .wrap-filter label {
+  margin-right: 15px;
 }
 
 main .wrap-filter i {
   cursor: auto;
-  margin-left: 25px;
+  margin-right: 10px;
 }
 
 table thead > tr,
@@ -52,11 +57,11 @@ table > tr {
 }
 
 main .wrap-acc-table {
-  height: 320px;
+  height: 245px;
 }
 
 main .wrap-expense-table {
-  height: 300px;
+  height: 288px;
 }
 
 #accounts-wrap.hide,
@@ -102,19 +107,19 @@ th {
 }
 
 #accounts-wrap table th:nth-child(2) {
-  width: 44.3%;
+  width: 43.5%;
 }
 
 #accounts-wrap table td:nth-child(2) {
-  width: 45%;
+  width: 44.2%;
 }
 
 #accounts-wrap table th:nth-child(3) {
-  width: 13.8%;
+  width: 14.2%;
 }
 
 #accounts-wrap table td:nth-child(3) {
-  width: 14%;
+  width: 14.4%;
 }
 
 #accounts-wrap table th:nth-child(4) {
@@ -191,6 +196,31 @@ th {
   border: 2px solid #343a40;
   padding: 20px;
   margin: 15px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+#expense-wrap .wrap-tooltip p {
+  font-weight: 700;
+}
+
+#owner-balance,
+#owner-expenses {
+  font-weight: 700;
+}
+
+#owner-balance {
+  color: #2e856e;
+}
+
+#accounts-wrap table td:nth-child(4).negative,
+#owner-balance.negative {
+  color: red;
+}
+
+#owner-expenses {
+  color: #6b283b;
 }
 
 main .wrap-add-account {
