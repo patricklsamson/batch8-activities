@@ -27,7 +27,7 @@
       crossorigin="anonymous"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -342,8 +342,19 @@
               <h6 class="mb-05">
                 Bank Accounts
                 <i role="button" id="load-data-btn" class="fas fa-download"></i>
+              </h6>
 
-                <div class="wrap-filter">
+              <div class="wrap-filter rflex mb-10">
+                <div class="rflex">
+                  <i class="fas fa-search"></i>
+                  <input
+                    type="text"
+                    placeholder="Search Name"
+                    id="search-name"
+                  />
+                </div>
+
+                <div class="rflex">
                   <input
                     type="radio"
                     name="filter-acc-type"
@@ -365,15 +376,8 @@
                     id="filter-checking"
                   />
                   <label for="filter-checking">Checking</label>
-
-                  <i class="fas fa-search"></i>
-                  <input
-                    type="text"
-                    placeholder="Search Name"
-                    id="search-name"
-                  />
                 </div>
-              </h6>
+              </div>
 
               <table>
                 <thead>
@@ -428,7 +432,7 @@
                 </div>
               </div>
 
-              <h6>Expense Items</h6>
+              <h6 class="mb-05">Expense Items</h6>
 
               <div class="grid">
                 <div class="gcol-6">
