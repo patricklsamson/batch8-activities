@@ -1253,6 +1253,7 @@ doc_ready(() => {
         accTdSpan.innerHTML = `${users[i].firstName} ${users[i].middleName} ${users[i].lastName}`;
 
         add_event(accTdSpan, "click", () => {
+          add_class(document.body, "show");
           add_class(historyModal, "show");
         });
 
@@ -1263,6 +1264,7 @@ doc_ready(() => {
         add_class(historyUl, "wrap-scroll");
 
         add_event(historyModalClose, "click", () => {
+          remove_class(document.body, "show");
           remove_class(historyModal, "show");
         });
 
