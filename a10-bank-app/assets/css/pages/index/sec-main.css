@@ -245,7 +245,7 @@ th {
 }
 
 #owner-balance {
-  color: #2e856e;
+  color: #006a4e;
 }
 
 #accounts-wrap table td:nth-child(4).negative,
@@ -255,6 +255,10 @@ th {
 
 #owner-expenses {
   color: #6b283b;
+}
+
+#expense-wrap [class*="gcol"]:nth-child(2) {
+  border-left: 2px solid #343a40;
 }
 
 main .wrap-add-account {
