@@ -230,6 +230,8 @@ doc_ready(() => {
               id("owner-acc-num").innerHTML.split(" ").join("")
             );
 
+            FnHandler.list_users();
+
             User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
 
             User.total_expenses(
