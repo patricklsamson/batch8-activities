@@ -51,6 +51,7 @@
               type="text"
               name="login-username"
               autocomplete="off"
+              value="admin"
               id="login-username"
               class="mb-05"
               required
@@ -60,6 +61,7 @@
             <input
               type="password"
               name="login-password"
+              value="admin"
               id="login-password"
               class="mb-05"
               required
@@ -337,9 +339,40 @@
         <div class="grid-cont">
           <div class="wrap-accounts wrap-card">
             <div id="accounts-wrap">
-              <h6>
+              <h6 class="mb-05">
                 Bank Accounts
                 <i role="button" id="load-data-btn" class="fas fa-download"></i>
+
+                <div class="wrap-filter">
+                  <input
+                    type="radio"
+                    name="filter-acc-type"
+                    id="filter-all"
+                    checked
+                  />
+                  <label for="filter-all">All</label>
+
+                  <input
+                    type="radio"
+                    name="filter-acc-type"
+                    id="filter-savings"
+                  />
+                  <label for="filter-savings">Savings</label>
+
+                  <input
+                    type="radio"
+                    name="filter-acc-type"
+                    id="filter-checking"
+                  />
+                  <label for="filter-checking">Checking</label>
+
+                  <i class="fas fa-search"></i>
+                  <input
+                    type="text"
+                    placeholder="Search Name"
+                    id="search-name"
+                  />
+                </div>
               </h6>
 
               <table>
