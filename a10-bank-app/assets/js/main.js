@@ -1795,6 +1795,20 @@ doc_ready(() => {
     return false;
   });
 
+  const remove_filter = () => {
+    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+      remove_class(
+        id("acc-table").querySelectorAll("tr[class*='savings']")[i],
+        "hide"
+      );
+
+      remove_class(
+        id("acc-table").querySelectorAll("tr[class*='checking']")[i],
+        "hide"
+      );
+    }
+  };
+
   add_event(id("log-out-btn"), "click", (e) => {
     e.preventDefault();
     toggle_class(id("modal"), "hide");
@@ -1802,6 +1816,9 @@ doc_ready(() => {
     // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
     setTimeout(() => {
       remove_class(id("accounts-wrap"), "hide");
+      id("filter-all").checked = true;
+      id("search-name").value = "";
+      remove_filter();
       remove_class(id("expense-wrap"), "hide");
       remove_class(id("connections-wrap"), "hide");
       remove_class(id("connections-form"), "show");
@@ -1853,19 +1870,7 @@ doc_ready(() => {
     FnHandler.reset();
   });
 
-  add_event(id("filter-all"), "click", () => {
-    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
-      remove_class(
-        id("acc-table").querySelectorAll("tr[class*='savings']")[i],
-        "hide"
-      );
-
-      remove_class(
-        id("acc-table").querySelectorAll("tr[class*='checking']")[i],
-        "hide"
-      );
-    }
-  });
+  add_event(id("filter-all"), "click", remove_filter);
 
   add_event(id("filter-savings"), "click", () => {
     for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
@@ -1911,9 +1916,9 @@ doc_ready(() => {
             .innerHTML.toUpperCase()
             .indexOf(id("search-name").value.toUpperCase()) > -1
         ) {
-          id("acc-table").querySelectorAll("tr")[i].style.display = "";
+          remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
         } else {
-          id("acc-table").querySelectorAll("tr")[i].style.display = "none";
+          add_class(id("acc-table").querySelectorAll("tr")[i], "hide");
         }
       }
     }
