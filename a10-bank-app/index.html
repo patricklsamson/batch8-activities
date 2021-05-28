@@ -51,7 +51,7 @@
               type="text"
               name="login-username"
               autocomplete="off"
-              value="admin"
+              value="janedoe"
               id="login-username"
               class="mb-05"
               required
@@ -61,7 +61,7 @@
             <input
               type="password"
               name="login-password"
-              value="admin"
+              value="janedoe"
               id="login-password"
               class="mb-05"
               required
@@ -339,47 +339,44 @@
         <div class="grid-cont">
           <div class="wrap-accounts wrap-card">
             <div id="accounts-wrap">
-              <h6 class="mb-05">
-                Bank Accounts
-                <i role="button" id="load-data-btn" class="fas fa-download"></i>
-              </h6>
+              <div class="grid">
+                <div class="gcol-4 mh">
+                  <div id="search-wrap" class="wrap-search rflex rflft">
+                    <div class="wrap-search-icon flex">
+                      <i id="open-search-btn" class="fas fa-search"></i>
+                    </div>
 
-              <div class="wrap-filter rflex mb-10 pb-075">
-                <div class="rflex">
-                  <i class="fas fa-search"></i>
-                  <input
-                    type="text"
-                    placeholder="Search Name"
-                    id="search-name"
-                  />
+                    <input
+                      type="text"
+                      placeholder="Search Name"
+                      id="search-name"
+                    />
+                  </div>
                 </div>
 
-                <div class="rflex">
-                  <input
-                    type="radio"
-                    name="filter-acc-type"
-                    id="filter-all"
-                    checked
-                  />
-                  <label for="filter-all">All</label>
+                <div class="gcol-4 flex mh">
+                  <h6>
+                    Bank Accounts
+                    <i
+                      role="button"
+                      id="load-data-btn"
+                      class="fas fa-download"
+                    ></i>
+                  </h6>
+                </div>
 
-                  <input
-                    type="radio"
-                    name="filter-acc-type"
-                    id="filter-savings"
-                  />
-                  <label for="filter-savings">Savings</label>
-
-                  <input
-                    type="radio"
-                    name="filter-acc-type"
-                    id="filter-checking"
-                  />
-                  <label for="filter-checking">Checking</label>
+                <div class="gcol-4 flex frgt mh">
+                  <select name="filter" id="filter" class="mr-075">
+                    <option value="all">All</option>
+                    <option value="savings">Savings</option>
+                    <option value="checking">Checking</option>
+                  </select>
                 </div>
               </div>
 
-              <table>
+              <hr />
+
+              <table class="mt-075">
                 <thead>
                   <tr>
                     <th>Account No.</th>
@@ -432,38 +429,7 @@
                 </div>
               </div>
 
-              <h6 class="mb-05">Expense Items</h6>
-
               <div class="grid">
-                <div class="gcol-6">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Name of Item</th>
-                        <th>Cost</th>
-                        <th></th>
-                        <th>
-                          <i
-                            role="button"
-                            id="clear-items-btn"
-                            class="fas fa-trash-alt"
-                          ></i>
-                        </th>
-                      </tr>
-                    </thead>
-
-                    <tbody class="talign">
-                      <tr>
-                        <td colspan="4">
-                          <div class="wrap-expense-table wrap-scroll">
-                            <table id="expense-table"></table>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
                 <div class="gcol-6">
                   <div class="wrap-tooltip mb-05">
                     <p>
@@ -517,6 +483,37 @@
                       />
                     </div>
                   </form>
+                </div>
+
+                <div class="gcol-6">
+                  <h6 class="mb-05 talign">Expense Items</h6>
+
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Name of Item</th>
+                        <th>Cost</th>
+                        <th></th>
+                        <th>
+                          <i
+                            role="button"
+                            id="clear-items-btn"
+                            class="fas fa-trash-alt"
+                          ></i>
+                        </th>
+                      </tr>
+                    </thead>
+
+                    <tbody class="talign">
+                      <tr>
+                        <td colspan="4">
+                          <div class="wrap-expense-table wrap-scroll">
+                            <table id="expense-table"></table>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
