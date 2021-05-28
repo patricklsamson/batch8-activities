@@ -166,15 +166,12 @@
   text-align: left;
 }
 
-#acc-table td div:before {
+body.show:before {
   content: ".";
   font-size: 0;
   position: absolute;
-  z-index: -1;
   width: 100vw;
   height: 100vh;
-  top: -50%;
-  left: -50%;
   background: rgba(52, 58, 64, 0.8);
 }
 
