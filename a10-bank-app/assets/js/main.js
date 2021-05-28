@@ -51,6 +51,7 @@ doc_ready(() => {
       this.connections = [];
     }
 
+    // STATIC - TO BE ABLE USE THE FUNCTION WITHOUT AN OBJECT OF THE CLASS
     static add(name, cost, owner) {
       const users = FnHandler.userStorage();
 
@@ -504,26 +505,28 @@ doc_ready(() => {
         (index) => index.accountNumber == user
       );
 
-      id("owner-transaction").innerHTML = "";
+      if (users[accountNumCheck] != null) {
+        id("owner-transaction").innerHTML = "";
 
-      for (
-        i = 0;
-        i < users[accountNumCheck].userTransactionHistory.length;
-        i++
-      ) {
-        let transactionLi = create_el("li"),
-          noTransact = create_el("li");
+        for (
+          i = 0;
+          i < users[accountNumCheck].userTransactionHistory.length;
+          i++
+        ) {
+          let transactionLi = create_el("li"),
+            noTransact = create_el("li");
 
-        if (users[accountNumCheck].userTransactionHistory.length == 1) {
-          noTransact.innerHTML = "No other transactions yet.";
-          id("owner-transaction").appendChild(noTransact);
+          if (users[accountNumCheck].userTransactionHistory.length == 1) {
+            noTransact.innerHTML = "No other transactions yet.";
+            id("owner-transaction").appendChild(noTransact);
+          }
+
+          transactionLi.innerHTML =
+            users[accountNumCheck].userTransactionHistory[i];
+
+          add_class(transactionLi, "mb-05");
+          id("owner-transaction").appendChild(transactionLi);
         }
-
-        transactionLi.innerHTML =
-          users[accountNumCheck].userTransactionHistory[i];
-
-        add_class(transactionLi, "mb-05");
-        id("owner-transaction").appendChild(transactionLi);
       }
     }
 
@@ -863,6 +866,8 @@ doc_ready(() => {
         emailCheck = users.findIndex((userIndex) => userIndex.email == email);
 
       if (users[accountNumberCheck].signedUp) {
+        toggle_class(id("login-wrap"), "hide");
+        toggle_class(id("signup-wrap"), "show");
         remove_class(id("match-msg"), "fa-check");
         remove_class(id("match-msg"), "fa-times");
         alert("You have already signed up!");
@@ -1005,7 +1010,9 @@ doc_ready(() => {
 
         // TRANSACTION HISTORY FOR ADMIN
         users[userCheck].transactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Withdrawal transaction amounting to <strong>₱${amount}</strong> from <strong>${
+          `<em>${FnHandler.time_stamp()}</em> : Withdrawal transaction amounting to <strong>₱${num_commas(
+            amount
+          )}</strong> from <strong>${
             users[userCheck].firstName
           }</strong>'s account has been successful. ${gender} remaining account balance is now <strong>₱${num_commas(
             users[userCheck].balance
@@ -1016,7 +1023,9 @@ doc_ready(() => {
 
         // TRANSACTION HISTORY FOR USER
         users[userCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Withdrawal transaction amounting to <strong>₱${amount}</strong> from your account has been successful. Your remaining account balance is now <strong>₱${num_commas(
+          `<em>${FnHandler.time_stamp()}</em> : Withdrawal transaction amounting to <strong>₱${num_commas(
+            amount
+          )}</strong> from your account has been successful. Your remaining account balance is now <strong>₱${num_commas(
             users[userCheck].balance
           )}</strong> from a previous account balance of <strong>₱${num_commas(
             initialBal
@@ -1049,7 +1058,9 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[userCheck].transactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Deposit transaction amounting to <strong>₱${amount}</strong> into <strong>${
+          `<em>${FnHandler.time_stamp()}</em> : Deposit transaction amounting to <strong>₱${num_commas(
+            amount
+          )}</strong> into <strong>${
             users[userCheck].firstName
           }</strong>'s account has been successful. ${gender} account balance is now <strong>₱${num_commas(
             users[userCheck].balance
@@ -1059,7 +1070,9 @@ doc_ready(() => {
         );
 
         users[userCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Deposit transaction amounting to <strong>₱${amount}</strong> into your account has been successful. Your account balance is now <strong>₱${num_commas(
+          `<em>${FnHandler.time_stamp()}</em> : Deposit transaction amounting to <strong>₱${num_commas(
+            amount
+          )}</strong> into your account has been successful. Your account balance is now <strong>₱${num_commas(
             users[userCheck].balance
           )}</strong> from a previous account balance of <strong>₱${num_commas(
             initialBal
@@ -1099,9 +1112,9 @@ doc_ready(() => {
       ) {
         alert("Account number entries are not allowed!");
       } else {
-        let senderGender = users[senderCheck].gender == "male" ? "His" : "Her",
+        let senderGender = users[senderCheck].gender == "male" ? "his" : "her",
           receiverGender =
-            users[receiverCheck].gender == "male" ? "His" : "Her";
+            users[receiverCheck].gender == "male" ? "his" : "her";
 
         users[senderCheck].balance = parseFloat(
           parseFloat(users[senderCheck].balance) - parseFloat(amount)
@@ -1112,23 +1125,27 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[senderCheck].transactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${amount}</strong> into ${
-            users[receiverCheck].firstName
-          }'s account from <strong>${
-            users[senderCheck].firstName
-          }</strong>'s account has been successful. ${senderGender} remaining account balance is now <strong>₱${num_commas(
-            users[senderCheck].balance
+          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${num_commas(
+            amount
           )}</strong> from <strong>${
             users[senderCheck].firstName
-          }</strong>'s previous account balance of <strong>₱${num_commas(
+          }</strong>'s account into ${
+            users[receiverCheck].firstName
+          }'s account has been successful. <strong>${
+            users[senderCheck].firstName
+          }</strong>'s remaining account balance is now <strong>₱${num_commas(
+            users[senderCheck].balance
+          )}</strong> from ${senderGender} previous account balance of <strong>₱${num_commas(
             senderInitialBal
           )}</strong>.`
         );
 
         users[senderCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${amount}</strong> into ${
+          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${num_commas(
+            amount
+          )}</strong> from your account into ${
             users[receiverCheck].firstName
-          }'s account from your account has been successful. Your remaining account balance is now <strong>₱${num_commas(
+          }'s account has been successful. Your remaining account balance is now <strong>₱${num_commas(
             users[senderCheck].balance
           )}</strong> from a previous account balance of <strong>₱${num_commas(
             senderInitialBal
@@ -1144,26 +1161,30 @@ doc_ready(() => {
         ).toFixed(2);
 
         users[receiverCheck].transactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${amount}</strong> from ${
+          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${num_commas(
+            amount
+          )}</strong> from ${
             users[senderCheck].firstName
           }'s account into <strong>${
             users[receiverCheck].firstName
-          }</strong>'s account has been successful. ${receiverGender} account balance is now <strong>₱${num_commas(
-            users[receiverCheck].balance
-          )}</strong> from <strong>${
+          }</strong>'s account has been successful. <strong>${
             users[receiverCheck].firstName
-          }</strong>'s previous account balance of <strong>₱${num_commas(
+          }</strong>'s account balance is now <strong>₱${num_commas(
+            users[receiverCheck].balance
+          )}</strong> from ${receiverGender} previous account balance of <strong>₱${num_commas(
             receiverInitialBal
           )}</strong>.`
         );
 
         users[receiverCheck].userTransactionHistory.unshift(
-          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${amount}</strong> from ${
+          `<em>${FnHandler.time_stamp()}</em> : Incoming money transfer amounting to <strong>₱${num_commas(
+            amount
+          )}</strong> from ${
             users[senderCheck].firstName
-          }'s account into your account has been successful. From a previous account balance of <strong>₱${num_commas(
-            receiverInitialBal
-          )}</strong>, your account balance is now <strong>₱${num_commas(
+          }'s account into your account has been successful. Your account balance is now <strong>₱${num_commas(
             users[receiverCheck].balance
+          )}</strong> from a previous account balance of <strong>₱${num_commas(
+            receiverInitialBal
           )}</strong>.`
         );
 
@@ -1305,6 +1326,8 @@ doc_ready(() => {
 
         FnHandler.get_balance(users[i].accountNumber, tableRow);
         tableRow.appendChild(deleteTd);
+
+        add_class(tableRow, users[i].accountType.toLowerCase());
 
         id("acc-table").appendChild(tableRow);
       }
@@ -1828,6 +1851,72 @@ doc_ready(() => {
     remove_class(id("match-msg"), "fa-check");
     remove_class(id("match-msg"), "fa-times");
     FnHandler.reset();
+  });
+
+  add_event(id("filter-all"), "click", () => {
+    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+      remove_class(
+        id("acc-table").querySelectorAll("tr[class*='savings']")[i],
+        "hide"
+      );
+
+      remove_class(
+        id("acc-table").querySelectorAll("tr[class*='checking']")[i],
+        "hide"
+      );
+    }
+  });
+
+  add_event(id("filter-savings"), "click", () => {
+    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+      remove_class(
+        id("acc-table").querySelectorAll("tr[class*='savings']")[i],
+        "hide"
+      );
+
+      add_class(
+        id("acc-table").querySelectorAll("tr[class*='checking']")[i],
+        "hide"
+      );
+    }
+  });
+
+  add_event(id("filter-checking"), "click", () => {
+    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+      add_class(
+        id("acc-table").querySelectorAll("tr[class*='savings']")[i],
+        "hide"
+      );
+
+      remove_class(
+        id("acc-table").querySelectorAll("tr[class*='checking']")[i],
+        "hide"
+      );
+    }
+  });
+
+  add_event(id("search-name"), "keyup", () => {
+    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+      if (
+        id("acc-table")
+          .querySelectorAll("tr")
+          [i].querySelectorAll("td")[1]
+          .querySelector("span")
+      ) {
+        if (
+          id("acc-table")
+            .querySelectorAll("tr")
+            [i].querySelectorAll("td")[1]
+            .querySelector("span")
+            .innerHTML.toUpperCase()
+            .indexOf(id("search-name").value.toUpperCase()) > -1
+        ) {
+          id("acc-table").querySelectorAll("tr")[i].style.display = "";
+        } else {
+          id("acc-table").querySelectorAll("tr")[i].style.display = "none";
+        }
+      }
+    }
   });
 
   add_event(id("settings-btn"), "click", () => {
