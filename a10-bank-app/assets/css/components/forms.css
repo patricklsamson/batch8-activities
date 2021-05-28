@@ -38,8 +38,23 @@ i[id*="-msg"].fa-times {
 
 #search-name {
   width: 220px;
-  padding: 10px;
   vertical-align: top;
+  padding: 0;
+  border: none;
+  outline: none;
+  width: 0;
+  visibility: hidden;
+  opacity: 0;
+  background: #f8f9fa;
+  border-bottom: 2px solid transparent;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  -moz-transition: 0.25s;
+  transition: 0.25s;
+}
+
+#search-name:focus {
+  border-bottom: 2px solid #343a40;
 }
 
 #connections-form {
