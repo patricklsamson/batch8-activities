@@ -839,6 +839,7 @@ doc_ready(function () {
           FnHandler.click_copy(accNumTd);
           accTdSpan.innerHTML = "".concat(users[i].firstName, " ").concat(users[i].middleName, " ").concat(users[i].lastName);
           add_event(accTdSpan, "click", function () {
+            add_class(document.body, "show");
             add_class(historyModal, "show");
           });
           add_class(historyModalClose, "far");
@@ -847,6 +848,7 @@ doc_ready(function () {
           add_class(historyUl, "xbul");
           add_class(historyUl, "wrap-scroll");
           add_event(historyModalClose, "click", function () {
+            remove_class(document.body, "show");
             remove_class(historyModal, "show");
           }); // INDICATION WHEN NO OTHER TRANSACTIONS ARE MADE YET ASIDE FROM OPENING THE ACCOUNT
 
