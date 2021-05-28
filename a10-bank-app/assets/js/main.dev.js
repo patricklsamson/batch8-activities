@@ -169,6 +169,7 @@ doc_ready(function () {
               localStorage.setItem("users", JSON.stringify(users));
               User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
               FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
+              FnHandler.list_users();
               User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
               User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
             });
