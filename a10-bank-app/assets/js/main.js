@@ -113,6 +113,12 @@ doc_ready(() => {
         id("owner-balance").innerHTML = `₱${num_commas(
           users[ownerCheck].balance
         )}`;
+
+        if (users[ownerCheck].balance < 0) {
+          add_class(id("owner-balance"), "negative");
+        } else {
+          remove_class(id("owner-balance"), "negative");
+        }
       }
     }
 
@@ -297,6 +303,8 @@ doc_ready(() => {
               FnHandler.individual_history(
                 id("owner-acc-num").innerHTML.split(" ").join("")
               );
+
+              FnHandler.list_users();
 
               User.get_balance(
                 id("owner-acc-num").innerHTML.split(" ").join("")
@@ -1206,6 +1214,13 @@ doc_ready(() => {
        */
       if (users[userCheck]) {
         balanceTd.innerHTML = `₱${num_commas(users[userCheck].balance)}`;
+
+        if (users[userCheck].balance < 0) {
+          add_class(balanceTd, "negative");
+        } else {
+          remove_class(balanceTd, "negative");
+        }
+
         parentEl.appendChild(balanceTd);
       }
     }
