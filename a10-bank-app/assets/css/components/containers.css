@@ -5,6 +5,23 @@
   border-radius: 20px;
 }
 
+.wrap-card [class*="chevron"] {
+  float: right;
+  padding: 5px;
+}
+
+@media only screen and (min-width: 576px) {
+  .wrap-card [class*="chevron"] {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .wrap-card {
+    overflow-y: hidden;
+  }
+}
+
 .wrap-scroll {
   overflow-y: scroll;
 }
