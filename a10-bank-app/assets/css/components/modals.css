@@ -147,11 +147,7 @@
 
 #settings-modal .wrap-modal-inner {
   width: 20vw;
-  height: 27vh;
-}
-
-#settings-modal .wrap-modal-inner.user {
-  height: 51vh;
+  height: auto;
 }
 
 #acc-table td div {
