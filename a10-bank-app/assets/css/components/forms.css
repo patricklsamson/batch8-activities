@@ -85,7 +85,7 @@ i[id*="-msg"].fa-times {
 }
 
 [id*="-dec"] {
-  width: 15%;
+  width: 16%;
 }
 
 form .rflex input {
@@ -100,4 +100,52 @@ input {
 
 [type="radio"] + label {
   font-weight: 400;
+}
+
+@media only screen and (max-width: 575px) {
+  #add-form,
+  #connections-form,
+  #withdraw-form,
+  #deposit-form,
+  #send-form {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  #open-add-form-btn.active ~ #add-form,
+  #open-connections-form-btn.active ~ #connections-form,
+  #open-withdraw-form-btn.active ~ .table #withdraw-form,
+  #open-deposit-form-btn.active ~ .table #deposit-form,
+  #open-send-form-btn.active ~ .table #send-form {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  #open-add-form-btn.active ~ #add-form {
+    height: 350px;
+  }
+
+  #open-withdraw-form-btn.active ~ .table #withdraw-form,
+  #open-deposit-form-btn.active ~ .table #deposit-form {
+    height: 146px;
+  }
+
+  #open-send-form-btn.active ~ .table #send-form {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #open-add-form-btn.active ~ #add-form {
+    height: 374px;
+  }
+
+  #open-send-form-btn.active ~ .table #send-form {
+    height: 248px;
+  }
 }
