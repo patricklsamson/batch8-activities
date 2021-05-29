@@ -172,8 +172,8 @@ doc_ready(function () {
               var users = FnHandler.userStorage();
               var ownerCheck = users.findIndex(function (index) {
                 return index.accountNumber == owner;
-              });
-              var deletePrompt = prompt('Are you sure to delete this item?\n Type "Y" for yes and "N" for no.', "N"),
+              }),
+                  deletePrompt = prompt('Are you sure to delete this item?\n Type "Y" for yes and "N" for no.', "N"),
                   deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear();
 
               if (deleteAnswer == "y") {
