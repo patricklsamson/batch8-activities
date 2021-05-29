@@ -551,6 +551,11 @@ doc_ready(() => {
         id("profile-acc-type").innerHTML = users[usernameCheck].accountType;
         id("profile-username").innerHTML = users[usernameCheck].username;
         id("profile-email").innerHTML = users[usernameCheck].email;
+
+        id("profile-gender").innerHTML =
+          users[usernameCheck].gender.substring(0, 1).toUpperCase() +
+          users[usernameCheck].gender.substring(1).toLowerCase();
+
         add_att(id("withdraw-account"), "value", id("owner-acc-num").innerHTML);
         add_att(id("deposit-account"), "value", id("owner-acc-num").innerHTML);
         add_att(id("sender-account"), "value", id("owner-acc-num").innerHTML);
@@ -1706,8 +1711,9 @@ doc_ready(() => {
     // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
     setTimeout(() => {
       remove_class(id("accounts-wrap"), "hide");
-      id("filter").value = "all";
+      remove_class(id("search-wrap"), "active");
       id("search-name").value = "";
+      id("filter").value = "all";
 
       for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
         remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
@@ -1765,30 +1771,6 @@ doc_ready(() => {
     FnHandler.reset();
   });
 
-  add_event(id("filter"), "click", () => {
-    if (id("filter").value == "all") {
-      for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
-        remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
-      }
-    } else if (id("filter").value == "savings") {
-      for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
-        if (has_class(id("acc-table").querySelectorAll("tr")[i], "checking")) {
-          add_class(id("acc-table").querySelectorAll("tr")[i], "hide");
-        } else {
-          remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
-        }
-      }
-    } else {
-      for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
-        if (has_class(id("acc-table").querySelectorAll("tr")[i], "savings")) {
-          add_class(id("acc-table").querySelectorAll("tr")[i], "hide");
-        } else {
-          remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
-        }
-      }
-    }
-  });
-
   add_event(id("open-search-btn"), "click", () => {
     toggle_class(id("search-wrap"), "active");
 
@@ -1819,6 +1801,30 @@ doc_ready(() => {
           );
         } else {
           add_class(id("acc-table").querySelectorAll("tr")[i], "search-hide");
+        }
+      }
+    }
+  });
+
+  add_event(id("filter"), "click", () => {
+    if (id("filter").value == "all") {
+      for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+        remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
+      }
+    } else if (id("filter").value == "savings") {
+      for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+        if (has_class(id("acc-table").querySelectorAll("tr")[i], "checking")) {
+          add_class(id("acc-table").querySelectorAll("tr")[i], "hide");
+        } else {
+          remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
+        }
+      }
+    } else {
+      for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+        if (has_class(id("acc-table").querySelectorAll("tr")[i], "savings")) {
+          add_class(id("acc-table").querySelectorAll("tr")[i], "hide");
+        } else {
+          remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
         }
       }
     }
