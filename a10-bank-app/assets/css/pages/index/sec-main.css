@@ -1,6 +1,11 @@
+/* td,
+th {
+  border: 1px solid #000;
+} */
+
 main .grid-cont {
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 415px 250px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
   grid-gap: 15px;
 }
 
@@ -95,6 +100,22 @@ main .wrap-acc-table {
   height: 292px;
 }
 
+@media only screen and (max-width: 1399px) {
+  main .wrap-search.active #search-name {
+    width: 165px;
+  }
+
+  main .wrap-acc-table {
+    height: 268px;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  main .wrap-search.active #search-name {
+    width: 120px;
+  }
+}
+
 main .wrap-expense-table {
   height: 280px;
 }
@@ -130,11 +151,6 @@ main .wrap-expense-table {
 #expense-table {
   width: 100%;
 }
-
-/* td,
-th {
-  border: 1px solid #000;
-} */
 
 #accounts-wrap table th:first-child,
 #accounts-wrap table td:first-child {
@@ -380,10 +396,219 @@ main .table {
   height: 90%;
 }
 
-.wrap-send {
+main .wrap-send {
   background: rgba(103, 178, 178, 0.3);
 }
 
-.wrap-send.user h6 {
-  margin-bottom: 0.5em;
+@media only screen and (max-width: 991px) {
+  main .grid-cont {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, auto);
+  }
+
+  main .grid-cont .wrap-accounts {
+    order: 1;
+  }
+
+  main .grid-cont .wrap-add-account {
+    order: 2;
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      right bottom,
+      color-stop(60%, rgba(248, 249, 250, 0.3)),
+      to(rgba(103, 178, 178, 0.3))
+    );
+    background-image: -webkit-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 60%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: -moz-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 60%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: -o-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 60%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(248, 249, 250, 0.3) 60%,
+      rgba(103, 178, 178, 0.3)
+    );
+  }
+
+  main .grid-cont .wrap-send {
+    order: 3;
+    background-color: transparent;
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      right bottom,
+      color-stop(20%, rgba(248, 249, 250, 0.3)),
+      to(rgba(103, 178, 178, 0.3))
+    );
+    background-image: -webkit-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: -moz-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: -o-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+  }
+
+  main .grid-cont .wrap-withdraw {
+    order: 4;
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      right bottom,
+      color-stop(20%, rgba(248, 249, 250, 0.3)),
+      to(rgba(103, 178, 178, 0.3))
+    );
+    background-image: -webkit-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: -moz-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: -o-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+  }
+
+  main .grid-cont .wrap-deposit {
+    order: 5;
+    background: rgba(103, 178, 178, 0.3);
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  main {
+    padding-bottom: 16px;
+  }
+
+  main .grid-cont {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+  }
+
+  main .wrap-accounts {
+    grid-column-end: 2;
+  }
+
+  main .wrap-search.active #search-name {
+    width: 135px;
+  }
+
+  #accounts-wrap table td:first-child {
+    width: 18%;
+  }
+
+  #accounts-wrap table th:nth-child(2) {
+    width: 30%;
+  }
+
+  #accounts-wrap table td:nth-child(2) {
+    width: 30.5%;
+  }
+
+  #accounts-wrap table th:nth-child(3),
+  #accounts-wrap table td:nth-child(3) {
+    display: none;
+  }
+
+  #accounts-wrap table th:nth-child(4) {
+    width: 40%;
+  }
+
+  #accounts-wrap table td:nth-child(4) {
+    width: 41.2%;
+  }
+
+  main .grid-cont .wrap-deposit {
+    order: 5;
+    background: transparent;
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      right bottom,
+      color-stop(20%, rgba(248, 249, 250, 0.3)),
+      to(rgba(103, 178, 178, 0.3))
+    );
+    background-image: -webkit-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: -moz-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: -o-linear-gradient(
+      top left,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(248, 249, 250, 0.3) 20%,
+      rgba(103, 178, 178, 0.3)
+    );
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  main .wrap-search.active #search-name {
+    width: 195px;
+  }
+
+  main .wrap-acc-table {
+    height: 170px;
+  }
+
+  #accounts-wrap table td:nth-child(1) {
+    width: 29%;
+  }
+
+  #accounts-wrap table th:nth-child(2) {
+    width: 50%;
+  }
+
+  #accounts-wrap table td:nth-child(2) {
+    width: 53%;
+  }
+
+  #accounts-wrap table th:nth-child(4),
+  #accounts-wrap table td:nth-child(4) {
+    display: none;
+  }
 }
