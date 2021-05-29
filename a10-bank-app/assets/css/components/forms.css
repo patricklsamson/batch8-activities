@@ -3,6 +3,18 @@ form {
   margin: 0 auto;
 }
 
+#login-form,
+#signup-form {
+  width: 50%;
+}
+
+@media only screen and (max-width: 480px) {
+  #login-form,
+  #signup-form {
+    width: 70%;
+  }
+}
+
 #admin-settings-form.hide,
 #user-settings-form,
 #withdraw-form.hide label[for="withdraw-account"],
