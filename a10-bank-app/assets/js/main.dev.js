@@ -1107,7 +1107,7 @@ doc_ready(function () {
 
     if (!users[juanitaCheck] && !users[samonteCheck]) {
       var _balance2 = 5200.5;
-      create_user("", "", "", false, "JUANITA", "HERMOSA", "SAMONTE", "female", "031734218924", "Checking", _balance2.toFixed(2));
+      create_user("", "", "", false, "JUANITA", "HERMAN", "SAMONTE", "female", "031734218924", "Checking", _balance2.toFixed(2));
     }
 
     if (!users[johnCheck] && !users[schmoeCheck]) {
