@@ -37,3 +37,14 @@ i[class*="fa"] {
 #open-signup-btn {
   font-weight: 700;
 }
+
+[class*="chevron"] {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+[class*="chevron"].active {
+  transform: rotate(180deg);
+}
