@@ -188,7 +188,7 @@ body.show:before {
 
 #profile-modal .wrap-modal-inner {
   width: 20vw;
-  height: 21vh;
+  height: auto;
 }
 
 #profile-modal h6,
