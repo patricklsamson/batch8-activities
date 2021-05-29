@@ -466,6 +466,7 @@ doc_ready(function () {
           id("profile-acc-type").innerHTML = users[usernameCheck].accountType;
           id("profile-username").innerHTML = users[usernameCheck].username;
           id("profile-email").innerHTML = users[usernameCheck].email;
+          id("profile-gender").innerHTML = users[usernameCheck].gender.substring(0, 1).toUpperCase() + users[usernameCheck].gender.substring(1).toLowerCase();
           add_att(id("withdraw-account"), "value", id("owner-acc-num").innerHTML);
           add_att(id("deposit-account"), "value", id("owner-acc-num").innerHTML);
           add_att(id("sender-account"), "value", id("owner-acc-num").innerHTML);
@@ -1222,8 +1223,9 @@ doc_ready(function () {
 
     setTimeout(function () {
       remove_class(id("accounts-wrap"), "hide");
-      id("filter").value = "all";
+      remove_class(id("search-wrap"), "active");
       id("search-name").value = "";
+      id("filter").value = "all";
 
       for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
         remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
@@ -1262,6 +1264,23 @@ doc_ready(function () {
     remove_class(id("match-msg"), "fa-times");
     FnHandler.reset();
   });
+  add_event(id("open-search-btn"), "click", function () {
+    toggle_class(id("search-wrap"), "active");
+    setTimeout(function () {
+      id("search-name").focus();
+    }, 100);
+  });
+  add_event(id("search-name"), "keyup", function () {
+    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+      if (id("acc-table").querySelectorAll("tr")[i].querySelectorAll("td")[1].querySelector("span")) {
+        if (id("acc-table").querySelectorAll("tr")[i].querySelectorAll("td")[1].querySelector("span").innerHTML.toUpperCase().indexOf(id("search-name").value.toUpperCase()) > -1) {
+          remove_class(id("acc-table").querySelectorAll("tr")[i], "search-hide");
+        } else {
+          add_class(id("acc-table").querySelectorAll("tr")[i], "search-hide");
+        }
+      }
+    }
+  });
   add_event(id("filter"), "click", function () {
     if (id("filter").value == "all") {
       for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
@@ -1281,23 +1300,6 @@ doc_ready(function () {
           add_class(id("acc-table").querySelectorAll("tr")[i], "hide");
         } else {
           remove_class(id("acc-table").querySelectorAll("tr")[i], "hide");
-        }
-      }
-    }
-  });
-  add_event(id("open-search-btn"), "click", function () {
-    toggle_class(id("search-wrap"), "active");
-    setTimeout(function () {
-      id("search-name").focus();
-    }, 100);
-  });
-  add_event(id("search-name"), "keyup", function () {
-    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
-      if (id("acc-table").querySelectorAll("tr")[i].querySelectorAll("td")[1].querySelector("span")) {
-        if (id("acc-table").querySelectorAll("tr")[i].querySelectorAll("td")[1].querySelector("span").innerHTML.toUpperCase().indexOf(id("search-name").value.toUpperCase()) > -1) {
-          remove_class(id("acc-table").querySelectorAll("tr")[i], "search-hide");
-        } else {
-          add_class(id("acc-table").querySelectorAll("tr")[i], "search-hide");
         }
       }
     }
