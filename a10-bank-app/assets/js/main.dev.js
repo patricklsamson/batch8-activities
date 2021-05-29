@@ -398,10 +398,10 @@ doc_ready(function () {
             passwordCheck = users.findIndex(function (index) {
           return index.password == password;
         });
+        remove_class(document.body, "modal-open");
 
         if (admin[0].username == username && admin[0].password == password) {
           toggle_class(id("modal"), "hide");
-          remove_class(document.body, "modal-open");
           add_class(id("expense-wrap"), "hide");
           add_class(id("connections-wrap"), "hide");
           id("withdraw-account").removeAttribute("value");
