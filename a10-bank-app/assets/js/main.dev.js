@@ -58,6 +58,7 @@ doc_ready(function () {
       _this.accountNumber = accountNumber;
       _this.accountType = accountType;
       _this.balance = balance;
+      _this.budget = balance;
       _this.signedUp = signedUp;
       _this.transactionHistory = [];
       _this.userTransactionHistory = [];
@@ -68,33 +69,8 @@ doc_ready(function () {
 
 
     _createClass(User, null, [{
-      key: "add",
-      value: function add(name, cost, owner) {
-        var users = FnHandler.userStorage();
-        var ownerCheck = users.findIndex(function (index) {
-          return index.accountNumber == owner;
-        }),
-            nameCheck = users[ownerCheck].expenseItems.findIndex(function (index) {
-          return index.name == name;
-        });
-
-        if (users[ownerCheck].expenseItems[nameCheck]) {
-          alert("Expense item already exists!");
-        } else {
-          var newExpenseItem = new ExpenseItem(name, cost, owner);
-          users[ownerCheck].balance = parseFloat(parseFloat(users[ownerCheck].balance) - parseFloat(cost)).toFixed(2);
-          var initialBal = parseFloat(parseFloat(users[ownerCheck].balance) + parseFloat(cost)).toFixed(2),
-              gender = users[ownerCheck].gender == "male" ? "His" : "Her";
-          users[ownerCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You added an expense item: <strong>").concat(name, "</strong>, costing an amount of <strong>\u20B1").concat(num_commas(cost), "</strong>. Your remaining account balance is now <strong>\u20B1").concat(num_commas(users[ownerCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(initialBal), "</strong>."));
-          users[ownerCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : <strong>").concat(users[ownerCheck].firstName, "</strong> added an expense item: <strong>").concat(name, "</strong>, costing an amount of <strong>\u20B1").concat(num_commas(cost), "</strong>. ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(num_commas(users[ownerCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(initialBal), "</strong>."));
-          users[ownerCheck].expenseItems.push(newExpenseItem);
-          id("add-expense-form").reset();
-          localStorage.setItem("users", JSON.stringify(users));
-        }
-      }
-    }, {
-      key: "get_balance",
-      value: function get_balance(owner) {
+      key: "get_budget",
+      value: function get_budget(owner) {
         var users = FnHandler.userStorage();
         var ownerCheck = users.findIndex(function (index) {
           return index.accountNumber == owner;
@@ -102,12 +78,12 @@ doc_ready(function () {
 
         if (users[ownerCheck] != null) {
           id("owner-balance").innerHTML = "";
-          id("owner-balance").innerHTML = "\u20B1".concat(num_commas(users[ownerCheck].balance));
+          id("owner-balance").innerHTML = num_commas(users[ownerCheck].budget);
 
-          if (users[ownerCheck].balance < 0) {
-            add_class(id("owner-balance"), "negative");
+          if (users[ownerCheck].budget < 0) {
+            add_class(id("budget"), "negative");
           } else {
-            remove_class(id("owner-balance"), "negative");
+            remove_class(id("budget"), "negative");
           }
         }
       }
@@ -127,7 +103,28 @@ doc_ready(function () {
             total = parseFloat(total + parseFloat(users[ownerCheck].expenseItems[i].cost));
           }
 
-          id("owner-expenses").innerHTML = "\u20B1".concat(num_commas(total.toFixed(2)));
+          id("owner-expenses").innerHTML = num_commas(total.toFixed(2));
+        }
+      }
+    }, {
+      key: "add",
+      value: function add(name, cost, owner) {
+        var users = FnHandler.userStorage();
+        var ownerCheck = users.findIndex(function (index) {
+          return index.accountNumber == owner;
+        }),
+            nameCheck = users[ownerCheck].expenseItems.findIndex(function (index) {
+          return index.name == name;
+        });
+
+        if (users[ownerCheck].expenseItems[nameCheck]) {
+          alert("Expense item already exists!");
+        } else {
+          var newExpenseItem = new ExpenseItem(name, cost, owner);
+          users[ownerCheck].budget = parseFloat(parseFloat(users[ownerCheck].budget) - parseFloat(cost)).toFixed(2);
+          users[ownerCheck].expenseItems.push(newExpenseItem);
+          localStorage.setItem("users", JSON.stringify(users));
+          id("add-expense-form").reset();
         }
       }
     }, {
@@ -160,17 +157,13 @@ doc_ready(function () {
               id("add-expense-name").value = users[ownerCheck].expenseItems[this.id].name;
               id("add-expense-amount").value = num_commas(users[ownerCheck].expenseItems[this.id].cost.split(".")[0]);
               id("add-expense-amount-dec").value = users[ownerCheck].expenseItems[this.id].cost.split(".")[1];
-              users[ownerCheck].balance = parseFloat(parseFloat(users[ownerCheck].balance) + parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2);
-              var initialBal = parseFloat(parseFloat(users[ownerCheck].balance) - parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2),
-                  gender = users[ownerCheck].gender == "male" ? "His" : "Her";
-              users[ownerCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You deleted an expense item: <strong>").concat(users[ownerCheck].expenseItems[this.id].name, "</strong>, costing an amount of <strong>\u20B1").concat(num_commas(users[ownerCheck].expenseItems[this.id].cost), "</strong>. Your account balance is now <strong>\u20B1").concat(num_commas(users[ownerCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(initialBal), "</strong>."));
-              users[ownerCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : <strong>").concat(users[ownerCheck].firstName, "</strong> deleted an expense item: <strong>").concat(users[ownerCheck].expenseItems[this.id].name, "</strong>, costing an amount of <strong>\u20B1").concat(num_commas(users[ownerCheck].expenseItems[this.id].cost), "</strong>. ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(num_commas(users[ownerCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(initialBal), "</strong>."));
+              users[ownerCheck].budget = parseFloat(parseFloat(users[ownerCheck].budget) + parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2);
               users[ownerCheck].expenseItems.splice(this.id, 1);
               localStorage.setItem("users", JSON.stringify(users));
               User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
               FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
               FnHandler.list_users();
-              User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+              User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
               User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
             });
             tableRow.appendChild(editTd);
@@ -184,17 +177,13 @@ doc_ready(function () {
                   deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear();
 
               if (deleteAnswer == "y") {
-                users[ownerCheck].balance = parseFloat(parseFloat(users[ownerCheck].balance) + parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2);
-                var initialBal = parseFloat(parseFloat(users[ownerCheck].balance) - parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2),
-                    gender = users[ownerCheck].gender == "male" ? "His" : "Her";
-                users[ownerCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You deleted an expense item: <strong>").concat(users[ownerCheck].expenseItems[this.id].name, "</strong>, costing an amount of <strong>\u20B1").concat(num_commas(users[ownerCheck].expenseItems[this.id].cost), "</strong>. Your account balance is now <strong>\u20B1").concat(num_commas(users[ownerCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(initialBal), "</strong>."));
-                users[ownerCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : <strong>").concat(users[ownerCheck].firstName, "</strong> deleted an expense item: <strong>").concat(users[ownerCheck].expenseItems[this.id].name, "</strong>, costing an amount of <strong>\u20B1").concat(num_commas(users[ownerCheck].expenseItems[this.id].cost), "</strong>. ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(num_commas(users[ownerCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(initialBal), "</strong>."));
+                users[ownerCheck].budget = parseFloat(parseFloat(users[ownerCheck].budget) + parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2);
                 users[ownerCheck].expenseItems.splice(this.id, 1);
                 localStorage.setItem("users", JSON.stringify(users));
                 User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
                 FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
                 FnHandler.list_users();
-                User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+                User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
                 User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
               } else {
                 return;
@@ -568,15 +557,12 @@ doc_ready(function () {
                   total = parseFloat(total + parseFloat(users[usernameCheck].expenseItems[i].cost));
                 }
 
-                users[usernameCheck].balance = parseFloat(parseFloat(users[usernameCheck].balance) + total);
-                var initialBal = parseFloat(parseFloat(users[usernameCheck].balance) - total);
-                users[usernameCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : You deleted all expense items, costing an amount of <strong>\u20B1").concat(num_commas(total.toFixed(2)), "</strong>. Your account balance is now <strong>\u20B1").concat(num_commas(users[usernameCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(initialBal.toFixed(2)), "</strong>."));
-                users[usernameCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : <strong>").concat(users[usernameCheck].firstName, "</strong> deleted all expense items, costing an amount of <strong>").concat(num_commas(total.toFixed(2)), "</strong>. ").concat(gender, " account balance is now <strong>\u20B1").concat(num_commas(users[usernameCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(initialBal.toFixed(2)), "</strong>."));
+                users[usernameCheck].budget = parseFloat(parseFloat(users[usernameCheck].budget) + total);
                 users[usernameCheck].expenseItems = [];
                 localStorage.setItem("users", JSON.stringify(users));
                 User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
                 FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
-                User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+                User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
                 User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
               } else {
                 return;
@@ -721,6 +707,7 @@ doc_ready(function () {
           var gender = users[userCheck].gender == "male" ? "His" : "Her"; // FIXED 2 DECIMAL PLACES
 
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
+          users[userCheck].budget = parseFloat(parseFloat(users[userCheck].budget) - parseFloat(amount)).toFixed(2);
           var initialBal = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2); // TRANSACTION HISTORY FOR ADMIN
 
           users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Withdrawal transaction amounting to <strong>\u20B1").concat(num_commas(amount), "</strong> from <strong>").concat(users[userCheck].firstName, "</strong>'s account has been successful. ").concat(gender, " remaining account balance is now <strong>\u20B1").concat(num_commas(users[userCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(initialBal), "</strong>.")); // TRANSACTION HISTORY FOR USER
@@ -745,6 +732,7 @@ doc_ready(function () {
         } else {
           var gender = users[userCheck].gender == "male" ? "His" : "Her";
           users[userCheck].balance = parseFloat(parseFloat(users[userCheck].balance) + parseFloat(amount)).toFixed(2);
+          users[userCheck].budget = parseFloat(parseFloat(users[userCheck].budget) + parseFloat(amount)).toFixed(2);
           var initialBal = parseFloat(parseFloat(users[userCheck].balance) - parseFloat(amount)).toFixed(2);
           users[userCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Deposit transaction amounting to <strong>\u20B1").concat(num_commas(amount), "</strong> into <strong>").concat(users[userCheck].firstName, "</strong>'s account has been successful. ").concat(gender, " account balance is now <strong>\u20B1").concat(num_commas(users[userCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(initialBal), "</strong>."));
           users[userCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Deposit transaction amounting to <strong>\u20B1").concat(num_commas(amount), "</strong> into your account has been successful. Your account balance is now <strong>\u20B1").concat(num_commas(users[userCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(initialBal), "</strong>."));
@@ -779,6 +767,7 @@ doc_ready(function () {
           var senderGender = users[senderCheck].gender == "male" ? "his" : "her",
               receiverGender = users[receiverCheck].gender == "male" ? "his" : "her";
           users[senderCheck].balance = parseFloat(parseFloat(users[senderCheck].balance) - parseFloat(amount)).toFixed(2);
+          users[senderCheck].budget = parseFloat(parseFloat(users[senderCheck].budget) - parseFloat(amount)).toFixed(2);
           var senderInitialBal = parseFloat(parseFloat(users[senderCheck].balance) + parseFloat(amount)).toFixed(2);
           users[senderCheck].transactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Incoming money transfer amounting to <strong>\u20B1").concat(num_commas(amount), "</strong> from <strong>").concat(users[senderCheck].firstName, "</strong>'s account into ").concat(users[receiverCheck].firstName, "'s account has been successful. <strong>").concat(users[senderCheck].firstName, "</strong>'s remaining account balance is now <strong>\u20B1").concat(num_commas(users[senderCheck].balance), "</strong> from ").concat(senderGender, " previous account balance of <strong>\u20B1").concat(num_commas(senderInitialBal), "</strong>."));
           users[senderCheck].userTransactionHistory.unshift("<em>".concat(FnHandler.time_stamp(), "</em> : Incoming money transfer amounting to <strong>\u20B1").concat(num_commas(amount), "</strong> from your account into ").concat(users[receiverCheck].firstName, "'s account has been successful. Your remaining account balance is now <strong>\u20B1").concat(num_commas(users[senderCheck].balance), "</strong> from a previous account balance of <strong>\u20B1").concat(num_commas(senderInitialBal), "</strong>."));
@@ -806,13 +795,6 @@ doc_ready(function () {
 
         if (users[userCheck]) {
           balanceTd.innerHTML = "\u20B1".concat(num_commas(users[userCheck].balance));
-
-          if (users[userCheck].balance < 0) {
-            add_class(balanceTd, "negative");
-          } else {
-            remove_class(balanceTd, "negative");
-          }
-
           parentEl.appendChild(balanceTd);
         }
       }
@@ -1201,7 +1183,7 @@ doc_ready(function () {
     FnHandler.login_user(inner(trim(id("login-username").value)), inner(trim(id("login-password").value)));
     FnHandler.list_connections(id("owner-acc-num").innerHTML.split(" ").join(""));
     User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
-    User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join("")); // OLD CODE
     // if (users[usernameCheck] && users[passwordCheck]) {
     //   // TO CONTROL WHICH WINDOW WILL APPEAR FOR THE ADMIN AND THE REGULAR USERS
@@ -1346,7 +1328,7 @@ doc_ready(function () {
     User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
     FnHandler.list_users();
     FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
-    User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
     return false;
   });
@@ -1371,8 +1353,9 @@ doc_ready(function () {
     FnHandler.withdraw(id("withdraw-account").value.split(" ").join(""), withdraw_amount);
     FnHandler.list_users();
     FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("withdraw-form").reset();
-    return false, User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+    return false;
   });
   add_event(id("deposit-form"), "submit", function (e) {
     e.preventDefault();
@@ -1380,8 +1363,9 @@ doc_ready(function () {
     FnHandler.deposit(id("deposit-account").value.split(" ").join(""), deposit_amount);
     FnHandler.list_users();
     FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("deposit-form").reset();
-    return false, User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+    return false;
   });
   add_event(id("send-form"), "submit", function (e) {
     e.preventDefault();
@@ -1389,7 +1373,8 @@ doc_ready(function () {
     FnHandler.send(id("sender-account").value.split(" ").join(""), id("receiver-account").value.split(" ").join(""), send_amount);
     FnHandler.list_users();
     FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
+    User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("send-form").reset();
-    return false, User.get_balance(id("owner-acc-num").innerHTML.split(" ").join(""));
+    return false;
   });
 });
