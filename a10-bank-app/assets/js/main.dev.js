@@ -1265,6 +1265,11 @@ doc_ready(function () {
   add_event(id("open-search-btn"), "click", function () {
     toggle_class(id("search-wrap"), "active");
     id("search-name").value = "";
+
+    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+      remove_class(id("acc-table").querySelectorAll("tr")[i], "search-hide");
+    }
+
     setTimeout(function () {
       id("search-name").focus();
     }, 100);
