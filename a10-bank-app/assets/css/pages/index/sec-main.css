@@ -244,16 +244,19 @@ th {
   font-weight: 700;
 }
 
-#owner-balance {
+.wrap-tooltip {
+  font-size: 25px;
+}
+
+.wrap-tooltip p:first-child span {
   color: #006a4e;
 }
 
-#accounts-wrap table td:nth-child(4).negative,
-#owner-balance.negative {
-  color: red;
+#budget.negative span {
+  color: #a74543;
 }
 
-#owner-expenses {
+.wrap-tooltip p:nth-child(2) span {
   color: #6b283b;
 }
 
