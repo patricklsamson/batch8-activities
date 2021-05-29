@@ -166,13 +166,24 @@
   text-align: left;
 }
 
-body.show:before {
+body:before {
   content: ".";
   font-size: 0;
   position: absolute;
   width: 100vw;
   height: 100vh;
   background: rgba(52, 58, 64, 0.8);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+body.show:before {
+  visibility: visible;
+  opacity: 1;
 }
 
 #profile-modal .wrap-modal-inner {
