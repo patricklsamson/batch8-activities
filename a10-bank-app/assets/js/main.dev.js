@@ -463,6 +463,7 @@ doc_ready(function () {
           id("owner-acc-num").innerHTML = num_space(users[usernameCheck].accountNumber);
           FnHandler.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
           id("profile-name").innerHTML = "".concat(users[usernameCheck].firstName, " ").concat(users[usernameCheck].middleName, " ").concat(users[usernameCheck].lastName);
+          id("profile-acc-type").innerHTML = users[usernameCheck].accountType;
           id("profile-username").innerHTML = users[usernameCheck].username;
           id("profile-email").innerHTML = users[usernameCheck].email;
           add_att(id("withdraw-account"), "value", id("owner-acc-num").innerHTML);
