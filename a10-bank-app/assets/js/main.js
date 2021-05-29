@@ -1771,6 +1771,7 @@ doc_ready(() => {
 
   add_event(id("open-search-btn"), "click", () => {
     toggle_class(id("search-wrap"), "active");
+    id("search-name").value = "";
 
     setTimeout(() => {
       id("search-name").focus();
