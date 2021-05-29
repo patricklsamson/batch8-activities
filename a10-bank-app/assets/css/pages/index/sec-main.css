@@ -51,6 +51,7 @@ main .wrap-search-icon {
   width: 46px;
   color: #f8f9fa;
   background: rgba(52, 58, 64, 0.3);
+  border: 1px solid #f8f9fa;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
