@@ -1525,7 +1525,7 @@ doc_ready(() => {
         "",
         false,
         "JUANITA",
-        "HERMOSA",
+        "HERMAN",
         "SAMONTE",
         "female",
         "031734218924",
