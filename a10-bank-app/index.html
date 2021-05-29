@@ -54,6 +54,7 @@
               id="login-username"
               class="mb-05"
               required
+              value="admin"
             /><br />
 
             <label for="login-password">Password</label><br />
@@ -63,6 +64,7 @@
               id="login-password"
               class="mb-05"
               required
+              value="admin"
             /><br />
 
             <input
@@ -309,14 +311,14 @@
     <header>
       <div class="cont">
         <div class="grid">
-          <div class="gcol-6 mh">
+          <div class="gcol-12 gcol-xs-7 gcol-sm-6 mh flex flft">
             <h5>
               <img src="../assets/img/logo-opt.png" alt="logo" /> Banco de
               Triase
             </h5>
           </div>
 
-          <div class="gcol-6 mh flex frgt">
+          <div class="gcol-12 gcol-xs-5 gcol-sm-6 mh flex frgt">
             <div id="navcoll" class="wrap-navcoll">
               <div class="menu-container">
                 <nav>
@@ -338,7 +340,35 @@
           <div class="wrap-accounts wrap-card">
             <div id="accounts-wrap">
               <div class="grid">
-                <div class="gcol-4 mh">
+                <div
+                  class="
+                    gcol-12 gcol-lg-5
+                    lg-push-4
+                    gcol-xl-4
+                    xl-pull-4
+                    flex
+                    mh
+                  "
+                >
+                  <h6>
+                    Bank Accounts
+                    <i
+                      role="button"
+                      id="load-data-btn"
+                      class="fas fa-download"
+                    ></i>
+                  </h6>
+                </div>
+
+                <div
+                  class="
+                    gcol-12 gcol-xs-6 gcol-lg-4
+                    lg-pull-5
+                    gcol-xl-4
+                    xl-pull-4
+                    mh
+                  "
+                >
                   <div id="search-wrap" class="wrap-search rflex rflft">
                     <div class="wrap-search-icon flex">
                       <i id="open-search-btn" class="fas fa-search"></i>
@@ -352,18 +382,7 @@
                   </div>
                 </div>
 
-                <div class="gcol-4 flex mh">
-                  <h6>
-                    Bank Accounts
-                    <i
-                      role="button"
-                      id="load-data-btn"
-                      class="fas fa-download"
-                    ></i>
-                  </h6>
-                </div>
-
-                <div class="gcol-4 flex frgt mh">
+                <div class="gcol-12 gcol-xs-6 gcol-lg-3 gcol-xl-4 flex frgt mh">
                   <select name="filter" id="filter" class="mr-075">
                     <option value="all">All</option>
                     <option value="savings">Savings</option>
@@ -530,6 +549,7 @@
 
           <div class="wrap-add-account wrap-card">
             <div id="add-newaccount-wrap">
+              <i id="open-add-form-btn" class="fas fa-chevron-down"></i>
               <h6>Add Account</h6>
 
               <form action="#" autocomplete="off" id="add-form">
@@ -608,6 +628,7 @@
             </div>
 
             <div id="connections-wrap">
+              <i id="open-connections-form-btn" class="fas fa-chevron-down"></i>
               <h6 class="mb-025">
                 Connections
                 <i id="add-connections-btn" class="fas fa-user-plus"></i>
@@ -650,6 +671,7 @@
           </div>
 
           <div class="wrap-withdraw wrap-card">
+            <i id="open-withdraw-form-btn" class="fas fa-chevron-down"></i>
             <h6>Withdraw</h6>
 
             <div class="table">
@@ -695,6 +717,7 @@
           </div>
 
           <div class="wrap-deposit wrap-card">
+            <i id="open-deposit-form-btn" class="fas fa-chevron-down"></i>
             <h6>Deposit</h6>
 
             <div class="table">
@@ -740,49 +763,59 @@
           </div>
 
           <div class="wrap-send wrap-card">
+            <i id="open-send-form-btn" class="fas fa-chevron-down"></i>
             <h6>Send Money</h6>
 
-            <form action="#" autocomplete="off" id="send-form">
-              <label for="sender-account">Enter Account No. of Sender</label
-              ><br />
-              <input type="text" autocomplete="off" id="sender-account" /><br />
+            <div class="table">
+              <div class="valign">
+                <form action="#" autocomplete="off" id="send-form">
+                  <label for="sender-account">Enter Account No. of Sender</label
+                  ><br />
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    id="sender-account"
+                  /><br />
 
-              <label for="receiver-account">Enter Account No. of Receiver</label
-              ><br />
-              <input
-                type="text"
-                autocomplete="off"
-                id="receiver-account"
-              /><br />
+                  <label for="receiver-account"
+                    >Enter Account No. of Receiver</label
+                  ><br />
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    id="receiver-account"
+                  /><br />
 
-              <label for="send-amount">Enter an Amount</label><br />
-              ₱
-              <input
-                type="text"
-                name="send-amount"
-                autocomplete="off"
-                id="send-amount"
-              />
-              .
-              <input
-                type="number"
-                name="send-amount"
-                value="00"
-                min="0"
-                max="99"
-                id="send-amount-dec"
-              /><br />
+                  <label for="send-amount">Enter an Amount</label><br />
+                  ₱
+                  <input
+                    type="text"
+                    name="send-amount"
+                    autocomplete="off"
+                    id="send-amount"
+                  />
+                  .
+                  <input
+                    type="number"
+                    name="send-amount"
+                    value="00"
+                    min="0"
+                    max="99"
+                    id="send-amount-dec"
+                  /><br />
 
-              <div class="rflex mt-05">
-                <input
-                  type="submit"
-                  value="Send Money"
-                  id="send-btn"
-                  class="btn-bank minor"
-                />
-                <input type="reset" value="Reset" class="btn-bank minor" />
+                  <div class="rflex mt-05">
+                    <input
+                      type="submit"
+                      value="Send Money"
+                      id="send-btn"
+                      class="btn-bank minor"
+                    />
+                    <input type="reset" value="Reset" class="btn-bank minor" />
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
