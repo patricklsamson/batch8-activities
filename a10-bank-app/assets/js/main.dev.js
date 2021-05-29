@@ -1264,6 +1264,7 @@ doc_ready(function () {
   });
   add_event(id("open-search-btn"), "click", function () {
     toggle_class(id("search-wrap"), "active");
+    id("search-name").value = "";
     setTimeout(function () {
       id("search-name").focus();
     }, 100);
