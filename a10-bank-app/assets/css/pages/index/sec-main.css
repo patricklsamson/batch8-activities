@@ -89,7 +89,7 @@ main .wrap-search.active .wrap-search-icon {
 main .wrap-search.active #search-name {
   visibility: visible;
   opacity: 1;
-  width: 191px;
+  width: 215px;
   margin-right: 20px;
 }
 
@@ -399,7 +399,7 @@ main .wrap-deposit {
 }
 
 main .table {
-  height: 90%;
+  height: 85%;
 }
 
 main .wrap-send {
