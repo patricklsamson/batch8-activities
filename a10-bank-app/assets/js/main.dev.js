@@ -451,7 +451,6 @@ doc_ready(function () {
                 add_class(qsel(".wrap-send"), "user");
                 add_class(id("send-form"), "hide");
               }, 250);
-              add_class(id("settings-modal-inner"), "user");
               add_class(id("admin-settings-form"), "hide");
               add_class(id("user-settings-form"), "show");
               add_class(id("accounts-wrap"), "hide");
@@ -1241,7 +1240,6 @@ doc_ready(function () {
       remove_class(qsel(".wrap-send"), "user");
       remove_class(id("send-form"), "hide");
     }, 500);
-    remove_class(id("settings-modal-inner"), "user");
     remove_class(id("admin-settings-form"), "hide");
     remove_class(id("user-settings-form"), "show");
     FnHandler.reset();
