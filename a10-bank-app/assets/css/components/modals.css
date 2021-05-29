@@ -53,13 +53,15 @@
   opacity: 0;
 }
 
-.sec-modal .wrap-login img {
-  width: 55px;
+@media only screen and (max-width: 480px) {
+  .sec-modal h1,
+  .sec-modal h2 {
+    text-align: center;
+  }
 }
 
-#login-form,
-#signup-form {
-  width: 50%;
+.sec-modal .wrap-login img {
+  width: 55px;
 }
 
 #open-signup-btn {
