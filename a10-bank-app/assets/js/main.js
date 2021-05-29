@@ -1790,6 +1790,10 @@ doc_ready(() => {
 
   add_event(id("open-search-btn"), "click", () => {
     toggle_class(id("search-wrap"), "active");
+
+    setTimeout(() => {
+      id("search-name").focus();
+    }, 100);
   });
 
   add_event(id("search-name"), "keyup", () => {
