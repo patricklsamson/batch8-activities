@@ -548,6 +548,7 @@ doc_ready(() => {
           "profile-name"
         ).innerHTML = `${users[usernameCheck].firstName} ${users[usernameCheck].middleName} ${users[usernameCheck].lastName}`;
 
+        id("profile-acc-type").innerHTML = users[usernameCheck].accountType;
         id("profile-username").innerHTML = users[usernameCheck].username;
         id("profile-email").innerHTML = users[usernameCheck].email;
         add_att(id("withdraw-account"), "value", id("owner-acc-num").innerHTML);
