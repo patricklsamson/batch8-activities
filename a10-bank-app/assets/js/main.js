@@ -1773,6 +1773,10 @@ doc_ready(() => {
     toggle_class(id("search-wrap"), "active");
     id("search-name").value = "";
 
+    for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
+      remove_class(id("acc-table").querySelectorAll("tr")[i], "search-hide");
+    }
+
     setTimeout(() => {
       id("search-name").focus();
     }, 100);
