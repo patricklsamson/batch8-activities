@@ -101,6 +101,7 @@
 .wrap-modal,
 #acc-table td div {
   position: fixed;
+  z-index: 1;
   height: 100vh;
   width: 100vw;
   top: 0;
@@ -150,6 +151,54 @@
   height: auto;
 }
 
+@media only screen and (max-width: 1399px) {
+  #acc-table td div {
+    width: 55vw;
+  }
+
+  #settings-modal .wrap-modal-inner {
+    width: 30vw;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  #acc-table td div {
+    width: 60vw;
+  }
+
+  #settings-modal .wrap-modal-inner {
+    width: 40vw;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  #acc-table td div {
+    width: 65vw;
+  }
+
+  #settings-modal .wrap-modal-inner {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #settings-modal .wrap-modal-inner {
+    width: 64vw;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  #settings-modal .wrap-modal-inner {
+    width: 75vw;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #acc-table td div .wrap-modal-inner {
+    width: 85vw;
+  }
+}
+
 #acc-table td div {
   position: fixed;
   top: 50%;
@@ -166,6 +215,7 @@ body:before {
   content: ".";
   font-size: 0;
   position: absolute;
+  z-index: 1;
   width: 100vw;
   height: 100vh;
   background: rgba(52, 58, 64, 0.8);
