@@ -185,10 +185,9 @@ doc_ready(() => {
             const users = FnHandler.userStorage();
 
             let ownerCheck = users.findIndex(
-              (index) => index.accountNumber == owner
-            );
-
-            let deletePrompt = prompt(
+                (index) => index.accountNumber == owner
+              ),
+              deletePrompt = prompt(
                 'Are you sure to delete this item?\n Type "Y" for yes and "N" for no.',
                 "N"
               ),
