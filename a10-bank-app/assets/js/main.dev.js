@@ -1286,6 +1286,9 @@ doc_ready(function () {
   });
   add_event(id("open-search-btn"), "click", function () {
     toggle_class(id("search-wrap"), "active");
+    setTimeout(function () {
+      id("search-name").focus();
+    }, 100);
   });
   add_event(id("search-name"), "keyup", function () {
     for (i = 0; i < id("acc-table").querySelectorAll("tr").length; i++) {
