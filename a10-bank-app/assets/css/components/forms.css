@@ -94,13 +94,6 @@ i[id*="-msg"].fa-times {
     height: 68px;
     margin: 0.5em 0;
   }
-
-  #connections-form.show ~ .wrap-connections-table {
-    visibility: visible;
-    opacity: 1;
-    height: 200px;
-    margin-top: 0.5em;
-  }
 }
 
 #connections-name {
