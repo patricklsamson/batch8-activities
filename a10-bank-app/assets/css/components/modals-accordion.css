@@ -265,8 +265,17 @@ body.show:before {
     height: 158px;
   }
 
+  body.user #open-withdraw-form-btn.active ~ .table #withdraw-form,
+  body.user #open-deposit-form-btn.active ~ .table #deposit-form {
+    height: 104px;
+  }
+
   #open-send-form-btn.active ~ .table #send-form {
     height: 212px;
+  }
+
+  body.user #open-send-form-btn.active ~ .table #send-form {
+    height: 158px;
   }
 
   main #connections-wrap .wrap-connections-table {
@@ -301,8 +310,17 @@ body.show:before {
     height: 386px;
   }
 
+  #open-withdraw-form-btn.active ~ .table #withdraw-form,
+  #open-deposit-form-btn.active ~ .table #deposit-form {
+    height: 158px;
+  }
+
   #open-send-form-btn.active ~ .table #send-form {
     height: 260px;
+  }
+
+  body.user #open-send-form-btn.active ~ .table #send-form {
+    height: 182px;
   }
 }
 
