@@ -1892,6 +1892,7 @@ doc_ready(() => {
 
   add_event(id("add-connections-btn"), "click", () => {
     toggle_class(id("connections-form"), "show");
+    toggle_class(id("open-connections-wrap-btn"), "active");
     id("connections-form").reset();
   });
 
@@ -1987,14 +1988,15 @@ doc_ready(() => {
 
   add_event(id("open-add-form-btn"), "click", function () {
     toggle_class(this, "active");
-    remove_class(id("open-connections-form-btn"), "active");
+    remove_class(id("open-connections-wrap-btn"), "active");
     remove_class(id("open-withdraw-form-btn"), "active");
     remove_class(id("open-deposit-form-btn"), "active");
     remove_class(id("open-send-form-btn"), "active");
   });
 
-  add_event(id("open-connections-form-btn"), "click", function () {
+  add_event(id("open-connections-wrap-btn"), "click", function () {
     toggle_class(this, "active");
+    toggle_class(id("connections-form"), "show");
     remove_class(id("open-add-form-btn"), "active");
     remove_class(id("open-withdraw-form-btn"), "active");
     remove_class(id("open-deposit-form-btn"), "active");
@@ -2004,7 +2006,7 @@ doc_ready(() => {
   add_event(id("open-withdraw-form-btn"), "click", function () {
     toggle_class(this, "active");
     remove_class(id("open-add-form-btn"), "active");
-    remove_class(id("open-connections-form-btn"), "active");
+    remove_class(id("open-connections-wrap-btn"), "active");
     remove_class(id("open-deposit-form-btn"), "active");
     remove_class(id("open-send-form-btn"), "active");
   });
@@ -2012,7 +2014,7 @@ doc_ready(() => {
   add_event(id("open-deposit-form-btn"), "click", function () {
     toggle_class(this, "active");
     remove_class(id("open-add-form-btn"), "active");
-    remove_class(id("open-connections-form-btn"), "active");
+    remove_class(id("open-connections-wrap-btn"), "active");
     remove_class(id("open-withdraw-form-btn"), "active");
     remove_class(id("open-send-form-btn"), "active");
   });
@@ -2020,7 +2022,7 @@ doc_ready(() => {
   add_event(id("open-send-form-btn"), "click", function () {
     toggle_class(this, "active");
     remove_class(id("open-add-form-btn"), "active");
-    remove_class(id("open-connections-form-btn"), "active");
+    remove_class(id("open-connections-wrap-btn"), "active");
     remove_class(id("open-withdraw-form-btn"), "active");
     remove_class(id("open-deposit-form-btn"), "active");
   });
