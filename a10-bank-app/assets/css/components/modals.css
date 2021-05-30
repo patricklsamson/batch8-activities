@@ -154,50 +154,13 @@
 }
 
 @media only screen and (max-width: 1399px) {
+  .wrap-modal-inner,
   #acc-table td div {
     width: 55vw;
   }
 
   #settings-modal .wrap-modal-inner {
     width: 30vw;
-  }
-}
-
-@media only screen and (max-width: 1199px) {
-  #acc-table td div {
-    width: 60vw;
-  }
-
-  #settings-modal .wrap-modal-inner {
-    width: 40vw;
-  }
-}
-
-@media only screen and (max-width: 991px) {
-  #acc-table td div {
-    width: 65vw;
-  }
-
-  #settings-modal .wrap-modal-inner {
-    width: 50vw;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  #settings-modal .wrap-modal-inner {
-    width: 64vw;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  #settings-modal .wrap-modal-inner {
-    width: 75vw;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  #acc-table td div .wrap-modal-inner {
-    width: 85vw;
   }
 }
 
@@ -235,8 +198,112 @@ body.show:before {
 }
 
 #profile-modal .wrap-modal-inner {
-  width: 20vw;
+  width: 360px;
   height: auto;
+}
+
+@media only screen and (max-width: 1199px) {
+  .wrap-modal-inner,
+  #acc-table td div {
+    width: 60vw;
+  }
+
+  #settings-modal .wrap-modal-inner {
+    width: 40vw;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .wrap-modal-inner,
+  #acc-table td div {
+    width: 65vw;
+  }
+
+  #settings-modal .wrap-modal-inner {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #settings-modal .wrap-modal-inner {
+    width: 64vw;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  #settings-modal .wrap-modal-inner {
+    width: 75vw;
+  }
+
+  #add-form,
+  #withdraw-form,
+  #deposit-form,
+  #send-form {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  #open-add-form-btn.active ~ #add-form,
+  #open-withdraw-form-btn.active ~ .table #withdraw-form,
+  #open-deposit-form-btn.active ~ .table #deposit-form,
+  #open-send-form-btn.active ~ .table #send-form {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  #open-add-form-btn.active ~ #add-form {
+    height: 350px;
+  }
+
+  #open-withdraw-form-btn.active ~ .table #withdraw-form,
+  #open-deposit-form-btn.active ~ .table #deposit-form {
+    height: 146px;
+  }
+
+  #open-send-form-btn.active ~ .table #send-form {
+    height: 200px;
+  }
+
+  main #connections-wrap .wrap-connections-table {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  #open-connections-wrap-btn.active ~ .wrap-connections-table {
+    visibility: visible;
+    opacity: 1;
+    height: 200px;
+    margin-top: 0.5em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #settings-modal .wrap-modal-inner {
+    width: 80vw;
+    padding: 15px;
+  }
+
+  #acc-table td div .wrap-modal-inner {
+    width: 85vw;
+  }
+
+  #open-add-form-btn.active ~ #add-form {
+    height: 374px;
+  }
+
+  #open-send-form-btn.active ~ .table #send-form {
+    height: 248px;
+  }
 }
 
 #profile-modal h6,
