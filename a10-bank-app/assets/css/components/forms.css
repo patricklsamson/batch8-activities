@@ -84,12 +84,84 @@ i[id*="-msg"].fa-times {
   opacity: 1;
 }
 
+@media only screen and (max-width: 575px) {
+  #connections-form {
+    height: 0;
+    margin: 0;
+  }
+
+  #connections-form.show {
+    height: 68px;
+    margin: 0.5em 0;
+  }
+
+  #connections-form.show ~ .wrap-connections-table {
+    visibility: visible;
+    opacity: 1;
+    height: 200px;
+    margin-top: 0.5em;
+  }
+}
+
 #connections-name {
   width: 40%;
 }
 
 #connections-account-num {
   width: 52%;
+}
+
+@media only screen and (max-width: 1399px) {
+  #connections-name {
+    width: 45%;
+  }
+
+  #connections-account-num {
+    width: 46%;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  #connections-name {
+    width: 60%;
+  }
+
+  #connections-account-num {
+    width: 70%;
+    margin-top: 0.5em;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  #connections-name {
+    width: 46%;
+  }
+
+  #connections-account-num {
+    width: 44%;
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #add-expense-form {
+    width: 50%;
+  }
+
+  #connections-name {
+    width: 65%;
+  }
+
+  #connections-account-num {
+    width: 75%;
+    margin-top: 0.5em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #add-expense-form {
+    width: 80%;
+  }
 }
 
 [id*="-amount"] {
@@ -112,52 +184,4 @@ input {
 
 [type="radio"] + label {
   font-weight: 400;
-}
-
-@media only screen and (max-width: 575px) {
-  #add-form,
-  #connections-form,
-  #withdraw-form,
-  #deposit-form,
-  #send-form {
-    visibility: hidden;
-    opacity: 0;
-    height: 0;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    -moz-transition: 0.5s;
-    transition: 0.5s;
-  }
-
-  #open-add-form-btn.active ~ #add-form,
-  #open-connections-form-btn.active ~ #connections-form,
-  #open-withdraw-form-btn.active ~ .table #withdraw-form,
-  #open-deposit-form-btn.active ~ .table #deposit-form,
-  #open-send-form-btn.active ~ .table #send-form {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  #open-add-form-btn.active ~ #add-form {
-    height: 350px;
-  }
-
-  #open-withdraw-form-btn.active ~ .table #withdraw-form,
-  #open-deposit-form-btn.active ~ .table #deposit-form {
-    height: 146px;
-  }
-
-  #open-send-form-btn.active ~ .table #send-form {
-    height: 200px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  #open-add-form-btn.active ~ #add-form {
-    height: 374px;
-  }
-
-  #open-send-form-btn.active ~ .table #send-form {
-    height: 248px;
-  }
 }
