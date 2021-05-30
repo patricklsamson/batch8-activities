@@ -514,6 +514,8 @@ doc_ready(() => {
         users[passwordCheck] &&
         usernameCheck == passwordCheck
       ) {
+        add_class(document.body, "user");
+
         for (i = 0; i < users.length; i++) {
           if (users[i].username == username && users[i].password == password) {
             // NEEDED FOR BETTER TRANSITION TIMING WHEN SHOWING WINDOWS
@@ -1711,6 +1713,7 @@ doc_ready(() => {
     // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
     setTimeout(() => {
       add_class(document.body, "modal-open");
+      remove_class(document.body, "user");
       remove_class(id("accounts-wrap"), "hide");
       remove_class(id("search-wrap"), "active");
       id("search-name").value = "";
@@ -1728,6 +1731,12 @@ doc_ready(() => {
       remove_class(id("withdraw-form"), "hide");
       remove_class(id("deposit-form"), "hide");
       remove_class(id("send-form"), "hide");
+      remove_class(id("open-add-form-btn"), "active");
+      remove_class(id("connections-form"), "show");
+      remove_class(id("open-connections-wrap-btn"), "active");
+      remove_class(id("open-withdraw-form-btn"), "active");
+      remove_class(id("open-deposit-form-btn"), "active");
+      remove_class(id("open-send-form-btn"), "active");
     }, 500);
 
     remove_class(id("admin-settings-form"), "hide");
@@ -1893,6 +1902,9 @@ doc_ready(() => {
   add_event(id("add-connections-btn"), "click", () => {
     toggle_class(id("connections-form"), "show");
     toggle_class(id("open-connections-wrap-btn"), "active");
+    remove_class(id("open-withdraw-form-btn"), "active");
+    remove_class(id("open-deposit-form-btn"), "active");
+    remove_class(id("open-send-form-btn"), "active");
     id("connections-form").reset();
   });
 
@@ -1996,8 +2008,8 @@ doc_ready(() => {
 
   add_event(id("open-connections-wrap-btn"), "click", function () {
     toggle_class(this, "active");
-    toggle_class(id("connections-form"), "show");
     remove_class(id("open-add-form-btn"), "active");
+    toggle_class(id("connections-form"), "show");
     remove_class(id("open-withdraw-form-btn"), "active");
     remove_class(id("open-deposit-form-btn"), "active");
     remove_class(id("open-send-form-btn"), "active");
@@ -2007,6 +2019,7 @@ doc_ready(() => {
     toggle_class(this, "active");
     remove_class(id("open-add-form-btn"), "active");
     remove_class(id("open-connections-wrap-btn"), "active");
+    remove_class(id("connections-form"), "show");
     remove_class(id("open-deposit-form-btn"), "active");
     remove_class(id("open-send-form-btn"), "active");
   });
@@ -2015,6 +2028,7 @@ doc_ready(() => {
     toggle_class(this, "active");
     remove_class(id("open-add-form-btn"), "active");
     remove_class(id("open-connections-wrap-btn"), "active");
+    remove_class(id("connections-form"), "show");
     remove_class(id("open-withdraw-form-btn"), "active");
     remove_class(id("open-send-form-btn"), "active");
   });
@@ -2023,6 +2037,7 @@ doc_ready(() => {
     toggle_class(this, "active");
     remove_class(id("open-add-form-btn"), "active");
     remove_class(id("open-connections-wrap-btn"), "active");
+    remove_class(id("connections-form"), "show");
     remove_class(id("open-withdraw-form-btn"), "active");
     remove_class(id("open-deposit-form-btn"), "active");
   });
