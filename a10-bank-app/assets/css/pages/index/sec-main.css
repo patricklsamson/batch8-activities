@@ -687,4 +687,8 @@ main .wrap-send {
   #expense-wrap table td:nth-child(2) {
     width: 40%;
   }
+
+  #expense-wrap table td {
+    overflow: hidden;
+  }
 }
