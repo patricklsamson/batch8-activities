@@ -13,52 +13,7 @@ doc_ready(function () {
   FnHandler.password_match(id("signup-password"), id("signup-confirm-password"), id("match-msg"));
   FnHandler.password_match(id("admin-new-password"), id("admin-confirm-new-password"), id("admin-change-match-msg"));
   FnHandler.password_match(id("new-password"), id("confirm-new-password"), id("change-match-msg"));
-
-  var create_admin = function create_admin(username, password, adminId) {
-    var admin = FnHandler.adminStorage();
-    var adminCheck = admin.findIndex(function (index) {
-      return index.adminId == adminId;
-    }); // THIS MAKES THE CREATION OF ADMIN ACCOUNT ONLY ONCE
-
-    if (admin[adminCheck]) {
-      return;
-    } else {
-      var _admin = new Admin(username, password, adminId);
-
-      FnHandler.addAdmin(_admin);
-    }
-  };
-
-  create_admin("admin", "admin", "1");
-  /**
-   * FUNCTION FOR CREATING A NEW USER, CONNECTING THE CLASS "User"
-   * INTO THE CLASS "FnHandler" TO PUSH EVERY NEW USER CREATED INTO THE LOCAL STORAGE
-   */
-
-  var create_user = function create_user(username, password, email, signedUp, firstName, middleName, lastName, gender, accountNumber, accountType, balance) {
-    var users = FnHandler.userStorage();
-    var fNameCheck = users.findIndex(function (index) {
-      return index.firstName == firstName;
-    }),
-        lNameCheck = users.findIndex(function (index) {
-      return index.lastName == lastName;
-    });
-    /**
-     * THIS PREVENTS DUPLICATE USERS, EVERY FIRST NAME AND LAST NAME INPUTS ARE CHECKED
-     * IF IT IS ALREADY EXISTING INSIDE THE LOCAL STORAGE
-     */
-
-    if (users[fNameCheck] && users[lNameCheck]) {
-      alert("User already exists!");
-    } else {
-      var newUserAccount = new User(username, password, email, signedUp, firstName, middleName, lastName, gender, accountNumber, accountType, balance); // FIRST LOG INSIDE THE TRANSACTION HISTORY INDICATING WHEN THE ACCOUNT WAS CREATED OR OPENED
-
-      newUserAccount.transactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : Opened a ").concat(newUserAccount.accountType.toLowerCase(), " account for <strong>").concat(newUserAccount.firstName, "</strong> ").concat(newUserAccount.middleName, " ").concat(newUserAccount.lastName, " with an initial account balance of <strong>\u20B1").concat(num_commas(newUserAccount.balance), "</strong>."));
-      newUserAccount.userTransactionHistory.push("<em>".concat(FnHandler.time_stamp(), "</em> : You have opened a ").concat(newUserAccount.accountType.toLowerCase(), " account with an initial account balance of <strong>\u20B1").concat(num_commas(newUserAccount.balance), "</strong>."));
-      FnHandler.addUser(newUserAccount);
-    }
-  }; // LOADS INITIAL DATA FOR IMMEDIATE TESTING PURPOSES OF WHOEVER VISITS THE SITE
-
+  create_admin("admin", "admin", "1"); // LOADS INITIAL DATA FOR IMMEDIATE TESTING PURPOSES OF WHOEVER VISITS THE SITE
 
   add_event(id("load-data-btn"), "click", function () {
     var users = FnHandler.userStorage();
