@@ -1901,10 +1901,6 @@ doc_ready(() => {
 
   add_event(id("add-connections-btn"), "click", () => {
     toggle_class(id("connections-form"), "show");
-    toggle_class(id("open-connections-wrap-btn"), "active");
-    remove_class(id("open-withdraw-form-btn"), "active");
-    remove_class(id("open-deposit-form-btn"), "active");
-    remove_class(id("open-send-form-btn"), "active");
     id("connections-form").reset();
   });
 
