@@ -38,6 +38,12 @@ i[class*="fa"] {
   font-weight: 700;
 }
 
+@media only screen and (max-width: 575px) {
+  #add-connections-btn {
+    display: none;
+  }
+}
+
 [class*="chevron"] {
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
