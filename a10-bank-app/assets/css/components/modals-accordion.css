@@ -149,14 +149,14 @@
 }
 
 #settings-modal .wrap-modal-inner {
-  width: 26vw;
+  width: 420px;
   height: auto;
 }
 
 @media only screen and (max-width: 1399px) {
   .wrap-modal-inner,
   #acc-table td div {
-    width: 55vw;
+    width: 70vw;
   }
 
   #settings-modal .wrap-modal-inner {
@@ -202,10 +202,15 @@ body.show:before {
   height: auto;
 }
 
+#profile-modal h6,
+#profile-modal p {
+  padding-right: 50px;
+}
+
 @media only screen and (max-width: 1199px) {
   .wrap-modal-inner,
   #acc-table td div {
-    width: 60vw;
+    width: 80vw;
   }
 
   #settings-modal .wrap-modal-inner {
@@ -214,11 +219,6 @@ body.show:before {
 }
 
 @media only screen and (max-width: 991px) {
-  .wrap-modal-inner,
-  #acc-table td div {
-    width: 65vw;
-  }
-
   #settings-modal .wrap-modal-inner {
     width: 50vw;
   }
@@ -297,6 +297,11 @@ body.show:before {
 }
 
 @media only screen and (max-width: 480px) {
+  .wrap-modal-inner,
+  #acc-table td div {
+    padding: 15px;
+  }
+
   #settings-modal .wrap-modal-inner {
     width: 80vw;
     padding: 15px;
@@ -304,6 +309,10 @@ body.show:before {
 
   #acc-table td div .wrap-modal-inner {
     width: 85vw;
+  }
+
+  #profile-modal .wrap-modal-inner {
+    width: 275px;
   }
 
   #open-add-form-btn.active ~ #add-form {
@@ -322,9 +331,4 @@ body.show:before {
   body.user #open-send-form-btn.active ~ .table #send-form {
     height: 182px;
   }
-}
-
-#profile-modal h6,
-#profile-modal p {
-  padding-right: 50px;
 }
