@@ -137,6 +137,10 @@ main .wrap-expense-table {
   transition: 0.5s;
 }
 
+td {
+  overflow: hidden;
+}
+
 #owner,
 #acc-table td span,
 #acc-table td i {
@@ -571,6 +575,7 @@ main .wrap-send {
     width: 135px;
   }
 
+  #accounts-wrap table th:first-child,
   #accounts-wrap table td:first-child {
     width: 18%;
   }
@@ -646,12 +651,16 @@ main .wrap-send {
     height: 170px;
   }
 
+  #accounts-wrap table th:first-child {
+    width: 28%;
+  }
+
   #accounts-wrap table td:nth-child(1) {
     width: 29%;
   }
 
   #accounts-wrap table th:nth-child(2) {
-    width: 50%;
+    width: 52%;
   }
 
   #accounts-wrap table td:nth-child(2) {
@@ -686,9 +695,5 @@ main .wrap-send {
 
   #expense-wrap table td:nth-child(2) {
     width: 40%;
-  }
-
-  #expense-wrap table td {
-    overflow: hidden;
   }
 }
