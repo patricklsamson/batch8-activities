@@ -106,16 +106,6 @@ main .wrap-acc-table {
   height: 292px;
 }
 
-@media only screen and (max-width: 1399px) {
-  main .wrap-search.active #search-name {
-    width: 165px;
-  }
-
-  main .wrap-acc-table {
-    height: 268px;
-  }
-}
-
 @media only screen and (max-width: 1199px) {
   main .wrap-search.active #search-name {
     width: 120px;
@@ -262,6 +252,30 @@ main .wrap-expense-table {
   font-size: 25px;
 }
 
+@media only screen and (max-width: 1399px) {
+  main .wrap-search.active #search-name {
+    width: 165px;
+  }
+
+  main .wrap-acc-table {
+    height: 268px;
+  }
+
+  #expense-wrap .wrap-tooltip {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  main .wrap-expense-table {
+    height: 310px;
+  }
+
+  #expense-wrap .wrap-tooltip {
+    font-size: 18px;
+  }
+}
+
 #expense-wrap .wrap-tooltip p {
   font-weight: 700;
 }
@@ -285,6 +299,24 @@ main .wrap-expense-table {
 
 #expense-wrap [class*="gcol"]:nth-child(2) {
   border-left: 2px solid #343a40;
+}
+
+@media only screen and (max-width: 767px) {
+  main .wrap-expense-table {
+    height: 165px;
+  }
+
+  #expense-wrap [class*="gcol"]:nth-child(2) {
+    margin-top: 0.75em;
+    border-left: none;
+  }
+
+  #expense-wrap table td:first-child {
+    width: 45.8%;
+  }
+  #expense-wrap table td:nth-child(2) {
+    width: 29%;
+  }
 }
 
 main .wrap-add-account {
@@ -322,15 +354,16 @@ main .wrap-connections-table {
 }
 
 #connections-table td:first-child {
-  width: 40%;
+  width: 20%;
 }
 
 #connections-table td:nth-child(2) {
-  width: 30%;
+  width: 20%;
+  text-align: center;
 }
 
 #connections-table td:nth-child(3) {
-  width: 15%;
+  width: 10%;
   text-align: center;
 }
 
@@ -514,6 +547,10 @@ main .wrap-send {
     order: 5;
     background: rgba(103, 178, 178, 0.3);
   }
+
+  #expense-wrap .wrap-tooltip {
+    font-size: 20px;
+  }
 }
 
 @media only screen and (max-width: 575px) {
@@ -624,5 +661,30 @@ main .wrap-send {
   #accounts-wrap table th:nth-child(4),
   #accounts-wrap table td:nth-child(4) {
     display: none;
+  }
+
+  #expense-wrap .wrap-tooltip {
+    font-size: 18px;
+  }
+
+  #expense-wrap [class*="gcol"]:nth-child(2) h6 {
+    border-top: 1px solid #343a40;
+    padding-top: 0.5em;
+  }
+
+  #expense-wrap table th:first-child {
+    width: 32%;
+  }
+
+  #expense-wrap table td:first-child {
+    width: 32.8%;
+  }
+
+  #expense-wrap table th:nth-child(2) {
+    width: 38%;
+  }
+
+  #expense-wrap table td:nth-child(2) {
+    width: 40%;
   }
 }
