@@ -38,6 +38,11 @@ i[class*="fa"] {
   font-weight: 700;
 }
 
+#add-connections-btn,
+[class*="chevron"] {
+  float: right;
+}
+
 @media only screen and (max-width: 575px) {
   #add-connections-btn {
     display: none;
@@ -45,10 +50,17 @@ i[class*="fa"] {
 }
 
 [class*="chevron"] {
+  padding: 5px;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
   transition: 0.5s;
+}
+
+@media only screen and (min-width: 576px) {
+  [class*="chevron"] {
+    display: none;
+  }
 }
 
 [class*="chevron"].active {
