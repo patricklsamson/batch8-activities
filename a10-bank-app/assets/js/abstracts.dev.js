@@ -18,6 +18,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var console_log = function console_log() {
+  console.clear();
+  localStorage_space();
+};
+
 var i, j; // SEPARATED ADMIN FOR BETTER DISTINCTION FROM REGULAR USERS ESPECIALLY FOR LOCAL STORAGE
 
 var Admin = function Admin(username, password, adminId) {
@@ -172,7 +177,7 @@ function (_Admin) {
               return index.accountNumber == owner;
             }),
                 deletePrompt = prompt('Are you sure to delete this item?\n Type "Y" for yes and "N" for no.', "N"),
-                deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear();
+                deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console_log();
 
             if (deleteAnswer == "y") {
               users[ownerCheck].budget = parseFloat(parseFloat(users[ownerCheck].budget) + parseFloat(users[ownerCheck].expenseItems[this.id].cost)).toFixed(2);
@@ -328,7 +333,7 @@ function () {
           deleteTd.innerHTML = "<i id=\"".concat(i, "\" class=\"fas fa-minus-circle\"></i>");
           add_event(deleteTd.querySelector("i"), "click", function () {
             var deletePrompt = prompt('Are you sure to delete this connection?\nType "Y" for yes and "N" for no.', "N"),
-                deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear();
+                deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console_log();
 
             if (deleteAnswer == "y") {
               users[ownerCheck].connections.splice(this.id, 1);
@@ -416,7 +421,7 @@ function () {
             alert("New password entries do not match!");
           } else if (inner(id("admin-confirm-new-password").value).length < 5) {
             var passwordPrompt = prompt('Are you sure to have a weak password?\nType "Y" for yes and "N" for no.', "N"),
-                passwordAnswer = passwordPrompt != null ? passwordPrompt.toLowerCase() : console.clear();
+                passwordAnswer = passwordPrompt != null ? passwordPrompt.toLowerCase() : console_log();
 
             if (passwordAnswer == "y") {
               admin[0].password = inner(id("admin-confirm-new-password").value);
@@ -517,7 +522,7 @@ function () {
             alert("New password entries do not match!");
           } else if (inner(id("confirm-new-password").value).length < 5) {
             var passwordPrompt = prompt('Are you sure to have a weak password?\nType "Y" for yes and "N" for no.', "N"),
-                passwordAnswer = passwordPrompt != null ? trim(passwordPrompt.toLowerCase()) : console.clear();
+                passwordAnswer = passwordPrompt != null ? trim(passwordPrompt.toLowerCase()) : console_log();
 
             if (passwordAnswer == "y") {
               users[usernameCheck].password = inner(id("confirm-new-password").value);
@@ -548,7 +553,7 @@ function () {
 
           if (users[usernameCheck].expenseItems.length != 0) {
             var deletePrompt = prompt('Are you sure to delete all items?\nType "Y" for yes and "N" for no.', "N"),
-                deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear();
+                deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console_log();
 
             if (deleteAnswer == "y") {
               var total = 0,
@@ -635,7 +640,7 @@ function () {
           alert("Password entries do not match!");
         } else if (confirmPassword.length < 5) {
           var passwordPrompt = prompt('Are you sure to have a weak password?\nType "Y" for yes and "N" for no.', "N"),
-              passwordAnswer = passwordPrompt != null ? trim(passwordPrompt.toLowerCase()) : console.clear();
+              passwordAnswer = passwordPrompt != null ? trim(passwordPrompt.toLowerCase()) : console_log();
 
           if (passwordAnswer == "y" && (users[usernameCheck] == null || users[usernameCheck] == "" || users[passwordCheck] == null || users[passwordCheck] == "" || users[emailCheck] == null || users[emailCheck] == "")) {
             toggle_class(id("login-wrap"), "hide");
@@ -880,7 +885,7 @@ function () {
         add_event(deleteTd.querySelector("i"), "click", function () {
           // PROMPT FOR DELETING AN INDIVIDUAL ACCOUNT, TO PREVENT ACCIDENTAL DELETION
           var deletePrompt = prompt('Are you sure to delete this account?\nType "Y" for yes and "N" for no.', "N"),
-              deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear(); // THIS TERNARY OPERATOR PREVENTS ERROR POPPING UP WHEN THE PROMPT HAS BEEN CANCELED
+              deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console_log(); // THIS TERNARY OPERATOR PREVENTS ERROR POPPING UP WHEN THE PROMPT HAS BEEN CANCELED
 
           if (deleteAnswer == "y") {
             users.splice(this.id, 1);
