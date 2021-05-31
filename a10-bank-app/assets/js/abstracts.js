@@ -1,3 +1,8 @@
+const console_log = () => {
+  console.clear();
+  localStorage_space();
+};
+
 let i, j;
 
 // SEPARATED ADMIN FOR BETTER DISTINCTION FROM REGULAR USERS ESPECIALLY FOR LOCAL STORAGE
@@ -191,7 +196,7 @@ class User extends Admin {
             deleteAnswer =
               deletePrompt != null
                 ? trim(deletePrompt.toLowerCase())
-                : console.clear();
+                : console_log();
 
           if (deleteAnswer == "y") {
             users[ownerCheck].budget = parseFloat(
@@ -368,7 +373,7 @@ class FnHandler {
             deleteAnswer =
               deletePrompt != null
                 ? trim(deletePrompt.toLowerCase())
-                : console.clear();
+                : console_log();
 
           if (deleteAnswer == "y") {
             users[ownerCheck].connections.splice(this.id, 1);
@@ -476,7 +481,7 @@ class FnHandler {
             passwordAnswer =
               passwordPrompt != null
                 ? passwordPrompt.toLowerCase()
-                : console.clear();
+                : console_log();
 
           if (passwordAnswer == "y") {
             admin[0].password = inner(id("admin-confirm-new-password").value);
@@ -623,7 +628,7 @@ class FnHandler {
             passwordAnswer =
               passwordPrompt != null
                 ? trim(passwordPrompt.toLowerCase())
-                : console.clear();
+                : console_log();
 
           if (passwordAnswer == "y") {
             users[usernameCheck].password = inner(
@@ -668,7 +673,7 @@ class FnHandler {
             deleteAnswer =
               deletePrompt != null
                 ? trim(deletePrompt.toLowerCase())
-                : console.clear();
+                : console_log();
 
           if (deleteAnswer == "y") {
             let total = 0,
@@ -785,7 +790,7 @@ class FnHandler {
           passwordAnswer =
             passwordPrompt != null
               ? trim(passwordPrompt.toLowerCase())
-              : console.clear();
+              : console_log();
 
         if (
           passwordAnswer == "y" &&
@@ -1200,7 +1205,7 @@ class FnHandler {
           deleteAnswer =
             deletePrompt != null
               ? trim(deletePrompt.toLowerCase())
-              : console.clear();
+              : console_log();
         // THIS TERNARY OPERATOR PREVENTS ERROR POPPING UP WHEN THE PROMPT HAS BEEN CANCELED
 
         if (deleteAnswer == "y") {
