@@ -32,7 +32,6 @@ main {
 
 .chess-board h1 {
   font-size: 5vmin;
-  font-family: "Friz", serif;
   text-align: center;
   color: #fec009;
   -webkit-user-select: none;
@@ -98,7 +97,6 @@ main {
 }
 
 .chess-board h1 span {
-  font-family: "Colors Of Autumn", cursive;
   color: #00d5ff;
 }
 
