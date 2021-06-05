@@ -4,8 +4,8 @@
  * Base
  *--------------------------------------------------*/
 
-@import "base/base.css";
 @import "base/fonts.css";
+@import "base/base.css";
 @import "base/typography.css";
 @import "base/helpers.css";
 
