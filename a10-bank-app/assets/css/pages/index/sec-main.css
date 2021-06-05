@@ -4,8 +4,7 @@ th {
 } */
 
 main .grid-cont {
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, auto);
+  grid-template: repeat(2, auto) / repeat(3, 1fr);
   grid-gap: 15px;
 }
 
@@ -445,8 +444,7 @@ main .wrap-send {
 
 @media only screen and (max-width: 991px) {
   main .grid-cont {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, auto);
+    grid-template: repeat(5, auto) / repeat(2, 1fr);
   }
 
   main .grid-cont .wrap-accounts {
@@ -563,8 +561,7 @@ main .wrap-send {
   }
 
   main .grid-cont {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, auto);
+    grid-template: repeat(5, auto) / 1fr;
   }
 
   main .wrap-accounts {
