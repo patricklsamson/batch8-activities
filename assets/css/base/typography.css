@@ -173,50 +173,58 @@ h6,
   }
 }
 
-.t-friz {
+.f-friz {
   font-family: "Friz Quadrata", serif;
 }
 
-.t-frizStd {
+.f-frizStd {
   font-family: "Friz Quadrata Std", serif;
 }
 
-.t-friz700 {
+.f-friz700 {
   font-family: "Friz", serif;
 }
 
-.t-coa {
+.f-coa {
   font-family: "Colors Of Autumn", cursive;
 }
 
-.t-amcap {
+.f-amcap {
   font-family: "American Captain", sans-serif;
 }
 
-.t-amcap1 {
+.f-amcap1 {
   font-family: "American Captain_1", sans-serif;
 }
 
-.t-ironman {
+.f-ironman {
   font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
 }
 
-.t-ttSquares {
+.f-ttSquares {
   font-family: "TT Squares Condensed", sans-serif;
 }
 
-.t-chalk {
+.f-chalk {
   font-family: "DJB Chalk It Up", cursive;
 }
 
-.t-shadow {
+.f-shadow {
   font-family: "Shadows Into Light", cursive;
 }
 
-.t-lato {
+.f-lato {
   font-family: "Lato", sans-serif;
 }
 
-.t-basker {
+.f-basker {
   font-family: "Libre Baskerville", serif;
+}
+
+.f-nunito {
+  font-family: "Nunito", sans-serif;
+}
+
+.f-satisfy {
+  font-family: "Satisfy", cursive;
 }
