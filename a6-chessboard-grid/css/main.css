@@ -21,20 +21,17 @@ main {
 }
 
 .wrap-continue {
-  font-family: "American Captain", sans-serif;
   font-size: 3vmin;
   position: relative;
 }
 
 .continue,
 .sure {
-  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
   font-size: 7vmin;
 }
 
 .btn-yes,
 .btn-no {
-  font-family: "American Captain", sans-serif;
   font-size: 4vmin;
   padding: 0.5vmin 3vmin;
   -webkit-border-radius: 1.5vmin;
@@ -195,7 +192,6 @@ main {
   content: "Loading...";
   position: absolute;
   font-size: 10vmin;
-  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
   -webkit-animation: loading 1.5s forwards;
   -moz-animation: loading 1.5s forwards;
   -o-animation: loading 1.5s forwards;
@@ -428,7 +424,6 @@ main {
 
 h1 {
   font-size: 6vmin;
-  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
   color: #a4abbd;
 }
 
@@ -498,7 +493,6 @@ label[for="story"] {
   position: relative;
   z-index: 4;
   right: 30vmin;
-  font-family: "American Captain", sans-serif;
   font-size: 2.5vmin;
 }
 
@@ -517,7 +511,6 @@ label[for="story"] {
 .tooltips-inner {
   background: #a4abbd;
   padding: 2vmin;
-  font-family: "American Captain", sans-serif;
 }
 
 .story-inner {
@@ -542,7 +535,6 @@ legend {
 }
 
 .story legend {
-  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
   font-size: 3.5vmin;
 }
 
@@ -577,7 +569,6 @@ legend {
 }
 
 .quote {
-  font-family: "American Captain", sans-serif;
   font-size: 2.5vmin;
   display: inline-block;
   position: relative;
@@ -632,7 +623,6 @@ label[for="tooltip"] {
 }
 
 .tooltips legend {
-  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
   font-size: 4.5vmin;
 }
 
