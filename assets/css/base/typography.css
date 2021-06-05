@@ -172,3 +172,39 @@ h6,
     font-size: calc(1.25rem + 0.2vw);
   }
 }
+
+.t-friz {
+  font-family: "Friz Quadrata", serif;
+}
+
+.t-frizStd {
+  font-family: "Friz Quadrata Std", serif;
+}
+
+.t-friz700 {
+  font-family: "Friz", serif;
+}
+
+.t-coa {
+  font-family: "Colors Of Autumn", cursive;
+}
+
+.t-amcap {
+  font-family: "American Captain", sans-serif;
+}
+
+.t-amcap1 {
+  font-family: "American Captain_1", sans-serif;
+}
+
+.t-ironman {
+  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
+}
+
+.t-ttSquares {
+  font-family: "TT Squares Condensed", sans-serif;
+}
+
+.t-chalk {
+  font-family: "DJB Chalk It Up", cursive;
+}
