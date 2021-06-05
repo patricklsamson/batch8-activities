@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 /**
- * Base
+ * BASE
  *--------------------------------------------------*/
 
 @import "base/base.css";
 @import "base/typography.css";
 
 /**
- * Components
+ * COMPONENTS
  *--------------------------------------------------*/
 
 @import "components/loader.css";
@@ -21,15 +21,15 @@
 @import "components/button.css";
 
 /**
- * Pages
+ * PAGES
  *--------------------------------------------------*/
 
-/* Index */
+/* INDEX */
 @import "pages/index/sec-banner.css";
 @import "pages/index/sec-features.css";
 @import "pages/index/sec-video.css";
 @import "pages/index/sec-performance.css";
 @import "pages/index/sec-reviews.css";
 
-/* Signup Landing Page */
+/* SIGNUP LANDING PAGE */
 @import "pages/signup-landing-page/sec-main.css";
