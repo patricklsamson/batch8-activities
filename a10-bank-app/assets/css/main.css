@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 /**
- * Base
+ * BASE
  *--------------------------------------------------*/
 
 @import "base/base.css";
 @import "base/typography.css";
 
 /**
- * Components
+ * COMPONENTS
  *--------------------------------------------------*/
 
 @import "components/containers.css";
@@ -19,8 +19,8 @@
 @import "components/button.css";
 
 /**
- * Pages
+ * PAGES
  *--------------------------------------------------*/
 
-/* Index */
+/* INDEX */
 @import "pages/index/sec-main.css";
