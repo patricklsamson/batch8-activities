@@ -12,6 +12,7 @@
  *--------------------------------------------------*/
 
 @import "components/header.css";
+@import "components/main.css";
 @import "components/footer.css";
 @import "components/button.css";
 
@@ -21,4 +22,3 @@
 
 /* INDEX */
 @import "pages/index/sec-banner.css";
-@import "pages/index/sec-main.css";
