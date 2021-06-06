@@ -501,5 +501,6 @@
 
 .modal-open {
   position: fixed;
+  overflow-y: hidden;
   width: 100%;
 }
