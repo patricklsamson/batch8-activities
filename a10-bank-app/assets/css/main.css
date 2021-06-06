@@ -14,13 +14,7 @@
 @import "components/containers.css";
 @import "components/navbar.css";
 @import "components/header.css";
+@import "components/main.css";
 @import "components/modals-accordion.css";
 @import "components/forms.css";
 @import "components/button.css";
-
-/**
- * PAGES
- *--------------------------------------------------*/
-
-/* INDEX */
-@import "pages/index/sec-main.css";
