@@ -141,8 +141,7 @@ td {
 }
 
 #owner,
-#acc-table td span,
-#acc-table td i {
+#acc-table td span {
   cursor: pointer;
 }
 
