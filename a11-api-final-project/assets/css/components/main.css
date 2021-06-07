@@ -1,0 +1,26 @@
+main {
+  position: relative;
+  overflow-y: hidden;
+}
+
+main [class*="gcol"]:first-child h5 {
+  width: 68%;
+}
+
+#player {
+  width: 62vmin;
+  height: 38vmin;
+}
+
+main [class*="gcol"]:nth-child(2) h5 {
+  display: inline-block;
+  width: 30%;
+  cursor: pointer;
+}
+
+#advice-ul {
+  width: 100%;
+  max-height: 300px;
+  overflow-y: scroll;
+  padding-right: 40px;
+}
