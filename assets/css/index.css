@@ -1,6 +1,12 @@
 @charset "UTF-8";
 
 /**
+ * ABSTRACTS
+ *--------------------------------------------------*/
+
+@import "abstracts/fonts.css";
+
+/**
  * VENDORS
  *--------------------------------------------------*/
 
@@ -10,7 +16,6 @@
  * BASE
  *--------------------------------------------------*/
 
-@import "base/fonts.css";
 @import "base/base.css";
 @import "base/typography.css";
 @import "base/helpers.css";
