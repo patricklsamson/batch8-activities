@@ -62,8 +62,7 @@ input[type="radio"] + label,
 input[type="submit"],
 input[type="reset"],
 select,
-summary,
-i[id*="btn"] {
+summary {
   cursor: pointer;
 }
 
