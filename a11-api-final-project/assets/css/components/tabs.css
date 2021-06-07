@@ -1,0 +1,58 @@
+.green-tab {
+  position: relative;
+  background: #3ea650;
+  -webkit-border-radius: 45px 45px 0 0;
+  -moz-border-radius: 45px 45px 0 0;
+  border-radius: 45px 45px 0 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.green-tab.inactive {
+  background: #e1ebe1;
+}
+
+.green-tab.inactive:hover {
+  -webkit-box-shadow: inset 0 0 5px #3ea650;
+  -moz-box-shadow: inset 0 0 5px #3ea650;
+  box-shadow: inset 0 0 5px #3ea650;
+}
+
+.green-tab:before,
+.green-tab:after {
+  content: ".";
+  font-size: 0;
+  position: absolute;
+  width: 15px;
+  height: 30px;
+  border: 5px solid #3ea650;
+  bottom: -10px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.green-tab:before {
+  left: -8px;
+  -webkit-border-bottom-right-radius: 20px;
+  -moz-border-radius-bottomright: 20px;
+  border-bottom-right-radius: 20px;
+  border-width: 0 7px 10px 0;
+}
+
+.green-tab:after {
+  right: -8px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  border-bottom-left-radius: 20px;
+  border-width: 0 0 10px 7px;
+}
+
+.green-tab.inactive:before,
+.green-tab.inactive:after {
+  visibility: hidden;
+  opacity: 0;
+}
