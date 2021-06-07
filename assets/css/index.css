@@ -1,7 +1,13 @@
 @charset "UTF-8";
 
 /**
- * Base
+ * VENDORS
+ *--------------------------------------------------*/
+
+@import "vendors/font-awesome-custom.css";
+
+/**
+ * BASE
  *--------------------------------------------------*/
 
 @import "base/fonts.css";
@@ -10,7 +16,7 @@
 @import "base/helpers.css";
 
 /**
- * Components
+ * COMPONENTS
  *--------------------------------------------------*/
 
 @import "components/containers.css";
