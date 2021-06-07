@@ -1,0 +1,198 @@
+<!-- FAIR USE -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Patrick Samson" />
+    <title>API - Final Project</title>
+    <link
+      rel="icon"
+      href="../assets/img/favicon-32x32.png"
+      type="image/png"
+      size="32x32"
+    />
+    <link
+      rel="icon"
+      href="../assets/img/favicon-16x16.png"
+      type="image/png"
+      size="16x16"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../assets/css/index.min.css" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+  </head>
+  <body class="modal-open">
+    <header id="header" class="height-fl flex img con">
+      <div class="cont talign">
+        <h1 class="f-satisfy mb-025">Mental Health Awareness</h1>
+
+        <p class="mb-10"><q id="quote" class="h5"></q></p>
+
+        <div class="grid-cont mb-05">
+          <div>
+            <img
+              src="../assets/img/amazing-things.png"
+              alt="you are capable of amazing things"
+            />
+          </div>
+
+          <div>
+            <img src="../assets/img/mental-health.png" alt="mental health" />
+          </div>
+
+          <div>
+            <img src="../assets/img/almonds.png" alt="almonds in a cup" />
+          </div>
+
+          <div>
+            <img
+              src="../assets/img/mental-health-matters.png"
+              alt="mental health matters"
+            />
+          </div>
+
+          <div>
+            <img
+              src="../assets/img/sticky-notes.png"
+              alt="sticky notes on a wall"
+            />
+          </div>
+
+          <div>
+            <img
+              src="../assets/img/fresh-start.png"
+              alt="everyday is a fresh start"
+            />
+          </div>
+
+          <div>
+            <img src="../assets/img/good-vibes.png" alt="good vibes only" />
+          </div>
+        </div>
+
+        <i id="hide-header-btn" class="far fa-arrow-alt-circle-down fa-5x"></i>
+      </div>
+    </header>
+
+    <main id="main" class="height-fl flex pd-125">
+      <i id="show-header-btn" class="fas fa-angle-double-up fa-2x pd-075"></i>
+
+      <div class="cont">
+        <div class="grid">
+          <div class="gcol-6">
+            <h5 class="ml-125 pd-05 talign green-tab">
+              Why Should You Be Aware?
+            </h5>
+
+            <div class="wrap-card pd-125 flex">
+              <div id="player"></div>
+
+              <p class="mt-075">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+
+              <p class="mt-075">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo inventore veritatis et quasi architecto beatae
+                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                voluptas sit aspernatur aut odit aut fugit, sed quia
+                consequuntur magni dolores eos qui ratione voluptatem sequi
+                nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
+                sit amet, consectetur, adipisci velit, sed quia non numquam eius
+                modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+                voluptatem. Ut enim ad minima veniam, quis nostrum
+                exercitationem ullam corporis suscipit laboriosam, nisi ut
+                aliquid ex ea commodi consequatur? Quis autem vel eum iure
+                reprehenderit qui in ea voluptate velit esse quam nihil
+                molestiae consequatur, vel illum qui dolorem eum fugiat quo
+                voluptas nulla pariatur?
+              </p>
+            </div>
+          </div>
+
+          <div class="gcol-6">
+            <h5 id="advice-btn" class="ml-125 pd-05 talign green-tab">
+              Get Advice
+            </h5>
+
+            <h5 id="bored-btn" class="pd-05 talign green-tab inactive">
+              Bored?
+            </h5>
+
+            <div id="modal-wrap" class="wrap-card pd-125 flex advice">
+              <div id="advice-wrap" class="wrap-advice flex">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </p>
+
+                <form action="#" autocomplete="off" id="advice-form">
+                  <input type="text" autocomplete="off" id="advice" />
+
+                  <input type="submit" value="Search Advice" />
+                  <span id="advice-dice-btn"></span>
+                </form>
+
+                <div class="green-card mg-10">
+                  <ul id="advice-ul" class="mt-05 h6">
+                    Search for an advice or roll the dice!
+                  </ul>
+                </div>
+              </div>
+
+              <div id="bored-wrap" class="wrap-bored flex">
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                  consequuntur magni dolores eos qui ratione voluptatem sequi
+                  nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
+                  dolor sit amet, consectetur, adipisci velit, sed quia non
+                  numquam eius modi tempora incidunt ut labore et dolore magnam
+                  aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+                  nostrum exercitationem ullam corporis suscipit laboriosam,
+                  nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
+                  iure reprehenderit qui in ea voluptate velit esse quam nihil
+                  molestiae consequatur, vel illum qui dolorem eum fugiat quo
+                  voluptas nulla pariatur?
+                </p>
+
+                <span id="bored-dice-btn"></span>
+
+                <p id="bored-activity" class="green-card mg-10 h6 talign">
+                  Roll the dice!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../assets/js/utility.prod.js"></script>
+    <script src="assets/js/abstracts.prod.js"></script>
+    <script src="assets/js/main.prod.js"></script>
+  </body>
+</html>
