@@ -1,0 +1,17 @@
+#advice-wrap,
+#bored-wrap {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  -webkit-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+#modal-wrap.advice #advice-wrap,
+#modal-wrap.bored #bored-wrap {
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+}
