@@ -12,9 +12,9 @@ main [class*="gcol"]:first-child h5 {
   height: 38vmin;
 }
 
-main [class*="gcol"]:nth-child(2) h5 {
+main [class*="gcol"]:nth-child(2) h6 {
   display: inline-block;
-  width: 30%;
+  width: 25%;
   cursor: pointer;
 }
 
