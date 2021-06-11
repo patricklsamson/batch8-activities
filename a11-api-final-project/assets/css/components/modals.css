@@ -1,5 +1,6 @@
 #advice-wrap,
-#bored-wrap {
+#bored-wrap,
+#sos-wrap {
   visibility: hidden;
   opacity: 0;
   height: 0;
@@ -10,7 +11,8 @@
 }
 
 #modal-wrap.advice #advice-wrap,
-#modal-wrap.bored #bored-wrap {
+#modal-wrap.bored #bored-wrap,
+#modal-wrap.sos #sos-wrap {
   visibility: visible;
   opacity: 1;
   height: auto;
