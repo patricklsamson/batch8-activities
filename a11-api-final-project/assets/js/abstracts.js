@@ -47,7 +47,7 @@ const loadQuote = () => {
         .then((data) => (id("quote").innerHTML = data.content))
         .then((data) =>
           console.log(
-            `Screen Min Width = 992px\nQuotes Character Length = ${data.length}`
+            `Screen Min Width = 992px\nQuotes Character Length = ${data.length} characters`
           )
         );
     },
@@ -59,7 +59,7 @@ const loadQuote = () => {
         .then((data) => (id("quote").innerHTML = data.content))
         .then((data) =>
           console.log(
-            `Screen Max Width = 991px\nQuotes Character Length = ${data.length}`
+            `Screen Max Width = 991px\nQuotes Character Length = ${data.length} characters`
           )
         );
     }
@@ -86,30 +86,6 @@ const searchAdvice = () => {
   }
 
   id("advice-form").reset();
-};
-
-const randomAdvice = (e) => {
-  id("advice-form").reset();
-  id("advice-ul").innerHTML = "";
-  add_class(id("advice-dice-btn"), "rolling");
-
-  setTimeout(() => {
-    remove_class(id("advice-dice-btn"), "rolling");
-
-    fetch("https://api.adviceslip.com/advice")
-      .then((response) => response.json())
-      .then((data) => {
-        id(
-          "advice-ul"
-        ).innerHTML += `<p class="talign">${data.slip.advice}</p>`;
-      });
-  }, 500);
-
-  remove_event(e.target || e.srcElement, "click", randomAdvice);
-
-  setTimeout(() => {
-    add_event(e.target || e.srcElement, "click", randomAdvice);
-  }, 1000);
 };
 
 class Location {
@@ -152,7 +128,6 @@ const sendLocation = (name, number, message) => {
       Location.send_location(newLocation);
     }, 2000);
 
-    id("sos-name").value = "";
     id("sos-form").reset();
     qsel(".selected").innerHTML = "Code";
   }
