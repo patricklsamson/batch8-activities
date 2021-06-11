@@ -48,7 +48,7 @@ var loadQuote = function loadQuote() {
     }).then(function (data) {
       return id("quote").innerHTML = data.content;
     }).then(function (data) {
-      return console.log("Screen Min Width = 992px\nQuotes Character Length = ".concat(data.length));
+      return console.log("Screen Min Width = 992px\nQuotes Character Length = ".concat(data.length, " characters"));
     });
   }, function unmatch() {
     fetch("https://api.quotable.io/random?maxLength=30&?tags=faith,famous-quotes,friendship,future,happiness,inspirational,life,love,proverb,religion,success,wisdom").then(function (response) {
@@ -56,7 +56,7 @@ var loadQuote = function loadQuote() {
     }).then(function (data) {
       return id("quote").innerHTML = data.content;
     }).then(function (data) {
-      return console.log("Screen Max Width = 991px\nQuotes Character Length = ".concat(data.length));
+      return console.log("Screen Max Width = 991px\nQuotes Character Length = ".concat(data.length, " characters"));
     });
   });
 };
@@ -77,24 +77,6 @@ var searchAdvice = function searchAdvice() {
   }
 
   id("advice-form").reset();
-};
-
-var randomAdvice = function randomAdvice(e) {
-  id("advice-form").reset();
-  id("advice-ul").innerHTML = "";
-  add_class(id("advice-dice-btn"), "rolling");
-  setTimeout(function () {
-    remove_class(id("advice-dice-btn"), "rolling");
-    fetch("https://api.adviceslip.com/advice").then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      id("advice-ul").innerHTML += "<p class=\"talign\">".concat(data.slip.advice, "</p>");
-    });
-  }, 500);
-  remove_event(e.target || e.srcElement, "click", randomAdvice);
-  setTimeout(function () {
-    add_event(e.target || e.srcElement, "click", randomAdvice);
-  }, 1000);
 };
 
 var Location =
@@ -145,7 +127,6 @@ var sendLocation = function sendLocation(name, number, message) {
     setTimeout(function () {
       Location.send_location(newLocation);
     }, 2000);
-    id("sos-name").value = "";
     id("sos-form").reset();
     qsel(".selected").innerHTML = "Code";
   }
