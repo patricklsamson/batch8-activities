@@ -16,6 +16,8 @@ doc_ready(function () {
     setTimeout(function () {
       id("advice-ul").innerHTML = "Search for an advice or roll the dice!";
       id("bored-activity").innerHTML = "Roll the dice!";
+      id("sos-form").reset();
+      qsel(".selected").innerHTML = "Code";
     }, 500);
   });
 
@@ -68,17 +70,29 @@ doc_ready(function () {
       searchAdvice();
     }
   });
-  add_event(id("advice-dice-btn"), "click", randomAdvice);
+  add_event(id("advice-dice-btn"), "click", function () {
+    id("advice-form").reset();
+    id("advice-ul").innerHTML = "";
+    add_class(id("advice-dice-btn"), "rolling");
+    fetch("https://api.adviceslip.com/advice").then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      id("advice-ul").innerHTML += "<p class=\"talign\">".concat(data.slip.advice, "</p>");
+    });
+    setTimeout(function () {
+      remove_class(id("advice-dice-btn"), "rolling");
+    }, 500);
+  });
   add_event(id("bored-dice-btn"), "click", function () {
     id("bored-activity").innerHTML = "";
     add_class(id("bored-dice-btn"), "rolling");
+    fetch("http://www.boredapi.com/api/activity?minaccessibility=0.05&maxaccessibility=0.1").then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      return id("bored-activity").innerHTML = data.activity;
+    });
     setTimeout(function () {
       remove_class(id("bored-dice-btn"), "rolling");
-      fetch("http://www.boredapi.com/api/activity?minaccessibility=0.05&maxaccessibility=0.1").then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        return id("bored-activity").innerHTML = data.activity;
-      });
     }, 500);
   });
   fetch("https://restcountries.eu/rest/v2/all?fields=name;callingCodes").then(function (response) {
@@ -116,4 +130,9 @@ doc_ready(function () {
     }
   });
   add_att(id("sos-number"), "onkeypress", "return num_only(event)");
+  add_event(window, "click", function (e) {
+    if (e.target.id != "selected" || e.srcElement.id != "selected") {
+      remove_class(qsel(".selected"), "active");
+    }
+  });
 });
