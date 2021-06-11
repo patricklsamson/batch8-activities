@@ -521,39 +521,41 @@ caro = function () {
 }();
 
 function search_sel() {
-  var selected = qsel(".selected"),
-      searchBox = qsel(".search-box input"),
-      optionsContainer = qsel(".options-container"),
-      optionsList = qsel_all(".option");
-  add_event(selected, "click", function () {
+  var i;
+  add_event(qsel(".selected"), "click", function () {
     toggle_class(this, "active");
-    searchBox.value = "";
-    filterList("");
+    qsel(".search-box input").value = "";
+    setTimeout(function () {
+      for (i = 0; i < qsel_all(".option").length; i++) {
+        remove_class(qsel_all(".option")[i], "hide");
+      }
+    }, 500);
 
     if (has_class(this, "active")) {
-      searchBox.focus();
+      qsel(".search-box input").focus();
     }
   });
-  optionsList.forEach(function (o) {
-    add_event(o, "click", function () {
-      selected.innerHTML = o.querySelector("label").innerHTML;
-      remove_class(optionsContainer, "active");
+
+  for (i = 0; i < qsel_all(".option").length; i++) {
+    add_event(qsel_all(".option")[i], "click", function () {
+      qsel(".selected").innerHTML = this.querySelector("label").innerHTML;
+      remove_class(qsel(".selected"), "active");
+      qsel(".search-box input").value = "";
+      setTimeout(function () {
+        remove_class(qsel_all(".option")[i], "hide");
+      }, 500);
     });
-  });
-  add_event(searchBox, "keyup", function (e) {
-    filterList(e.target.value || e.srcElement.value);
-  });
+  }
 
-  var filterList = function filterList(searchTerm) {
-    searchTerm = searchTerm.toLowerCase();
-    optionsList.forEach(function (option) {
-      var label = option.querySelector("label").innerHTML.toLowerCase();
-
-      if (label.indexOf(searchTerm) != -1) {
-        option.style.display = "block";
-      } else {
-        option.style.display = "none";
+  add_event(qsel(".search-box input"), "keyup", function () {
+    for (i = 0; i < qsel_all(".option").length; i++) {
+      if (qsel_all(".option")[i].querySelector("label")) {
+        if (qsel_all(".option")[i].querySelector("label").innerHTML.toLowerCase().indexOf(this.value.toLowerCase()) > -1) {
+          remove_class(qsel_all(".option")[i], "hide");
+        } else {
+          add_class(qsel_all(".option")[i], "hide");
+        }
       }
-    });
-  };
+    }
+  });
 }
