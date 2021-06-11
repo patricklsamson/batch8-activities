@@ -556,8 +556,7 @@ function () {
                 deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console_log();
 
             if (deleteAnswer == "y") {
-              var total = 0,
-                  gender = users[usernameCheck].gender == "male" ? "His" : "Her";
+              var total = 0;
 
               for (i = 0; i < users[usernameCheck].expenseItems.length; i++) {
                 total = parseFloat(total + parseFloat(users[usernameCheck].expenseItems[i].cost));
@@ -612,8 +611,8 @@ function () {
           passwordCheck = users.findIndex(function (index) {
         return index.password == password;
       }),
-          emailCheck = users.findIndex(function (userIndex) {
-        return userIndex.email == email;
+          emailCheck = users.findIndex(function (index) {
+        return index.email == email;
       });
 
       if (users[accountNumberCheck].signedUp) {
