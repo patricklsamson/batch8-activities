@@ -22,6 +22,8 @@ doc_ready(() => {
     setTimeout(() => {
       id("advice-ul").innerHTML = "Search for an advice or roll the dice!";
       id("bored-activity").innerHTML = "Roll the dice!";
+      id("sos-form").reset();
+      qsel(".selected").innerHTML = "Code";
     }, 500);
   });
 
@@ -83,20 +85,36 @@ doc_ready(() => {
     }
   });
 
-  add_event(id("advice-dice-btn"), "click", randomAdvice);
+  add_event(id("advice-dice-btn"), "click", () => {
+    id("advice-form").reset();
+    id("advice-ul").innerHTML = "";
+    add_class(id("advice-dice-btn"), "rolling");
+
+    fetch("https://api.adviceslip.com/advice")
+      .then((response) => response.json())
+      .then((data) => {
+        id(
+          "advice-ul"
+        ).innerHTML += `<p class="talign">${data.slip.advice}</p>`;
+      });
+
+    setTimeout(() => {
+      remove_class(id("advice-dice-btn"), "rolling");
+    }, 500);
+  });
 
   add_event(id("bored-dice-btn"), "click", () => {
     id("bored-activity").innerHTML = "";
     add_class(id("bored-dice-btn"), "rolling");
 
+    fetch(
+      "http://www.boredapi.com/api/activity?minaccessibility=0.05&maxaccessibility=0.1"
+    )
+      .then((response) => response.json())
+      .then((data) => (id("bored-activity").innerHTML = data.activity));
+
     setTimeout(() => {
       remove_class(id("bored-dice-btn"), "rolling");
-
-      fetch(
-        "http://www.boredapi.com/api/activity?minaccessibility=0.05&maxaccessibility=0.1"
-      )
-        .then((response) => response.json())
-        .then((data) => (id("bored-activity").innerHTML = data.activity));
     }, 500);
   });
 
@@ -148,4 +166,10 @@ doc_ready(() => {
   });
 
   add_att(id("sos-number"), "onkeypress", "return num_only(event)");
+
+  add_event(window, "click", (e) => {
+    if (e.target.id != "selected" || e.srcElement.id != "selected") {
+      remove_class(qsel(".selected"), "active");
+    }
+  });
 });
