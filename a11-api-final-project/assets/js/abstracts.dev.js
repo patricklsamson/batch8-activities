@@ -1,7 +1,14 @@
 "use strict";
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 var ytScript = create_el("script");
 var i,
+    j,
     player,
     done = false;
 ytScript.src = "https://www.youtube.com/iframe_api";
@@ -64,7 +71,7 @@ var searchAdvice = function searchAdvice() {
       for (i = 0; i < data.slips.length; i++) {
         id("advice-ul").innerHTML += "<li class=\"mb-05\">".concat(data.slips[i].advice, "</li>");
       }
-    })["catch"](function (error) {
+    })["catch"](function () {
       id("advice-ul").innerHTML += "No advice slips found matching that search term.";
     });
   }
@@ -88,4 +95,58 @@ var randomAdvice = function randomAdvice(e) {
   setTimeout(function () {
     add_event(e.target || e.srcElement, "click", randomAdvice);
   }, 1000);
+};
+
+var Location =
+/*#__PURE__*/
+function () {
+  function Location(name, number, message) {
+    _classCallCheck(this, Location);
+
+    this.name = name;
+    this.number = number;
+    this.message = message;
+    this.ipInfo = [];
+  }
+
+  _createClass(Location, null, [{
+    key: "locationStorage",
+    value: function locationStorage() {
+      var location;
+
+      if (localStorage.getItem("location") === null) {
+        location = [];
+      } else {
+        location = JSON.parse(localStorage.getItem("location"));
+      }
+
+      return location;
+    }
+  }, {
+    key: "send_location",
+    value: function send_location(newLocation) {
+      var location = Location.locationStorage();
+      location.push(newLocation);
+      localStorage.setItem("location", JSON.stringify(location));
+    }
+  }]);
+
+  return Location;
+}();
+
+var sendLocation = function sendLocation(name, number, message) {
+  if (id("sos-name").value.length >= 3) {
+    var newLocation = new Location(name, number, message);
+    fetch("https://ipinfo.io/json?token=d17cf2c04985a8").then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      return newLocation.ipInfo.push(data);
+    });
+    setTimeout(function () {
+      Location.send_location(newLocation);
+    }, 2000);
+    id("sos-name").value = "";
+    id("sos-form").reset();
+    qsel(".selected").innerHTML = "Code";
+  }
 };
