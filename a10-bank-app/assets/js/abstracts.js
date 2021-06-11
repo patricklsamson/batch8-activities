@@ -676,8 +676,7 @@ class FnHandler {
                 : console_log();
 
           if (deleteAnswer == "y") {
-            let total = 0,
-              gender = users[usernameCheck].gender == "male" ? "His" : "Her";
+            let total = 0;
 
             for (i = 0; i < users[usernameCheck].expenseItems.length; i++) {
               total = parseFloat(
@@ -748,7 +747,7 @@ class FnHandler {
       ),
       usernameCheck = users.findIndex((index) => index.username == username),
       passwordCheck = users.findIndex((index) => index.password == password),
-      emailCheck = users.findIndex((userIndex) => userIndex.email == email);
+      emailCheck = users.findIndex((index) => index.email == email);
 
     if (users[accountNumberCheck].signedUp) {
       toggle_class(id("login-wrap"), "hide");
@@ -1219,9 +1218,7 @@ class FnHandler {
 
       FnHandler.get_balance(users[i].accountNumber, tableRow);
       tableRow.appendChild(deleteTd);
-
       add_class(tableRow, users[i].accountType.toLowerCase());
-
       id("acc-table").appendChild(tableRow);
     }
   }
