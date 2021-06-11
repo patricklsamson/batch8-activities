@@ -31,7 +31,9 @@
   <body class="modal-open">
     <header id="header" class="height-fl flex img con">
       <div class="cont talign">
-        <h1 class="f-satisfy mb-025">Mental Health Awareness</h1>
+        <p class="h1">𝛙</p>
+
+        <h1 class="f-satisfy mb-025">Psychally</h1>
 
         <p class="mb-10"><q id="quote" class="h5"></q></p>
 
@@ -125,13 +127,17 @@
           </div>
 
           <div class="gcol-6">
-            <h5 id="advice-btn" class="ml-125 pd-05 talign green-tab">
+            <h6 id="advice-btn" class="tab-btn ml-125 pd-05 talign green-tab">
               Get Advice
-            </h5>
+            </h6>
 
-            <h5 id="bored-btn" class="pd-05 talign green-tab inactive">
+            <h6 id="bored-btn" class="tab-btn pd-05 talign green-tab inactive">
               Bored?
-            </h5>
+            </h6>
+
+            <h6 id="sos-btn" class="tab-btn pd-05 talign red-tab inactive">
+              SOS
+            </h6>
 
             <div id="modal-wrap" class="wrap-card pd-125 flex advice">
               <div id="advice-wrap" class="wrap-advice flex">
@@ -184,6 +190,74 @@
                 <p id="bored-activity" class="green-card mg-10 h6 talign">
                   Roll the dice!
                 </p>
+              </div>
+
+              <div id="sos-wrap" class="wrap-sos flex">
+                <p>
+                  At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                  blanditiis praesentium voluptatum deleniti atque corrupti quos
+                  dolores et quas molestias excepturi sint occaecati cupiditate
+                  non provident, similique sunt in culpa qui officia deserunt
+                  mollitia animi, id est laborum et dolorum fuga. Et harum
+                  quidem rerum facilis est et expedita distinctio. Nam libero
+                  tempore, cum soluta nobis est eligendi optio cumque nihil
+                  impedit quo minus id quod maxime placeat facere possimus,
+                  omnis voluptas assumenda est, omnis dolor repellendus.
+                  Temporibus autem quibusdam et aut officiis debitis aut rerum
+                  necessitatibus saepe eveniet ut et voluptates repudiandae sint
+                  et molestiae non recusandae. Itaque earum rerum hic tenetur a
+                  sapiente delectus, ut aut reiciendis voluptatibus maiores
+                  alias consequatur aut perferendis doloribus asperiores
+                  repellat.
+                </p>
+
+                <form action="#" autocomplete="off" id="sos-form">
+                  <label for="sos-name"
+                    >Every name is beautiful, tell us yours!</label
+                  ><br />
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    id="sos-name"
+                    required
+                  />
+
+                  <label for="sos-number"
+                    >Everyone around you, including us, are just one call away.
+                    Don't be shy!</label
+                  ><br />
+
+                  <div class="select-box">
+                    <div class="selected">Code</div>
+
+                    <div class="search-box">
+                      <input type="text" />
+                    </div>
+
+                    <div class="options-container"></div>
+                  </div>
+
+                  <input
+                    type="tel"
+                    maxlength="13"
+                    autocomplete="off"
+                    id="sos-number"
+                    required
+                  /><br />
+
+                  <label for="sos-message"
+                    >You may tell us what's bothering you right now?</label
+                  ><br />
+                  <textarea
+                    name="sos-message"
+                    id="sos-message"
+                    cols="30"
+                    rows="3"
+                  ></textarea
+                  ><br />
+
+                  <input type="submit" value="Reach Me!" />
+                </form>
               </div>
             </div>
           </div>
