@@ -17,31 +17,47 @@
 .select-box {
   position: relative;
   display: inline-block;
-  width: 25%;
+  width: 30%;
   vertical-align: middle;
   border: 1px solid #343a40;
   padding: 2px;
   background: #f8f9fa;
 }
+
+.select-box i {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+}
+
 .select-box .selected {
+  position: relative;
+  z-index: 2;
   cursor: pointer;
   max-height: 24px;
+  width: 100%;
   overflow: hidden;
+  display: inline-block;
+  vertical-align: text-bottom;
 }
-.select-box .selected.active + .search-box input {
+
+.select-box .selected.active ~ .search-box input {
   pointer-events: auto;
   visibility: visible;
   opacity: 1;
 }
+
 .select-box .selected.active ~ .options-container {
   visibility: visible;
   max-height: 250px;
   opacity: 1;
   overflow-y: scroll;
 }
+
 .select-box .search-box {
   position: relative;
 }
+
 .select-box .search-box input[type*="text"] {
   z-index: 2;
   width: 200px;
@@ -56,6 +72,7 @@
   margin-top: 5px;
   margin-left: -3px;
 }
+
 .select-box .options-container {
   position: absolute;
   width: 200px;
@@ -71,6 +88,7 @@
   margin-top: 35px;
   margin-left: -3px;
 }
+
 .select-box .options-container .option {
   cursor: pointer;
   -webkit-transition: all 0.5s;
@@ -78,15 +96,19 @@
   -moz-transition: all 0.5s;
   transition: all 0.5s;
 }
+
 .select-box .options-container .option:hover {
   background: #6c757d;
 }
+
 .select-box .options-container .option.hide {
   display: none;
 }
+
 .select-box .options-container .option input[type*="radio"] {
   display: none;
 }
+
 .select-box .options-container .option label {
   cursor: pointer;
 }
