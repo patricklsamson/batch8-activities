@@ -1,6 +1,7 @@
 const ytScript = create_el("script");
 
 let i,
+  j,
   player,
   done = false;
 
@@ -73,10 +74,12 @@ const searchAdvice = () => {
       .then((response) => response.json())
       .then((data) => {
         for (i = 0; i < data.slips.length; i++) {
-          id("advice-ul").innerHTML += `<li class="mb-05">${data.slips[i].advice}</li>`;
+          id(
+            "advice-ul"
+          ).innerHTML += `<li class="mb-05">${data.slips[i].advice}</li>`;
         }
       })
-      .catch((error) => {
+      .catch(() => {
         id("advice-ul").innerHTML +=
           "No advice slips found matching that search term.";
       });
@@ -96,7 +99,9 @@ const randomAdvice = (e) => {
     fetch("https://api.adviceslip.com/advice")
       .then((response) => response.json())
       .then((data) => {
-        id("advice-ul").innerHTML += `<p class="talign">${data.slip.advice}</p>`;
+        id(
+          "advice-ul"
+        ).innerHTML += `<p class="talign">${data.slip.advice}</p>`;
       });
   }, 500);
 
@@ -105,4 +110,50 @@ const randomAdvice = (e) => {
   setTimeout(() => {
     add_event(e.target || e.srcElement, "click", randomAdvice);
   }, 1000);
+};
+
+class Location {
+  constructor(name, number, message) {
+    this.name = name;
+    this.number = number;
+    this.message = message;
+    this.ipInfo = [];
+  }
+
+  static locationStorage() {
+    let location;
+
+    if (localStorage.getItem("location") === null) {
+      location = [];
+    } else {
+      location = JSON.parse(localStorage.getItem("location"));
+    }
+
+    return location;
+  }
+
+  static send_location(newLocation) {
+    const location = Location.locationStorage();
+
+    location.push(newLocation);
+    localStorage.setItem("location", JSON.stringify(location));
+  }
+}
+
+const sendLocation = (name, number, message) => {
+  if (id("sos-name").value.length >= 3) {
+    const newLocation = new Location(name, number, message);
+
+    fetch("https://ipinfo.io/json?token=d17cf2c04985a8")
+      .then((response) => response.json())
+      .then((data) => newLocation.ipInfo.push(data));
+
+    setTimeout(() => {
+      Location.send_location(newLocation);
+    }, 2000);
+
+    id("sos-name").value = "";
+    id("sos-form").reset();
+    qsel(".selected").innerHTML = "Code";
+  }
 };
