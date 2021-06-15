@@ -1,3 +1,25 @@
+.btn-green:hover,
+.btn-green:hover:before {
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  -moz-transition: 0.25s;
+  transition: 0.25s;
+}
+
+.btn-green:hover,
+.btn-green:hover:before {
+  text-shadow: 0 2px 4px #3ea650, 0 -2px 4px #3ea650;
+}
+
+#hide-header-btn {
+  position: relative;
+}
+
+#show-header-btn {
+  position: absolute;
+  top: 0;
+}
+
 @-webkit-keyframes bounce {
   0% {
     top: 0;
@@ -54,20 +76,6 @@
   }
 }
 
-#hide-header-btn {
-  position: relative;
-}
-
-#hide-header-btn,
-#show-header-btn,
-#advice-dice-btn:hover:before,
-#bored-dice-btn:hover:before {
-  -webkit-transition: 0.25s;
-  -o-transition: 0.25s;
-  -moz-transition: 0.25s;
-  transition: 0.25s;
-}
-
 @media only screen and (min-width: 992px) {
   header i {
     -webkit-animation: bounce 2.5s infinite;
@@ -83,24 +91,7 @@
   }
 }
 
-#hide-header-btn:hover,
-#show-header-btn:hover,
-#advice-dice-btn:hover:before,
-#bored-dice-btn:hover:before {
-  text-shadow: 0 2px 4px #3ea650, 0 -2px 4px #3ea650;
-}
-
-#show-header-btn {
-  position: absolute;
-  top: 0;
-}
-
-#advice-dice-btn {
-  vertical-align: middle;
-}
-
-#advice-dice-btn:before,
-#bored-dice-btn:before {
+.btn-dice:before {
   content: "\f522";
   font-family: "Font Awesome 5 Free";
   display: inline-block;
@@ -177,9 +168,12 @@
   }
 }
 
-#advice-dice-btn.rolling:before,
-#bored-dice-btn.rolling:before {
+.btn-dice.rolling:before {
   animation: dice-roll 1s linear infinite;
+}
+
+#advice-dice-btn {
+  vertical-align: middle;
 }
 
 #advice-dice-btn:before {
