@@ -21,12 +21,6 @@ header {
   background-attachment: fixed;
 }
 
-header p,
-header h1,
-header q {
-  text-shadow: 0 3px 6px #f8f9fa, 0 -3px 6px #f8f9fa;
-}
-
 @-webkit-keyframes fade {
   0% {
     opacity: 0;
