@@ -9,18 +9,6 @@ header.hide {
   margin-top: -100vh;
 }
 
-header {
-  background-image: url(../../../assets/img/green-ribbon.png),
-    -webkit-radial-gradient(#f8f9fa, #f8f9fa, #006a4e);
-  background-image: url(../../../assets/img/green-ribbon.png),
-    -moz-radial-gradient(#f8f9fa, #f8f9fa, #006a4e);
-  background-image: url(../../../assets/img/green-ribbon.png),
-    -o-radial-gradient(#f8f9fa, #f8f9fa, #006a4e);
-  background-image: url(../../../assets/img/green-ribbon.png),
-    radial-gradient(#f8f9fa, #f8f9fa, #006a4e);
-  background-attachment: fixed;
-}
-
 @-webkit-keyframes fade {
   0% {
     opacity: 0;
