@@ -12,6 +12,10 @@ main [class*="gcol"]:first-child h5 {
   height: 38vmin;
 }
 
+main [class*="gcol"]:nth-child(2) {
+  padding-top: 18px;
+}
+
 main [class*="gcol"]:nth-child(2) h6 {
   display: inline-block;
   width: 25%;
