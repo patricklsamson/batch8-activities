@@ -79,12 +79,6 @@ doc_ready(() => {
     return false;
   });
 
-  add_event(id("advice"), "keypress", (e) => {
-    if (e.which == 13 || e.keyCode == 13) {
-      searchAdvice();
-    }
-  });
-
   add_event(id("advice-dice-btn"), "click", () => {
     id("advice-form").reset();
     id("advice-ul").innerHTML = "";
@@ -150,19 +144,6 @@ doc_ready(() => {
     }
 
     return false;
-  });
-
-  add_event(id("sos-name"), "keypress", (e) => {
-    if (
-      (e.which == 13 || e.keyCode == 13) &&
-      qsel(".selected").innerHTML != "Code"
-    ) {
-      sendLocation(
-        inner(trim(id("sos-name").value.toUpperCase())),
-        qsel(".selected").innerHTML.split(" ")[0] + id("sos-number").value,
-        id("sos-message").value
-      );
-    }
   });
 
   add_att(id("sos-number"), "onkeypress", "return num_only(event)");
