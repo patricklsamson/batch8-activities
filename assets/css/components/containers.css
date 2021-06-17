@@ -40,3 +40,7 @@
   position: absolute;
   margin-top: -100px;
 }
+
+.wrap-scroll {
+  overflow-y: scroll;
+}
