@@ -132,7 +132,7 @@ header .grid-cont {
 
 @media only screen and (max-width: 767px) {
   header .grid-cont {
-    grid-template: 15vmin 15vmin 28vmin 15vmin 15vmin / repeat(2, 25vmin);
+    grid-template: 10vmin 10vmin 25vmin 10vmin 10vmin / repeat(2, 18vmin);
   }
 
   header .grid-cont div:first-child {
