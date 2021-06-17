@@ -6,6 +6,12 @@
   width: 50%;
 }
 
+@media only screen and (max-width: 575px) {
+  #sos-form {
+    width: 70%;
+  }
+}
+
 #sos-name,
 #sos-message {
   width: 81%;
@@ -17,6 +23,22 @@
 
 #sos-message {
   resize: none;
+}
+
+@media only screen and (max-width: 480px) {
+  #sos-form {
+    width: 100%;
+  }
+
+  #sos-name,
+  #sos-message {
+    width: 100%;
+  }
+
+  #sos-number {
+    margin-top: 5px;
+    width: 70%;
+  }
 }
 
 .select-box {
