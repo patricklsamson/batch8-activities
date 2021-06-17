@@ -65,11 +65,6 @@ doc_ready(function () {
     searchAdvice();
     return false;
   });
-  add_event(id("advice"), "keypress", function (e) {
-    if (e.which == 13 || e.keyCode == 13) {
-      searchAdvice();
-    }
-  });
   add_event(id("advice-dice-btn"), "click", function () {
     id("advice-form").reset();
     id("advice-ul").innerHTML = "";
@@ -123,11 +118,6 @@ doc_ready(function () {
     }
 
     return false;
-  });
-  add_event(id("sos-name"), "keypress", function (e) {
-    if ((e.which == 13 || e.keyCode == 13) && qsel(".selected").innerHTML != "Code") {
-      sendLocation(inner(trim(id("sos-name").value.toUpperCase())), qsel(".selected").innerHTML.split(" ")[0] + id("sos-number").value, id("sos-message").value);
-    }
   });
   add_att(id("sos-number"), "onkeypress", "return num_only(event)");
   add_event(window, "click", function (e) {
