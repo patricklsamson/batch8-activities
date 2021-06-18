@@ -10,7 +10,3 @@
     overflow-y: hidden;
   }
 }
-
-.wrap-scroll {
-  overflow-y: scroll;
-}
