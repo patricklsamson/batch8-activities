@@ -175,6 +175,39 @@ class Admin {
       alert("Username and password do not match!");
     }
   }
+
+  static change_pass() {}
+
+  static password_match(password, confirmPassword, message) {
+    add_event(password, "keyup", function () {
+      if (this.value == confirmPassword.value && this.value.length != 0) {
+        remove_class(message, "fa-times");
+        add_class(message, "fa-check");
+      } else if (
+        this.value != confirmPassword.value &&
+        confirmPassword.value.length >= 1
+      ) {
+        remove_class(message, "fa-check");
+        add_class(message, "fa-times");
+      } else if (this.value.length == 0) {
+        remove_class(message, "fa-check");
+        remove_class(message, "fa-times");
+      }
+    });
+
+    add_event(confirmPassword, "keyup", function () {
+      if (this.value == password.value && this.value.length != 0) {
+        remove_class(message, "fa-times");
+        add_class(message, "fa-check");
+      } else if (this.value != password.value && password.value.length >= 1) {
+        remove_class(message, "fa-check");
+        add_class(message, "fa-times");
+      } else if (this.value.length == 0) {
+        remove_class(message, "fa-check");
+        remove_class(message, "fa-times");
+      }
+    });
+  }
 }
 
 const create_admin = (username, password, adminId) => {
