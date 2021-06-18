@@ -4,6 +4,13 @@
   right: 0;
 }
 
+nav#navbar button#navtgl-btn.btn-navtgl {
+  background: #f8f9fa;
+  border-color: #f8f9fa;
+  top: 35px;
+  left: 4px;
+}
+
 #navtgl-btn.active ~ .wrap-navcoll {
   margin-right: 0;
 }
@@ -12,9 +19,9 @@
   display: inline-block;
   vertical-align: top;
   background: #f8f9fa;
-  margin-right: -119px;
+  margin-right: -160px;
 }
 
 .menu-container {
-  padding: 30px 45px;
+  padding: 30px 90px;
 }
