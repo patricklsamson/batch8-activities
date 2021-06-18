@@ -2,6 +2,7 @@
 
 doc_ready(function () {
   create_admin("admin", "admin", "1");
+  Location.list_location();
   Admin.password_match(id("admin-new-password"), id("admin-confirm-new-password"), id("admin-change-match-msg"));
   add_event(id("login-form"), "submit", function (e) {
     e.preventDefault();
@@ -10,6 +11,28 @@ doc_ready(function () {
   });
   add_event(id("navtgl-btn"), "click", function () {
     toggle_class(this, "active");
+  });
+  add_event(window, "click", function (e) {
+    if (e.target.id != "navtgl-btn" || e.srcElement.id != "navtgl-btn") {
+      remove_class(id("navtgl-btn"), "active");
+    }
+  });
+  id("navcoll").querySelectorAll("[id*='-btn']").forEach(function (btn) {
+    add_event(btn, "click", function () {
+      remove_class(id("navtgl-btn"), "active");
+    });
+  });
+  add_event(id("home-btn"), "click", function () {
+    remove_class(id("add-whitelist"), "hide");
+    remove_class(id("sos-table"), "hide");
+    add_class(id("remove-whitelist"), "hide");
+    add_class(id("whitelist-table"), "hide");
+  });
+  add_event(id("whitelist-btn"), "click", function () {
+    add_class(id("add-whitelist"), "hide");
+    add_class(id("sos-table"), "hide");
+    remove_class(id("remove-whitelist"), "hide");
+    remove_class(id("whitelist-table"), "hide");
   });
   add_event(id("log-out-btn"), "click", function (e) {
     e.preventDefault();
