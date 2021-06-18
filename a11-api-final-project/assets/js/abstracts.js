@@ -93,6 +93,7 @@ class Location {
     this.name = name;
     this.number = number;
     this.message = message;
+    this.whiteList = false;
     this.ipInfo = [];
   }
 
@@ -130,5 +131,62 @@ const sendLocation = (name, number, message) => {
 
     id("sos-form").reset();
     qsel(".selected").innerHTML = "Code";
+  }
+};
+
+class Admin {
+  constructor(username, password, adminId) {
+    this.username = username;
+    this.password = password;
+    this.adminId = adminId;
+  }
+
+  static adminStorage() {
+    let admin;
+
+    if (localStorage.getItem("p-admin") === null) {
+      admin = [];
+    } else {
+      admin = JSON.parse(localStorage.getItem("p-admin"));
+    }
+
+    return admin;
+  }
+
+  static addAdmin(adminAccount) {
+    const admin = Admin.adminStorage();
+
+    admin.push(adminAccount);
+    localStorage.setItem("p-admin", JSON.stringify(admin));
+  }
+
+  static login_admin(username, password) {
+    const admin = Admin.adminStorage();
+
+    let adminCheck = admin.findIndex((index) => index.username == username);
+
+    if (admin[0].username == username && admin[0].password == password) {
+      add_class(id("login-form"), "hide");
+      add_class(id("header-admin"), "show");
+      add_class(id("table-wrap"), "show");
+    } else if (!admin[adminCheck]) {
+      alert("User does not exist!");
+    } else {
+      alert("Username and password do not match!");
+    }
+  }
+}
+
+const create_admin = (username, password, adminId) => {
+  const admin = Admin.adminStorage();
+
+  let adminCheck = admin.findIndex((index) => index.adminId == adminId);
+
+  if (admin[adminCheck]) {
+    return;
+  } else {
+    const admin = new Admin(username, password, adminId);
+
+    Admin.addAdmin(admin);
   }
 };
