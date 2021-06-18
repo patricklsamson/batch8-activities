@@ -15,12 +15,7 @@
 @import "components/header.css";
 @import "components/main.css";
 @import "components/modals.css";
+@import "components/navbar.css";
 @import "components/forms.css";
 @import "components/tabs.css";
 @import "components/button.css";
-
-/**
- * PAGES
- *--------------------------------------------------*/
-
-@import "pages/admin/sec-admin.css";
