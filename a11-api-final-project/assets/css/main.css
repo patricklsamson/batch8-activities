@@ -19,3 +19,9 @@
 @import "components/forms.css";
 @import "components/tabs.css";
 @import "components/button.css";
+
+/**
+ * PAGES
+ *--------------------------------------------------*/
+
+@import "pages/admin/sec-admin.css";
