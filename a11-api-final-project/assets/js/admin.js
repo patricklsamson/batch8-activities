@@ -1,5 +1,6 @@
 doc_ready(() => {
   create_admin("admin", "admin", "1");
+  Location.list_location();
 
   Admin.password_match(
     id("admin-new-password"),
@@ -20,6 +21,34 @@ doc_ready(() => {
 
   add_event(id("navtgl-btn"), "click", function () {
     toggle_class(this, "active");
+  });
+
+  add_event(window, "click", (e) => {
+    if (e.target.id != "navtgl-btn" || e.srcElement.id != "navtgl-btn") {
+      remove_class(id("navtgl-btn"), "active");
+    }
+  });
+
+  id("navcoll")
+    .querySelectorAll("[id*='-btn']")
+    .forEach((btn) => {
+      add_event(btn, "click", () => {
+        remove_class(id("navtgl-btn"), "active");
+      });
+    });
+
+  add_event(id("home-btn"), "click", () => {
+    remove_class(id("add-whitelist"), "hide");
+    remove_class(id("sos-table"), "hide");
+    add_class(id("remove-whitelist"), "hide");
+    add_class(id("whitelist-table"), "hide");
+  });
+
+  add_event(id("whitelist-btn"), "click", () => {
+    add_class(id("add-whitelist"), "hide");
+    add_class(id("sos-table"), "hide");
+    remove_class(id("remove-whitelist"), "hide");
+    remove_class(id("whitelist-table"), "hide");
   });
 
   add_event(id("log-out-btn"), "click", (e) => {
