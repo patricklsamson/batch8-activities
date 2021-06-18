@@ -88,6 +88,7 @@ function () {
     this.name = name;
     this.number = number;
     this.message = message;
+    this.whiteList = false;
     this.ipInfo = [];
   }
 
@@ -129,5 +130,74 @@ var sendLocation = function sendLocation(name, number, message) {
     }, 2000);
     id("sos-form").reset();
     qsel(".selected").innerHTML = "Code";
+  }
+};
+
+var Admin =
+/*#__PURE__*/
+function () {
+  function Admin(username, password, adminId) {
+    _classCallCheck(this, Admin);
+
+    this.username = username;
+    this.password = password;
+    this.adminId = adminId;
+  }
+
+  _createClass(Admin, null, [{
+    key: "adminStorage",
+    value: function adminStorage() {
+      var admin;
+
+      if (localStorage.getItem("p-admin") === null) {
+        admin = [];
+      } else {
+        admin = JSON.parse(localStorage.getItem("p-admin"));
+      }
+
+      return admin;
+    }
+  }, {
+    key: "addAdmin",
+    value: function addAdmin(adminAccount) {
+      var admin = Admin.adminStorage();
+      admin.push(adminAccount);
+      localStorage.setItem("p-admin", JSON.stringify(admin));
+    }
+  }, {
+    key: "login_admin",
+    value: function login_admin(username, password) {
+      var admin = Admin.adminStorage();
+      var adminCheck = admin.findIndex(function (index) {
+        return index.username == username;
+      });
+
+      if (admin[0].username == username && admin[0].password == password) {
+        add_class(id("login-form"), "hide");
+        add_class(id("header-admin"), "show");
+        add_class(id("table-wrap"), "show");
+      } else if (!admin[adminCheck]) {
+        alert("User does not exist!");
+      } else {
+        alert("Username and password do not match!");
+      }
+    }
+  }]);
+
+  return Admin;
+}();
+
+var create_admin = function create_admin(username, password, adminId) {
+  var admin = Admin.adminStorage();
+  var adminCheck = admin.findIndex(function (index) {
+    return index.adminId == adminId;
+  });
+
+  if (admin[adminCheck]) {
+    return;
+  } else {
+    var _admin = new Admin(username, password, adminId);
+
+    Admin.addAdmin(_admin);
   }
 };
