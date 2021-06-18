@@ -66,10 +66,17 @@
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
   transition: 0.5s;
+  background: rgba(248, 249, 250, 0.9);
+  border: 3px solid #3ea650;
 }
 
 #table-wrap.show {
   visibility: visible;
   opacity: 1;
   height: 500px;
+}
+
+#sos-table.hide,
+#whitelist-table.hide {
+  display: none;
 }
