@@ -17,3 +17,19 @@
   opacity: 1;
   height: auto;
 }
+
+#table-wrap {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#table-wrap.show {
+  visibility: visible;
+  opacity: 1;
+  height: 500px;
+}
