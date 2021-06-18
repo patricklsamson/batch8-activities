@@ -79,15 +79,58 @@ var searchAdvice = function searchAdvice() {
   id("advice-form").reset();
 };
 
+function addWhiteList(element) {
+  var location = Location.locationStorage();
+  var whiteListPrompt = prompt('Are you sure in putting this in the whitelist?\nType "Y" for yes and "N" for no.', "Y"),
+      whiteListAnswer = whiteListPrompt != null ? trim(whiteListPrompt.toLowerCase()) : console.clear();
+
+  if (whiteListAnswer == "n") {
+    return;
+  } else {
+    location[element.id].whiteList = true;
+    localStorage.setItem("location", JSON.stringify(location));
+    Location.list_location();
+  }
+}
+
+function removeWhiteList(element) {
+  var location = Location.locationStorage();
+  var whiteListPrompt = prompt('Are you sure in removing this from the whitelist?\nType "Y" for yes and "N" for no.', "Y"),
+      whiteListAnswer = whiteListPrompt != null ? trim(whiteListPrompt.toLowerCase()) : console.clear();
+
+  if (whiteListAnswer == "n") {
+    return;
+  } else {
+    location[element.id].whiteList = false;
+    localStorage.setItem("location", JSON.stringify(location));
+    Location.list_location();
+  }
+}
+
+function delLocation(element) {
+  var location = Location.locationStorage();
+  var deletePrompt = prompt('Are you sure in deleting this?\nType "Y" for yes and "N" for no.', "N"),
+      deleteAnswer = deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear();
+
+  if (deleteAnswer == "y") {
+    location.splice(element.id, 1);
+    localStorage.setItem("location", JSON.stringify(location));
+    Location.list_location();
+  } else {
+    return;
+  }
+}
+
 var Location =
 /*#__PURE__*/
 function () {
-  function Location(name, number, message) {
+  function Location(name, number, message, timeStamp) {
     _classCallCheck(this, Location);
 
     this.name = name;
     this.number = number;
     this.message = message;
+    this.timeStamp = timeStamp;
     this.whiteList = false;
     this.ipInfo = [];
   }
@@ -106,20 +149,53 @@ function () {
       return location;
     }
   }, {
+    key: "time_stamp",
+    value: function time_stamp() {
+      var today = new Date(),
+          month = today.getMonth() < 10 ? "0".concat(today.getMonth() + 1) : today.getMonth() + 1,
+          date = today.getDate() < 10 ? "0".concat(today.getDate()) : today.getDate(),
+          dateFull = "".concat(month, "/").concat(date, "/").concat(today.getFullYear()),
+          hour = today.getHours() < 10 ? "0".concat(today.getHours()) : today.getHours(),
+          minute = today.getMinutes() < 10 ? "0".concat(today.getMinutes()) : today.getMinutes(),
+          seconds = today.getSeconds() < 10 ? "0".concat(today.getSeconds()) : today.getSeconds(),
+          timeFull = "".concat(hour, ":").concat(minute, ":").concat(seconds);
+      return "".concat(dateFull, " - ").concat(timeFull);
+    }
+  }, {
     key: "send_location",
     value: function send_location(newLocation) {
       var location = Location.locationStorage();
       location.push(newLocation);
       localStorage.setItem("location", JSON.stringify(location));
     }
+  }, {
+    key: "list_location",
+    value: function list_location() {
+      var location = Location.locationStorage();
+      id("sos-table").innerHTML = "";
+      id("whitelist-table").innerHTML = "";
+
+      for (i = 0; i < location.length; i++) {
+        if (location[i].whiteList == false) {
+          var tableRow = create_el("tr");
+          tableRow.innerHTML = "<td>".concat(location[i].timeStamp, "</td>\n<td>").concat(location[i].name, "</td>\n<td>").concat(location[i].number, "</td>\n<td>").concat(location[i].ipInfo[0].country, "</td>\n<td>").concat(location[i].message, "</td>\n<td><i id=\"").concat(i, "\" onclick=\"addWhiteList(this)\" class=\"far fa-plus-square\"></i></td>\n<td><i id=\"").concat(i, "\" onclick=\"delLocation(this)\" class=\"far fa-minus-square\"></i></td>");
+          id("sos-table").appendChild(tableRow);
+        } else {
+          var _tableRow = create_el("tr");
+
+          _tableRow.innerHTML = "<td>".concat(location[i].timeStamp, "</td>\n<td>").concat(location[i].name, "</td>\n<td>").concat(location[i].number, "</td>\n<td>").concat(location[i].ipInfo[0].country, "</td>\n<td>").concat(location[i].message, "</td>\n<td><i id=\"").concat(i, "\" onclick=\"removeWhiteList(this)\" class=\"far fa-minus-square\"></i></td>\n<td><i id=\"").concat(i, "\" onclick=\"delLocation(this)\" class=\"far fa-minus-square\"></i></td>");
+          id("whitelist-table").appendChild(_tableRow);
+        }
+      }
+    }
   }]);
 
   return Location;
 }();
 
-var sendLocation = function sendLocation(name, number, message) {
+var sendLocation = function sendLocation(name, number, message, timeStamp) {
   if (id("sos-name").value.length >= 3) {
-    var newLocation = new Location(name, number, message);
+    var newLocation = new Location(name, number, message, timeStamp);
     fetch("https://ipinfo.io/json?token=d17cf2c04985a8").then(function (response) {
       return response.json();
     }).then(function (data) {
@@ -182,9 +258,6 @@ function () {
         alert("Username and password do not match!");
       }
     }
-  }, {
-    key: "change_pass",
-    value: function change_pass() {}
   }, {
     key: "password_match",
     value: function password_match(password, confirmPassword, message) {
