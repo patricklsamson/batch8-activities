@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Patrick Samson" />
+    <title>API - Final Project - Admin</title>
+    <link
+      rel="icon"
+      href="../assets/img/favicon-32x32.png"
+      type="image/png"
+      size="32x32"
+    />
+    <link
+      rel="icon"
+      href="../assets/img/favicon-16x16.png"
+      type="image/png"
+      size="16x16"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../assets/css/index.min.css" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+  </head>
+  <body>
+    <header id="header-admin" class="pt-05 pb-05">
+      <div class="cont">
+        <nav id="navbar">
+          <div id="slide-wrap" class="wrap-slide">
+            <button id="navtgl-btn" class="btn-navtgl"></button>
+
+            <div id="navcoll" class="wrap-navcoll height-fl">
+              <div class="menu-container">
+                <ul>
+                  <li><a href="">Settings</a></li>
+                  <li><a href="">Log Out</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="sec-admin height-fl flex wrap-green-ribbon img con prlax">
+      <div class="cont flex">
+        <p class="h1 talign tshadow-white">𝛙</p>
+
+        <h1 class="f-satisfy mb-025 talign tshadow-white">Psychally</h1>
+
+        <form action="#" autocomplete="off" id="login-form">
+          <label for="login-username" class="tshadow-white">Username</label
+          ><br />
+          <input
+            type="text"
+            name="login-username"
+            autocomplete="off"
+            id="login-username"
+            class="mb-05"
+            required
+            value="admin"
+          /><br />
+
+          <label for="login-password" class="tshadow-white">Password</label
+          ><br />
+          <input
+            type="password"
+            name="login-password"
+            id="login-password"
+            class="mb-05"
+            required
+            value="admin"
+          /><br />
+
+          <input
+            type="submit"
+            value="Log In"
+            id="login-btn"
+            class="balign mt-05 fs-15"
+          />
+        </form>
+
+        <div id="table-wrap" class="wrap-table">
+          <table id="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Country</th>
+                <th>Message</th>
+                <th>Add to Whitelist</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td colspan="4">
+                  <div class="wrap-scroll">
+                    <table id="table-inner"></table>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <script src="../assets/js/utility.prod.js"></script>
+    <script src="assets/js/abstracts.prod.js"></script>
+    <script src="assets/js/admin.prod.js"></script>
+  </body>
+</html>
