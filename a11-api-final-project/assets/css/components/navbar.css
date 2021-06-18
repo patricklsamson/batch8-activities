@@ -1,0 +1,17 @@
+#slide-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#navtgl-btn.active ~ .wrap-navcoll {
+  margin-right: 0;
+}
+
+.wrap-navcoll {
+  display: inline-block;
+  vertical-align: top;
+  padding: 30px;
+  background: #f8f9fa;
+  margin-right: -119px;
+}
