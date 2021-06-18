@@ -88,11 +88,73 @@ const searchAdvice = () => {
   id("advice-form").reset();
 };
 
+function addWhiteList(element) {
+  const location = Location.locationStorage();
+
+  let whiteListPrompt = prompt(
+      'Are you sure in putting this in the whitelist?\nType "Y" for yes and "N" for no.',
+      "Y"
+    ),
+    whiteListAnswer =
+      whiteListPrompt != null
+        ? trim(whiteListPrompt.toLowerCase())
+        : console.clear();
+
+  if (whiteListAnswer == "n") {
+    return;
+  } else {
+    location[element.id].whiteList = true;
+    localStorage.setItem("location", JSON.stringify(location));
+    Location.list_location();
+  }
+}
+
+function removeWhiteList(element) {
+  const location = Location.locationStorage();
+
+  let whiteListPrompt = prompt(
+      'Are you sure in removing this from the whitelist?\nType "Y" for yes and "N" for no.',
+      "Y"
+    ),
+    whiteListAnswer =
+      whiteListPrompt != null
+        ? trim(whiteListPrompt.toLowerCase())
+        : console.clear();
+
+  if (whiteListAnswer == "n") {
+    return;
+  } else {
+    location[element.id].whiteList = false;
+    localStorage.setItem("location", JSON.stringify(location));
+    Location.list_location();
+  }
+}
+
+function delLocation(element) {
+  const location = Location.locationStorage();
+
+  let deletePrompt = prompt(
+      'Are you sure in deleting this?\nType "Y" for yes and "N" for no.',
+      "N"
+    ),
+    deleteAnswer =
+      deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear();
+
+  if (deleteAnswer == "y") {
+    location.splice(element.id, 1);
+    localStorage.setItem("location", JSON.stringify(location));
+    Location.list_location();
+  } else {
+    return;
+  }
+}
+
 class Location {
-  constructor(name, number, message) {
+  constructor(name, number, message, timeStamp) {
     this.name = name;
     this.number = number;
     this.message = message;
+    this.timeStamp = timeStamp;
     this.whiteList = false;
     this.ipInfo = [];
   }
@@ -109,17 +171,56 @@ class Location {
     return location;
   }
 
+  static time_stamp() {
+    const today = new Date(),
+      month =
+        today.getMonth() < 10
+          ? `0${today.getMonth() + 1}`
+          : today.getMonth() + 1,
+      date = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate(),
+      dateFull = `${month}/${date}/${today.getFullYear()}`,
+      hour = today.getHours() < 10 ? `0${today.getHours()}` : today.getHours(),
+      minute =
+        today.getMinutes() < 10 ? `0${today.getMinutes()}` : today.getMinutes(),
+      seconds =
+        today.getSeconds() < 10 ? `0${today.getSeconds()}` : today.getSeconds(),
+      timeFull = `${hour}:${minute}:${seconds}`;
+
+    return `${dateFull} - ${timeFull}`;
+  }
+
   static send_location(newLocation) {
     const location = Location.locationStorage();
 
     location.push(newLocation);
     localStorage.setItem("location", JSON.stringify(location));
   }
+
+  static list_location() {
+    const location = Location.locationStorage();
+
+    id("sos-table").innerHTML = "";
+    id("whitelist-table").innerHTML = "";
+
+    for (i = 0; i < location.length; i++) {
+      if (location[i].whiteList == false) {
+        let tableRow = create_el("tr");
+
+        tableRow.innerHTML = `<td>${location[i].timeStamp}</td>\n<td>${location[i].name}</td>\n<td>${location[i].number}</td>\n<td>${location[i].ipInfo[0].country}</td>\n<td>${location[i].message}</td>\n<td><i id="${i}" onclick="addWhiteList(this)" class="far fa-plus-square"></i></td>\n<td><i id="${i}" onclick="delLocation(this)" class="far fa-minus-square"></i></td>`;
+        id("sos-table").appendChild(tableRow);
+      } else {
+        let tableRow = create_el("tr");
+
+        tableRow.innerHTML = `<td>${location[i].timeStamp}</td>\n<td>${location[i].name}</td>\n<td>${location[i].number}</td>\n<td>${location[i].ipInfo[0].country}</td>\n<td>${location[i].message}</td>\n<td><i id="${i}" onclick="removeWhiteList(this)" class="far fa-minus-square"></i></td>\n<td><i id="${i}" onclick="delLocation(this)" class="far fa-minus-square"></i></td>`;
+        id("whitelist-table").appendChild(tableRow);
+      }
+    }
+  }
 }
 
-const sendLocation = (name, number, message) => {
+const sendLocation = (name, number, message, timeStamp) => {
   if (id("sos-name").value.length >= 3) {
-    const newLocation = new Location(name, number, message);
+    const newLocation = new Location(name, number, message, timeStamp);
 
     fetch("https://ipinfo.io/json?token=d17cf2c04985a8")
       .then((response) => response.json())
@@ -175,8 +276,6 @@ class Admin {
       alert("Username and password do not match!");
     }
   }
-
-  static change_pass() {}
 
   static password_match(password, confirmPassword, message) {
     add_event(password, "keyup", function () {
