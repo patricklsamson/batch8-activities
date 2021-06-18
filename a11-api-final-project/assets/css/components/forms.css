@@ -140,3 +140,18 @@
 .select-box .options-container .option label {
   cursor: pointer;
 }
+
+#login-form {
+  width: 15%;
+  height: 199.5px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#login-form.hide {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
