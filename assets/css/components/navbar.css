@@ -1,3 +1,23 @@
+@media only screen and (min-width: 992px) {
+  nav#navbar.coll button#navtgl-btn.btn-navtgl {
+    display: none;
+  }
+}
+@media only screen and (max-width: 991px) {
+  nav#navbar.coll #navcoll.wrap-navcoll {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+}
+@media only screen and (min-width: 992px) {
+  nav#navbar.coll #navcoll.wrap-navcoll .menu-container ul > li {
+    display: inline-block;
+  }
+}
 nav#navbar button#navtgl-btn.btn-navtgl {
   position: relative;
   z-index: 3;
@@ -9,12 +29,6 @@ nav#navbar button#navtgl-btn.btn-navtgl {
   height: 35px;
   font-size: 30px;
 }
-
-@media only screen and (min-width: 992px) {
-  nav#navbar button#navtgl-btn.btn-navtgl {
-    display: none;
-  }
-}
 nav#navbar button#navtgl-btn.btn-navtgl:before {
   content: "\f0c9";
   font-family: "Font Awesome 5 Free";
@@ -24,9 +38,11 @@ nav#navbar button#navtgl-btn.btn-navtgl:before {
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   font-weight: 900;
+  position: absolute;
+  top: -6px;
+  left: 2.5px;
   color: #000;
 }
-
 nav#navbar button#navtgl-btn.btn-navtgl:after {
   content: "\f00d";
   font-family: "Font Awesome 5 Free";
@@ -37,7 +53,7 @@ nav#navbar button#navtgl-btn.btn-navtgl:after {
   -webkit-font-smoothing: antialiased;
   font-weight: 900;
   position: absolute;
-  top: 0;
+  top: -6px;
   left: 5px;
   color: #000;
   -webkit-transition: all 0.5s;
@@ -47,34 +63,27 @@ nav#navbar button#navtgl-btn.btn-navtgl:after {
   visibility: hidden;
   opacity: 0;
 }
-
 nav#navbar button#navtgl-btn.btn-navtgl.active:before {
   visibility: hidden;
   opacity: 0;
 }
-
 nav#navbar button#navtgl-btn.btn-navtgl.active:after {
   visibility: visible;
   opacity: 1;
 }
-
 nav#navbar button#navtgl-btn.btn-navtgl.active ~ #navcoll.wrap-navcoll {
   visibility: visible;
+  opacity: 1;
 }
-
-@media only screen and (max-width: 991px) {
-  nav .wrap-navcoll {
-    visibility: hidden;
-  }
+nav#navbar #navcoll.wrap-navcoll {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
-
-nav ul {
+nav#navbar #navcoll.wrap-navcoll .menu-container ul {
   list-style: none;
   padding-left: 0;
-}
-
-@media only screen and (min-width: 992px) {
-  nav ul > li {
-    display: inline-block;
-  }
 }
