@@ -28,6 +28,46 @@
     <link rel="stylesheet" href="assets/css/main.min.css" />
   </head>
   <body>
+    <section id="settings-modal" class="flex wrap-modal">
+      <div id="settings-modal-inner" class="wrap-modal-inner">
+        <i id="close-settings-btn" class="far fa-times-circle fa-2x"></i>
+
+        <form action="#" autocomplete="off" id="admin-settings-form">
+          <label for="admin-old-password">Old Password</label><br />
+          <input
+            type="password"
+            name="admin-old-password"
+            id="admin-old-password"
+            required
+          /><br />
+
+          <label for="admin-new-password">New Password</label><br />
+          <input
+            type="password"
+            name="admin-new-password"
+            id="admin-new-password"
+            required
+          /><br />
+
+          <label for="admin-confirm-new-password">Confirm New Password</label>
+          <i id="admin-change-match-msg" class="fas"></i><br />
+          <input
+            type="password"
+            id="admin-confirm-new-password"
+            class="mb-05"
+            required
+          /><br />
+
+          <input
+            type="submit"
+            value="Change Password"
+            id="admin-change-password-btn"
+            class="balign mt-05 mb-05 btn-bank minor"
+          />
+        </form>
+      </div>
+    </section>
+
     <header id="header-admin" class="pt-05 pb-05">
       <div class="cont">
         <nav id="navbar">
@@ -35,11 +75,17 @@
             <button id="navtgl-btn" class="btn-navtgl"></button>
 
             <div id="navcoll" class="wrap-navcoll height-fl">
-              <div class="menu-container">
-                <ul>
-                  <li><a href="">Settings</a></li>
-                  <li><a href="">Log Out</a></li>
-                </ul>
+              <div class="table height-fl">
+                <div class="valign">
+                  <div class="menu-container">
+                    <ul>
+                      <li><a href="#" id="settings-btn" class="fs-15">Settings</a></li>
+                      <li class="mt-125">
+                        <a href="#" id="log-out-btn" class="fs-15">Log Out</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
