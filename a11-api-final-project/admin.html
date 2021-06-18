@@ -77,9 +77,19 @@
             <div id="navcoll" class="wrap-navcoll height-fl">
               <div class="table height-fl">
                 <div class="valign">
-                  <div class="menu-container">
+                  <div class="menu-container talign">
                     <ul>
-                      <li><a href="#" id="settings-btn" class="fs-15">Settings</a></li>
+                      <li>
+                        <a href="#" id="home-btn" class="fs-15">Home</a>
+                      </li>
+                      <li class="mt-125">
+                        <a href="#" id="whitelist-btn" class="fs-15"
+                          >Whitelist</a
+                        >
+                      </li>
+                      <li class="mt-125">
+                        <a href="#" id="settings-btn" class="fs-15">Settings</a>
+                      </li>
                       <li class="mt-125">
                         <a href="#" id="log-out-btn" class="fs-15">Log Out</a>
                       </li>
@@ -131,24 +141,29 @@
           />
         </form>
 
-        <div id="table-wrap" class="wrap-table">
+        <div id="table-wrap" class="wrap-table pd-125">
           <table id="table">
             <thead>
               <tr>
+                <th>Time Stamp</th>
                 <th>Name</th>
                 <th>Phone Number</th>
                 <th>Country</th>
                 <th>Message</th>
-                <th>Add to Whitelist</th>
-                <th></th>
+                <th id="add-whitelist">Add to Whitelist</th>
+                <th id="remove-whitelist" class="hide">
+                  Remove from Whitelist
+                </th>
+                <th><i class="fas fa-trash"></i></th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <td colspan="4">
+                <td colspan="7">
                   <div class="wrap-scroll">
-                    <table id="table-inner"></table>
+                    <table id="sos-table"></table>
+                    <table id="whitelist-table"></table>
                   </div>
                 </td>
               </tr>
