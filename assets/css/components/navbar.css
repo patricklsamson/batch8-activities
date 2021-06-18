@@ -14,9 +14,12 @@
   }
 }
 @media only screen and (min-width: 992px) {
-  nav#navbar.coll #navcoll.wrap-navcoll .menu-container ul > li {
+  nav#navbar.coll #navcoll.wrap-navcoll .menu-container > ul > li {
     display: inline-block;
   }
+}
+nav#navbar.inblock .menu-container > ul > li {
+  display: inline-block;
 }
 nav#navbar button#navtgl-btn.btn-navtgl {
   position: relative;
@@ -83,7 +86,43 @@ nav#navbar #navcoll.wrap-navcoll {
   -moz-transition: all 0.5s;
   transition: all 0.5s;
 }
-nav#navbar #navcoll.wrap-navcoll .menu-container ul {
+nav#navbar #navcoll .menu-container ul {
   list-style: none;
   padding-left: 0;
+}
+nav#navbar #navcoll .menu-container ul li {
+  position: relative;
+}
+nav#navbar #navcoll .menu-container ul li:hover ul.sub-menu {
+  visibility: visible;
+  opacity: 1;
+}
+nav#navbar #navcoll .menu-container ul li a#content-btn {
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+nav#navbar #navcoll .menu-container ul li a#content-btn:after {
+  content: "\f078";
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 900;
+}
+nav#navbar #navcoll .menu-container ul li a#content-btn.active ~ ul.submenu {
+  visibility: visible;
+  opacity: 1;
+}
+nav#navbar #navcoll .menu-container ul li ul.sub-menu {
+  position: absolute;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  visibility: hidden;
+  opacity: 0;
 }
