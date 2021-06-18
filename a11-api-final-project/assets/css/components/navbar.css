@@ -11,7 +11,10 @@
 .wrap-navcoll {
   display: inline-block;
   vertical-align: top;
-  padding: 30px;
   background: #f8f9fa;
   margin-right: -119px;
+}
+
+.menu-container {
+  padding: 30px 45px;
 }
