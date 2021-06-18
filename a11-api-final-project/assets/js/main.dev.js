@@ -114,7 +114,7 @@ doc_ready(function () {
     e.preventDefault();
 
     if (qsel(".selected").innerHTML != "Code") {
-      sendLocation(inner(trim(id("sos-name").value.toUpperCase())), qsel(".selected").innerHTML.split(" ")[0] + id("sos-number").value, id("sos-message").value);
+      sendLocation(inner(trim(id("sos-name").value.toUpperCase())), qsel(".selected").innerHTML.split(" ")[0] + id("sos-number").value, id("sos-message").value, Location.time_stamp());
     }
 
     return false;
