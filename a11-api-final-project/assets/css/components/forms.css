@@ -155,3 +155,16 @@
   opacity: 0;
   height: 0;
 }
+
+#admin-settings-form {
+  width: 70%;
+  margin: auto;
+}
+
+#admin-change-match-msg.fa-check {
+  color: green;
+}
+
+#admin-change-match-msg.fa-times {
+  color: red;
+}
