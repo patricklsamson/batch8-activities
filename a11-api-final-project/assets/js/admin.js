@@ -128,14 +128,6 @@ doc_ready(() => {
     return false;
   });
 
-  id("table-inner-wrap")
-    .querySelectorAll("tr")
-    .forEach((tr) => {
-      add_event(tr.querySelectorAll("td")[1], "click", () => {
-        add_class(id("location-modal"), "show");
-      });
-    });
-
   add_event(id("close-location-btn"), "click", () => {
     remove_class(id("location-modal"), "show");
   });
