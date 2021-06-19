@@ -83,6 +83,7 @@ function locationDetails(element) {
   var location = Location.locationStorage();
   id("user-location").innerHTML = "";
   id("user-location").innerHTML = "<li>Message : ".concat(location[element.id].message, "</li>\n<li>Phone Number : ").concat(location[element.id].number, "</li>\n<li>IP : ").concat(location[element.id].ipInfo[0].ip, "</li>\n<li>City : ").concat(location[element.id].ipInfo[0].city, "</li>\n<li>Country : ").concat(location[element.id].ipInfo[0].country, "</li>\n<li>Postal Code : ").concat(location[element.id].ipInfo[0].postal, "</li>\n<li>Region : ").concat(location[element.id].ipInfo[0].region, "</li>\n<li>Timezone : ").concat(location[element.id].ipInfo[0].timezone, "</li>");
+  add_class(id("location-modal"), "show");
 }
 
 function addWhiteList(element) {
