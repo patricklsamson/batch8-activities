@@ -94,6 +94,9 @@ doc_ready(function () {
 
     return false;
   });
+  add_event(id("sync-btn"), "click", function () {
+    Location.list_location();
+  });
   add_event(id("close-location-btn"), "click", function () {
     remove_class(id("location-modal"), "show");
   });
