@@ -292,6 +292,7 @@ class Admin {
       add_class(id("login-form"), "hide");
       add_class(id("header-admin"), "show");
       add_class(id("table-wrap"), "show");
+      id("login-form").reset();
     } else if (!admin[adminCheck]) {
       alert("User does not exist!");
     } else {
