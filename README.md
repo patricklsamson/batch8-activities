@@ -17,6 +17,7 @@ This page is intended for presenting to you all the activities I completed throu
 1. [Tic Tac Toe](/a9-tic-tac-toe/index.html)
 1. [Bank App](/a10-bank-app/index.html)
 1. [API - Final Project - Mental Health Awareness](/a11-api-final-project/index.html)
+1. [API - Final Project - Admin](/a11-api-final-project/admin.html)
 
 ## Extras - Coding Challenge:
 
