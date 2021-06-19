@@ -79,6 +79,12 @@ var searchAdvice = function searchAdvice() {
   id("advice-form").reset();
 };
 
+function locationDetails(element) {
+  var location = Location.locationStorage();
+  id("user-location").innerHTML = "";
+  id("user-location").innerHTML = "<li>Message : ".concat(location[element.id].message, "</li>\n<li>Phone Number : ").concat(location[element.id].number, "</li>\n<li>IP : ").concat(location[element.id].ipInfo[0].ip, "</li>\n<li>City : ").concat(location[element.id].ipInfo[0].city, "</li>\n<li>Country : ").concat(location[element.id].ipInfo[0].country, "</li>\n<li>Postal Code : ").concat(location[element.id].ipInfo[0].postal, "</li>\n<li>Region : ").concat(location[element.id].ipInfo[0].region, "</li>\n<li>Timezone : ").concat(location[element.id].ipInfo[0].timezone, "</li>");
+}
+
 function addWhiteList(element) {
   var location = Location.locationStorage();
   var whiteListPrompt = prompt('Are you sure in putting this in the whitelist?\nType "Y" for yes and "N" for no.', "Y"),
@@ -178,12 +184,12 @@ function () {
       for (i = 0; i < location.length; i++) {
         if (location[i].whiteList == false) {
           var tableRow = create_el("tr");
-          tableRow.innerHTML = "<td>".concat(location[i].timeStamp, "</td>\n<td>").concat(location[i].name, "</td>\n<td>").concat(location[i].number, "</td>\n<td>").concat(location[i].ipInfo[0].country, "</td>\n<td>").concat(location[i].message, "</td>\n<td><i id=\"").concat(i, "\" onclick=\"addWhiteList(this)\" class=\"far fa-plus-square\"></i></td>\n<td><i id=\"").concat(i, "\" onclick=\"delLocation(this)\" class=\"far fa-minus-square\"></i></td>");
+          tableRow.innerHTML = "<td>".concat(location[i].timeStamp, "</td>\n<td id=\"").concat(i, "\" onclick=\"locationDetails(this)\">").concat(location[i].name, "</td>\n<td><i id=\"").concat(i, "\" onclick=\"addWhiteList(this)\" class=\"far fa-plus-square\"></i></td>\n<td><i id=\"").concat(i, "\" onclick=\"delLocation(this)\" class=\"far fa-minus-square\"></i></td>");
           id("sos-table").appendChild(tableRow);
         } else {
           var _tableRow = create_el("tr");
 
-          _tableRow.innerHTML = "<td>".concat(location[i].timeStamp, "</td>\n<td>").concat(location[i].name, "</td>\n<td>").concat(location[i].number, "</td>\n<td>").concat(location[i].ipInfo[0].country, "</td>\n<td>").concat(location[i].message, "</td>\n<td><i id=\"").concat(i, "\" onclick=\"removeWhiteList(this)\" class=\"far fa-minus-square\"></i></td>\n<td><i id=\"").concat(i, "\" onclick=\"delLocation(this)\" class=\"far fa-minus-square\"></i></td>");
+          _tableRow.innerHTML = "<td>".concat(location[i].timeStamp, "</td>\n<td id=\"").concat(i, "\" onclick=\"locationDetails(this)\">").concat(location[i].name, "</td>\n<td><i id=\"").concat(i, "\" onclick=\"removeWhiteList(this)\" class=\"far fa-minus-square\"></i></td>\n<td><i id=\"").concat(i, "\" onclick=\"delLocation(this)\" class=\"far fa-minus-square\"></i></td>");
           id("whitelist-table").appendChild(_tableRow);
         }
       }
