@@ -105,6 +105,8 @@ function locationDetails(element) {
   }</li>\n<li>Region : ${
     location[element.id].ipInfo[0].region
   }</li>\n<li>Timezone : ${location[element.id].ipInfo[0].timezone}</li>`;
+
+  add_class(id("location-modal"), "show");
 }
 
 function addWhiteList(element) {
