@@ -88,6 +88,25 @@ const searchAdvice = () => {
   id("advice-form").reset();
 };
 
+function locationDetails(element) {
+  const location = Location.locationStorage();
+
+  id("user-location").innerHTML = "";
+  id("user-location").innerHTML = `<li>Message : ${
+    location[element.id].message
+  }</li>\n<li>Phone Number : ${location[element.id].number}</li>\n<li>IP : ${
+    location[element.id].ipInfo[0].ip
+  }</li>\n<li>City : ${
+    location[element.id].ipInfo[0].city
+  }</li>\n<li>Country : ${
+    location[element.id].ipInfo[0].country
+  }</li>\n<li>Postal Code : ${
+    location[element.id].ipInfo[0].postal
+  }</li>\n<li>Region : ${
+    location[element.id].ipInfo[0].region
+  }</li>\n<li>Timezone : ${location[element.id].ipInfo[0].timezone}</li>`;
+}
+
 function addWhiteList(element) {
   const location = Location.locationStorage();
 
@@ -206,12 +225,12 @@ class Location {
       if (location[i].whiteList == false) {
         let tableRow = create_el("tr");
 
-        tableRow.innerHTML = `<td>${location[i].timeStamp}</td>\n<td>${location[i].name}</td>\n<td>${location[i].number}</td>\n<td>${location[i].ipInfo[0].country}</td>\n<td>${location[i].message}</td>\n<td><i id="${i}" onclick="addWhiteList(this)" class="far fa-plus-square"></i></td>\n<td><i id="${i}" onclick="delLocation(this)" class="far fa-minus-square"></i></td>`;
+        tableRow.innerHTML = `<td>${location[i].timeStamp}</td>\n<td id="${i}" onclick="locationDetails(this)">${location[i].name}</td>\n<td><i id="${i}" onclick="addWhiteList(this)" class="far fa-plus-square"></i></td>\n<td><i id="${i}" onclick="delLocation(this)" class="far fa-minus-square"></i></td>`;
         id("sos-table").appendChild(tableRow);
       } else {
         let tableRow = create_el("tr");
 
-        tableRow.innerHTML = `<td>${location[i].timeStamp}</td>\n<td>${location[i].name}</td>\n<td>${location[i].number}</td>\n<td>${location[i].ipInfo[0].country}</td>\n<td>${location[i].message}</td>\n<td><i id="${i}" onclick="removeWhiteList(this)" class="far fa-minus-square"></i></td>\n<td><i id="${i}" onclick="delLocation(this)" class="far fa-minus-square"></i></td>`;
+        tableRow.innerHTML = `<td>${location[i].timeStamp}</td>\n<td id="${i}" onclick="locationDetails(this)">${location[i].name}</td>\n<td><i id="${i}" onclick="removeWhiteList(this)" class="far fa-minus-square"></i></td>\n<td><i id="${i}" onclick="delLocation(this)" class="far fa-minus-square"></i></td>`;
         id("whitelist-table").appendChild(tableRow);
       }
     }
