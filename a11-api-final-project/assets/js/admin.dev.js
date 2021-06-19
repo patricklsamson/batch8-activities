@@ -94,11 +94,6 @@ doc_ready(function () {
 
     return false;
   });
-  id("table-inner-wrap").querySelectorAll("tr").forEach(function (tr) {
-    add_event(tr.querySelectorAll("td")[1], "click", function () {
-      add_class(id("location-modal"), "show");
-    });
-  });
   add_event(id("close-location-btn"), "click", function () {
     remove_class(id("location-modal"), "show");
   });
