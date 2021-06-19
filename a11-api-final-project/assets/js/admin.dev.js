@@ -40,6 +40,10 @@ doc_ready(function () {
     remove_class(id("header-admin"), "show");
     remove_class(id("table-wrap"), "show");
     remove_class(id("navtgl-btn"), "active");
+    remove_class(id("add-whitelist"), "hide");
+    remove_class(id("sos-table"), "hide");
+    add_class(id("remove-whitelist"), "hide");
+    add_class(id("whitelist-table"), "hide");
     return false;
   });
   add_event(id("settings-btn"), "click", function () {
@@ -85,5 +89,13 @@ doc_ready(function () {
     }
 
     return false;
+  });
+  id("table-inner-wrap").querySelectorAll("tr").forEach(function (tr) {
+    add_event(tr.querySelectorAll("td")[1], "click", function () {
+      add_class(id("location-modal"), "show");
+    });
+  });
+  add_event(id("close-location-btn"), "click", function () {
+    remove_class(id("location-modal"), "show");
   });
 });
