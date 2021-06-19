@@ -68,6 +68,14 @@
       </div>
     </section>
 
+    <section id="location-modal" class="flex wrap-modal">
+      <div class="wrap-modal-inner">
+        <i id="close-location-btn" class="far fa-times-circle fa-2x"></i>
+
+        <ul id="user-location" class="xbul wrap-scroll"></ul>
+      </div>
+    </section>
+
     <header id="header-admin" class="pt-05 pb-05">
       <div class="cont">
         <nav id="navbar">
@@ -142,14 +150,11 @@
         </form>
 
         <div id="table-wrap" class="wrap-table pd-125">
-          <table id="table">
+          <table id="table" class="talign">
             <thead>
               <tr>
                 <th>Time Stamp</th>
                 <th>Name</th>
-                <th>Phone Number</th>
-                <th>Country</th>
-                <th>Message</th>
                 <th id="add-whitelist">Add to Whitelist</th>
                 <th id="remove-whitelist" class="hide">
                   Remove from Whitelist
@@ -160,10 +165,10 @@
 
             <tbody>
               <tr>
-                <td colspan="7">
-                  <div class="wrap-scroll">
+                <td colspan="4">
+                  <div id="table-inner-wrap" class="wrap-scroll">
                     <table id="sos-table"></table>
-                    <table id="whitelist-table"></table>
+                    <table id="whitelist-table" class="hide"></table>
                   </div>
                 </td>
               </tr>
