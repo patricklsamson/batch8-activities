@@ -37,18 +37,22 @@ doc_ready(() => {
       });
     });
 
-  add_event(id("home-btn"), "click", () => {
+  add_event(id("home-btn"), "click", (e) => {
+    e.preventDefault();
     remove_class(id("add-whitelist"), "hide");
     remove_class(id("sos-table"), "hide");
     add_class(id("remove-whitelist"), "hide");
     add_class(id("whitelist-table"), "hide");
+    return false;
   });
 
-  add_event(id("whitelist-btn"), "click", () => {
+  add_event(id("whitelist-btn"), "click", (e) => {
+    e.preventDefault();
     add_class(id("add-whitelist"), "hide");
     add_class(id("sos-table"), "hide");
     remove_class(id("remove-whitelist"), "hide");
     remove_class(id("whitelist-table"), "hide");
+    return false;
   });
 
   add_event(id("log-out-btn"), "click", (e) => {
