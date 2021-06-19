@@ -92,6 +92,7 @@ function locationDetails(element) {
   const location = Location.locationStorage();
 
   id("user-location").innerHTML = "";
+
   id("user-location").innerHTML = `<li>Message : ${
     location[element.id].message
   }</li>\n<li>Phone Number : ${location[element.id].number}</li>\n<li>IP : ${
