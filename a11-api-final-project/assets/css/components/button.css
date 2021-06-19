@@ -184,3 +184,7 @@
 #bored-dice-btn:before {
   font-size: 45px;
 }
+
+#table td i {
+  cursor: pointer;
+}
