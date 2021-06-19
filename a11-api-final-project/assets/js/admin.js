@@ -57,6 +57,10 @@ doc_ready(() => {
     remove_class(id("header-admin"), "show");
     remove_class(id("table-wrap"), "show");
     remove_class(id("navtgl-btn"), "active");
+    remove_class(id("add-whitelist"), "hide");
+    remove_class(id("sos-table"), "hide");
+    add_class(id("remove-whitelist"), "hide");
+    add_class(id("whitelist-table"), "hide");
     return false;
   });
 
@@ -118,5 +122,17 @@ doc_ready(() => {
     }
 
     return false;
+  });
+
+  id("table-inner-wrap")
+    .querySelectorAll("tr")
+    .forEach((tr) => {
+      add_event(tr.querySelectorAll("td")[1], "click", () => {
+        add_class(id("location-modal"), "show");
+      });
+    });
+
+  add_event(id("close-location-btn"), "click", () => {
+    remove_class(id("location-modal"), "show");
   });
 });
