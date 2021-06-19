@@ -3,6 +3,10 @@ td[colspan="4"] {
   border: 2px solid #000;
 }
 
+#table-inner-wrap td {
+  border: 2px solid transparent;
+}
+
 #add-whitelist.hide,
 #remove-whitelist.hide {
   display: none;
