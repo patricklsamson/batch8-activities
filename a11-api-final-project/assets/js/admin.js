@@ -128,6 +128,10 @@ doc_ready(() => {
     return false;
   });
 
+  add_event(id("sync-btn"), "click", () => {
+    Location.list_location();
+  });
+
   add_event(id("close-location-btn"), "click", () => {
     remove_class(id("location-modal"), "show");
   });
