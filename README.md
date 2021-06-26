@@ -4,6 +4,8 @@
 
 This page is intended for presenting to you all the activities I completed throughout the duration of the Web Development Bootcamp with Avion School.
 
+## Front-End
+
 ## Table of Contents:
 
 1. [Best Practice Page](/a1-best-practice-page/index.html)
@@ -26,3 +28,22 @@ This page is intended for presenting to you all the activities I completed throu
 1. [Quiz Game (Basic)](/coding-challenge/c3-quiz-game-basic.html)
 1. [Quiz Game (Expert)](/coding-challenge/c4-quiz-game-expert.html)
 1. [Book Store](/coding-challenge/c5-book-store.html)
+
+## Back-End
+
+1. Introduction to Ruby
+
+- [Array Each](/a1-ruby/a1_array_each.rb)
+- [Hash](/a1-ruby/a2_hash.rb)
+- [Data Structures](/a1-ruby/a3_data_structures.rb)
+- [Age (Loop)](/a1-ruby/age.rb)
+
+- [Array Include](/a1-ruby/b1_array_include.rb)
+- [Between (Case)](/rubyactivities/between.rb)
+- [While](/a1-ruby/b3_while.rb)
+- [Modulo](/a1-ruby/b4_modulo.rb)
+
+1. Object-Oriented Programming
+
+- [Object](/a2-ruby/a1_object.rb)
+- [Missing Code (Attr)](/rubyactivities/2.0_1_missing_code.rb)
