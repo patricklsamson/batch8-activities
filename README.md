@@ -6,7 +6,7 @@ This page is intended for presenting to you all the activities I completed throu
 
 ## Front-End
 
-## Table of Contents:
+### Table of Contents:
 
 1. [Best Practice Page](/a1-best-practice-page/index.html)
 1. [HTML Email](/a2-html-email/index.html)
@@ -21,7 +21,7 @@ This page is intended for presenting to you all the activities I completed throu
 1. [API - Final Project - Mental Health Awareness](/a11-api-final-project/index.html)
 1. [API - Final Project - Admin](/a11-api-final-project/admin.html)
 
-## Extras - Coding Challenge:
+### Extras - Coding Challenge:
 
 1. [BMI](/coding-challenge/c1-bmi.html)
 1. [Playing Cards](/coding-challenge/c2-playing-cards.html)
@@ -29,9 +29,9 @@ This page is intended for presenting to you all the activities I completed throu
 1. [Quiz Game (Expert)](/coding-challenge/c4-quiz-game-expert.html)
 1. [Book Store](/coding-challenge/c5-book-store.html)
 
-## Back-End
+## Back-End (Ruby)
 
-## Table of Contents:
+### Table of Contents:
 
 1. Introduction to Ruby
   - [Array Each](/a1-ruby/a1_array_each.rb)
@@ -45,3 +45,8 @@ This page is intended for presenting to you all the activities I completed throu
 1. Object-Oriented Programming
   - [Object](/a2-ruby/a1_object.rb)
   - [Missing Code (Attr)](/rubyactivities/2.0_1_missing_code.rb)
+
+### Extras - Coding Exercise:
+
+1. [Square of Squares](/rubyactivities/square_of_squares.rb)
+1. [Integer](/ruby-coding-exercise/integer.rb)
