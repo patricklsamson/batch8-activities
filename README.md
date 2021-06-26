@@ -31,19 +31,17 @@ This page is intended for presenting to you all the activities I completed throu
 
 ## Back-End
 
+## Table of Contents:
+
 1. Introduction to Ruby
-
-- [Array Each](/a1-ruby/a1_array_each.rb)
-- [Hash](/a1-ruby/a2_hash.rb)
-- [Data Structures](/a1-ruby/a3_data_structures.rb)
-- [Age (Loop)](/a1-ruby/age.rb)
-
-- [Array Include](/a1-ruby/b1_array_include.rb)
-- [Between (Case)](/rubyactivities/between.rb)
-- [While](/a1-ruby/b3_while.rb)
-- [Modulo](/a1-ruby/b4_modulo.rb)
-
+  - [Array Each](/a1-ruby/a1_array_each.rb)
+  - [Hash](/a1-ruby/a2_hash.rb)
+  - [Data Structures](/a1-ruby/a3_data_structures.rb)
+  - [Age (Loop)](/a1-ruby/age.rb)
+  - [Array Include](/a1-ruby/b1_array_include.rb)
+  - [Between (Case)](/rubyactivities/between.rb)
+  - [While](/a1-ruby/b3_while.rb)
+  - [Modulo](/a1-ruby/b4_modulo.rb)
 1. Object-Oriented Programming
-
-- [Object](/a2-ruby/a1_object.rb)
-- [Missing Code (Attr)](/rubyactivities/2.0_1_missing_code.rb)
+  - [Object](/a2-ruby/a1_object.rb)
+  - [Missing Code (Attr)](/rubyactivities/2.0_1_missing_code.rb)
