@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # B1
-# Profile
+# PROFILE
 class Profile
   attr_accessor :full_name, :age, :address, :work
 
