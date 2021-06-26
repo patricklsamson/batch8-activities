@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # A1
-# Aircraft
+# AIRCRAFT
 class Aircraft
   def initialize(airline, manufacturer, model)
     @airline = airline
