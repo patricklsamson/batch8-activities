@@ -21,7 +21,7 @@ def num_check(num)
 
     else
 
-      puts "#{num} is above 100"
+      puts "#{num} is above 100."
 
     end
 
