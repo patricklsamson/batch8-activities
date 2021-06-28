@@ -20,11 +20,11 @@ class BananaCake < Confection
 end
 
 cupcake = Cupcake.new
-puts 'Cupcake'
+puts 'Cupcake:'
 print cupcake.prepare
 puts ''
 
-puts 'Banana Cake'
+puts 'Banana Cake:'
 banana_cake = BananaCake.new
 print banana_cake.prepare
 puts ''
