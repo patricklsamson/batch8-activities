@@ -7,8 +7,6 @@ if input.empty?
   puts input
 else
   positive = input.select { |n| n > 0 }
-
   negative = input.select { |n| n < 0 }
-
   puts [].push(positive.count, negative.sum)
 end
