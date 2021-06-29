@@ -55,3 +55,4 @@ This page is intended for presenting to you all the activities I completed throu
 
 1. [Square of Squares](/rubyactivities/square_of_squares.rb)
 1. [Integer](/ruby-coding-exercise/integer.rb)
+1. [Count of Positives / Sum of Negatives](/rubyactivities/count_positives.rb)
