@@ -45,6 +45,11 @@ This page is intended for presenting to you all the activities I completed throu
 1. Object-Oriented Programming
   - [Object](/a2-ruby/a1_object.rb)
   - [Missing Code (Attr)](/rubyactivities/2.0_1_missing_code.rb)
+  - [Confection (Super)](/rubyactivities/confection.rb)
+  - [Module](/a2-ruby/c2_module.rb)
+  - [Encapsulation](/a2-ruby/d1_encapsulation.rb)
+  - [Abstraction](/a2-ruby/e1_abstraction.rb)
+  - [Polymorphism (Inheritance and Duck-typing)](/rubyactivities/polymorphism.rb)
 
 ### Extras - Coding Exercise:
 
