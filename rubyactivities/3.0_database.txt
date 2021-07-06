@@ -1,4 +1,4 @@
-ACTIVITY 3 - B
+ACTIVITY 3 - B1
 
 a. Display the count of all students
 select count(id) from students;
