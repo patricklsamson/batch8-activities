@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# C1
+# ACTIVITY 2 - C1
 # CONFECTION
 class Confection
   def prepare
