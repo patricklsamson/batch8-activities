@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# A4
+# ACTIVITY 1 - A4
 puts 'How old are you?'
 age = gets.chomp.to_i
 
