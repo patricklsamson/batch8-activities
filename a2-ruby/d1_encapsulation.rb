@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# D1
+# ACTIVITY 2 - D1
 # BMI
 class Person
   def initialize(name, mass, height)
