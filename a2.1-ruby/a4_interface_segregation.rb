@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# A4
+# ACTIVITY 2.1 - A4
 # ENROLLEE
 class Enrollee
   def initialize(first_name, last_name)
