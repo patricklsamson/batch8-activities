@@ -1,4 +1,4 @@
-ACTIVITY 3 - A
+ACTIVITY 3 - A1
 
 create table students (
 id integer primary key,
