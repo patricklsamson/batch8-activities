@@ -72,6 +72,8 @@ This page is intended for presenting to you all the activities I completed throu
   - [Students](https://github.com/patricklsamson/batch8-activities/blob/main/a3-postgresql/a1-students.txt)
   - *Part B*
   - [Database](https://github.com/patricklsamson/batch8-activities/pull/3)
+1. **Database Advanced**
+  - [Classrooms](https://github.com/patricklsamson/batch8-activities/blob/main/a3.1-postgresql/a1-classrooms.txt)
 
 ### Extras - Coding Exercise:
 
@@ -80,7 +82,7 @@ This page is intended for presenting to you all the activities I completed throu
 1. [Count of Positives / Sum of Negatives](/rubyactivities/count_positives.rb)
 1. [Keep Hydrated!](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c4_keep_hydrated.rb)
 1. [Isograms](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c5_isograms.rb)
-1. [Unique In Order](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/3.2_unique_in_order.rb)
+1. [Unique In Order](https://github.com/patricklsamson/batch8-activities/pull/5)
 
 ---
 
