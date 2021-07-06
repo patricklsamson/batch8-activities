@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# B2
+# ACTIVITY 1 - B2
 def num_check(num)
   if num.negative?
     puts 'Number cannot be negative.'
