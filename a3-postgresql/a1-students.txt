@@ -1,4 +1,5 @@
-1
+ACTIVITY 3 - A
+
 create table students (
 id integer primary key,
 first_name character varying(255) not null,
