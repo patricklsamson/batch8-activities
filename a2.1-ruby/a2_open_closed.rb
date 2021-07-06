@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# A2
+# ACTIVITY 2.1 - A2
 # PLAYER
 class Player
   def initialize(name, ign)
