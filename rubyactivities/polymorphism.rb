@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# F1
+# ACTIVITY 2 - F1
 # VEHICLE
 class Vehicle
   def initialize(brand_name, brand_model)
