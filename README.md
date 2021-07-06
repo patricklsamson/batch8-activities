@@ -75,12 +75,14 @@ This page is intended for presenting to you all the activities I completed throu
 
 ### Extras - Coding Exercise:
 
-1. [Square of Squares](/rubyactivities/square_of_squares.rb)
-1. [Integer](/ruby-coding-exercise/integer.rb)
+1. [Square of Squares](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/square_of_squares.rb)
+1. [Integer](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c2_integer.rb)
 1. [Count of Positives / Sum of Negatives](/rubyactivities/count_positives.rb)
-1. [Keep Hydrated!](/ruby-coding-exercise/keep_hydrated.rb)
-1. [Isograms](/ruby-coding-exercise/isograms.rb)
+1. [Keep Hydrated!](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c4_keep_hydrated.rb)
+1. [Isograms](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c5_isograms.rb)
 
 ## Git Practice
 
-1. [Merge Pull Request](https://github.com/patricklsamson/batch8-activities/pull/1)
+1. [Merge Pull Request(Author)](https://github.com/patricklsamson/batch8-activities/pull/1)
+  - [See File and Code](https://github.com/patricklsamson/batch8-activities/blob/main/git-practice/up_file.rb)
+1. [Merge Pull Request(Reviewer)](https://github.com/paopapaopao/batch8-activities/pull/1)
