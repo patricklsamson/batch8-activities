@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# C2
+# ACTIVITY 2 - C2
 # ADMIN PERMISSION
 module AdminPermisson
   def edit_users_profile
