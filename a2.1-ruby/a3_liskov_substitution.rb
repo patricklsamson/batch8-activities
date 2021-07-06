@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# A3
+# ACTIVITY 2.1 - A3
 # AVION
 class Avion
   def initialize(first_name, last_name)
