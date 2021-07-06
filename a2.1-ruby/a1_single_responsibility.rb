@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# A1
+# ACTIVITY 2.1 - A1
 # TRIANGLE
 class Triangle
   def initialize(base, height)
