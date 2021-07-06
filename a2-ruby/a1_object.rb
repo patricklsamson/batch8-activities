@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# A1
+# ACTIVITY 2 - A1
 # AIRCRAFT
 class Aircraft
   def initialize(airline, manufacturer, model)
