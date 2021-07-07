@@ -35,52 +35,70 @@ This [page](https://patricklsamson.github.io/batch8-activities/) is intended for
 
 ### Table of Contents:
 
-1. **Introduction to Ruby**
+I. **Introduction to Ruby**
 
 - [Rails Installation and Server](https://github.com/patricklsamson/sample)
-- _Part A_
-- [Array Each](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a1_array_each.rb)
-- [Hash](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a2_hash.rb)
-- [Data Structures](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a3_data_structures.rb)
-- [Age (Loop)](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/age.rb)
-- _Part B_
-- [Array Include](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b1_array_include.rb)
-- [Between (Case)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/between.rb)
-- [While](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b3_while.rb)
-- [Modulo](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b4_modulo.rb)
 
-2. **Object-Oriented Programming**
+_Part A_
 
-- _Part A_
+1. [Array Each](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a1_array_each.rb)
+1. [Hash](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a2_hash.rb)
+1. [Data Structures](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a3_data_structures.rb)
+1. [Age (Loop)](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/age.rb)
+
+_Part B_
+
+1. [Array Include](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b1_array_include.rb)
+1. [Between (Case)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/between.rb)
+1. [While](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b3_while.rb)
+1. [Modulo](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b4_modulo.rb)
+
+II. **Object-Oriented Programming**
+
+_Part A_
+
 - [Object](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/a1_object.rb)
-- _Part B_
+
+_Part B_
+
 - [Missing Code (Attr)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/2.0_1_missing_code.rb)
-- _Part C_
-- [Confection (Super)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/confection.rb)
-- [Module](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/c2_module.rb)
-- _Part D_
+
+_Part C_
+
+1. [Confection (Super)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/confection.rb)
+1. [Module](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/c2_module.rb)
+
+_Part D_
+
 - [Encapsulation](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/d1_encapsulation.rb)
-- _Part E_
+
+_Part E_
+
 - [Abstraction](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/e1_abstraction.rb)
-- _Part F_
+
+_Part F_
+
 - [Polymorphism (Inheritance and Duck-typing)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/polymorphism.rb)
 
-3. **SOLID Principle**
+III. **SOLID Principle**
 
-- [Single Responsibility](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a1_single_responsibility.rb)
-- [Open / Closed](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a2_open_closed.rb)
-- [Liskov Substitution](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a3_liskov_substitution.rb)
-- [Interface Segragation](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a4_interface_segregation.rb)
-- [Dependency Inversion](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a5_dependency_inversion.rb)
+1. [Single Responsibility](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a1_single_responsibility.rb)
+1. [Open / Closed](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a2_open_closed.rb)
+1. [Liskov Substitution](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a3_liskov_substitution.rb)
+1. [Interface Segragation](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a4_interface_segregation.rb)
+1. [Dependency Inversion](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a5_dependency_inversion.rb)
 
-4. **Database Fundamentals**
+IV. **Database Fundamentals**
 
-- _Part A_
+_Part A_
+
 - [Students](https://github.com/patricklsamson/batch8-activities/blob/main/a3-postgresql/a1-students.txt)
-- _Part B_
+
+_Part B_
+
 - [Database](https://github.com/patricklsamson/batch8-activities/pull/3)
 
-5. **Database Advanced**
+V. **Database Advanced**
 
 - [Classrooms](https://github.com/patricklsamson/batch8-activities/blob/main/a3.1-postgresql/a1-classrooms.txt)
 
@@ -104,4 +122,4 @@ This [page](https://patricklsamson.github.io/batch8-activities/) is intended for
 
 ## Sample Work
 
-1. [Slnc Digital Works](https://slncdworks.github.io/) - [Open Source Code](https://github.com/slncdworks/slncdworks.github.io)
+- [Slnc Digital Works](https://slncdworks.github.io/) - [Open Source Code](https://github.com/slncdworks/slncdworks.github.io)
