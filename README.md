@@ -36,44 +36,53 @@ This page is intended for presenting to you all the activities I completed throu
 ### Table of Contents:
 
 1. **Introduction to Ruby**
-  - Rails New Server
-  - *Part A*
-  - [Array Each](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a1_array_each.rb)
-  - [Hash](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a2_hash.rb)
-  - [Data Structures](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a3_data_structures.rb)
-  - [Age (Loop)](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/age.rb)
-  - *Part B*
-  - [Array Include](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b1_array_include.rb)
-  - [Between (Case)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/between.rb)
-  - [While](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b3_while.rb)
-  - [Modulo](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b4_modulo.rb)
-1. **Object-Oriented Programming**
-  - *Part A*
-  - [Object](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/a1_object.rb)
-  - *Part B*
-  - [Missing Code (Attr)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/2.0_1_missing_code.rb)
-  - *Part C*
-  - [Confection (Super)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/confection.rb)
-  - [Module](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/c2_module.rb)
-  - *Part D*
-  - [Encapsulation](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/d1_encapsulation.rb)
-  - *Part E*
-  - [Abstraction](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/e1_abstraction.rb)
-  - *Part F*
-  - [Polymorphism (Inheritance and Duck-typing)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/polymorphism.rb)
-1. **SOLID Principle**
-  - [Single Responsibility](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a1_single_responsibility.rb)
-  - [Open / Closed](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a2_open_closed.rb)
-  - [Liskov Substitution](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a3_liskov_substitution.rb)
-  - [Interface Segragation](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a4_interface_segregation.rb)
-  - [Dependency Inversion](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a5_dependency_inversion.rb)
-1. **Database Fundamentals**
-  - *Part A*
-  - [Students](https://github.com/patricklsamson/batch8-activities/blob/main/a3-postgresql/a1-students.txt)
-  - *Part B*
-  - [Database](https://github.com/patricklsamson/batch8-activities/pull/3)
-1. **Database Advanced**
-  - [Classrooms](https://github.com/patricklsamson/batch8-activities/blob/main/a3.1-postgresql/a1-classrooms.txt)
+
+- [Rails Installation and Server](https://github.com/patricklsamson/sample)
+- _Part A_
+- [Array Each](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a1_array_each.rb)
+- [Hash](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a2_hash.rb)
+- [Data Structures](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/a3_data_structures.rb)
+- [Age (Loop)](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/age.rb)
+- _Part B_
+- [Array Include](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b1_array_include.rb)
+- [Between (Case)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/between.rb)
+- [While](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b3_while.rb)
+- [Modulo](https://github.com/patricklsamson/batch8-activities/blob/main/a1-ruby/b4_modulo.rb)
+
+2. **Object-Oriented Programming**
+
+- _Part A_
+- [Object](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/a1_object.rb)
+- _Part B_
+- [Missing Code (Attr)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/2.0_1_missing_code.rb)
+- _Part C_
+- [Confection (Super)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/confection.rb)
+- [Module](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/c2_module.rb)
+- _Part D_
+- [Encapsulation](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/d1_encapsulation.rb)
+- _Part E_
+- [Abstraction](https://github.com/patricklsamson/batch8-activities/blob/main/a2-ruby/e1_abstraction.rb)
+- _Part F_
+- [Polymorphism (Inheritance and Duck-typing)](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/polymorphism.rb)
+
+3. **SOLID Principle**
+
+- [Single Responsibility](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a1_single_responsibility.rb)
+- [Open / Closed](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a2_open_closed.rb)
+- [Liskov Substitution](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a3_liskov_substitution.rb)
+- [Interface Segragation](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a4_interface_segregation.rb)
+- [Dependency Inversion](https://github.com/patricklsamson/batch8-activities/blob/main/a2.1-ruby/a5_dependency_inversion.rb)
+
+4. **Database Fundamentals**
+
+- _Part A_
+- [Students](https://github.com/patricklsamson/batch8-activities/blob/main/a3-postgresql/a1-students.txt)
+- _Part B_
+- [Database](https://github.com/patricklsamson/batch8-activities/pull/3)
+
+5. **Database Advanced**
+
+- [Classrooms](https://github.com/patricklsamson/batch8-activities/blob/main/a3.1-postgresql/a1-classrooms.txt)
 
 ### Extras - Coding Exercise:
 
@@ -89,5 +98,7 @@ This page is intended for presenting to you all the activities I completed throu
 ## Git Practice
 
 1. [Merge Pull Request(Author)](https://github.com/patricklsamson/batch8-activities/pull/1)
-  - [See File and Code](https://github.com/patricklsamson/batch8-activities/blob/main/git-practice/up_file.rb)
-1. [Merge Pull Request(Reviewer)](https://github.com/paopapaopao/batch8-activities/pull/1)
+
+- [See File and Code](https://github.com/patricklsamson/batch8-activities/blob/main/git-practice/up_file.rb)
+
+2. [Merge Pull Request(Reviewer)](https://github.com/paopapaopao/batch8-activities/pull/1)
