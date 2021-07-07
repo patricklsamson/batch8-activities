@@ -102,3 +102,11 @@ This page is intended for presenting to you all the activities I completed throu
 - [See File and Code](https://github.com/patricklsamson/batch8-activities/blob/main/git-practice/up_file.rb)
 
 2. [Merge Pull Request(Reviewer)](https://github.com/paopapaopao/batch8-activities/pull/1)
+
+---
+
+## Sample Work
+
+1. [Slnc Digital Works](https://slncdworks.github.io/)
+
+- [See Files and Code](https://github.com/slncdworks/slncdworks.github.io)
