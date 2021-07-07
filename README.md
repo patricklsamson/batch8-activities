@@ -8,26 +8,26 @@ This page is intended for presenting to you all the activities I completed throu
 
 ### Table of Contents:
 
-1. [Best Practice Page](/a1-best-practice-page/index.html)
-1. [HTML Email](/a2-html-email/index.html)
-1. [Tribute Page Project](/a3-tribute-page-project/index.html)
-1. [Survey Form](/a4-survey-form/index.html)
-1. [Chessboard (Flex)](/a5-chessboard-flex/index.html)
-1. [Chessboard (Grid)](/a6-chessboard-grid/index.html)
-1. [Product Landing Page](/a7-product-landing-page/index.html)
-1. [Momentum App](/a8-momentum-app/index.html)
-1. [Tic Tac Toe](/a9-tic-tac-toe/index.html)
-1. [Bank App](/a10-bank-app/index.html)
-1. [API - Final Project - Mental Health Awareness](/a11-api-final-project/index.html)
-1. [API - Final Project - Admin](/a11-api-final-project/admin.html)
+1. [Best Practice Page](/a1-best-practice-page/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a1-best-practice-page)
+1. [HTML Email](/a2-html-email/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a1-best-practice-page)
+1. [Tribute Page Project](/a3-tribute-page-project/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a3-tribute-page-project)
+1. [Survey Form](/a4-survey-form/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a4-survey-form)
+1. [Chessboard (Flex)](/a5-chessboard-flex/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a5-chessboard-flex)
+1. [Chessboard (Grid)](/a6-chessboard-grid/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a6-chessboard-grid)
+1. [Product Landing Page](/a7-product-landing-page/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a7-product-landing-page)
+1. [Momentum App](/a8-momentum-app/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a8-momentum-app)
+1. [Tic Tac Toe](/a9-tic-tac-toe/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a9-tic-tac-toe)
+1. [Bank App](/a10-bank-app/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a10-bank-app)
+1. [API - Final Project - Mental Health Awareness](/a11-api-final-project/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a11-api-final-project)
+1. [API - Final Project - Mental Health Awareness (Admin)](/a11-api-final-project/admin.html) - Please refer to the source code link of "API - Final Project - Mental Health Awareness"
 
 ### Extras - Coding Challenge:
 
-1. [BMI](/coding-challenge/c1-bmi.html)
-1. [Playing Cards](/coding-challenge/c2-playing-cards.html)
-1. [Quiz Game (Basic)](/coding-challenge/c3-quiz-game-basic.html)
-1. [Quiz Game (Expert)](/coding-challenge/c4-quiz-game-expert.html)
-1. [Book Store](/coding-challenge/c5-book-store.html)
+1. [BMI](/coding-challenge/c1-bmi.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/coding-challenge/c1-bmi.html)
+1. [Playing Cards](/coding-challenge/c2-playing-cards.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/coding-challenge/c2-playing-cards.html)
+1. [Quiz Game (Basic)](/coding-challenge/c3-quiz-game-basic.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/coding-challenge/c3-quiz-game-basic.html)
+1. [Quiz Game (Expert)](/coding-challenge/c4-quiz-game-expert.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/coding-challenge/c4-quiz-game-expert.html)
+1. [Book Store](/coding-challenge/c5-book-store.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/coding-challenge/c5-book-store.html)
 
 ---
 
@@ -88,7 +88,7 @@ This page is intended for presenting to you all the activities I completed throu
 
 1. [Square of Squares](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/square_of_squares.rb)
 1. [Integer](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c2_integer.rb)
-1. [Count of Positives / Sum of Negatives](/rubyactivities/count_positives.rb)
+1. [Count of Positives / Sum of Negatives](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/count_positives.rb)
 1. [Keep Hydrated!](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c4_keep_hydrated.rb)
 1. [Isograms](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c5_isograms.rb)
 1. [Unique In Order](https://github.com/patricklsamson/batch8-activities/pull/5)
@@ -97,16 +97,11 @@ This page is intended for presenting to you all the activities I completed throu
 
 ## Git Practice
 
-1. [Merge Pull Request(Author)](https://github.com/patricklsamson/batch8-activities/pull/1)
-
-- [See File and Code](https://github.com/patricklsamson/batch8-activities/blob/main/git-practice/up_file.rb)
-
+1. [Merge Pull Request(Author)](https://github.com/patricklsamson/batch8-activities/pull/1) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/git-practice/up_file.rb)
 2. [Merge Pull Request(Reviewer)](https://github.com/paopapaopao/batch8-activities/pull/1)
 
 ---
 
 ## Sample Work
 
-1. [Slnc Digital Works](https://slncdworks.github.io/)
-
-- [See Files and Code](https://github.com/slncdworks/slncdworks.github.io)
+1. [Slnc Digital Works](https://slncdworks.github.io/) - [Open Source Code](https://github.com/slncdworks/slncdworks.github.io)
