@@ -19,7 +19,7 @@ This [page](https://patricklsamson.github.io/batch8-activities/) is intended for
 1. [Tic Tac Toe](/a9-tic-tac-toe/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a9-tic-tac-toe)
 1. [Bank App](/a10-bank-app/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a10-bank-app)
 1. [API - Final Project - Mental Health Awareness](/a11-api-final-project/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a11-api-final-project)
-1. [API - Final Project - Mental Health Awareness (Admin)](/a11-api-final-project/admin.html) - Please refer to the source code link of "API - Final Project - Mental Health Awareness"
+1. [API - Final Project - Mental Health Awareness (Admin)](/a11-api-final-project/admin.html) - Please refer to the source code link of #11
 
 ### Extras - Coding Challenge:
 
