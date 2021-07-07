@@ -96,7 +96,7 @@ _Part A_
 
 _Part B_
 
-- [Database](https://github.com/patricklsamson/batch8-activities/pull/3)
+- [Database](https://github.com/patricklsamson/batch8-activities/pull/3) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/3.0_database.txt)
 
 V. **Database Advanced**
 
@@ -109,7 +109,7 @@ V. **Database Advanced**
 1. [Count of Positives / Sum of Negatives](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/count_positives.rb)
 1. [Keep Hydrated!](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c4_keep_hydrated.rb)
 1. [Isograms](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c5_isograms.rb)
-1. [Unique In Order](https://github.com/patricklsamson/batch8-activities/pull/5)
+1. [Unique In Order](https://github.com/patricklsamson/batch8-activities/pull/5) - [Open Source Code]()
 
 ---
 
