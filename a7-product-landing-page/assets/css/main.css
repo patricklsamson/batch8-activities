@@ -12,11 +12,11 @@
  *--------------------------------------------------*/
 
 @import "components/loader.css";
-@import "components/containers.css";
+@import "components/container.css";
 @import "components/navbar.css";
 @import "components/header.css";
 @import "components/footer.css";
-@import "components/forms.css";
+@import "components/form.css";
 @import "components/carousel.css";
 @import "components/button.css";
 
