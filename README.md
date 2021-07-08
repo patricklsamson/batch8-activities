@@ -115,12 +115,12 @@ V. **Database Advanced**
 
 ## Git Practice
 
-1. [Merge Pull Request(Author)](https://github.com/patricklsamson/batch8-activities/pull/1) - [File](https://patricklsamson.github.io/batch8-activities/git-practice/up_file.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/git-practice/up_file.rb)
-2. [Merge Pull Request(Reviewer)](https://github.com/paopapaopao/batch8-activities/pull/1)
+1. [Pull Request(Author)](https://github.com/patricklsamson/batch8-activities/pull/1) - [File](https://patricklsamson.github.io/batch8-activities/git-practice/up_file.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/git-practice/up_file.rb)
+2. [Pull Request(Reviewer)](https://github.com/paopapaopao/batch8-activities/pull/1)
 
 ---
 
 ## Sample Work
 
 - [Slnc Digital Works](https://slncdworks.github.io/) - [Open Source Code](https://github.com/patricklsamson/slncdworks.github.io)
-- [WIP: Portfolio]()
+- [WIP: Portfolio]() - [Open Source Code]()
