@@ -11,13 +11,13 @@
  * COMPONENTS
  *--------------------------------------------------*/
 
-@import "components/containers.css";
+@import "components/container.css";
 @import "components/header.css";
 @import "components/main.css";
-@import "components/modals.css";
+@import "components/modal.css";
 @import "components/navbar.css";
-@import "components/forms.css";
-@import "components/tabs.css";
+@import "components/form.css";
+@import "components/tab.css";
 @import "components/button.css";
 
 /**
