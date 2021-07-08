@@ -24,6 +24,6 @@
  * COMPONENTS
  *--------------------------------------------------*/
 
-@import "components/containers.css";
+@import "components/container.css";
 @import "components/grid.css";
 @import "components/navbar.css";
