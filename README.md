@@ -102,6 +102,10 @@ V. **Database Advanced**
 
 - [Classrooms](https://patricklsamson.github.io/batch8-activities/ba3.1-postgresql/a1-classrooms.txt) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba3.1-postgresql/a1-classrooms.txt)
 
+VI. **Introduction to Ruby on Rails**
+
+- [Blog]() - [Pull Request]()
+
 ### Extras - Coding Exercise:
 
 1. [Square of Squares](https://patricklsamson.github.io/batch8-activities/rubyactivities/square_of_squares.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/square_of_squares.rb)
