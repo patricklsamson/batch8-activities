@@ -104,7 +104,7 @@ V. **Database Advanced**
 
 VI. **Introduction to Ruby on Rails**
 
-- [Blog]() - [Pull Request]()
+- [Blog](https://github.com/patricklsamson/batch8-activities/tree/main/rubyactivities/blog) - [Pull Request](https://github.com/patricklsamson/batch8-activities/pull/6)
 
 ### Extras - Coding Exercise:
 
