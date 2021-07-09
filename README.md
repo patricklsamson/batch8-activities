@@ -4,6 +4,8 @@
 
 This [page](https://patricklsamson.github.io/batch8-activities/) is intended for presenting to you all the activities I completed throughout the duration of the Web Development Bootcamp with Avion School.
 
+---
+
 ## Front-End
 
 ### Table of Contents:
