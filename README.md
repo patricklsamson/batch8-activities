@@ -37,7 +37,7 @@ This [page](https://patricklsamson.github.io/batch8-activities/) is intended for
 
 I. **Introduction to Ruby**
 
-- [Rails Installation and Server](https://github.com/patricklsamson/sample)
+- [Rails Installation and Server]()
 
 _Part A_
 
