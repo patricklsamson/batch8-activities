@@ -4,6 +4,8 @@
 
 This [page](https://patricklsamson.github.io/batch8-activities/) is intended for presenting to you all the activities I completed throughout the duration of the Web Development Bootcamp with Avion School.
 
+Note: This [account](https://github.com/slncdworks) was also mine. Due to difficulties, commits from Mar 25 - Apr 24 2021 were made by that account.
+
 ---
 
 ## Front-End
