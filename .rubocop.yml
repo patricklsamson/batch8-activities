@@ -1,7 +1,9 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
 Layout/EndOfLine:
-  Enabled: False
+  Enabled: false
   EnforcedStyle: lf
 Metrics/MethodLength:
-  Max: 20
+  Max: 30
 AllCops:
   NewCops: enable
