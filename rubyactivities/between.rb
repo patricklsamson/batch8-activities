@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # ACTIVITY 1 - B2
 def num_check(num)
   if num.negative?
