@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # CODING EXERCISE 4
 def litres(time)
   puts "litres = #{(0.5 * time).floor}"
