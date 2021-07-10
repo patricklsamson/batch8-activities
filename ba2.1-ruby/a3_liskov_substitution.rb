@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # ACTIVITY 2.1 - A3
 # AVION
 class Avion
