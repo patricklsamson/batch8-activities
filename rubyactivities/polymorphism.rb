@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # ACTIVITY 2 - F1
 # VEHICLE
 class Vehicle
