@@ -41,7 +41,7 @@ Note: This [account](https://github.com/slncdworks) was also mine. Due to diffic
 
 I. **Introduction to Ruby**
 
-- [Rails Installation and Server](https://github.com/patricklsamson/batch8-activities/tree/main/ba1-ruby/sample)
+- [Rails Installation and Server](https://github.com/patricklsamson/sample)
 
 _Part A_
 
