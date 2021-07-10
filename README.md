@@ -131,4 +131,4 @@ VI. **Introduction to Ruby on Rails**
 ## Sample Work
 
 - [Slnc Digital Works](https://slncdworks.github.io/) - [Open Source Code](https://github.com/patricklsamson/slncdworks.github.io)
-- [WIP: Portfolio]() - [Open Source Code]()
+- [WIP: Portfolio](https://patricklsamson.github.io/) - [Open Source Code](https://github.com/patricklsamson/patricklsamson.github.io)
