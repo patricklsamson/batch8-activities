@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # ACTIVITY 2 - A1
 # AIRCRAFT
 class Aircraft
