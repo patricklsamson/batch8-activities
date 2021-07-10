@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # CODING EXERCISE 2
 arr = [34, 15, 88, 2]
 smallest = arr[0]
