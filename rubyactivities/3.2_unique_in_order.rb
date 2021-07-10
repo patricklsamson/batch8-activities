@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # CODING EXERCISE 6
 
 def unique_in_order(array)
