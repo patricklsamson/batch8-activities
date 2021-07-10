@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # CODING EXERCISE 5
 
 def is_isogram(string)
