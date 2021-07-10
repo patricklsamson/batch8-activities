@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # CODING EXERCISE 1
 def square?(num)
   if num.negative?
