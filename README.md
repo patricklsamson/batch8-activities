@@ -1,4 +1,4 @@
-# Welcome to Patrick's GitHub Page!
+# Compilation of Avion School Batch 8 Activities
 
 ---
 
@@ -116,10 +116,10 @@ VII. **Simple Rails App (Blog): Model**
 ### Extras - Coding Exercise:
 
 1. [Square of Squares](https://patricklsamson.github.io/batch8-activities/rubyactivities/square_of_squares.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/square_of_squares.rb)
-1. [Integer](https://patricklsamson.github.io/batch8-activities/ruby-coding-exercise/c2_integer.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c2_integer.rb)
+1. [Integer](https://patricklsamson.github.io/batch8-activities/be-coding-exercise/c2_integer.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/be-coding-exercise/c2_integer.rb)
 1. [Count of Positives / Sum of Negatives](https://patricklsamson.github.io/batch8-activities/rubyactivities/count_positives.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/count_positives.rb)
-1. [Keep Hydrated!](https://patricklsamson.github.io/batch8-activities/ruby-coding-exercise/c4_keep_hydrated.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c4_keep_hydrated.rb)
-1. [Isograms](https://patricklsamson.github.io/batch8-activities/ruby-coding-exercise/c5_isograms.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ruby-coding-exercise/c5_isograms.rb)
+1. [Keep Hydrated!](https://patricklsamson.github.io/batch8-activities/be-coding-exercise/c4_keep_hydrated.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/be-coding-exercise/c4_keep_hydrated.rb)
+1. [Isograms](https://patricklsamson.github.io/batch8-activities/be-coding-exercise/c5_isograms.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/be-coding-exercise/c5_isograms.rb)
 1. [Unique In Order](https://patricklsamson.github.io/batch8-activities/rubyactivities/3.2_unique_in_order.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/3.2_unique_in_order.rb) - [Pull Request](https://github.com/patricklsamson/batch8-activities/pull/5)
 
 ---
@@ -131,7 +131,7 @@ VII. **Simple Rails App (Blog): Model**
 
 ---
 
-## Sample Work
+## Sample Works
 
 - [Slnc Digital Works](https://slncdworks.github.io/) - [Open Source Code](https://github.com/patricklsamson/slncdworks.github.io)
 - [WIP: Portfolio](https://patricklsamson.github.io/) - [Open Source Code](https://github.com/patricklsamson/patricklsamson.github.io)
