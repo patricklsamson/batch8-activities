@@ -93,6 +93,7 @@
 
   nav li {
     padding: 5px 25px;
+    display: inline-block;
   }
 
   nav li:nth-child(1n + 2) {
