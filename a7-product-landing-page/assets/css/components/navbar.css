@@ -86,6 +86,10 @@
   top: 14px;
 }
 
+#nav-bar ul {
+  list-style: none;
+}
+
 @media only screen and (min-width: 992px) {
   #nav-toggle-icon {
     display: none;
