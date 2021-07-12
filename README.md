@@ -123,7 +123,7 @@ VII. **Simple Rails App (Blog): Model**
 1. [Unique In Order](https://patricklsamson.github.io/batch8-activities/rubyactivities/3.2_unique_in_order.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/3.2_unique_in_order.rb) - [Pull Request](https://github.com/patricklsamson/batch8-activities/pull/5)
 1. [Disemvowel Trolls]() - [Open Source Code]()
 1. [Century From Year]() - [Open Source Code]() - [Pull Request]()
-1. []() - [Open Source Code]()
+1. [Format a String of Names Like 'Bart, Lisa & Maggie']() - [Open Source Code]()
 1. [The Vowel Code]() - [Open Source Code]()
 
 ---
