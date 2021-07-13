@@ -1,5 +1,5 @@
 # ACTIVITY 2 - B1
-# PROFILE
+
 class Profile
   attr_accessor :full_name, :age, :address, :work
 
