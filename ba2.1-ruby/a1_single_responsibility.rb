@@ -1,5 +1,5 @@
 # ACTIVITY 2.1 - A1
-# TRIANGLE
+
 class Triangle
   def initialize(base, height)
     @base = base
