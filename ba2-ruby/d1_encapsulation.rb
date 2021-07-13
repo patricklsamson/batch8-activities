@@ -1,5 +1,5 @@
 # ACTIVITY 2 - D1
-# BMI
+
 class Person
   def initialize(name, mass, height)
     @name = name
