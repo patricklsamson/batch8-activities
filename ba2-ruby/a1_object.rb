@@ -1,5 +1,5 @@
 # ACTIVITY 2 - A1
-# AIRCRAFT
+
 class Aircraft
   def initialize(airline, manufacturer, model)
     @airline = airline
