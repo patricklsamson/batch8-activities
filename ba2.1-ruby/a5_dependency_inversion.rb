@@ -1,5 +1,5 @@
 # ACTIVITY 2.1 - A5
-# PLAYER
+
 class Player
   def initialize(name, ign)
     @name = name
@@ -11,28 +11,24 @@ class Player
   end
 end
 
-# HERALD
 class Herald < Player
   def rank
     '0 to 720 MMR'
   end
 end
 
-# LEGEND
 class Legend < Player
   def rank
     '3360 to 4080 MMR'
   end
 end
 
-# IMMORTAL
 class Immortal < Player
   def rank
     '6000+ MMR'
   end
 end
 
-# UNRANKED
 class Unranked < Player
   def rank
     'no mmr'
