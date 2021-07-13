@@ -1,5 +1,5 @@
 # ACTIVITY 2 - F1
-# VEHICLE
+
 class Vehicle
   def initialize(brand_name, brand_model)
     @brand_name = brand_name
@@ -11,14 +11,12 @@ class Vehicle
   end
 end
 
-# MOTORCYCLE
 class Motorcycle < Vehicle
   def wheels
     'two-wheels'
   end
 end
 
-# CAR
 class Car < Vehicle
   def wheels
     'four-wheels'
