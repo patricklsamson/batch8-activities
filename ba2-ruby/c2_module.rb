@@ -1,19 +1,17 @@
 # ACTIVITY 2 - C2
-# ADMIN PERMISSION
+
 module AdminPermisson
   def edit_users_profile
     puts 'Admin updated all users profile'
   end
 end
 
-# BUYER PERMISSION
 module BuyerPermission
   def buy
     puts 'Buyer has bought an item'
   end
 end
 
-# USER
 class User
   attr_accessor :username, :password, :ip_address
 
@@ -43,12 +41,10 @@ class User
   end
 end
 
-# ADMIN
 class Admin < User
   include AdminPermisson
 end
 
-# BUYER
 class Buyer < User
   include BuyerPermission
 end
