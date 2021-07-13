@@ -128,14 +128,7 @@ VII. **Simple Rails App (Blog): Model**
 
 ---
 
-## Git Practice
+## Git Pull Request Practice
 
 1. [Pull Request(Author)](https://github.com/patricklsamson/batch8-activities/pull/1) - [File](https://patricklsamson.github.io/batch8-activities/git-practice/up_file.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/git-practice/up_file.rb)
 2. [Pull Request(Reviewer)](https://github.com/paopapaopao/batch8-activities/pull/1)
-
----
-
-## Sample Works
-
-- [Slnc Digital Works](https://slncdworks.github.io/) - [Open Source Code](https://github.com/patricklsamson/slncdworks.github.io)
-- [WIP: Portfolio](https://patricklsamson.github.io/) - [Open Source Code](https://github.com/patricklsamson/patricklsamson.github.io)
