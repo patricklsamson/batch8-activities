@@ -1,19 +1,17 @@
 # ACTIVITY 2 - C1
-# CONFECTION
+
 class Confection
   def prepare
     'Baking at 350 degrees for 25 minutes.'
   end
 end
 
-# CUPCAKE
 class Cupcake < Confection
   def prepare
     "#{super} Applying frosting"
   end
 end
 
-# BANANA CAKE
 class BananaCake < Confection
 end
 
