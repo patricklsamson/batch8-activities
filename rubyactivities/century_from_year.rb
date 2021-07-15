@@ -1,7 +1,8 @@
 # CODING EXERCISE 8
 
 def centuryFromYear(year)
-  puts (year.to_f / 100).ceil
+  century = year.to_f / 100
+  p century > century.round ? century.round + 1 : century.round
 end
 
 centuryFromYear(1705)
