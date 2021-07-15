@@ -1,0 +1,13 @@
+# PUT IN ROOT OF ALL PROJECTS OR WORKS
+
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Layout/EndOfLine:
+  Enabled: false
+  EnforcedStyle: lf
+Metrics/MethodLength:
+  Max: 30
+AllCops:
+  NewCops: enable
