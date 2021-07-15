@@ -1,4 +1,5 @@
 # ACTIVITY 1 - B2
+
 def num_check(num)
   if num.negative?
     puts 'Number cannot be negative.'

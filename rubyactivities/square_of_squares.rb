@@ -1,4 +1,5 @@
 # CODING EXERCISE 1
+
 def square?(num)
   if num.negative?
     puts false
