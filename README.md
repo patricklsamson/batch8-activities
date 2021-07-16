@@ -111,7 +111,10 @@ VI. **Introduction to Ruby on Rails**
 - [Blog (New Rails App)](https://github.com/patricklsamson/blog)
 
 VII. **Simple Rails App (Blog): Model**
-- [Blog (Model and Validations)](https://github.com/patricklsamson/blog/tree/main/app/models) - [Pull Request](https://github.com/patricklsamson/blog/pull/1)
+- [Blog (Model and Validations)](https://github.com/patricklsamson/blog/blob/main/app/models/article.rb) - [Pull Request](https://github.com/patricklsamson/blog/pull/1)
+
+VIII. **Simple Rails App (Blog) Controllers, Views and Routes**
+- [Blog (Update and Delete)](https://patricklsamson-blog.herokuapp.com/) - [Open Source Code](https://github.com/patricklsamson/blog/blob/main/app/controllers/articles_controller.rb)
 
 ### Extras - Coding Exercise:
 
