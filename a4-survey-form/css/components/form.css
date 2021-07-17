@@ -1,0 +1,94 @@
+#survey-form {
+  padding: 50px;
+  background-color: rgba(0, 137, 171, 0.8);
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+
+#number,
+#dropdown {
+  width: 100%;
+}
+
+#dropdown {
+  height: 30px;
+}
+
+#top:checked ~ .wrap-champs #top-champs {
+  display: block;
+}
+
+#jungle:checked ~ .wrap-champs #jungle-champs {
+  display: block;
+}
+
+#middle:checked ~ .wrap-champs #middle-champs {
+  display: block;
+}
+
+#adc:checked ~ .wrap-champs #adc-champs {
+  display: block;
+}
+
+#support:checked ~ .wrap-champs #support-champs {
+  display: block;
+}
+
+.wrap-champs {
+  height: 192px;
+}
+
+#top-champs,
+#jungle-champs,
+#middle-champs,
+#adc-champs,
+#support-champs {
+  display: none;
+}
+
+textarea {
+  width: 100%;
+}
+
+#submit {
+  padding: 10px 15px;
+  border: 5px solid #fff;
+  background-color: #035064;
+  color: #fff;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+
+#submit:hover,
+#submit:active {
+  border: 10px solid #fff;
+  color: #fec009;
+  padding: 5px 10px;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  -moz-transition: 0.25s;
+  transition: 0.25s;
+}
+
+@media only screen and (max-width: 1199px) {
+  #survey-form {
+    padding: 35px;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  #survey-form {
+    padding: 25px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #survery-form {
+    padding: 20px;
+  }
+}

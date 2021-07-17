@@ -1,0 +1,30 @@
+.wrap-overlay {
+  background-color: rgba(52, 58, 64, 0.5);
+}
+
+.wrap-text {
+  background-color: rgba(3, 80, 100, 0.8);
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+
+@media only screen and (min-width: 992px) {
+  .cont > .grid > [class*="gcol"]:first-child {
+    height: 1011px;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .wrap-text {
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .wrap-text {
+    margin-bottom: 15px;
+  }
+}

@@ -1,0 +1,18 @@
+.p-results {
+  color: #fec009;
+}
+
+.p-results a {
+  color: rgba(254, 192, 9, 0.5);
+}
+
+.p-results a:hover,
+.p-results a:active {
+  color: #fec009;
+}
+
+@media only screen and (min-width: 1200px) {
+  .p-results {
+    font-size: 40px;
+  }
+}
