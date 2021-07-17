@@ -1,0 +1,31 @@
+.wrap-continue {
+  position: relative;
+  font-size: 3vmin;
+}
+
+.main-index .p-content {
+  font-size: 7vmin;
+}
+
+#no:checked ~ .wrap-sure {
+  display: block;
+}
+
+.wrap-sure {
+  position: absolute;
+  display: none;
+  width: 62vmin;
+  top: -3vmin;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background: #bea5a9;
+  padding: 3vmin 3vmin;
+  -webkit-border-radius: 2vmin;
+  -moz-border-radius: 2vmin;
+  border-radius: 2vmin;
+  border: 1vmin solid #6b283b;
+}

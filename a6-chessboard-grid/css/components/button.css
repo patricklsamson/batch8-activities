@@ -1,0 +1,43 @@
+.btn-blue,
+.btn-red {
+  font-size: 4vmin;
+  padding: 0.5vmin 3vmin;
+  -webkit-border-radius: 1.5vmin;
+  -moz-border-radius: 1.5vmin;
+  border-radius: 1.5vmin;
+  color: #a4abbd;
+  margin: 0 2vmin;
+}
+
+.btn-blue {
+  background: #14406f;
+}
+
+.btn-red {
+  background: #6b283b;
+}
+
+.btn-blue:hover,
+.btn-red:hover {
+  background: #a4abbd;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn-blue:hover {
+  color: #14406f;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn-red:hover {
+  color: #6b283b;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}

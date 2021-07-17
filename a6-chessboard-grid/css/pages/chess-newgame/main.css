@@ -1,0 +1,35 @@
+label[for="spiderman-d2-pos"] {
+  bottom: 0;
+}
+
+#spiderman-d2-pos:checked ~ label {
+  bottom: 10vmin;
+}
+
+label[for="hawkeye-e7-pos-new"] {
+  top: 0;
+}
+
+#hawkeye-e7-pos-new:checked ~ label {
+  top: 20vmin;
+}
+
+label[for="war-machine-c1-pos"] {
+  left: 0;
+  bottom: 0;
+}
+
+#war-machine-c1-pos:checked ~ label {
+  left: 40vmin;
+  bottom: 40vmin;
+}
+
+label[for="winter-soldier-g8-pos"] {
+  top: 0;
+  right: 0;
+}
+
+#winter-soldier-g8-pos:checked ~ label {
+  top: 50vmin;
+  right: 50vmin;
+}

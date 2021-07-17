@@ -1,0 +1,16 @@
+html {
+  font-size: 2vmin;
+}
+
+h1 {
+  font-size: 6vmin;
+  color: #a4abbd;
+}
+
+h1 span:first-child {
+  color: #14406f;
+}
+
+h1 span:nth-child(2) {
+  color: #6b283b;
+}
