@@ -1,157 +1,21 @@
 @charset "UTF-8";
 
-main {
-  background-image: url(../../assets/img/summoners-rift.jpg);
-  color: #fff;
-}
+/**
+ * COMPONENTS
+ *--------------------------------------------------*/
 
-.wrap-overlay {
-  background-color: rgba(52, 58, 64, 0.5);
-}
+@import "components/container.css";
+@import "components/main.css";
+@import "components/form.css";
 
-.wrap-text {
-  background-color: rgba(3, 80, 100, 0.8);
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  border-radius: 25px;
-}
+/**
+ * PAGES
+ *--------------------------------------------------*/
 
-#title {
-  color: #fec009;
-}
+/* INDEX */
 
-#title span {
-  color: #00d5ff;
-}
+@import "pages/index/main.css";
 
-#survey-form {
-  padding: 50px;
-  background-color: rgba(0, 137, 171, 0.8);
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  border-radius: 25px;
-}
+/* RESULTS */
 
-#number,
-#dropdown {
-  width: 100%;
-}
-
-#dropdown {
-  height: 30px;
-}
-
-#top:checked ~ .wrap-champs #top-champs {
-  display: block;
-}
-
-#jungle:checked ~ .wrap-champs #jungle-champs {
-  display: block;
-}
-
-#middle:checked ~ .wrap-champs #middle-champs {
-  display: block;
-}
-
-#adc:checked ~ .wrap-champs #adc-champs {
-  display: block;
-}
-
-#support:checked ~ .wrap-champs #support-champs {
-  display: block;
-}
-
-.wrap-champs {
-  height: 192px;
-}
-
-#top-champs,
-#jungle-champs,
-#middle-champs,
-#adc-champs,
-#support-champs {
-  display: none;
-}
-
-#submit {
-  padding: 10px 15px;
-  border: 5px solid #fff;
-  background-color: #035064;
-  color: #fff;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-}
-
-#submit:hover,
-#submit:active {
-  border: 10px solid #fff;
-  color: #fec009;
-  padding: 5px 10px;
-  -webkit-transition: 0.25s;
-  -o-transition: 0.25s;
-  -moz-transition: 0.25s;
-  transition: 0.25s;
-}
-
-textarea {
-  width: 100%;
-}
-
-.p-results {
-  color: #fec009;
-}
-
-.p-results a {
-  color: rgba(254, 192, 9, 0.5);
-}
-
-.p-results a:hover,
-.p-results a:active {
-  color: #fec009;
-}
-
-@media only screen and (min-width: 992px) {
-  .cont > .grid > [class*="gcol"]:first-child {
-    height: 1011px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .p-results {
-    font-size: 40px;
-  }
-}
-
-@media only screen and (max-width: 1199px) {
-  #survey-form {
-    padding: 35px;
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    border-radius: 35px;
-  }
-
-  .wrap-text {
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    border-radius: 35px;
-  }
-}
-
-@media only screen and (max-width: 991px) {
-  .wrap-text {
-    margin-bottom: 15px;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  #survey-form {
-    padding: 25px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  #survery-form {
-    padding: 20px;
-  }
-}
+@import "pages/results/main.css";
