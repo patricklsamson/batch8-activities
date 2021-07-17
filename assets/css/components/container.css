@@ -36,6 +36,10 @@
   }
 }
 
+.wrap-fluid {
+  min-height: 100vh;
+}
+
 .wrap-pagelink {
   position: absolute;
   margin-top: -100px;
