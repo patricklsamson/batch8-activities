@@ -1,5 +1,7 @@
 html {
-  font: 16px/1.5 "arial", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "arial", sans-serif;
 }
 
 a,
@@ -74,31 +76,9 @@ tr,
 u,
 ul,
 var {
-  font: inherit;
-}
-
-address,
-em,
-i,
-var {
-  font-style: italic;
-}
-
-b,
-strong {
-  font-weight: bold;
-}
-
-code,
-kbd,
-samp {
-  font-family: monospace;
-}
-
-small,
-sub,
-sup {
-  font-size: 0.5em;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
 }
 
 h1,
@@ -108,7 +88,7 @@ h1,
 }
 @media only screen and (min-width: 992px) {
   h1,
-  .h1 {
+.h1 {
     font-size: calc(2.5rem + 1.2vw);
   }
 }
@@ -120,7 +100,7 @@ h2,
 }
 @media only screen and (min-width: 992px) {
   h2,
-  .h2 {
+.h2 {
     font-size: calc(2.25rem + 1vw);
   }
 }
@@ -132,7 +112,7 @@ h3,
 }
 @media only screen and (min-width: 992px) {
   h3,
-  .h3 {
+.h3 {
     font-size: calc(2rem + 0.8vw);
   }
 }
@@ -144,7 +124,7 @@ h4,
 }
 @media only screen and (min-width: 992px) {
   h4,
-  .h4 {
+.h4 {
     font-size: calc(1.75rem + 0.6vw);
   }
 }
@@ -156,7 +136,7 @@ h5,
 }
 @media only screen and (min-width: 992px) {
   h5,
-  .h5 {
+.h5 {
     font-size: calc(1.5rem + 0.4vw);
   }
 }
@@ -168,7 +148,7 @@ h6,
 }
 @media only screen and (min-width: 992px) {
   h6,
-  .h6 {
+.h6 {
     font-size: calc(1.25rem + 0.2vw);
   }
 }
@@ -223,60 +203,4 @@ h6,
 
 .fs-15 {
   font-size: 1.5rem;
-}
-
-.f-friz {
-  font-family: "Friz Quadrata", serif;
-}
-
-.f-frizStd {
-  font-family: "Friz Quadrata Std", serif;
-}
-
-.f-friz700 {
-  font-family: "Friz", serif;
-}
-
-.f-coa {
-  font-family: "Colors Of Autumn", cursive;
-}
-
-.f-amcap {
-  font-family: "American Captain", sans-serif;
-}
-
-.f-amcap1 {
-  font-family: "American Captain_1", sans-serif;
-}
-
-.f-ironman {
-  font-family: "IRON MAN OF WAR 001C NCV", sans-serif;
-}
-
-.f-ttSquares {
-  font-family: "TT Squares Condensed", sans-serif;
-}
-
-.f-chalk {
-  font-family: "DJB Chalk It Up", cursive;
-}
-
-.f-shadow {
-  font-family: "Shadows Into Light", cursive;
-}
-
-.f-lato {
-  font-family: "Lato", sans-serif;
-}
-
-.f-basker {
-  font-family: "Libre Baskerville", serif;
-}
-
-.f-nunito {
-  font-family: "Nunito", sans-serif;
-}
-
-.f-satisfy {
-  font-family: "Satisfy", cursive;
 }
