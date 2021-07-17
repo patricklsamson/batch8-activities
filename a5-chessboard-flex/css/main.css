@@ -18,12 +18,7 @@ main {
   background: rgba(52, 58, 64, 0.3);
 }
 
-.wrap-overlay .table {
-  min-height: 100vh;
-}
-
 .chess-board {
-  margin: 0 auto;
   border: 3vmin solid #70a4cb;
   background: #70a4cb;
   position: relative;
@@ -32,7 +27,6 @@ main {
 
 .chess-board h1 {
   font-size: 5vmin;
-  text-align: center;
   color: #fec009;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -50,46 +44,6 @@ main {
   -o-animation: fade 4s;
   animation: fade 4s;
   opacity: 0.4;
-}
-
-@-webkit-keyframes fade {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0.4;
-  }
-}
-
-@-moz-keyframes fade {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0.4;
-  }
-}
-
-@-o-keyframes fade {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0.4;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0.4;
-  }
 }
 
 .txtfx {
