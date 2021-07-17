@@ -8,63 +8,58 @@ main {
   border-radius: 100px;
 }
 
-main input {
+.table {
+  min-height: calc(100vh - 60px);
+}
+
+#loading-btn {
   display: none;
 }
 
-main input:checked ~ h2 {
+#loading-btn:checked ~ .wrap-loading {
   visibility: visible;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
   opacity: 1;
 }
 
-main label img {
+#loading-btn:checked ~ .wrap-loading h2 {
+  visibility: visible;
+  opacity: 1;
+}
+
+img {
   width: 50px;
   height: 50px;
-  margin-bottom: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
 
-main h1,
-main h2 {
-  font-size: 50px;
+h1,
+h2 {
   color: #004c4c;
-  font-weight: 700;
 }
 
-main h2 {
+.wrap-loading {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+h2 {
   visibility: hidden;
   opacity: 0;
 }
 
-main p {
-  margin: 20px 0;
-  text-align: center;
-}
-
-main a {
-  font-size: 1.5rem;
+a {
   color: #006666;
   margin-top: 25px;
 }
 
-main a:hover {
+a:hover {
   color: #b2d8d8;
-}
-
-@media only screen and (min-width: 992px) {
-  main {
-    height: 100vh;
-  }
-
-  main .cont {
-    height: 100%;
-  }
 }
 
 @media only screen and (max-width: 1399px) {
@@ -72,7 +67,7 @@ main a:hover {
     border-width: 15px;
   }
 
-  main p {
+  p {
     text-align: justify;
   }
 }
@@ -95,8 +90,8 @@ main a:hover {
     border-radius: 50px;
   }
 
-  main h1,
-  main h2 {
+  h1,
+  h2 {
     font-size: 30px;
   }
 }
