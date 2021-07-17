@@ -276,6 +276,10 @@
   margin-right: 0;
 }
 
+.mg-auto {
+  margin: auto;
+}
+
 .mg-025 {
   margin: 0.25em;
 }
