@@ -22,198 +22,213 @@
     <link rel="stylesheet" href="../assets/css/index.min.css" />
     <link rel="stylesheet" href="css/main.min.css" />
   </head>
+
   <body>
-    <main>
-      <div class="wrap-loader flex f-ironman">
-        <div class="loader"></div>
+    <section class="sec-loader flex f-ironman">
+      <div class="loader"></div>
+    </section>
+
+    <header class="talign">
+      <h1 class="f-ironman"><span>Civil</span> War <span>Chess</span></h1>
+
+      <input type="checkbox" id="story-btn" class="d-none" />
+      <label for="story-btn" class="f-amcap">Story</label>
+
+      <div id="story-modal" class="modal-overlay flex">
+        <div class="modal-inner f-amcap">
+          <fieldset>
+            <legend class="talign tlft f-ironman">
+              Moves of Chess Pieces Based on Story
+            </legend>
+
+            <p class="mb-05 talign tlft">
+              <span class="tc">Falcon (B3)</span> attacked
+              <span class="ti">War Machine (D2)</span>
+            </p>
+
+            <p class="mb-05 talign tlft">
+              <span class="ti">Black Widow (F2)</span> avenged War Machine and
+              attacked <span class="tc">Falcon(D2)</span>
+            </p>
+
+            <p class="mb-05 talign tlft">
+              <span class="tc">Ant-Man (A8)</span> challenged Iron Man and moved
+              to <span class="tc">A1</span> due to rivalry
+            </p>
+
+            <p class="mb-05 talign tlft">
+              <span class="ti">Iron Man (B1)</span> attacked
+              <span class="tc">Ant-Man (A1)</span>
+            </p>
+
+            <p class="mb-05 talign tlft">
+              <span class="tc">Hawkeye (D4)</span> tried to persuade
+              <span class="ti">Black Widow (D2)</span> to side with them
+            </p>
+
+            <p class="mb-05 talign tlft">
+              <span class="ti">Vision (D5)</span> chased after
+              <span class="tc">Scarlet Witch (E8)</span>
+            </p>
+
+            <p class="mb-05 talign tlft">
+              <span class="tc">Scarlet Witch (E8)</span> still angry, she
+              attacked <span class="ti">Vision (E7)</span>
+            </p>
+
+            <p class="mb-05 talign tlft">
+              <span class="ti">Black Panther (F7)</span> avenged his and Iron
+              Man's father, attacked
+              <span class="tc">Winter Soldier (G7)</span>
+            </p>
+
+            <p class="mb-05 talign tlft">
+              <span class="tc">Captain America (H8)</span> avenged Winter
+              Soldier and attacked <span class="ti">Black Panther(G7)</span>
+            </p>
+
+            <p class="mb-05 talign tlft">
+              For the first time,
+              <span class="ti">Spider-Man(G2)</span> appeared in a movie with
+              the Avengers, got excited and moved to
+              <span class="ti">G4</span>
+            </p>
+
+            <p class="mb-05 talign tlft">
+              <span class="tc">Hawkeye (H5)</span> broke Spiderman's excitement
+              and attacked him at <span class="tc">G4</span>
+            </p>
+
+            <a href="story.html" target="_blank">Open story on a new tab</a>
+          </fieldset>
+        </div>
       </div>
 
+      <p class="p-quote mb-em f-amcap"><q>Divided we fall</q></p>
+
+      <input type="checkbox" id="tooltips-btn" class="d-none" />
+      <label for="tooltips-btn"
+        ><img
+          src="../assets/img/tooltip.png"
+          alt="White question mark with circular black background"
+          id="tooltips-img"
+      /></label>
+
+      <div id="tooltips-modal" class="modal-overlay flex">
+        <div class="modal-inner rflex talign tlft f-amcap">
+          <fieldset>
+            <legend class="t-ironman">Team Captain America - TC</legend>
+
+            <p class="mb-05">
+              <img
+                src="../assets/img/cap-america.png"
+                alt="Marvel Captain America shield logo"
+              />
+              = Captain America = King
+            </p>
+
+            <p class="mb-05">
+              <img
+                src="../assets/img/scarlet-witch.png"
+                alt="Marvel Scarlet Witch tiara logo"
+              />
+              = Scarlet Witch = Queen
+            </p>
+
+            <p class="mb-05">
+              <img
+                src="../assets/img/winter-soldier.png"
+                alt="Marvel Winter Soldier red star and metal background logo"
+              />
+              = Winter Soldier = Bishop
+            </p>
+
+            <p class="mb-05">
+              <img src="../assets/img/falcon.png" alt="Marvel Falcon logo" /> =
+              Falcon = Knight
+            </p>
+
+            <p class="mb-05">
+              <img
+                src="../assets/img/ant-man.png"
+                alt="Marvel Ant-Man red atom logo"
+              />
+              = Ant-Man = Rook
+            </p>
+
+            <p class="mb-05">
+              <img src="../assets/img/hawkeye.png" alt="Marvel Hawkeye logo" />
+              = Hawkeye = Pawn
+            </p>
+          </fieldset>
+
+          <fieldset>
+            <legend>Team Iron Man - TI</legend>
+
+            <p class="mb-05">
+              <img
+                src="../assets/img/iron-man.png"
+                alt="Marvel Iron Man arc reactor logo"
+              />
+              = Iron Man = King
+            </p>
+
+            <p class="mb-05">
+              <img
+                src="../assets/img/black-widow.png"
+                alt="Marvel Black Widow logo"
+              />
+              = Black Widow = Queen
+            </p>
+
+            <p class="mb-05">
+              <img
+                src="../assets/img/war-machine.png"
+                alt="Marvel War Machine black stars and banner logo"
+              />
+              = War Machine = Bishop
+            </p>
+
+            <p class="mb-05">
+              <img
+                src="../assets/img/vision.png"
+                alt="Marvel Vision mind stone in forehead logo"
+              />
+              = Vision = Knight
+            </p>
+
+            <p class="mb-05">
+              <img
+                src="../assets/img/black-panther.png"
+                alt="Marvel Black Panther mask logo"
+              />
+              = Black Panther = Rook
+            </p>
+
+            <p class="mb-05">
+              <img
+                src="../assets/img/spider-man.png"
+                alt="Marvel Spider-Man logo"
+              />
+              = Spider-Man = Pawn
+            </p>
+          </fieldset>
+        </div>
+      </div>
+    </header>
+
+    <main>
       <div class="table talign">
         <div class="valign">
-          <h1 class="t-ironman"><span>Civil</span> War <span>Chess</span></h1>
-
-          <input type="checkbox" id="story" />
-          <label for="story" class="t-amcap">Story</label>
-
-          <div class="story wrap-overlay flex">
-            <div class="story-inner f-amcap">
-              <fieldset>
-                <legend class="talign tlft f-ironman">
-                  Moves of Chess Pieces Based on Story
-                </legend>
-
-                <p>
-                  <span class="tc">Falcon (B3)</span> attacked
-                  <span class="ti">War Machine (D2)</span>
-                </p>
-
-                <p>
-                  <span class="ti">Black Widow (F2)</span> avenged War Machine
-                  and attacked <span class="tc">Falcon(D2)</span>
-                </p>
-
-                <p>
-                  <span class="tc">Ant-Man (A8)</span> challenged Iron Man and
-                  moved to <span class="tc">A1</span> due to rivalry
-                </p>
-
-                <p>
-                  <span class="ti">Iron Man (B1)</span> attacked
-                  <span class="tc">Ant-Man (A1)</span>
-                </p>
-
-                <p>
-                  <span class="tc">Hawkeye (D4)</span> tried to persuade
-                  <span class="ti">Black Widow (D2)</span> to side with them
-                </p>
-
-                <p>
-                  <span class="ti">Vision (D5)</span> chased after
-                  <span class="tc">Scarlet Witch (E8)</span>
-                </p>
-
-                <p>
-                  <span class="tc">Scarlet Witch (E8)</span> still angry, she
-                  attacked <span class="ti">Vision (E7)</span>
-                </p>
-
-                <p>
-                  <span class="ti">Black Panther (F7)</span> avenged his and
-                  Iron Man's father, attacked
-                  <span class="tc">Winter Soldier (G7)</span>
-                </p>
-
-                <p>
-                  <span class="tc">Captain America (H8)</span> avenged Winter
-                  Soldier and attacked <span class="ti">Black Panther(G7)</span>
-                </p>
-
-                <p>
-                  For the first time,
-                  <span class="ti">Spiderman(G2)</span> appeared in a movie with
-                  the Avengers, got excited and moved to
-                  <span class="ti">G4</span>
-                </p>
-
-                <p>
-                  <span class="tc">Hawkeye (H5)</span> broke Spiderman's
-                  excitement and attacked him at <span class="tc">G4</span>
-                </p>
-
-                <a href="story.html" target="_blank">Open story on a new tab</a>
-              </fieldset>
-            </div>
-          </div>
-
-          <p class="quote mb-em f-amcap"><q>Divided we fall</q></p>
-
-          <input type="checkbox" id="tooltip" />
-          <label for="tooltip"
-            ><img
-              src="../assets/img/tooltip.png"
-              alt="tooltip"
-              id="tooltip-icon"
-          /></label>
-
-          <div class="tooltips wrap-overlay flex">
-            <div class="tooltips-inner rflex talign tlft f-amcap">
-              <fieldset>
-                <legend class="t-ironman">Team Captain America - TC</legend>
-
-                <p>
-                  <img
-                    src="../assets/img/cap-america.png"
-                    alt="cap-america-logo"
-                  />
-                  = Captain America = King
-                </p>
-
-                <p>
-                  <img
-                    src="../assets/img/scarlet-witch.png"
-                    alt="scarlet-witch-logo"
-                  />
-                  = Scarlet Witch = Queen
-                </p>
-
-                <p>
-                  <img
-                    src="../assets/img/winter-soldier.png"
-                    alt="winter-soldier-logo"
-                  />
-                  = Winter Soldier = Bishop
-                </p>
-
-                <p>
-                  <img src="../assets/img/falcon.png" alt="falcon-logo" /> =
-                  Falcon = Knight
-                </p>
-
-                <p>
-                  <img src="../assets/img/ant-man.png" alt="ant-man-logo" /> =
-                  Ant-Man = Rook
-                </p>
-
-                <p>
-                  <img src="../assets/img/hawkeye.png" alt="hawkeye-logo" /> =
-                  Hawkeye = Pawn
-                </p>
-              </fieldset>
-
-              <fieldset>
-                <legend>Team Iron Man - TI</legend>
-
-                <p>
-                  <img src="../assets/img/iron-man.png" alt="iron-man-logo" /> =
-                  Iron Man = King
-                </p>
-
-                <p>
-                  <img
-                    src="../assets/img/black-widow.png"
-                    alt="black-widow-logo"
-                  />
-                  = Black Widow = Queen
-                </p>
-
-                <p>
-                  <img
-                    src="../assets/img/war-machine.png"
-                    alt="war-machine-logo"
-                  />
-                  = War Machine = Bishop
-                </p>
-
-                <p>
-                  <img src="../assets/img/vision.png" alt="vision-logo" /> =
-                  Vision = Knight
-                </p>
-
-                <p>
-                  <img
-                    src="../assets/img/black-panther.png"
-                    alt="black-panther-logo"
-                  />
-                  = Black Panther = Rook
-                </p>
-
-                <p>
-                  <img src="../assets/img/spiderman.png" alt="spiderman-logo" />
-                  = Spiderman = Pawn
-                </p>
-              </fieldset>
-            </div>
-          </div>
-
           <div class="chess-board">
             <div class="chess-row grid-cont">
               <div class="chess-square flex">
                 <p class="left-pos">8</p>
-                <input type="checkbox" id="ant-man-pos" />
+                <input type="checkbox" id="ant-man-pos" class="d-none" />
                 <label for="ant-man-pos" class="flex">
                   <img
                     src="../assets/img/ant-man.png"
-                    alt="ant-man-logo"
+                    alt="Marvel Ant-Man red atom logo"
                     title="TC - Rook"
                   />
                 </label>
@@ -222,11 +237,11 @@
               <div class="chess-square flex"></div>
               <div class="chess-square flex"></div>
               <div class="chess-square flex">
-                <input type="checkbox" id="scarlet-witch-pos" />
+                <input type="checkbox" id="scarlet-witch-pos" class="d-none" />
                 <label for="scarlet-witch-pos" class="flex">
                   <img
                     src="../assets/img/scarlet-witch.png"
-                    alt="scarlet-witch-logo"
+                    alt="Marvel Scarlet Witch tiara logo"
                     title="TC - Queen"
                   />
                 </label>
@@ -234,11 +249,11 @@
               <div class="chess-square flex"></div>
               <div class="chess-square flex"></div>
               <div class="chess-square flex">
-                <input type="checkbox" id="cap-america-pos" />
+                <input type="checkbox" id="cap-america-pos" class="d-none" />
                 <label for="cap-america-pos" class="flex">
                   <img
                     src="../assets/img/cap-america.png"
-                    alt="cap-america-logo"
+                    alt="Marvel Captain America shield logo"
                     title="TC - King"
                   />
                 </label>
@@ -252,11 +267,11 @@
               <div class="chess-square flex"></div>
               <div class="chess-square flex"></div>
               <div class="chess-square flex">
-                <input type="checkbox" id="black-panther-pos" />
+                <input type="checkbox" id="black-panther-pos" class="d-none" />
                 <label for="black-panther-pos" class="flex">
                   <img
                     src="../assets/img/black-panther.png"
-                    alt="black-panther-logo"
+                    alt="Marvel Black Panther mask logo"
                     title="TI - Rook"
                   />
                 </label>
@@ -264,7 +279,7 @@
               <div class="chess-square flex">
                 <img
                   src="../assets/img/winter-soldier.png"
-                  alt="winter-soldier-logo"
+                  alt="Marvel Winter Soldier red star and metal background logo"
                   title="TC - Bishop"
                 />
               </div>
@@ -278,7 +293,7 @@
               <div class="chess-square flex">
                 <img
                   src="../assets/img/hawkeye.png"
-                  alt="hawkeye-logo"
+                  alt="Marvel Hawkeye logo"
                   title="TC - Pawn"
                 />
               </div>
@@ -287,7 +302,7 @@
               <div class="chess-square flex">
                 <img
                   src="../assets/img/hawkeye.png"
-                  alt="hawkeye-logo"
+                  alt="Marvel Hawkeye logo"
                   title="TC - Pawn"
                 />
               </div>
@@ -299,11 +314,11 @@
               <div class="chess-square flex"></div>
               <div class="chess-square flex"></div>
               <div class="chess-square flex">
-                <input type="checkbox" id="vision-pos" />
+                <input type="checkbox" id="vision-pos" class="d-none" />
                 <label for="vision-pos" class="flex">
                   <img
                     src="../assets/img/vision.png"
-                    alt="vision-logo"
+                    alt="Marvel Vision mind stone in forehead logo"
                     title="TI - Knight"
                   />
                 </label>
@@ -312,11 +327,11 @@
               <div class="chess-square flex"></div>
               <div class="chess-square flex"></div>
               <div class="chess-square flex">
-                <input type="checkbox" id="hawkeye-h7-pos" />
+                <input type="checkbox" id="hawkeye-h7-pos" class="d-none" />
                 <label for="hawkeye-h7-pos" class="flex">
                   <img
                     src="../assets/img/hawkeye.png"
-                    alt="hawkeye-logo"
+                    alt="Marvel Hawkeye logo"
                     title="TC - Pawn"
                   />
                 </label>
@@ -327,26 +342,26 @@
               <div class="chess-square flex"><p class="left-pos">4</p></div>
               <div class="chess-square flex">
                 <img
-                  src="../assets/img/spiderman.png"
-                  alt="spiderman-logo"
+                  src="../assets/img/spider-man.png"
+                  alt="Marvel Spider-Man logo"
                   title="TI - Pawn"
                 />
               </div>
               <div class="chess-square flex"></div>
               <div class="chess-square flex">
-                <input type="checkbox" id="hawkeye-e7-pos" />
+                <input type="checkbox" id="hawkeye-e7-pos" class="d-none" />
                 <label for="hawkeye-e7-pos" class="flex">
                   <img
                     src="../assets/img/hawkeye.png"
-                    alt="hawkeye-logo"
+                    alt="Marvel Hawkeye logo"
                     title="TC - Pawn"
                   />
                 </label>
               </div>
               <div class="chess-square flex">
                 <img
-                  src="../assets/img/spiderman.png"
-                  alt="spiderman-logo"
+                  src="../assets/img/spider-man.png"
+                  alt="Marvel Spider-Man logo"
                   title="TI - Pawn"
                 />
               </div>
@@ -358,11 +373,11 @@
             <div class="chess-row grid-cont">
               <div class="chess-square flex"><p class="left-pos">3</p></div>
               <div class="chess-square flex">
-                <input type="checkbox" id="falcon-pos" />
+                <input type="checkbox" id="falcon-pos" class="d-none" />
                 <label for="falcon-pos" class="flex">
                   <img
                     src="../assets/img/falcon.png"
-                    alt="falcon-logo"
+                    alt="Marvel Falcon logo"
                     title="TC - Knight"
                   />
                 </label>
@@ -374,8 +389,8 @@
               <div class="chess-square flex"></div>
               <div class="chess-square flex">
                 <img
-                  src="../assets/img/spiderman.png"
-                  alt="spiderman-logo"
+                  src="../assets/img/spider-man.png"
+                  alt="Marvel Spider-Man logo"
                   title="TI - Pawn"
                 />
               </div>
@@ -385,8 +400,8 @@
               <div class="chess-square flex"><p class="left-pos">2</p></div>
               <div class="chess-square flex">
                 <img
-                  src="../assets/img/spiderman.png"
-                  alt="spiderman-logo"
+                  src="../assets/img/spider-man.png"
+                  alt="Marvel Spider-Man logo"
                   title="TI - Pawn"
                 />
               </div>
@@ -394,27 +409,27 @@
               <div class="chess-square flex">
                 <img
                   src="../assets/img/war-machine.png"
-                  alt="war-machine-logo"
+                  alt="Marvel War Machine black stars and banner logo"
                   title="TI - Bishop"
                 />
               </div>
               <div class="chess-square flex"></div>
               <div class="chess-square flex">
-                <input type="checkbox" id="black-widow-pos" />
+                <input type="checkbox" id="black-widow-pos" class="d-none" />
                 <label for="black-widow-pos" class="flex">
                   <img
                     src="../assets/img/black-widow.png"
-                    alt="black-widow-logo"
+                    alt="Marvel Black Widow logo"
                     title="TI - Queen"
                   />
                 </label>
               </div>
               <div class="chess-square flex">
-                <input type="checkbox" id="spiderman-g2-pos" />
+                <input type="checkbox" id="spiderman-g2-pos" class="d-none" />
                 <label for="spiderman-g2-pos" class="flex">
                   <img
-                    src="../assets/img/spiderman.png"
-                    alt="spiderman-logo"
+                    src="../assets/img/spider-man.png"
+                    alt="Marvel Spider-Man logo"
                     title="TI - Pawn"
                   />
                 </label>
@@ -429,11 +444,11 @@
               </div>
               <div class="chess-square flex">
                 <p class="bottom-pos">b</p>
-                <input type="checkbox" id="iron-man-pos" />
+                <input type="checkbox" id="iron-man-pos" class="d-none" />
                 <label for="iron-man-pos" class="flex">
                   <img
                     src="../assets/img/iron-man.png"
-                    alt="iron-man-logo"
+                    alt="Marvel Iron Man arc reactor logo"
                     id="iron-man"
                     title="TI - King"
                   />
