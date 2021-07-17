@@ -600,6 +600,14 @@
   padding-right: 2em;
 }
 
+.d-none {
+  display: none;
+}
+
+.d-iblock {
+  display: inline-block;
+}
+
 .xbul {
   list-style: none;
   padding-left: 0;
