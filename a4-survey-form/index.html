@@ -24,15 +24,16 @@
   </head>
   <body>
     <main class="img">
-      <div class="wrap-overlay">
+      <div class="wrap-overlay wrap-fluid pt-125 pb-125">
         <div class="cont">
           <div class="grid">
             <div class="gcol-lg-6 gcol-12">
               <div class="table">
                 <div class="valign">
-                  <div class="wrap-text talign">
-                    <h1 id="title" class="f-friz700">
-                      LEAGUE OF LEGENDS: <span class="t-coa">Wild Rift</span>
+                  <div class="wrap-text pd-125 talign">
+                    <h1 id="title" class="f-friz700 pb-025">
+                      LEAGUE OF LEGENDS:
+                      <span class="f-coa fw-400">Wild Rift</span>
                     </h1>
 
                     <p id="description">
@@ -50,6 +51,7 @@
                 <input
                   type="text"
                   id="name"
+                  class="mb-075"
                   placeholder="Enter your Full Name"
                   required
                 /><br />
@@ -58,6 +60,7 @@
                 <input
                   type="email"
                   id="email"
+                  class="mb-075"
                   placeholder="example@mail.com"
                   required
                 /><br />
@@ -66,6 +69,7 @@
                 <input
                   type="tel"
                   id="number"
+                  class="mb-075"
                   placeholder="Enter your Mobile / Landline"
                   maxlength="15"
                   onkeypress="return numOnly(event)"
@@ -73,7 +77,7 @@
                 /><br />
 
                 <label for="dropdown" id="rank-label">Rank:</label><br />
-                <select name="rank" id="dropdown">
+                <select name="rank" id="dropdown" class="mb-075">
                   <option value="">Select Rank</option>
                   <option value="challenger">Challenger</option>
                   <option value="grandmaster">Grandmaster</option>
@@ -105,7 +109,7 @@
 
                 <p class="mt-em">Champions you want to be updated:</p>
 
-                <div class="wrap-champs">
+                <div class="wrap-champs mb-05">
                   <div id="top-champs">
                     <div class="grid">
                       <div class="gcol-6">
@@ -678,6 +682,7 @@
                 <textarea
                   name="requests"
                   id="requests"
+                  class="mb-075"
                   cols="35"
                   rows="5"
                   placeholder="e.g. - Insert your request here"
@@ -692,6 +697,7 @@
                 <textarea
                   name="missing-champs"
                   id="missing-champs"
+                  class="mb-075"
                   cols="35"
                   rows="5"
                   placeholder="e.g. Ashe - Insert your request here"
@@ -699,7 +705,7 @@
                 ><br />
 
                 <div class="wrap-submit talign">
-                  <button id="submit" type="submit" class="f-friz700">
+                  <button id="submit" type="submit" class="f-friz700 fs-20">
                     Submit
                   </button>
                 </div>
