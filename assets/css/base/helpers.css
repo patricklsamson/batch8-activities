@@ -276,10 +276,6 @@
   margin-right: 0;
 }
 
-.height-fl {
-  min-height: 100vh;
-}
-
 .mg-025 {
   margin: 0.25em;
 }
@@ -298,6 +294,18 @@
 
 .mg-125 {
   margin: 1.25em;
+}
+
+.mg-15 {
+  margin: 1.5em;
+}
+
+.mg-175 {
+  margin: 1.75em;
+}
+
+.mg-20 {
+  margin: 2em;
 }
 
 .mt-025 {
@@ -320,6 +328,18 @@
   margin-top: 1.25em;
 }
 
+.mt-15 {
+  margin-top: 1.5em;
+}
+
+.mt-175 {
+  margin-top: 1.75em;
+}
+
+.mt-20 {
+  margin-top: 2em;
+}
+
 .mb-025 {
   margin-bottom: 0.25em;
 }
@@ -338,6 +358,18 @@
 
 .mb-125 {
   margin-bottom: 1.25em;
+}
+
+.mb-15 {
+  margin-bottom: 1.5em;
+}
+
+.mb-175 {
+  margin-bottom: 1.75em;
+}
+
+.mb-20 {
+  margin-bottom: 2em;
 }
 
 .ml-025 {
@@ -360,6 +392,18 @@
   margin-left: 1.25em;
 }
 
+.ml-15 {
+  margin-left: 1.5em;
+}
+
+.ml-175 {
+  margin-left: 1.75em;
+}
+
+.ml-20 {
+  margin-left: 2em;
+}
+
 .mr-025 {
   margin-right: 0.25em;
 }
@@ -378,6 +422,18 @@
 
 .mr-125 {
   margin-right: 1.25em;
+}
+
+.mr-15 {
+  margin-right: 1.5em;
+}
+
+.mr-175 {
+  margin-right: 1.75em;
+}
+
+.mr-20 {
+  margin-right: 2em;
 }
 
 .pd-025 {
@@ -400,6 +456,18 @@
   padding: 1.25em;
 }
 
+.pd-15 {
+  padding: 1.25em;
+}
+
+.pd-175 {
+  padding: 1.25em;
+}
+
+.pd-20 {
+  padding: 2em;
+}
+
 .pt-025 {
   padding-top: 0.25em;
 }
@@ -418,6 +486,18 @@
 
 .pt-125 {
   padding-top: 1.25em;
+}
+
+.pt-15 {
+  padding-top: 1.5em;
+}
+
+.pt-175 {
+  padding-top: 1.75em;
+}
+
+.pt-20 {
+  padding-top: 2em;
 }
 
 .pb-025 {
@@ -440,6 +520,18 @@
   padding-bottom: 1.25em;
 }
 
+.pb-15 {
+  padding-bottom: 1.5em;
+}
+
+.pb-175 {
+  padding-bottom: 1.75em;
+}
+
+.pb-20 {
+  padding-bottom: 2em;
+}
+
 .pl-025 {
   padding-left: 0.25em;
 }
@@ -460,6 +552,18 @@
   padding-left: 1.25em;
 }
 
+.pl-15 {
+  padding-left: 1.5em;
+}
+
+.pl-175 {
+  padding-left: 1.75em;
+}
+
+.pl-20 {
+  padding-left: 2em;
+}
+
 .pr-025 {
   padding-right: 0.25em;
 }
@@ -478,6 +582,18 @@
 
 .pr-125 {
   padding-right: 1.25em;
+}
+
+.pr-15 {
+  padding-right: 1.5em;
+}
+
+.pr-175 {
+  padding-right: 1.75em;
+}
+
+.pr-20 {
+  padding-right: 2em;
 }
 
 .xbul {
