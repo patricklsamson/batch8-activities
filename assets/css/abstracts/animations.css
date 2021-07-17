@@ -37,3 +37,275 @@
     opacity: 0.4;
   }
 }
+
+@-webkit-keyframes fade2 {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  85% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fade2 {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  85% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@-o-keyframes fade2 {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  85% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes fade2 {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  85% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes loading {
+  0% {
+    content: "0%";
+  }
+
+  23% {
+    content: "23%";
+  }
+
+  37% {
+    content: "37%";
+  }
+
+  51% {
+    content: "51%";
+  }
+
+  68% {
+    content: "68%";
+  }
+
+  79% {
+    content: "79%";
+  }
+
+  85% {
+    content: "85%";
+  }
+
+  99% {
+    content: "100%";
+  }
+
+  100% {
+    content: "Loaded!";
+  }
+}
+
+@-moz-keyframes loading {
+  0% {
+    content: "0%";
+  }
+
+  23% {
+    content: "23%";
+  }
+
+  37% {
+    content: "37%";
+  }
+
+  51% {
+    content: "51%";
+  }
+
+  68% {
+    content: "68%";
+  }
+
+  79% {
+    content: "79%";
+  }
+
+  85% {
+    content: "85%";
+  }
+
+  99% {
+    content: "100%";
+  }
+
+  100% {
+    content: "Loaded!";
+  }
+}
+
+@-o-keyframes loading {
+  0% {
+    content: "0%";
+  }
+
+  23% {
+    content: "23%";
+  }
+
+  37% {
+    content: "37%";
+  }
+
+  51% {
+    content: "51%";
+  }
+
+  68% {
+    content: "68%";
+  }
+
+  79% {
+    content: "79%";
+  }
+
+  85% {
+    content: "85%";
+  }
+
+  99% {
+    content: "100%";
+  }
+
+  100% {
+    content: "Loaded!";
+  }
+}
+
+@keyframes loading {
+  0% {
+    content: "0%";
+  }
+
+  23% {
+    content: "23%";
+  }
+
+  37% {
+    content: "37%";
+  }
+
+  51% {
+    content: "51%";
+  }
+
+  68% {
+    content: "68%";
+  }
+
+  79% {
+    content: "79%";
+  }
+
+  85% {
+    content: "85%";
+  }
+
+  99% {
+    content: "100%";
+  }
+
+  100% {
+    content: "Loaded!";
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes spin {
+  0% {
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
