@@ -4,14 +4,34 @@ body {
     linear,
     left top,
     right top,
-    from(#14406f),
-    color-stop(#6c757d),
-    to(#6b283b)
+    from(hsl(211, 69%, 26%)),
+    color-stop(hsl(208, 7%, 46%)),
+    to(hsl(343, 46%, 29%))
   );
-  background-image: -webkit-linear-gradient(left, #14406f, #6c757d, #6b283b);
-  background-image: -moz-linear-gradient(left, #14406f, #6c757d, #6b283b);
-  background-image: -o-linear-gradient(left, #14406f, #6c757d, #6b283b);
-  background-image: linear-gradient(to right, #14406f, #6c757d, #6b283b);
+  background-image: -webkit-linear-gradient(
+    left,
+    hsl(211, 69%, 26%),
+    hsl(208, 7%, 46%),
+    hsl(343, 46%, 29%)
+  );
+  background-image: -moz-linear-gradient(
+    left,
+    hsl(211, 69%, 26%),
+    hsl(208, 7%, 46%),
+    hsl(343, 46%, 29%)
+  );
+  background-image: -o-linear-gradient(
+    left,
+    hsl(211, 69%, 26%),
+    hsl(208, 7%, 46%),
+    hsl(343, 46%, 29%)
+  );
+  background-image: linear-gradient(
+    to right,
+    hsl(211, 69%, 26%),
+    hsl(208, 7%, 46%),
+    hsl(343, 46%, 29%)
+  );
 }
 
 legend {
