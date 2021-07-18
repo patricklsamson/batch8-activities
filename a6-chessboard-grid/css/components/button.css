@@ -41,3 +41,233 @@
   -moz-transition: 0.5s;
   transition: 0.5s;
 }
+
+#no:checked ~ .wrap-sure {
+  display: block;
+}
+
+#story-btn:checked ~ label[for="story-btn"] {
+  color: #a4abbd;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#story-btn:checked ~ label[for="tooltips-btn"] {
+  z-index: 1;
+}
+
+#story-btn:checked ~ #story-modal,
+#tooltips-btn:checked ~ #tooltips-modal {
+  visibility: visible;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 1;
+}
+
+label[for="story-btn"] {
+  position: relative;
+  z-index: 4;
+  right: 30vmin;
+  font-size: 2.5vmin;
+}
+
+#tooltips-btn:checked ~ label[for="tooltips-btn"] img {
+  background: #a4abbd;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#tooltips-btn:checked ~ #tooltips-modal {
+  z-index: 5;
+}
+
+@media not all and (pointer: coarse) {
+  #story-btn:hover ~ label[for="story-btn"] {
+    color: #a4abbd;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  #story-btn:hover ~ label[for="tooltips-btn"] {
+    z-index: 1;
+  }
+
+  #story-btn:hover ~ #story-modal,
+  #tooltips-btn:hover ~ #tooltips-modal {
+    visibility: visible;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+    opacity: 1;
+  }
+
+  #tooltips-btn:hover ~ label[for="tooltips-btn"] img {
+    background: #a4abbd;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  #tooltips-btn:hover ~ #tooltips-modal {
+    z-index: 5;
+  }
+}
+
+label[for="tooltips-btn"] {
+  position: relative;
+  z-index: 6;
+  vertical-align: middle;
+  left: 30vmin;
+}
+
+#tooltips-img {
+  height: 4vmin;
+  -webkit-border-radius: 2vmin;
+  -moz-border-radius: 2vmin;
+  border-radius: 2vmin;
+}
+
+label[for="falcon-pos"] {
+  top: 0;
+  left: 0;
+}
+
+#falcon-pos:checked ~ label {
+  top: 10vmin;
+  left: 20vmin;
+}
+
+label[for="black-widow-pos"] {
+  right: 0;
+}
+
+#black-widow-pos:checked ~ label {
+  right: 20vmin;
+}
+
+label[for="ant-man-pos"] {
+  top: 0;
+}
+
+#ant-man-pos:checked ~ label {
+  top: 70vmin;
+}
+
+label[for="iron-man-pos"] {
+  right: 0;
+}
+
+#iron-man-pos:checked ~ label {
+  right: 10vmin;
+}
+
+label[for="hawkeye-e7-pos"] {
+  top: 0;
+}
+
+#hawkeye-e7-pos:checked ~ label {
+  top: 10vmin;
+}
+
+label[for="vision-pos"] {
+  left: 0;
+  bottom: 0;
+}
+
+#vision-pos:checked ~ label {
+  left: 10vmin;
+  bottom: 20vmin;
+}
+
+label[for="scarlet-witch-pos"] {
+  top: 0;
+}
+
+#scarlet-witch-pos:checked ~ label {
+  top: 10vmin;
+  z-index: 2;
+}
+
+label[for="black-panther-pos"] {
+  left: 0;
+}
+
+#black-panther-pos:checked ~ label {
+  left: 10vmin;
+}
+
+label[for="cap-america-pos"] {
+  top: 0;
+  right: 0;
+}
+
+#cap-america-pos:checked ~ label {
+  top: 10vmin;
+  right: 10vmin;
+  z-index: 2;
+}
+
+label[for="spiderman-g2-pos"] {
+  bottom: 0;
+}
+
+#spiderman-g2-pos:checked ~ label {
+  bottom: 20vmin;
+}
+
+label[for="hawkeye-h7-pos"] {
+  top: 0;
+  right: 0;
+}
+
+#hawkeye-h7-pos:checked ~ label {
+  top: 10vmin;
+  right: 10vmin;
+  z-index: 2;
+}
+
+label[for="spiderman-d2-pos"] {
+  bottom: 0;
+}
+
+#spiderman-d2-pos:checked ~ label {
+  bottom: 10vmin;
+}
+
+label[for="hawkeye-e7-pos-new"] {
+  top: 0;
+}
+
+#hawkeye-e7-pos-new:checked ~ label {
+  top: 20vmin;
+}
+
+label[for="war-machine-c1-pos"] {
+  left: 0;
+  bottom: 0;
+}
+
+#war-machine-c1-pos:checked ~ label {
+  left: 40vmin;
+  bottom: 40vmin;
+}
+
+label[for="winter-soldier-g8-pos"] {
+  top: 0;
+  right: 0;
+}
+
+#winter-soldier-g8-pos:checked ~ label {
+  top: 50vmin;
+  right: 50vmin;
+}
