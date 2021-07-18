@@ -88,7 +88,7 @@ h1,
 }
 @media only screen and (min-width: 992px) {
   h1,
-.h1 {
+  .h1 {
     font-size: calc(2.5rem + 1.2vw);
   }
 }
@@ -100,7 +100,7 @@ h2,
 }
 @media only screen and (min-width: 992px) {
   h2,
-.h2 {
+  .h2 {
     font-size: calc(2.25rem + 1vw);
   }
 }
@@ -112,7 +112,7 @@ h3,
 }
 @media only screen and (min-width: 992px) {
   h3,
-.h3 {
+  .h3 {
     font-size: calc(2rem + 0.8vw);
   }
 }
@@ -124,7 +124,7 @@ h4,
 }
 @media only screen and (min-width: 992px) {
   h4,
-.h4 {
+  .h4 {
     font-size: calc(1.75rem + 0.6vw);
   }
 }
@@ -136,7 +136,7 @@ h5,
 }
 @media only screen and (min-width: 992px) {
   h5,
-.h5 {
+  .h5 {
     font-size: calc(1.5rem + 0.4vw);
   }
 }
@@ -148,7 +148,7 @@ h6,
 }
 @media only screen and (min-width: 992px) {
   h6,
-.h6 {
+  .h6 {
     font-size: calc(1.25rem + 0.2vw);
   }
 }
@@ -226,7 +226,7 @@ h6,
 }
 
 .fs-20 {
-  font-size: 2.0rem;
+  font-size: 2rem;
 }
 
 .f-friz {
