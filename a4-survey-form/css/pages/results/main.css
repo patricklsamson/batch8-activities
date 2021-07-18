@@ -1,14 +1,14 @@
 .p-results {
-  color: #fec009;
+  color: hsl(45, 99%, 52%);
 }
 
 .p-results a {
-  color: rgba(254, 192, 9, 0.5);
+  color: hsla(45, 99%, 52%, 0.502);
 }
 
 .p-results a:hover,
 .p-results a:active {
-  color: #fec009;
+  color: hsl(45, 99%, 52%);
 }
 
 @media only screen and (min-width: 1200px) {
