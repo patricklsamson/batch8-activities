@@ -6,13 +6,13 @@
 }
 
 #main .wrap-overlay {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: hsla(0, 0%, 0%, 0.8);
   min-height: 100vh;
 }
 
 #title {
-  color: #f8f9fa;
-  border-bottom: 10px double #f8f9fa;
+  color: hsl(210, 17%, 98%);
+  border-bottom: 10px double hsl(210, 17%, 98%);
 }
 
 #img-div {
@@ -28,23 +28,23 @@
   top: 10px;
   left: 50%;
   margin-left: -148px;
-  color: #d3d3d3;
-  background-color: rgba(52, 58, 64, 0.5);
+  color: hsl(0, 0%, 83%);
+  background-color: hsla(210, 10%, 23%, 0.5);
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
 
 .p-content {
-  color: #fff;
+  color: hsl(0, 0%, 100%);
 }
 
 #tribute-link {
-  color: #a9a9a9;
+  color: hsl(0, 0%, 66%);
 }
 
 #tribute-link:hover {
-  color: #6c757d;
+  color: hsl(208, 7%, 46%);
 }
 
 @media only screen and (min-width: 992px) {
