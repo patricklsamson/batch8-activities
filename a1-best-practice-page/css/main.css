@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 main {
-  background-color: #66b2b2;
-  border: 30px solid #004c4c;
+  background-color: hsl(180, 33%, 55%);
+  border: 30px solid hsl(180, 100%, 15%);
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   border-radius: 100px;
@@ -32,7 +32,7 @@ img {
 
 h1,
 h2 {
-  color: #004c4c;
+  color: hsl(180, 100%, 15%);
 }
 
 .wrap-loading {
@@ -50,12 +50,12 @@ h2 {
 }
 
 a {
-  color: #006666;
+  color: hsl(180, 100%, 20%);
   margin-top: 25px;
 }
 
 a:hover {
-  color: #b2d8d8;
+  color: hsl(180, 33%, 77%);
 }
 
 @media only screen and (max-width: 1399px) {
