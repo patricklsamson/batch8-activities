@@ -1,3 +1,22 @@
+.wrap-sure {
+  position: absolute;
+  display: none;
+  width: 62vmin;
+  top: -3vmin;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background: #bea5a9;
+  padding: 3vmin 3vmin;
+  -webkit-border-radius: 2vmin;
+  -moz-border-radius: 2vmin;
+  border-radius: 2vmin;
+  border: 1vmin solid #6b283b;
+}
+
 .modal-overlay {
   position: absolute;
   visibility: hidden;
@@ -22,4 +41,55 @@
 .modal-inner {
   background: #a4abbd;
   padding: 2vmin;
+}
+
+#story-modal .modal-inner {
+  width: 95vmin;
+  font-size: 3vmin;
+  position: relative;
+  top: 5vmin;
+}
+
+#story-modal legend {
+  font-size: 3.5vmin;
+}
+
+#tooltips-modal .modal-inner {
+  width: 91vmin;
+  font-size: 3.5vmin;
+}
+
+#tooltips-modal legend {
+  font-size: 4.5vmin;
+}
+
+#tooltips-modal img {
+  height: 6vmin;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tc,
+#tooltips-modal fieldset:first-child {
+  color: #14406f;
+}
+
+.ti,
+#tooltips-modal fieldset:nth-child(2) {
+  color: #6b283b;
+}
+
+#chess-newgame-header #story-modal .modal-inner {
+  top: 0;
+  width: 80vmin;
+  font-size: 3.5vmin;
+}
+
+#chess-newgame-header #story-modal legend {
+  font-size: 4.5vmin;
+}
+
+#story-main #story-modal .modal-inner {
+  top: 2vmin;
 }
