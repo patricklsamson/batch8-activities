@@ -4,13 +4,13 @@ html {
 
 h1 {
   font-size: 6vmin;
-  color: #a4abbd;
+  color: hsl(223, 16%, 69%);
 }
 
 h1 span:first-child {
-  color: #14406f;
+  color: hsl(211, 69%, 26%);
 }
 
 h1 span:nth-child(2) {
-  color: #6b283b;
+  color: hsl(343, 46%, 29%);
 }
