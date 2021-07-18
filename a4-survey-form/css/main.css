@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
 /**
- * COMPONENTS
+ * LAYOUT
  *--------------------------------------------------*/
 
-@import "components/container.css";
-@import "components/main.css";
-@import "components/form.css";
+@import "layout/container.css";
+@import "layout/main.css";
+@import "layout/form.css";
 
 /**
  * PAGES
