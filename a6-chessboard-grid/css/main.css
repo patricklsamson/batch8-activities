@@ -8,12 +8,17 @@
 @import "base/typography.css";
 
 /**
+ * LAYOUT
+ *--------------------------------------------------*/
+
+@import "layout/header.css";
+@import "layout/main.css";
+
+/**
  * COMPONENTS
  *--------------------------------------------------*/
 
 @import "components/loader.css";
-@import "components/header.css";
-@import "components/main.css";
 @import "components/button.css";
 @import "components/modal.css";
 
@@ -24,16 +29,3 @@
 /* INDEX */
 
 @import "pages/index/main.css";
-
-/* CHESS MID GAME */
-
-@import "pages/chess-midgame/main.css";
-
-/* CHESS NEW GAME */
-
-@import "pages/chess-newgame/header.css";
-@import "pages/chess-newgame/main.css";
-
-/* STORY */
-
-@import "pages/story/main.css";
