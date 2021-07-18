@@ -9,12 +9,12 @@
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
-  background: #bea5a9;
+  background: hsl(350, 16%, 70%);
   padding: 3vmin 3vmin;
   -webkit-border-radius: 2vmin;
   -moz-border-radius: 2vmin;
   border-radius: 2vmin;
-  border: 1vmin solid #6b283b;
+  border: 1vmin solid hsl(343, 46%, 29%);
 }
 
 .modal-overlay {
@@ -24,7 +24,7 @@
   top: 0;
   min-height: 100vh;
   width: 100%;
-  background: rgba(52, 58, 64, 0.5);
+  background: hsla(210, 10%, 23%, 0.502);
   z-index: 3;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .modal-inner {
-  background: #a4abbd;
+  background: hsl(223, 16%, 69%);
   padding: 2vmin;
 }
 
@@ -72,12 +72,12 @@
 
 .tc,
 #tooltips-modal fieldset:first-child {
-  color: #14406f;
+  color: hsl(211, 69%, 26%);
 }
 
 .ti,
 #tooltips-modal fieldset:nth-child(2) {
-  color: #6b283b;
+  color: hsl(343, 46%, 29%);
 }
 
 #chess-newgame-header #story-modal .modal-inner {
