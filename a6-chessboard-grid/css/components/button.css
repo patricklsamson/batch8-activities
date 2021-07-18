@@ -5,21 +5,21 @@
   -webkit-border-radius: 1.5vmin;
   -moz-border-radius: 1.5vmin;
   border-radius: 1.5vmin;
-  color: #a4abbd;
+  color: hsl(223, 16%, 69%);
   margin: 0 2vmin;
 }
 
 .btn-blue {
-  background: #14406f;
+  background: hsl(211, 69%, 26%);
 }
 
 .btn-red {
-  background: #6b283b;
+  background: hsl(343, 46%, 29%);
 }
 
 .btn-blue:hover,
 .btn-red:hover {
-  background: #a4abbd;
+  background: hsl(223, 16%, 69%);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -27,7 +27,7 @@
 }
 
 .btn-blue:hover {
-  color: #14406f;
+  color: hsl(211, 69%, 26%);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -35,7 +35,7 @@
 }
 
 .btn-red:hover {
-  color: #6b283b;
+  color: hsl(343, 46%, 29%);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -47,7 +47,7 @@
 }
 
 #story-btn:checked ~ label[for="story-btn"] {
-  color: #a4abbd;
+  color: hsl(223, 16%, 69%);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -76,7 +76,7 @@ label[for="story-btn"] {
 }
 
 #tooltips-btn:checked ~ label[for="tooltips-btn"] img {
-  background: #a4abbd;
+  background: hsl(223, 16%, 69%);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -89,7 +89,7 @@ label[for="story-btn"] {
 
 @media not all and (pointer: coarse) {
   #story-btn:hover ~ label[for="story-btn"] {
-    color: #a4abbd;
+    color: hsl(223, 16%, 69%);
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     -moz-transition: 0.5s;
@@ -111,7 +111,7 @@ label[for="story-btn"] {
   }
 
   #tooltips-btn:hover ~ label[for="tooltips-btn"] img {
-    background: #a4abbd;
+    background: hsl(223, 16%, 69%);
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     -moz-transition: 0.5s;
