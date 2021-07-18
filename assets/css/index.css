@@ -4,8 +4,8 @@
  * ABSTRACTS
  *--------------------------------------------------*/
 
-@import "abstracts/animations.css";
 @import "abstracts/fonts.css";
+@import "abstracts/animations.css";
 
 /**
  * VENDORS
@@ -22,9 +22,7 @@
 @import "base/helpers.css";
 
 /**
- * COMPONENTS
+ * LAYOUT
  *--------------------------------------------------*/
 
-@import "components/container.css";
-@import "components/grid.css";
-@import "components/navbar.css";
+@import "layout/navbar.css";
