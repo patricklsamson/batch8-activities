@@ -1,7 +1,7 @@
 .chess-board {
   width: 86vmin;
-  border: 3vmin solid #343a40;
-  background: #343a40;
+  border: 3vmin solid hsl(210, 10%, 23%);
+  background: hsl(210, 10%, 23%);
   margin: 0 auto;
 }
 
@@ -13,12 +13,12 @@
 
 .chess-row:nth-child(odd) .chess-square:nth-child(odd),
 .chess-row:nth-child(even) .chess-square:nth-child(even) {
-  background: #a4abbd;
+  background: hsl(223, 16%, 69%);
 }
 
 .chess-row:nth-child(odd) .chess-square:nth-child(even),
 .chess-row:nth-child(even) .chess-square:nth-child(odd) {
-  background: #14406f;
+  background: hsl(211, 69%, 26%);
 }
 
 .chess-square {
@@ -26,7 +26,7 @@
 }
 
 .chess-square p {
-  color: #a4abbd;
+  color: hsl(223, 16%, 69%);
   font-family: "American Captain", sans-serif;
   font-size: 3vmin;
   width: 2vmin;
