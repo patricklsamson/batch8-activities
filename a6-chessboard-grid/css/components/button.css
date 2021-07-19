@@ -69,7 +69,6 @@
 }
 
 label[for="story-btn"] {
-  position: relative;
   z-index: 4;
   right: 30vmin;
   font-size: 2.5vmin;
@@ -124,7 +123,6 @@ label[for="story-btn"] {
 }
 
 label[for="tooltips-btn"] {
-  position: relative;
   z-index: 6;
   vertical-align: middle;
   left: 30vmin;
