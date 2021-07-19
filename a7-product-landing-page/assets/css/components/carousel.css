@@ -3,7 +3,7 @@
 }
 
 .sec-carousel .wrap-overlay {
-  background: rgba(0, 0, 0, 0.6);
+  background: hsla(0, 0%, 0%, 0.6);
 }
 
 .sec-carousel .table {
@@ -17,8 +17,8 @@
 }
 
 .caro-cont {
-  background: rgba(0, 0, 0, 0.5);
-  border: 2px solid #f8f9fa;
+  background: hsla(0, 0%, 0%, 0.5);
+  border: 2px solid hsl(210, 17%, 98%);
 }
 
 .caro-cont .caro {
@@ -95,7 +95,7 @@
 }
 
 .caro-cont .caro-nav button.caro-prev div {
-  border-right-color: #f8f9fa;
+  border-right-color: hsl(210, 17%, 98%);
 }
 
 .caro-cont button.caro-prev div:hover {
@@ -103,11 +103,11 @@
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
   transition: 0.5s;
-  border-right-color: #00aecd;
+  border-right-color: hsl(189, 100%, 40%);
 }
 
 .caro-cont .caro-nav button.caro-next div {
-  border-left-color: #f8f9fa;
+  border-left-color: hsl(210, 17%, 98%);
 }
 
 .caro-cont button.caro-next div:hover {
@@ -115,7 +115,7 @@
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
   transition: 0.5s;
-  border-left-color: #00aecd;
+  border-left-color: hsl(189, 100%, 40%);
 }
 
 .caro-cont .caro-dots {
@@ -128,7 +128,7 @@
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-color: #00aecd;
+  background-color: hsl(189, 100%, 40%);
   margin: 0 5px;
   opacity: 0.5;
   cursor: pointer;
@@ -147,5 +147,5 @@
 }
 
 .sec-carousel h5 {
-  color: #00aecd;
+  color: hsl(189, 100%, 40%);
 }
