@@ -1,0 +1,31 @@
+header {
+  background: hsl(0, 0%, 0%);
+  border-bottom: 0.1px solid hsl(210, 10%, 23%);
+}
+
+header [class*="gcol"]:nth-child(2) {
+  position: relative;
+}
+
+.brand span {
+  position: relative;
+  bottom: 12px;
+}
+
+#header-img {
+  height: 45px;
+}
+
+@media only screen and (max-width: 480px) {
+  header .brand {
+    font-size: 14px;
+  }
+
+  #header-img {
+    height: 35px;
+  }
+
+  .brand span {
+    bottom: 10px;
+  }
+}
