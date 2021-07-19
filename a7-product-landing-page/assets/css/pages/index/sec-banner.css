@@ -6,16 +6,6 @@
   animation: bg-change 8s ease-in-out 1s infinite;
 } */
 
-.sec-banner {
-  position: relative;
-}
-
-.sec-banner .banner1,
-.sec-banner .banner2 {
-  position: absolute;
-  width: 100%;
-}
-
 .sec-banner .banner1 {
   background-image: url(../../../assets/img/triton-banner.jpg);
 }
@@ -29,99 +19,11 @@
   animation: bg-fade 8s ease-in-out 1s infinite;
 }
 
-@-webkit-keyframes bg-fade {
-  0% {
-    z-index: 1;
-    opacity: 0;
-  }
-
-  45% {
-    z-index: 1;
-    opacity: 1;
-  }
-
-  55% {
-    z-index: 1;
-    opacity: 1;
-  }
-
-  100% {
-    z-index: 1;
-    opacity: 0;
-  }
-}
-
-@-moz-keyframes bg-fade {
-  0% {
-    z-index: 1;
-    opacity: 0;
-  }
-
-  45% {
-    z-index: 1;
-    opacity: 1;
-  }
-
-  55% {
-    z-index: 1;
-    opacity: 1;
-  }
-
-  100% {
-    z-index: 1;
-    opacity: 0;
-  }
-}
-
-@-o-keyframes bg-fade {
-  0% {
-    z-index: 1;
-    opacity: 0;
-  }
-
-  45% {
-    z-index: 1;
-    opacity: 1;
-  }
-
-  55% {
-    z-index: 1;
-    opacity: 1;
-  }
-
-  100% {
-    z-index: 1;
-    opacity: 0;
-  }
-}
-
-@keyframes bg-fade {
-  0% {
-    z-index: 1;
-    opacity: 0;
-  }
-
-  45% {
-    z-index: 1;
-    opacity: 1;
-  }
-
-  55% {
-    z-index: 1;
-    opacity: 1;
-  }
-
-  100% {
-    z-index: 1;
-    opacity: 0;
-  }
-}
-
 @media only screen and (min-width: 992px) {
   .sec-banner .banner1,
   .sec-banner .banner2,
   .sec-banner .wrap-banner {
-    min-height: calc(100vh - 108px);
+    min-height: calc(100vh - 103px);
   }
 }
 
@@ -140,7 +42,6 @@
 .sec-banner .title,
 .sec-banner .caption,
 .sec-banner .btn-white {
-  position: relative;
   z-index: 1;
 }
 
@@ -153,60 +54,12 @@
   animation: pop-down 0.6s linear 0.6s forwards;
 }
 
-@-webkit-keyframes pop-down {
-  0% {
-    bottom: 30px;
-    opacity: 0;
-  }
-
-  100% {
-    bottom: 0;
-    opacity: 1;
-  }
-}
-
-@-moz-keyframes pop-down {
-  0% {
-    bottom: 30px;
-    opacity: 0;
-  }
-
-  100% {
-    bottom: 0;
-    opacity: 1;
-  }
-}
-
-@-o-keyframes pop-down {
-  0% {
-    bottom: 30px;
-    opacity: 0;
-  }
-
-  100% {
-    bottom: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes pop-down {
-  0% {
-    bottom: 30px;
-    opacity: 0;
-  }
-
-  100% {
-    bottom: 0;
-    opacity: 1;
-  }
-}
-
 .sec-banner h1 strong {
   font-weight: 700;
 }
 
 .sec-banner h1 span {
-  color: #00aecd;
+  color: hsl(189, 100%, 40%);
 }
 
 .sec-banner .caption {
@@ -218,60 +71,12 @@
   animation: pop-left 0.15s linear 1s forwards;
 }
 
-@-webkit-keyframes pop-left {
-  0% {
-    left: 40vw;
-    opacity: 0;
-  }
-
-  100% {
-    left: 0;
-    opacity: 1;
-  }
-}
-
-@-moz-keyframes pop-left {
-  0% {
-    left: 40vw;
-    opacity: 0;
-  }
-
-  100% {
-    left: 0;
-    opacity: 1;
-  }
-}
-
-@-o-keyframes pop-left {
-  0% {
-    left: 40vw;
-    opacity: 0;
-  }
-
-  100% {
-    left: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes pop-left {
-  0% {
-    left: 40vw;
-    opacity: 0;
-  }
-
-  100% {
-    left: 0;
-    opacity: 1;
-  }
-}
-
 .sec-banner a {
   padding: 10px 20px;
   font-size: 20px;
   margin-top: 15px;
   margin-right: 15%;
-  background: rgba(0, 0, 0, 0.2);
+  background: hsla(0, 0%, 0%, 0.2);
   top: 40px;
   opacity: 0;
   -webkit-animation: pop-up 0.3s linear 1.2s forwards;
@@ -280,54 +85,6 @@
   animation: pop-up 0.3s linear 1.2s forwards;
 }
 
-@-webkit-keyframes pop-up {
-  0% {
-    top: 40px;
-    opacity: 0;
-  }
-
-  100% {
-    top: 0;
-    opacity: 1;
-  }
-}
-
-@-moz-keyframes pop-up {
-  0% {
-    top: 40px;
-    opacity: 0;
-  }
-
-  100% {
-    top: 0;
-    opacity: 1;
-  }
-}
-
-@-o-keyframes pop-up {
-  0% {
-    top: 40px;
-    opacity: 0;
-  }
-
-  100% {
-    top: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes pop-up {
-  0% {
-    top: 40px;
-    opacity: 0;
-  }
-
-  100% {
-    top: 0;
-    opacity: 1;
-  }
-}
-
 .sec-banner a:hover {
-  background: rgba(0, 0, 0, 0.7);
+  background: hsla(0, 0%, 0%, 0.7);
 }
