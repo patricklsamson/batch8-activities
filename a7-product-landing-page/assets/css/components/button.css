@@ -1,15 +1,119 @@
 .btn-white {
-  border: 2px solid #f8f9fa;
-  color: #f8f9fa;
-  background: #000;
+  border: 2px solid hsl(210, 17%, 98%);
+  color: hsl(210, 17%, 98%);
+  background: hsl(0, 0%, 0%);
 }
 
 .btn-white:hover,
 .btn-white:hover:before {
-  border-color: #00c3ca;
-  color: #00aecd;
+  border-color: hsl(182, 100%, 40%);
+  color: hsl(189, 100%, 40%);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
   transition: 0.5s;
+}
+
+#user-btn:checked ~ .wrap-user {
+  visibility: visible;
+  opacity: 1;
+}
+
+header .img-user {
+  height: 50px;
+  border: 2px solid hsl(208, 7%, 46%);
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+label[for="user-btn"]:hover .img-user {
+  border: 2px solid hsl(189, 100%, 40%);
+}
+
+label[for="user-btn"] span {
+  bottom: 18px;
+  padding-left: 8px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+label[for="user-btn"]:hover span {
+  color: hsl(189, 100%, 40%);
+}
+
+@media only screen and (max-width: 480px) {
+  header .img-user {
+    height: 40px;
+  }
+
+  label[for="user-btn"] span {
+    bottom: 15px;
+    padding-left: 5px;
+  }
+}
+
+label[for="signup"],
+label[for="login"] {
+  margin-left: 30px;
+  padding: 10px;
+}
+
+label[for="signup"]:before,
+label[for="login"]:before {
+  content: "x";
+  display: none;
+  position: absolute;
+  color: hsl(210, 17%, 98%);
+  z-index: 4;
+  font-size: 35px;
+  top: -2px;
+  line-height: 32px;
+  padding: 0 10px 6px;
+  border: 2px solid hsl(210, 17%, 98%);
+}
+
+label[for="signup"]:before {
+  left: 25px;
+}
+
+label[for="login"]:before {
+  left: 18px;
+}
+
+#signup:checked ~ .modal-signup,
+#login:checked ~ .modal-login {
+  visibility: visible;
+  opacity: 1;
+}
+
+#signup:checked ~ label[for="signup"],
+#login:checked ~ label[for="login"] {
+  color: transparent;
+  border-color: transparent;
+}
+
+#signup:checked ~ label[for="signup"]:before,
+#login:checked ~ label[for="login"]:before {
+  display: initial;
+}
+
+@media only screen and (max-width: 480px) {
+  label[for="signup"],
+  label[for="login"] {
+    margin-left: 3px;
+    padding: 3px;
+  }
+
+  label[for="signup"]:before,
+  label[for="login"]:before {
+    font-size: 22px;
+    line-height: 19px;
+    padding: 0 7px 5px;
+  }
 }
