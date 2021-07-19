@@ -32,16 +32,16 @@
 
     <header id="header">
       <div class="cont">
-        <div class="grid">
+        <div class="grid pt-025 pb-025">
           <div class="gcol-lg-6 gcol-5 mh">
             <div class="table">
               <div class="valign">
                 <a
                   href="https://www.acer.com/ac/en/PH/content/predator-home"
-                  class="brand"
+                  class="brand fw-700 fs-11"
                   ><img
                     src="../assets/img/predator.png"
-                    alt="predator-logo"
+                    alt="Acer Predator cyan logo"
                     id="header-img"
                   />
                   <span>PREDATOR</span></a
@@ -54,12 +54,12 @@
             <div class="table">
               <div class="valign">
                 <input type="checkbox" id="signup" />
-                <label for="signup" id="signup-btn" class="btn-white"
+                <label for="signup" id="signup-btn" class="btn-white p-relative"
                   >SIGN UP</label
                 >
 
-                <div class="wrap-signup">
-                  <div class="table">
+                <div class="modal-signup">
+                  <div class="table wrap-fluid">
                     <div class="valign">
                       <form
                         action="signup-landing-page.html"
@@ -103,12 +103,15 @@
                 </div>
 
                 <input type="checkbox" id="login" />
-                <label for="login" id="login-btn" class="btn-white once"
+                <label
+                  for="login"
+                  id="login-btn"
+                  class="btn-white once p-relative"
                   >LOG IN</label
                 >
 
-                <div class="wrap-login">
-                  <div class="table">
+                <div class="modal-login">
+                  <div class="table wrap-fluid">
                     <div class="valign">
                       <form
                         action="login-landing-page.html"
@@ -122,8 +125,12 @@
                         ><input type="checkbox" id="reveal" /><label
                           for="reveal"
                           id="reveal-btn"
+                          class="p-relative"
                         >
-                          <div id="reveal-icon" class="img"></div></label
+                          <div
+                            id="reveal-icon"
+                            class="img p-absolute d-inblock"
+                          ></div></label
                         ><br />
                         <input
                           type="password"
@@ -155,9 +162,9 @@
       </div>
     </header>
 
-    <section class="sec-sticky">
+    <section class="sec-navbar">
       <div class="cont">
-        <div class="grid">
+        <div class="grid pt-025 pb-025">
           <div class="gcol-lg-4 gcol-10 mh2">
             <div class="table">
               <div class="valign">
@@ -169,9 +176,9 @@
           <div class="gcol-lg-8 gcol-2 mh2">
             <nav id="nav-bar">
               <input type="checkbox" id="nav-toggle" />
-              <label for="nav-toggle" id="nav-toggle-icon"><span></span></label>
+              <label for="nav-toggle" id="nav-btn"><span></span></label>
 
-              <div id="navcoll" class="wrap-navcoll talign trgt">
+              <div id="nav-coll" class="talign trgt">
                 <div class="menu-container">
                   <ul>
                     <li><a href="#header" class="nav-link">HOME</a></li>
@@ -189,17 +196,20 @@
       </div>
     </section>
 
-    <section class="sec-banner talign trgt">
-      <div class="banner1 img prlax"></div>
-      <div class="banner2 img prlax"></div>
+    <section class="sec-banner talign trgt p-relative">
+      <div class="banner1 img prlax p-absolute w-fluid"></div>
+      <div class="banner2 img prlax p-absolute w-fluid"></div>
 
       <div class="cont-fl">
         <div class="wrap-banner flex frgt">
-          <h1 class="title txtfx">
+          <h1 class="title txtfx p-relative">
             <strong>PREDATOR</strong> <span>TRITON</span> 500
           </h1>
-          <h4 class="caption txtfx">FORGED THIN. LEAN AND MEAN.</h4>
-          <a href="#watch" class="btn-white">Watch NOW</a>
+
+          <h4 class="caption txtfx fw-300 p-relative">
+            FORGED THIN. LEAN AND MEAN.
+          </h4>
+          <a href="#watch" class="btn-white p-relative">Watch NOW</a>
         </div>
       </div>
     </section>
@@ -237,7 +247,7 @@
       </div>
     </section>
 
-    <div id="watch" class="wrap-pagelink"></div>
+    <div id="watch" class="p-absolute nmt-25"></div>
 
     <section class="sec-video img prlax">
       <div class="wrap-overlay">
