@@ -23,15 +23,15 @@
     <link rel="stylesheet" href="css/main.min.css" />
   </head>
   <body>
-    <section class="sec-loader flex f-ironman">
-      <div class="loader"></div>
+    <section class="sec-loader flex f-ironman p-absolute h-fluid">
+      <div class="loader p-relative"></div>
     </section>
 
     <header id="chess-newgame-header" class="talign">
       <h1 class="f-ironman"><span>Civil</span> War <span>Chess</span></h1>
 
       <input type="checkbox" id="story-btn" class="d-none" />
-      <label for="story-btn" class="f-amcap">Hint</label>
+      <label for="story-btn" class="f-amcap p-relative">Hint</label>
 
       <div id="story-modal" class="modal-overlay flex">
         <div class="modal-inner f-amcap">
@@ -50,10 +50,12 @@
         </div>
       </div>
 
-      <p class="p-quote mb-em f-amcap"><q>Divided we fall</q></p>
+      <p class="p-quote mb-em f-amcap d-inblock p-relative">
+        <q>Divided we fall</q>
+      </p>
 
       <input type="checkbox" id="tooltips-btn" class="d-none" />
-      <label for="tooltips-btn"
+      <label for="tooltips-btn" class="p-relative"
         ><img
           src="../assets/img/tooltip.png"
           alt="White question mark with circular black background"
@@ -66,7 +68,10 @@
             <legend class="t-ironman">Team Captain America - TC</legend>
 
             <p>
-              <img src="../assets/img/cap-america.png" alt="Marvel Captain America shield logo" />
+              <img
+                src="../assets/img/cap-america.png"
+                alt="Marvel Captain America shield logo"
+              />
               = Captain America = King
             </p>
 
@@ -87,18 +92,21 @@
             </p>
 
             <p>
-              <img src="../assets/img/falcon.png" alt="Marvel Falcon logo" /> = Falcon
-              = Knight
+              <img src="../assets/img/falcon.png" alt="Marvel Falcon logo" /> =
+              Falcon = Knight
             </p>
 
             <p>
-              <img src="../assets/img/ant-man.png" alt="Marvel Ant-Man red atom logo" /> =
-              Ant-Man = Rook
+              <img
+                src="../assets/img/ant-man.png"
+                alt="Marvel Ant-Man red atom logo"
+              />
+              = Ant-Man = Rook
             </p>
 
             <p>
-              <img src="../assets/img/hawkeye.png" alt="Marvel Hawkeye logo" /> =
-              Hawkeye = Pawn
+              <img src="../assets/img/hawkeye.png" alt="Marvel Hawkeye logo" />
+              = Hawkeye = Pawn
             </p>
           </fieldset>
 
@@ -106,23 +114,35 @@
             <legend>Team Iron Man - TI</legend>
 
             <p>
-              <img src="../assets/img/iron-man.png" alt="Marvel Iron Man arc reactor logo" /> =
-              Iron Man = King
+              <img
+                src="../assets/img/iron-man.png"
+                alt="Marvel Iron Man arc reactor logo"
+              />
+              = Iron Man = King
             </p>
 
             <p>
-              <img src="../assets/img/black-widow.png" alt="Marvel Black Widow logo" />
+              <img
+                src="../assets/img/black-widow.png"
+                alt="Marvel Black Widow logo"
+              />
               = Black Widow = Queen
             </p>
 
             <p>
-              <img src="../assets/img/war-machine.png" alt="Marvel War Machine black stars and banner logo" />
+              <img
+                src="../assets/img/war-machine.png"
+                alt="Marvel War Machine black stars and banner logo"
+              />
               = War Machine = Bishop
             </p>
 
             <p>
-              <img src="../assets/img/vision.png" alt="Marvel Vision mind stone in forehead logo" /> = Vision
-              = Knight
+              <img
+                src="../assets/img/vision.png"
+                alt="Marvel Vision mind stone in forehead logo"
+              />
+              = Vision = Knight
             </p>
 
             <p>
@@ -134,7 +154,10 @@
             </p>
 
             <p>
-              <img src="../assets/img/spider-man.png" alt="Marvel Spider-Man logo" />
+              <img
+                src="../assets/img/spider-man.png"
+                alt="Marvel Spider-Man logo"
+              />
               = Spider-Man = Pawn
             </p>
           </fieldset>
