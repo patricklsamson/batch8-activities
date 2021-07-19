@@ -1,6 +1,6 @@
 html {
-  background-color: #343a40;
-  color: #f8f9fa;
+  background-color: hsl(210, 10%, 23%);
+  color: hsl(210, 17%, 98%);
 }
 
 ::-webkit-scrollbar {
@@ -11,28 +11,28 @@ html {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  -webkit-box-shadow: inset 0 0 5px #f8f9fa;
-  -moz-box-shadow: inset 0 0 5px #f8f9fa;
-  box-shadow: inset 0 0 5px #f8f9fa;
+  -webkit-box-shadow: inset 0 0 5px hsl(210, 17%, 98%);
+  -moz-box-shadow: inset 0 0 5px hsl(210, 17%, 98%);
+  box-shadow: inset 0 0 5px hsl(210, 17%, 98%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00aecd;
+  background: hsl(189, 100%, 40%);
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00c3ca;
+  background: hsl(182, 100%, 40%);
 }
 
 a {
-  color: #f8f9fa;
+  color: hsl(210, 17%, 98%);
 }
 
 a:hover {
-  color: #00aecd;
+  color: hsl(189, 100%, 40%);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
