@@ -24,15 +24,15 @@
   </head>
 
   <body>
-    <section class="sec-loader flex f-ironman">
-      <div class="loader"></div>
+    <section class="sec-loader flex f-ironman p-absolute h-fluid">
+      <div class="loader p-relative"></div>
     </section>
 
     <header class="talign">
       <h1 class="f-ironman"><span>Civil</span> War <span>Chess</span></h1>
 
       <input type="checkbox" id="story-btn" class="d-none" />
-      <label for="story-btn" class="f-amcap">Story</label>
+      <label for="story-btn" class="f-amcap p-relative">Story</label>
 
       <div id="story-modal" class="modal-overlay flex">
         <div class="modal-inner f-amcap">
@@ -104,10 +104,12 @@
         </div>
       </div>
 
-      <p class="p-quote mb-em f-amcap"><q>Divided we fall</q></p>
+      <p class="p-quote mb-em f-amcap d-inblock p-relative">
+        <q>Divided we fall</q>
+      </p>
 
       <input type="checkbox" id="tooltips-btn" class="d-none" />
-      <label for="tooltips-btn"
+      <label for="tooltips-btn" class="p-relative"
         ><img
           src="../assets/img/tooltip.png"
           alt="White question mark with circular black background"
