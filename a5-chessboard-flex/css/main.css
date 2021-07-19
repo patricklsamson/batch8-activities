@@ -21,7 +21,6 @@ main {
 .chess-board {
   border: 3vmin solid #70a4cb;
   background: #70a4cb;
-  position: relative;
   width: 80vmin;
 }
 
@@ -32,7 +31,6 @@ main {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
