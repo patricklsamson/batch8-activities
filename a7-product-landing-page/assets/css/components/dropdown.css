@@ -1,0 +1,24 @@
+header .wrap-user {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  top: 63px;
+  right: 0;
+  z-index: 5;
+  background: hsl(208, 7%, 46%);
+  padding: 15px;
+  padding-left: 60px;
+}
+
+@media only screen and (max-width: 480px) {
+  header .wrap-user {
+    top: 52px;
+  }
+}
+
+.wrap-user li {
+  margin: 5px 0;
+}
