@@ -1,0 +1,27 @@
+.modal-signup,
+.modal-login {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: hsla(0, 0%, 0%, 0.902);
+  z-index: 3;
+}
+
+.modal-signup .table,
+.modal-login .table {
+  width: 360px;
+}
+
+@media only screen and (max-width: 480px) {
+  .modal-signup .table,
+  .modal-login .table {
+    width: 275px;
+  }
+}
