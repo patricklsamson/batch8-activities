@@ -1,13 +1,11 @@
 @charset "UTF-8";
 
 #main {
-  position: relative;
   background-image: url(../../assets/img/world-wide-web-map-1024x575.jpg);
 }
 
 #main .wrap-overlay {
   background-color: hsla(0, 0%, 0%, 0.8);
-  min-height: 100vh;
 }
 
 #title {
@@ -15,16 +13,11 @@
   border-bottom: 10px double hsl(210, 17%, 98%);
 }
 
-#img-div {
-  position: relative;
-}
-
 #image {
   width: 85%;
 }
 
 #img-caption {
-  position: absolute;
   top: 10px;
   left: 50%;
   margin-left: -148px;
