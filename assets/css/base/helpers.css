@@ -36,19 +36,6 @@
   }
 }
 
-.wrap-fluid {
-  min-height: 100vh;
-}
-
-.wrap-pagelink {
-  position: absolute;
-  margin-top: -100px;
-}
-
-.wrap-scroll {
-  overflow-y: scroll;
-}
-
 .grid {
   margin: 0 -10px;
   zoom: 1;
@@ -1451,7 +1438,7 @@
   display: none;
 }
 
-.d-iblock {
+.d-inblock {
   display: inline-block;
 }
 
@@ -1478,4 +1465,53 @@
   position: fixed;
   overflow-y: hidden;
   width: 100%;
+}
+
+.h-fluid {
+  min-height: 100vh;
+}
+
+.vw-fluid {
+  width: 100vw;
+}
+
+.w-fluid {
+  width: 100%;
+}
+
+.x-scroll {
+  overflow-x: scroll;
+}
+
+.y-scroll {
+  overflow-y: scroll;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-absolute {
+  position: absolute;
+}
+.p-absolute.nmt-20 {
+  margin-top: -2em;
+}
+.p-absolute.nmt-25 {
+  margin-top: -2.5em;
+}
+.p-absolute.nmt-30 {
+  margin-top: -3em;
+}
+.p-absolute.nmt-35 {
+  margin-top: -3.5em;
+}
+.p-absolute.nmt-40 {
+  margin-top: -4em;
+}
+.p-absolute.nmt-45 {
+  margin-top: -4.5em;
+}
+.p-absolute.nmt-50 {
+  margin-top: -5em;
 }
