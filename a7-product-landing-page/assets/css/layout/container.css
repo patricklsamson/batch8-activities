@@ -1,0 +1,20 @@
+.sec-features {
+  padding: 44px 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .sec-features [class*="gcol"] {
+    margin-top: 10px;
+  }
+}
+
+.sec-features h2 span,
+.sec-features h5 {
+  color: hsl(189, 100%, 40%);
+}
+
+@media only screen and (max-width: 991px) {
+  #watch {
+    margin-top: -34px;
+  }
+}
