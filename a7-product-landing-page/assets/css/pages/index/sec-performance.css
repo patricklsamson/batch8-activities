@@ -3,7 +3,7 @@
 }
 
 .sec-performance .wrap-overlay {
-  background: rgba(0, 0, 0, 0.5);
+  background: hsla(0, 0%, 0%, 0.502);
 }
 
 .sec-performance .cont {
@@ -86,13 +86,17 @@
     linear,
     left bottom,
     left top,
-    from(#f8f9fa),
+    from(hsl(210, 17%, 98%)),
     color-stop(80%, transparent)
   );
-  background: -webkit-linear-gradient(bottom, #f8f9fa, transparent 80%);
-  background: -moz-linear-gradient(bottom, #f8f9fa, transparent 80%);
-  background: -o-linear-gradient(bottom, #f8f9fa, transparent 80%);
-  background: linear-gradient(to top, #f8f9fa, transparent 80%);
+  background: -webkit-linear-gradient(
+    bottom,
+    hsl(210, 17%, 98%),
+    transparent 80%
+  );
+  background: -moz-linear-gradient(bottom, hsl(210, 17%, 98%), transparent 80%);
+  background: -o-linear-gradient(bottom, hsl(210, 17%, 98%), transparent 80%);
+  background: linear-gradient(to top, hsl(210, 17%, 98%), transparent 80%);
   padding-top: 117%;
 }
 
@@ -101,13 +105,25 @@
     linear,
     left bottom,
     left top,
-    from(#00aecd),
+    from(hsl(189, 100%, 40%)),
     color-stop(72.14%, transparent)
   );
-  background: -webkit-linear-gradient(bottom, #00aecd, transparent 72.14%);
-  background: -moz-linear-gradient(bottom, #00aecd, transparent 72.14%);
-  background: -o-linear-gradient(bottom, #00aecd, transparent 72.14%);
-  background: linear-gradient(to top, #00aecd, transparent 72.14%);
+  background: -webkit-linear-gradient(
+    bottom,
+    hsl(189, 100%, 40%),
+    transparent 72.14%
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    hsl(189, 100%, 40%),
+    transparent 72.14%
+  );
+  background: -o-linear-gradient(
+    bottom,
+    hsl(189, 100%, 40%),
+    transparent 72.14%
+  );
+  background: linear-gradient(to top, hsl(189, 100%, 40%), transparent 72.14%);
   padding-top: 163%;
 }
 
@@ -116,13 +132,25 @@
     linear,
     left bottom,
     left top,
-    from(#f8f9fa),
+    from(hsl(210, 17%, 98%)),
     color-stop(70.71%, transparent)
   );
-  background: -webkit-linear-gradient(bottom, #f8f9fa, transparent 70.71%);
-  background: -moz-linear-gradient(bottom, #f8f9fa, transparent 70.71%);
-  background: -o-linear-gradient(bottom, #f8f9fa, transparent 70.71%);
-  background: linear-gradient(to top, #f8f9fa, transparent 70.71%);
+  background: -webkit-linear-gradient(
+    bottom,
+    hsl(210, 17%, 98%),
+    transparent 70.71%
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    hsl(210, 17%, 98%),
+    transparent 70.71%
+  );
+  background: -o-linear-gradient(
+    bottom,
+    hsl(210, 17%, 98%),
+    transparent 70.71%
+  );
+  background: linear-gradient(to top, hsl(210, 17%, 98%), transparent 70.71%);
   padding-top: 171%;
 }
 
@@ -131,13 +159,21 @@
     linear,
     left bottom,
     left top,
-    from(#00aecd),
+    from(hsl(189, 100%, 40%)),
     color-stop(65%, transparent)
   );
-  background: -webkit-linear-gradient(bottom, #00aecd, transparent 65%);
-  background: -moz-linear-gradient(bottom, #00aecd, transparent 65%);
-  background: -o-linear-gradient(bottom, #00aecd, transparent 65%);
-  background: linear-gradient(to top, #00aecd, transparent 65%);
+  background: -webkit-linear-gradient(
+    bottom,
+    hsl(189, 100%, 40%),
+    transparent 65%
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    hsl(189, 100%, 40%),
+    transparent 65%
+  );
+  background: -o-linear-gradient(bottom, hsl(189, 100%, 40%), transparent 65%);
+  background: linear-gradient(to top, hsl(189, 100%, 40%), transparent 65%);
   padding-top: 205%;
 }
 
@@ -146,13 +182,25 @@
     linear,
     left bottom,
     left top,
-    from(#f8f9fa),
+    from(hsl(210, 17%, 98%)),
     color-stop(87.86%, transparent)
   );
-  background: -webkit-linear-gradient(bottom, #f8f9fa, transparent 87.86%);
-  background: -moz-linear-gradient(bottom, #f8f9fa, transparent 87.86%);
-  background: -o-linear-gradient(bottom, #f8f9fa, transparent 87.86%);
-  background: linear-gradient(to top, #f8f9fa, transparent 87.86%);
+  background: -webkit-linear-gradient(
+    bottom,
+    hsl(210, 17%, 98%),
+    transparent 87.86%
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    hsl(210, 17%, 98%),
+    transparent 87.86%
+  );
+  background: -o-linear-gradient(
+    bottom,
+    hsl(210, 17%, 98%),
+    transparent 87.86%
+  );
+  background: linear-gradient(to top, hsl(210, 17%, 98%), transparent 87.86%);
   padding-top: 71%;
 }
 
@@ -161,13 +209,25 @@
     linear,
     left bottom,
     left top,
-    from(#00aecd),
+    from(hsl(189, 100%, 40%)),
     color-stop(81.43%, transparent)
   );
-  background: -webkit-linear-gradient(bottom, #00aecd, transparent 81.43%);
-  background: -moz-linear-gradient(bottom, #00aecd, transparent 81.43%);
-  background: -o-linear-gradient(bottom, #00aecd, transparent 81.43%);
-  background: linear-gradient(to top, #00aecd, transparent 81.43%);
+  background: -webkit-linear-gradient(
+    bottom,
+    hsl(189, 100%, 40%),
+    transparent 81.43%
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    hsl(189, 100%, 40%),
+    transparent 81.43%
+  );
+  background: -o-linear-gradient(
+    bottom,
+    hsl(189, 100%, 40%),
+    transparent 81.43%
+  );
+  background: linear-gradient(to top, hsl(189, 100%, 40%), transparent 81.43%);
   padding-top: 109%;
 }
 
@@ -176,13 +236,25 @@
     linear,
     left bottom,
     left top,
-    from(#f8f9fa),
+    from(hsl(210, 17%, 98%)),
     color-stop(79.29%, transparent)
   );
-  background: -webkit-linear-gradient(bottom, #f8f9fa, transparent 79.29%);
-  background: -moz-linear-gradient(bottom, #f8f9fa, transparent 79.29%);
-  background: -o-linear-gradient(bottom, #f8f9fa, transparent 79.29%);
-  background: linear-gradient(to top, #f8f9fa, transparent 79.29%);
+  background: -webkit-linear-gradient(
+    bottom,
+    hsl(210, 17%, 98%),
+    transparent 79.29%
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    hsl(210, 17%, 98%),
+    transparent 79.29%
+  );
+  background: -o-linear-gradient(
+    bottom,
+    hsl(210, 17%, 98%),
+    transparent 79.29%
+  );
+  background: linear-gradient(to top, hsl(210, 17%, 98%), transparent 79.29%);
   padding-top: 121%;
 }
 
@@ -191,18 +263,30 @@
     linear,
     left bottom,
     left top,
-    from(#00aecd),
+    from(hsl(189, 100%, 40%)),
     color-stop(76.43%, transparent)
   );
-  background: -webkit-linear-gradient(bottom, #00aecd, transparent 76.43%);
-  background: -moz-linear-gradient(bottom, #00aecd, transparent 76.43%);
-  background: -o-linear-gradient(bottom, #00aecd, transparent 76.43%);
-  background: linear-gradient(to top, #00aecd, transparent 76.43%);
+  background: -webkit-linear-gradient(
+    bottom,
+    hsl(189, 100%, 40%),
+    transparent 76.43%
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    hsl(189, 100%, 40%),
+    transparent 76.43%
+  );
+  background: -o-linear-gradient(
+    bottom,
+    hsl(189, 100%, 40%),
+    transparent 76.43%
+  );
+  background: linear-gradient(to top, hsl(189, 100%, 40%), transparent 76.43%);
   padding-top: 138%;
 }
 
 .sec-performance .ultra {
-  color: #00aecd;
+  color: hsl(189, 100%, 40%);
 }
 
 .sec-performance .acer-new,
