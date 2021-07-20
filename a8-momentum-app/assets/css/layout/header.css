@@ -1,0 +1,67 @@
+header {
+  position: relative;
+  background: hsl(222, 10%, 33%);
+  font-size: 25px;
+}
+
+header.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+header .grid {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#logo {
+  margin: 5px 0;
+  width: 50px;
+  vertical-align: middle;
+}
+
+#light {
+  font-size: 30px;
+}
+
+#time,
+#date {
+  font-weight: 600;
+}
+
+#name {
+  font-size: 40px;
+}
+
+@media only screen and (max-width: 767px) {
+  header .grid {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  header .grid > [class*="gcol-"] {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  header [class*="gcol-"]:nth-child(3) {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    border-top: 1px solid hsl(210, 17%, 98%);
+  }
+
+  #logo {
+    width: 40px;
+  }
+
+  #time,
+  #date {
+    font-size: 25px;
+  }
+}
