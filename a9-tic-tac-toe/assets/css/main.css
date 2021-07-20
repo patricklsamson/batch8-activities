@@ -3,14 +3,14 @@
 html {
   font-size: 3vmin;
   font-family: "DJB Chalk It Up", cursive;
-  color: #f3fcf6;
+  color: hsl(140, 60%, 97%);
 }
 
 button {
   position: relative;
   background: transparent;
   border: 0;
-  color: #f3fcf6;
+  color: hsl(140, 60%, 97%);
 }
 
 button:before {
@@ -41,7 +41,7 @@ button:hover:before {
 }
 
 .cboard {
-  border: 35px solid #5f5642;
+  border: 35px solid hsl(41, 18%, 32%);
   background-image: url(../../../assets/img/board.jpg);
 }
 
@@ -101,7 +101,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #e4dcdd;
+  background: hsl(353, 13%, 88%);
   -webkit-transition: 0.25s;
   -o-transition: 0.25s;
   -moz-transition: 0.25s;
@@ -120,7 +120,7 @@ main {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background: #f3fcf6;
+  background: hsl(140, 60%, 97%);
   -webkit-transition: 0.25s;
   -o-transition: 0.25s;
   -moz-transition: 0.25s;
@@ -131,7 +131,7 @@ main {
 }
 
 #mark-checker:checked + .slider {
-  background: #5f5642;
+  background: hsl(41, 18%, 32%);
 }
 
 #mark-checker:checked + .slider:before {
