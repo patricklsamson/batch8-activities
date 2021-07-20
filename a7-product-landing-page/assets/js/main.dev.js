@@ -42,10 +42,12 @@ doc_ready(function () {
         id("submit").disabled = false;
         id("confirm-msg").style.display = "initial";
         add_att(id("confirm-msg"), "src", "../assets/img/check.png");
+        add_att(id("confirm-msg"), "alt", "Green check symbol");
       } else if (this.value != id("confirm-pw").value && id("confirm-pw").value.length >= 1) {
         id("submit").disabled = true;
         id("confirm-msg").style.display = "initial";
         add_att(id("confirm-msg"), "src", "../assets/img/cross.png");
+        add_att(id("confirm-msg"), "alt", "Red cross symbol");
       } else if (this.value.length == 0) {
         id("confirm-msg").style.display = "none";
       }
