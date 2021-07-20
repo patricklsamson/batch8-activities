@@ -1,6 +1,12 @@
 .btn-white {
   border: none;
   outline: none;
-  color: #f8f9fa;
+  color: hsl(210, 17%, 98%);
   background: transparent;
+}
+
+#change {
+  font-size: 14px;
+  font-family: "arial", sans-serif;
+  border-bottom: 1px solid hsl(210, 17%, 98%);
 }
