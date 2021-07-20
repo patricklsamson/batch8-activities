@@ -1,6 +1,6 @@
 html {
-  background-color: #343a40;
-  color: #f8f9fa;
+  background-color: hsl(210, 10%, 23%);
+  color: hsl(210, 17%, 98%);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -8,17 +8,17 @@ html {
 }
 
 html.light {
-  background-color: #f8f9fa !important;
+  background-color: hsl(210, 17%, 98%) !important;
 }
 
 html.light header,
 html.light header .cont:first-child,
 html.light footer {
-  background-color: #d3d3d3 !important;
+  background-color: hsl(0, 0%, 83%) !important;
 }
 
 html.light .wrap-overlay {
-  background-color: #f8f9fa !important;
+  background-color: hsl(210, 17%, 98%) !important;
 }
 
 html.light,
@@ -27,8 +27,8 @@ html.light div,
 html.light input,
 html.light button,
 html.light {
-  color: #000 !important;
-  border-color: #000 !important;
+  color: hsl(0, 0%, 0%) !important;
+  border-color: hsl(0, 0%, 0%) !important;
 }
 
 html.light .wrap-quotes {
@@ -36,15 +36,15 @@ html.light .wrap-quotes {
 }
 
 html.light ::-ms-input-placeholder {
-  color: #000 !important;
+  color: hsl(0, 0%, 0%) !important;
 }
 
 html.light :-ms-input-placeholder {
-  color: #000 !important;
+  color: hsl(0, 0%, 0%) !important;
 }
 
 html.light ::placeholder {
-  color: #000 !important;
+  color: hsl(0, 0%, 0%) !important;
 }
 
 body {
@@ -52,23 +52,23 @@ body {
 }
 
 ::-ms-input-placeholder {
-  color: #f8f9fa;
+  color: hsl(210, 17%, 98%);
 }
 
 :-ms-input-placeholder {
-  color: #f8f9fa;
+  color: hsl(210, 17%, 98%);
 }
 
 ::placeholder {
-  color: #f8f9fa;
+  color: hsl(210, 17%, 98%);
 }
 
 input {
   border: none;
   outline: none;
-  border-bottom: 2px solid #f8f9fa;
+  border-bottom: 2px solid hsl(210, 17%, 98%);
   background: transparent;
-  color: #f8f9fa;
+  color: hsl(210, 17%, 98%);
   padding-bottom: 5px;
 }
 
