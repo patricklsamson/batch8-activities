@@ -1,0 +1,80 @@
+main .grid {
+  padding: 20px 0;
+}
+
+main .grid [class*="gcol-"] {
+  padding: 0 20px;
+}
+
+#focus {
+  resize: none;
+  width: 100%;
+  outline: none;
+  background-color: hsl(208, 7%, 46%);
+}
+
+html.light #focus {
+  background-color: hsl(210, 17%, 98%);
+}
+
+main li {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html.light main textarea,
+html.light main li,
+html.light main input,
+html.light main p {
+  font-weight: 700;
+}
+
+main li::marker {
+  color: hsl(0, 100%, 50%);
+}
+
+main li.done {
+  text-decoration: line-through;
+}
+
+main li.done::marker {
+  color: hsl(120, 100%, 25%);
+}
+
+#add-to-do-btn,
+#add-quote-btn {
+  position: relative;
+  font-size: 30px;
+}
+
+#add-to-do-btn:before,
+#add-quote-btn:before {
+  content: ".";
+  font-size: 0;
+  position: absolute;
+  top: 20px;
+  left: -15px;
+  width: 60px;
+  height: 40px;
+  background-image: url(../../../assets/img/line-white.png);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#add-to-do-btn:hover:before,
+#add-quote-btn:hover:before {
+  visibility: visible;
+  opacity: 1;
+}
+
+html.light #add-to-do-btn:before,
+html.light #add-quote-btn:before {
+  background-image: url(../../../assets/img/line-black.png);
+}
