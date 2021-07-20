@@ -34,3 +34,30 @@
     width: 280px;
   }
 }
+
+#submit {
+  position: relative;
+  font-size: 30px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#submit:before {
+  content: ".";
+  font-size: 0;
+  position: absolute;
+  top: 32px;
+  width: 125%;
+  height: 20px;
+  background-image: url(../../../assets/img/line-white.png);
+}
+
+html.light #submit:before {
+  background-image: url(../../../assets/img/line-black.png);
+}
+
+#submit:disabled {
+  opacity: 0;
+}
