@@ -1,0 +1,14 @@
+header {
+  padding: 10px 0;
+}
+
+header img {
+  width: 35px;
+  vertical-align: text-top;
+}
+
+@media only screen and (max-width: 991px) {
+  header img {
+    width: 30px;
+  }
+}
