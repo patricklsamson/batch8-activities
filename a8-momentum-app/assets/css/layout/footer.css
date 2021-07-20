@@ -1,0 +1,8 @@
+footer {
+  background: hsl(222, 10%, 33%);
+  font-family: "arial", sans-serif;
+}
+
+footer small {
+  vertical-align: middle;
+}
