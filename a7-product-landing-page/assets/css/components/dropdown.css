@@ -1,4 +1,4 @@
-header .wrap-user {
+header .dropdown-user {
   visibility: hidden;
   opacity: 0;
   -webkit-transition: 0.5s;
@@ -14,11 +14,11 @@ header .wrap-user {
 }
 
 @media only screen and (max-width: 480px) {
-  header .wrap-user {
+  header .dropdown-user {
     top: 52px;
   }
 }
 
-.wrap-user li {
+.dropdown-user li {
   margin: 5px 0;
 }
