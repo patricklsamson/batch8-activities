@@ -8,17 +8,24 @@
 @import "base/typography.css";
 
 /**
+ * LAYOUT
+ *--------------------------------------------------*/
+
+@import "layout/header.css";
+@import "layout/main.css";
+@import "layout/footer.css";
+
+/**
  * COMPONENTS
  *--------------------------------------------------*/
 
-@import "components/header.css";
-@import "components/main.css";
-@import "components/footer.css";
 @import "components/button.css";
+@import "components/modal.css";
 
 /**
  * PAGES
  *--------------------------------------------------*/
 
 /* INDEX */
+
 @import "pages/index/sec-banner.css";
