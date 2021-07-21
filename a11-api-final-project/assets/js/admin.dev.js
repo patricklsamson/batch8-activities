@@ -9,17 +9,17 @@ doc_ready(function () {
     Admin.login_admin(inner(trim(id("login-username").value)), inner(trim(id("login-password").value)));
     return false;
   });
-  add_event(id("navtgl-btn"), "click", function () {
+  add_event(id("nav-btn"), "click", function () {
     toggle_class(this, "active");
   });
   add_event(window, "click", function (e) {
-    if (e.target.id != "navtgl-btn" || e.srcElement.id != "navtgl-btn") {
-      remove_class(id("navtgl-btn"), "active");
+    if (e.target.id != "nav-btn" || e.srcElement.id != "nav-btn") {
+      remove_class(id("nav-btn"), "active");
     }
   });
-  id("navcoll").querySelectorAll("[id*='-btn']").forEach(function (btn) {
+  id("side-coll").querySelectorAll("[id*='-btn']").forEach(function (btn) {
     add_event(btn, "click", function () {
-      remove_class(id("navtgl-btn"), "active");
+      remove_class(id("nav-btn"), "active");
     });
   });
   add_event(id("home-btn"), "click", function (e) {
