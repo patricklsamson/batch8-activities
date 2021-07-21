@@ -78,31 +78,27 @@
 
     <header id="header-admin" class="pt-05 pb-05">
       <div class="cont">
-        <nav id="navbar">
-          <div id="slide-wrap" class="wrap-slide">
-            <button id="navtgl-btn" class="btn-navtgl"></button>
+        <nav id="side-bar">
+          <button id="nav-btn"></button>
 
-            <div id="navcoll" class="wrap-navcoll height-fl">
-              <div class="table height-fl">
-                <div class="valign">
-                  <div class="menu-container talign">
-                    <ul>
-                      <li>
-                        <a href="#" id="home-btn" class="fs-15">Home</a>
-                      </li>
-                      <li class="mt-125">
-                        <a href="#" id="whitelist-btn" class="fs-15"
-                          >Whitelist</a
-                        >
-                      </li>
-                      <li class="mt-125">
-                        <a href="#" id="settings-btn" class="fs-15">Settings</a>
-                      </li>
-                      <li class="mt-125">
-                        <a href="#" id="log-out-btn" class="fs-15">Log Out</a>
-                      </li>
-                    </ul>
-                  </div>
+          <div id="side-coll" class="h-fluid">
+            <div class="table h-fluid">
+              <div class="valign">
+                <div class="menu-container talign">
+                  <ul>
+                    <li>
+                      <a href="#" id="home-btn" class="fs-15">Home</a>
+                    </li>
+                    <li class="mt-125">
+                      <a href="#" id="whitelist-btn" class="fs-15">Whitelist</a>
+                    </li>
+                    <li class="mt-125">
+                      <a href="#" id="settings-btn" class="fs-15">Settings</a>
+                    </li>
+                    <li class="mt-125">
+                      <a href="#" id="log-out-btn" class="fs-15">Log Out</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -111,7 +107,7 @@
       </div>
     </header>
 
-    <section class="sec-admin height-fl flex wrap-green-ribbon img con prlax">
+    <section class="sec-admin h-fluid flex wrap-green-ribbon img con prlax">
       <div class="cont flex">
         <p class="h1 talign tshadow-white">𝛙</p>
 
@@ -127,6 +123,7 @@
             id="login-username"
             class="mb-05"
             required
+            value="admin"
           /><br />
 
           <label for="login-password" class="tshadow-white">Password</label
@@ -137,6 +134,7 @@
             id="login-password"
             class="mb-05"
             required
+            value="admin"
           /><br />
 
           <input
