@@ -1,25 +1,22 @@
-#slide-wrap {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-nav#navbar button#navtgl-btn.btn-navtgl {
+nav#side-bar button#nav-btn {
   background: #f8f9fa;
   border-color: #f8f9fa;
   top: 35px;
   left: 4px;
+  float: right;
 }
 
-#navtgl-btn.active ~ .wrap-navcoll {
+#nav-btn.active ~ #side-coll {
   margin-right: 0;
 }
 
-.wrap-navcoll {
-  display: inline-block;
+#side-coll {
+  position: absolute;
+  top: 0;
+  right: 0;
   vertical-align: top;
   background: #f8f9fa;
-  margin-right: -160px;
+  margin-right: -280px;
 }
 
 .menu-container {
