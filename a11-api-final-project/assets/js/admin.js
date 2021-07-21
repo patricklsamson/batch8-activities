@@ -19,21 +19,21 @@ doc_ready(() => {
     return false;
   });
 
-  add_event(id("navtgl-btn"), "click", function () {
+  add_event(id("nav-btn"), "click", function () {
     toggle_class(this, "active");
   });
 
   add_event(window, "click", (e) => {
-    if (e.target.id != "navtgl-btn" || e.srcElement.id != "navtgl-btn") {
-      remove_class(id("navtgl-btn"), "active");
+    if (e.target.id != "nav-btn" || e.srcElement.id != "nav-btn") {
+      remove_class(id("nav-btn"), "active");
     }
   });
 
-  id("navcoll")
+  id("side-coll")
     .querySelectorAll("[id*='-btn']")
     .forEach((btn) => {
       add_event(btn, "click", () => {
-        remove_class(id("navtgl-btn"), "active");
+        remove_class(id("nav-btn"), "active");
       });
     });
 
