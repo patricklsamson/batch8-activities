@@ -1,0 +1,54 @@
+.wrap-green-ribbon {
+  background-image: url(../../../assets/img/green-ribbon.png),
+    -webkit-radial-gradient(#f8f9fa, #f8f9fa, #006a4e);
+  background-image: url(../../../assets/img/green-ribbon.png),
+    -moz-radial-gradient(#f8f9fa, #f8f9fa, #006a4e);
+  background-image: url(../../../assets/img/green-ribbon.png),
+    -o-radial-gradient(#f8f9fa, #f8f9fa, #006a4e);
+  background-image: url(../../../assets/img/green-ribbon.png),
+    radial-gradient(#f8f9fa, #f8f9fa, #006a4e);
+}
+
+.wrap-card {
+  background: #f9eebd;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.green-card {
+  position: relative;
+  background: #3ea650;
+  -webkit-border-radius: 45px 0 45px 0;
+  -moz-border-radius: 45px 0 45px 0;
+  border-radius: 45px 0 45px 0;
+  padding: 40px;
+}
+
+.green-card:before,
+.green-card:after {
+  content: ".";
+  font-size: 0;
+  position: absolute;
+  width: 15px;
+  height: 30px;
+  border: 5px solid #3ea650;
+}
+
+.green-card:before {
+  bottom: -10px;
+  left: -8px;
+  -webkit-border-bottom-right-radius: 20px;
+  -moz-border-radius-bottomright: 20px;
+  border-bottom-right-radius: 20px;
+  border-width: 0 7px 10px 0;
+}
+
+.green-card:after {
+  top: -10px;
+  right: -8px;
+  -webkit-border-top-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  border-top-left-radius: 20px;
+  border-width: 10px 0 0 7px;
+}
