@@ -8,20 +8,27 @@
 @import "base/typography.css";
 
 /**
+ * LAYOUT
+ *--------------------------------------------------*/
+
+@import "layout/container.css";
+@import "layout/navbar.css";
+@import "layout/header.css";
+@import "layout/main.css";
+
+/**
  * COMPONENTS
  *--------------------------------------------------*/
 
-@import "components/container.css";
-@import "components/header.css";
-@import "components/main.css";
-@import "components/modal.css";
-@import "components/navbar.css";
-@import "components/form.css";
-@import "components/tab.css";
 @import "components/button.css";
+@import "components/tab.css";
+@import "components/modal.css";
+@import "components/form.css";
 
 /**
  * PAGES
  *--------------------------------------------------*/
+
+/* ADMIN */
 
 @import "pages/admin/sec-admin.css";
