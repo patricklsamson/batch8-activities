@@ -1,4 +1,74 @@
-nav#nav-bar button#nav-btn {
+@media only screen and (min-width: 992px) {
+  nav#nav-bar button#nav-btn {
+    display: none;
+  }
+}
+@media only screen and (max-width: 991px) {
+  nav#nav-bar #nav-coll {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+}
+@media only screen and (min-width: 992px) {
+  nav#nav-bar #nav-coll .menu-container > ul > li {
+    display: inline-block;
+  }
+}
+@media only screen and (max-width: 991px) {
+  nav#nav-bar #nav-coll .menu-container > ul > li {
+    display: block;
+  }
+}
+nav#nav-bar .menu-container > ul > li {
+  display: inline-block;
+}
+nav#nav-bar .menu-container ul li {
+  position: relative;
+}
+nav#nav-bar .menu-container ul li:hover ul.sub-menu {
+  visibility: visible;
+  opacity: 1;
+}
+nav#nav-bar .menu-container ul li a#content-btn {
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+nav#nav-bar .menu-container ul li a#content-btn:after {
+  content: "\f078";
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 900;
+}
+nav#nav-bar .menu-container ul li a#content-btn.active ~ ul.sub-menu {
+  visibility: visible;
+  opacity: 1;
+}
+nav#nav-bar .menu-container ul li ul.sub-menu {
+  position: absolute;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+nav#side-bar #side-coll {
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+nav button#nav-btn {
   position: relative;
   z-index: 3;
   outline: 0;
@@ -9,12 +79,7 @@ nav#nav-bar button#nav-btn {
   height: 35px;
   font-size: 30px;
 }
-@media only screen and (min-width: 992px) {
-  nav#nav-bar button#nav-btn {
-    display: none;
-  }
-}
-nav#nav-bar button#nav-btn:before {
+nav button#nav-btn:before {
   content: "\f0c9";
   font-family: "Font Awesome 5 Free";
   display: inline-block;
@@ -28,7 +93,7 @@ nav#nav-bar button#nav-btn:before {
   left: 2.5px;
   color: #000;
 }
-nav#nav-bar button#nav-btn:after {
+nav button#nav-btn:after {
   content: "\f00d";
   font-family: "Font Awesome 5 Free";
   display: inline-block;
@@ -48,52 +113,19 @@ nav#nav-bar button#nav-btn:after {
   visibility: hidden;
   opacity: 0;
 }
-nav#nav-bar button#nav-btn.active:before {
+nav button#nav-btn.active:before {
   visibility: hidden;
   opacity: 0;
 }
-nav#nav-bar button#nav-btn.active:after {
+nav button#nav-btn.active:after {
   visibility: visible;
   opacity: 1;
 }
-nav#nav-bar button#nav-btn.active ~ #nav-coll {
+nav button#nav-btn.active ~ #nav-coll {
   visibility: visible;
   opacity: 1;
 }
-@media only screen and (max-width: 991px) {
-  nav#nav-bar #nav-coll {
-    visibility: hidden;
-    opacity: 0;
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    transition: all 0.5s;
-  }
-}
-@media only screen and (min-width: 992px) {
-  nav#nav-bar #nav-coll .menu-container > ul > li {
-    display: inline-block;
-  }
-}
-@media only screen and (max-width: 991px) {
-  nav#nav-bar #nav-coll {
-    visibility: hidden;
-    opacity: 0;
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    transition: all 0.5s;
-  }
-}
-@media only screen and (max-width: 991px) {
-  nav#nav-bar #nav-coll .menu-container > ul > li {
-    display: block;
-  }
-}
-nav#nav-bar .menu-container > ul > li {
-  display: inline-block;
-}
-nav#nav-bar .menu-container ul {
+nav .menu-container ul {
   list-style: none;
   padding-left: 0;
 }
