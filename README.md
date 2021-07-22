@@ -111,9 +111,11 @@ VI. **Introduction to Ruby on Rails**
 - [Blog (New Rails App)](https://github.com/patricklsamson/blog)
 
 VII. **Simple Rails App (Blog): Model**
+
 - [Blog (Model and Validations)](https://github.com/patricklsamson/blog/blob/main/app/models/article.rb) - [Pull Request](https://github.com/patricklsamson/blog/pull/1)
 
 VIII. **Simple Rails App (Blog) Controllers, Views and Routes**
+
 - [Blog (Update and Delete)](https://patricklsamson-blog.herokuapp.com/) - [Open Source Code](https://github.com/patricklsamson/blog/blob/main/app/controllers/articles_controller.rb)
 
 ### Extras - Coding Exercise:
@@ -124,9 +126,9 @@ VIII. **Simple Rails App (Blog) Controllers, Views and Routes**
 1. [Keep Hydrated!](https://patricklsamson.github.io/batch8-activities/be-coding-exercise/c4_keep_hydrated.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/be-coding-exercise/c4_keep_hydrated.rb)
 1. [Isograms](https://patricklsamson.github.io/batch8-activities/be-coding-exercise/c5_isograms.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/be-coding-exercise/c5_isograms.rb)
 1. [Unique In Order](https://patricklsamson.github.io/batch8-activities/rubyactivities/3.2_unique_in_order.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/3.2_unique_in_order.rb) - [Pull Request](https://github.com/patricklsamson/batch8-activities/pull/5)
-1. [Disemvowel Trolls]() - [Open Source Code]()
+1. [Disemvowel Trolls](https://patricklsamson.github.io/batch8-activities/be-coding-exercise/c7_disemvowel_trolls.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/be-coding-exercise/c7_disemvowel_trolls.rb)
 1. [Century From Year](https://patricklsamson.github.io/batch8-activities/rubyactivities/century_from_year.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/century_from_year.rb) - [Pull Request](https://github.com/patricklsamson/batch8-activities/pull/8)
-1. [Format a String of Names Like 'Bart, Lisa & Maggie']() - [Open Source Code](https://github.com/patricklsamson/batch8-activities/pull/9)
+1. [Format a String of Names Like 'Bart, Lisa & Maggie'](https://patricklsamson.github.io/batch8-activities/rubyactivities/format_string_names.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/format_string_names.rb) - [Pull Request](https://github.com/patricklsamson/batch8-activities/pull/9)
 1. [The Vowel Code]() - [Open Source Code]()
 
 ---
