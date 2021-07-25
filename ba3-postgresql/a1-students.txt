@@ -1,5 +1,9 @@
 ACTIVITY 3 - A1
 
+Note: Blocks of code are separated by long line of hypens.
+
+--------------------
+
 create table students (
 id integer primary key,
 first_name character varying(255) not null,
@@ -19,6 +23,10 @@ values
 (5, 'Zack', 'Blank', 'Matthews', 22, 'Marikina'),
 (6, 'Finn', 'Blank', 'Lam', 25, 'Manila');
 
+select * from students;
+
+--------------------
+
 update students set
 first_name = 'Ivan',
 middle_name = 'Ingram',
@@ -29,4 +37,8 @@ where id = 1;
 
 select * from students order by id asc;
 
+--------------------
+
 delete from students where id = 6;
+
+select * from students order by id asc;
