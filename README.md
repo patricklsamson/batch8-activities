@@ -2,11 +2,15 @@
 
 This [page](https://patricklsamson.github.io/batch8-activities/) is intended for presenting to you all the activities I completed throughout the duration of the Web Development Bootcamp with Avion School.
 
-Note: Contributions in this repository from Mar 25 - Apr 24 2021 were made by my [secondary account](https://github.com/slncdworks).
+Notes:
+- Contributions in this repository from Mar 25 - Apr 24 2021 were made by my [secondary account](https://github.com/slncdworks).
+- All activities or projects are responsive down to 320px.
 
 ---
 
 ## Front-End
+
+The HTML and CSS focused activities are starting from "Best Practice Page" up to "Product Landing Page" while JavaScript focused activities are starting from "Momentum App" up to "API - Final Project - Mental Health Awareness".
 
 ### Table of Contents:
 
@@ -14,14 +18,20 @@ Note: Contributions in this repository from Mar 25 - Apr 24 2021 were made by my
 1. [HTML Email](https://patricklsamson.github.io/batch8-activities/a2-html-email/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a1-best-practice-page)
 1. [Tribute Page Project](https://patricklsamson.github.io/batch8-activities/a3-tribute-page-project/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a3-tribute-page-project)
 1. [Survey Form](https://patricklsamson.github.io/batch8-activities/a4-survey-form/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a4-survey-form)
+1. [Survey Form (Landing Page)](https://patricklsamson.github.io/batch8-activities/a4-survey-form/results.html) - Please refer to the source code link of #4
 1. [Chessboard (Flex)](https://patricklsamson.github.io/batch8-activities/a5-chessboard-flex/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a5-chessboard-flex)
 1. [Chessboard (Grid)](https://patricklsamson.github.io/batch8-activities/a6-chessboard-grid/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a6-chessboard-grid)
+1. [Chessboard (Grid - Middle Game)](https://patricklsamson.github.io/batch8-activities/a6-chessboard-grid/chess-midgame.html) - Please refer to the source code link of #7
+1. [Chessboard (Grid - Story)](https://patricklsamson.github.io/batch8-activities/a6-chessboard-grid/story.html) - Please refer to the source code link of #7
+1. [Chessboard (Grid - New Game)](https://patricklsamson.github.io/batch8-activities/a6-chessboard-grid/chess-newgame.html) - Please refer to the source code link of #7
 1. [Product Landing Page](https://patricklsamson.github.io/batch8-activities/a7-product-landing-page/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a7-product-landing-page)
+1. [Product Landing Page (Log In Landing Page)](https://patricklsamson.github.io/batch8-activities/a7-product-landing-page/login-landing-page.html) - Please refer to the source code link of #11
+1. [Product Landing Page (Sign Up Landing Page)](https://patricklsamson.github.io/batch8-activities/a7-product-landing-page/signup-landing-page.html) - Please refer to the source code link of #11
 1. [Momentum App](https://patricklsamson.github.io/batch8-activities/a8-momentum-app/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a8-momentum-app)
 1. [Tic Tac Toe](https://patricklsamson.github.io/batch8-activities/a9-tic-tac-toe/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a9-tic-tac-toe)
 1. [Bank App](https://patricklsamson.github.io/batch8-activities/a10-bank-app/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a10-bank-app)
 1. [API - Final Project - Mental Health Awareness](https://patricklsamson.github.io/batch8-activities/a11-api-final-project/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a11-api-final-project)
-1. [API - Final Project - Mental Health Awareness (Admin)](https://patricklsamson.github.io/batch8-activities/a11-api-final-project/admin.html) - Please refer to the source code link of #11
+1. [API - Final Project - Mental Health Awareness (Admin)](https://patricklsamson.github.io/batch8-activities/a11-api-final-project/admin.html) - Please refer to the source code link of #17
 
 ### Extras - Coding Challenge:
 
@@ -34,6 +44,12 @@ Note: Contributions in this repository from Mar 25 - Apr 24 2021 were made by my
 ---
 
 ## Back-End (Ruby and PostgreSQL)
+
+To run and test all ruby programs below, please refer to this [link](https://runrb.io/). Just copy the source code I provided for each activity, paste it inside the text editor provided by run.rb and then click the play button.
+
+To run and test out database or PostgreSQL codes provided in ".txt" files, please refer to this [link](https://extendsclass.com/postgresql-online.html). Just copy and paste the blocks of code one by one (separated by long line of hyphens) from the source code I provided for each activity inside the text editor of ExtendsClass - PostgreSql Online. Then click run to see what happens. All data inputs are stored inside the local storage of your browser, to delete them please refer to this [link](https://intercom.help/scoutpad/en/articles/3478364-how-to-clear-local-storage-of-web-browser).
+
+The Ruby on Rails (RoR) Applications below are deployed in Heroku and can be accessible anytime by the Heroku App Links I provided.
 
 ### Table of Contents:
 
@@ -106,15 +122,15 @@ V. **Database Advanced**
 
 VI. **Introduction to Ruby on Rails**
 
-- [Blog (New Rails App)](https://github.com/patricklsamson/blog)
+- [Blog (New Rails App)](https://github.com/patricklsamson/blog) - [Heroku App Link](https://patricklsamson-blog.herokuapp.com/)
 
 VII. **Simple Rails App (Blog): Model**
 
-- [Blog (Model and Validations)](https://github.com/patricklsamson/blog/blob/main/app/models/article.rb) - [Pull Request](https://github.com/patricklsamson/blog/pull/1)
+- [Blog (Model and Validations)](https://github.com/patricklsamson/blog/blob/main/app/models/article.rb) - [Pull Request](https://github.com/patricklsamson/blog/pull/1) - Please refer to the Heroku App Link of "Blog (New Rails App)"
 
 VIII. **Simple Rails App (Blog) Controllers, Views and Routes**
 
-- [Blog (Update and Delete)](https://patricklsamson-blog.herokuapp.com/) - [Open Source Code](https://github.com/patricklsamson/blog/blob/main/app/controllers/articles_controller.rb)
+- [Blog (Update and Delete)](https://github.com/patricklsamson/blog/blob/main/app/controllers/articles_controller.rb) - Please refer to the Heroku App Link of "Blog (New Rails App)"
 
 ### Extras - Coding Exercise:
 
