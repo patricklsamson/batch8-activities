@@ -126,7 +126,7 @@ VI. **Introduction to Ruby on Rails**
 
 VII. **Simple Rails App (Blog): Model**
 
-- [Blog (Model and Validations)](https://github.com/patricklsamson/blog/blob/main/app/models/article.rb) - [Pull Request](https://github.com/patricklsamson/blog/pull/1) - Please refer to the Heroku App Link of "Blog (New Rails App)"
+- [Blog (Model and Validations)](https://github.com/patricklsamson/blog/blob/main/app/models/article.rb) - Please refer to the Heroku App Link of "Blog (New Rails App)" - [Pull Request](https://github.com/patricklsamson/blog/pull/1)
 
 VIII. **Simple Rails App (Blog) Controllers, Views and Routes**
 
