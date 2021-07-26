@@ -225,7 +225,7 @@ class Location {
     id("whitelist-table").innerHTML = "";
 
     for (i = 0; i < location.length; i++) {
-      if (location[i].whiteList == false) {
+      if (!location[i].whiteList) {
         let tableRow = create_el("tr");
 
         tableRow.innerHTML = `<td>${location[i].timeStamp}</td>\n<td id="${i}" onclick="locationDetails(this)">${location[i].name}</td>\n<td><i id="${i}" onclick="addWhiteList(this)" class="far fa-plus-square"></i></td>\n<td><i id="${i}" onclick="delLocation(this)" class="far fa-minus-square"></i></td>`;
