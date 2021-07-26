@@ -3,6 +3,7 @@
 This [page](https://patricklsamson.github.io/batch8-activities/) is intended for presenting to you all the activities I completed throughout the duration of the Web Development Bootcamp with Avion School.
 
 Notes:
+
 - Contributions in this repository from Mar 25 - Apr 24 2021 were made by my [secondary account](https://github.com/slncdworks).
 - All activities or projects are responsive down to 320px.
 
@@ -54,8 +55,6 @@ The Ruby on Rails (RoR) Applications below are deployed in Heroku and can be acc
 ### Table of Contents:
 
 I. **Introduction to Ruby**
-
-- [Rails Installation and Server](https://github.com/patricklsamson/sample)
 
 _Part A_
 
@@ -121,6 +120,12 @@ V. **Database Advanced**
 - [Classrooms](https://patricklsamson.github.io/batch8-activities/ba3.1-postgresql/a1-classrooms.txt) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba3.1-postgresql/a1-classrooms.txt)
 
 VI. **Introduction to Ruby on Rails**
+
+_Part A_
+
+- [Rails Installation and Server](https://github.com/patricklsamson/sample)
+
+_Part B_
 
 - [Blog (New Rails App)](https://github.com/patricklsamson/blog) - [Heroku App Link](https://patricklsamson-blog.herokuapp.com/)
 
