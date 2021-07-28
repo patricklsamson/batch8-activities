@@ -137,6 +137,12 @@ VIII. **Simple Rails App (Blog) Controllers, Views and Routes**
 
 - [Blog (Update and Delete)](https://github.com/patricklsamson/blog/blob/main/app/controllers/articles_controller.rb) - Please refer to the Heroku App Link of "Blog (New Rails App)"
 
+IX. **New Rails App TDD**
+
+- [Journal](https://github.com/patricklsamson/journal) - [Heroku App Link]()
+- [Journal (RSpec - System)](https://github.com/patricklsamson/journal/tree/main/spec/system) - Please refer to the Heroku App Link of "Journal"
+- [Journal (RSpec - Model)](https://github.com/patricklsamson/journal/tree/main/spec/models) - Please refer to the Heroku App Link of "Journal"
+
 ### Extras - Coding Exercise:
 
 1. [Square of Squares](https://patricklsamson.github.io/batch8-activities/rubyactivities/square_of_squares.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/square_of_squares.rb)
