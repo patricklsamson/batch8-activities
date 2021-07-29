@@ -1,13 +1,21 @@
 ACTIVITY 3 - B1
 
-a. Display the count of all students
+Notes:
+- Blocks of code to test one by one are separated by long line of hypens.
+- The table from "ba3-postgresql/a1-students.txt" will still be necessary for this activity.
+
+--------------------
+
 select count(id) from students;
 
-b. Select all students with location is Manila
+--------------------
+
 select * from students where location = 'Manila';
 
-c. Display the average age of all students
+--------------------
+
 select avg(age) from students;
 
-d. Display all students by age descending order
+--------------------
+
 select * from students order by age desc;
