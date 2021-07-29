@@ -135,7 +135,7 @@ VIII. **Simple Rails App (Blog) Controllers, Views and Routes**
 
 IX. **New Rails App TDD**
 
-- [Journal](https://github.com/patricklsamson/journal) - [Heroku App Link]()
+- [Journal](https://github.com/patricklsamson/journal) <!-- - [Heroku App Link]() -->
 - [Journal (RSpec TDD - System)](https://github.com/patricklsamson/journal/tree/main/spec/system) - Please refer to the Heroku App Link of "Journal"
 - [Journal (RSpec TDD - Model)](https://github.com/patricklsamson/journal/tree/main/spec/models) - Please refer to the Heroku App Link of "Journal"
 
