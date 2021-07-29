@@ -13,8 +13,6 @@ Notes:
 
 The HTML and CSS focused activities are starting from "Best Practice Page" up to "Product Landing Page" while JavaScript focused activities are starting from "Momentum App" up to "API - Final Project - Mental Health Awareness".
 
-### Table of Contents:
-
 1. [Best Practice Page](https://patricklsamson.github.io/batch8-activities/a1-best-practice-page/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a1-best-practice-page)
 1. [HTML Email](https://patricklsamson.github.io/batch8-activities/a2-html-email/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a1-best-practice-page)
 1. [Tribute Page Project](https://patricklsamson.github.io/batch8-activities/a3-tribute-page-project/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a3-tribute-page-project)
@@ -34,7 +32,7 @@ The HTML and CSS focused activities are starting from "Best Practice Page" up to
 1. [API - Final Project - Mental Health Awareness](https://patricklsamson.github.io/batch8-activities/a11-api-final-project/index.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/tree/main/a11-api-final-project)
 1. [API - Final Project - Mental Health Awareness (Admin)](https://patricklsamson.github.io/batch8-activities/a11-api-final-project/admin.html) - Please refer to the source code link of #17
 
-### Extras - Coding Challenge:
+### Extras - Coding Challenge
 
 1. [BMI](https://patricklsamson.github.io/batch8-activities/coding-challenge/c1-bmi.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/coding-challenge/c1-bmi.html)
 1. [Playing Cards](https://patricklsamson.github.io/batch8-activities/coding-challenge/c2-playing-cards.html) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/coding-challenge/c2-playing-cards.html)
@@ -52,18 +50,16 @@ To run and test out database or PostgreSQL codes provided in ".txt" files, pleas
 
 The Ruby on Rails (RoR) Applications below are deployed in Heroku and can be accessible anytime by the Heroku App Links I provided.
 
-### Table of Contents:
-
 I. **Introduction to Ruby**
 
-_Part A_
+Part A
 
 1. [Array Each](https://patricklsamson.github.io/batch8-activities/ba1-ruby/a1_array_each.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/a1_array_each.rb)
 1. [Hash](https://patricklsamson.github.io/batch8-activities/ba1-ruby/a2_hash.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/a2_hash.rb)
 1. [Data Structures](https://patricklsamson.github.io/batch8-activities/ba1-ruby/a3_data_structures.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/a3_data_structures.rb)
 1. [Age (Loop)](https://patricklsamson.github.io/batch8-activities/ba1-ruby/age.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/age.rb)
 
-_Part B_
+Part B
 
 1. [Array Include](https://patricklsamson.github.io/batch8-activities/ba1-ruby/b1_array_include.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/b1_array_include.rb)
 1. [Between (Case)](https://patricklsamson.github.io/batch8-activities/rubyactivities/between.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/between.rb)
@@ -72,28 +68,28 @@ _Part B_
 
 II. **Object-Oriented Programming**
 
-_Part A_
+Part A
 
 - [Object](https://patricklsamson.github.io/batch8-activities/ba2-ruby/a1_object.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba2-ruby/a1_object.rb)
 
-_Part B_
+Part B
 
 - [Missing Code (Attr)](https://patricklsamson.github.io/batch8-activities/rubyactivities/2.0_1_missing_code.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/2.0_1_missing_code.rb)
 
-_Part C_
+Part C
 
 1. [Confection (Super)](https://patricklsamson.github.io/batch8-activities/rubyactivities/confection.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/confection.rb)
 1. [Module](https://patricklsamson.github.io/batch8-activities/ba2-ruby/c2_module.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba2-ruby/c2_module.rb)
 
-_Part D_
+Part D
 
 - [Encapsulation](https://patricklsamson.github.io/batch8-activities/ba2-ruby/d1_encapsulation.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba2-ruby/d1_encapsulation.rb)
 
-_Part E_
+Part E
 
 - [Abstraction](https://patricklsamson.github.io/batch8-activities/ba2-ruby/e1_abstraction.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba2-ruby/e1_abstraction.rb)
 
-_Part F_
+Part F
 
 - [Polymorphism (Inheritance and Duck-typing)](https://patricklsamson.github.io/batch8-activities/rubyactivities/polymorphism.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/polymorphism.rb)
 
@@ -107,11 +103,11 @@ III. **SOLID Principle**
 
 IV. **Database Fundamentals**
 
-_Part A_
+Part A
 
 - [Students](https://patricklsamson.github.io/batch8-activities/ba3-postgresql/a1-students.txt) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba3-postgresql/a1-students.txt)
 
-_Part B_
+Part B
 
 - [Database](https://patricklsamson.github.io/batch8-activities/rubyactivities/3.0_database.txt) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/3.0_database.txt) - [Pull Request](https://github.com/patricklsamson/batch8-activities/pull/3)
 
@@ -121,11 +117,11 @@ V. **Database Advanced**
 
 VI. **Introduction to Ruby on Rails**
 
-_Part A_
+Part A
 
 - [Rails Installation and Server](https://github.com/patricklsamson/sample)
 
-_Part B_
+Part B
 
 - [Blog (New Rails App)](https://github.com/patricklsamson/blog) - [Heroku App Link](https://patricklsamson-blog.herokuapp.com/)
 
@@ -143,7 +139,7 @@ IX. **New Rails App TDD**
 - [Journal (RSpec TDD - System)](https://github.com/patricklsamson/journal/tree/main/spec/system) - Please refer to the Heroku App Link of "Journal"
 - [Journal (RSpec TDD - Model)](https://github.com/patricklsamson/journal/tree/main/spec/models) - Please refer to the Heroku App Link of "Journal"
 
-### Extras - Coding Exercise:
+### Extras - Coding Exercise
 
 1. [Square of Squares](https://patricklsamson.github.io/batch8-activities/rubyactivities/square_of_squares.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/square_of_squares.rb)
 1. [Integer](https://patricklsamson.github.io/batch8-activities/be-coding-exercise/c2_integer.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/be-coding-exercise/c2_integer.rb)
