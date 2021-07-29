@@ -44,9 +44,9 @@ The HTML and CSS focused activities are starting from "Best Practice Page" up to
 
 ## Back-End (Ruby and PostgreSQL)
 
-To run and test all ruby programs below, please refer to this [link](https://runrb.io/). Just copy the source code I provided for each activity, paste it inside the text editor provided by run.rb and then click the play button.
+To run and test all ruby programs below, please refer to this [link](https://runrb.io/). Just copy the source code I provided for each activity, paste it inside the text editor provided by run.rb and then click the play button to check the output.
 
-To run and test out database or PostgreSQL codes provided in ".txt" files, please refer to this [link](https://extendsclass.com/postgresql-online.html). Just copy and paste the blocks of code one by one (separated by long line of hyphens) from the source code I provided for each activity inside the text editor of ExtendsClass - PostgreSql Online. Then click run to see what happens. All data inputs are stored inside the local storage of your browser, to delete them please refer to this [link](https://intercom.help/scoutpad/en/articles/3478364-how-to-clear-local-storage-of-web-browser).
+To run and test out database or PostgreSQL codes provided in ".txt" files, please refer to this [link](https://extendsclass.com/postgresql-online.html). There are blocks of code separated by long line of hyphens inside each ".txt" files. Just copy and paste it one by one inside the text editor provided by ExtendsClass - PostgreSQL Online then run the test. Delete everything inside the text editor then proceed on checking the output of the next block of code. All data inputs are stored inside the local storage of your browser, to delete them please refer to this [link](https://intercom.help/scoutpad/en/articles/3478364-how-to-clear-local-storage-of-web-browser).
 
 The Ruby on Rails (RoR) Applications below are deployed in Heroku and can be accessible anytime by the Heroku App Links I provided.
 
