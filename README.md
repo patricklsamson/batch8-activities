@@ -131,7 +131,7 @@ VII. **Simple Rails App (Blog): Model**
 
 VIII. **Simple Rails App (Blog) Controllers, Views and Routes**
 
-- [Blog (Update and Delete)](https://github.com/patricklsamson/blog/blob/main/app/controllers/articles_controller.rb) - Please refer to the Heroku App Link of "Blog (New Rails App)"
+- [Blog (Edit, Update, and Delete)](https://github.com/patricklsamson/blog/blob/main/app/controllers/articles_controller.rb) - Please refer to the Heroku App Link of "Blog (New Rails App)"
 
 IX. **New Rails App TDD**
 
