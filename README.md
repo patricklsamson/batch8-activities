@@ -50,23 +50,23 @@ To run and test out database or PostgreSQL codes provided in ".txt" files, pleas
 
 The Ruby on Rails (RoR) Applications below are deployed in Heroku and can be accessible anytime by the Heroku App Links I provided.
 
-I. **Introduction to Ruby**
+### Activity 1
 
 Part A
 
 1. [Array Each](https://patricklsamson.github.io/batch8-activities/ba1-ruby/a1_array_each.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/a1_array_each.rb)
 1. [Hash](https://patricklsamson.github.io/batch8-activities/ba1-ruby/a2_hash.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/a2_hash.rb)
 1. [Data Structures](https://patricklsamson.github.io/batch8-activities/ba1-ruby/a3_data_structures.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/a3_data_structures.rb)
-1. [Age (Loop)](https://patricklsamson.github.io/batch8-activities/ba1-ruby/age.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/age.rb)
+1. [Age](https://patricklsamson.github.io/batch8-activities/ba1-ruby/age.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/age.rb)
 
 Part B
 
 1. [Array Include](https://patricklsamson.github.io/batch8-activities/ba1-ruby/b1_array_include.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/b1_array_include.rb)
-1. [Between (Case)](https://patricklsamson.github.io/batch8-activities/rubyactivities/between.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/between.rb)
+1. [Between](https://patricklsamson.github.io/batch8-activities/rubyactivities/between.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/between.rb)
 1. [While](https://patricklsamson.github.io/batch8-activities/ba1-ruby/b3_while.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/b3_while.rb)
 1. [Modulo](https://patricklsamson.github.io/batch8-activities/ba1-ruby/b4_modulo.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba1-ruby/b4_modulo.rb)
 
-II. **Object-Oriented Programming**
+### Activity 2
 
 Part A
 
@@ -74,11 +74,11 @@ Part A
 
 Part B
 
-- [Missing Code (Attr)](https://patricklsamson.github.io/batch8-activities/rubyactivities/2.0_1_missing_code.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/2.0_1_missing_code.rb)
+- [Missing Code](https://patricklsamson.github.io/batch8-activities/rubyactivities/2.0_1_missing_code.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/2.0_1_missing_code.rb)
 
 Part C
 
-1. [Confection (Super)](https://patricklsamson.github.io/batch8-activities/rubyactivities/confection.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/confection.rb)
+1. [Confection](https://patricklsamson.github.io/batch8-activities/rubyactivities/confection.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/confection.rb)
 1. [Module](https://patricklsamson.github.io/batch8-activities/ba2-ruby/c2_module.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba2-ruby/c2_module.rb)
 
 Part D
@@ -93,7 +93,7 @@ Part F
 
 - [Polymorphism (Inheritance and Duck-typing)](https://patricklsamson.github.io/batch8-activities/rubyactivities/polymorphism.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/polymorphism.rb)
 
-III. **SOLID Principle**
+### Activity 3
 
 1. [Single Responsibility](https://patricklsamson.github.io/batch8-activities/ba2.1-ruby/a1_single_responsibility.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba2.1-ruby/a1_single_responsibility.rb)
 1. [Open / Closed](https://patricklsamson.github.io/batch8-activities/ba2.1-ruby/a2_open_closed.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba2.1-ruby/a2_open_closed.rb)
@@ -101,7 +101,7 @@ III. **SOLID Principle**
 1. [Interface Segragation](https://patricklsamson.github.io/batch8-activities/ba2.1-ruby/a4_interface_segregation.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba2.1-ruby/a4_interface_segregation.rb)
 1. [Dependency Inversion](https://patricklsamson.github.io/batch8-activities/ba2.1-ruby/a5_dependency_inversion.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba2.1-ruby/a5_dependency_inversion.rb)
 
-IV. **Database Fundamentals**
+### Activity 4
 
 Part A
 
@@ -111,33 +111,32 @@ Part B
 
 - [Database](https://patricklsamson.github.io/batch8-activities/rubyactivities/3.0_database.txt) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/3.0_database.txt) - [Pull Request](https://github.com/patricklsamson/batch8-activities/pull/3)
 
-V. **Database Advanced**
+### Activity 5
 
 - [Classrooms](https://patricklsamson.github.io/batch8-activities/ba3.1-postgresql/a1-classrooms.txt) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/ba3.1-postgresql/a1-classrooms.txt)
 
-VI. **Introduction to Ruby on Rails**
+### Activity 6
 
 Part A
 
-- [Rails Installation and Server](https://github.com/patricklsamson/sample)
+- Rails Installation - [Open Source Code](https://github.com/patricklsamson/sample)
 
 Part B
 
-- [Blog (New Rails App)](https://github.com/patricklsamson/blog) - [Heroku App Link](https://patricklsamson-blog.herokuapp.com/)
+- [Blog](https://patricklsamson-blog.herokuapp.com/) - [Open Source Code](https://github.com/patricklsamson/blog)
 
-VII. **Simple Rails App (Blog): Model**
+### Activity 7
 
-- [Blog (Model and Validations)](https://github.com/patricklsamson/blog/blob/main/app/models/article.rb) - Please refer to the Heroku App Link of "Blog (New Rails App)" - [Pull Request](https://github.com/patricklsamson/blog/pull/1)
+- [Blog (Model)](https://patricklsamson-blog.herokuapp.com/) - [Open Source Code](https://github.com/patricklsamson/blog/blob/main/app/models/article.rb) - [Pull Request](https://github.com/patricklsamson/blog/pull/1)
 
-VIII. **Simple Rails App (Blog) Controllers, Views and Routes**
+### Activity 8
 
-- [Blog (Edit, Update, and Delete)](https://github.com/patricklsamson/blog/blob/main/app/controllers/articles_controller.rb) - Please refer to the Heroku App Link of "Blog (New Rails App)"
+- [Blog (Controller)](https://patricklsamson-blog.herokuapp.com/) - [Open Source Code](https://github.com/patricklsamson/blog/blob/main/app/controllers/articles_controller.rb)
 
-IX. **New Rails App TDD**
+### Activity 9
 
-- [Journal](https://github.com/patricklsamson/journal) <!-- - [Heroku App Link]() -->
-- [Journal (RSpec TDD - System)](https://github.com/patricklsamson/journal/tree/main/spec/system) - Please refer to the Heroku App Link of "Journal"
-- [Journal (RSpec TDD - Model)](https://github.com/patricklsamson/journal/tree/main/spec/models) - Please refer to the Heroku App Link of "Journal"
+- Journal - [Open Source Code](https://github.com/patricklsamson/journal)
+- Journal (RSpec TDD) - [Open Source Code](https://github.com/patricklsamson/journal/tree/main/spec)
 
 ### Extras - Coding Exercise
 
