@@ -4,4 +4,4 @@ This activity is about creating tic tac toe and its main focus is manipulating m
 
 You can access the page via this [link](https://patricklsamson.github.io/batch8-activities/a9-tic-tac-toe/index.html).
 
-_Fair Use_
+Fair Use
