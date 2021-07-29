@@ -9,9 +9,10 @@ It consists of different pages:
 1. You sign up landing [page](https://patricklsamson.github.io/batch8-activities/a7-product-landing-page/signup-landing-page.html). Just like the Survey Form activity, just fill up what's required and you will be redirected to this page.
 
 Notes:
+
 - There are external links I used to fill up the footer of this activity with reference to the actual links of the Acer Predator website.
 - This whole activity especially its functionalities were made up of pure CSS as much as possible. I just injected some support of js to make it more functional.
 - The carousel was pure javascript and referenced from the [code](https://github.com/fionnachan/fifi-Slider/blob/master/fifi_slider.js) of Fionna Chan. I made a few tweaks to add an autoplay function based from her code.
-- This activity also serves as a gate as we enter JavaScript. A follow-up activity of injecting a simple JavaScript function has to be done, and in my case, an alert will pop up when you clicked the log in button from the index page.
+- This activity also serves as a Pre-introduction to JavaScript. Clicking the log in button from the index page will pop up a JavaScript alert function.
 
-_Fair Use_
+Fair Use
