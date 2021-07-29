@@ -2,7 +2,7 @@ ACTIVITY 3 - B1
 
 Notes:
 - Blocks of code to test one by one are separated by long line of hypens.
-- The table from "ba3-postgresql/a1-students.txt" will still be necessary for this activity.
+- Run everything from "ba3-postgresql/a1-students.txt" first before testing the block of codes below.
 
 --------------------
 
