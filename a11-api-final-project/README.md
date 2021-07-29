@@ -8,7 +8,8 @@ It consists of different pages:
 1. The admin [page](https://patricklsamson.github.io/batch8-activities/a11-api-final-project/admin.html). This page can be accessed with the username and password "admin" respectively. This page shows all data passed from the "SOS" section of the index page.
 
 Notes:
+
 - Local storage was used for this activity and that would mean all data will always be available inside your browser's local storage even if you close your browser. To clear up everything inside the local storage, please refer to this [link](https://intercom.help/scoutpad/en/articles/3478364-how-to-clear-local-storage-of-web-browser). Aside from that, I have also provided delete or "trash can" buttons that will also automatically delete data from the local storage.
 - The APIs used for this activity were [Quotable Quotes](https://github.com/lukePeavey/quotable), [YouTube](https://developers.google.com/youtube/), [Advice Slip](https://api.adviceslip.com/), [Bored](https://www.boredapi.com/), and [IPinfo](https://ipinfo.io/developers).
 
-_Fair Use_
+Fair Use
