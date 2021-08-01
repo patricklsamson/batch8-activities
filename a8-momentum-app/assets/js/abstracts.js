@@ -59,7 +59,7 @@ const clock = () => {
 
 const modalOpen = () => {
   toggle_class(id("modal"), "show");
-  toggle_class(document.body, "modal-open");
+  toggle_class(document.body, "y-hidden");
 };
 
 const addedToDo = () => {
