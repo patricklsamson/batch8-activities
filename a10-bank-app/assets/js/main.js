@@ -1,6 +1,5 @@
 doc_ready(() => {
   localStorage_space();
-  add_class(document.body, "modal-open");
   match_height(".mh");
   FnHandler.list_users();
   FnHandler.first_char();
@@ -273,7 +272,7 @@ doc_ready(() => {
 
     // NEEDED FOR BETTER TRANSITION TIMING WHEN HIDING WINDOWS
     setTimeout(() => {
-      add_class(document.body, "modal-open");
+      add_class(document.body, "y-hidden");
       remove_class(document.body, "user");
       remove_class(id("accounts-wrap"), "hide");
       remove_class(id("search-wrap"), "active");
