@@ -5,7 +5,7 @@ doc_ready(function () {
 
   if (body("index")) {
     add_event(id("signup-btn"), "click", function () {
-      toggle_class(document.body, "modal-open");
+      toggle_class(document.body, "y-hidden");
       remove_class(document.body, "animate");
       id("name").value = "";
       id("email").value = "";
@@ -16,7 +16,7 @@ doc_ready(function () {
     });
 
     add_event(id("login-btn"), "click", function () {
-      toggle_class(document.body, "modal-open");
+      toggle_class(document.body, "y-hidden");
       remove_class(document.body, "animate");
       id("log-email").value = "";
       id("log-password").value = "";
