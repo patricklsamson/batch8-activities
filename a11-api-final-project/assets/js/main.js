@@ -10,14 +10,14 @@ doc_ready(() => {
     add_class(id("header"), "hide");
 
     setTimeout(() => {
-      remove_class(document.body, "modal-open");
+      remove_class(document.body, "y-hidden");
     }, 500);
   });
 
   add_event(id("show-header-btn"), "click", () => {
     loadQuote();
     remove_class(id("header"), "hide");
-    add_class(document.body, "modal-open");
+    add_class(document.body, "y-hidden");
 
     setTimeout(() => {
       id("advice-ul").innerHTML = "Search for an advice or roll the dice!";
