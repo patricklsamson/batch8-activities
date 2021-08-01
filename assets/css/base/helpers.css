@@ -6016,12 +6016,6 @@
   text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.modal-open {
-  position: fixed;
-  overflow-y: hidden;
-  width: 100%;
-}
-
 .vh-fluid {
   min-height: 100vh;
 }
@@ -6040,6 +6034,14 @@
 
 .y-scroll {
   overflow-y: scroll;
+}
+
+.x-hidden {
+  overflow-x: hidden;
+}
+
+.y-hidden {
+  overflow-y: hidden;
 }
 
 .p-relative {
