@@ -448,7 +448,7 @@ class FnHandler {
     let usernameCheck = users.findIndex((index) => index.username == username),
       passwordCheck = users.findIndex((index) => index.password == password);
 
-    remove_class(document.body, "modal-open");
+    remove_class(document.body, "y-hidden");
 
     if (admin[0].username == username && admin[0].password == password) {
       toggle_class(id("modal"), "hide");
