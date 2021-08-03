@@ -170,18 +170,23 @@ function match_media(media, oldMedia, match, unmatch) {
 }
 
 function match_height(element) {
-  var i = 0;
-  var items = qsel_all(element);
-  var itemsHeight = [];
+  var i;
+  var heights = [];
 
-  for (i = 0; i < items.length; i++) {
-    itemsHeight.push(items[i].offsetHeight);
+  for (i = 0; i < qsel_all(element).length; i++) {
+    heights.push(qsel_all(element)[i].offsetHeight);
   }
 
-  var maxHeight = Math.max(...itemsHeight);
+  var max = heights[0];
 
-  for (i = 0; i < items.length; i++) {
-    items[i].style.height = maxHeight + "px";
+  for(i = 0; i < heights.length; i++) {
+    if(heights[i] > max) {
+      max = heights[i];
+    }
+  }
+
+  for (i = 0; i < qsel_all(element).length; i++) {
+    qsel_all(element)[i].style.height = max + "px";
   }
 }
 
