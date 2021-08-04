@@ -135,8 +135,16 @@ Part B
 
 ### Activity 9
 
+Part A
+
 - [Journal](https://patricklsamson-journal.herokuapp.com/) - [Open Source Code](https://github.com/patricklsamson/journal)
-- [Journal (RSpec TDD)](https://patricklsamson-journal.herokuapp.com/) - [Open Source Code](https://github.com/patricklsamson/journal/tree/main/spec)
+- [Journal (TDD)](https://patricklsamson-journal.herokuapp.com/) - [Open Source Code](https://github.com/patricklsamson/journal/tree/main/spec)
+
+Part B
+
+- Journal-2 (Pair) - [Open Source Code](https://github.com/paopapaopao/journal-2/)
+- Journal-2 (Pair TDD) - [Open Source Code](https://github.com/paopapaopao/journal-2/tree/main/spec)
+  - [Pull Request 1](https://github.com/paopapaopao/journal-2/pull/1)
 
 ### Extras - Coding Exercise
 
