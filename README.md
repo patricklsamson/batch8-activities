@@ -145,6 +145,7 @@ Part B
 - Journal-2 (Pair) - [Open Source Code](https://github.com/paopapaopao/journal-2/)
 - Journal-2 (Pair TDD) - [Open Source Code](https://github.com/paopapaopao/journal-2/tree/main/spec)
   - [Pull Request 1](https://github.com/paopapaopao/journal-2/pull/1)
+  - [Pull Request 2](https://github.com/paopapaopao/journal-2/pull/2)
 
 ### Extras - Coding Exercise
 
