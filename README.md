@@ -156,6 +156,7 @@ Part B
 1. [Disemvowel Trolls](https://patricklsamson.github.io/batch8-activities/be-coding-exercise/c7_disemvowel_trolls.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/be-coding-exercise/c7_disemvowel_trolls.rb)
 1. [Century From Year](https://patricklsamson.github.io/batch8-activities/rubyactivities/century_from_year.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/century_from_year.rb) - [Pull Request](https://github.com/patricklsamson/batch8-activities/pull/8)
 1. [Format a String of Names Like 'Bart, Lisa & Maggie'](https://patricklsamson.github.io/batch8-activities/rubyactivities/format_string_names.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/format_string_names.rb) - [Pull Request](https://github.com/patricklsamson/batch8-activities/pull/9)
+1. [Bouncing Balls](https://patricklsamson.github.io/batch8-activities/rubyactivities/bouncing_balls.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/bouncing_balls.rb) - [Pull Request](https://github.com/patricklsamson/batch8-activities/pull/10)
 
 ---
 
