@@ -145,6 +145,10 @@ Part B
 - Journal (Pair) - [Open Source Code](https://github.com/paopapaopao/journal-2/)
 - Journal (Pair TDD) - [Open Source Code](https://github.com/paopapaopao/journal-2/tree/main/spec) - [Pull Requests](https://github.com/paopapaopao/journal-2/pulls)
 
+## Activity 10
+
+- Stock Trading App - [Open Source Code](https://github.com/bonaxl015/stock-market-app) - [Pull Requests](https://github.com/bonaxl015/stock-market-app/pulls) - [Project Board](https://github.com/bonaxl015/stock-market-app/projects/1)
+
 ### Extras - Coding Exercise
 
 1. [Square of Squares](https://patricklsamson.github.io/batch8-activities/rubyactivities/square_of_squares.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/square_of_squares.rb)
