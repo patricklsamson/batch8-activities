@@ -1,15 +1,15 @@
 # PUT IN ROOT OF ALL PROJECTS OR WORKS
 
+AllCops:
+  NewCops: enable
 Layout/EndOfLine:
   Enabled: false
   EnforcedStyle: lf
 Metrics/BlockLength:
-  Max: 100
+  Max: 500
 Metrics/MethodLength:
-  Max: 100
+  Max: 500
 Style/Documentation:
   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
-AllCops:
-  NewCops: enable
