@@ -137,8 +137,8 @@ Part B
 
 Part A
 
-- [Journal](https://patricklsamson-journal.herokuapp.com/) - [Open Source Code](https://github.com/patricklsamson/journal)
-- [Journal (TDD)](https://patricklsamson-journal.herokuapp.com/) - [Open Source Code](https://github.com/patricklsamson/journal/tree/main/spec)
+- Journal - [Open Source Code](https://github.com/patricklsamson/journal)
+- Journal (TDD) - [Open Source Code](https://github.com/patricklsamson/journal/tree/main/spec)
 
 Part B
 
