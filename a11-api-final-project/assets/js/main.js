@@ -1,11 +1,6 @@
 doc_ready(() => {
   loadQuote();
 
-  qsel("script").parentNode.insertBefore(
-    ytScript,
-    qsel("script[src*='youtube']")
-  );
-
   add_event(id("hide-header-btn"), "click", () => {
     add_class(id("header"), "hide");
 
