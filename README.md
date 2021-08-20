@@ -145,7 +145,7 @@ Part B
 
 ## Activity 10
 
-- [Stock Trading App](https://bon-patrick-stock-market.herokuapp.com/) - [Open Source Code](https://github.com/bonaxl015/stock-market-app) - [TDD Source Code](https://github.com/bonaxl015/stock-market-app/tree/master/spec) - [Pull Requests](https://github.com/bonaxl015/stock-market-app/pulls) - [Project Board](https://github.com/bonaxl015/stock-market-app/projects/1)
+- [Stock Trading App](https://bon-patrick-stock-market.herokuapp.com/) - [Open Source Code](https://github.com/bonaxl015/stock-market-app) - [TDD Source Code](https://github.com/bonaxl015/stock-market-app/tree/master/spec) - [Pull Requests](https://github.com/bonaxl015/stock-market-app/pulls) - [Project Board](https://github.com/bonaxl015/stock-market-app/projects/1) - [ERD](https://drive.google.com/file/d/1x397qRsL_sRt7M8_C6uwqnrFqdt6VTGh/view?usp=sharing)
 
 ### Extras - Coding Exercise
 
