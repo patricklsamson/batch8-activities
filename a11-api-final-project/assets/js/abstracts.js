@@ -7,6 +7,8 @@ let i,
 
 ytScript.src = "https://www.youtube.com/iframe_api";
 
+qsel("script").parentNode.insertBefore(ytScript, qsel("script"));
+
 const onPlayerReady = (e) => {
   e.target.playVideo();
 };
@@ -17,7 +19,7 @@ const stopVideo = () => {
 
 const onPlayerStateChange = (e) => {
   if (e.data == YT.PlayerState.PLAYING && !done) {
-    stopVideo();
+    setTimeout(stopVideo, 5000);
     done = true;
   }
 };
