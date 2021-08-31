@@ -145,7 +145,17 @@ Part B
 
 ## Activity 10
 
+Part A
+
 - [Stock Trading App](https://bon-patrick-stock-market.herokuapp.com/) - [Open Source Code](https://github.com/bonaxl015/stock-market-app) - [TDD Source Code](https://github.com/bonaxl015/stock-market-app/tree/master/spec) - [Pull Requests](https://github.com/bonaxl015/stock-market-app/pulls) - [Project Board](https://github.com/bonaxl015/stock-market-app/projects/1) - [ERD](https://drive.google.com/file/d/1x397qRsL_sRt7M8_C6uwqnrFqdt6VTGh/view?usp=sharing)
+
+Part B
+
+- [Stock Trading App (Mailer)](https://bon-patrick-stock-market.herokuapp.com/) - [Open Source Code](https://github.com/bonaxl015/stock-market-app/tree/master/app/mailers) - [TDD Source Code](https://github.com/bonaxl015/stock-market-app/tree/master/spec) - [Pull Requests](https://github.com/bonaxl015/stock-market-app/pulls) - [Project Board](https://github.com/bonaxl015/stock-market-app/projects/1) - [ERD](https://drive.google.com/file/d/1x397qRsL_sRt7M8_C6uwqnrFqdt6VTGh/view?usp=sharing)
+
+Part C
+
+- Stock Trading App (IEX)
 
 ### Extras - Coding Exercise
 
