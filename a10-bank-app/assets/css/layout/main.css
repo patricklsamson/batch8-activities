@@ -155,7 +155,7 @@ td {
 }
 
 #accounts-wrap table th:nth-child(2) {
-  width: 43.5%;
+  width: 44.2%;
 }
 
 #accounts-wrap table td:nth-child(2) {
@@ -163,7 +163,7 @@ td {
 }
 
 #accounts-wrap table th:nth-child(3) {
-  width: 14.2%;
+  width: 14.4%;
 }
 
 #accounts-wrap table td:nth-child(3) {
@@ -171,7 +171,7 @@ td {
 }
 
 #accounts-wrap table th:nth-child(4) {
-  width: 19.7%;
+  width: 19.9%;
 }
 
 #accounts-wrap table td:nth-child(4) {
@@ -179,7 +179,7 @@ td {
 }
 
 #accounts-wrap table th:last-child {
-  padding-right: 22px;
+  padding-right: 12px;
 }
 
 #accounts-wrap table td:last-child {
