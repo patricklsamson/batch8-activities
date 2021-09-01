@@ -1,3 +1,5 @@
+<!-- # batch8-activities -->
+
 # Compilation of Avion School Batch 8 Activities
 
 This [page](https://patricklsamson.github.io/batch8-activities/) is intended for presenting to you all the activities I completed throughout the duration of the Web Development Bootcamp with Avion School.
@@ -176,5 +178,3 @@ Part C
 
 1. [Pull Request(Author)](https://github.com/patricklsamson/batch8-activities/pull/1) - [File](https://patricklsamson.github.io/batch8-activities/git-practice/up_file.rb) - [Open Source Code](https://github.com/patricklsamson/batch8-activities/blob/main/git-practice/up_file.rb)
 2. [Pull Request(Reviewer)](https://github.com/paopapaopao/batch8-activities/pull/1)
-
-<!-- # batch8-activities -->
