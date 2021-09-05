@@ -157,7 +157,7 @@ Part B
 
 Part C
 
-- [Stock Trading App (IEX)](https://bon-patrick-stock-market.herokuapp.com/) - Open Source Code - Please refer to the TDD source code, Pull Requests, Project Board, and ERD links of Activity 10 Part A
+- [Stock Trading App (IEX)](https://bon-patrick-stock-market.herokuapp.com/) - [Open Source Code](https://github.com/bonaxl015/stock-market-app/blob/master/app/models/stock.rb) - Please refer to the TDD source code, Pull Requests, Project Board, and ERD links of Activity 10 Part A
 
 ### Extras - Coding Exercise
 
