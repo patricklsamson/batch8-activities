@@ -159,6 +159,10 @@ Part C
 
 - [Stock Trading App (IEX)](https://bon-patrick-stock-market.herokuapp.com/) - [Code URL](https://github.com/bonaxl015/stock-market-app/blob/master/app/models/stock.rb) - Please refer to the TDD Code URL, Pull Requests, Project Board, and ERD links of Activity 10 Part A
 
+## Activity 11
+
+- Rails Final Project - [Code URL](https://github.com/bonaxl015/rails-final-project) - [TDD Code URL](https://github.com/bonaxl015/rails-final-project/tree/master/spec) - [Pull Requests](https://github.com/bonaxl015/rails-final-project/pulls) - [Project Board](https://github.com/bonaxl015/rails-final-project/projects/1)
+
 ### Extras - Coding Exercise
 
 1. [Square of Squares](https://patricklsamson.github.io/batch8-activities/rubyactivities/square_of_squares.rb) - [Code URL](https://github.com/patricklsamson/batch8-activities/blob/main/rubyactivities/square_of_squares.rb)
