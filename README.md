@@ -161,7 +161,7 @@ Part C
 
 ## Activity 11
 
-- Rails Final Project - [Code URL](https://github.com/bonaxl015/rails-final-project) - [TDD Code URL](https://github.com/bonaxl015/rails-final-project/tree/master/spec) - [Pull Requests](https://github.com/bonaxl015/rails-final-project/pulls) - [Project Board](https://github.com/bonaxl015/rails-final-project/projects/1) - [ERD](https://drive.google.com/file/d/1T2OLmTJ3vEdbJ6g5pw2MIbsT9DWg3WZP/view?usp=sharing)
+- Stellargram - [Code URL](https://github.com/bonaxl015/rails-final-project) - [TDD Code URL](https://github.com/bonaxl015/rails-final-project/tree/master/spec) - [Pull Requests](https://github.com/bonaxl015/rails-final-project/pulls) - [Project Board](https://github.com/bonaxl015/rails-final-project/projects/1) - [ERD](https://drive.google.com/file/d/1T2OLmTJ3vEdbJ6g5pw2MIbsT9DWg3WZP/view?usp=sharing)
 
 ### Extras - Coding Exercise
 
