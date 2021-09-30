@@ -139,7 +139,7 @@ Part B
 
 Part A
 
-- Journal (RoR App) - [Code URL](https://github.com/patricklsamson/journal) - [TDD Code URL](https://github.com/patricklsamson/journal/tree/main/spec)
+- [Journal (RoR App)](https://patricklsamson-journal.herokuapp.com/) - [Code URL](https://github.com/patricklsamson/journal) - [TDD Code URL](https://github.com/patricklsamson/journal/tree/main/spec)
 
 Part B
 
