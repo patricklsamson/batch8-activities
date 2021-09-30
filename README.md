@@ -7,7 +7,7 @@ This [page](https://patricklsamson.github.io/batch8-activities/) is intended for
 Notes:
 
 - Contributions in this repository from Mar 25 - Apr 24 2021 were made by my [secondary account](https://github.com/slncdworks).
-- All activities or projects are responsive down to 320px.
+- Almost all activities or projects are responsive down to 320px.
 
 ---
 
