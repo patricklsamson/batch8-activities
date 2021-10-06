@@ -15,4 +15,6 @@ Notes:
 - The carousel was pure javascript and referenced from the [code](https://github.com/fionnachan/fifi-Slider/blob/master/fifi_slider.js) of Fionna Chan. I made a few tweaks to add an autoplay function based from her code.
 - This activity also serves as a Pre-introduction to JavaScript. Clicking the log in button from the index page will pop up a JavaScript alert function.
 
+---
+
 Fair Use
