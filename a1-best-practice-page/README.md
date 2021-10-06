@@ -6,4 +6,6 @@ You can access the page via this [link](https://patricklsamson.github.io/batch8-
 
 Note: Clicking the logo (the dark gray square with rounded corners and a white figure shaped like a tail of an airplane and a cartoonized blue-green person behind it) will reveal the whole heading or title of the page.
 
+---
+
 Fair Use
