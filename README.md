@@ -50,7 +50,7 @@ To run and test all ruby programs below, please refer to this [link](https://run
 
 To run and test out database or PostgreSQL codes provided in ".txt" files, please refer to this [link](https://extendsclass.com/postgresql-online.html). There are blocks of code separated by long line of hyphens inside each ".txt" files. Just copy and paste it one by one inside the text editor provided by ExtendsClass - PostgreSQL Online then run the test. Delete everything inside the text editor then proceed on checking the output of the next block of code. All data inputs are stored inside the local storage of your browser, to delete them please refer to this [link](https://intercom.help/scoutpad/en/articles/3478364-how-to-clear-local-storage-of-web-browser).
 
-The Ruby on Rails (RoR) Applications below are deployed in Heroku and can be accessible anytime by the Heroku App Links I provided. Kindly check "db/seeds.rb" for initial data to assist you in exploring around the apps.
+The Ruby on Rails (RoR) applications below are deployed in Heroku and can be accessible anytime by the Heroku App Links I provided. Kindly check "db/seeds.rb" inside the repositories of deployed RoR apps, by clicking the provided "Seeds" link beside each one, for initial data to assist you in exploring around.
 
 ### Activity 1
 
@@ -125,43 +125,43 @@ Part A
 
 Part B
 
-- [Blog (RoR App)](https://patricklsamson-blog.herokuapp.com/) - [Code URL](https://github.com/patricklsamson/blog)
+- [Blog (RoR app)](https://patricklsamson-blog.herokuapp.com/) - [Seeds](https://github.com/patricklsamson/blog/blob/main/db/seeds.rb) - [Code URL](https://github.com/patricklsamson/blog)
 
 ### Activity 7
 
-- [Blog (RoR App - Model)](https://patricklsamson-blog.herokuapp.com/) - [Code URL](https://github.com/patricklsamson/blog/blob/main/app/models/article.rb) - [Pull Request](https://github.com/patricklsamson/blog/pull/1)
+- [Blog (RoR app - Model)](https://patricklsamson-blog.herokuapp.com/) - [Code URL](https://github.com/patricklsamson/blog/blob/main/app/models/article.rb) - [Pull Request](https://github.com/patricklsamson/blog/pull/1) - Please refer to the Seeds link of Activity 6 Part A
 
 ### Activity 8
 
-- [Blog (RoR App - Controller)](https://patricklsamson-blog.herokuapp.com/) - [Code URL](https://github.com/patricklsamson/blog/blob/main/app/controllers/articles_controller.rb)
+- [Blog (RoR app - Controller)](https://patricklsamson-blog.herokuapp.com/) - [Code URL](https://github.com/patricklsamson/blog/blob/main/app/controllers/articles_controller.rb) - Please refer to the Seeds link of Activity 6 Part A
 
 ### Activity 9
 
 Part A
 
-- [Journal (RoR App)](https://patricklsamson-journal.herokuapp.com/) - [Code URL](https://github.com/patricklsamson/journal) - [TDD Code URL](https://github.com/patricklsamson/journal/tree/main/spec)
+- [Journal (RoR app)](https://patricklsamson-journal.herokuapp.com/) - [Seeds](https://github.com/patricklsamson/journal/blob/main/db/seeds.rb) - [Code URL](https://github.com/patricklsamson/journal) - [TDD Code URL](https://github.com/patricklsamson/journal/tree/main/spec)
 
 Part B
 
-- Journal (Collaborative RoR App) - [Code URL](https://github.com/paopapaopao/journal-2/) - [TDD Code URL](https://github.com/paopapaopao/journal-2/tree/main/spec) - [Pull Requests](https://github.com/paopapaopao/journal-2/pulls)
+- Journal (Collaborative RoR app) - [Code URL](https://github.com/paopapaopao/journal-2/) - [TDD Code URL](https://github.com/paopapaopao/journal-2/tree/main/spec) - [Pull Requests](https://github.com/paopapaopao/journal-2/pulls)
 
 ## Activity 10
 
 Part A
 
-- [Stock Trading App (Collaborative RoR App)](https://bon-patrick-stock-market.herokuapp.com/) - [Code URL](https://github.com/bonaxl015/stock-market-app) - [TDD Code URL](https://github.com/bonaxl015/stock-market-app/tree/master/spec) - [Pull Requests](https://github.com/bonaxl015/stock-market-app/pulls) - [Project Board](https://github.com/bonaxl015/stock-market-app/projects/1) - [ERD](https://drive.google.com/file/d/1x397qRsL_sRt7M8_C6uwqnrFqdt6VTGh/view?usp=sharing)
+- [Stock Trading App (Collaborative RoR app)](https://bon-patrick-stock-market.herokuapp.com/) - [Seeds](https://github.com/bonaxl015/stock-market-app/blob/master/db/seeds.rb) - [Code URL](https://github.com/bonaxl015/stock-market-app) - [TDD Code URL](https://github.com/bonaxl015/stock-market-app/tree/master/spec) - [Pull Requests](https://github.com/bonaxl015/stock-market-app/pulls) - [Project Board](https://github.com/bonaxl015/stock-market-app/projects/1) - [ERD](https://drive.google.com/file/d/1x397qRsL_sRt7M8_C6uwqnrFqdt6VTGh/view?usp=sharing)
 
 Part B
 
-- [Stock Trading App (Collaborative RoR App - Mailer)](https://bon-patrick-stock-market.herokuapp.com/) - [Code URL](https://github.com/bonaxl015/stock-market-app/tree/master/app/mailers) - Please refer to the TDD Code URL, Pull Requests, Project Board, and ERD links of Activity 10 Part A
+- [Stock Trading App (Collaborative RoR app - Mailer)](https://bon-patrick-stock-market.herokuapp.com/) - [Code URL](https://github.com/bonaxl015/stock-market-app/tree/master/app/mailers) - Please refer to the Seeds, TDD Code URL, Pull Requests, Project Board, and ERD links of Activity 10 Part A
 
 Part C
 
-- [Stock Trading App (Collaborative RoR App - IEX)](https://bon-patrick-stock-market.herokuapp.com/) - [Code URL](https://github.com/bonaxl015/stock-market-app/blob/master/app/models/stock.rb) - Please refer to the TDD Code URL, Pull Requests, Project Board, and ERD links of Activity 10 Part A
+- [Stock Trading App (Collaborative RoR app - IEX)](https://bon-patrick-stock-market.herokuapp.com/) - [Code URL](https://github.com/bonaxl015/stock-market-app/blob/master/app/models/stock.rb) - Please refer to the Seeds, TDD Code URL, Pull Requests, Project Board, and ERD links of Activity 10 Part A
 
 ## Activity 11
 
-- Stellargram (Collaborative RoR App) - [Code URL](https://github.com/bonaxl015/rails-final-project) - [TDD Code URL](https://github.com/bonaxl015/rails-final-project/tree/master/spec) - [Pull Requests](https://github.com/bonaxl015/rails-final-project/pulls) - [Project Board](https://github.com/bonaxl015/rails-final-project/projects/1) - [ERD](https://drive.google.com/file/d/1T2OLmTJ3vEdbJ6g5pw2MIbsT9DWg3WZP/view?usp=sharing)
+- Stellargram (Collaborative RoR app) - [Seeds](https://github.com/bonaxl015/rails-final-project/blob/master/db/seeds.rb) - [Code URL](https://github.com/bonaxl015/rails-final-project) - [TDD Code URL](https://github.com/bonaxl015/rails-final-project/tree/master/spec) - [Pull Requests](https://github.com/bonaxl015/rails-final-project/pulls) - [Project Board](https://github.com/bonaxl015/rails-final-project/projects/1) - [ERD](https://drive.google.com/file/d/1T2OLmTJ3vEdbJ6g5pw2MIbsT9DWg3WZP/view?usp=sharing)
 
 ### Extras - Coding Exercise
 
