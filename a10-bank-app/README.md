@@ -12,4 +12,6 @@ Notes:
 - "JANE HILLS DOE" also has a log in account automatically that can be accessed with the username and password "janedoe" respectively. While the rest needs to be signed up first with their account names and bank accounts should strictly match.
 - Everything you see inside the app are working up to the settings wherein you can change data from the admin up to each users you make or the initial data loaded in the local storage.
 
+---
+
 Fair Use
