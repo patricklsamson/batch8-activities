@@ -183,4 +183,6 @@ Part C
 1. [Pull Request(Author)](https://github.com/patricklsamson/batch8-activities/pull/1) - [File](https://patricklsamson.github.io/batch8-activities/git-practice/up_file.rb) - [Code URL](https://github.com/patricklsamson/batch8-activities/blob/main/git-practice/up_file.rb)
 2. [Pull Request(Reviewer)](https://github.com/paopapaopao/batch8-activities/pull/1)
 
+---
+
 Fair Use
