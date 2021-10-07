@@ -1,6 +1,7 @@
 header {
   background: hsl(0, 0%, 0%);
   border-bottom: 0.1px solid hsl(210, 10%, 23%);
+  padding: 5px 0;
 }
 
 header [class*="gcol"]:nth-child(2) {
