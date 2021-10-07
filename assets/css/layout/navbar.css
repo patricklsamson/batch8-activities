@@ -1,9 +1,9 @@
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1200px) {
   nav#nav-bar button#nav-btn {
     display: none;
   }
 }
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1199px) {
   nav#nav-bar #nav-coll {
     visibility: hidden;
     opacity: 0;
@@ -13,12 +13,12 @@
     transition: all 0.5s;
   }
 }
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1200px) {
   nav#nav-bar #nav-coll .menu-container > ul > li {
     display: inline-block;
   }
 }
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1199px) {
   nav#nav-bar #nav-coll .menu-container > ul > li {
     display: block;
   }
