@@ -82,7 +82,7 @@
   top: 14px;
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1200px) {
   #nav-btn {
     display: none;
   }
@@ -96,7 +96,7 @@
   }
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1199px) {
   .sec-navbar .grid [class*="gcol"]:first-child {
     margin: 5px 0;
   }
