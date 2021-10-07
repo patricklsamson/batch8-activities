@@ -14,3 +14,7 @@ h6 {
 .tshadow-white {
   text-shadow: 0 3px 6px #f8f9fa, 0 -3px 6px #f8f9fa;
 }
+
+a {
+  color: hsl(49, 83%, 86%);
+}
