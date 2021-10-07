@@ -1,6 +1,10 @@
 doc_ready(() => {
   loadQuote();
 
+  if (!has_class(id("header"), "hide") || document.documentElement.scrollTop == 0) {
+    add_class(document.body, "y-hidden");
+  }
+
   add_event(id("hide-header-btn"), "click", () => {
     add_class(id("header"), "hide");
 
@@ -12,9 +16,9 @@ doc_ready(() => {
   add_event(id("show-header-btn"), "click", () => {
     loadQuote();
     remove_class(id("header"), "hide");
-    add_class(document.body, "y-hidden");
 
     setTimeout(() => {
+      add_class(document.body, "y-hidden");
       id("advice-ul").innerHTML = "Search for an advice or roll the dice!";
       id("bored-activity").innerHTML = "Roll the dice!";
       id("sos-form").reset();
