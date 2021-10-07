@@ -14,7 +14,7 @@
   transition: 0.5s;
 }
 
-#user-btn:checked ~ .wrap-user {
+#user-btn:checked ~ .dropdown-user {
   visibility: visible;
   opacity: 1;
 }
