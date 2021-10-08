@@ -94,11 +94,10 @@ doc_ready(() => {
         id(
           "advice-ul"
         ).innerHTML += `<p class="talign">${data.slip.advice}</p>`;
+      })
+      .then(() => {
+        remove_class(id("advice-dice-btn"), "rolling");
       });
-
-    setTimeout(() => {
-      remove_class(id("advice-dice-btn"), "rolling");
-    }, 500);
   });
 
   add_event(id("bored-dice-btn"), "click", () => {
@@ -109,11 +108,10 @@ doc_ready(() => {
       "http://www.boredapi.com/api/activity?minaccessibility=0.05&maxaccessibility=0.1"
     )
       .then((response) => response.json())
-      .then((data) => (id("bored-activity").innerHTML = data.activity));
-
-    setTimeout(() => {
-      remove_class(id("bored-dice-btn"), "rolling");
-    }, 500);
+      .then((data) => (id("bored-activity").innerHTML = data.activity))
+      .then(() => {
+        remove_class(id("bored-dice-btn"), "rolling");
+      });
   });
 
   fetch(
