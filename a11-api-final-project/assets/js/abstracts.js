@@ -248,14 +248,32 @@ const sendLocation = (name, number, message, timeStamp) => {
 
     fetch("https://ipinfo.io/json?token=d17cf2c04985a8")
       .then((response) => response.json())
-      .then((data) => newLocation.ipInfo.push(data));
-
-    setTimeout(() => {
-      Location.send_location(newLocation);
-    }, 2000);
+      .then((data) => newLocation.ipInfo.push(data))
+      .then(() => {
+        Location.send_location(newLocation);
+      });
 
     id("sos-form").reset();
     qsel(".selected").innerHTML = "Code";
+  }
+};
+
+const create_sample_location = (name, number, message, timeStamp) => {
+  const location = Location.locationStorage();
+
+  let janeCheck = location.findIndex((index) => index.name == name);
+
+  if (location[janeCheck]) {
+    return;
+  } else {
+    const jane = new Location(name, number, message, timeStamp);
+
+    fetch("https://ipinfo.io/json?token=d17cf2c04985a8")
+      .then((response) => response.json())
+      .then((data) => jane.ipInfo.push(data))
+      .then(() => {
+        Location.send_location(jane);
+      });
   }
 };
 
