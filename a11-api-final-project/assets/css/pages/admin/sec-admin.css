@@ -36,7 +36,6 @@ td[colspan="4"] {
 
 #table td:first-child {
   width: 25%;
-  cursor: pointer;
 }
 
 #table td:nth-child(2) {
