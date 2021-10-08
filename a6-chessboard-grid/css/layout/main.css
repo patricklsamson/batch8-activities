@@ -1,3 +1,11 @@
+.wrap-continue {
+  font-size: 3vmin;
+}
+
+.p-content {
+  font-size: 7vmin;
+}
+
 .chess-board {
   width: 86vmin;
   border: 3vmin solid hsl(210, 10%, 23%);
