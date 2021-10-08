@@ -21,11 +21,3 @@
 @import "components/loader.css";
 @import "components/button.css";
 @import "components/modal.css";
-
-/**
- * PAGES
- *--------------------------------------------------*/
-
-/* INDEX */
-
-@import "pages/index/main.css";
