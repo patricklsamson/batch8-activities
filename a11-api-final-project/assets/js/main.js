@@ -1,7 +1,10 @@
 doc_ready(() => {
   loadQuote();
 
-  if (has_class(id("header"), "show") || document.documentElement.scrollTop == 0) {
+  if (
+    has_class(id("header"), "show") ||
+    document.documentElement.scrollTop == 0
+  ) {
     add_class(document.body, "y-hidden");
   }
 
@@ -113,15 +116,19 @@ doc_ready(() => {
     }, 500);
   });
 
-  fetch("https://restcountries.eu/rest/v2/all?fields=name;callingCodes")
-    .then((response) => response.json())
+  fetch(
+    "https://patricklsamson.github.io/batch8-activities/a11-api-final-project/assets/json/country-codes.json"
+  )
+    .then((response) => {
+      return response.json();
+    })
     .then((data) => {
-      for (i = 0; i < data.length; i++) {
+      for (i = 0; i < data.data.length; i++) {
         let div = create_el("div"),
-          nameLower = data[i].name.split(" ").join("").toLowerCase();
+          nameLower = data.data[i].name.split(" ").join("").toLowerCase();
 
         add_class(div, "option");
-        div.innerHTML = `<input type="radio" name="country-code" id="${nameLower}" /><label for="${nameLower}">(+${data[i].callingCodes[0]}) ${data[i].name}</label>`;
+        div.innerHTML = `<input type="radio" name="country-code" id="${nameLower}" /><label for="${nameLower}">(${data.data[i].dial_code}) ${data.data[i].name}</label>`;
 
         setTimeout(() => {
           qsel(".options-container").appendChild(div);
