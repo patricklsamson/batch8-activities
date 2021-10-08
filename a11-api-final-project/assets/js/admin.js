@@ -1,5 +1,13 @@
 doc_ready(() => {
   create_admin("admin", "admin", "1");
+
+  create_sample_location(
+    "Jane Doe",
+    "0912-123-1234",
+    "Sample Message",
+    Location.time_stamp()
+  );
+
   Location.list_location();
 
   Admin.password_match(
@@ -129,6 +137,13 @@ doc_ready(() => {
   });
 
   add_event(id("sync-btn"), "click", () => {
+    create_sample_location(
+      "Jane Doe",
+      "0912-123-1234",
+      "Sample Message",
+      Location.time_stamp()
+    );
+
     Location.list_location();
   });
 
