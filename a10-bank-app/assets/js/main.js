@@ -1,26 +1,33 @@
+import Admin from "admin.js";
+import User from "user.js";
+import Connection from "connection.js";
+import ExpenseItem from "expenseitem.js";
+import Helper from "helper.js";
+import { create_admin, create_user } from "abstracts.js";
+
 doc_ready(() => {
   localStorage_space();
   match_height(".mh");
-  FnHandler.list_users();
-  FnHandler.first_char();
-  FnHandler.negative_char();
-  FnHandler.num_only();
-  FnHandler.type_comma();
-  FnHandler.dec_addZero();
+  Admin.list_users();
+  Helper.first_char();
+  Helper.negative_char();
+  Helper.num_only();
+  Helper.type_comma();
+  Helper.dec_addZero();
 
-  FnHandler.password_match(
+  Helper.password_match(
     id("signup-password"),
     id("signup-confirm-password"),
     id("match-msg")
   );
 
-  FnHandler.password_match(
+  Helper.password_match(
     id("admin-new-password"),
     id("admin-confirm-new-password"),
     id("admin-change-match-msg")
   );
 
-  FnHandler.password_match(
+  Helper.password_match(
     id("new-password"),
     id("confirm-new-password"),
     id("change-match-msg")
@@ -30,7 +37,7 @@ doc_ready(() => {
 
   // LOADS INITIAL DATA FOR IMMEDIATE TESTING PURPOSES OF WHOEVER VISITS THE SITE
   add_event(id("load-data-btn"), "click", () => {
-    const users = FnHandler.userStorage();
+    const users = User.userStorage();
 
     let janeCheck = users.findIndex((index) => index.firstName == "JANE"),
       doeCheck = users.findIndex((index) => index.lastName == "DOE"),
@@ -116,12 +123,12 @@ doc_ready(() => {
     }
 
     // THIS FUNCTION IS CALLED AGAIN TO REFRESH THE LIST IN THE UI
-    FnHandler.list_users();
+    Admin.list_users();
   });
 
   // PROMPT FOR CLEARING ALL DATA, TO PREVENT ACCIDENTAL DELETION
   add_event(id("clear-all-btn"), "click", () => {
-    let users = FnHandler.userStorage();
+    let users = User.userStorage();
 
     if (users.length != 0) {
       let clearPrompt = prompt(
@@ -183,7 +190,7 @@ doc_ready(() => {
       parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2)
     );
 
-    FnHandler.list_users();
+    Admin.list_users();
 
     alert(
       `${inner(
@@ -199,7 +206,7 @@ doc_ready(() => {
   add_event(id("login-form"), "submit", (e) => {
     e.preventDefault();
 
-    const users = FnHandler.userStorage();
+    const users = User.userStorage();
 
     let janeCheck = users.findIndex(
       (index) => (index.accountNumber = "023451282250")
@@ -220,16 +227,16 @@ doc_ready(() => {
       }
     }
 
-    FnHandler.login_user(
+    Admin.login_user(
       inner(trim(id("login-username").value)),
       inner(trim(id("login-password").value))
     );
 
-    FnHandler.list_connections(
+    Connection.list_connections(
       id("owner-acc-num").innerHTML.split(" ").join("")
     );
 
-    User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+    ExpenseItem.list(id("owner-acc-num").innerHTML.split(" ").join(""));
     User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
 
@@ -291,18 +298,15 @@ doc_ready(() => {
       remove_class(id("withdraw-form"), "hide");
       remove_class(id("deposit-form"), "hide");
       remove_class(id("send-form"), "hide");
-      remove_class(id("open-add-form-btn"), "active");
-      remove_class(id("connections-form"), "show");
-      remove_class(id("open-connections-wrap-btn"), "active");
-      remove_class(id("open-withdraw-form-btn"), "active");
-      remove_class(id("open-deposit-form-btn"), "active");
-      remove_class(id("open-send-form-btn"), "active");
+
+      qsel_all(".btn-accordion").forEach((btn) => {
+        remove_class(btn, "active");
+      });
     }, 500);
 
     remove_class(id("admin-settings-form"), "hide");
     remove_class(id("user-settings-form"), "show");
-
-    FnHandler.reset();
+    Helper.reset();
     return false;
   });
 
@@ -316,7 +320,7 @@ doc_ready(() => {
 
     let gender = id("signup-male").checked ? "male" : "female";
 
-    FnHandler.signup_user(
+    Admin.signup_user(
       inner(trim(id("signup-first-name").value.toUpperCase())),
       inner(trim(id("signup-middle-name").value.toUpperCase())),
       inner(trim(id("signup-last-name").value.toUpperCase())),
@@ -336,7 +340,7 @@ doc_ready(() => {
     toggle_class(id("signup-wrap"), "show");
     remove_class(id("match-msg"), "fa-check");
     remove_class(id("match-msg"), "fa-times");
-    FnHandler.reset();
+    Helper.reset();
   });
 
   add_event(id("open-search-btn"), "click", () => {
@@ -413,7 +417,7 @@ doc_ready(() => {
     remove_class(id("change-match-msg"), "fa-times");
     remove_class(id("admin-change-match-msg"), "fa-check");
     remove_class(id("admin-change-match-msg"), "fa-times");
-    FnHandler.reset();
+    Helper.reset();
   });
 
   add_event(id("owner-transaction-btn"), "click", () => {
@@ -439,17 +443,16 @@ doc_ready(() => {
       .value.split(",")
       .join("")}.${id("add-expense-amount-dec").value}`;
 
-    User.add(
+    ExpenseItem.add(
       inner(trim(id("add-expense-name").value.toUpperCase())),
       expense_amount,
       id("owner-acc-num").innerHTML.split(" ").join("")
     );
 
-    User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+    ExpenseItem.list(id("owner-acc-num").innerHTML.split(" ").join(""));
+    Admin.list_users();
 
-    FnHandler.list_users();
-
-    FnHandler.individual_history(
+    Admin.individual_history(
       id("owner-acc-num").innerHTML.split(" ").join("")
     );
 
@@ -467,13 +470,13 @@ doc_ready(() => {
   add_event(id("connections-form"), "submit", (e) => {
     e.preventDefault();
 
-    FnHandler.add_connections(
+    Connection.add_connections(
       id("owner-acc-num").innerHTML.split(" ").join(""),
       inner(trim(id("connections-name").value.toUpperCase())),
       id("connections-account-num").value.split(" ").join("")
     );
 
-    FnHandler.list_connections(
+    Connection.list_connections(
       id("owner-acc-num").innerHTML.split(" ").join("")
     );
 
@@ -491,14 +494,14 @@ doc_ready(() => {
      * ".split(" ").join("")" IS NECESSARY TO CONVERT THE ACCOUNT NUMBER
      * WITH SPACES WHEN COPIED BACK TO WITHOUT SPACES FOR STORING
      */
-    FnHandler.withdraw(
+    Admin.withdraw(
       id("withdraw-account").value.split(" ").join(""),
       withdraw_amount
     );
 
-    FnHandler.list_users();
+    Admin.list_users();
 
-    FnHandler.individual_history(
+    Admin.individual_history(
       id("owner-acc-num").innerHTML.split(" ").join("")
     );
 
@@ -514,14 +517,14 @@ doc_ready(() => {
       id("deposit-amount-dec").value
     }`;
 
-    FnHandler.deposit(
+    Admin.deposit(
       id("deposit-account").value.split(" ").join(""),
       deposit_amount
     );
 
-    FnHandler.list_users();
+    Admin.list_users();
 
-    FnHandler.individual_history(
+    Admin.individual_history(
       id("owner-acc-num").innerHTML.split(" ").join("")
     );
 
@@ -537,15 +540,15 @@ doc_ready(() => {
       id("send-amount-dec").value
     }`;
 
-    FnHandler.send(
+    Admin.send(
       id("sender-account").value.split(" ").join(""),
       id("receiver-account").value.split(" ").join(""),
       send_amount
     );
 
-    FnHandler.list_users();
+    Admin.list_users();
 
-    FnHandler.individual_history(
+    Admin.individual_history(
       id("owner-acc-num").innerHTML.split(" ").join("")
     );
 
@@ -554,47 +557,54 @@ doc_ready(() => {
     return false;
   });
 
-  add_event(id("open-add-form-btn"), "click", function () {
-    toggle_class(this, "active");
-    remove_class(id("open-connections-wrap-btn"), "active");
-    remove_class(id("open-withdraw-form-btn"), "active");
-    remove_class(id("open-deposit-form-btn"), "active");
-    remove_class(id("open-send-form-btn"), "active");
+  qsel_all(".btn-accordion").forEach((btn) => {
+    add_event(btn, "click", function () {
+      remove_class(btn, "active");
+      add_class(this, "active");
+    });
   });
 
-  add_event(id("open-connections-wrap-btn"), "click", function () {
-    toggle_class(this, "active");
-    remove_class(id("open-add-form-btn"), "active");
-    toggle_class(id("connections-form"), "show");
-    remove_class(id("open-withdraw-form-btn"), "active");
-    remove_class(id("open-deposit-form-btn"), "active");
-    remove_class(id("open-send-form-btn"), "active");
-  });
+  // add_event(id("open-add-form-btn"), "click", function () {
+  //   toggle_class(this, "active");
+  //   remove_class(id("open-connections-wrap-btn"), "active");
+  //   remove_class(id("open-withdraw-form-btn"), "active");
+  //   remove_class(id("open-deposit-form-btn"), "active");
+  //   remove_class(id("open-send-form-btn"), "active");
+  // });
 
-  add_event(id("open-withdraw-form-btn"), "click", function () {
-    toggle_class(this, "active");
-    remove_class(id("open-add-form-btn"), "active");
-    remove_class(id("open-connections-wrap-btn"), "active");
-    remove_class(id("connections-form"), "show");
-    remove_class(id("open-deposit-form-btn"), "active");
-    remove_class(id("open-send-form-btn"), "active");
-  });
+  // add_event(id("open-connections-wrap-btn"), "click", function () {
+  //   toggle_class(this, "active");
+  //   remove_class(id("open-add-form-btn"), "active");
+  //   toggle_class(id("connections-form"), "show");
+  //   remove_class(id("open-withdraw-form-btn"), "active");
+  //   remove_class(id("open-deposit-form-btn"), "active");
+  //   remove_class(id("open-send-form-btn"), "active");
+  // });
 
-  add_event(id("open-deposit-form-btn"), "click", function () {
-    toggle_class(this, "active");
-    remove_class(id("open-add-form-btn"), "active");
-    remove_class(id("open-connections-wrap-btn"), "active");
-    remove_class(id("connections-form"), "show");
-    remove_class(id("open-withdraw-form-btn"), "active");
-    remove_class(id("open-send-form-btn"), "active");
-  });
+  // add_event(id("open-withdraw-form-btn"), "click", function () {
+  //   toggle_class(this, "active");
+  //   remove_class(id("open-add-form-btn"), "active");
+  //   remove_class(id("open-connections-wrap-btn"), "active");
+  //   remove_class(id("connections-form"), "show");
+  //   remove_class(id("open-deposit-form-btn"), "active");
+  //   remove_class(id("open-send-form-btn"), "active");
+  // });
 
-  add_event(id("open-send-form-btn"), "click", function () {
-    toggle_class(this, "active");
-    remove_class(id("open-add-form-btn"), "active");
-    remove_class(id("open-connections-wrap-btn"), "active");
-    remove_class(id("connections-form"), "show");
-    remove_class(id("open-withdraw-form-btn"), "active");
-    remove_class(id("open-deposit-form-btn"), "active");
-  });
+  // add_event(id("open-deposit-form-btn"), "click", function () {
+  //   toggle_class(this, "active");
+  //   remove_class(id("open-add-form-btn"), "active");
+  //   remove_class(id("open-connections-wrap-btn"), "active");
+  //   remove_class(id("connections-form"), "show");
+  //   remove_class(id("open-withdraw-form-btn"), "active");
+  //   remove_class(id("open-send-form-btn"), "active");
+  // });
+
+  // add_event(id("open-send-form-btn"), "click", function () {
+  //   toggle_class(this, "active");
+  //   remove_class(id("open-add-form-btn"), "active");
+  //   remove_class(id("open-connections-wrap-btn"), "active");
+  //   remove_class(id("connections-form"), "show");
+  //   remove_class(id("open-withdraw-form-btn"), "active");
+  //   remove_class(id("open-deposit-form-btn"), "active");
+  // });
 });
