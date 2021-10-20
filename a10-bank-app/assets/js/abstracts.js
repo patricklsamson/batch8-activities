@@ -448,9 +448,8 @@ class FnHandler {
     let usernameCheck = users.findIndex((index) => index.username == username),
       passwordCheck = users.findIndex((index) => index.password == password);
 
-    remove_class(document.body, "y-hidden");
-
     if (admin[0].username == username && admin[0].password == password) {
+      remove_class(document.body, "y-hidden");
       toggle_class(id("modal"), "hide");
       add_class(id("expense-wrap"), "hide");
       add_class(id("connections-wrap"), "hide");
@@ -509,6 +508,7 @@ class FnHandler {
       users[passwordCheck] &&
       usernameCheck == passwordCheck
     ) {
+      remove_class(document.body, "y-hidden");
       add_class(document.body, "user");
 
       for (i = 0; i < users.length; i++) {
