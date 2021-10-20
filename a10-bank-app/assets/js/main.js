@@ -1,10 +1,3 @@
-import Admin from "admin.js";
-import User from "user.js";
-import Connection from "connection.js";
-import ExpenseItem from "expenseitem.js";
-import Helper from "helper.js";
-import { create_admin, create_user } from "abstracts.js";
-
 doc_ready(() => {
   localStorage_space();
   match_height(".mh");
@@ -143,7 +136,7 @@ doc_ready(() => {
       if (clearAnswer == "y") {
         // DOES NOT INCLUDE FIRST ARRAY ITEM IN SPLICING OR DELETING WHICH IS THE ADMIN USERNAME AND PASSWORD
         localStorage.removeItem("users");
-        FnHandler.list_users();
+        Admin.list_users();
       } else {
         return;
       }
@@ -165,7 +158,7 @@ doc_ready(() => {
           : id("add-deposit-amount").value.split(",").join(""),
       add_deposit = `${depositAmount}.${id("add-deposit-amount-dec").value}`;
     /**
-     * BECAUSE OF "FnHandler.type_comma()"
+     * BECAUSE OF "Helper.type_comma()"
      * ".split(",").join("")" IS NECESSARY TO CONVERT THE VALUE TYPED
      * BACK TO WITHOUT COMMAS FOR STORING
      */
@@ -452,9 +445,7 @@ doc_ready(() => {
     ExpenseItem.list(id("owner-acc-num").innerHTML.split(" ").join(""));
     Admin.list_users();
 
-    Admin.individual_history(
-      id("owner-acc-num").innerHTML.split(" ").join("")
-    );
+    Admin.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
 
     User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
@@ -501,9 +492,7 @@ doc_ready(() => {
 
     Admin.list_users();
 
-    Admin.individual_history(
-      id("owner-acc-num").innerHTML.split(" ").join("")
-    );
+    Admin.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
 
     User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("withdraw-form").reset();
@@ -524,9 +513,7 @@ doc_ready(() => {
 
     Admin.list_users();
 
-    Admin.individual_history(
-      id("owner-acc-num").innerHTML.split(" ").join("")
-    );
+    Admin.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
 
     User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("deposit-form").reset();
@@ -548,9 +535,7 @@ doc_ready(() => {
 
     Admin.list_users();
 
-    Admin.individual_history(
-      id("owner-acc-num").innerHTML.split(" ").join("")
-    );
+    Admin.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
 
     User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("send-form").reset();
@@ -559,8 +544,11 @@ doc_ready(() => {
 
   qsel_all(".btn-accordion").forEach((btn) => {
     add_event(btn, "click", function () {
-      remove_class(btn, "active");
-      add_class(this, "active");
+      qsel_all(".btn-accordion").forEach((btn) => {
+        remove_class(btn, "active");
+      });
+
+      add_class(btn, "active");
     });
   });
 
