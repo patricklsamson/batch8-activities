@@ -1,7 +1,7 @@
 doc_ready(() => {
   localStorage_space();
   match_height(".mh");
-  Admin.list_users();
+  User.list_users();
   Helper.first_char();
   Helper.negative_char();
   Helper.num_only();
@@ -116,7 +116,7 @@ doc_ready(() => {
     }
 
     // THIS FUNCTION IS CALLED AGAIN TO REFRESH THE LIST IN THE UI
-    Admin.list_users();
+    User.list_users();
   });
 
   // PROMPT FOR CLEARING ALL DATA, TO PREVENT ACCIDENTAL DELETION
@@ -136,7 +136,7 @@ doc_ready(() => {
       if (clearAnswer == "y") {
         // DOES NOT INCLUDE FIRST ARRAY ITEM IN SPLICING OR DELETING WHICH IS THE ADMIN USERNAME AND PASSWORD
         localStorage.removeItem("users");
-        Admin.list_users();
+        User.list_users();
       } else {
         return;
       }
@@ -183,7 +183,7 @@ doc_ready(() => {
       parseFloat(account_type_bal + parseFloat(add_deposit)).toFixed(2)
     );
 
-    Admin.list_users();
+    User.list_users();
 
     alert(
       `${inner(
@@ -220,7 +220,7 @@ doc_ready(() => {
       }
     }
 
-    Admin.login_user(
+    User.login_user(
       inner(trim(id("login-username").value)),
       inner(trim(id("login-password").value))
     );
@@ -313,7 +313,7 @@ doc_ready(() => {
 
     let gender = id("signup-male").checked ? "male" : "female";
 
-    Admin.signup_user(
+    User.signup_user(
       inner(trim(id("signup-first-name").value.toUpperCase())),
       inner(trim(id("signup-middle-name").value.toUpperCase())),
       inner(trim(id("signup-last-name").value.toUpperCase())),
@@ -443,10 +443,8 @@ doc_ready(() => {
     );
 
     ExpenseItem.list(id("owner-acc-num").innerHTML.split(" ").join(""));
-    Admin.list_users();
-
-    Admin.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
-
+    User.list_users();
+    User.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     User.total_expenses(id("owner-acc-num").innerHTML.split(" ").join(""));
 
@@ -485,15 +483,13 @@ doc_ready(() => {
      * ".split(" ").join("")" IS NECESSARY TO CONVERT THE ACCOUNT NUMBER
      * WITH SPACES WHEN COPIED BACK TO WITHOUT SPACES FOR STORING
      */
-    Admin.withdraw(
+    Bank.withdraw(
       id("withdraw-account").value.split(" ").join(""),
       withdraw_amount
     );
 
-    Admin.list_users();
-
-    Admin.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
-
+    User.list_users();
+    User.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("withdraw-form").reset();
     return false;
@@ -506,15 +502,13 @@ doc_ready(() => {
       id("deposit-amount-dec").value
     }`;
 
-    Admin.deposit(
+    Bank.deposit(
       id("deposit-account").value.split(" ").join(""),
       deposit_amount
     );
 
-    Admin.list_users();
-
-    Admin.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
-
+    User.list_users();
+    User.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("deposit-form").reset();
     return false;
@@ -527,16 +521,14 @@ doc_ready(() => {
       id("send-amount-dec").value
     }`;
 
-    Admin.send(
+    Bank.send(
       id("sender-account").value.split(" ").join(""),
       id("receiver-account").value.split(" ").join(""),
       send_amount
     );
 
-    Admin.list_users();
-
-    Admin.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
-
+    User.list_users();
+    User.individual_history(id("owner-acc-num").innerHTML.split(" ").join(""));
     User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
     id("send-form").reset();
     return false;
