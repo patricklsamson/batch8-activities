@@ -207,16 +207,36 @@ doc_ready(() => {
 
     if (users[janeCheck]) {
       let connectionCheck = users[janeCheck].connections.findIndex(
-        (index) => index.accountNumber == "071096025466"
-      );
+          (index) => index.accountNumber == "071096025466"
+        ),
+        expenseItemCheck = users[janeCheck].expenseItems.findIndex(
+          (index) => index.name == "GROCERIES"
+        );
 
-      if (!users[janeCheck].connections[connectionCheck]) {
-        users[janeCheck].connections.push({
-          name: "JUAN",
-          accountNumber: "071096025466",
-        });
+      if (
+        !users[janeCheck].connections[connectionCheck] &&
+        !users[janeCheck].expenseItems[expenseItemCheck]
+      ) {
+        // users[janeCheck].connections.push({
+        //   name: "JUAN",
+        //   accountNumber: "071096025466",
+        // });
 
-        localStorage.setItem("users", JSON.stringify(users));
+        // users[janeCheck].expenseItems.push({
+        //   name: "GROCERIES",
+        //   cost: "1500.00",
+        //   owner: users[janeCheck].accountNumber,
+        // });
+
+        // localStorage.setItem("users", JSON.stringify(users));
+
+        Connection.add_connections(
+          users[janeCheck].accountNumber,
+          "JUAN",
+          "071096025466"
+        );
+
+        ExpenseItem.add("GROCERIES", "1500.00", users[janeCheck].accountNumber);
       }
     }
 
