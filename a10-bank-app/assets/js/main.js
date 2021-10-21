@@ -217,19 +217,6 @@ doc_ready(() => {
         !users[janeCheck].connections[connectionCheck] &&
         !users[janeCheck].expenseItems[expenseItemCheck]
       ) {
-        // users[janeCheck].connections.push({
-        //   name: "JUAN",
-        //   accountNumber: "071096025466",
-        // });
-
-        // users[janeCheck].expenseItems.push({
-        //   name: "GROCERIES",
-        //   cost: "1500.00",
-        //   owner: users[janeCheck].accountNumber,
-        // });
-
-        // localStorage.setItem("users", JSON.stringify(users));
-
         Connection.add_connections(
           users[janeCheck].accountNumber,
           "JUAN",
