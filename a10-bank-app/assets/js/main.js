@@ -59,6 +59,8 @@ doc_ready(() => {
         "Checking",
         balance.toFixed(2)
       );
+
+      ExpenseItem.add("GROCERIES", "1500.00", "023451282250");
     }
 
     if (!users[juanCheck] && !users[delaCruzCheck]) {
@@ -113,6 +115,8 @@ doc_ready(() => {
         "Savings",
         balance.toFixed(2)
       );
+
+      Connection.add_connections("023451282250", "JUAN", "071096025466");
     }
 
     // THIS FUNCTION IS CALLED AGAIN TO REFRESH THE LIST IN THE UI
@@ -198,34 +202,6 @@ doc_ready(() => {
 
   add_event(id("login-form"), "submit", (e) => {
     e.preventDefault();
-
-    const users = User.userStorage();
-
-    let janeCheck = users.findIndex(
-      (index) => (index.accountNumber = "023451282250")
-    );
-
-    if (users[janeCheck]) {
-      let connectionCheck = users[janeCheck].connections.findIndex(
-          (index) => index.accountNumber == "071096025466"
-        ),
-        expenseItemCheck = users[janeCheck].expenseItems.findIndex(
-          (index) => index.name == "GROCERIES"
-        );
-
-      if (
-        !users[janeCheck].connections[connectionCheck] &&
-        !users[janeCheck].expenseItems[expenseItemCheck]
-      ) {
-        Connection.add_connections(
-          users[janeCheck].accountNumber,
-          "JUAN",
-          "071096025466"
-        );
-
-        ExpenseItem.add("GROCERIES", "1500.00", users[janeCheck].accountNumber);
-      }
-    }
 
     User.login_user(
       inner(trim(id("login-username").value)),
