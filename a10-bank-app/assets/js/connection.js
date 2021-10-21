@@ -9,11 +9,11 @@ class Connection {
 
     let ownerCheck = users.findIndex((index) => index.accountNumber == user),
       accountNumberCheck = users.findIndex(
-        (index) => index.accountNumber == connection
+        (index) => index.accountNumber == connectionAccountNumber
       );
 
     for (i = 0; i < users[ownerCheck].connections.length; i++) {
-      if (users[ownerCheck].connections[i].accountNumber == connection) {
+      if (users[ownerCheck].connections[i].accountNumber == connectionAccountNumber) {
         alert("Connection already exists!");
         return;
       }
@@ -21,7 +21,7 @@ class Connection {
 
     if (users[accountNumberCheck] == null || users[accountNumberCheck] == "") {
       alert("User not found");
-    } else if (user == connection) {
+    } else if (user == connectionAccountNumber) {
       alert("Cannot add own account number!");
     } else {
       const newConnection = new Connection(name, connectionAccountNumber);
