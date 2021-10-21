@@ -79,11 +79,11 @@ class ExpenseItem {
           localStorage.setItem("users", JSON.stringify(users));
           User.list(id("owner-acc-num").innerHTML.split(" ").join(""));
 
-          Admin.individual_history(
+          User.individual_history(
             id("owner-acc-num").innerHTML.split(" ").join("")
           );
 
-          Admin.list_users();
+          User.list_users();
           User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
 
           User.total_expenses(
@@ -119,11 +119,11 @@ class ExpenseItem {
             localStorage.setItem("users", JSON.stringify(users));
             ExpenseItem.list(id("owner-acc-num").innerHTML.split(" ").join(""));
 
-            Admin.individual_history(
+            User.individual_history(
               id("owner-acc-num").innerHTML.split(" ").join("")
             );
 
-            Admin.list_users();
+            User.list_users();
 
             User.get_budget(id("owner-acc-num").innerHTML.split(" ").join(""));
             User.total_expenses(
