@@ -330,10 +330,37 @@ const handler = (e) => {
       //   scorer(mark);
       // }
 
+      // OLD CODE - BUG WHEN ALL SQUARES ARE FILLED UP BUT THERE SHOULD BE A WINNER NOT A DRAW
+      // if (historyObj.history.length == 9) {
+      //   id("tooltip").innerHTML = "It's a draw!";
+      //   console.log("The players ended in a draw.");
+      //   scorer("draw");
+      // } else {
+      //   id("tooltip").innerHTML = `Player ${mark.toUpperCase()} wins!`;
+      //   console.log(`Player ${mark.toUpperCase()} is the winner!`);
+      //   scorer(mark);
+      // }
+
+      // NEW CODE
+      let a = board[0][0],
+        b = board[2][2],
+        c = board[0][2],
+        d = board[2][0],
+        f = board[1][1];
+
       if (historyObj.history.length == 9) {
-        id("tooltip").innerHTML = "It's a draw!";
-        console.log("The players ended in a draw.");
-        scorer("draw");
+        if (
+          (a && a === f && f === b) ||
+          ((a && a === b && b === f) || (c && c === d && d === f))
+        ) {
+          id("tooltip").innerHTML = `Player ${mark.toUpperCase()} wins!`;
+          console.log(`Player ${mark.toUpperCase()} is the winner!`);
+          scorer(mark);
+        } else {
+          id("tooltip").innerHTML = "It's a draw!";
+          console.log("The players ended in a draw.");
+          scorer("draw");
+        }
       } else {
         id("tooltip").innerHTML = `Player ${mark.toUpperCase()} wins!`;
         console.log(`Player ${mark.toUpperCase()} is the winner!`);
@@ -375,7 +402,7 @@ const handler = (e) => {
       d = board[2][0],
       f = board[1][1];
 
-    if ((a && a === b && b === f) || (c && c === d && d == f)) {
+    if ((a && a === b && b === f) || (c && c === d && d === f)) {
       gameEnd();
       winMessage();
     }
