@@ -143,7 +143,7 @@ doc_ready(() => {
 
     if (qsel(".selected").innerHTML != "Code") {
       sendLocation(
-        inner(trim(id("sos-name").value.toUpperCase())),
+        inner(trimStr(id("sos-name").value.toUpperCase())),
         qsel(".selected").innerHTML.split(" ")[0] + id("sos-number").value,
         id("sos-message").value,
         Location.time_stamp()

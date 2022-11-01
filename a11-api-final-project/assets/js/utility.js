@@ -30,12 +30,75 @@ function create_el(element) {
   return document.createElement(element);
 }
 
-function inner(str) {
-  return str;
+function trimStr(string) {
+  return string.split("").reduce(function (acc, c) {
+    if (c === " ") {
+      if (acc[acc.length - 1] === " ") {
+        return acc;
+      }
+    }
+
+    return [...acc, c];
+  }, []).join("").trim();
 }
 
-function trim(str) {
-  return str.trim();
+function inner(string) {
+  function stringToHTML() {
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(string, "text/html");
+
+    return doc.body || create_el("body");
+  }
+
+  function removeScripts(html) {
+    var scripts = html.querySelectorAll("script");
+
+    for (let script of scripts) {
+      script.remove();
+    }
+  }
+
+  function isDangerous(name, value) {
+    var val = trimStr(value).split(" ").join("").toLowerCase();
+
+    if (["src", "href", "xlink:href"].includes(name)) {
+      if (val.includes("javascript:") || val.includes("data:text/html")) {
+        return true;
+      }
+    }
+
+    if (name.startsWith("on")) {
+      return true;
+    }
+  }
+
+  function removeAttributes(element) {
+    var attributes = element.attributes;
+
+    for (let { name, value } of attributes) {
+      if (!isDangerous(name, value)) {
+        continue;
+      }
+
+      element.removeAttribute(name);
+    }
+  }
+
+  function sanitize(html) {
+    var nodes = html.children;
+
+    for (let node of nodes) {
+      removeAttributes(node);
+      sanitize(node);
+    }
+  }
+
+  var html = stringToHTML();
+
+  removeScripts(html);
+  sanitize(html);
+
+  return html.innerHTML;
 }
 
 function add_event(element, e, fn) {

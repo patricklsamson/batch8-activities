@@ -161,7 +161,7 @@
               //  */
               // book.title = bookArr[0]
               //   .replace(/\s+/g, " ")
-              //   .trim()
+              //   .trimStr()
               //   .split(" ")
               //   .join("_")
               //   .toLowerCase();
@@ -170,7 +170,7 @@
                * REMOVE WHITE SPACES AROUND WHEN POSSIBLE
                * SPACES IN BETWEEN STRINGS ARE REPLACED WITH " "
                */
-              bookTitleArr = bookArr[0].replace(/\s+/g, " ").trim().split(" ");
+              bookTitleArr = bookArr[0].replace(/\s+/g, " ").trimStr().split(" ");
 
               for (i = 0; i < bookTitleArr.length; i++) {
                 bookTitleArr[i] =
@@ -180,8 +180,8 @@
 
               book.title = bookTitleArr.join(" ");
 
-              book.quantity = parseInt(bookArr[1].replace(/\s+/g, " ").trim());
-              book.value = parseInt(bookArr[2].replace(/\s+/g, " ").trim());
+              book.quantity = parseInt(bookArr[1].replace(/\s+/g, " ").trimStr());
+              book.value = parseInt(bookArr[2].replace(/\s+/g, " ").trimStr());
 
               store.inventoryList.push(book);
               store.logEvents();
@@ -206,12 +206,12 @@
             // OLD CODE
             // title = restockArr[0]
             //   .replace(/\s+/g, " ")
-            //   .trim()
+            //   .trimStr()
             //   .split(" ")
             //   .join("_")
             //   .toLowerCase();
 
-            titleArr = restockArr[0].replace(/\s+/g, " ").trim().split(" ");
+            titleArr = restockArr[0].replace(/\s+/g, " ").trimStr().split(" ");
 
             for (i = 0; i < titleArr.length; i++) {
               titleArr[i] =
@@ -239,7 +239,7 @@
               restockArr.length == 2 &&
               /^[0-9.,]+$/.test(parseInt(restockArr[1]))
             ) {
-              quantity = parseInt(restockArr[1].replace(/\s+/g, " ").trim());
+              quantity = parseInt(restockArr[1].replace(/\s+/g, " ").trimStr());
               store.inventoryListUniq()[bookCheck].quantity += quantity;
 
               alert(
@@ -264,7 +264,7 @@
               ),
               sellArr = sellPrompt.split(",");
 
-            titleArr = sellArr[0].replace(/\s+/g, " ").trim().split(" ");
+            titleArr = sellArr[0].replace(/\s+/g, " ").trimStr().split(" ");
 
             for (i = 0; i < titleArr.length; i++) {
               titleArr[i] =
@@ -287,7 +287,7 @@
               sellArr.length == 2 &&
               /^[0-9.,]+$/.test(parseInt(sellArr[1]))
             ) {
-              quantity = parseInt(sellArr[1].replace(/\s+/g, " ").trim());
+              quantity = parseInt(sellArr[1].replace(/\s+/g, " ").trimStr());
 
               /**
                * IF QUANTITY ENTRY IS GREATER THAN THE CURRENT QUANTITY OF BOOK, THE QUANTITY / STOCK WILL STILL BE EXHAUSTED
@@ -343,7 +343,7 @@
               "Remove a book.\nPlease enter the title of the book."
             );
 
-            titleArr = removePrompt.replace(/\s+/g, " ").trim().split(" ");
+            titleArr = removePrompt.replace(/\s+/g, " ").trimStr().split(" ");
 
             for (i = 0; i < titleArr.length; i++) {
               titleArr[i] =
@@ -461,12 +461,12 @@
       //   if (bookArr.length == 3) {
       //     book.title = bookArr[0]
       //       .replace(/\s+/g, " ")
-      //       .trim()
+      //       .trimStr()
       //       .split(" ")
       //       .join("_")
       //       .toLowerCase();
-      //     book.quantity = Number(bookArr[1].replace(/\s+/g, " ").trim());
-      //     book.value = bookArr[2].replace(/\s+/g, " ").trim();
+      //     book.quantity = Number(bookArr[1].replace(/\s+/g, " ").trimStr());
+      //     book.value = bookArr[2].replace(/\s+/g, " ").trimStr();
 
       //     store.inventoryList.push(book);
 
@@ -490,11 +490,11 @@
 
       //   title = restockArr[0]
       //     .replace(/\s+/g, " ")
-      //     .trim()
+      //     .trimStr()
       //     .split(" ")
       //     .join("_")
       //     .toLowerCase();
-      //   quantity = Number(restockArr[1].replace(/\s+/g, " ").trim());
+      //   quantity = Number(restockArr[1].replace(/\s+/g, " ").trimStr());
 
       //   let bookCheck = store.inventoryList.findIndex(
       //     (bookIndex) => bookIndex.title == title
@@ -527,11 +527,11 @@
 
       //   title = sellArr[0]
       //     .replace(/\s+/g, " ")
-      //     .trim()
+      //     .trimStr()
       //     .split(" ")
       //     .join("_")
       //     .toLowerCase();
-      //   quantity = sellArr[1].replace(/\s+/g, " ").trim();
+      //   quantity = sellArr[1].replace(/\s+/g, " ").trimStr();
 
       //   let bookCheck = store.inventoryList.findIndex(
       //     (bookIndex) => bookIndex.title == title

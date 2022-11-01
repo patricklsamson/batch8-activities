@@ -134,7 +134,7 @@ doc_ready(() => {
         ),
         clearAnswer =
           clearPrompt != null
-            ? trim(clearPrompt.toLowerCase())
+            ? trimStr(clearPrompt.toLowerCase())
             : console.clear();
 
       if (clearAnswer == "y") {
@@ -178,9 +178,9 @@ doc_ready(() => {
       "",
       "",
       false,
-      inner(trim(id("add-first-name").value.toUpperCase())),
-      inner(trim(id("add-middle-name").value.toUpperCase())),
-      inner(trim(id("add-last-name").value.toUpperCase())),
+      inner(trimStr(id("add-first-name").value.toUpperCase())),
+      inner(trimStr(id("add-middle-name").value.toUpperCase())),
+      inner(trimStr(id("add-last-name").value.toUpperCase())),
       gender,
       acc_num[rand(acc_num.length)] + (rand(9000000000) + 1000000000),
       account_type,
@@ -191,7 +191,7 @@ doc_ready(() => {
 
     alert(
       `${inner(
-        trim(id("add-first-name").value.toUpperCase())
+        trimStr(id("add-first-name").value.toUpperCase())
       )}'s account have been successfully created!`
     );
 
@@ -204,8 +204,8 @@ doc_ready(() => {
     e.preventDefault();
 
     User.login_user(
-      inner(trim(id("login-username").value)),
-      inner(trim(id("login-password").value))
+      inner(trimStr(id("login-username").value)),
+      inner(trimStr(id("login-password").value))
     );
 
     Connection.list_connections(
@@ -297,14 +297,14 @@ doc_ready(() => {
     let gender = id("signup-male").checked ? "male" : "female";
 
     User.signup_user(
-      inner(trim(id("signup-first-name").value.toUpperCase())),
-      inner(trim(id("signup-middle-name").value.toUpperCase())),
-      inner(trim(id("signup-last-name").value.toUpperCase())),
+      inner(trimStr(id("signup-first-name").value.toUpperCase())),
+      inner(trimStr(id("signup-middle-name").value.toUpperCase())),
+      inner(trimStr(id("signup-last-name").value.toUpperCase())),
       gender,
-      inner(trim(id("signup-username").value)),
+      inner(trimStr(id("signup-username").value)),
       inner(id("signup-password").value),
       inner(id("signup-confirm-password").value),
-      inner(trim(id("signup-email").value)),
+      inner(trimStr(id("signup-email").value)),
       id("signup-account-num").value.split(" ").join("")
     );
 
@@ -420,7 +420,7 @@ doc_ready(() => {
       .join("")}.${id("add-expense-amount-dec").value}`;
 
     ExpenseItem.add(
-      inner(trim(id("add-expense-name").value.toUpperCase())),
+      inner(trimStr(id("add-expense-name").value.toUpperCase())),
       expense_amount,
       id("owner-acc-num").innerHTML.split(" ").join("")
     );
@@ -444,7 +444,7 @@ doc_ready(() => {
 
     Connection.add_connections(
       id("owner-acc-num").innerHTML.split(" ").join(""),
-      inner(trim(id("connections-name").value.toUpperCase())),
+      inner(trimStr(id("connections-name").value.toUpperCase())),
       id("connections-account-num").value.split(" ").join("")
     );
 

@@ -106,7 +106,7 @@ class ExpenseItem {
             ),
             deleteAnswer =
               deletePrompt != null
-                ? trim(deletePrompt.toLowerCase())
+                ? trimStr(deletePrompt.toLowerCase())
                 : console_log();
 
           if (deleteAnswer == "y") {

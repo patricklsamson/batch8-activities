@@ -20,8 +20,8 @@ doc_ready(() => {
     e.preventDefault();
 
     Admin.login_admin(
-      inner(trim(id("login-username").value)),
-      inner(trim(id("login-password").value))
+      inner(trimStr(id("login-username").value)),
+      inner(trimStr(id("login-password").value))
     );
 
     return false;

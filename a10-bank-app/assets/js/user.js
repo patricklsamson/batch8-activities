@@ -168,13 +168,13 @@ class User extends Admin {
         e.preventDefault();
 
         if (
-          users[usernameCheck].email == inner(trim(id("change-email").value))
+          users[usernameCheck].email == inner(trimStr(id("change-email").value))
         ) {
           alert("There have been no changes made for the email!");
         } else {
-          users[usernameCheck].email = inner(trim(id("change-email").value));
+          users[usernameCheck].email = inner(trimStr(id("change-email").value));
 
-          id("profile-email").innerHTML = inner(trim(id("change-email").value));
+          id("profile-email").innerHTML = inner(trimStr(id("change-email").value));
 
           alert("Change email successful!");
           localStorage.setItem("users", JSON.stringify(users));
@@ -188,7 +188,7 @@ class User extends Admin {
         e.preventDefault();
 
         for (i = 0; i < users.length; i++) {
-          if (users[i].username == inner(trim(id("change-username").value))) {
+          if (users[i].username == inner(trimStr(id("change-username").value))) {
             alert("Username already used!");
             return;
           }
@@ -198,11 +198,11 @@ class User extends Admin {
           alert("Username cannot be less than 5 characters!");
         } else {
           users[usernameCheck].username = inner(
-            trim(id("change-username").value)
+            trimStr(id("change-username").value)
           );
 
           id("profile-username").innerHTML = inner(
-            trim(id("change-username").value)
+            trimStr(id("change-username").value)
           );
 
           alert("Change username successful!");
@@ -235,7 +235,7 @@ class User extends Admin {
             ),
             passwordAnswer =
               passwordPrompt != null
-                ? trim(passwordPrompt.toLowerCase())
+                ? trimStr(passwordPrompt.toLowerCase())
                 : console_log();
 
           if (passwordAnswer == "y") {
@@ -280,7 +280,7 @@ class User extends Admin {
             ),
             deleteAnswer =
               deletePrompt != null
-                ? trim(deletePrompt.toLowerCase())
+                ? trimStr(deletePrompt.toLowerCase())
                 : console_log();
 
           if (deleteAnswer == "y") {
@@ -396,7 +396,7 @@ class User extends Admin {
           ),
           passwordAnswer =
             passwordPrompt != null
-              ? trim(passwordPrompt.toLowerCase())
+              ? trimStr(passwordPrompt.toLowerCase())
               : console_log();
 
         if (
@@ -605,7 +605,7 @@ class User extends Admin {
           ),
           deleteAnswer =
             deletePrompt != null
-              ? trim(deletePrompt.toLowerCase())
+              ? trimStr(deletePrompt.toLowerCase())
               : console_log();
         // THIS TERNARY OPERATOR PREVENTS ERROR POPPING UP WHEN THE PROMPT HAS BEEN CANCELED
 

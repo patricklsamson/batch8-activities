@@ -121,7 +121,7 @@ function addWhiteList(element) {
     ),
     whiteListAnswer =
       whiteListPrompt != null
-        ? trim(whiteListPrompt.toLowerCase())
+        ? trimStr(whiteListPrompt.toLowerCase())
         : console.clear();
 
   if (whiteListAnswer == "n") {
@@ -142,7 +142,7 @@ function removeWhiteList(element) {
     ),
     whiteListAnswer =
       whiteListPrompt != null
-        ? trim(whiteListPrompt.toLowerCase())
+        ? trimStr(whiteListPrompt.toLowerCase())
         : console.clear();
 
   if (whiteListAnswer == "n") {
@@ -162,7 +162,7 @@ function delLocation(element) {
       "N"
     ),
     deleteAnswer =
-      deletePrompt != null ? trim(deletePrompt.toLowerCase()) : console.clear();
+      deletePrompt != null ? trimStr(deletePrompt.toLowerCase()) : console.clear();
 
   if (deleteAnswer == "y") {
     location.splice(element.id, 1);
