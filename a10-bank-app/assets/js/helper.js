@@ -28,7 +28,7 @@ class Helper {
       e.preventDefault();
 
       if (e.clipboardData) {
-        e.clipboardData.setData("text/plain", element.textContent);
+        e.clipboardData.setData("text/plain", `0${element.textContent}`);
       }
     });
   }
