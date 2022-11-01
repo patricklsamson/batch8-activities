@@ -92,10 +92,9 @@ class Helper {
           return;
         }
 
-        input.value = input.value
-          .replace(/,/gi, "")
-          .split(/(?=(?:\d{3})+$)/)
-          .join(",");
+        if (input.value) {
+          input.value = num_commas(input.value.split(",").join(""));
+        }
       });
     });
   }
