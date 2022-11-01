@@ -170,5 +170,4 @@ const showQuotes = () => {
   const filteredQuotes = quotes.filter((quote) => quote != "");
 
   id("quotes").innerHTML = inner(filteredQuotes[rand(filteredQuotes.length)]);
-  console.log(filteredQuotes);
 };
