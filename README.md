@@ -8,6 +8,7 @@ Notes:
 
 - Contributions in this repository from Mar 25 - Apr 24 2021 were made by my [secondary account](https://github.com/slncdworks).
 - Almost all activities or projects are responsive down to 320px.
+- The projects within this repository use scripts that utilize RegExp which can result to unstable behavior when opening them in IOS devices. I kindly advise to open them in Android devices.
 
 ---
 
