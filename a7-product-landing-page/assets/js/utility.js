@@ -31,17 +31,11 @@ function create_el(element) {
 }
 
 function inner(str) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/\"/g, "&quot;")
-    .replace(/\'/g, "&#39;")
-    .replace(/\//g, "&#x2F;");
+  return str;
 }
 
 function trim(str) {
-  return str.replace(/\s+/g, " ").trim();
+  return str.trim();
 }
 
 function add_event(element, e, fn) {
@@ -83,13 +77,7 @@ function add_att(element, attribute, val) {
 }
 
 function has_class(element, className) {
-  if (element.classList) {
-    return element.classList.contains(className);
-  } else {
-    return new RegExp("(^| )" + className + "( |$)", "gi").test(
-      element.className
-    );
-  }
+  return element.classList.contains(className);
 }
 
 function add_class(element, className) {
@@ -139,11 +127,11 @@ function no_num(e) {
 }
 
 function num_commas(number) {
-  return number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  return parseInt(number).toLocaleString();
 }
 
 function num_space(number) {
-  return number.toString().replace(/\d{4}(?=.)/g, "$& ");
+  return num_commas(number).split(",").join(" ");
 }
 
 function match_media(media, oldMedia, match, unmatch) {
@@ -179,8 +167,8 @@ function match_height(element) {
 
   var max = heights[0];
 
-  for(i = 0; i < heights.length; i++) {
-    if(heights[i] > max) {
+  for (i = 0; i < heights.length; i++) {
+    if (heights[i] > max) {
       max = heights[i];
     }
   }
@@ -205,28 +193,25 @@ function localStorage_space() {
 
       console.log(
         key +
-          " = " +
-          ((window.localStorage[key].length * 16) / (8 * 1024)).toFixed(2) +
-          " KB"
+        " = " +
+        ((window.localStorage[key].length * 16) / (8 * 1024)).toFixed(2) +
+        " KB"
       );
     }
   }
 
   console.log(
-    data
-      ? "\n" +
-          "Total space used: " +
-          ((data.length * 16) / (8 * 1024)).toFixed(2) +
-          " KB"
-      : "Empty (0 KB)"
+    data ?
+      "\n" + "Total space used: " +
+      ((data.length * 16) / (8 * 1024)).toFixed(2) + " KB" :
+      "Empty (0 KB)"
   );
 
   console.log(
-    data
-      ? "Approx. space remaining: " +
-          (5120 - ((data.length * 16) / (8 * 1024)).toFixed(2)) +
-          " KB"
-      : "5 MB"
+    data ?
+      "Approx. space remaining: " +
+      (5120 - ((data.length * 16) / (8 * 1024)).toFixed(2)) + " KB" :
+      "5 MB"
   );
 }
 
@@ -475,11 +460,9 @@ caro = (function () {
 
       if (Math.abs(self.moveX - self.startX) === 0) return;
 
-      self.stayAtCur =
-        Math.abs(self.moveX - self.startX) < 40 ||
-        typeof self.moveX === "undefined"
-          ? true
-          : false;
+      self.stayAtCur = Math.abs(self.moveX - self.startX) < 40 ||
+        typeof self.moveX === "undefined" ? true : false;
+
       self.dir = self.startX < self.moveX ? "left" : "right";
 
       if (self.stayAtCur) {
