@@ -199,8 +199,18 @@ function num_commas(number) {
   return parseInt(number).toLocaleString();
 }
 
-function num_space(number) {
-  return num_commas(number).split(",").join(" ");
+function num_space(number, spacing) {
+  if (spacing === undefined) {
+    spacing = 4;
+  }
+
+  return number.toString().split("").map(function (num, i) {
+    if (i % spacing == 0) {
+      return " " + num;
+    }
+
+    return num;
+  }).join("").trim();
 }
 
 function match_media(media, oldMedia, match, unmatch) {
