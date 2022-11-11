@@ -1,8 +1,8 @@
-ACTIVITY 3.1 - A1
+-- ACTIVITY 3.1 - A1
 
-Notes:
-- Blocks of code to test one by one are separated by long line of hypens.
-- Run everything from "ba3-postgresql/a1-students.txt" first before testing the block of codes below.
+-- Notes:
+-- Blocks of code to test one by one are separated by long line of hypens.
+-- Run everything from "ba3-postgresql/a1-students.txt" first before testing the block of codes below.
 
 --------------------
 

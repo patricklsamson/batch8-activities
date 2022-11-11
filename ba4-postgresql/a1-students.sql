@@ -1,6 +1,6 @@
-ACTIVITY 3 - A1
+-- ACTIVITY 3 - A1
 
-Note: Blocks of code to test one by one are separated by long line of hypens.
+-- Note: Blocks of code to test one by one are separated by long line of hypens.
 
 --------------------
 
