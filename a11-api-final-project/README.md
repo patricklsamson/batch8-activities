@@ -1,6 +1,6 @@
-# Front-End Activity 11: API Final Project - Mental Health Awareness
+# Front-End Activity 11: API Final Project - Psychally
 
-This activity is about creating an app of our choice while observing the usage of public API and all the things we have learned so far in JavaScript. I named the app "Psychally".
+This activity is about creating an app of our choice while observing the usage of public API and all the things we have learned so far in JavaScript. The purpose of this app is to boost awareness on mental health.
 
 It consists of different pages:
 
