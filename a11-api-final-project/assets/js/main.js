@@ -105,7 +105,7 @@ doc_ready(() => {
     add_class(id("bored-dice-btn"), "rolling");
 
     fetch(
-      "http://www.boredapi.com/api/activity?minaccessibility=0.05&maxaccessibility=0.1"
+      "https://www.boredapi.com/api/activity?minaccessibility=0.05&maxaccessibility=0.1"
     )
       .then((response) => response.json())
       .then((data) => (id("bored-activity").innerHTML = data.activity))
